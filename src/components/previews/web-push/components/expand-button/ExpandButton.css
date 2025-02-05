@@ -1,0 +1,15 @@
+.notificare .notificare__web-push-expand-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notificare .notificare__web-push-expand-button-svg {
+    width: 14px;
+    height: 14px;
+    fill: #9e9e9e;
+}

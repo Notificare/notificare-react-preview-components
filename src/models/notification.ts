@@ -1,8 +1,8 @@
 export interface BasePushMessageProps {
   readonly _id?: string;
   readonly partial?: boolean;
-  readonly type?: string;
-  readonly time?: string;
+  readonly type: string;
+  readonly time: string;
   readonly title?: string;
   readonly subtitle?: string;
   readonly message: string;
@@ -12,7 +12,7 @@ export interface BasePushMessageProps {
   readonly extra?: CloudNotificationExtra;
 }
 
-interface CloudNotificationContent {
+export interface CloudNotificationContent {
   readonly type: string;
   readonly data: unknown;
 }
