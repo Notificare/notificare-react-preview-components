@@ -9,7 +9,6 @@ interface IOSLockScreenPushMessageProps {
   notification: BasePushMessageProps;
   appName: string;
   appIcon: string;
-  extended: boolean;
 }
 
 export default function IOSLockScreenPush(props: IOSLockScreenPushMessageProps) {
