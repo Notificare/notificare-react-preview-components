@@ -1,0 +1,95 @@
+.notificare .notificare__android-lock-screen-push {
+  position: relative;
+  background-color: #f2f4f6;
+  width: 315px;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 11px;
+}
+
+/* Text Content */
+
+.notificare .notificare__android-lock-screen-push-text-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.notificare .notificare__android-lock-screen-push-text-content-top {
+  display: flex;
+  column-gap: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.notificare .notificare__android-lock-screen-push-title-and-subtitle {
+  display: flex;
+  overflow: hidden;
+  column-gap: 6px;
+  max-width: 223px;
+}
+
+.notificare .notificare__android-lock-screen-push-title-and-subtitle--has-media {
+  max-width: 160px;
+}
+
+.notificare .notificare__android-lock-screen-push-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notificare .notificare__android-lock-screen-push-text--title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.notificare .notificare__android-lock-screen-push-text--subtitle {
+  color: #64706e;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.notificare .notificare__android-lock-screen-push-text--time {
+  color: #64706e;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.notificare .notificare__android-lock-screen-push-text--message-without-media {
+  font-size: 14px;
+  font-weight: lighter;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  word-break: break-all;
+  width: 252px;
+}
+
+.notificare .notificare__android-lock-screen-push-text--message-with-media {
+  font-size: 14px;
+  font-weight: lighter;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  word-break: break-all;
+  width: 191px;
+}
+
+/* Media */
+
+.notificare .notificare__android-lock-screen-push-media {
+  display: flex;
+  width: 50px;
+}
+
+.notificare .notificare__android-lock-screen-push-media-image {
+  width: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+}
