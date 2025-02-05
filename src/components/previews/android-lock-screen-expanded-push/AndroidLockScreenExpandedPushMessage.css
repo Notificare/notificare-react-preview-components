@@ -1,0 +1,83 @@
+.notificare .notificare__android-lock-screen-expanded-push {
+  position: relative;
+  background-color: #f2f4f6;
+  width: 315px;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 11px;
+}
+
+/* Text Content */
+
+.notificare .notificare__android-lock-screen-expanded-push-text-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text-content-top {
+  display: flex;
+  column-gap: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-app-name-and-subtitle {
+  display: flex;
+  overflow: hidden;
+  column-gap: 6px;
+  max-width: 223px;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text--app-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text--title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text--subtitle {
+  color: #64706e;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text--time {
+  color: #64706e;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-text--message {
+  font-size: 14px;
+  font-weight: lighter;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  width: 252px;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-expanded-media {
+  margin-top: 5px;
+  width: 252px;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-expanded-media-image {
+  width: 100%;
+  max-height: 168px;
+  border-radius: 15px;
+}
