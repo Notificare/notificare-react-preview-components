@@ -1,0 +1,13 @@
+.notificare .notificare__ios-app-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.notificare .notificare__ios-app-icon-image {
+    width: 100%;
+}
