@@ -1,0 +1,19 @@
+.notificare {
+    font-family: proxima-nova, Helvetica, Arial, sans-serif;
+}
+
+.notificare * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.notificare h1,
+.notificare h2,
+.notificare h3,
+.notificare h4,
+.notificare h5,
+.notificare h6,
+.notificare p,
+.notificare span,
+.notificare a
