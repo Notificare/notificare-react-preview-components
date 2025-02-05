@@ -1,0 +1,72 @@
+.notificare .notificare__ios-lock-screen-expanded-push {
+  background-color: #f2f4f6;
+  width: 315px;
+  border-radius: 20px;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-push-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 11px;
+}
+
+/*  Text Content */
+
+.notificare .notificare__ios-lock-screen-expanded-push-text-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  width: 249px;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-push-title-and-time {
+  display: flex;
+  column-gap: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  width: 100%;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-push-text {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-push-text--title-or-subtitle {
+  font-weight: bold;
+  width: 220px;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-push-text--time {
+  color: #64706e;
+  font-size: 12px;
+  text-align: right;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-push-text--message {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  white-space: wrap;
+  width: 242px;
+}
+
+/* Media */
+
+.notificare .notificare__ios-lock-screen-expanded-push-media-image {
+  object-fit: cover;
+  width: 100%;
+  max-height: 275px;
+  overflow: hidden;
+  border-radius: 0 0 20px 20px;
+  display: block;
+}
