@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '../../../preset.css';
 import './WebPush.css';
-import { hasFirstAttachment } from '../../../helpers/hasFirstAttachment';
-import { BasePushMessageProps } from '../../../models/notification';
+import { hasFirstAttachment } from '../../../helpers/notification-utils';
+import { BasePushMessage } from '../../../schemas/notificationSchema';
 import ExpandButton from './components/expand-button/ExpandButton';
 
 interface WebPushProps {
-  notification: BasePushMessageProps;
+  notification: BasePushMessage;
   appName: string;
   appDomain: string;
 }

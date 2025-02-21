@@ -12,7 +12,6 @@ export const WebPushWithMedia = Template.bind({});
 WebPushWithMedia.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    time: '2023-08-24T14:15:22Z',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
@@ -31,7 +30,6 @@ export const WebPushWithNoMedia = Template.bind({});
 WebPushWithNoMedia.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    time: '2023-08-24T14:15:22Z',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
