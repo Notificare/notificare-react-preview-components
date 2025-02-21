@@ -1,1 +1,1 @@
-export { default } from './AndroidLockScreenExpandedPushMessage.stories';
+export { default } from './AndroidLockScreenExpandedPush.stories';

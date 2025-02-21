@@ -1,4 +1,12 @@
 .notificare .notificare__android-lock-screen-expanded-push {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+.notificare .notificare__android-lock-screen-expanded-push-wrapper {
   position: relative;
   background-color: #f2f4f6;
   width: 315px;

@@ -1,20 +1,19 @@
 import { StoryFn, Meta } from '@storybook/react';
-import AndroidLockScreenExpandedPushMessage from './AndroidLockScreenExpandedPushMessage';
+import AndroidLockScreenExpandedPush from './AndroidLockScreenExpandedPush';
 
 export default {
   title: 'ReactComponentLibrary/AndroidLockScreenExpandedPushMessage',
-  component: AndroidLockScreenExpandedPushMessage,
-} as Meta<typeof AndroidLockScreenExpandedPushMessage>;
+  component: AndroidLockScreenExpandedPush,
+} as Meta<typeof AndroidLockScreenExpandedPush>;
 
-const Template: StoryFn<typeof AndroidLockScreenExpandedPushMessage> = (args) => (
-  <AndroidLockScreenExpandedPushMessage {...args} />
+const Template: StoryFn<typeof AndroidLockScreenExpandedPush> = (args) => (
+  <AndroidLockScreenExpandedPush {...args} />
 );
 
 export const AndroidLockScreenExpandedPushMessageWithMedia = Template.bind({});
 AndroidLockScreenExpandedPushMessageWithMedia.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    time: '2023-08-24T14:15:22Z',
     title: 'Title example',
     subtitle: 'Subtitle',
     message: 'Message example',
@@ -34,7 +33,6 @@ export const AndroidLockScreenExpandedPushMessageWithNoMedia = Template.bind({})
 AndroidLockScreenExpandedPushMessageWithNoMedia.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    time: '2023-08-24T14:15:22Z',
     title: 'Title example',
     subtitle: 'Subtitle',
     message: 'Message example',
