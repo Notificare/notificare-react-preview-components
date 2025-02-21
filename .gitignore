@@ -20,5 +20,5 @@ dist/
 .vscode/
 .idea/
 
-# Environment
-.env
+# Config variables
+config.ts
