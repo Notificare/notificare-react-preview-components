@@ -12,7 +12,6 @@ export const IosLockScreenPushMessageWithMedia = Template.bind({});
 IosLockScreenPushMessageWithMedia.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    time: '2023-08-24T14:15:22Z',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
@@ -32,7 +31,6 @@ export const IosLockScreenPushMessageWithoutMedia = Template.bind({});
 IosLockScreenPushMessageWithoutMedia.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    time: '2023-08-24T14:15:22Z',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',

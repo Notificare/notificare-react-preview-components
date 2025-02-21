@@ -1,11 +1,15 @@
 .notificare .notificare__ios-lock-screen-push {
-  background-color: #f2f4f6;
-  width: 315px;
-  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
 }
 
 .notificare .notificare__ios-lock-screen-push-wrapper {
-  width: 100%;
+  background-color: #f2f4f6;
+  width: 315px;
+  border-radius: 20px;
   position: relative;
   padding: 10px;
   display: flex;
