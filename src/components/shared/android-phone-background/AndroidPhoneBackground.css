@@ -1,0 +1,24 @@
+.notificare .notificare__android-phone-background {
+    width: 339px;
+    border-radius: 20px;
+    border: 2px solid #f2f4f6;
+    overflow: hidden;
+}
+
+.notificare .notificare__android-phone-background--dark {
+    background-color: #9ea2a1;
+}
+
+.notificare .notificare__android-phone-background-camera {
+    width: 20px;
+    height: 20px;
+    background-color: #f2f4f6;
+    border-radius: 50%;
+    margin: 20px auto auto;
+}
+
+.notificare .notificare__android-phone-background-content {
+    width: 100%;
+    height: 530px;
+    overflow: hidden;
+}
