@@ -1,11 +1,15 @@
 .notificare .notificare__ios-lock-screen-expanded-push {
-  background-color: #f2f4f6;
-  width: 315px;
-  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
 }
 
 .notificare .notificare__ios-lock-screen-expanded-push-wrapper {
-  width: 100%;
+  background-color: #f2f4f6;
+  width: 315px;
+  border-radius: 20px 20px 0 0;
   position: relative;
   padding: 10px;
   display: flex;
@@ -64,7 +68,7 @@
 
 .notificare .notificare__ios-lock-screen-expanded-push-media-image {
   object-fit: cover;
-  width: 100%;
+  width: 315px;
   max-height: 275px;
   overflow: hidden;
   border-radius: 0 0 20px 20px;
