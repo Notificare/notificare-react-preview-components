@@ -1,0 +1,96 @@
+.notificare .notificare__ios-app-push-ui-text-alert-notification {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-background {
+    width: 300px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #f2f4f6;
+}
+
+/* Header - Title and Message */
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-title-and-message {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-message {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* --- Actions --- */
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-actions {
+    font-size: 14px;
+    font-weight: 700;
+    border-top: 1px solid #f2f4f6;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-action {
+    padding: 10px 20px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Single Actions */
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-actions-single {
+    display: flex;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-single-cancel {
+    padding: 10px 20px;
+    border-right: 1px solid #f2f4f6;
+    width: 50%;
+    text-align: center;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-action--single {
+    width: 50%;
+}
+
+/* Multiple Actions */
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-actions-multiple {
+    display: flex;
+    flex-direction: column;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-multiple-cancel {
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-action--multiple {
+    width: 100%;
+    border-bottom: 1px solid #f2f4f6;
+}
+
+/* No Actions */
+
+.notificare .notificare__ios-app-push-ui-text-alert-notification-no-actions {
+    width: 100%;
+    text-align: center;
+    padding: 10px 20px;
+}

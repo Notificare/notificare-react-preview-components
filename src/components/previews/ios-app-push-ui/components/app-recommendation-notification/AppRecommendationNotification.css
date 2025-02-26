@@ -1,0 +1,20 @@
+.notificare .notificare__ios-app-push-ui-app-recommendation-notification-bar {
+    display: flex;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    border-bottom: 1px solid #f4f6f7;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.notificare .notificare__ios-app-push-ui-app-recommendation-notification-content-background {
+    background-color: #fff;
+    width: 100%;
+    height: 601px;
+}
