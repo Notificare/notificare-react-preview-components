@@ -1,4 +1,4 @@
-import { BasePushMessage } from '../schemas/notificationSchema';
+import { BasePushMessage } from '../schemas/basePushMessageSchema';
 
 export function hasActions(notification: BasePushMessage) {
   return !!(notification.actions && notification.actions.length > 0);

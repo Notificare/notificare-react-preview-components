@@ -1,4 +1,3 @@
-import React from 'react';
 import './AndroidAppIcon.css';
 
 interface AndroidAppIconProps {
