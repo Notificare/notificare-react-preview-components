@@ -60,16 +60,15 @@
 }
 
 .notificare .notificare__web-push-text--title {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .notificare .notificare__web-push-text--domain {
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 2px;
 }
 
 .notificare .notificare__web-push-text--message {
-  font-weight: 300;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
