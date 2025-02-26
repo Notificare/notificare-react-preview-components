@@ -1,4 +1,3 @@
-import React from 'react';
 import './IOSPhoneBackground.css';
 
 interface IosPhoneBackgroundProps {

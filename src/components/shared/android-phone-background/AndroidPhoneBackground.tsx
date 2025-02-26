@@ -1,8 +1,8 @@
-import React from 'react';
 import './AndroidPhoneBackground.css';
+import { ReactNode } from 'react';
 
 interface AndroidPhoneBackgroundProps {
-  children: React.ReactNode;
+  children: ReactNode;
   theme: 'dark' | 'light';
 }
 
