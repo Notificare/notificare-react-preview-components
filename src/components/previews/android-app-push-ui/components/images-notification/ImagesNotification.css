@@ -1,0 +1,11 @@
+.notificare .notificare__android-app-push-ui-images-rich-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 615px;
+}
+
+.notificare .notificare__android-app-push-ui-images-rich-content-image {
+    width: 100%;
+    display: block;
+}

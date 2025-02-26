@@ -1,0 +1,44 @@
+.notificare .notificare__android-app-push-ui-in-app-browser-bar {
+    display: flex;
+    width: 334px;
+    height: 45px;
+    padding: 0 15px;
+    align-items: center;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-bar-x-mark-icon {
+    margin-right: 20px;
+    height: 24px;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-bar-lock-icon {
+    margin-right: 7px;
+    height: 14px;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-loading-icon {
+    margin-right: 7px;
+    height: 14px;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-bar-domain {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-bar-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-bar-text--title {
+    font-size: 14px;
+}
+
+.notificare .notificare__android-app-push-ui-in-app-browser-bar-text--url {
+    font-size: 12px;
+}
