@@ -1,8 +1,7 @@
-import React from 'react';
 import '../../../preset.css';
 import './IOSLockScreenPush.css';
 import { hasFirstAttachment } from '../../../helpers/notification-utils';
-import { BasePushMessage } from '../../../schemas/notificationSchema';
+import { BasePushMessage } from '../../../schemas/basePushMessageSchema';
 import IosAppIcon from '../../shared/ios-app-icon/IOSAppIcon';
 import IOSPhoneBackground from '../../shared/ios-phone-background/IOSPhoneBackground';
 

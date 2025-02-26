@@ -4,18 +4,23 @@
   align-items: center;
   flex-direction: column;
   margin-top: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .notificare .notificare__ios-lock-screen-expanded-push-wrapper {
   background-color: #f2f4f6;
+  border-radius: 20px;
   width: 315px;
-  border-radius: 20px 20px 0 0;
-  position: relative;
+  overflow: hidden;
+}
+
+.notificare .notificare__ios-lock-screen-expanded-main-header {
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   column-gap: 11px;
+  width: 100%;
 }
 
 /*  Text Content */
@@ -46,8 +51,8 @@
 }
 
 .notificare .notificare__ios-lock-screen-expanded-push-text--title-or-subtitle {
-  font-weight: bold;
-  width: 220px;
+  font-weight: 700;
+  width: 218px;
 }
 
 .notificare .notificare__ios-lock-screen-expanded-push-text--time {
@@ -68,9 +73,8 @@
 
 .notificare .notificare__ios-lock-screen-expanded-push-media-image {
   object-fit: cover;
-  width: 315px;
+  width: 100%;
   max-height: 275px;
   overflow: hidden;
-  border-radius: 0 0 20px 20px;
   display: block;
 }

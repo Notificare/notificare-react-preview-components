@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   margin-top: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .notificare .notificare__ios-lock-screen-push-wrapper {
@@ -34,6 +35,7 @@
   margin-bottom: 0;
   position: relative;
   width: 100%;
+  justify-content: space-between;
 }
 
 .notificare .notificare__ios-lock-screen-push-text {
@@ -46,8 +48,8 @@
 }
 
 .notificare .notificare__ios-lock-screen-push-text--title-or-subtitle {
-  font-weight: bold;
-  width: 220px;
+  font-weight: 700;
+  width: 218px;
 }
 
 .notificare .notificare__ios-lock-screen-push-text--time {

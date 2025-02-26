@@ -1,8 +1,7 @@
-import React from 'react';
 import '../../../preset.css';
 import './AndroidLockScreenExpandedPush.css';
 import { hasFirstAttachment } from '../../../helpers/notification-utils';
-import { BasePushMessage } from '../../../schemas/notificationSchema';
+import { BasePushMessage } from '../../../schemas/basePushMessageSchema';
 import AndroidAppIcon from '../../shared/android-app-icon/AndroidAppIcon';
 import AndroidPhoneBackground from '../../shared/android-phone-background/AndroidPhoneBackground';
 
