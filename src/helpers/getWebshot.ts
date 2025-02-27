@@ -1,4 +1,4 @@
-import CONFIG from '../../config';
+import { CONFIG } from '../../config';
 
 export async function getWebshot(url: string, width: number, height: number, platform: string) {
   try {

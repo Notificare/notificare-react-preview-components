@@ -8,7 +8,7 @@ export function getUrlMainDomain(url: string) {
     }
     return hostname;
   } catch (e) {
-    console.error('URL inválido:', e);
+    console.error('Invalid URL:', e);
     return '';
   }
 }
