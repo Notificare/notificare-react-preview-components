@@ -14,24 +14,50 @@ interface WebshotProps {
   canShow?: boolean;
 }
 
-async function getWebshot(url: string, width: number, height: number, platform: string) {
-  try {
-    const response = await fetch(
-      `/api/v2/webshot?application=${CONFIG.APPLICATION}&url=${url}&width=${width}&height=${height}&platform=${platform}&delay=3000`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${CONFIG.TOKEN}`,
-        },
+async function requestWebshot(
+  url: string,
+  width: number,
+  height: number,
+  platform: 'Android' | 'iOS' | 'Web',
+) {
+  const response = await fetch(`https://push-test.notifica.re/webshot?apiKey=${CONFIG.API_KEY}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      url: url,
+      delay: 3000,
+      platform: platform,
+      type: 'png',
+      params: {
+        width: width,
+        height: height,
       },
-    );
+    }),
+  });
 
-    const data = await response.json();
-    return data.image;
-  } catch (error) {
-    console.error('Webshot error: ', error);
-    return '';
-  }
+  const data = await response.json();
+  return data.webshot.id;
+}
+
+async function getWebshotStatus(id: string) {
+  const response = await fetch(
+    `https://push-test.notifica.re/webshot/${id}?apiKey=${CONFIG.API_KEY}`,
+  );
+
+  const data = await response.json();
+  return data.webshot.status;
+}
+
+async function getWebshot(id: string) {
+  const response = await fetch(
+    `https://push-test.notifica.re/webshot/${id}/result?apiKey=${CONFIG.API_KEY}`,
+  );
+
+  const blob = await response.blob();
+
+  return URL.createObjectURL(blob);
 }
 
 export default function Webshot(props: WebshotProps) {
@@ -40,10 +66,6 @@ export default function Webshot(props: WebshotProps) {
   const [webshot, setWebshot] = useState('');
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [lastRun, setLastRun] = useState(Date.now());
-
-  const extraTimeToWrite = 3000;
-  const delayBetweenRequests = 15000;
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,23 +79,39 @@ export default function Webshot(props: WebshotProps) {
       return;
     }
 
-    const timeSinceLastRun = Date.now() - lastRun;
-    const remainingTime = delayBetweenRequests - timeSinceLastRun;
+    let checkStatusLoop: NodeJS.Timeout;
 
-    const handler = setTimeout(async () => {
-      setLastRun(Date.now());
-      const webshot = await getWebshot(url, width, height, platform);
-      setWebshot(webshot);
+    const debounce = setTimeout(async () => {
+      try {
+        const webshotId = await requestWebshot(url, width, height, platform);
 
-      if (!webshot) {
+        checkStatusLoop = setInterval(async () => {
+          const webshotStatus = await getWebshotStatus(webshotId);
+
+          if (webshotStatus === 'error') {
+            setHasError(true);
+            setIsLoading(false);
+            onLoadingChange?.(false);
+            clearInterval(checkStatusLoop);
+          } else if (webshotStatus === 'finished') {
+            const webshot = await getWebshot(webshotId);
+            setWebshot(webshot);
+            setIsLoading(false);
+            onLoadingChange?.(false);
+            clearInterval(checkStatusLoop);
+          }
+        }, 3000);
+      } catch {
         setHasError(true);
+        setIsLoading(false);
+        onLoadingChange?.(false);
       }
+    }, 3000);
 
-      setIsLoading(false);
-      onLoadingChange?.(false);
-    }, remainingTime + extraTimeToWrite);
-
-    return () => clearTimeout(handler);
+    return () => {
+      clearTimeout(debounce);
+      clearInterval(checkStatusLoop);
+    };
   }, [url]);
 
   return (
@@ -83,7 +121,7 @@ export default function Webshot(props: WebshotProps) {
       ) : isLoading || !canShow ? (
         <LoadingIcon />
       ) : (
-        <img src={`data:image/png;base64,${webshot}`} alt="Webshot" />
+        <img src={webshot} alt="Webshot" />
       )}
     </div>
   );
