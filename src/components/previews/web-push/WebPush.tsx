@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Key, useEffect, useRef, useState } from 'react';
 import '../../../preset.css';
 import './WebPush.css';
 import { hasFirstAttachment } from '../../../helpers/notification-utils';
@@ -6,6 +6,7 @@ import { BasePushMessage } from '../../../schemas/basePushMessageSchema';
 import ExpandButton from './components/expand-button/ExpandButton';
 
 export interface WebPushProps {
+  key?: Key;
   notification: BasePushMessage;
   appName: string;
   appDomain: string;
@@ -20,14 +21,29 @@ export default function WebPush(props: WebPushProps) {
   const [expandable, setExpandable] = useState<boolean>(false);
   const [openOptions, setOpenOptions] = useState<boolean>(false);
   const [isClosing, setIsClosing] = useState<boolean>(false);
+  const [isExpanding, setIsExpanding] = useState<boolean>(false);
+  const [initialPreviewHeight, setInitialPreviewHeight] = useState<string>('');
+  //const [initialMessageHeight, setInitialMessageHeight] = useState<string>('');
+  const previewRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
   const maxMessageLines = 3;
-  const messageLineHeight = 16.8; // 14px font size X 1.2 line height
+  const messageLineHeight = 16.7;
 
   useEffect(() => {
-    if (messageRef.current) {
-      const textHeight = messageRef.current.clientHeight;
-      setExpandable(textHeight > maxMessageLines * messageLineHeight);
+    if (previewRef.current && messageRef.current) {
+      // Check if the message is expandable (more than 3 lines size)
+      const fullTextHeight = messageRef.current.scrollHeight;
+      setExpandable(fullTextHeight > maxMessageLines * messageLineHeight);
+
+      // Get the text height with 3 lines max and set it in a state (needed for animations)
+      //const limitedTextHeight = messageRef.current.clientHeight;
+      //messageRef.current.style.height = `${limitedTextHeight}px`;
+      //setInitialMessageHeight(`${limitedTextHeight}px`);
+
+      // Get the full preview initial height (not expanded) and set it in a state (needed for animations)
+      const previewHeight = `${previewRef.current.scrollHeight}px`;
+      previewRef.current.style.height = previewHeight;
+      setInitialPreviewHeight(previewHeight);
     }
 
     if (hasFirstAttachment(notification)) {
@@ -38,26 +54,47 @@ export default function WebPush(props: WebPushProps) {
   return (
     <div className="notificare">
       <div
-        className={`notificare__web-push ${expanded && 'notificare__web-push--expanded'}`}
+        ref={previewRef}
+        className="notificare__web-push"
         onMouseEnter={() => setMouseOverNotification(() => true)}
         onMouseLeave={() => setMouseOverNotification(() => openOptions)}
       >
-        {((expandable && mouseOverNotification) || expanded) && (
+        {((expandable && mouseOverNotification) || expanded || isClosing) && (
           <div className="notificare__web-push-expand-button-container">
             <ExpandButton
               open={expanded}
+              disabled={isClosing || isExpanding}
               onToggle={() => {
-                if (expanded) {
-                  setIsClosing(true);
+                const previewElement = previewRef.current;
+                const messageElement = messageRef.current;
+
+                if (previewElement && messageElement) {
+                  if (expanded) {
+                    previewElement.style.backgroundColor = '#f4f4f4';
+                    previewElement.style.height = initialPreviewHeight;
+                    //messageElement.style.height = initialMessageHeight;
+                    setIsClosing(true);
+                    setExpanded(false);
+                    setTimeout(() => {
+                      setIsClosing(false);
+                      previewElement.style.overflow = '';
+                    }, 300);
+                  } else {
+                    previewElement.style.backgroundColor = '#fff';
+                    previewElement.style.overflow = 'hidden';
+                    setIsExpanding(true);
+                    setExpanded(true);
+                    setTimeout(() => {
+                      previewElement.style.height = `${previewElement.scrollHeight - messageElement.clientHeight + messageElement.scrollHeight}px`;
+                      //messageElement.style.height = `${messageElement.scrollHeight}px`;
+                    }, 10);
+                    setTimeout(() => {
+                      setIsExpanding(false);
+                    }, 300);
+                  }
+
+                  setOpenOptions(false);
                 }
-
-                setExpanded((prevState) => !prevState);
-
-                setTimeout(() => {
-                  setIsClosing(false);
-                }, 1000);
-
-                setOpenOptions(false);
               }}
             />
           </div>
@@ -88,7 +125,8 @@ export default function WebPush(props: WebPushProps) {
               {appDomain}
             </p>
             <p
-              className={`notificare__web-push-text ${expanded || isClosing ? 'notificare__web-push-text--expanded-message' : 'notificare__web-push-text--message'}`}
+              ref={messageRef}
+              className={`notificare__web-push-text ${expanded || isClosing ? 'notificare__web-push-text--expandable-message' : 'notificare__web-push-text--message'}`}
             >
               {notification.message}
             </p>

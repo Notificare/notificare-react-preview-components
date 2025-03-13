@@ -2,14 +2,16 @@ import './ExpandButton.css';
 
 interface ExpandButtonProps {
   open: boolean;
+  disabled: boolean;
   onToggle: () => void;
 }
 
 export default function ExpandButton(props: ExpandButtonProps) {
-  const { open, onToggle } = props;
+  const { open, disabled, onToggle } = props;
 
   return (
     <button
+      disabled={disabled}
       className={`notificare__web-push-expand-button ${open && 'notificare__web-push-expand-button--rotated'}`}
       onClick={onToggle}
     >

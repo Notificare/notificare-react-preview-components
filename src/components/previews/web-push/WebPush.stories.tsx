@@ -6,7 +6,9 @@ export default {
   component: WebPush,
 } as Meta<typeof WebPush>;
 
-const Template: StoryFn<typeof WebPush> = (args) => <WebPush {...args} />;
+const Template: StoryFn<typeof WebPush> = (args) => (
+  <WebPush key={JSON.stringify(args.notification)} {...args} />
+);
 
 export const WebPushWithMedia = Template.bind({});
 WebPushWithMedia.args = {
