@@ -6,10 +6,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.notificare .notificare__web-push-expand-button--rotated {
+    transform: rotate(90deg);
 }
 
 .notificare .notificare__web-push-expand-button-svg {
-    width: 14px;
-    height: 14px;
+    width: 11px;
+    height: 11px;
     fill: #9e9e9e;
 }
