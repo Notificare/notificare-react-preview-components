@@ -16,7 +16,7 @@ export default function InAppBrowserNotification(props: URLNotificationProps) {
   return (
     <IOSPhoneBackground theme="dark">
       <InAppBrowserBar url={url} />
-      <Webshot url={url} platform="iOS" width={335} height={599} />
+      <Webshot url={url} platform="iOS" width={338} height={564} />
     </IOSPhoneBackground>
   );
 }

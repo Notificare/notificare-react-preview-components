@@ -1,7 +1,8 @@
 import './IOSPhoneBackground.css';
+import { ReactNode } from 'react';
 
 interface IosPhoneBackgroundProps {
-  children: React.ReactNode;
+  children: ReactNode;
   theme: 'dark' | 'light';
 }
 

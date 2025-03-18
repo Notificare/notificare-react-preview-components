@@ -19,7 +19,7 @@ export default function MapNotification(props: MapNotificationProps) {
       <MapRichContent
         markers={getMarkersFromNotification(notification)}
         width="100%"
-        height="615px"
+        height="580px"
       />
     </AndroidPhoneBackground>
   );

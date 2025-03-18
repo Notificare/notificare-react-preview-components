@@ -20,7 +20,7 @@ export default function VideoNotification(props: VideoNotificationProps) {
         title={notification.title}
         hasActions={hasActions(notification)}
       />
-      <VideoRichContent videoData={notification.content[0]} width="100%" height="615px" />
+      <VideoRichContent videoData={notification.content[0]} width="100%" height="580px" />
     </AndroidPhoneBackground>
   );
 }

@@ -174,6 +174,10 @@ AndroidAppPushUIImage.args = {
         type: 're.notifica.content.PNG',
         data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
       },
+      {
+        type: 're.notifica.content.PNG',
+        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+      },
     ],
   },
   appName: 'Demo Notificare',

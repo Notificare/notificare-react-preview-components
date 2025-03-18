@@ -2,10 +2,23 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 615px;
+    height: 580px;
 }
 
-.notificare .notificare__android-app-push-ui-images-rich-content-image {
+.notificare .notificare__android-app-push-ui-image-slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
     width: 100%;
-    display: block;
+    scrollbar-width: none; /* Hide in Firefox */
+}
+
+.notificare .notificare__android-app-push-ui-image-slider::-webkit-scrollbar {
+    display: none; /* Hide in Chrome and Safari */
+}
+
+.notificare .notificare__android-app-push-ui-image-slider-item {
+    display: flex;
+    min-width: 100%;
+    scroll-snap-align: start;
 }

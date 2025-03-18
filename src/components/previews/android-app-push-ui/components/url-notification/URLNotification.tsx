@@ -23,7 +23,7 @@ export default function URLNotification(props: URLNotificationProps) {
         hasActions={hasActions(notification)}
       />
 
-      <Webshot url={url} platform="Android" width={331} height={615} />
+      <Webshot url={url} platform="Android" width={331} height={580} />
     </AndroidPhoneBackground>
   );
 }

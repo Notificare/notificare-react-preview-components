@@ -12,13 +12,13 @@ import URLNotification from './components/url-notification/URLNotification';
 import VideoNotification from './components/video-notification/VideoNotification';
 import WebViewNotification from './components/web-view-notification/WebViewNotification';
 
-interface AndroidAppPushUIMessageProps {
+export interface AndroidAppPushUIProps {
   notification: BasePushMessage;
   appName: string;
   appIcon: string;
 }
 
-export default function AndroidAppPushUI(props: AndroidAppPushUIMessageProps) {
+export default function AndroidAppPushUI(props: AndroidAppPushUIProps) {
   const { notification, appName, appIcon } = props;
 
   return (

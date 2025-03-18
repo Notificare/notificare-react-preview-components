@@ -12,8 +12,6 @@ interface ImagesNotificationProps {
 export default function ImagesNotification(props: ImagesNotificationProps) {
   const { notification, appName } = props;
 
-  const image = notification.content[0].data;
-
   return (
     <AndroidPhoneBackground theme="light">
       <NavigationBar
@@ -22,11 +20,16 @@ export default function ImagesNotification(props: ImagesNotificationProps) {
         hasActions={hasActions(notification)}
       />
       <div className="notificare__android-app-push-ui-images-rich-content">
-        <img
-          className="notificare__android-app-push-ui-images-rich-content-image"
-          alt="Notification image"
-          src={image}
-        />
+        <div className="notificare__android-app-push-ui-image-slider">
+          {notification.content.map((image, index) => (
+            <img
+              key={index}
+              className="notificare__android-app-push-ui-image-slider-item"
+              src={image.data}
+              alt="Slider image"
+            />
+          ))}
+        </div>
       </div>
     </AndroidPhoneBackground>
   );

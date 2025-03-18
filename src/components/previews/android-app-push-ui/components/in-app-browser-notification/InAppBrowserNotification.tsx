@@ -29,7 +29,7 @@ export default function InAppBrowserNotification(props: InAppBrowserNotification
         url={url}
         platform="Android"
         width={339}
-        height={550}
+        height={580}
         onLoadingChange={setIsWebshotLoading}
         canShow={!isPageTitleLoading}
       />
