@@ -1,0 +1,121 @@
+.notificare .notificare__ios-lock-screen-push {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.notificare .notificare__ios-lock-screen-push-wrapper {
+    background-color: #f2f4f6;
+    width: 315px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.notificare .notificare__ios-lock-screen-push-main-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 11px;
+    padding: 10px;
+}
+
+/* App Icon */
+
+.notificare .notificare__ios-lock-screen-push-app-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.notificare .notificare__ios-lock-screen-push-app-icon-image {
+    width: 100%;
+}
+
+/*  Text Content */
+
+.notificare .notificare__ios-lock-screen-push-text-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    width: 249px;
+}
+
+.notificare .notificare__ios-lock-screen-push-title-and-time {
+    display: flex;
+    column-gap: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.notificare .notificare__ios-lock-screen-push-text {
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notificare .notificare__ios-lock-screen-push-text--title-or-subtitle {
+    font-weight: 700;
+    width: 218px;
+}
+
+.notificare .notificare__ios-lock-screen-push-text--time {
+    color: #64706e;
+    font-size: 12px;
+    text-align: right;
+}
+
+.notificare .notificare__ios-lock-screen-push-text--message-without-media {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    white-space: wrap;
+    -webkit-line-clamp: 4;
+    width: 242px;
+}
+
+.notificare .notificare__ios-lock-screen-push-text--message-with-media {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    white-space: wrap;
+    -webkit-line-clamp: 4;
+    width: 210px;
+}
+
+/* Media */
+
+.notificare .notificare__ios-lock-screen-push-message-and-media {
+    display: flex;
+    column-gap: 7px;
+}
+
+.notificare .notificare__ios-lock-screen-push-media-image {
+    border-radius: 5px;
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    align-self: flex-start;
+    justify-self: flex-end;
+}
+
+.notificare .notificare__ios-lock-screen-push-expanded-media {
+    object-fit: cover;
+    width: 100%;
+    max-height: 275px;
+    overflow: hidden;
+    display: block;
+}

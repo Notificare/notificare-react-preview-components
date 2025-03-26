@@ -1,0 +1,24 @@
+.notificare .notificare__android-app-ui-images-rich-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 580px;
+}
+
+.notificare .notificare__android-app-ui-image-slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    scrollbar-width: none; /* Hide in Firefox */
+}
+
+.notificare .notificare__android-app-ui-image-slider::-webkit-scrollbar {
+    display: none; /* Hide in Chrome and Safari */
+}
+
+.notificare .notificare__android-app-ui-image-slider-item {
+    display: flex;
+    min-width: 100%;
+    scroll-snap-align: start;
+}
