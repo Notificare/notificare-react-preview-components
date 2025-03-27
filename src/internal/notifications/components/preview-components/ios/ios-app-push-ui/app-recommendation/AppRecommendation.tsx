@@ -17,7 +17,7 @@ export default function AppRecommendation(props: AppRecommendationProps) {
     (async () => {
       setIsLoading(true);
 
-      if (content.type === 're.notifica.content.AppStore') {
+      if (content.type === 're.notifica.content.AppStore' && typeof content.data !== 'string') {
         try {
           const response = await fetch(
             `/api/v2/proxy/?url=https%3A%2F%2Fitunes.apple.com/lookup?country%3DGB%26id%3D${content.data.identifier}`,
