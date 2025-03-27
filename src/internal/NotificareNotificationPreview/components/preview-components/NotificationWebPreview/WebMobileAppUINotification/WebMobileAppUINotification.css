@@ -1,0 +1,195 @@
+/* MAIN */
+
+.notificare .notificare__web-mobile-app-ui-notification {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-background {
+    width: 300px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+/* Header */
+
+.notificare .notificare__web-mobile-app-ui-notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 16px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-app-icon {
+    border-radius: 4px;
+    height: 32px;
+    width: 32px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-app-name {
+    font-size: 18px;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-close-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-close-button:hover {
+    transition: background-color .3s ease-in-out, border-radius .3s ease-in-out;
+    background-color: #f4f5f9;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-close-button-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* TEXT ALERT */
+
+.notificare .notificare__web-mobile-app-ui-notification-media {
+    max-width: 100%;
+    max-height: 250px;
+    aspect-ratio: 16 / 9;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-message {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+/* Actions */
+
+.notificare .notificare__web-mobile-app-ui-notification-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 8px;
+    flex-direction: row-reverse;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-actions-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    align-items: stretch;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-action {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    overflow: hidden;
+    padding: 8px 16px;
+    text-overflow: ellipsis;
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+    white-space: nowrap;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-action--full-width {
+    width: 100%
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-action--primary {
+    background-color: #2b42f7;
+    color: #ffffffde;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-action--primary:hover {
+    background-color: #071cc3;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-action--secondary {
+    background-color: transparent;
+    color: #2b42f7;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-action--secondary:hover {
+    background-color: #f4f5f9;
+}
+
+/* WEB VIEW */
+
+.notificare .notificare__web-mobile-app-ui-notification-web-view-content {
+    border: 0;
+    width: 100%;
+    height: 430px;
+    background-color: #fff;
+}
+
+/* URL */
+
+.notificare .notificare__web-mobile-app-ui-notification-url {
+    border: 0;
+    width: 100%;
+    height: 430px;
+}
+
+/* IMAGE */
+
+.notificare .notificare__web-mobile-app-ui-notification-image-slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    scroll-behavior: smooth;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #bbb transparent; /* Firefox */
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-image-slider-item {
+    display: flex;
+    min-width: 100%;
+    scroll-snap-align: start;
+}
+
+/* For Chrome, Edge and Safari */
+.notificare .notificare__web-mobile-app-ui-notification-image-slider::-webkit-scrollbar {
+    height: 4px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-image-slider-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+
+.notificare .notificare__web-mobile-app-ui-notification-image-slider-webkit-scrollbar-track {
+    background: transparent;
+}
+
