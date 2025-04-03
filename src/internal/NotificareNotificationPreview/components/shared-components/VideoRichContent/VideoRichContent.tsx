@@ -18,16 +18,33 @@ export default function VideoRichContent({ videoData, width, height }: VideoRich
     }
   };
 
-  return (
-    <iframe
-      className="notificare__video-rich-content"
-      src={getVideoUrl()}
-      sandbox="allow-scripts allow-same-origin"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      width={width}
-      height={height}
-    />
-  );
+  if (
+    videoData.type === 're.notifica.content.YouTube' ||
+    videoData.type === 're.notifica.content.Vimeo'
+  ) {
+    return (
+      <iframe
+        className="notificare__video-rich-content"
+        src={getVideoUrl()}
+        sandbox="allow-scripts allow-same-origin"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        width={width}
+        height={height}
+      />
+    );
+  } else {
+    return (
+      <video
+        className="notificare__video-rich-content"
+        width={width}
+        height={height}
+        autoPlay
+        controls
+      >
+        <source src={getVideoUrl()} type="video/mp4" />
+      </video>
+    );
+  }
 }
 
 interface VideoRichContentProps {
