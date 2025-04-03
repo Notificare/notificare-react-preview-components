@@ -12,14 +12,5 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
-  viteFinal: (config) => {
-    config.server = {
-      ...config.server,
-      proxy: {
-        '/api': 'https://dashboard.notifica.re',
-      },
-    };
-    return config;
-  },
 };
 export default config;

@@ -1,23 +1,28 @@
+import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useState } from 'react';
+import { AuthProvider } from '../../internal/NotificareNotificationPreview/components/AuthProvider/AuthProvider';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
-import { NotificareApplication } from '../../internal/NotificareNotificationPreview/models/notificare-application';
-import { NotificareNotification } from '../../internal/NotificareNotificationPreview/models/notificare-notification';
 import { NotificationPreviewVariant } from '../../internal/NotificareNotificationPreview/models/notification-preview-variant';
 import { notificareApplicationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-application/notificare-application-schema';
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
+import { NotificareApplication } from './models/notificare-application';
+import { NotificareNotification } from './models/notificare-notification';
+import { NotificareNotificationConfigKeys } from './models/notificare-notification-config';
+import { NotificareNotificationVariant } from './models/notificare-notification-variant';
 
 export default function NotificareNotificationPreview({
   notification,
   application,
   showControls,
   variant,
-}: NotificationPreviewProps) {
+  configKeys,
+}: NotificareNotificationPreviewProps) {
   const notificationPreviewVariants = new Map<
-    NotificationPreviewProps['variant'],
+    NotificareNotificationPreviewProps['variant'],
     NotificationPreviewVariant
   >([
     ['android-lockscreen', { platform: 'android', mobileVariant: 'lockscreen' }],
@@ -67,82 +72,86 @@ export default function NotificareNotificationPreview({
   }
 
   return (
-    <div className="notificare">
-      <div className="notificare__notification-previews-wrapper">
-        {showControls && (
-          <Controls
-            platform={platform}
-            mobileVariant={mobileVariant}
-            webDevice={webDevice}
-            webMobileType={webMobileType}
-            webDesktopOS={webDesktopOS}
-            setPlatform={setPlatform}
-            setMobileVariant={setMobileVariant}
-            setWebDesktopOS={setWebDesktopOS}
-            setWebDevice={setWebDevice}
-            setWebMobileType={setWebMobileType}
-          />
-        )}
-
-        <div className="notificare__notification-preview">
-          {notificationResult.success && applicationResult.success ? (
-            <>
-              {platform === 'android' && (
-                <NotificationAndroidPreview
-                  notification={notificationResult.data}
-                  application={applicationResult.data}
-                  mobileVariant={mobileVariant}
-                />
-              )}
-
-              {platform === 'ios' && (
-                <NotificationIOSPreview
-                  notification={notificationResult.data}
-                  application={applicationResult.data}
-                  mobileVariant={mobileVariant}
-                />
-              )}
-
-              {platform === 'web' && (
-                <NotificationWebPreview
-                  notification={notificationResult.data}
-                  application={applicationResult.data}
-                  mobileVariant={mobileVariant}
-                  webDevice={webDevice}
-                  webMobileType={webMobileType}
-                  webDesktopOS={webDesktopOS}
-                />
-              )}
-            </>
-          ) : (
-            <PreviewError
-              isNotificationValid={notificationResult.success}
-              isApplicationValid={applicationResult.success}
+    <AuthProvider configKeys={configKeys}>
+      <div className="notificare">
+        <div className="notificare__notification-previews-wrapper">
+          {showControls && (
+            <Controls
+              platform={platform}
+              mobileVariant={mobileVariant}
+              webDevice={webDevice}
+              webMobileType={webMobileType}
+              webDesktopOS={webDesktopOS}
+              setPlatform={setPlatform}
+              setMobileVariant={setMobileVariant}
+              setWebDesktopOS={setWebDesktopOS}
+              setWebDevice={setWebDevice}
+              setWebMobileType={setWebMobileType}
             />
           )}
+
+          <div className="notificare__notification-preview">
+            {notificationResult.success && applicationResult.success ? (
+              <>
+                {platform === 'android' && (
+                  <NotificationAndroidPreview
+                    notification={notificationResult.data}
+                    application={applicationResult.data}
+                    mobileVariant={mobileVariant}
+                  />
+                )}
+
+                {platform === 'ios' && (
+                  <NotificationIOSPreview
+                    notification={notificationResult.data}
+                    application={applicationResult.data}
+                    mobileVariant={mobileVariant}
+                  />
+                )}
+
+                {platform === 'web' && (
+                  <NotificationWebPreview
+                    notification={notificationResult.data}
+                    application={applicationResult.data}
+                    mobileVariant={mobileVariant}
+                    webDevice={webDevice}
+                    webMobileType={webMobileType}
+                    webDesktopOS={webDesktopOS}
+                  />
+                )}
+              </>
+            ) : (
+              <NotificareNotificationPreviewError
+                isNotificationValid={notificationResult.success}
+                isApplicationValid={applicationResult.success}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 }
 
-export interface NotificationPreviewProps {
+/**
+ * Component that displays a notification preview for different platforms.
+ *
+ * @param {NotificareNotification} notification - The notification to be displayed in the preview.
+ * @param {NotificareApplication} application - The application data associated with the notification.
+ * @param {boolean} [showControls] - Whether the controls should be shown (optional).
+ * @param {NotificareNotificationVariant} variant -
+ *        The variant of the notification preview.
+ * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for API requests.
+ */
+interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   application: NotificareApplication;
   showControls?: boolean;
-  variant:
-    | 'android-lockscreen'
-    | 'android-lockscreen-expanded'
-    | 'android-app-ui'
-    | 'ios-lockscreen'
-    | 'ios-lockscreen-expanded'
-    | 'ios-app-ui'
-    | 'web-desktop-macos'
-    | 'web-iphone-app-ui'
-    | 'web-android-app-ui';
+  variant: NotificareNotificationVariant;
+  configKeys: NotificareNotificationConfigKeys;
 }
 
-function PreviewError({
+function NotificareNotificationPreviewError({
   isNotificationValid,
   isApplicationValid,
 }: {

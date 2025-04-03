@@ -1,14 +1,13 @@
 import './DigitalCardNotification.css';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import Webshot from '../../../shared-components/Webshot/Webshot';
 import TitleBar from '../TitleBar/TitleBar';
 
 export default function DigitalCardNotification({
   notification,
   appName,
 }: DigitalCardNotificationProps) {
-  const passUrl = notification.content[0].data;
-
   return (
     <>
       <TitleBar
@@ -16,10 +15,12 @@ export default function DigitalCardNotification({
         title={notification.title}
         hasActions={hasActions(notification)}
       />
-      <iframe
-        className="notificare__ios-app-push-ui-digital-card-rich-content"
-        src={passUrl}
-        sandbox="allow-same-origin"
+
+      <Webshot
+        url={`https://push.notifica.re/pass/web/${notification.content[0].data.split('/')[5]}`}
+        platform="iOS"
+        width={338}
+        height={566}
       />
     </>
   );

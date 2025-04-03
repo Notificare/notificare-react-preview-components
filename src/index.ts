@@ -1,1 +1,1 @@
-export * from './components/notifications/NotificationPreview';
+export * from './components';
