@@ -1,16 +1,20 @@
 import './WebMobileAppUINotification.css';
 import { useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { CONFIG } from '../../../../../../../config';
 import {
   getMarkersFromNotification,
   hasFirstAttachment,
 } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import { useAuth } from '../../../AuthProvider/AuthProvider';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
 
-export default function WebMobileAppUINotification(props: WebMobileAppUIProps) {
-  const { notification, appName, appIcon } = props;
+export default function WebMobileAppUINotification({
+  notification,
+  appName,
+  appIcon,
+}: WebMobileAppUIProps) {
+  const { googleMapsApiKey = '' } = useAuth().configKeys;
 
   let markers: { id: number; lat: number; lng: number; title: string }[] = [];
 
@@ -85,7 +89,7 @@ export default function WebMobileAppUINotification(props: WebMobileAppUIProps) {
         )}
 
         {notification.type === 're.notifica.notification.Map' && (
-          <LoadScript googleMapsApiKey={CONFIG.GOOGLE_MAPS_KEY}>
+          <LoadScript googleMapsApiKey={googleMapsApiKey}>
             <GoogleMap
               id="map"
               mapContainerStyle={{ width: '100%', height: '400px' }}

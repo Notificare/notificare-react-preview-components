@@ -18,7 +18,7 @@ export default function AppRecommendationNotification({
       <Webshot
         url={getUrlByContentType(notification.content[0])}
         platform="Android"
-        width={339}
+        width={338}
         height={580}
       />
     </>

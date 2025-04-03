@@ -3,6 +3,8 @@ import { actionSchema } from './action-schema';
 import { attachmentSchema } from './attachment-schema';
 
 export const webViewSchema = z.object({
+  _id: z.string(),
+  time: z.string(),
   type: z.literal('re.notifica.notification.WebView'),
   title: z.string({ message: "Property 'title' should be a string" }).optional(),
   subtitle: z.string({ message: "Property 'subtitle' should be a string" }).optional(),

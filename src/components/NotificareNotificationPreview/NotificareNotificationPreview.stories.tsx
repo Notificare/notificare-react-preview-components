@@ -1,4 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
+import { CONFIG } from '../../../config';
 import NotificareNotificationPreview from './NotificareNotificationPreview';
 
 export default {
@@ -15,6 +16,8 @@ const Template: StoryFn<typeof NotificareNotificationPreview> = (args) => (
 export const IOSLockScreenWithMedia = Template.bind({});
 IOSLockScreenWithMedia.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -34,11 +37,16 @@ IOSLockScreenWithMedia.args = {
   },
   showControls: true,
   variant: 'ios-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSLockScreenWithMediaExpanded = Template.bind({});
 IOSLockScreenWithMediaExpanded.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -58,11 +66,16 @@ IOSLockScreenWithMediaExpanded.args = {
   },
   showControls: true,
   variant: 'ios-lockscreen-expanded',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSLockScreenWithoutMedia = Template.bind({});
 IOSLockScreenWithoutMedia.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -76,6 +89,9 @@ IOSLockScreenWithoutMedia.args = {
   },
   showControls: true,
   variant: 'ios-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 /* Android Lock Screen */
@@ -83,6 +99,8 @@ IOSLockScreenWithoutMedia.args = {
 export const AndroidLockScreenWithMedia = Template.bind({});
 AndroidLockScreenWithMedia.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -101,11 +119,16 @@ AndroidLockScreenWithMedia.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidLockScreenWithoutMedia = Template.bind({});
 AndroidLockScreenWithoutMedia.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -118,11 +141,16 @@ AndroidLockScreenWithoutMedia.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidLockScreenWithMediaExpanded = Template.bind({});
 AndroidLockScreenWithMediaExpanded.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -141,11 +169,16 @@ AndroidLockScreenWithMediaExpanded.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidLockScreenWithoutMediaExpanded = Template.bind({});
 AndroidLockScreenWithoutMediaExpanded.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -158,6 +191,9 @@ AndroidLockScreenWithoutMediaExpanded.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-lockscreen-expanded',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 /* Android App UI */
@@ -165,6 +201,8 @@ AndroidLockScreenWithoutMediaExpanded.args = {
 export const AndroidAppUITextAlert = Template.bind({});
 AndroidAppUITextAlert.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -177,11 +215,16 @@ AndroidAppUITextAlert.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUITextAlertWithActions = Template.bind({});
 AndroidAppUITextAlertWithActions.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -210,11 +253,16 @@ AndroidAppUITextAlertWithActions.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIRate = Template.bind({});
 AndroidAppUIRate.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Rate',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -227,11 +275,16 @@ AndroidAppUIRate.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIWebView = Template.bind({});
 AndroidAppUIWebView.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -250,11 +303,16 @@ AndroidAppUIWebView.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIWebViewWithActions = Template.bind({});
 AndroidAppUIWebViewWithActions.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -289,11 +347,16 @@ AndroidAppUIWebViewWithActions.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUiHTML5Video = Template.bind({});
 AndroidAppUiHTML5Video.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -312,11 +375,16 @@ AndroidAppUiHTML5Video.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIVimeoVideo = Template.bind({});
 AndroidAppUIVimeoVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -335,11 +403,16 @@ AndroidAppUIVimeoVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIYouTubeVideo = Template.bind({});
 AndroidAppUIYouTubeVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -358,11 +431,16 @@ AndroidAppUIYouTubeVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIImage = Template.bind({});
 AndroidAppUIImage.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -385,11 +463,16 @@ AndroidAppUIImage.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIInAppBrowser = Template.bind({});
 AndroidAppUIInAppBrowser.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.InAppBrowser',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -408,11 +491,16 @@ AndroidAppUIInAppBrowser.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIWebPage = Template.bind({});
 AndroidAppUIWebPage.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -431,11 +519,16 @@ AndroidAppUIWebPage.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIMap = Template.bind({});
 AndroidAppUIMap.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -468,11 +561,16 @@ AndroidAppUIMap.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIDigitalCard = Template.bind({});
 AndroidAppUIDigitalCard.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Passbook',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -480,7 +578,7 @@ AndroidAppUIDigitalCard.args = {
     content: [
       {
         type: 're.notifica.content.PKPass',
-        data: 'https://pass.notifica.re/#/66fd0d51cdf98bc9d9399b66/rsqmkvj5urpzzlovinykm34ewdh2',
+        data: 'https://push.notifica.re/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c',
       },
     ],
   },
@@ -491,11 +589,16 @@ AndroidAppUIDigitalCard.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const AndroidAppUIAppRecommendation = Template.bind({});
 AndroidAppUIAppRecommendation.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Store',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -514,6 +617,9 @@ AndroidAppUIAppRecommendation.args = {
     appDomain: 'notificare.com',
   },
   variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 /* iOS App UI */
@@ -521,6 +627,8 @@ AndroidAppUIAppRecommendation.args = {
 export const IOSAppUITextAlert = Template.bind({});
 IOSAppUITextAlert.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -533,11 +641,16 @@ IOSAppUITextAlert.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUITextAlertWithSingleAction = Template.bind({});
 IOSAppUITextAlertWithSingleAction.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -560,11 +673,16 @@ IOSAppUITextAlertWithSingleAction.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUITextAlertWithMultipleActions = Template.bind({});
 IOSAppUITextAlertWithMultipleActions.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -593,11 +711,16 @@ IOSAppUITextAlertWithMultipleActions.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIWebView = Template.bind({});
 IOSAppUIWebView.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -616,11 +739,16 @@ IOSAppUIWebView.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIWebViewWithActions = Template.bind({});
 IOSAppUIWebViewWithActions.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -655,11 +783,16 @@ IOSAppUIWebViewWithActions.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUiHTML5Video = Template.bind({});
 IOSAppUiHTML5Video.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -678,11 +811,16 @@ IOSAppUiHTML5Video.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIVimeoVideo = Template.bind({});
 IOSAppUIVimeoVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -701,11 +839,16 @@ IOSAppUIVimeoVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIYouTubeVideo = Template.bind({});
 IOSAppUIYouTubeVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -724,11 +867,16 @@ IOSAppUIYouTubeVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIWebPage = Template.bind({});
 IOSAppUIWebPage.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -736,7 +884,7 @@ IOSAppUIWebPage.args = {
     content: [
       {
         type: 're.notifica.content.URL',
-        data: 'https://notificare.com/',
+        data: 'https://www.wikipedia.org/',
       },
     ],
   },
@@ -747,11 +895,16 @@ IOSAppUIWebPage.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIImage = Template.bind({});
 IOSAppUIImage.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -774,11 +927,16 @@ IOSAppUIImage.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIRate = Template.bind({});
 IOSAppUIRate.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Rate',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -791,11 +949,16 @@ IOSAppUIRate.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIDigitalCard = Template.bind({});
 IOSAppUIDigitalCard.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Passbook',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -803,7 +966,7 @@ IOSAppUIDigitalCard.args = {
     content: [
       {
         type: 're.notifica.content.PKPass',
-        data: 'https://pass.notifica.re/#/66fd0d51cdf98bc9d9399b66/rsqmkvj5urpzzlovinykm34ewdh2',
+        data: 'https://push.notifica.re/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c',
       },
     ],
   },
@@ -814,11 +977,16 @@ IOSAppUIDigitalCard.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIInAppBrowser = Template.bind({});
 IOSAppUIInAppBrowser.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.InAppBrowser',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -837,11 +1005,16 @@ IOSAppUIInAppBrowser.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const IOSAppUIAppRecommendation = Template.bind({});
 IOSAppUIAppRecommendation.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Store',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -865,6 +1038,9 @@ IOSAppUIAppRecommendation.args = {
     appDomain: 'notificare.com',
   },
   variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 /* Web macOS */
@@ -872,6 +1048,8 @@ IOSAppUIAppRecommendation.args = {
 export const WebMacOSWithMediaAndActions = Template.bind({});
 WebMacOSWithMediaAndActions.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -906,11 +1084,16 @@ WebMacOSWithMediaAndActions.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebMacOSWithoutMedia = Template.bind({});
 WebMacOSWithoutMedia.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -923,6 +1106,9 @@ WebMacOSWithoutMedia.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 /* Web Android App UI */
@@ -930,6 +1116,8 @@ WebMacOSWithoutMedia.args = {
 export const WebAndroidAppUITextAlert = Template.bind({});
 WebAndroidAppUITextAlert.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -974,11 +1162,16 @@ WebAndroidAppUITextAlert.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUIWebView = Template.bind({});
 WebAndroidAppUIWebView.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1007,11 +1200,16 @@ WebAndroidAppUIWebView.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUIMap = Template.bind({});
 WebAndroidAppUIMap.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1054,11 +1252,16 @@ WebAndroidAppUIMap.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUIURL = Template.bind({});
 WebAndroidAppUIURL.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1066,7 +1269,7 @@ WebAndroidAppUIURL.args = {
     content: [
       {
         type: 're.notifica.content.URL',
-        data: 'https://notificare.com/',
+        data: 'https://www.wikipedia.org/',
       },
     ],
   },
@@ -1077,11 +1280,16 @@ WebAndroidAppUIURL.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUiHTML5Video = Template.bind({});
 WebAndroidAppUiHTML5Video.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1100,11 +1308,16 @@ WebAndroidAppUiHTML5Video.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUIVimeoVideo = Template.bind({});
 WebAndroidAppUIVimeoVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1123,11 +1336,16 @@ WebAndroidAppUIVimeoVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUIYouTubeVideo = Template.bind({});
 WebAndroidAppUIYouTubeVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1146,11 +1364,16 @@ WebAndroidAppUIYouTubeVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebAndroidAppUIImage = Template.bind({});
 WebAndroidAppUIImage.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1183,6 +1406,9 @@ WebAndroidAppUIImage.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 /* Web Iphone App UI */
@@ -1190,6 +1416,8 @@ WebAndroidAppUIImage.args = {
 export const WebIphoneAppUITextAlert = Template.bind({});
 WebIphoneAppUITextAlert.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1234,11 +1462,16 @@ WebIphoneAppUITextAlert.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUIWebView = Template.bind({});
 WebIphoneAppUIWebView.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1267,11 +1500,16 @@ WebIphoneAppUIWebView.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUIMap = Template.bind({});
 WebIphoneAppUIMap.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1314,11 +1552,16 @@ WebIphoneAppUIMap.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUIURL = Template.bind({});
 WebIphoneAppUIURL.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1337,11 +1580,16 @@ WebIphoneAppUIURL.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUiHTML5Video = Template.bind({});
 WebIphoneAppUiHTML5Video.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1360,11 +1608,16 @@ WebIphoneAppUiHTML5Video.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUIVimeoVideo = Template.bind({});
 WebIphoneAppUIVimeoVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1383,11 +1636,16 @@ WebIphoneAppUIVimeoVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUIYouTubeVideo = Template.bind({});
 WebIphoneAppUIYouTubeVideo.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1406,11 +1664,16 @@ WebIphoneAppUIYouTubeVideo.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };
 
 export const WebIphoneAppUIImage = Template.bind({});
 WebIphoneAppUIImage.args = {
   notification: {
+    _id: '',
+    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1443,4 +1706,7 @@ WebIphoneAppUIImage.args = {
     appDomain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
 };

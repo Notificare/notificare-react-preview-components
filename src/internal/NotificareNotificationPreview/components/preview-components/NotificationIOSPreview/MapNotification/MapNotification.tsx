@@ -15,7 +15,7 @@ export default function MapNotification({ notification, appName }: MapNotificati
       <MapRichContent
         markers={getMarkersFromNotification(notification)}
         width="100%"
-        height="601px"
+        height="566px"
       />
     </>
   );

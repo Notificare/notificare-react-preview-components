@@ -14,7 +14,7 @@ export default function URLNotification({ notification, appName }: URLNotificati
         title={notification.title}
         hasActions={hasActions(notification)}
       />
-      <Webshot url={url} platform="Android" width={331} height={580} />
+      <Webshot url={url} platform="Android" width={338} height={580} />
     </>
   );
 }

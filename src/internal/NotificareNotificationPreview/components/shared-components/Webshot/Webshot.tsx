@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Webshot.css';
-import { CONFIG } from '../../../../../../config';
+import { useAuth } from '../../AuthProvider/AuthProvider';
 import LoadingIcon from '../LoadingIcon/LoadingIcon';
 import PreviewError from '../PreviewError/PreviewError';
 
@@ -12,6 +12,8 @@ export default function Webshot({
   onLoadingChange,
   canShow = true,
 }: WebshotProps) {
+  const { serviceKey } = useAuth().configKeys;
+
   const [webshot, setWebshot] = useState('');
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -32,10 +34,10 @@ export default function Webshot({
 
     const debounce = setTimeout(async () => {
       try {
-        const webshotId = await requestWebshot(url, width, height, platform);
+        const webshotId = await requestWebshot(url, width, height, platform, serviceKey);
 
         checkStatusLoop = setInterval(async () => {
-          const webshotStatus = await getWebshotStatus(webshotId);
+          const webshotStatus = await getWebshotStatus(webshotId, serviceKey);
 
           if (webshotStatus === 'error') {
             setHasError(true);
@@ -43,7 +45,7 @@ export default function Webshot({
             onLoadingChange?.(false);
             clearInterval(checkStatusLoop);
           } else if (webshotStatus === 'finished') {
-            const webshot = await getWebshot(webshotId);
+            const webshot = await getWebshot(webshotId, serviceKey);
             setWebshot(webshot);
             setIsLoading(false);
             onLoadingChange?.(false);
@@ -92,8 +94,9 @@ async function requestWebshot(
   width: number,
   height: number,
   platform: 'Android' | 'iOS' | 'Web',
+  serviceKey: string,
 ) {
-  const response = await fetch(`https://push-test.notifica.re/webshot?apiKey=${CONFIG.API_KEY}`, {
+  const response = await fetch(`https://push-test.notifica.re/webshot?apiKey=${serviceKey}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -114,18 +117,16 @@ async function requestWebshot(
   return data.webshot.id;
 }
 
-async function getWebshotStatus(id: string) {
-  const response = await fetch(
-    `https://push-test.notifica.re/webshot/${id}?apiKey=${CONFIG.API_KEY}`,
-  );
+async function getWebshotStatus(id: string, serviceKey: string) {
+  const response = await fetch(`https://push-test.notifica.re/webshot/${id}?apiKey=${serviceKey}`);
 
   const data = await response.json();
   return data.webshot.status;
 }
 
-async function getWebshot(id: string) {
+async function getWebshot(id: string, serviceKey: string) {
   const response = await fetch(
-    `https://push-test.notifica.re/webshot/${id}/result?apiKey=${CONFIG.API_KEY}`,
+    `https://push-test.notifica.re/webshot/${id}/result?apiKey=${serviceKey}`,
   );
 
   const blob = await response.blob();

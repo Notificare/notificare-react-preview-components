@@ -1,4 +1,3 @@
-import '../../../../../../preset.css';
 import './LockScreenNotification.css';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';

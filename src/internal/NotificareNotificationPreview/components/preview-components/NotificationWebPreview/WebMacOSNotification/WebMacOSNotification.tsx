@@ -1,5 +1,4 @@
 import { Key, useEffect, useRef, useState } from 'react';
-import '../../../../../../preset.css';
 import './WebMacOSNotification.css';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';

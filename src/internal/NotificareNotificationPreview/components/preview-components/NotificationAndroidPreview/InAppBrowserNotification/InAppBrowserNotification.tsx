@@ -20,7 +20,7 @@ export default function InAppBrowserNotification({ notification }: InAppBrowserN
       <Webshot
         url={url}
         platform="Android"
-        width={339}
+        width={338}
         height={580}
         onLoadingChange={setIsWebshotLoading}
         canShow={!isPageTitleLoading}
