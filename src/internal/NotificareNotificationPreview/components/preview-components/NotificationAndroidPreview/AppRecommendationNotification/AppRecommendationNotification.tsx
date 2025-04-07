@@ -9,7 +9,7 @@ export default function AppRecommendationNotification({
   appName,
 }: AppRecommendationNotificationProps) {
   return (
-    <>
+    <div data-testid="android-app-ui-app-recommendation-notification">
       <NavigationBar
         appName={appName}
         title={notification.title}
@@ -21,7 +21,7 @@ export default function AppRecommendationNotification({
         width={338}
         height={580}
       />
-    </>
+    </div>
   );
 }
 

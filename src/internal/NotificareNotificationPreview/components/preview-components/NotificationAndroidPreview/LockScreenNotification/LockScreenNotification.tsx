@@ -9,7 +9,10 @@ export default function LockScreenNotification({
   expanded,
 }: AndroidLockScreenPushProps) {
   return (
-    <div className="notificare__android-lock-screen-notification">
+    <div
+      className="notificare__android-lock-screen-notification"
+      data-testid="android-lock-screen-notification"
+    >
       <div className="notificare__android-lock-screen-notification-wrapper">
         <div className="notificare__android-lock-screen-notification-app-icon">
           <img

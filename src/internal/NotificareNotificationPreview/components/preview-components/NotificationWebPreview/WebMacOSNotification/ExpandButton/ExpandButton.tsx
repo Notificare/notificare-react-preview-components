@@ -14,6 +14,7 @@ export default function ExpandButton(props: ExpandButtonProps) {
       disabled={disabled}
       className={`notificare__web-push-expand-button ${open && 'notificare__web-push-expand-button--rotated'}`}
       onClick={onToggle}
+      data-testid="web-mac-os-expand-button"
     >
       <svg
         className="notificare__web-push-expand-button-svg"

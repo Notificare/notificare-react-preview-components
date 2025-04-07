@@ -9,7 +9,7 @@ export default function WebViewNotification(props: WebViewNotificationProps) {
   const htmlContent = notification.content[0].data;
 
   return (
-    <>
+    <div data-testid="android-app-ui-web-view-notification">
       <NavigationBar
         appName={appName}
         title={notification.title}
@@ -21,7 +21,7 @@ export default function WebViewNotification(props: WebViewNotificationProps) {
         srcDoc={htmlContent}
         sandbox="allow-same-origin"
       />
-    </>
+    </div>
   );
 }
 

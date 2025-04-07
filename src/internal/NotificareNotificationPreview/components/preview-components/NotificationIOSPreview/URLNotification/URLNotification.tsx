@@ -8,14 +8,14 @@ export default function URLNotification({ notification, appName }: URLNotificati
   const url = notification.content[0].data;
 
   return (
-    <>
+    <div data-testid="ios-app-ui-url-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
         hasActions={hasActions(notification)}
       />
       <Webshot url={url} platform="iOS" width={338} height={566} />
-    </>
+    </div>
   );
 }
 

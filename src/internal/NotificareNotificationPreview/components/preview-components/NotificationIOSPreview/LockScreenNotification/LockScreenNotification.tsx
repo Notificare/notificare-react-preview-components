@@ -6,7 +6,10 @@ export default function LockScreenNotification(props: IOSLockScreenPushProps) {
   const { notification, appName, appIcon, expanded } = props;
 
   return (
-    <div className="notificare__ios-lock-screen-notification">
+    <div
+      className="notificare__ios-lock-screen-notification"
+      data-testid="ios-lock-screen-notification"
+    >
       <div className="notificare__ios-lock-screen-notification-wrapper">
         <div className="notificare__ios-lock-screen-notification-main-content">
           <div className="notificare__ios-lock-screen-notification-app-icon">

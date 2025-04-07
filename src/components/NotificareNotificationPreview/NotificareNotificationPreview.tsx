@@ -166,7 +166,7 @@ function NotificareNotificationPreviewError({
         : '→ Invalid Notification & Application';
 
   return (
-    <>
+    <div data-testid="notificare-notification-preview-error">
       <div className="notificare__notification-preview-error-warning">
         <svg
           className="notificare__notification-preview-error-alert-icon"
@@ -180,12 +180,17 @@ function NotificareNotificationPreviewError({
           <div className="notificare__notification-preview-error-title">
             Preview could not be loaded
           </div>
-          <div className="notificare__notification-preview-error-reason-text">{message}</div>
+          <div
+            className="notificare__notification-preview-error-reason-text"
+            data-testid="notificare-notification-preview-error-message"
+          >
+            {message}
+          </div>
         </div>
       </div>
       <div className="notificare__notification-preview-error-check-console-text">
         Check console for more information
       </div>
-    </>
+    </div>
   );
 }

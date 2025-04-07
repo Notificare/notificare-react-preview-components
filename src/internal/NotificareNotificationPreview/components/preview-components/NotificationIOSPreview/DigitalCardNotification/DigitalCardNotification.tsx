@@ -9,7 +9,7 @@ export default function DigitalCardNotification({
   appName,
 }: DigitalCardNotificationProps) {
   return (
-    <>
+    <div data-testid="ios-app-ui-passbook-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
@@ -22,7 +22,7 @@ export default function DigitalCardNotification({
         width={338}
         height={566}
       />
-    </>
+    </div>
   );
 }
 

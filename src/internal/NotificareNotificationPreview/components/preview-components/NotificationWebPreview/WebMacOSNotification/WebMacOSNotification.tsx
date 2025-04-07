@@ -47,6 +47,7 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
       className="notificare__web-push"
       onMouseEnter={() => setMouseOverNotification(() => true)}
       onMouseLeave={() => setMouseOverNotification(() => openOptions)}
+      data-testid="web-mac-os-notification"
     >
       {((expandable && mouseOverNotification) || expanded || isClosing) && (
         <div className="notificare__web-push-expand-button-container">
@@ -134,6 +135,7 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
                 <button
                   className="notificare__web-push-settings-button"
                   onClick={() => setOpenOptions((prevState) => !prevState)}
+                  data-testid="web-mac-os-settings-button"
                 >
                   Options
                   <svg
@@ -148,7 +150,11 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
                 {openOptions && (
                   <div className="notificare__web-push-settings-selector">
                     {notification.actions.map((option, index) => (
-                      <button key={index} className="notificare__web-push-settings-selector-option">
+                      <button
+                        key={index}
+                        className="notificare__web-push-settings-selector-option"
+                        data-testid={`web-mac-os-options-action-${index}`}
+                      >
                         {option.label}
                       </button>
                     ))}
@@ -184,6 +190,7 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
                 className="notificare__web-push-expanded-button"
                 onMouseEnter={() => setMouseOverButtonIndex(index)}
                 onMouseLeave={() => setMouseOverButtonIndex(-1)}
+                data-testid={`web-mac-os-expanded-action-${index}`}
               >
                 {action.label}
               </button>

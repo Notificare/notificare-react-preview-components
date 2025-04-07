@@ -8,14 +8,14 @@ export default function URLNotification({ notification, appName }: URLNotificati
   const url = notification.content[0].data;
 
   return (
-    <>
+    <div data-testid="android-app-ui-url-notification">
       <NavigationBar
         appName={appName}
         title={notification.title}
         hasActions={hasActions(notification)}
       />
       <Webshot url={url} platform="Android" width={338} height={580} />
-    </>
+    </div>
   );
 }
 

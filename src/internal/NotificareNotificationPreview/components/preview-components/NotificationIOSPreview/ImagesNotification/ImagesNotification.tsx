@@ -5,7 +5,7 @@ import TitleBar from '../TitleBar/TitleBar';
 
 export default function ImagesNotification({ notification, appName }: ImagesNotificationProps) {
   return (
-    <>
+    <div data-testid="ios-app-ui-images-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
@@ -23,7 +23,7 @@ export default function ImagesNotification({ notification, appName }: ImagesNoti
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

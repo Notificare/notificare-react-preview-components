@@ -43,7 +43,7 @@ export default function AppRecommendationNotification({
   }, [content.data]);
 
   return (
-    <>
+    <div data-testid="ios-app-ui-app-recommendation-notification">
       <div className="notificare__ios-app-push-ui-app-recommendation-notification-bar">Done</div>
       <div className="notificare__ios-app-push-ui-app-recommendation">
         {hasError ? (
@@ -169,7 +169,7 @@ export default function AppRecommendationNotification({
           )
         )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@ export default function WebViewNotification({ notification, appName }: WebViewNo
   const htmlContent = notification.content[0].data;
 
   return (
-    <>
+    <div data-testid="ios-app-ui-web-view-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
@@ -18,7 +18,7 @@ export default function WebViewNotification({ notification, appName }: WebViewNo
         srcDoc={htmlContent}
         sandbox="allow-same-origin"
       />
-    </>
+    </div>
   );
 }
 

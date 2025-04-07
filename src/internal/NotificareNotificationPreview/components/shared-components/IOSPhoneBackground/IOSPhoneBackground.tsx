@@ -10,6 +10,7 @@ export default function IOSPhoneBackground({ children, theme }: IosPhoneBackgrou
   return (
     <div
       className={`notificare__ios-phone-background ${theme === 'dark' && 'notificare__ios-phone-background--dark'}`}
+      data-testid="ios-phone-background"
     >
       <div className="notificare__ios-phone-background-camera" />
       <div className="notificare__ios-phone-background-content">{children}</div>
