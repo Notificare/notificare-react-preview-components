@@ -8,14 +8,14 @@ export default function VideoNotification({ notification, appName }: VideoNotifi
   const videoData = notification.content[0];
 
   return (
-    <>
+    <div data-testid="ios-app-ui-video-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
         hasActions={hasActions(notification)}
       />
       <VideoRichContent videoData={videoData} width="100%" height="601px" />
-    </>
+    </div>
   );
 }
 

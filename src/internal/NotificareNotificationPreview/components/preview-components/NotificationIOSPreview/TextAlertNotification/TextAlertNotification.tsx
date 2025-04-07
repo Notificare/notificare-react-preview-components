@@ -7,7 +7,10 @@ export default function TextAlertNotification({
   appName,
 }: TextAlertNotificationProps) {
   return (
-    <div className="notificare__ios-app-push-ui-text-alert-notification">
+    <div
+      className="notificare__ios-app-push-ui-text-alert-notification"
+      data-testid="ios-app-ui-text-alert-notification"
+    >
       <div className="notificare__ios-app-push-ui-text-alert-notification-background">
         <div className="notificare__ios-app-push-ui-text-alert-notification-title-and-message">
           <p className="notificare__ios-app-push-ui-text-alert-notification-title">

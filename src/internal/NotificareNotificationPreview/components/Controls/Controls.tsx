@@ -95,7 +95,7 @@ export default function Controls({
 
   return (
     <>
-      <div className="notificare__preview-controls">
+      <div className="notificare__preview-controls" data-testid="controls">
         {/* Toggle Groups */}
 
         <div className="notificare__preview-controls-toggle-groups">

@@ -24,6 +24,7 @@ export default function ToggleGroup<T extends string | undefined>({
               className={`notificare__preview-controls-toggle-group-option ${selected === option.key && 'notificare__preview-controls-toggle-group-option--selected'}`}
               onClick={() => setSelected(option.key)}
               aria-label={`Button with option '${option.key}'`}
+              data-testid={`toggle-option-${option.key}`}
             >
               <div
                 className={`notificare__preview-controls-toggle-group-option-icon ${selected === option.key && 'notificare__preview-controls-toggle-group-option-icon--selected'}`}

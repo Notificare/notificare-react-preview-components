@@ -58,6 +58,7 @@ export default function Selector<T extends string | undefined>({
                   setSelected(option.key);
                   setIsExpanded(false);
                 }}
+                data-testid={`selector-option-${option.key}`}
               >
                 {option.label}
               </button>

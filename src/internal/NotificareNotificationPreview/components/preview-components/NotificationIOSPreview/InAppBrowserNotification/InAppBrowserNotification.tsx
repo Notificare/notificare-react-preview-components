@@ -7,10 +7,10 @@ export default function InAppBrowserNotification({ notification }: URLNotificati
   const url = notification.content[0].data;
 
   return (
-    <>
+    <div data-testid="ios-app-ui-in-app-browser-notification">
       <InAppBrowserBar url={url} />
       <Webshot url={url} platform="iOS" width={338} height={564} />
-    </>
+    </div>
   );
 }
 

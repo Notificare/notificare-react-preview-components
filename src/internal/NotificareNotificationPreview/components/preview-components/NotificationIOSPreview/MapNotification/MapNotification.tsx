@@ -6,7 +6,7 @@ import TitleBar from '../TitleBar/TitleBar';
 
 export default function MapNotification({ notification, appName }: MapNotificationProps) {
   return (
-    <>
+    <div data-testid="ios-app-ui-map-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
@@ -17,7 +17,7 @@ export default function MapNotification({ notification, appName }: MapNotificati
         width="100%"
         height="566px"
       />
-    </>
+    </div>
   );
 }
 

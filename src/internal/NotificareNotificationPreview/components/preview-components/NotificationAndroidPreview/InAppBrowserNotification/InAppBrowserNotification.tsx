@@ -11,7 +11,7 @@ export default function InAppBrowserNotification({ notification }: InAppBrowserN
   const url = notification.content[0].data;
 
   return (
-    <>
+    <div data-testid="android-app-ui-in-app-browser-notification">
       <InAppBrowserBar
         url={url}
         onLoadingChange={setIsPageTitleLoading}
@@ -25,7 +25,7 @@ export default function InAppBrowserNotification({ notification }: InAppBrowserN
         onLoadingChange={setIsWebshotLoading}
         canShow={!isPageTitleLoading}
       />
-    </>
+    </div>
   );
 }
 

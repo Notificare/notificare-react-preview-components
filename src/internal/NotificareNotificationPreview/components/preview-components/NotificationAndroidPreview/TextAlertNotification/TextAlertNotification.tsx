@@ -8,7 +8,10 @@ export default function TextAlertNotification({
   appIcon,
 }: TextAlertNotificationProps) {
   return (
-    <div className="notificare__android-app-push-ui-text-alert-notification">
+    <div
+      className="notificare__android-app-push-ui-text-alert-notification"
+      data-testid="android-app-ui-text-alert-notification"
+    >
       <div className="notificare__android-app-push-ui-text-alert-notification-wrapper">
         <div className="notificare__android-app-push-ui-text-alert-notification-header">
           <div className="notificare__android-app-push-ui-app-icon">

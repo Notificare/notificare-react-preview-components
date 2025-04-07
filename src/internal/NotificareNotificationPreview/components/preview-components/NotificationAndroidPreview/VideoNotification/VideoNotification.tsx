@@ -8,14 +8,14 @@ export default function VideoNotification(props: VideoNotificationProps) {
   const { notification, appName } = props;
 
   return (
-    <>
+    <div data-testid="android-app-ui-video-notification">
       <NavigationBar
         appName={appName}
         title={notification.title}
         hasActions={hasActions(notification)}
       />
       <VideoRichContent videoData={notification.content[0]} width="100%" height="580px" />
-    </>
+    </div>
   );
 }
 

@@ -6,7 +6,10 @@ interface RateAppNotificationProps {
 
 export default function RateNotification({ appName }: RateAppNotificationProps) {
   return (
-    <div className="notificare__ios-app-push-ui-rate-notification">
+    <div
+      className="notificare__ios-app-push-ui-rate-notification"
+      data-testid="ios-app-ui-rate-notification"
+    >
       <div className="notificare__ios-app-push-ui-rate-notification-wrapper">
         <p className="notificare__ios-app-push-ui-rate-notification-header">{appName}</p>
 

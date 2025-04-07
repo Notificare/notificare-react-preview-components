@@ -5,7 +5,7 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 
 export default function ImagesNotification({ notification, appName }: ImagesNotificationProps) {
   return (
-    <>
+    <div data-testid="android-app-ui-images-notification">
       <NavigationBar
         appName={appName}
         title={notification.title}
@@ -23,7 +23,7 @@ export default function ImagesNotification({ notification, appName }: ImagesNoti
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
