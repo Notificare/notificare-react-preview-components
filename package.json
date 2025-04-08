@@ -1,6 +1,9 @@
 {
   "name": "notificare-notification-previews",
   "version": "0.0.1",
+  "files": [
+    "dist/"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",

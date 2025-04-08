@@ -8,6 +8,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 
 const require = createRequire(import.meta.url);
+const { visualizer } = require('rollup-plugin-visualizer');
 const packageJson = require('./package.json');
 
 export default [
@@ -31,12 +32,18 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        exclude: ['**/*.test.tsx', '**/*.stories.ts', '**/stories/**'],
+        exclude: ['**/*.test.tsx', '**/*.stories.tsx', '**/*.stories.ts', 'src/stories/**'],
       }),
       terser(),
       postcss({ extensions: ['.css'], inject: true, extract: false }),
+      visualizer({
+        filename: 'stats.html',
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+      }),
     ],
-    external: ['react'],
+    external: ['react', 'react-dom'],
   },
   {
     input: 'src/index.ts',
