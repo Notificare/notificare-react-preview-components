@@ -27,43 +27,6 @@ export const alertNotificationMock: NotificareNotification = {
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message',
-  attachments: [
-    {
-      uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
-      mimeType: 'image/jpeg',
-    },
-  ],
-};
-
-export const alertNotificationWithActionsMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
-  type: 're.notifica.notification.Alert',
-  title: 'Title',
-  subtitle: 'Subtitle',
-  message: 'Message',
-  attachments: [
-    {
-      uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
-      mimeType: 'image/jpeg',
-    },
-  ],
-  actions: [
-    {
-      _id: '1',
-      type: 're.notifica.action.Callback',
-      label: 'Go to Notificare website',
-      target: 'https://notificare.com/',
-      camera: false,
-      keyboard: false,
-    },
-    {
-      _id: '2',
-      type: 're.notifica.action.Telephone',
-      label: 'Make a call',
-      target: 'tel:0500666858',
-    },
-  ],
 };
 
 export const rateNotificationMock: NotificareNotification = {
@@ -86,37 +49,6 @@ export const webViewNotificationMock: NotificareNotification = {
     {
       type: 're.notifica.content.HTML',
       data: '<p>Example</p>',
-    },
-  ],
-};
-
-export const webViewNotificationWithActionsMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
-  type: 're.notifica.notification.WebView',
-  title: 'Title',
-  subtitle: 'Subtitle',
-  message: 'Message example',
-  content: [
-    {
-      type: 're.notifica.content.HTML',
-      data: '<p>Example</p>',
-    },
-  ],
-  actions: [
-    {
-      _id: '1',
-      type: 're.notifica.action.Callback',
-      label: 'Go to Notificare website',
-      target: 'https://notificare.com/',
-      camera: false,
-      keyboard: false,
-    },
-    {
-      _id: '2',
-      type: 're.notifica.action.Telephone',
-      label: 'Make a call',
-      target: 'tel:0500666858',
     },
   ],
 };
