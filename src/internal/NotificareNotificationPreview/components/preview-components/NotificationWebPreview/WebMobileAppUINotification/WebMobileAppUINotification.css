@@ -71,6 +71,7 @@
     max-width: 100%;
     max-height: 250px;
     aspect-ratio: 16 / 9;
+    margin-bottom: 10px;
 }
 
 .notificare .notificare__web-mobile-app-ui-notification-title {
@@ -89,6 +90,8 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Actions */
@@ -149,7 +152,7 @@
 .notificare .notificare__web-mobile-app-ui-notification-web-view-content {
     border: 0;
     width: 100%;
-    height: 430px;
+    height: 360px;
     background-color: #fff;
 }
 

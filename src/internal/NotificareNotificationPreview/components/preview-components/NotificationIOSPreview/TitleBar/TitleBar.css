@@ -1,15 +1,15 @@
-.notificare .notificare__ios-app-push-ui-title-bar {
+.notificare .notificare__ios-app-ui-title-bar {
     display: flex;
     align-items: center;
     width: 100%;
     border-radius: 20px 20px 0 0;
     border-bottom: 1px solid #f4f6f7;
     background-color: #fff;
-    margin-top: 20px;
+    margin-top: 10px;
     position: relative;
 }
 
-.notificare .notificare__ios-app-push-ui-title-bar-text {
+.notificare .notificare__ios-app-ui-title-bar-text {
     padding: 11px 25px;
     font-size: 14px;
     font-weight: 700;
@@ -22,7 +22,7 @@
     transform: translateX(-50%);
 }
 
-.notificare .notificare__ios-app-push-ui-title-bar-actions-icon {
+.notificare .notificare__ios-app-ui-title-bar-options-button {
     width: 20px;
     margin-left: auto;
     margin-right: 12px;

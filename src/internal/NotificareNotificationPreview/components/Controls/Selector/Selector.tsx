@@ -34,6 +34,7 @@ export default function Selector<T extends string | undefined>({
   if (options.length > 0) {
     return (
       <div className="notificare__preview-controls-selector">
+        <p className="notificare__preview-controls-selector-label">Variant</p>
         <button
           className="notificare__preview-controls-selector-button"
           onClick={() => setIsExpanded(!isExpanded)}

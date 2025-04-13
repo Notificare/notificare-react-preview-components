@@ -12,9 +12,9 @@ export default function VideoNotification({ notification, appName }: VideoNotifi
       <TitleBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification)}
       />
-      <VideoRichContent videoData={videoData} width="100%" height="564px" />
+      <VideoRichContent videoData={videoData} width="100%" height="566px" />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import './MapRichContent.css';
-import L from 'leaflet';
+import { Icon } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 export default function MapRichContent({ markers, width, height }: MapRichContentProps) {
-  const customIcon = new L.Icon({
+  const customIcon = new Icon({
     iconUrl:
       'https://dashboard.notifica.re/assets/images/marker-point-702cf1ad06eb9a69f5e589d8ae311b79.png',
     iconSize: [30, 30],

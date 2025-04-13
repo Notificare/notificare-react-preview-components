@@ -11,6 +11,89 @@ const Template: StoryFn<typeof NotificareNotificationPreview> = (args) => (
   <NotificareNotificationPreview {...args} />
 );
 
+/* Invalid Notification OR Application */
+
+export const InvalidNotification = Template.bind({});
+InvalidNotification.args = {
+  notification: {
+    _id: '1',
+    time: '2024-04-03T14:30:00Z',
+    type: 'invalid-type', // has an invalid type
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message',
+    attachments: [
+      {
+        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        mimeType: 'image/jpeg',
+      },
+    ],
+  },
+  application: {
+    appName: 'Demo Notificare',
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'ios-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
+};
+
+export const InvalidApplication = Template.bind({});
+InvalidApplication.args = {
+  notification: {
+    _id: '1',
+    time: '2024-04-03T14:30:00Z',
+    type: 're.notifica.notification.Alert',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message',
+  },
+  application: {
+    appName: '', // invalid app name
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'ios-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
+};
+
+export const InvalidNotificationAndApplication = Template.bind({});
+InvalidNotificationAndApplication.args = {
+  notification: {
+    _id: '1',
+    time: '2024-04-03T14:30:00Z',
+    type: 'invalid-type', // has an invalid type
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message',
+    attachments: [
+      {
+        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        mimeType: 'image/jpeg',
+      },
+    ],
+  },
+  application: {
+    appName: '', // invalid app name
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'ios-lockscreen',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
+};
+
 /* iOS Lock Screen */
 
 export const IOSLockScreenWithMedia = Template.bind({});
@@ -35,11 +118,11 @@ IOSLockScreenWithMedia.args = {
       'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
     appDomain: 'notificare.com',
   },
-  showControls: true,
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSLockScreenWithMediaExpanded = Template.bind({});
@@ -64,11 +147,11 @@ IOSLockScreenWithMediaExpanded.args = {
       'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
     appDomain: 'notificare.com',
   },
-  showControls: true,
   variant: 'ios-lockscreen-expanded',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSLockScreenWithoutMedia = Template.bind({});
@@ -87,11 +170,11 @@ IOSLockScreenWithoutMedia.args = {
       'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
     appDomain: 'notificare.com',
   },
-  showControls: true,
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 /* Android Lock Screen */
@@ -122,6 +205,7 @@ AndroidLockScreenWithMedia.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidLockScreenWithoutMedia = Template.bind({});
@@ -144,6 +228,7 @@ AndroidLockScreenWithoutMedia.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidLockScreenWithMediaExpanded = Template.bind({});
@@ -172,6 +257,7 @@ AndroidLockScreenWithMediaExpanded.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidLockScreenWithoutMediaExpanded = Template.bind({});
@@ -194,6 +280,7 @@ AndroidLockScreenWithoutMediaExpanded.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 /* Android App UI */
@@ -218,6 +305,7 @@ AndroidAppUITextAlert.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUITextAlertWithActions = Template.bind({});
@@ -256,6 +344,7 @@ AndroidAppUITextAlertWithActions.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIRate = Template.bind({});
@@ -278,6 +367,7 @@ AndroidAppUIRate.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIWebView = Template.bind({});
@@ -306,6 +396,7 @@ AndroidAppUIWebView.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIWebViewWithActions = Template.bind({});
@@ -350,10 +441,56 @@ AndroidAppUIWebViewWithActions.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
-export const AndroidAppUiHTML5Video = Template.bind({});
-AndroidAppUiHTML5Video.args = {
+export const AndroidAppUIWebViewWithActionsAndActionableMarkup = Template.bind({});
+AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
+  notification: {
+    _id: '',
+    time: '',
+    type: 're.notifica.notification.WebView',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.HTML',
+        data: '<div> <p>Example</p> <a href="/?notificareOpenAction=Go">Go</a> </div>',
+      },
+    ],
+    actions: [
+      {
+        _id: '1',
+        type: 're.notifica.action.Callback',
+        label: 'Go to Notificare website',
+        target: 'https://notificare.com/',
+        camera: false,
+        keyboard: false,
+      },
+      {
+        _id: '2',
+        type: 're.notifica.action.Telephone',
+        label: 'Make a call',
+        target: 'tel:0500666858',
+      },
+    ],
+  },
+  application: {
+    appName: 'Demo Notificare',
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
+};
+
+export const AndroidAppUI_HTML5Video = Template.bind({});
+AndroidAppUI_HTML5Video.args = {
   notification: {
     _id: '',
     time: '',
@@ -378,6 +515,7 @@ AndroidAppUiHTML5Video.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIVimeoVideo = Template.bind({});
@@ -406,6 +544,7 @@ AndroidAppUIVimeoVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIYouTubeVideo = Template.bind({});
@@ -434,6 +573,7 @@ AndroidAppUIYouTubeVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIImage = Template.bind({});
@@ -466,6 +606,7 @@ AndroidAppUIImage.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIInAppBrowser = Template.bind({});
@@ -494,6 +635,7 @@ AndroidAppUIInAppBrowser.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIWebPage = Template.bind({});
@@ -522,6 +664,85 @@ AndroidAppUIWebPage.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
+};
+
+export const AndroidAppUIWebPageWithActions = Template.bind({});
+AndroidAppUIWebPageWithActions.args = {
+  notification: {
+    _id: '',
+    time: '',
+    type: 're.notifica.notification.URL',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.URL',
+        data: 'https://notificare.com/',
+      },
+    ],
+    actions: [
+      {
+        _id: '1',
+        type: 're.notifica.action.Callback',
+        label: 'Go to Notificare website',
+        target: 'https://notificare.com/',
+        camera: false,
+        keyboard: false,
+      },
+    ],
+  },
+  application: {
+    appName: 'Demo Notificare',
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
+};
+
+export const AndroidAppUIWebPageWithActionableMarkupAndActions = Template.bind({});
+AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
+  notification: {
+    _id: '',
+    time: '',
+    type: 're.notifica.notification.URL',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.URL',
+        data: 'https://ntc.re/q6YYsq177y',
+      },
+    ],
+    actions: [
+      {
+        _id: '1',
+        type: 're.notifica.action.Callback',
+        label: 'Go to Notificare website',
+        target: 'https://notificare.com/',
+        camera: false,
+        keyboard: false,
+      },
+    ],
+  },
+  application: {
+    appName: 'Demo Notificare',
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'android-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
 };
 
 export const AndroidAppUIMap = Template.bind({});
@@ -564,6 +785,7 @@ AndroidAppUIMap.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIDigitalCard = Template.bind({});
@@ -592,6 +814,7 @@ AndroidAppUIDigitalCard.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const AndroidAppUIAppRecommendation = Template.bind({});
@@ -620,6 +843,7 @@ AndroidAppUIAppRecommendation.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 /* iOS App UI */
@@ -644,6 +868,7 @@ IOSAppUITextAlert.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUITextAlertWithSingleAction = Template.bind({});
@@ -676,6 +901,7 @@ IOSAppUITextAlertWithSingleAction.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUITextAlertWithMultipleActions = Template.bind({});
@@ -714,6 +940,7 @@ IOSAppUITextAlertWithMultipleActions.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIWebView = Template.bind({});
@@ -742,6 +969,7 @@ IOSAppUIWebView.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIWebViewWithActions = Template.bind({});
@@ -786,10 +1014,54 @@ IOSAppUIWebViewWithActions.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
-export const IOSAppUiHTML5Video = Template.bind({});
-IOSAppUiHTML5Video.args = {
+export const IOSAppUIMap = Template.bind({});
+IOSAppUIMap.args = {
+  notification: {
+    _id: '',
+    time: '',
+    type: 're.notifica.notification.Map',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.Marker',
+        data: {
+          title: 'Place A',
+          description: 'Some description about the place',
+          latitude: 5.098765,
+          longitude: 6.08875,
+        },
+      },
+      {
+        type: 're.notifica.content.Marker',
+        data: {
+          title: 'Place B',
+          description: 'Some description about the place',
+          latitude: -2.098765,
+          longitude: -4.08875,
+        },
+      },
+    ],
+  },
+  application: {
+    appName: 'Demo Notificare',
+    appIcon:
+      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    appDomain: 'notificare.com',
+  },
+  variant: 'ios-app-ui',
+  configKeys: {
+    serviceKey: CONFIG.API_KEY,
+  },
+  showControls: true,
+};
+
+export const IOSAppUI_HTML5Video = Template.bind({});
+IOSAppUI_HTML5Video.args = {
   notification: {
     _id: '',
     time: '',
@@ -814,6 +1086,7 @@ IOSAppUiHTML5Video.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIVimeoVideo = Template.bind({});
@@ -842,6 +1115,7 @@ IOSAppUIVimeoVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIYouTubeVideo = Template.bind({});
@@ -870,6 +1144,7 @@ IOSAppUIYouTubeVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIWebPage = Template.bind({});
@@ -898,6 +1173,7 @@ IOSAppUIWebPage.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIImage = Template.bind({});
@@ -930,6 +1206,7 @@ IOSAppUIImage.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIRate = Template.bind({});
@@ -952,6 +1229,7 @@ IOSAppUIRate.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIDigitalCard = Template.bind({});
@@ -980,6 +1258,7 @@ IOSAppUIDigitalCard.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIInAppBrowser = Template.bind({});
@@ -1008,6 +1287,7 @@ IOSAppUIInAppBrowser.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const IOSAppUIAppRecommendation = Template.bind({});
@@ -1041,6 +1321,7 @@ IOSAppUIAppRecommendation.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 /* Web macOS */
@@ -1087,6 +1368,7 @@ WebMacOSWithMediaAndActions.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebMacOSWithoutMedia = Template.bind({});
@@ -1109,6 +1391,7 @@ WebMacOSWithoutMedia.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 /* Web Android App UI */
@@ -1165,6 +1448,7 @@ WebAndroidAppUITextAlert.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebAndroidAppUIWebView = Template.bind({});
@@ -1203,6 +1487,7 @@ WebAndroidAppUIWebView.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebAndroidAppUIMap = Template.bind({});
@@ -1255,6 +1540,7 @@ WebAndroidAppUIMap.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebAndroidAppUIURL = Template.bind({});
@@ -1283,10 +1569,11 @@ WebAndroidAppUIURL.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
-export const WebAndroidAppUiHTML5Video = Template.bind({});
-WebAndroidAppUiHTML5Video.args = {
+export const WebAndroidAppUI_HTML5Video = Template.bind({});
+WebAndroidAppUI_HTML5Video.args = {
   notification: {
     _id: '',
     time: '',
@@ -1311,6 +1598,7 @@ WebAndroidAppUiHTML5Video.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebAndroidAppUIVimeoVideo = Template.bind({});
@@ -1339,6 +1627,7 @@ WebAndroidAppUIVimeoVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebAndroidAppUIYouTubeVideo = Template.bind({});
@@ -1367,6 +1656,7 @@ WebAndroidAppUIYouTubeVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebAndroidAppUIImage = Template.bind({});
@@ -1409,6 +1699,7 @@ WebAndroidAppUIImage.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 /* Web Iphone App UI */
@@ -1465,6 +1756,7 @@ WebIphoneAppUITextAlert.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebIphoneAppUIWebView = Template.bind({});
@@ -1503,6 +1795,7 @@ WebIphoneAppUIWebView.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebIphoneAppUIMap = Template.bind({});
@@ -1555,6 +1848,7 @@ WebIphoneAppUIMap.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebIphoneAppUIURL = Template.bind({});
@@ -1583,10 +1877,11 @@ WebIphoneAppUIURL.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
-export const WebIphoneAppUiHTML5Video = Template.bind({});
-WebIphoneAppUiHTML5Video.args = {
+export const WebIphoneAppUI_HTML5Video = Template.bind({});
+WebIphoneAppUI_HTML5Video.args = {
   notification: {
     _id: '',
     time: '',
@@ -1611,6 +1906,7 @@ WebIphoneAppUiHTML5Video.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebIphoneAppUIVimeoVideo = Template.bind({});
@@ -1639,6 +1935,7 @@ WebIphoneAppUIVimeoVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebIphoneAppUIYouTubeVideo = Template.bind({});
@@ -1667,6 +1964,7 @@ WebIphoneAppUIYouTubeVideo.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };
 
 export const WebIphoneAppUIImage = Template.bind({});
@@ -1709,4 +2007,5 @@ WebIphoneAppUIImage.args = {
   configKeys: {
     serviceKey: CONFIG.API_KEY,
   },
+  showControls: true,
 };

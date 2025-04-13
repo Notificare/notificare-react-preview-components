@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { Fragment, ReactNode, useEffect } from 'react';
 import './ToggleGroup.css';
 
 export default function ToggleGroup<T extends string | undefined>({
@@ -18,9 +18,8 @@ export default function ToggleGroup<T extends string | undefined>({
       <p className="notificare__preview-controls-toggle-group-label"> {label} </p>
       <div className="notificare__preview-controls-toggle-group-options">
         {options.map((option, index) => (
-          <>
+          <Fragment key={option.key}>
             <button
-              key={option.key}
               className={`notificare__preview-controls-toggle-group-option ${selected === option.key && 'notificare__preview-controls-toggle-group-option--selected'}`}
               onClick={() => setSelected(option.key)}
               aria-label={`Button with option '${option.key}'`}
@@ -35,7 +34,7 @@ export default function ToggleGroup<T extends string | undefined>({
             {index !== options.length - 1 && (
               <div className="notificare__preview-controls-toggle-group-divisor" />
             )}
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

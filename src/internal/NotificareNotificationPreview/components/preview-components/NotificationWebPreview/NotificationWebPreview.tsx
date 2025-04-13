@@ -17,6 +17,7 @@ export function NotificationWebPreview({
   if (webDevice === 'desktop' && webDesktopOS === 'macOS') {
     return (
       <WebMacOSNotification
+        key={notification.message}
         notification={notification}
         appName={application.appName}
         appDomain={application.appDomain}
@@ -27,7 +28,7 @@ export function NotificationWebPreview({
   if (webDevice === 'phone') {
     if (webMobileType === 'android') {
       return (
-        <AndroidPhoneBackground theme="dark">
+        <AndroidPhoneBackground theme={getTheme(notification.type)}>
           {mobileVariant === 'app-ui' && (
             <WebMobileAppUINotification
               notification={notification}
@@ -41,7 +42,7 @@ export function NotificationWebPreview({
 
     if (webMobileType === 'iphone') {
       return (
-        <IOSPhoneBackground theme="dark">
+        <IOSPhoneBackground theme={getTheme(notification.type)}>
           {mobileVariant === 'app-ui' && (
             <WebMobileAppUINotification
               notification={notification}
@@ -62,4 +63,16 @@ interface NotificationWebPreviewProps {
   webDevice: NotificationPreviewVariant['webDevice'];
   webMobileType: NotificationPreviewVariant['webMobileType'];
   webDesktopOS: NotificationPreviewVariant['webDesktopOS'];
+}
+
+function getTheme(notificationType: NotificareNotificationSchema['type']) {
+  const darkThemeTypes: NotificareNotificationSchema['type'][] = [
+    're.notifica.notification.Alert',
+    're.notifica.notification.Map',
+    're.notifica.notification.WebView',
+    're.notifica.notification.URL',
+    're.notifica.notification.Video',
+    're.notifica.notification.Image',
+  ];
+  return darkThemeTypes.includes(notificationType) ? 'dark' : 'light';
 }

@@ -1,6 +1,6 @@
 .notificare .notificare__ios-phone-background {
     width: 350px;
-    border-radius: 55px;
+    border-radius: 40px;
     border: 6px solid #c6c6c6;
     background-color: #fff;
     overflow: hidden;
@@ -15,12 +15,13 @@
     width: 80px;
     height: 20px;
     background: #c6c6c6;
-    margin: 20px auto auto;
+    margin: 20px auto 10px;
     border-radius: 20px;
 }
 
 .notificare .notificare__ios-phone-background-content {
     width: 100%;
-    height: 625px;
+    height: 615px;
     overflow: hidden;
+    position: relative;
 }

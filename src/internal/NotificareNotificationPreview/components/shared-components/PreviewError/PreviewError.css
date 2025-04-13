@@ -1,4 +1,4 @@
-.notificare .notificare__webshot-preview-error {
+.notificare .notificare__preview-error {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,12 +7,12 @@
     height: 440px;
 }
 
-.notificare .notificare__webshot-preview-error-icon {
+.notificare .notificare__preview-error-icon {
     width: 72px;
     margin-bottom: 20px;
 }
 
-.notificare .notificare__webshot-preview-error-text {
+.notificare .notificare__preview-error-text {
     font-weight: 700;
     font-size: 16px;
     color: #232c2a;

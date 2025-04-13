@@ -1,18 +1,13 @@
 .notificare .notificare__ios-lock-screen-notification {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 40px;
+    position: absolute;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.notificare .notificare__ios-lock-screen-notification-wrapper {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
     background-color: #f2f4f6;
     width: 315px;
     border-radius: 20px;
     overflow: hidden;
-    position: relative;
 }
 
 .notificare .notificare__ios-lock-screen-notification-main-content {

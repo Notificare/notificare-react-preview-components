@@ -10,7 +10,7 @@ export default function MapNotification({ notification, appName }: MapNotificati
       <TitleBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification)}
       />
       <MapRichContent
         markers={getMarkersFromNotification(notification)}

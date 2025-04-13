@@ -21,16 +21,9 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
 
   useEffect(() => {
     if (previewRef.current && messageRef.current) {
-      // Check if the message is expandable (more than 3 lines size)
       const fullTextHeight = messageRef.current.scrollHeight;
       setExpandable(fullTextHeight > maxMessageLines * messageLineHeight);
 
-      // Get the text height with 3 lines max and set it in a state (needed for animations)
-      //const limitedTextHeight = messageRef.current.clientHeight;
-      //messageRef.current.style.height = `${limitedTextHeight}px`;
-      //setInitialMessageHeight(`${limitedTextHeight}px`);
-
-      // Get the full preview initial height (not expanded) and set it in a state (needed for animations)
       const previewHeight = `${previewRef.current.scrollHeight}px`;
       previewRef.current.style.height = previewHeight;
       setInitialPreviewHeight(previewHeight);
@@ -44,13 +37,13 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
   return (
     <div
       ref={previewRef}
-      className="notificare__web-push"
+      className="notificare__web-macos"
       onMouseEnter={() => setMouseOverNotification(() => true)}
       onMouseLeave={() => setMouseOverNotification(() => openOptions)}
       data-testid="web-mac-os-notification"
     >
       {((expandable && mouseOverNotification) || expanded || isClosing) && (
-        <div className="notificare__web-push-expand-button-container">
+        <div className="notificare__web-macos-expand-button-container">
           <ExpandButton
             open={expanded}
             disabled={isClosing || isExpanding}
@@ -91,30 +84,32 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
       )}
 
       {!mouseOverNotification && !expanded && !isClosing && (
-        <div className="notificare__web-push-time-container">
-          <p className="notificare__web-push-time"> now </p>
+        <div className="notificare__web-macos-time-container">
+          <p className="notificare__web-macos-time"> now </p>
         </div>
       )}
 
-      <div className="notificare__web-push-main-content">
-        <div className="notificare__web-push-browser-icon">
-          <div className="notificare__web-push-browser-icon-background">
+      <div className="notificare__web-macos-main-content">
+        <div className="notificare__web-macos-browser-icon">
+          <div className="notificare__web-macos-browser-icon-background">
             <img
-              className="notificare__web-push-browser-icon-image"
+              className="notificare__web-macos-browser-icon-image"
               src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg"
               alt="Google Chrome Icon"
             />
           </div>
         </div>
 
-        <div className="notificare__web-push-text-content">
-          <p className="notificare__web-push-text notificare__web-push-text--title">
+        <div className="notificare__web-macos-text-content">
+          <p className="notificare__web-macos-text notificare__web-macos-text--title">
             {notification.title || appName}
           </p>
-          <p className="notificare__web-push-text notificare__web-push-text--domain">{appDomain}</p>
+          <p className="notificare__web-macos-text notificare__web-macos-text--domain">
+            {appDomain}
+          </p>
           <p
             ref={messageRef}
-            className={`notificare__web-push-text ${expanded || isClosing ? 'notificare__web-push-text--expandable-message' : 'notificare__web-push-text--message'}`}
+            className={`notificare__web-macos-text ${expanded || isClosing ? 'notificare__web-macos-text--expandable-message' : 'notificare__web-macos-text--message'}`}
           >
             {notification.message}
           </p>
@@ -122,24 +117,24 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
 
         {hasFirstAttachment(notification) && !expanded && !isClosing && !mouseOverNotification && (
           <img
-            className="notificare__web-push-small-media"
+            className="notificare__web-macos-small-media"
             src={notification.attachments?.[0].uri}
             alt="Small media icon"
           />
         )}
 
         {mouseOverNotification && !expanded && !isClosing && (
-          <>
+          <div className="notificare__web-macos-settings-button-container">
             {notification.actions && notification.actions.length > 0 ? (
               <>
                 <button
-                  className="notificare__web-push-settings-button"
+                  className="notificare__web-macos-settings-button"
                   onClick={() => setOpenOptions((prevState) => !prevState)}
                   data-testid="web-mac-os-settings-button"
                 >
                   Options
                   <svg
-                    className="notificare__web-push-settings-button-expand-icon"
+                    className="notificare__web-macos-settings-button-expand-icon"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                   >
@@ -148,46 +143,46 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
                 </button>
 
                 {openOptions && (
-                  <div className="notificare__web-push-settings-selector">
+                  <div className="notificare__web-macos-settings-selector">
                     {notification.actions.map((option, index) => (
                       <button
                         key={index}
-                        className="notificare__web-push-settings-selector-option"
+                        className="notificare__web-macos-settings-selector-option"
                         data-testid={`web-mac-os-options-action-${index}`}
                       >
                         {option.label}
                       </button>
                     ))}
 
-                    <button className="notificare__web-push-settings-selector-option">
+                    <button className="notificare__web-macos-settings-selector-option">
                       Settings
                     </button>
                   </div>
                 )}
               </>
             ) : (
-              <button className="notificare__web-push-settings-button"> Settings </button>
+              <button className="notificare__web-macos-settings-button"> Settings </button>
             )}
-          </>
+          </div>
         )}
       </div>
 
       {(expanded || isClosing) && (
-        <div className="notificare__web-push-expanded-content">
+        <div className="notificare__web-macos-expanded-content">
           {hasFirstAttachment(notification) && (
             <img
-              className="notificare__web-push-expanded-media"
+              className="notificare__web-macos-expanded-media"
               src={notification.attachments?.[0].uri}
               alt="Expanded media"
             />
           )}
 
-          <hr className="notificare__web-push-expanded-divisor" />
+          <hr className="notificare__web-macos-expanded-divisor" />
 
           {notification.actions?.map((action, index) => (
-            <div key={index} className="notificare__web-push-action">
+            <div key={index} className="notificare__web-macos-action">
               <button
-                className="notificare__web-push-expanded-button"
+                className="notificare__web-macos-expanded-button"
                 onMouseEnter={() => setMouseOverButtonIndex(index)}
                 onMouseLeave={() => setMouseOverButtonIndex(-1)}
                 data-testid={`web-mac-os-expanded-action-${index}`}
@@ -196,13 +191,13 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
               </button>
 
               <hr
-                className={`notificare__web-push-expanded-buttons-divisor ${(mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index) && 'notificare__web-push-expanded-buttons-divisor--transparent'}`}
+                className={`notificare__web-macos-expanded-buttons-divisor ${(mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index) && 'notificare__web-macos-expanded-buttons-divisor--transparent'}`}
               />
             </div>
           ))}
 
           <button
-            className={'notificare__web-push-expanded-button'}
+            className={'notificare__web-macos-expanded-button'}
             onMouseEnter={() => setMouseOverButtonIndex(notification.actions?.length || -1)}
             onMouseLeave={() => setMouseOverButtonIndex(-1)}
           >

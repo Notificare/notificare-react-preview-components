@@ -13,13 +13,13 @@ export default function DigitalCardNotification({
       <NavigationBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification)}
       />
       <Webshot
         url={`https://push.notifica.re/pass/web/${notification.content[0].data.split('/')[5]}`}
         platform="Android"
         width={338}
-        height={580}
+        height={570}
       />
       )
     </div>

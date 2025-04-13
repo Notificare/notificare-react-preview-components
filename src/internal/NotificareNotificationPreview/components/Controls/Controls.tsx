@@ -94,38 +94,36 @@ export default function Controls({
   ];
 
   return (
-    <>
-      <div className="notificare__preview-controls" data-testid="controls">
-        {/* Toggle Groups */}
+    <div className="notificare__preview-controls" data-testid="controls">
+      {/* Toggle Groups */}
 
-        <div className="notificare__preview-controls-toggle-groups">
-          <ToggleGroup
-            label="Platform"
-            options={platforms.map((platform) => platform)}
-            selected={platform}
-            setSelected={setPlatform}
-          />
+      <div className="notificare__preview-controls-toggle-groups">
+        <ToggleGroup
+          label="Platform"
+          options={platforms.map((platform) => platform)}
+          selected={platform}
+          setSelected={setPlatform}
+        />
 
-          {platform === 'web' && (
-            <>
+        {platform === 'web' && (
+          <>
+            <ToggleGroup
+              label="Device"
+              options={webDevices.map((webDevice) => webDevice)}
+              selected={webDevice}
+              setSelected={setWebDevice}
+            />
+
+            {webDevice === 'phone' && (
               <ToggleGroup
-                label="Device"
-                options={webDevices.map((webDevice) => webDevice)}
-                selected={webDevice}
-                setSelected={setWebDevice}
+                label="Phone Model"
+                options={webMobileTypes.map((webMobileType) => webMobileType)}
+                selected={webMobileType}
+                setSelected={setWebMobileType}
               />
-
-              {webDevice === 'phone' && (
-                <ToggleGroup
-                  label="Phone Model"
-                  options={webMobileTypes.map((webMobileType) => webMobileType)}
-                  selected={webMobileType}
-                  setSelected={setWebMobileType}
-                />
-              )}
-            </>
-          )}
-        </div>
+            )}
+          </>
+        )}
       </div>
 
       {/* Selectors */}
@@ -161,7 +159,7 @@ export default function Controls({
           )}
         </>
       )}
-    </>
+    </div>
   );
 }
 

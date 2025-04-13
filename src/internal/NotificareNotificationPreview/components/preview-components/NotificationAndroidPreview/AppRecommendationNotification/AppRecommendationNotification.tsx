@@ -1,5 +1,4 @@
 import './AppRecommendationNotification.css';
-import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import Webshot from '../../../shared-components/Webshot/Webshot';
 import NavigationBar from '../NavigationBar/NavigationBar';
@@ -10,16 +9,12 @@ export default function AppRecommendationNotification({
 }: AppRecommendationNotificationProps) {
   return (
     <div data-testid="android-app-ui-app-recommendation-notification">
-      <NavigationBar
-        appName={appName}
-        title={notification.title}
-        hasActions={hasActions(notification)}
-      />
+      <NavigationBar appName={appName} title={notification.title} showOptions={false} />
       <Webshot
         url={getUrlByContentType(notification.content[0])}
         platform="Android"
         width={338}
-        height={580}
+        height={570}
       />
     </div>
   );

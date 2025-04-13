@@ -2,3 +2,17 @@
     display: block;
     position: relative;
 }
+
+.notificare .leaflet-control-attribution {
+    background: 0 0 !important;
+    right: 20px;
+}
+
+.notificare .leaflet-control-attribution a {
+    color: black;
+    text-decoration: underline;
+}
+
+.notificare .leaflet-attribution-flag {
+    display: none !important;
+}

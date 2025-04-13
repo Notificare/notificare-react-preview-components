@@ -8,6 +8,7 @@ import {
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import { useAuth } from '../../../AuthProvider/AuthProvider';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
+import UnavailablePreview from './UnavailablePreview/UnavailablePreview';
 
 export default function WebMobileAppUINotification({
   notification,
@@ -167,6 +168,8 @@ export default function WebMobileAppUINotification({
         </div>
       </div>
     );
+  } else {
+    return <UnavailablePreview notificationType={notification.type} />;
   }
 }
 

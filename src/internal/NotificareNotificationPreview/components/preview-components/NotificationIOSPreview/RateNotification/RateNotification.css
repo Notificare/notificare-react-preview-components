@@ -1,13 +1,12 @@
-.notificare .notificare__ios-app-push-ui-rate-notification {
+.notificare .notificare__ios-app-ui-rate-notification {
     width: 100%;
-    height: 601px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 
-.notificare .notificare__ios-app-push-ui-rate-notification-wrapper {
+.notificare .notificare__ios-app-ui-rate-notification-wrapper {
     width: 300px;
     background: #fff;
     border-radius: 20px;
@@ -17,7 +16,7 @@
 
 /* Header */
 
-.notificare .notificare__ios-app-push-ui-rate-notification-header {
+.notificare .notificare__ios-app-ui-rate-notification-header {
     padding: 20px;
     font-size: 16px;
     font-weight: 700;
@@ -27,7 +26,7 @@
 
 /* Actions */
 
-.notificare .notificare__ios-app-push-ui-rate-notification-action {
+.notificare .notificare__ios-app-ui-rate-notification-action {
     padding: 10px 20px;
     text-align: center;
     overflow: hidden;

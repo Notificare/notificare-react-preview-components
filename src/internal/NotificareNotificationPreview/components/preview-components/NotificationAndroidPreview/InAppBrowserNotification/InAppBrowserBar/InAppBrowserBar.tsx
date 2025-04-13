@@ -20,9 +20,9 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
   }, [url]);
 
   return (
-    <div className="notificare__android-app-push-ui-in-app-browser-bar">
+    <div className="notificare__android-app-ui-in-app-browser-bar">
       <svg
-        className="notificare__android-app-push-ui-in-app-browser-bar-x-mark-icon"
+        className="notificare__android-app-ui-in-app-browser-bar-x-mark-icon"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 384 512"
       >
@@ -31,7 +31,7 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
 
       {isSecureUrl(url) ? (
         <svg
-          className="notificare__android-app-push-ui-in-app-browser-bar-lock-icon"
+          className="notificare__android-app-ui-in-app-browser-bar-lock-icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
         >
@@ -39,7 +39,7 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
         </svg>
       ) : (
         <svg
-          className="notificare__android-app-push-ui-in-app-browser-loading-icon"
+          className="notificare__android-app-ui-in-app-browser-loading-icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
@@ -47,11 +47,11 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
         </svg>
       )}
 
-      <div className="notificare__android-app-push-ui-in-app-browser-bar-domain">
-        <p className="notificare__android-app-push-ui-in-app-browser-bar-text notificare__android-app-push-ui-in-app-browser-bar-text--title">
+      <div className="notificare__android-app-ui-in-app-browser-bar-domain">
+        <p className="notificare__android-app-ui-in-app-browser-bar-text notificare__android-app-ui-in-app-browser-bar-text--title">
           {!isLoading && canShow ? pageTitle : 'Loading...'}
         </p>
-        <p className="notificare__android-app-push-ui-in-app-browser-bar-text notificare__android-app-push-ui-in-app-browser-bar-text--url">
+        <p className="notificare__android-app-ui-in-app-browser-bar-text notificare__android-app-ui-in-app-browser-bar-text--url">
           {getUrlMainDomain(url)}
         </p>
       </div>

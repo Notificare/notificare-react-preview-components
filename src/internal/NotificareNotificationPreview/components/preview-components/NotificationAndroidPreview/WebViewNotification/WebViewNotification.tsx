@@ -1,4 +1,5 @@
 import './WebViewNotification.css';
+import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import NavigationBar from '../NavigationBar/NavigationBar';
@@ -6,19 +7,19 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 export default function WebViewNotification(props: WebViewNotificationProps) {
   const { notification, appName } = props;
 
-  const htmlContent = notification.content[0].data;
+  const html = notification.content[0].data;
 
   return (
     <div data-testid="android-app-ui-web-view-notification">
       <NavigationBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification) && !markupHasNotificareOpenActionQueryParameter(html)}
       />
 
       <iframe
-        className="notificare__android-app-push-ui-web-view-content"
-        srcDoc={htmlContent}
+        className="notificare__android-app-ui-web-view-content"
+        srcDoc={html}
         sandbox="allow-same-origin"
       />
     </div>

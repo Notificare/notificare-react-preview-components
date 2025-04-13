@@ -12,9 +12,9 @@ export default function VideoNotification(props: VideoNotificationProps) {
       <NavigationBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification)}
       />
-      <VideoRichContent videoData={notification.content[0]} width="100%" height="580px" />
+      <VideoRichContent videoData={notification.content[0]} width="100%" height="570px" />
     </div>
   );
 }

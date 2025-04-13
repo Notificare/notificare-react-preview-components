@@ -3,21 +3,20 @@ import './TitleBar.css';
 interface TitleBarProps {
   appName: string;
   title?: string;
-  hasActions: boolean;
+  showOptions: boolean;
 }
 
-export default function TitleBar(props: TitleBarProps) {
-  const { appName, title, hasActions } = props;
-
+export default function TitleBar({ appName, title, showOptions }: TitleBarProps) {
   return (
-    <div className="notificare__ios-app-push-ui-title-bar">
-      <div className="notificare__ios-app-push-ui-title-bar-text">{title || appName}</div>
+    <div className="notificare__ios-app-ui-title-bar">
+      <div className="notificare__ios-app-ui-title-bar-text">{title || appName}</div>
 
-      {hasActions && (
+      {showOptions && (
         <svg
-          className="notificare__ios-app-push-ui-title-bar-actions-icon"
+          className="notificare__ios-app-ui-title-bar-options-button"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
+          data-testid="ios-app-ui-title-bar-options-button"
         >
           <path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
         </svg>

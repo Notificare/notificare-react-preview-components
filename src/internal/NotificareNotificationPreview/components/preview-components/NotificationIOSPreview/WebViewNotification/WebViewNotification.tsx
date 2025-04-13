@@ -1,21 +1,22 @@
 import './WebViewNotification.css';
+import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import TitleBar from '../TitleBar/TitleBar';
 
 export default function WebViewNotification({ notification, appName }: WebViewNotificationProps) {
-  const htmlContent = notification.content[0].data;
+  const html = notification.content[0].data;
 
   return (
     <div data-testid="ios-app-ui-web-view-notification">
       <TitleBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification) && !markupHasNotificareOpenActionQueryParameter(html)}
       />
       <iframe
-        className="notificare__ios-app-push-ui-web-view-content"
-        srcDoc={htmlContent}
+        className="notificare__ios-app-ui-web-view-content"
+        srcDoc={html}
         sandbox="allow-same-origin"
       />
     </div>

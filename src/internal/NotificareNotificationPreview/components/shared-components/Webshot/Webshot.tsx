@@ -52,7 +52,8 @@ export default function Webshot({
             clearInterval(checkStatusLoop);
           }
         }, 3000);
-      } catch {
+      } catch (error) {
+        console.error(error);
         setHasError(true);
         setIsLoading(false);
         onLoadingChange?.(false);
@@ -72,7 +73,7 @@ export default function Webshot({
       ) : isLoading || !canShow ? (
         <LoadingIcon />
       ) : (
-        <img src={webshot} alt="Webshot" />
+        <img src={webshot} alt="Webshot" data-testid="webshot" />
       )}
     </div>
   );
@@ -119,7 +120,6 @@ async function requestWebshot(
 
 async function getWebshotStatus(id: string, serviceKey: string) {
   const response = await fetch(`https://push-test.notifica.re/webshot/${id}?apiKey=${serviceKey}`);
-
   const data = await response.json();
   return data.webshot.status;
 }
@@ -130,7 +130,6 @@ async function getWebshot(id: string, serviceKey: string) {
   );
 
   const blob = await response.blob();
-
   return URL.createObjectURL(blob);
 }
 

@@ -7,16 +7,16 @@ interface RateAppNotificationProps {
 export default function RateNotification({ appName }: RateAppNotificationProps) {
   return (
     <div
-      className="notificare__ios-app-push-ui-rate-notification"
+      className="notificare__ios-app-ui-rate-notification"
       data-testid="ios-app-ui-rate-notification"
     >
-      <div className="notificare__ios-app-push-ui-rate-notification-wrapper">
-        <p className="notificare__ios-app-push-ui-rate-notification-header">{appName}</p>
+      <div className="notificare__ios-app-ui-rate-notification-wrapper">
+        <p className="notificare__ios-app-ui-rate-notification-header">{appName}</p>
 
-        <div className="notificare__ios-app-push-ui-rate-notification-action">
+        <div className="notificare__ios-app-ui-rate-notification-action">
           Yes, I&#39;ll Rate Now
         </div>
-        <div className="notificare__ios-app-push-ui-rate-notification-action">No, Thanks</div>
+        <div className="notificare__ios-app-ui-rate-notification-action">No, Thanks</div>
       </div>
     </div>
   );

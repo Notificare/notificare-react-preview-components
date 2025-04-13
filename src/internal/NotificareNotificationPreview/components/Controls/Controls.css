@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 350px;
+    row-gap: 14px;
 }
 
 .notificare .notificare__preview-controls-preview {

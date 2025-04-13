@@ -13,7 +13,7 @@ export default function DigitalCardNotification({
       <TitleBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification)}
       />
 
       <Webshot

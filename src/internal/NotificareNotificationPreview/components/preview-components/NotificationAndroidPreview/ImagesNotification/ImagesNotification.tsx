@@ -9,7 +9,7 @@ export default function ImagesNotification({ notification, appName }: ImagesNoti
       <NavigationBar
         appName={appName}
         title={notification.title}
-        hasActions={hasActions(notification)}
+        showOptions={hasActions(notification)}
       />
       <div className="notificare__android-app-ui-images-rich-content">
         <div className="notificare__android-app-ui-image-slider">

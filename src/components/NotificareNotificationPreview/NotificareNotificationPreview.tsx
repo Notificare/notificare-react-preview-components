@@ -62,13 +62,30 @@ export default function NotificareNotificationPreview({
   const applicationResult = notificareApplicationSchema.safeParse(application);
 
   if (!notificationResult.success) {
-    const errors = notificationResult.error.errors.map((error) => error.message);
-    console.log('Notification errors:\n\n' + errors.join('\n'));
+    const errors = notificationResult.error.errors;
+
+    const invalidType = errors.find(
+      (e) => e.code === 'invalid_union_discriminator' && e.path.includes('type'), // check if notification type is valid
+    );
+
+    if (invalidType) {
+      const validTypes = notificareNotificationSchema.options.map(
+        (schema) => schema.shape.type.value,
+      );
+
+      console.error(
+        `Notification error: \n\nInvalid notification type. Expected one of: ${validTypes.join(', ')}`,
+      );
+    } else {
+      // Other errors besides 'type'
+      const messages = errors.map((e) => e.message);
+      console.error('Notification errors:\n\n' + messages.join('\n'));
+    }
   }
 
   if (!applicationResult.success) {
     const errors = applicationResult.error.errors.map((error) => error.message);
-    console.log('Application errors:\n\n' + errors.join('\n'));
+    console.error('Application errors:\n\n' + errors.join('\n'));
   }
 
   return (

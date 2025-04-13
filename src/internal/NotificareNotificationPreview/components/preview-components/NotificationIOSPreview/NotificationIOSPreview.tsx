@@ -115,6 +115,7 @@ function getTheme(
     're.notifica.notification.Passbook',
     're.notifica.notification.Video',
     're.notifica.notification.Store',
+    're.notifica.notification.Map',
   ];
   return darkThemeTypes.includes(notificationType) ? 'dark' : 'light';
 }
