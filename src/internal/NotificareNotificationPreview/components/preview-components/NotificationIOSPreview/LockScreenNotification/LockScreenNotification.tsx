@@ -20,7 +20,9 @@ export default function LockScreenNotification(props: IOSLockScreenPushProps) {
         </div>
         <div className="notificare__ios-lock-screen-notification-text-content">
           <div className="notificare__ios-lock-screen-notification-title-and-time">
-            <p className="notificare__ios-lock-screen-notification-text notificare__ios-lock-screen-notification-text--title-or-subtitle">
+            <p
+              className={`notificare__ios-lock-screen-notification-text ${!expanded ? 'notificare__ios-lock-screen-notification-text--title-or-subtitle' : 'notificare__ios-lock-screen-notification-text--expanded-title-or-subtitle'}`}
+            >
               {notification.title || appName}
             </p>
 
@@ -30,7 +32,9 @@ export default function LockScreenNotification(props: IOSLockScreenPushProps) {
           </div>
 
           {notification.subtitle && (
-            <p className="notificare__ios-lock-screen-notification-text notificare__ios-lock-screen-notification-text--title-or-subtitle">
+            <p
+              className={`notificare__ios-lock-screen-notification-text ${!expanded ? 'notificare__ios-lock-screen-notification-text--title-or-subtitle' : 'notificare__ios-lock-screen-notification-text--expanded-title-or-subtitle'}`}
+            >
               {notification.subtitle}
             </p>
           )}

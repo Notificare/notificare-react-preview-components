@@ -1399,50 +1399,35 @@ WebMacOSWithoutMedia.args = {
 export const WebAndroidAppUITextAlert = Template.bind({});
 WebAndroidAppUITextAlert.args = {
   notification: {
-    _id: '',
-    time: '',
+    _id: '1',
+    time: '2024-04-03T14:30:00Z',
     type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
     attachments: [
       {
-        uri: 'https://i0.wp.com/touristjourney.com/wp-content/uploads/2020/10/shutterstock_1706807566-scaled.jpg?fit=2560%2C1707&ssl=1',
+        uri: 'https://t4.ftcdn.net/jpg/01/19/56/47/360_F_119564758_3Zj8GjaFFt9MVNkZYR7LvAGz6KS1JIqD.jpg',
         mimeType: 'image/jpeg',
       },
     ],
     actions: [
       {
         _id: '1',
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        _id: '2',
-        type: 're.notifica.action.Callback',
-        label: 'Button B',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        _id: '3',
-        type: 're.notifica.action.Callback',
-        label: 'Button C',
-        target: 'https://notificare.com/',
+        type: 're.notifica.action.Browser',
+        label: 'Visit website',
+        target: 'https://ncclothing.com/',
         camera: false,
         keyboard: false,
       },
     ],
   },
   application: {
-    appName: 'Demo Notificare',
+    appName: 'NC Clothing',
     appIcon:
       'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    appDomain: 'nc-clothing.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {

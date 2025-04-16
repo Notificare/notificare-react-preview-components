@@ -1,6 +1,7 @@
 import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useState } from 'react';
+import { ZodIssue } from 'zod';
 import { AuthProvider } from '../../internal/NotificareNotificationPreview/components/AuthProvider/AuthProvider';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
@@ -17,9 +18,9 @@ import { NotificareNotificationVariant } from './models/notificare-notification-
 export default function NotificareNotificationPreview({
   notification,
   application,
-  showControls,
+  showControls = false,
   variant,
-  configKeys,
+  configKeys = { serviceKey: '', googleMapsApiKey: '' },
 }: NotificareNotificationPreviewProps) {
   const notificationPreviewVariants = new Map<
     NotificareNotificationPreviewProps['variant'],
@@ -62,30 +63,11 @@ export default function NotificareNotificationPreview({
   const applicationResult = notificareApplicationSchema.safeParse(application);
 
   if (!notificationResult.success) {
-    const errors = notificationResult.error.errors;
-
-    const invalidType = errors.find(
-      (e) => e.code === 'invalid_union_discriminator' && e.path.includes('type'), // check if notification type is valid
-    );
-
-    if (invalidType) {
-      const validTypes = notificareNotificationSchema.options.map(
-        (schema) => schema.shape.type.value,
-      );
-
-      console.error(
-        `Notification error: \n\nInvalid notification type. Expected one of: ${validTypes.join(', ')}`,
-      );
-    } else {
-      // Other errors besides 'type'
-      const messages = errors.map((e) => e.message);
-      console.error('Notification errors:\n\n' + messages.join('\n'));
-    }
+    handleNotificationErrors(notificationResult.error.errors);
   }
 
   if (!applicationResult.success) {
-    const errors = applicationResult.error.errors.map((error) => error.message);
-    console.error('Application errors:\n\n' + errors.join('\n'));
+    handleApplicationErrors(applicationResult.error.errors);
   }
 
   return (
@@ -155,17 +137,17 @@ export default function NotificareNotificationPreview({
  *
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
  * @param {NotificareApplication} application - The application data associated with the notification.
- * @param {boolean} [showControls] - Whether the controls should be shown (optional).
+ * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
  * @param {NotificareNotificationVariant} variant -
  *        The variant of the notification preview.
- * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for API requests.
+ * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for some API requests (optional).
  */
 interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   application: NotificareApplication;
   showControls?: boolean;
   variant: NotificareNotificationVariant;
-  configKeys: NotificareNotificationConfigKeys;
+  configKeys?: NotificareNotificationConfigKeys;
 }
 
 function NotificareNotificationPreviewError({
@@ -210,4 +192,29 @@ function NotificareNotificationPreviewError({
       </div>
     </div>
   );
+}
+
+function handleNotificationErrors(errors: ZodIssue[]) {
+  const invalidType = errors.find(
+    (e) => e.code === 'invalid_union_discriminator' && e.path.includes('type'), // check if notification type is valid
+  );
+
+  if (invalidType) {
+    const validTypes = notificareNotificationSchema.options.map(
+      (schema) => schema.shape.type.value,
+    );
+
+    console.error(
+      `Notification error: \n\nInvalid notification type. Expected one of: ${validTypes.join(', ')}`,
+    );
+  } else {
+    // Other errors besides 'type'
+    const messages = errors.map((e) => e.message);
+    console.error('Notification errors:\n\n' + messages.join('\n'));
+  }
+}
+
+function handleApplicationErrors(errors: ZodIssue[]) {
+  const messages = errors.map((error) => error.message);
+  console.error('Application errors:\n\n' + messages.join('\n'));
 }

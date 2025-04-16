@@ -46,7 +46,7 @@ export default function LockScreenNotification({
         )}
 
         <p
-          className={`notificare__android-lock-screen-notification-text ${hasFirstAttachment(notification) ? 'notificare__android-lock-screen-notification-text--message-with-media' : 'notificare__android-lock-screen-notification-text--message-without-media'}`}
+          className={`notificare__android-lock-screen-notification-text ${expanded && 'notificare__android-lock-screen-notification-text--expanded-message'} ${hasFirstAttachment(notification) && !expanded ? 'notificare__android-lock-screen-notification-text--message-with-media' : 'notificare__android-lock-screen-notification-text--message-without-media'}`}
         >
           {notification.message}
         </p>

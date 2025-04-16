@@ -67,6 +67,13 @@
     width: 218px;
 }
 
+.notificare .notificare__ios-lock-screen-notification-text--expanded-title-or-subtitle {
+    font-weight: 700;
+    width: 218px;
+    white-space: wrap;
+    word-break: break-word;
+}
+
 .notificare .notificare__ios-lock-screen-notification-text--time {
     color: #64706e;
     font-size: 12px;

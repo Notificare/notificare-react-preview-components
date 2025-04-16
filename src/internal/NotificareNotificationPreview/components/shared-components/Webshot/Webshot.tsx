@@ -19,16 +19,21 @@ export default function Webshot({
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    onLoadingChange?.(true);
-    setHasError(false);
+    if (!serviceKey) {
+      setHasError(true);
+      console.error('The service key is missing');
+      return;
+    }
 
     if (!isValidUrl(url)) {
       setHasError(true);
-      setIsLoading(false);
-      onLoadingChange?.(false);
+      console.error('The URL is invalid');
       return;
     }
+
+    setIsLoading(true);
+    onLoadingChange?.(true);
+    setHasError(false);
 
     let checkStatusLoop: NodeJS.Timeout;
 

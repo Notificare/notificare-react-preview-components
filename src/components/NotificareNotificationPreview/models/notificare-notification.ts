@@ -13,7 +13,6 @@
  */
 export interface NotificareNotification {
   readonly _id: string;
-  readonly partial?: boolean;
   readonly type: string;
   readonly time: string;
   readonly title?: string;

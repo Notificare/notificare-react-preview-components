@@ -1,10 +1,10 @@
 /**
  * Defines the configuration keys needed for API requests.
  *
- * @property {string} serviceKey - The service key.
- * @property {string} googleMapsApiKey - The Google Maps API key (optional) - needed for web map notifications.
+ * @property {string} [serviceKey] - A service key provided by a Notificare admin (optional).
+ * @property {string} [googleMapsApiKey] - A Google Maps API key (optional).
  */
 export interface NotificareNotificationConfigKeys {
-  serviceKey: string;
+  serviceKey?: string;
   googleMapsApiKey?: string;
 }
