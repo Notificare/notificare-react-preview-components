@@ -1,12 +1,12 @@
 /**
  * Defines the structure of the application object.
  *
- * @property {string} appName - The name of the application.
- * @property {string} appIcon - The URL to the application's icon.
- * @property {string} appDomain - The domain associated with the application.
+ * @property {string} name - The name of the application.
+ * @property {string} icon - The URL to the application's icon.
+ * @property {string} domain - The domain associated with the application.
  */
 export interface NotificareApplication {
-  appName: string;
-  appIcon: string;
-  appDomain: string;
+  name: string;
+  icon: string;
+  domain: string;
 }

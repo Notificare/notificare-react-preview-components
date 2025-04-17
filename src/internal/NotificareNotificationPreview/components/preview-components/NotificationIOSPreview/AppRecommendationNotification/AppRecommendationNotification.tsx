@@ -1,6 +1,6 @@
 import './AppRecommendationNotification.css';
 import { useEffect, useState } from 'react';
-import { AppStoreResponse } from '../../../../models/app-store-response';
+import { AppStoreApp } from '../../../../models/app-store-app';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import LoadingIcon from '../../../shared-components/LoadingIcon/LoadingIcon';
 import PreviewError from '../../../shared-components/PreviewError/PreviewError';
@@ -12,7 +12,7 @@ export default function AppRecommendationNotification({
   const content = notification.content[0];
 
   const [hasError, setHasError] = useState(false);
-  const [appStoreData, setAppStoreData] = useState<AppStoreResponse>();
+  const [appStoreData, setAppStoreData] = useState<AppStoreApp>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {

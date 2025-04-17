@@ -1,9 +1,7 @@
 /**
  * Defines the structure of a notification object.
  *
- * @property {string} _id - The unique identifier for the notification.
  * @property {string} type - The type of the notification (e.g., "re.notifica.notification.Alert", "re.notifica.notification.WebView").
- * @property {string} time - The time the notification was sent (ISO 8601 format).
  * @property {string} [title] - The title of the notification (optional).
  * @property {string} [subtitle] - The subtitle of the notification (optional).
  * @property {string} message - The message of the notification.
@@ -12,9 +10,7 @@
  * @property {NotificareNotificationAttachment[]} [attachments] - An array of attachments associated with the notification (optional).
  */
 export interface NotificareNotification {
-  readonly _id: string;
   readonly type: string;
-  readonly time: string;
   readonly title?: string;
   readonly subtitle?: string;
   readonly message: string;
@@ -37,7 +33,6 @@ export interface NotificareNotificationContent {
 /**
  * Defines an action associated with the notification.
  *
- * @property {string} _id - The unique identifier for the action.
  * @property {string} type - The type of action (e.g., "re.notifica.action.Callback", "re.notifica.action.SMS").
  * @property {string} label - The label for the action.
  * @property {string} [target] - The target of the action (optional).
@@ -45,7 +40,6 @@ export interface NotificareNotificationContent {
  * @property {boolean} [keyboard] - Whether the action involves a keyboard (optional).
  */
 export interface NotificareNotificationAction {
-  readonly _id: string;
   readonly type: string;
   readonly label: string;
   readonly target?: string;

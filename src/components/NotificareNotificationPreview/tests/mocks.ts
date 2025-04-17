@@ -6,8 +6,6 @@ import { NotificareNotificationConfigKeys } from '../models/notificare-notificat
 /* Notifications */
 
 export const invalidNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 'invalid-type', // has an invalid type
   title: 'Title',
   subtitle: 'Subtitle',
@@ -21,8 +19,6 @@ export const invalidNotificationMock: NotificareNotification = {
 };
 
 export const alertNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Alert',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -30,8 +26,6 @@ export const alertNotificationMock: NotificareNotification = {
 };
 
 export const rateNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Rate',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -39,8 +33,6 @@ export const rateNotificationMock: NotificareNotification = {
 };
 
 export const webViewNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.WebView',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -54,8 +46,6 @@ export const webViewNotificationMock: NotificareNotification = {
 };
 
 export const html5VideoNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -69,8 +59,6 @@ export const html5VideoNotificationMock: NotificareNotification = {
 };
 
 export const vimeoVideoNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -84,8 +72,6 @@ export const vimeoVideoNotificationMock: NotificareNotification = {
 };
 
 export const youtubeVideoNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -99,8 +85,6 @@ export const youtubeVideoNotificationMock: NotificareNotification = {
 };
 
 export const imageNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Image',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -118,8 +102,6 @@ export const imageNotificationMock: NotificareNotification = {
 };
 
 export const inAppBrowserNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.InAppBrowser',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -133,8 +115,6 @@ export const inAppBrowserNotificationMock: NotificareNotification = {
 };
 
 export const webPageNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.URL',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -148,8 +128,6 @@ export const webPageNotificationMock: NotificareNotification = {
 };
 
 export const mapNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Map',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -177,8 +155,6 @@ export const mapNotificationMock: NotificareNotification = {
 };
 
 export const passbookNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Passbook',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -192,8 +168,6 @@ export const passbookNotificationMock: NotificareNotification = {
 };
 
 export const appRecommendationNotificationMock: NotificareNotification = {
-  _id: '1',
-  time: '2024-04-03T14:30:00Z',
   type: 're.notifica.notification.Store',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -209,17 +183,15 @@ export const appRecommendationNotificationMock: NotificareNotification = {
 /* Application */
 
 export const invalidApplicationMock: NotificareApplication = {
-  appName: '', // invalid app name
-  appIcon:
-    'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-  appDomain: 'notificare.com',
+  name: '', // invalid app name
+  icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+  domain: 'notificare.com',
 };
 
 export const applicationMock: NotificareApplication = {
-  appName: 'Demo Notificare',
-  appIcon:
-    'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-  appDomain: 'notificare.com',
+  name: 'Demo Notificare',
+  icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+  domain: 'notificare.com',
 };
 
 /* Config Keys */

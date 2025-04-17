@@ -19,38 +19,29 @@ export function NotificationWebPreview({
       <WebMacOSNotification
         key={notification.message}
         notification={notification}
-        appName={application.appName}
-        appDomain={application.appDomain}
+        appName={application.name}
+        appDomain={application.domain}
       />
     );
   }
 
-  if (webDevice === 'phone') {
-    if (webMobileType === 'android') {
-      return (
-        <AndroidPhoneBackground theme={getTheme(notification.type)}>
-          {mobileVariant === 'app-ui' && (
-            <WebMobileAppUINotification
-              notification={notification}
-              appName={application.appName}
-              appIcon={application.appIcon}
-            />
-          )}
-        </AndroidPhoneBackground>
-      );
-    }
+  if (webDevice === 'phone' && mobileVariant === 'app-ui') {
+    const PhoneBackground =
+      webMobileType === 'android'
+        ? AndroidPhoneBackground
+        : webMobileType === 'iphone'
+          ? IOSPhoneBackground
+          : null;
 
-    if (webMobileType === 'iphone') {
+    if (PhoneBackground) {
       return (
-        <IOSPhoneBackground theme={getTheme(notification.type)}>
-          {mobileVariant === 'app-ui' && (
-            <WebMobileAppUINotification
-              notification={notification}
-              appName={application.appName}
-              appIcon={application.appIcon}
-            />
-          )}
-        </IOSPhoneBackground>
+        <PhoneBackground theme={getTheme(notification.type)}>
+          <WebMobileAppUINotification
+            notification={notification}
+            appName={application.name}
+            appIcon={application.icon}
+          />
+        </PhoneBackground>
       );
     }
   }

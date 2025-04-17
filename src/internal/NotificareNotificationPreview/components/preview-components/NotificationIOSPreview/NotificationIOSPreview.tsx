@@ -26,8 +26,8 @@ export default function NotificationIOSPreview({
         {(mobileVariant === 'lockscreen' || mobileVariant === 'lockscreen-expanded') && (
           <LockScreenNotification
             notification={notification}
-            appName={application.appName}
-            appIcon={application.appIcon}
+            appName={application.name}
+            appIcon={application.icon}
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
@@ -37,50 +37,38 @@ export default function NotificationIOSPreview({
             switch (notification.type) {
               case 're.notifica.notification.Alert':
                 return (
-                  <TextAlertNotification
-                    notification={notification}
-                    appName={application.appName}
-                  />
+                  <TextAlertNotification notification={notification} appName={application.name} />
                 );
 
               case 're.notifica.notification.WebView':
                 return (
-                  <WebViewNotification notification={notification} appName={application.appName} />
+                  <WebViewNotification notification={notification} appName={application.name} />
                 );
 
               case 're.notifica.notification.URL':
-                return (
-                  <URLNotification notification={notification} appName={application.appName} />
-                );
+                return <URLNotification notification={notification} appName={application.name} />;
 
               case 're.notifica.notification.InAppBrowser':
                 return <InAppBrowserNotification notification={notification} />;
 
               case 're.notifica.notification.Image':
                 return (
-                  <ImagesNotification notification={notification} appName={application.appName} />
+                  <ImagesNotification notification={notification} appName={application.name} />
                 );
 
               case 're.notifica.notification.Map':
-                return (
-                  <MapNotification notification={notification} appName={application.appName} />
-                );
+                return <MapNotification notification={notification} appName={application.name} />;
 
               case 're.notifica.notification.Rate':
-                return <RateNotification appName={application.appName} />;
+                return <RateNotification appName={application.name} />;
 
               case 're.notifica.notification.Passbook':
                 return (
-                  <DigitalCardNotification
-                    notification={notification}
-                    appName={application.appName}
-                  />
+                  <DigitalCardNotification notification={notification} appName={application.name} />
                 );
 
               case 're.notifica.notification.Video':
-                return (
-                  <VideoNotification notification={notification} appName={application.appName} />
-                );
+                return <VideoNotification notification={notification} appName={application.name} />;
 
               case 're.notifica.notification.Store':
                 return <AppRecommendationNotification notification={notification} />;

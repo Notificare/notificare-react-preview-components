@@ -1,9 +1,9 @@
-export type AppStoreResponse = {
+export type AppStoreApp = {
   resultCount: number;
-  results: AppStoreApp[];
+  results: AppStoreAppData[];
 };
 
-type AppStoreApp = {
+type AppStoreAppData = {
   isGameCenterEnabled: boolean;
   artistViewUrl: string;
   artworkUrl60: string;

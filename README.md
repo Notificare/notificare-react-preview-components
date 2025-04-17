@@ -52,7 +52,7 @@ This component has the following main properties:
 | `application`  | `NotificareApplication`            | ✅         | The application object data ([see structure](#--application)).                                                                                                                                                                                                                                                                                                                                |
 | `showControls` | `boolean`                          | ❌         | Show or hide the UI controls - allows to switch between preview variants dynamically. It's `false` by default.                                                                                                                                                                                                                                                                                |
 | `variant`      | `NotificareNotificationVariant`    | ✅         | The visual variant of the notification. It allows to choose how the notification is going to be shown, allowing different platforms and devices. It can have the following values: <br> <br>`android-lockscreen`, `android-lockscreen-expanded`, `android-app-ui`, `ios-lockscreen`, `ios-lockscreen-expanded`, `ios-app-ui`, `web-desktop-macos`, `web-iphone-app-ui`, `web-android-app-ui`. |
-| `configKeys`   | `NotificareNotificationConfigKeys` | ✅         | Configuration keys ([see structure](#--configKeys)).                                                                                                                                                                                                                                                                                                                                          |
+| `configKeys`   | `NotificareNotificationConfigKeys` | ❌         | Configuration keys ([see structure](#--configKeys)).                                                                                                                                                                                                                                                                                                                                          |
 
 <br>
 
@@ -60,9 +60,7 @@ This component has the following main properties:
 
 | Property      | Type                                 | Mandatory | Description                                                                                                                                                                                                                                                                 |
 |---------------|--------------------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `_id`         | `string`                             | ✅         | The unique identifier for the notification.                                                                                                                                                                                                                                 |
 | `type`        | `string`                             | ✅         | The type of the notification (e.g., `re.notifica.notification.Alert`, `re.notifica.notification.WebView`, etc.).<br><br>Please refer to [Message Types](https://api-docs.notifica.re/#section/Push/Message-Types:) in the Notificare Push API docs for all available types. |
-| `time`        | `string`                             | ✅         | The time the notification was sent (**ISO 8601** format).                                                                                                                                                                                                                   |
 | `title`       | `string`                             | ❌         | The title of the notification.                                                                                                                                                                                                                                              |
 | `subtitle`    | `string`                             | ❌         | The subtitle of the notification.                                                                                                                                                                                                                                           |
 | `message`     | `string`                             | ✅         | The message of the notification.                                                                                                                                                                                                                                            |
@@ -85,7 +83,6 @@ This component has the following main properties:
 
 | Property   | Type      | Required | Description                                                                                                                                                                                                                                            |
 |------------|-----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `_id`      | `string`  | ✅        | Unique identifier for the action.                                                                                                                                                                                                                      |
 | `type`     | `string`  | ✅        | Type of the action (e.g., `re.notifica.action.Callback`, `re.notifica.action.SMS`, etc.).<br><br>Please refer to [Action Objects](https://api-docs.notifica.re/#section/Push/Action-Objects:) in the Notificare Push API docs for all available types. |
 | `label`    | `string`  | ✅        | Text shown on the action button (e.g., "Open", "Reply", etc.).                                                                                                                                                                                         |
 | `target`   | `string`  | ❌        | Target of the action, typically a URL or a relevant value for the given type.                                                                                                                                                                          |
@@ -105,11 +102,11 @@ This component has the following main properties:
 
 ### - `application`:
 
-| Property    | Type     | Mandatory | Description                               |
-|-------------|----------|-----------|-------------------------------------------|
-| `appName`   | `string` | ✅         | The name of a Notificare application.     |
-| `appIcon`   | `string` | ✅         | The icon URL of a Notificare application. |
-| `appDomain` | `string` | ✅         | The domain of a Notificare application.   |
+| Property | Type     | Mandatory | Description                               |
+|----------|----------|-----------|-------------------------------------------|
+| `name`   | `string` | ✅         | The name of a Notificare application.     |
+| `icon`   | `string` | ✅         | The icon URL of a Notificare application. |
+| `domain` | `string` | ✅         | The domain of a Notificare application.   |
 
 <br>
 
@@ -143,36 +140,32 @@ import { NotificareNotificationPreview } from 'notificare-react-preview-componen
 // other imports...
 
 const notification = {
-    _id: '1',
-    time: '2024-04-03T14:30:00Z',
-    type: 're.notifica.notification.Alert',
-    title: '30% off on selected products',
-    subtitle: 'From shirts, shoes, and much more!',
-    message: "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
-    attachments: [
-      {
-        uri: 'https://t4.ftcdn.net/jpg/01/19/56/47/360_F_119564758_3Zj8GjaFFt9MVNkZYR7LvAGz6KS1JIqD.jpg',
-        mimeType: 'image/jpeg',
-      },
-    ],
-    actions: [
-      {
-        _id: '1',
-        type: 're.notifica.action.Browser',
-        label: 'Visit website',
-        target: 'https://ncclothing.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
+  type: 're.notifica.notification.Alert',
+  title: '30% off on selected products',
+  subtitle: 'From shirts, shoes, and much more!',
+  message: "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
+  attachments: [
+    {
+      uri: 'https://t4.ftcdn.net/jpg/01/19/56/47/360_F_119564758_3Zj8GjaFFt9MVNkZYR7LvAGz6KS1JIqD.jpg',
+      mimeType: 'image/jpeg',
+    },
+  ],
+  actions: [
+    {
+      type: 're.notifica.action.Browser',
+      label: 'Visit website',
+      target: 'https://ncclothing.com/',
+      camera: false,
+      keyboard: false,
+    },
+  ],
+};
   
 const application = {
-  appName: 'NC Clothing',
-  appIcon:
-    'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-  appDomain: 'ncclothing.com',
-},
+  name: 'NC Clothing',
+  icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+  domain: 'ncclothing.com',
+};
 
 const configKeys = {
   serviceKey: 'service-key-123',
@@ -184,9 +177,9 @@ const configKeys = {
 <NotificareNotificationPreview 
   notification={notification}
   application={application}
+  showControls={true}
   variant="web-android-app-ui"
   configKeys={configKeys}
-  showControls={true} 
  />
 ```
 

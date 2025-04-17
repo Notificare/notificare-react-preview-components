@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 export const actionSchema = z.object({
-  _id: z.string({ message: "Action property '_id' should be a string" }),
   type: z.string({ message: "Action property 'type' should be a string" }),
   label: z.string({ message: "Action property 'label' should be a string" }),
   target: z.string({ message: "Action property 'target' should be a string" }).optional(),

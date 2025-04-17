@@ -16,8 +16,6 @@ const Template: StoryFn<typeof NotificareNotificationPreview> = (args) => (
 export const InvalidNotification = Template.bind({});
 InvalidNotification.args = {
   notification: {
-    _id: '1',
-    time: '2024-04-03T14:30:00Z',
     type: 'invalid-type', // has an invalid type
     title: 'Title',
     subtitle: 'Subtitle',
@@ -30,10 +28,9 @@ InvalidNotification.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   configKeys: {
@@ -45,18 +42,15 @@ InvalidNotification.args = {
 export const InvalidApplication = Template.bind({});
 InvalidApplication.args = {
   notification: {
-    _id: '1',
-    time: '2024-04-03T14:30:00Z',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message',
   },
   application: {
-    appName: '', // invalid app name
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: '', // invalid app name
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   configKeys: {
@@ -68,8 +62,6 @@ InvalidApplication.args = {
 export const InvalidNotificationAndApplication = Template.bind({});
 InvalidNotificationAndApplication.args = {
   notification: {
-    _id: '1',
-    time: '2024-04-03T14:30:00Z',
     type: 'invalid-type', // has an invalid type
     title: 'Title',
     subtitle: 'Subtitle',
@@ -82,10 +74,9 @@ InvalidNotificationAndApplication.args = {
     ],
   },
   application: {
-    appName: '', // invalid app name
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: '', // invalid app name
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   configKeys: {
@@ -99,8 +90,6 @@ InvalidNotificationAndApplication.args = {
 export const IOSLockScreenWithMedia = Template.bind({});
 IOSLockScreenWithMedia.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -113,10 +102,9 @@ IOSLockScreenWithMedia.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   configKeys: {
@@ -128,8 +116,6 @@ IOSLockScreenWithMedia.args = {
 export const IOSLockScreenWithMediaExpanded = Template.bind({});
 IOSLockScreenWithMediaExpanded.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -142,10 +128,9 @@ IOSLockScreenWithMediaExpanded.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen-expanded',
   configKeys: {
@@ -157,18 +142,15 @@ IOSLockScreenWithMediaExpanded.args = {
 export const IOSLockScreenWithoutMedia = Template.bind({});
 IOSLockScreenWithoutMedia.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   configKeys: {
@@ -182,8 +164,6 @@ IOSLockScreenWithoutMedia.args = {
 export const AndroidLockScreenWithMedia = Template.bind({});
 AndroidLockScreenWithMedia.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -196,10 +176,9 @@ AndroidLockScreenWithMedia.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
   configKeys: {
@@ -211,18 +190,15 @@ AndroidLockScreenWithMedia.args = {
 export const AndroidLockScreenWithoutMedia = Template.bind({});
 AndroidLockScreenWithoutMedia.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
   configKeys: {
@@ -234,8 +210,6 @@ AndroidLockScreenWithoutMedia.args = {
 export const AndroidLockScreenWithMediaExpanded = Template.bind({});
 AndroidLockScreenWithMediaExpanded.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -248,10 +222,9 @@ AndroidLockScreenWithMediaExpanded.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
   configKeys: {
@@ -263,18 +236,15 @@ AndroidLockScreenWithMediaExpanded.args = {
 export const AndroidLockScreenWithoutMediaExpanded = Template.bind({});
 AndroidLockScreenWithoutMediaExpanded.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-lockscreen-expanded',
   configKeys: {
@@ -288,18 +258,15 @@ AndroidLockScreenWithoutMediaExpanded.args = {
 export const AndroidAppUITextAlert = Template.bind({});
 AndroidAppUITextAlert.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -311,15 +278,12 @@ AndroidAppUITextAlert.args = {
 export const AndroidAppUITextAlertWithActions = Template.bind({});
 AndroidAppUITextAlertWithActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -327,7 +291,6 @@ AndroidAppUITextAlertWithActions.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Telephone',
         label: 'Make a call',
         target: 'tel:0500666858',
@@ -335,10 +298,9 @@ AndroidAppUITextAlertWithActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -350,18 +312,15 @@ AndroidAppUITextAlertWithActions.args = {
 export const AndroidAppUIRate = Template.bind({});
 AndroidAppUIRate.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Rate',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -373,8 +332,6 @@ AndroidAppUIRate.args = {
 export const AndroidAppUIWebView = Template.bind({});
 AndroidAppUIWebView.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -387,10 +344,9 @@ AndroidAppUIWebView.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -402,8 +358,6 @@ AndroidAppUIWebView.args = {
 export const AndroidAppUIWebViewWithActions = Template.bind({});
 AndroidAppUIWebViewWithActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -416,7 +370,6 @@ AndroidAppUIWebViewWithActions.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -424,7 +377,6 @@ AndroidAppUIWebViewWithActions.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Telephone',
         label: 'Make a call',
         target: 'tel:0500666858',
@@ -432,10 +384,9 @@ AndroidAppUIWebViewWithActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -447,8 +398,6 @@ AndroidAppUIWebViewWithActions.args = {
 export const AndroidAppUIWebViewWithActionsAndActionableMarkup = Template.bind({});
 AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -461,7 +410,6 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -469,7 +417,6 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Telephone',
         label: 'Make a call',
         target: 'tel:0500666858',
@@ -477,10 +424,9 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -492,8 +438,6 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
 export const AndroidAppUI_HTML5Video = Template.bind({});
 AndroidAppUI_HTML5Video.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -506,10 +450,9 @@ AndroidAppUI_HTML5Video.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -521,8 +464,6 @@ AndroidAppUI_HTML5Video.args = {
 export const AndroidAppUIVimeoVideo = Template.bind({});
 AndroidAppUIVimeoVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -535,10 +476,9 @@ AndroidAppUIVimeoVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -550,8 +490,6 @@ AndroidAppUIVimeoVideo.args = {
 export const AndroidAppUIYouTubeVideo = Template.bind({});
 AndroidAppUIYouTubeVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -564,10 +502,9 @@ AndroidAppUIYouTubeVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -579,8 +516,6 @@ AndroidAppUIYouTubeVideo.args = {
 export const AndroidAppUIImage = Template.bind({});
 AndroidAppUIImage.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -597,10 +532,9 @@ AndroidAppUIImage.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -612,8 +546,6 @@ AndroidAppUIImage.args = {
 export const AndroidAppUIInAppBrowser = Template.bind({});
 AndroidAppUIInAppBrowser.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.InAppBrowser',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -626,10 +558,9 @@ AndroidAppUIInAppBrowser.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -641,8 +572,6 @@ AndroidAppUIInAppBrowser.args = {
 export const AndroidAppUIWebPage = Template.bind({});
 AndroidAppUIWebPage.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -655,10 +584,9 @@ AndroidAppUIWebPage.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -670,8 +598,6 @@ AndroidAppUIWebPage.args = {
 export const AndroidAppUIWebPageWithActions = Template.bind({});
 AndroidAppUIWebPageWithActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -684,7 +610,6 @@ AndroidAppUIWebPageWithActions.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -694,10 +619,9 @@ AndroidAppUIWebPageWithActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -709,8 +633,6 @@ AndroidAppUIWebPageWithActions.args = {
 export const AndroidAppUIWebPageWithActionableMarkupAndActions = Template.bind({});
 AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -723,7 +645,6 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -733,10 +654,9 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -748,8 +668,6 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
 export const AndroidAppUIMap = Template.bind({});
 AndroidAppUIMap.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -776,10 +694,9 @@ AndroidAppUIMap.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -791,8 +708,6 @@ AndroidAppUIMap.args = {
 export const AndroidAppUIDigitalCard = Template.bind({});
 AndroidAppUIDigitalCard.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Passbook',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -805,10 +720,9 @@ AndroidAppUIDigitalCard.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -820,8 +734,6 @@ AndroidAppUIDigitalCard.args = {
 export const AndroidAppUIAppRecommendation = Template.bind({});
 AndroidAppUIAppRecommendation.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Store',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -834,10 +746,9 @@ AndroidAppUIAppRecommendation.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   configKeys: {
@@ -851,18 +762,15 @@ AndroidAppUIAppRecommendation.args = {
 export const IOSAppUITextAlert = Template.bind({});
 IOSAppUITextAlert.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -874,15 +782,12 @@ IOSAppUITextAlert.args = {
 export const IOSAppUITextAlertWithSingleAction = Template.bind({});
 IOSAppUITextAlertWithSingleAction.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -892,10 +797,9 @@ IOSAppUITextAlertWithSingleAction.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -907,15 +811,12 @@ IOSAppUITextAlertWithSingleAction.args = {
 export const IOSAppUITextAlertWithMultipleActions = Template.bind({});
 IOSAppUITextAlertWithMultipleActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -923,7 +824,6 @@ IOSAppUITextAlertWithMultipleActions.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Telephone',
         label: 'Make a call',
         target: 'tel:0500666858',
@@ -931,10 +831,9 @@ IOSAppUITextAlertWithMultipleActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -946,8 +845,6 @@ IOSAppUITextAlertWithMultipleActions.args = {
 export const IOSAppUIWebView = Template.bind({});
 IOSAppUIWebView.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -960,10 +857,9 @@ IOSAppUIWebView.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -975,8 +871,6 @@ IOSAppUIWebView.args = {
 export const IOSAppUIWebViewWithActions = Template.bind({});
 IOSAppUIWebViewWithActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -989,7 +883,6 @@ IOSAppUIWebViewWithActions.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -997,7 +890,6 @@ IOSAppUIWebViewWithActions.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Telephone',
         label: 'Make a call',
         target: 'tel:0500666858',
@@ -1005,10 +897,9 @@ IOSAppUIWebViewWithActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1020,8 +911,6 @@ IOSAppUIWebViewWithActions.args = {
 export const IOSAppUIMap = Template.bind({});
 IOSAppUIMap.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1048,14 +937,14 @@ IOSAppUIMap.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
+    googleMapsApiKey: CONFIG.GOOGLE_MAPS_KEY,
   },
   showControls: true,
 };
@@ -1063,8 +952,6 @@ IOSAppUIMap.args = {
 export const IOSAppUI_HTML5Video = Template.bind({});
 IOSAppUI_HTML5Video.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1077,10 +964,9 @@ IOSAppUI_HTML5Video.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1092,8 +978,6 @@ IOSAppUI_HTML5Video.args = {
 export const IOSAppUIVimeoVideo = Template.bind({});
 IOSAppUIVimeoVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1106,10 +990,9 @@ IOSAppUIVimeoVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1121,8 +1004,6 @@ IOSAppUIVimeoVideo.args = {
 export const IOSAppUIYouTubeVideo = Template.bind({});
 IOSAppUIYouTubeVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1135,10 +1016,9 @@ IOSAppUIYouTubeVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1150,8 +1030,6 @@ IOSAppUIYouTubeVideo.args = {
 export const IOSAppUIWebPage = Template.bind({});
 IOSAppUIWebPage.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1164,10 +1042,9 @@ IOSAppUIWebPage.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1179,8 +1056,6 @@ IOSAppUIWebPage.args = {
 export const IOSAppUIImage = Template.bind({});
 IOSAppUIImage.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1197,10 +1072,9 @@ IOSAppUIImage.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1212,18 +1086,15 @@ IOSAppUIImage.args = {
 export const IOSAppUIRate = Template.bind({});
 IOSAppUIRate.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Rate',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1235,8 +1106,6 @@ IOSAppUIRate.args = {
 export const IOSAppUIDigitalCard = Template.bind({});
 IOSAppUIDigitalCard.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Passbook',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1249,10 +1118,9 @@ IOSAppUIDigitalCard.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1264,8 +1132,6 @@ IOSAppUIDigitalCard.args = {
 export const IOSAppUIInAppBrowser = Template.bind({});
 IOSAppUIInAppBrowser.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.InAppBrowser',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1278,10 +1144,9 @@ IOSAppUIInAppBrowser.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1293,8 +1158,6 @@ IOSAppUIInAppBrowser.args = {
 export const IOSAppUIAppRecommendation = Template.bind({});
 IOSAppUIAppRecommendation.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Store',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1312,10 +1175,9 @@ IOSAppUIAppRecommendation.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   configKeys: {
@@ -1329,8 +1191,6 @@ IOSAppUIAppRecommendation.args = {
 export const WebMacOSWithMediaAndActions = Template.bind({});
 WebMacOSWithMediaAndActions.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
@@ -1343,7 +1203,6 @@ WebMacOSWithMediaAndActions.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Go to Notificare website',
         target: 'https://notificare.com/',
@@ -1351,7 +1210,6 @@ WebMacOSWithMediaAndActions.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Telephone',
         label: 'Make a call',
         target: 'tel:0500666858',
@@ -1359,10 +1217,9 @@ WebMacOSWithMediaAndActions.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
   configKeys: {
@@ -1374,18 +1231,15 @@ WebMacOSWithMediaAndActions.args = {
 export const WebMacOSWithoutMedia = Template.bind({});
 WebMacOSWithoutMedia.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
   configKeys: {
@@ -1399,8 +1253,6 @@ WebMacOSWithoutMedia.args = {
 export const WebAndroidAppUITextAlert = Template.bind({});
 WebAndroidAppUITextAlert.args = {
   notification: {
-    _id: '1',
-    time: '2024-04-03T14:30:00Z',
     type: 're.notifica.notification.Alert',
     title: '30% off on selected products',
     subtitle: 'From shirts, shoes, and much more!',
@@ -1414,7 +1266,6 @@ WebAndroidAppUITextAlert.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Browser',
         label: 'Visit website',
         target: 'https://ncclothing.com/',
@@ -1424,10 +1275,9 @@ WebAndroidAppUITextAlert.args = {
     ],
   },
   application: {
-    appName: 'NC Clothing',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'nc-clothing.com',
+    name: 'NC Clothing',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'nc-clothing.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1439,8 +1289,6 @@ WebAndroidAppUITextAlert.args = {
 export const WebAndroidAppUIWebView = Template.bind({});
 WebAndroidAppUIWebView.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1453,7 +1301,6 @@ WebAndroidAppUIWebView.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1463,10 +1310,9 @@ WebAndroidAppUIWebView.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1478,8 +1324,6 @@ WebAndroidAppUIWebView.args = {
 export const WebAndroidAppUIMap = Template.bind({});
 WebAndroidAppUIMap.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1506,7 +1350,6 @@ WebAndroidAppUIMap.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1516,10 +1359,9 @@ WebAndroidAppUIMap.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1531,8 +1373,6 @@ WebAndroidAppUIMap.args = {
 export const WebAndroidAppUIURL = Template.bind({});
 WebAndroidAppUIURL.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1545,10 +1385,9 @@ WebAndroidAppUIURL.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1560,8 +1399,6 @@ WebAndroidAppUIURL.args = {
 export const WebAndroidAppUI_HTML5Video = Template.bind({});
 WebAndroidAppUI_HTML5Video.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1574,10 +1411,9 @@ WebAndroidAppUI_HTML5Video.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1589,8 +1425,6 @@ WebAndroidAppUI_HTML5Video.args = {
 export const WebAndroidAppUIVimeoVideo = Template.bind({});
 WebAndroidAppUIVimeoVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1603,10 +1437,9 @@ WebAndroidAppUIVimeoVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1618,8 +1451,6 @@ WebAndroidAppUIVimeoVideo.args = {
 export const WebAndroidAppUIYouTubeVideo = Template.bind({});
 WebAndroidAppUIYouTubeVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1632,10 +1463,9 @@ WebAndroidAppUIYouTubeVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1647,8 +1477,6 @@ WebAndroidAppUIYouTubeVideo.args = {
 export const WebAndroidAppUIImage = Template.bind({});
 WebAndroidAppUIImage.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1665,7 +1493,6 @@ WebAndroidAppUIImage.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1675,10 +1502,9 @@ WebAndroidAppUIImage.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   configKeys: {
@@ -1692,8 +1518,6 @@ WebAndroidAppUIImage.args = {
 export const WebIphoneAppUITextAlert = Template.bind({});
 WebIphoneAppUITextAlert.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Alert',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1706,7 +1530,6 @@ WebIphoneAppUITextAlert.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1714,7 +1537,6 @@ WebIphoneAppUITextAlert.args = {
         keyboard: false,
       },
       {
-        _id: '2',
         type: 're.notifica.action.Callback',
         label: 'Button B',
         target: 'https://notificare.com/',
@@ -1722,7 +1544,6 @@ WebIphoneAppUITextAlert.args = {
         keyboard: false,
       },
       {
-        _id: '3',
         type: 're.notifica.action.Callback',
         label: 'Button C',
         target: 'https://notificare.com/',
@@ -1732,10 +1553,9 @@ WebIphoneAppUITextAlert.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1747,8 +1567,6 @@ WebIphoneAppUITextAlert.args = {
 export const WebIphoneAppUIWebView = Template.bind({});
 WebIphoneAppUIWebView.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.WebView',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1761,7 +1579,6 @@ WebIphoneAppUIWebView.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1771,10 +1588,9 @@ WebIphoneAppUIWebView.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1786,8 +1602,6 @@ WebIphoneAppUIWebView.args = {
 export const WebIphoneAppUIMap = Template.bind({});
 WebIphoneAppUIMap.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Map',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1814,7 +1628,6 @@ WebIphoneAppUIMap.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1824,10 +1637,9 @@ WebIphoneAppUIMap.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1839,8 +1651,6 @@ WebIphoneAppUIMap.args = {
 export const WebIphoneAppUIURL = Template.bind({});
 WebIphoneAppUIURL.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.URL',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1853,10 +1663,9 @@ WebIphoneAppUIURL.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1868,8 +1677,6 @@ WebIphoneAppUIURL.args = {
 export const WebIphoneAppUI_HTML5Video = Template.bind({});
 WebIphoneAppUI_HTML5Video.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1882,10 +1689,9 @@ WebIphoneAppUI_HTML5Video.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1897,8 +1703,6 @@ WebIphoneAppUI_HTML5Video.args = {
 export const WebIphoneAppUIVimeoVideo = Template.bind({});
 WebIphoneAppUIVimeoVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1911,10 +1715,9 @@ WebIphoneAppUIVimeoVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1926,8 +1729,6 @@ WebIphoneAppUIVimeoVideo.args = {
 export const WebIphoneAppUIYouTubeVideo = Template.bind({});
 WebIphoneAppUIYouTubeVideo.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Video',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1940,10 +1741,9 @@ WebIphoneAppUIYouTubeVideo.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {
@@ -1955,8 +1755,6 @@ WebIphoneAppUIYouTubeVideo.args = {
 export const WebIphoneAppUIImage = Template.bind({});
 WebIphoneAppUIImage.args = {
   notification: {
-    _id: '',
-    time: '',
     type: 're.notifica.notification.Image',
     title: 'Title',
     subtitle: 'Subtitle',
@@ -1973,7 +1771,6 @@ WebIphoneAppUIImage.args = {
     ],
     actions: [
       {
-        _id: '1',
         type: 're.notifica.action.Callback',
         label: 'Button A',
         target: 'https://notificare.com/',
@@ -1983,10 +1780,9 @@ WebIphoneAppUIImage.args = {
     ],
   },
   application: {
-    appName: 'Demo Notificare',
-    appIcon:
-      'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    appDomain: 'notificare.com',
+    name: 'Demo Notificare',
+    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
+    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   configKeys: {

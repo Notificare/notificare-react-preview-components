@@ -1,15 +1,15 @@
 import { z } from 'zod';
 
 export const notificareApplicationSchema = z.object({
-  appName: z
-    .string({ message: "Property 'appName' should be a string" })
-    .nonempty("Property 'appName' is mandatory"),
-  appIcon: z
-    .string({ message: "Property 'appIcon' should be a string" })
-    .url("Property 'appIcon' should be a valid URL"),
-  appDomain: z
-    .string({ message: "Property 'appDomain' should be a string" })
-    .nonempty("Property 'appDomain' is mandatory"),
+  name: z
+    .string({ message: "Property 'name' should be a string" })
+    .nonempty("Property 'name' is mandatory"),
+  icon: z
+    .string({ message: "Property 'icon' should be a string" })
+    .url("Property 'icon' should be a valid URL"),
+  domain: z
+    .string({ message: "Property 'domain' should be a string" })
+    .nonempty("Property 'domain' is mandatory"),
 });
 
 export type NotificareApplicationSchema = z.infer<typeof notificareApplicationSchema>;

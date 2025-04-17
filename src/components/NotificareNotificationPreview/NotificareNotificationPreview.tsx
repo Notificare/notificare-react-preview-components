@@ -63,11 +63,11 @@ export default function NotificareNotificationPreview({
   const applicationResult = notificareApplicationSchema.safeParse(application);
 
   if (!notificationResult.success) {
-    handleNotificationErrors(notificationResult.error.errors);
+    showNotificationErrors(notificationResult.error.errors);
   }
 
   if (!applicationResult.success) {
-    handleApplicationErrors(applicationResult.error.errors);
+    showApplicationErrors(applicationResult.error.errors);
   }
 
   return (
@@ -138,8 +138,7 @@ export default function NotificareNotificationPreview({
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
  * @param {NotificareApplication} application - The application data associated with the notification.
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
- * @param {NotificareNotificationVariant} variant -
- *        The variant of the notification preview.
+ * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
  * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for some API requests (optional).
  */
 interface NotificareNotificationPreviewProps {
@@ -194,7 +193,7 @@ function NotificareNotificationPreviewError({
   );
 }
 
-function handleNotificationErrors(errors: ZodIssue[]) {
+function showNotificationErrors(errors: ZodIssue[]) {
   const invalidType = errors.find(
     (e) => e.code === 'invalid_union_discriminator' && e.path.includes('type'), // check if notification type is valid
   );
@@ -214,7 +213,7 @@ function handleNotificationErrors(errors: ZodIssue[]) {
   }
 }
 
-function handleApplicationErrors(errors: ZodIssue[]) {
+function showApplicationErrors(errors: ZodIssue[]) {
   const messages = errors.map((error) => error.message);
   console.error('Application errors:\n\n' + messages.join('\n'));
 }
