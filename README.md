@@ -2,13 +2,9 @@
 
 # Notificare React Preview Components
 
----
-
 The **Notificare React Preview Components** consists of a collection of React components that allows you to visualize how a Notificare Push Notification, In-App Message (*soon...*) or Digital Card (*soon...*) actually looks like in your device, regardless of its content.
 
 # Table of contents
-
----
 
 - [Features](#features)
 - [Installation](#installation)
@@ -19,13 +15,10 @@ The **Notificare React Preview Components** consists of a collection of React co
 
 ## Features
 
----
-
 **Push Notifications**: Easily preview how a **Notificare Push Notification** will appear across various platforms and devices, regardless of its type or content. With very intuitive UI controls, you can seamlessly switch between different preview variants to see how it looks from multiple perspectives.
 
 ## Installation
 
----
 Install the library through NPM with the following command:
 > npm install notificare-react-preview-components
 
@@ -41,15 +34,11 @@ import { NotificareNotificationPreview } from 'notificare-react-preview-componen
 
 ## Push Notifications:
 
----
-
 A **Notificare Push Notification** preview can be generated through the **NotificareNotificationPreview** component.
 
 ```typescript jsx
 <NotificareNotificationPreview {...props} />
 ```
-
-
 
 This component has the following main properties:
 
@@ -63,10 +52,7 @@ This component has the following main properties:
 
 <br>
 
-
-## - `notification`:
-
----
+### - `notification`:
 
 | Property      | Type                                 | Mandatory | Description                                                                                                                                                                                                                                                                 |
 |---------------|--------------------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -113,9 +99,7 @@ This component has the following main properties:
 
 <br>
 
-## - `application`:
-
----
+### - `application`:
 
 | Property    | Type     | Mandatory | Description                               |
 |-------------|----------|-----------|-------------------------------------------|
@@ -125,9 +109,7 @@ This component has the following main properties:
 
 <br>
 
-## - `configKeys`:
-
----
+### - `configKeys`:
 
 | Property           | Type     | Mandatory | Description                                                                                                                                                                                                                                                                                             |
 |--------------------|----------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -136,8 +118,6 @@ This component has the following main properties:
 
 
 ## Style customisation
-
----
 
 Our React component library was carefully designed to provide developers with flexibility and stability, allowing the styles to be easily overridden by CSS in the main app/website. 
 
@@ -149,13 +129,9 @@ This thoughtful architecture makes the library highly stable and reliable, even 
 
 ## Push Notifications
 
----
-
 Here's an example on how you can use the **NotificareNotificationPreview** component. We are going to generate a **Text Alert Notification** that includes an attachment and an action.
 
 The preselected preview variant is going to be `web-android-app-ui`, which represents how the notification appears on an Android device within the web. We also activate the UI controls (`showControls={true}`), so we can change between previews whenever we want.
-
-
 
 ``` typescript jsx
 import { NotificareNotificationPreview } from 'notificare-react-preview-components'; // push notification
@@ -214,14 +190,9 @@ const configKeys = {
 
 ### Result
 
-
 <img src="/assets/images/web-android-preview.png" width="300" alt="Luis I Bridge, Porto"/>
 
-<br>
-
 *A Text Alert notification on an Android phone viewed within the web*
-
-
 
 <br>
 
@@ -229,22 +200,16 @@ const configKeys = {
 
 <img src="/assets/images/android-lock-screen-expanded-preview.png" width="300" alt="Luis I Bridge, Porto"/>
 
-<br>
-
 *A Text Alert notification on the lock screen of an Android device*
 
 <br>
 
 <img src="/assets/images/ios-app-ui-preview.png" width="300" alt="Luis I Bridge, Porto"/>
 
-<br>
-
 *A Text Alert notification on an iOS device*
 
 <br>
 
 <img src="/assets/images/web-macos-preview.png" width="300" alt="Luis I Bridge, Porto"/>
-
-<br>
 
 *A Text Alert notification on a macOS computer*
