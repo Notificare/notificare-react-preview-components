@@ -12,7 +12,6 @@ The **Notificare React Preview Components** consists of a collection of React co
 - [Style Customisation](#style-customisation)
 - [Examples](#examples)
 
-
 ## Features
 
 **Push Notifications**: Easily preview how a **Notificare Push Notification** will appear across various platforms and devices, regardless of its type or content. With very intuitive UI controls, you can seamlessly switch between different preview variants to see how it looks from multiple perspectives.
@@ -20,7 +19,10 @@ The **Notificare React Preview Components** consists of a collection of React co
 ## Installation
 
 Install the library through NPM with the following command:
-> npm install notificare-react-preview-components
+
+```shell
+npm install notificare-react-preview-components
+```
 
 Then, import the desired preview components:
 
@@ -32,11 +34,13 @@ import { NotificareNotificationPreview } from 'notificare-react-preview-componen
 
 ## Getting Started
 
-## Push Notifications:
+### Push Notifications:
 
 A **Notificare Push Notification** preview can be generated through the **NotificareNotificationPreview** component.
 
-```typescript jsx
+```tsx
+import { NotificareNotificationPreview } from 'notificare-react-preview-components';
+
 <NotificareNotificationPreview {...props} />
 ```
 
@@ -127,13 +131,13 @@ This thoughtful architecture makes the library highly stable and reliable, even 
 
 ## Examples
 
-## Push Notifications
+### Push Notifications
 
 Here's an example on how you can use the **NotificareNotificationPreview** component. We are going to generate a **Text Alert Notification** that includes an attachment and an action.
 
 The preselected preview variant is going to be `web-android-app-ui`, which represents how the notification appears on an Android device within the web. We also activate the UI controls (`showControls={true}`), so we can change between previews whenever we want.
 
-``` typescript jsx
+```tsx
 import { NotificareNotificationPreview } from 'notificare-react-preview-components'; // push notification
 
 // other imports...
