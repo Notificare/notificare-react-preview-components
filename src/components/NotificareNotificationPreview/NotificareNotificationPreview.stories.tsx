@@ -1,15 +1,22 @@
-import { StoryFn, Meta } from '@storybook/react';
-import { CONFIG } from '../../../config';
+import type { StoryFn, Meta } from '@storybook/react';
 import NotificareNotificationPreview from './NotificareNotificationPreview';
 
-export default {
+const meta: Meta<typeof NotificareNotificationPreview> = {
   title: 'ReactComponentLibrary/NotificareNotificationPreview',
   component: NotificareNotificationPreview,
-} as Meta<typeof NotificareNotificationPreview>;
+};
+export default meta;
 
 const Template: StoryFn<typeof NotificareNotificationPreview> = (args) => (
   <NotificareNotificationPreview {...args} />
 );
+
+/* Option Keys */
+
+// @ts-expect-error import.meta.env is not being detected
+const serviceKey = import.meta.env.VITE_SERVICE_KEY;
+// @ts-expect-error import.meta.env is not being detected
+const googleMapsAPIKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 /* Invalid Notification OR Application */
 
@@ -33,10 +40,9 @@ InvalidNotification.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
   showControls: true,
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
 };
 
 export const InvalidApplication = Template.bind({});
@@ -53,9 +59,8 @@ InvalidApplication.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -79,9 +84,8 @@ InvalidNotificationAndApplication.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -107,9 +111,8 @@ IOSLockScreenWithMedia.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -133,9 +136,8 @@ IOSLockScreenWithMediaExpanded.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-lockscreen-expanded',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -153,9 +155,8 @@ IOSLockScreenWithoutMedia.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -181,9 +182,8 @@ AndroidLockScreenWithMedia.args = {
     domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -201,9 +201,8 @@ AndroidLockScreenWithoutMedia.args = {
     domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -227,9 +226,8 @@ AndroidLockScreenWithMediaExpanded.args = {
     domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -247,9 +245,8 @@ AndroidLockScreenWithoutMediaExpanded.args = {
     domain: 'notificare.com',
   },
   variant: 'android-lockscreen-expanded',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -269,9 +266,8 @@ AndroidAppUITextAlert.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -303,9 +299,8 @@ AndroidAppUITextAlertWithActions.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -323,9 +318,8 @@ AndroidAppUIRate.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -349,9 +343,8 @@ AndroidAppUIWebView.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -389,9 +382,8 @@ AndroidAppUIWebViewWithActions.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -429,9 +421,8 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -455,9 +446,8 @@ AndroidAppUI_HTML5Video.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -481,9 +471,8 @@ AndroidAppUIVimeoVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -507,9 +496,8 @@ AndroidAppUIYouTubeVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -537,9 +525,8 @@ AndroidAppUIImage.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -563,9 +550,8 @@ AndroidAppUIInAppBrowser.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -589,9 +575,8 @@ AndroidAppUIWebPage.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -624,9 +609,8 @@ AndroidAppUIWebPageWithActions.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -659,9 +643,8 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -699,9 +682,8 @@ AndroidAppUIMap.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -725,9 +707,8 @@ AndroidAppUIDigitalCard.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -751,9 +732,8 @@ AndroidAppUIAppRecommendation.args = {
     domain: 'notificare.com',
   },
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -773,9 +753,8 @@ IOSAppUITextAlert.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -802,9 +781,8 @@ IOSAppUITextAlertWithSingleAction.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -836,9 +814,8 @@ IOSAppUITextAlertWithMultipleActions.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -862,9 +839,8 @@ IOSAppUIWebView.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -902,9 +878,8 @@ IOSAppUIWebViewWithActions.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -942,10 +917,8 @@ IOSAppUIMap.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-    googleMapsApiKey: CONFIG.GOOGLE_MAPS_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -969,9 +942,8 @@ IOSAppUI_HTML5Video.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -995,9 +967,8 @@ IOSAppUIVimeoVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1021,9 +992,8 @@ IOSAppUIYouTubeVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1047,9 +1017,8 @@ IOSAppUIWebPage.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1077,9 +1046,8 @@ IOSAppUIImage.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1097,9 +1065,8 @@ IOSAppUIRate.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1123,9 +1090,8 @@ IOSAppUIDigitalCard.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1149,9 +1115,8 @@ IOSAppUIInAppBrowser.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1180,9 +1145,8 @@ IOSAppUIAppRecommendation.args = {
     domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1222,9 +1186,8 @@ WebMacOSWithMediaAndActions.args = {
     domain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1242,9 +1205,8 @@ WebMacOSWithoutMedia.args = {
     domain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1280,9 +1242,8 @@ WebAndroidAppUITextAlert.args = {
     domain: 'nc-clothing.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1315,9 +1276,8 @@ WebAndroidAppUIWebView.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1364,9 +1324,8 @@ WebAndroidAppUIMap.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1390,9 +1349,8 @@ WebAndroidAppUIURL.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1416,9 +1374,8 @@ WebAndroidAppUI_HTML5Video.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1442,9 +1399,8 @@ WebAndroidAppUIVimeoVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1468,9 +1424,8 @@ WebAndroidAppUIYouTubeVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1507,9 +1462,8 @@ WebAndroidAppUIImage.args = {
     domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1558,9 +1512,8 @@ WebIphoneAppUITextAlert.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1593,9 +1546,8 @@ WebIphoneAppUIWebView.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1642,9 +1594,8 @@ WebIphoneAppUIMap.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1668,9 +1619,8 @@ WebIphoneAppUIURL.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1694,9 +1644,8 @@ WebIphoneAppUI_HTML5Video.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1720,9 +1669,8 @@ WebIphoneAppUIVimeoVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1746,9 +1694,8 @@ WebIphoneAppUIYouTubeVideo.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1785,8 +1732,7 @@ WebIphoneAppUIImage.args = {
     domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };

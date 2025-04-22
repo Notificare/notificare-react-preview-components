@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Webshot.css';
-import { useAuth } from '../../AuthProvider/AuthProvider';
+import { useAuth } from '../../OptionsProvider/OptionsProvider';
 import LoadingIcon from '../LoadingIcon/LoadingIcon';
 import PreviewError from '../PreviewError/PreviewError';
 
@@ -12,7 +12,7 @@ export default function Webshot({
   onLoadingChange,
   canShow = true,
 }: WebshotProps) {
-  const { serviceKey } = useAuth().configKeys;
+  const { serviceKey } = useAuth().options;
 
   const [webshot, setWebshot] = useState('');
   const [hasError, setHasError] = useState(false);
