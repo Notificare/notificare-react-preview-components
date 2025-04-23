@@ -27,11 +27,7 @@ InvalidNotification.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -47,11 +43,7 @@ InvalidApplication.args = {
     subtitle: 'Subtitle',
     message: 'Message',
   },
-  application: {
-    name: '', // invalid app name
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '', // invalid
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -73,11 +65,7 @@ InvalidNotificationAndApplication.args = {
       },
     ],
   },
-  application: {
-    name: '', // invalid app name
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -101,11 +89,7 @@ IOSLockScreenWithMedia.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -127,11 +111,7 @@ IOSLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-lockscreen-expanded',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -147,11 +127,7 @@ IOSLockScreenWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -175,11 +151,7 @@ AndroidLockScreenWithMedia.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -195,11 +167,7 @@ AndroidLockScreenWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -221,11 +189,7 @@ AndroidLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -241,11 +205,7 @@ AndroidLockScreenWithoutMediaExpanded.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-lockscreen-expanded',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -263,11 +223,7 @@ AndroidAppUITextAlert.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -297,11 +253,7 @@ AndroidAppUITextAlertWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -317,11 +269,7 @@ AndroidAppUIRate.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -343,11 +291,7 @@ AndroidAppUIWebView.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -383,11 +327,7 @@ AndroidAppUIWebViewWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -423,11 +363,7 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -449,11 +385,7 @@ AndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -475,11 +407,7 @@ AndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -501,11 +429,7 @@ AndroidAppUIYouTubeVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -531,11 +455,7 @@ AndroidAppUIImage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -557,11 +477,7 @@ AndroidAppUIInAppBrowser.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -583,11 +499,7 @@ AndroidAppUIWebPage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -618,11 +530,7 @@ AndroidAppUIWebPageWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -653,11 +561,7 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -693,11 +597,7 @@ AndroidAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -719,11 +619,7 @@ AndroidAppUIDigitalCard.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -745,11 +641,7 @@ AndroidAppUIAppRecommendation.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -767,11 +659,7 @@ IOSAppUITextAlert.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -796,11 +684,7 @@ IOSAppUITextAlertWithSingleAction.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -830,11 +714,7 @@ IOSAppUITextAlertWithMultipleActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -856,11 +736,7 @@ IOSAppUIWebView.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -896,11 +772,7 @@ IOSAppUIWebViewWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -936,11 +808,7 @@ IOSAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -963,11 +831,7 @@ IOSAppUI_HTML5Video.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -989,11 +853,7 @@ IOSAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1015,11 +875,7 @@ IOSAppUIYouTubeVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1041,11 +897,7 @@ IOSAppUIWebPage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1071,11 +923,7 @@ IOSAppUIImage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1091,11 +939,7 @@ IOSAppUIRate.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1117,11 +961,7 @@ IOSAppUIDigitalCard.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1143,11 +983,7 @@ IOSAppUIInAppBrowser.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1174,11 +1010,7 @@ IOSAppUIAppRecommendation.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1216,11 +1048,7 @@ WebMacOSWithMediaAndActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-desktop-macos',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1236,11 +1064,7 @@ WebMacOSWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-desktop-macos',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1274,11 +1098,7 @@ WebAndroidAppUITextAlert.args = {
       },
     ],
   },
-  application: {
-    name: 'NC Clothing',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'nc-clothing.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1309,11 +1129,7 @@ WebAndroidAppUIWebView.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1358,11 +1174,7 @@ WebAndroidAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1384,11 +1196,7 @@ WebAndroidAppUIURL.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1410,11 +1218,7 @@ WebAndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1436,11 +1240,7 @@ WebAndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1462,11 +1262,7 @@ WebAndroidAppUIYouTubeVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1501,11 +1297,7 @@ WebAndroidAppUIImage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1552,11 +1344,7 @@ WebIphoneAppUITextAlert.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1587,11 +1375,7 @@ WebIphoneAppUIWebView.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1636,11 +1420,7 @@ WebIphoneAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1662,11 +1442,7 @@ WebIphoneAppUIURL.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1688,11 +1464,7 @@ WebIphoneAppUI_HTML5Video.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1714,11 +1486,7 @@ WebIphoneAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1740,11 +1508,7 @@ WebIphoneAppUIYouTubeVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1779,11 +1543,7 @@ WebIphoneAppUIImage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
+  applicationId: '123',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,

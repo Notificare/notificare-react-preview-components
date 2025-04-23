@@ -105,7 +105,7 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
             {notification.title || appName}
           </p>
           <p className="notificare__web-macos-text notificare__web-macos-text--domain">
-            {appDomain}
+            {extractDomain(appDomain)}
           </p>
           <p
             ref={messageRef}
@@ -214,4 +214,13 @@ interface WebPushProps {
   notification: NotificareNotificationSchema;
   appName: string;
   appDomain: string;
+}
+
+function extractDomain(url: string): string {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.hostname;
+  } catch {
+    return '';
+  }
 }

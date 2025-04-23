@@ -1,6 +1,6 @@
 import '../../preset.css';
 import './NotificareNotificationPreview.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ZodIssue } from 'zod';
 import { AuthProvider } from '../../internal/NotificareNotificationPreview/components/AuthProvider/AuthProvider';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
@@ -8,20 +8,57 @@ import { NotificationAndroidPreview } from '../../internal/NotificareNotificatio
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
 import { NotificationPreviewVariant } from '../../internal/NotificareNotificationPreview/models/notification-preview-variant';
-import { notificareApplicationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-application/notificare-application-schema';
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
 import { NotificareApplication } from './models/notificare-application';
 import { NotificareNotification } from './models/notificare-notification';
 import { NotificareNotificationConfigKeys } from './models/notificare-notification-config';
 import { NotificareNotificationVariant } from './models/notificare-notification-variant';
 
+const defaultApplication: NotificareApplication = {
+  name: 'My App',
+  appStoreId: '1631845803',
+  androidPackageName: 're.notifica.sample.app',
+  websitePushConfig: {
+    icon: '/website-push/07ef418649d1338ff6881d1efddaa32179f5150e0c6dabea9a78a10e6798c84e/3420c494d8076c07dd761fdc8521b71f884c7be0a1333073803c89d6e7b2eda2',
+  },
+  allowedDomains: ['https://sample-app.notificare.com/'],
+};
+
 export default function NotificareNotificationPreview({
   notification,
-  application,
+  applicationId,
   showControls = false,
   variant,
   configKeys = { serviceKey: '', googleMapsApiKey: '' },
 }: NotificareNotificationPreviewProps) {
+  const [application, setApplication] = useState<NotificareApplication>();
+
+  useEffect(() => {
+    if (applicationId) {
+      (async function fetchApplicationData() {
+        try {
+          const response = await fetch(
+            `https://push-test.notifica.re/application/${applicationId}/info?apiKey=${configKeys.serviceKey}`,
+          );
+          const data = await response.json();
+          const application = data.application;
+
+          if (!application) {
+            console.error(`There was an error trying to get the application: ${data.error}`);
+            setApplication(defaultApplication);
+          } else {
+            setApplication(application);
+          }
+        } catch (error) {
+          console.error('Error fetching the application', error);
+          setApplication(defaultApplication);
+        }
+      })();
+    } else {
+      setApplication(defaultApplication);
+    }
+  }, [applicationId, configKeys.serviceKey]);
+
   const notificationPreviewVariants = new Map<
     NotificareNotificationPreviewProps['variant'],
     NotificationPreviewVariant
@@ -60,109 +97,90 @@ export default function NotificareNotificationPreview({
   );
 
   const notificationResult = notificareNotificationSchema.safeParse(notification);
-  const applicationResult = notificareApplicationSchema.safeParse(application);
 
   if (!notificationResult.success) {
     showNotificationErrors(notificationResult.error.errors);
   }
 
-  if (!applicationResult.success) {
-    showApplicationErrors(applicationResult.error.errors);
-  }
-
-  return (
-    <AuthProvider configKeys={configKeys}>
-      <div className="notificare">
-        <div className="notificare__notification-previews-wrapper">
-          {showControls && (
-            <Controls
-              platform={platform}
-              mobileVariant={mobileVariant}
-              webDevice={webDevice}
-              webMobileType={webMobileType}
-              webDesktopOS={webDesktopOS}
-              setPlatform={setPlatform}
-              setMobileVariant={setMobileVariant}
-              setWebDesktopOS={setWebDesktopOS}
-              setWebDevice={setWebDevice}
-              setWebMobileType={setWebMobileType}
-            />
-          )}
-
-          <div className="notificare__notification-preview">
-            {notificationResult.success && applicationResult.success ? (
-              <>
-                {platform === 'android' && (
-                  <NotificationAndroidPreview
-                    notification={notificationResult.data}
-                    application={applicationResult.data}
-                    mobileVariant={mobileVariant}
-                  />
-                )}
-
-                {platform === 'ios' && (
-                  <NotificationIOSPreview
-                    notification={notificationResult.data}
-                    application={applicationResult.data}
-                    mobileVariant={mobileVariant}
-                  />
-                )}
-
-                {platform === 'web' && (
-                  <NotificationWebPreview
-                    notification={notificationResult.data}
-                    application={applicationResult.data}
-                    mobileVariant={mobileVariant}
-                    webDevice={webDevice}
-                    webMobileType={webMobileType}
-                    webDesktopOS={webDesktopOS}
-                  />
-                )}
-              </>
-            ) : (
-              <NotificareNotificationPreviewError
-                isNotificationValid={notificationResult.success}
-                isApplicationValid={applicationResult.success}
+  if (application) {
+    return (
+      <AuthProvider configKeys={configKeys}>
+        <div className="notificare">
+          <div className="notificare__notification-previews-wrapper">
+            {showControls && (
+              <Controls
+                platform={platform}
+                mobileVariant={mobileVariant}
+                webDevice={webDevice}
+                webMobileType={webMobileType}
+                webDesktopOS={webDesktopOS}
+                setPlatform={setPlatform}
+                setMobileVariant={setMobileVariant}
+                setWebDesktopOS={setWebDesktopOS}
+                setWebDevice={setWebDevice}
+                setWebMobileType={setWebMobileType}
               />
             )}
+
+            <div className="notificare__notification-preview">
+              {notificationResult.success ? (
+                <>
+                  {platform === 'android' && (
+                    <NotificationAndroidPreview
+                      notification={notificationResult.data}
+                      application={application}
+                      mobileVariant={mobileVariant}
+                    />
+                  )}
+
+                  {platform === 'ios' && (
+                    <NotificationIOSPreview
+                      notification={notificationResult.data}
+                      application={application}
+                      mobileVariant={mobileVariant}
+                    />
+                  )}
+
+                  {platform === 'web' && (
+                    <NotificationWebPreview
+                      notification={notificationResult.data}
+                      application={application}
+                      mobileVariant={mobileVariant}
+                      webDevice={webDevice}
+                      webMobileType={webMobileType}
+                      webDesktopOS={webDesktopOS}
+                    />
+                  )}
+                </>
+              ) : (
+                <NotificareNotificationPreviewError />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </AuthProvider>
-  );
+      </AuthProvider>
+    );
+  }
 }
 
 /**
  * Component that displays a notification preview for different platforms.
  *
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
- * @param {NotificareApplication} application - The application data associated with the notification.
+ * @param {string} applicationId - The unique identifier of a Notificare application.
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
  * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
  * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for some API requests (optional).
  */
 interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
-  application: NotificareApplication;
+  applicationId: string;
   showControls?: boolean;
   variant: NotificareNotificationVariant;
   configKeys?: NotificareNotificationConfigKeys;
 }
 
-function NotificareNotificationPreviewError({
-  isNotificationValid,
-  isApplicationValid,
-}: {
-  isNotificationValid: boolean;
-  isApplicationValid: boolean;
-}) {
-  const message =
-    !isNotificationValid && isApplicationValid
-      ? '→ Invalid Notification'
-      : isNotificationValid && !isApplicationValid
-        ? '→ Invalid Application'
-        : '→ Invalid Notification & Application';
-
+function NotificareNotificationPreviewError() {
   return (
     <div data-testid="notificare-notification-preview-error">
       <div className="notificare__notification-preview-error-warning">
@@ -182,7 +200,7 @@ function NotificareNotificationPreviewError({
             className="notificare__notification-preview-error-reason-text"
             data-testid="notificare-notification-preview-error-message"
           >
-            {message}
+            → Invalid Notification
           </div>
         </div>
       </div>
@@ -211,9 +229,4 @@ function showNotificationErrors(errors: ZodIssue[]) {
     const messages = errors.map((e) => e.message);
     console.error('Notification errors:\n\n' + messages.join('\n'));
   }
-}
-
-function showApplicationErrors(errors: ZodIssue[]) {
-  const messages = errors.map((error) => error.message);
-  console.error('Application errors:\n\n' + messages.join('\n'));
 }
