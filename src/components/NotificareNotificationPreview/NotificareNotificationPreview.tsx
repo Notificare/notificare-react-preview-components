@@ -40,13 +40,13 @@ export default function NotificareNotificationPreview({
           const response = await fetch(
             `https://push.notifica.re/application/${applicationId}/info?apiKey=${serviceKey}`,
           );
-          const data = await response.json();
-          const application = data.application;
 
-          if (!application) {
-            console.error(`There was an error trying to get the application: ${data.error}`);
+          if (!response.ok) {
+            const { error } = await response.json();
+            console.error(`There was an error trying to get the application: ${error}`);
             setApplication(defaultApplication);
           } else {
+            const { application } = await response.json();
             setApplication(application);
           }
         } catch (error) {
