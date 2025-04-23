@@ -60,7 +60,7 @@ export default function NotificationIOSPreview({
                 return <MapNotification notification={notification} appName={application.name} />;
 
               case 're.notifica.notification.Rate':
-                return <RateNotification appName={application.name} />;
+                return <RateNotification title={notification.title} appName={application.name} />;
 
               case 're.notifica.notification.Passbook':
                 return (

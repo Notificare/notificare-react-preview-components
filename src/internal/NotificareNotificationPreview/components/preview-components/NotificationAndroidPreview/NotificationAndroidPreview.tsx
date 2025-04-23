@@ -69,7 +69,13 @@ export function NotificationAndroidPreview({
                 return <MapNotification notification={notification} appName={application.name} />;
 
               case 're.notifica.notification.Rate':
-                return <RateNotification notification={notification} appName={application.name} />;
+                return (
+                  <RateNotification
+                    notification={notification}
+                    appName={application.name}
+                    appAndroidPackageName={application.androidPackageName}
+                  />
+                );
 
               case 're.notifica.notification.Passbook':
                 return (
