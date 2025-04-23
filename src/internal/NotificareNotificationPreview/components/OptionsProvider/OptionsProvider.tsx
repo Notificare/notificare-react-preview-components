@@ -1,19 +1,19 @@
 import { createContext, ReactNode, useContext } from 'react';
 import { NotificareNotificationOptions } from '../../../../components/NotificareNotificationPreview/models/notificare-notification-config';
 
-export function OptionsProvider({ options, children }: AuthProviderProps) {
+export function OptionsProvider({ options, children }: OptionsProviderProps) {
   return <OptionsContext.Provider value={{ options }}>{children}</OptionsContext.Provider>;
 }
 
-interface AuthProviderProps {
+interface OptionsProviderProps {
   options: NotificareNotificationOptions;
   children: ReactNode;
 }
 
-export const useAuth = () => {
+export const useOptions = () => {
   const context = useContext(OptionsContext);
   if (!context) {
-    throw new Error('useAuth should be used inside an AuthProvider');
+    throw new Error('useOptions should be used inside an OptionsProvider');
   }
   return context;
 };
