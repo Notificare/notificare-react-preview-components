@@ -1,7 +1,5 @@
-import { CONFIG } from '../../../../config';
 import { NotificareApplication } from '../models/notificare-application';
 import { NotificareNotification } from '../models/notificare-notification';
-import { NotificareNotificationConfigKeys } from '../models/notificare-notification-config';
 
 /* Notifications */
 
@@ -192,10 +190,4 @@ export const applicationMock: NotificareApplication = {
   name: 'Demo Notificare',
   icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
   domain: 'notificare.com',
-};
-
-/* Config Keys */
-
-export const configKeysMock: NotificareNotificationConfigKeys = {
-  serviceKey: CONFIG.API_KEY,
 };

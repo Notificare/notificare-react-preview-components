@@ -22,4 +22,3 @@ dist/
 
 # Config variables
 .env
-config.ts

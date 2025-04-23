@@ -2,8 +2,8 @@ import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useState } from 'react';
 import { ZodIssue } from 'zod';
-import { AuthProvider } from '../../internal/NotificareNotificationPreview/components/AuthProvider/AuthProvider';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
+import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
@@ -12,7 +12,6 @@ import { notificareApplicationSchema } from '../../internal/NotificareNotificati
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
 import { NotificareApplication } from './models/notificare-application';
 import { NotificareNotification } from './models/notificare-notification';
-import { NotificareNotificationConfigKeys } from './models/notificare-notification-config';
 import { NotificareNotificationVariant } from './models/notificare-notification-variant';
 
 export default function NotificareNotificationPreview({
@@ -20,7 +19,8 @@ export default function NotificareNotificationPreview({
   application,
   showControls = false,
   variant,
-  configKeys = { serviceKey: '', googleMapsApiKey: '' },
+  serviceKey,
+  googleMapsAPIKey,
 }: NotificareNotificationPreviewProps) {
   const notificationPreviewVariants = new Map<
     NotificareNotificationPreviewProps['variant'],
@@ -71,7 +71,7 @@ export default function NotificareNotificationPreview({
   }
 
   return (
-    <AuthProvider configKeys={configKeys}>
+    <OptionsProvider options={{ serviceKey, googleMapsAPIKey }}>
       <div className="notificare">
         <div className="notificare__notification-previews-wrapper">
           {showControls && (
@@ -128,7 +128,7 @@ export default function NotificareNotificationPreview({
           </div>
         </div>
       </div>
-    </AuthProvider>
+    </OptionsProvider>
   );
 }
 
@@ -139,14 +139,16 @@ export default function NotificareNotificationPreview({
  * @param {NotificareApplication} application - The application data associated with the notification.
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
  * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
- * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for some API requests (optional).
+ * @property {string} [serviceKey] - A service key provided by a Notificare admin (optional).
+ * @property {string} [googleMapsApiKey] - A Google Maps API key (optional).
  */
 interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   application: NotificareApplication;
   showControls?: boolean;
   variant: NotificareNotificationVariant;
-  configKeys?: NotificareNotificationConfigKeys;
+  serviceKey?: string;
+  googleMapsAPIKey?: string;
 }
 
 function NotificareNotificationPreviewError({
