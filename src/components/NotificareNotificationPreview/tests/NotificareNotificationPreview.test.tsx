@@ -1,7 +1,6 @@
 import { act } from 'react';
 import { waitFor } from '@storybook/test';
 import { fireEvent, render, screen } from '@testing-library/react';
-import dotenv from 'dotenv';
 import NotificareNotificationPreview from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,
@@ -20,8 +19,6 @@ import {
 } from './mocks';
 import '@testing-library/jest-dom';
 
-dotenv.config({ path: '.env' });
-
 describe('NotificareNotificationPreview', () => {
   afterEach(() => {
     jest.resetAllMocks();
@@ -37,8 +34,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'android-lockscreen'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -56,8 +51,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'android-lockscreen'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -77,8 +70,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'android-lockscreen'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -106,8 +97,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, attachments }}
         application={applicationMock}
         variant={'android-lockscreen'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -127,8 +116,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'android-lockscreen-expanded'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -156,8 +143,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, attachments }}
         application={applicationMock}
         variant={'android-lockscreen-expanded'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -179,8 +164,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -200,8 +183,6 @@ describe('NotificareNotificationPreview', () => {
         notification={rateNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -221,8 +202,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webViewNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -242,8 +221,6 @@ describe('NotificareNotificationPreview', () => {
         notification={html5VideoNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -263,8 +240,6 @@ describe('NotificareNotificationPreview', () => {
         notification={imageNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -290,8 +265,6 @@ describe('NotificareNotificationPreview', () => {
         notification={inAppBrowserNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -317,8 +290,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -338,8 +309,6 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -359,8 +328,6 @@ describe('NotificareNotificationPreview', () => {
         notification={passbookNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -380,8 +347,6 @@ describe('NotificareNotificationPreview', () => {
         notification={appRecommendationNotificationMock}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -421,8 +386,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, actions }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -454,8 +417,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...passbookNotificationMock, actions }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -485,8 +446,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...imageNotificationMock, actions }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -516,8 +475,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...mapNotificationMock, actions }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -559,8 +516,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webPageNotificationMock, actions }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -602,8 +557,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webPageNotificationMock, actions }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -640,8 +593,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webViewNotificationMock, actions, content }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -678,8 +629,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webPageNotificationMock, actions, content }}
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -699,8 +648,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'ios-lockscreen'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -727,8 +674,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, attachments }}
         application={applicationMock}
         variant={'ios-lockscreen'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -748,8 +693,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'ios-lockscreen-expanded'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -777,8 +720,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, attachments }}
         application={applicationMock}
         variant={'ios-lockscreen-expanded'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -800,8 +741,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -821,8 +760,6 @@ describe('NotificareNotificationPreview', () => {
         notification={rateNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -842,8 +779,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webViewNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -863,8 +798,6 @@ describe('NotificareNotificationPreview', () => {
         notification={html5VideoNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -884,8 +817,6 @@ describe('NotificareNotificationPreview', () => {
         notification={imageNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -911,8 +842,6 @@ describe('NotificareNotificationPreview', () => {
         notification={inAppBrowserNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -938,8 +867,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -959,8 +886,6 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -980,8 +905,6 @@ describe('NotificareNotificationPreview', () => {
         notification={passbookNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1001,8 +924,6 @@ describe('NotificareNotificationPreview', () => {
         notification={appRecommendationNotificationMock}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1040,8 +961,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1073,8 +992,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1104,8 +1021,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...passbookNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1135,8 +1050,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...imageNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1166,8 +1079,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...mapNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1209,8 +1120,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webPageNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1252,8 +1161,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webPageNotificationMock, actions }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1290,8 +1197,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webViewNotificationMock, actions, content }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1328,8 +1233,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webPageNotificationMock, actions, content }}
         application={applicationMock}
         variant={'ios-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1349,8 +1252,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'web-desktop-macos'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1386,8 +1287,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webViewNotificationMock, actions }}
         application={applicationMock}
         variant={'web-desktop-macos'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1438,8 +1337,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...alertNotificationMock, actions, attachments }}
         application={applicationMock}
         variant={'web-desktop-macos'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1467,8 +1364,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1488,8 +1383,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webViewNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1509,8 +1402,6 @@ describe('NotificareNotificationPreview', () => {
         notification={html5VideoNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1530,8 +1421,6 @@ describe('NotificareNotificationPreview', () => {
         notification={imageNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1551,8 +1440,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1572,8 +1459,6 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1593,8 +1478,6 @@ describe('NotificareNotificationPreview', () => {
         notification={inAppBrowserNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1612,8 +1495,6 @@ describe('NotificareNotificationPreview', () => {
         notification={rateNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1631,8 +1512,6 @@ describe('NotificareNotificationPreview', () => {
         notification={appRecommendationNotificationMock}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1668,8 +1547,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webViewNotificationMock, actions }}
         application={applicationMock}
         variant={'web-android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1691,8 +1568,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1712,8 +1587,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webViewNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1733,8 +1606,6 @@ describe('NotificareNotificationPreview', () => {
         notification={html5VideoNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1754,8 +1625,6 @@ describe('NotificareNotificationPreview', () => {
         notification={imageNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1775,8 +1644,6 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1796,8 +1663,6 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1817,8 +1682,6 @@ describe('NotificareNotificationPreview', () => {
         notification={inAppBrowserNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1836,8 +1699,6 @@ describe('NotificareNotificationPreview', () => {
         notification={rateNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1855,8 +1716,6 @@ describe('NotificareNotificationPreview', () => {
         notification={appRecommendationNotificationMock}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1892,8 +1751,6 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...webViewNotificationMock, actions }}
         application={applicationMock}
         variant={'web-iphone-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1915,8 +1772,6 @@ describe('NotificareNotificationPreview', () => {
         notification={invalidNotificationMock} // has invalid type
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1940,8 +1795,6 @@ describe('NotificareNotificationPreview', () => {
         notification={alertNotificationMock}
         application={invalidApplicationMock} // has invalid app name
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1965,8 +1818,6 @@ describe('NotificareNotificationPreview', () => {
         notification={invalidNotificationMock} // has invalid type
         application={invalidApplicationMock} // has invalid app name
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
       />,
     );
 
@@ -1998,8 +1849,7 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
+        serviceKey="123"
       />,
     );
 
@@ -2027,8 +1877,7 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
+        serviceKey="123"
       />,
     );
 
@@ -2056,10 +1905,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Request webshot mock
-      if (
-        url ===
-        'https://push-test.notifica.re/webshot?apiKey=3c8da54de0ba4d09f7de52c5a349e632d4f51d670456c58e1eb8779467aacf17'
-      ) {
+      if (url === 'https://push-test.notifica.re/webshot?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -2068,10 +1914,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Check webshot request status mock
-      if (
-        url ===
-        'https://push-test.notifica.re/webshot/1?apiKey=3c8da54de0ba4d09f7de52c5a349e632d4f51d670456c58e1eb8779467aacf17'
-      ) {
+      if (url === 'https://push-test.notifica.re/webshot/1?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -2084,10 +1927,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Get webshot mock
-      if (
-        url ===
-        'https://push-test.notifica.re/webshot/1/result?apiKey=3c8da54de0ba4d09f7de52c5a349e632d4f51d670456c58e1eb8779467aacf17'
-      ) {
+      if (url === 'https://push-test.notifica.re/webshot/1/result?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -2105,8 +1945,7 @@ describe('NotificareNotificationPreview', () => {
         notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
         application={applicationMock}
         variant={'android-app-ui'}
-        serviceKey={process.env.VITE_SERVICE_KEY}
-        googleMapsAPIKey={process.env.VITE_GOOGLE_MAPS_API_KEY}
+        serviceKey="123"
       />,
     );
 
