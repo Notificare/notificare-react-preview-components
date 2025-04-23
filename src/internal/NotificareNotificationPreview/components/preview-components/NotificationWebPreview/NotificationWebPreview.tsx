@@ -20,7 +20,7 @@ export function NotificationWebPreview({
         key={notification.message}
         notification={notification}
         appName={application.name}
-        appDomain={application.allowedDomains[0]}
+        appDomain={application.websitePushConfig.allowedDomains[0]}
       />
     );
   }

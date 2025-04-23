@@ -19,8 +19,8 @@ const defaultApplication: NotificareApplication = {
   androidPackageName: 'com.example.app',
   websitePushConfig: {
     icon: '/website-push/07ef418649d1338ff6881d1efddaa32179f5150e0c6dabea9a78a10e6798c84e/3420c494d8076c07dd761fdc8521b71f884c7be0a1333073803c89d6e7b2eda2',
+    allowedDomains: ['https://my-app.com/'],
   },
-  allowedDomains: ['https://my-app.com/'],
 };
 
 export default function NotificareNotificationPreview({
