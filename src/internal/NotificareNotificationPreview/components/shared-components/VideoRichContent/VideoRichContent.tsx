@@ -35,7 +35,7 @@ export default function VideoRichContent({ videoData, width, height }: VideoRich
   } else {
     return (
       <video
-        className="notificare__video-rich-content"
+        className="notificare__push__video-rich-content"
         width={width}
         height={height}
         autoPlay

@@ -1,6 +1,6 @@
 /* MAIN */
 
-.notificare .notificare__web-mobile-app-ui-notification {
+.notificare .notificare__web__phone__app-ui {
     width: 100%;
     height: 100%;
     position: relative;
@@ -9,7 +9,7 @@
     justify-content: center;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-background {
+.notificare .notificare__web__phone__app-ui__background {
     width: 300px;
     background-color: white;
     border-radius: 4px;
@@ -21,20 +21,20 @@
 
 /* Header */
 
-.notificare .notificare__web-mobile-app-ui-notification-header {
+.notificare .notificare__web__phone__app-ui__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     column-gap: 16px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-app-icon {
+.notificare .notificare__web__phone__app-ui__app-icon {
     border-radius: 4px;
     height: 32px;
     width: 32px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-app-name {
+.notificare .notificare__web__phone__app-ui__app-name {
     font-size: 18px;
     flex: 1;
     overflow: hidden;
@@ -43,7 +43,7 @@
     display: block;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-close-button {
+.notificare .notificare__web__phone__app-ui__close-button {
     width: 32px;
     height: 32px;
     display: flex;
@@ -55,38 +55,38 @@
     border-radius: 4px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-close-button:hover {
+.notificare .notificare__web__phone__app-ui__close-button:hover {
     transition: background-color .3s ease-in-out, border-radius .3s ease-in-out;
     background-color: #f4f5f9;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-close-button-icon {
+.notificare .notificare__web__phone__app-ui__close-button-icon {
     width: 24px;
     height: 24px;
 }
 
 /* TEXT ALERT */
 
-.notificare .notificare__web-mobile-app-ui-notification-media {
+.notificare .notificare__web__phone__alert__app-ui__media {
     max-width: 100%;
     max-height: 250px;
     aspect-ratio: 16 / 9;
     margin-bottom: 10px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-title {
+.notificare .notificare__web__phone__alert__app-ui__title {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-subtitle {
+.notificare .notificare__web__phone__alert__app-ui__subtitle {
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-message {
+.notificare .notificare__web__phone__alert__app-ui__message {
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -96,7 +96,7 @@
 
 /* Actions */
 
-.notificare .notificare__web-mobile-app-ui-notification-actions-row {
+.notificare .notificare__web__phone__app-ui__actions-row {
     display: flex;
     flex-wrap: wrap;
     column-gap: 8px;
@@ -104,14 +104,14 @@
     flex-direction: row-reverse;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-actions-column {
+.notificare .notificare__web__phone__app-ui__actions-column {
     display: flex;
     flex-direction: column;
     row-gap: 8px;
     align-items: stretch;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-action {
+.notificare .notificare__web__phone__app-ui__action {
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -125,31 +125,31 @@
     cursor: pointer;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-action--full-width {
+.notificare .notificare__web__phone__app-ui__action--full-width {
     width: 100%
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-action--primary {
+.notificare .notificare__web__phone__app-ui__action--primary {
     background-color: #2b42f7;
     color: #ffffffde;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-action--primary:hover {
+.notificare .notificare__web__phone__app-ui__action--primary:hover {
     background-color: #071cc3;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-action--secondary {
+.notificare .notificare__web__phone__app-ui__action--secondary {
     background-color: transparent;
     color: #2b42f7;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-action--secondary:hover {
+.notificare .notificare__web__phone__app-ui__action--secondary:hover {
     background-color: #f4f5f9;
 }
 
 /* WEB VIEW */
 
-.notificare .notificare__web-mobile-app-ui-notification-web-view-content {
+.notificare .notificare__web__phone__web-view__app-ui__content {
     border: 0;
     width: 100%;
     height: 360px;
@@ -158,7 +158,7 @@
 
 /* URL */
 
-.notificare .notificare__web-mobile-app-ui-notification-url {
+.notificare .notificare__web__phone__url__app-ui__url-text {
     border: 0;
     width: 100%;
     height: 430px;
@@ -166,7 +166,7 @@
 
 /* IMAGE */
 
-.notificare .notificare__web-mobile-app-ui-notification-image-slider {
+.notificare .notificare__web__phone__image__app-ui__image-slider {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -176,23 +176,23 @@
     scrollbar-color: #bbb transparent; /* Firefox */
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-image-slider-item {
+.notificare .notificare__web__phone__image__app-ui__image-slider-item {
     display: flex;
     min-width: 100%;
     scroll-snap-align: start;
 }
 
 /* For Chrome, Edge and Safari */
-.notificare .notificare__web-mobile-app-ui-notification-image-slider::-webkit-scrollbar {
+.notificare .notificare__web__phone__image__app-ui__image-slider::-webkit-scrollbar {
     height: 4px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-image-slider-webkit-scrollbar-thumb {
+.notificare .notificare__web__phone__image__app-ui__image-slider-webkit-scrollbar-thumb {
     background: #999;
     border-radius: 10px;
 }
 
-.notificare .notificare__web-mobile-app-ui-notification-image-slider-webkit-scrollbar-track {
+.notificare .notificare__web__phone__image__app-ui__image-slider-webkit-scrollbar-track {
     background: transparent;
 }
 

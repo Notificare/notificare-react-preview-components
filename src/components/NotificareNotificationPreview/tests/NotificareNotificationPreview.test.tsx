@@ -1311,7 +1311,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const notificationPreview = screen.queryByTestId('web-mac-os-notification');
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
 
     // ASSERT
     expect(notificationPreview).toBeInTheDocument();
@@ -1346,14 +1346,14 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const notificationPreview = screen.getByTestId('web-mac-os-notification');
+    const notificationPreview = screen.getByTestId('web-desktop-notification');
     fireEvent.mouseEnter(notificationPreview);
 
-    const settingsButton = screen.getByTestId('web-mac-os-settings-button');
+    const settingsButton = screen.getByTestId('web-desktop-settings-button');
     fireEvent.click(settingsButton);
 
-    const action1 = screen.queryByTestId('web-mac-os-options-action-0');
-    const action2 = screen.queryByTestId('web-mac-os-options-action-1');
+    const action1 = screen.queryByTestId('web-desktop-options-action-0');
+    const action2 = screen.queryByTestId('web-desktop-options-action-1');
 
     // ASSERT
     expect(action1).toHaveTextContent('Go to Notificare website');
@@ -1396,14 +1396,14 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const notificationPreview = screen.getByTestId('web-mac-os-notification');
+    const notificationPreview = screen.getByTestId('web-desktop-notification');
     fireEvent.mouseEnter(notificationPreview);
 
-    const expandButton = screen.getByTestId('web-mac-os-expand-button');
+    const expandButton = screen.getByTestId('web-desktop-expand-button');
     fireEvent.click(expandButton);
 
-    const action1 = screen.queryByTestId('web-mac-os-expanded-action-0');
-    const action2 = screen.queryByTestId('web-mac-os-expanded-action-1');
+    const action1 = screen.queryByTestId('web-desktop-expanded-action-0');
+    const action2 = screen.queryByTestId('web-desktop-expanded-action-1');
 
     // ASSERT
     expect(action1).toHaveTextContent('Go to Notificare website');
@@ -1831,10 +1831,8 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const previewError = screen.queryByTestId('notificare-notification-preview-error');
-    const previewErrorMessage = screen.queryByTestId(
-      'notificare-notification-preview-error-message',
-    );
+    const previewError = screen.queryByTestId('notificare-push-preview-error');
+    const previewErrorMessage = screen.queryByTestId('notificare-push-preview-error-reason-text');
 
     // ASSERT
     expect(previewError).toBeInTheDocument();

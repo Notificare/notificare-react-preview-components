@@ -20,7 +20,7 @@ export default function StarRating(props: StarRatingProps) {
     }
   }
 
-  return <div className="notificare__ios-app-ui-star-rating">{stars}</div>;
+  return <div className="notificare__push__ios__store__app-ui__star-rating">{stars}</div>;
 }
 
 const FullStar = () => (

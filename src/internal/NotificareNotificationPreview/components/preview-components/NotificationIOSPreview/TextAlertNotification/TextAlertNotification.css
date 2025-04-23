@@ -1,4 +1,4 @@
-.notificare .notificare__ios-app-ui-text-alert-notification {
+.notificare .notificare__push__ios__alert__app-ui  {
     width: 100%;
     height: 100%;
     position: relative;
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-background {
+.notificare .notificare__push__ios__alert__app-ui__background {
     width: 300px;
     background: #fff;
     border-radius: 20px;
@@ -17,7 +17,7 @@
 
 /* Header - Title and Message */
 
-.notificare .notificare__ios-app-ui-text-alert-notification-title-and-message {
+.notificare .notificare__push__ios__alert__app-ui__title-and-message {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -26,13 +26,13 @@
     word-break: break-word;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-title {
+.notificare .notificare__push__ios__alert__app-ui__title {
     font-size: 16px;
     font-weight: 700;
     text-align: center;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-message {
+.notificare .notificare__push__ios__alert__app-ui__message {
     margin-top: 3px;
     font-size: 12px;
     font-weight: 500;
@@ -41,13 +41,13 @@
 
 /* --- Actions --- */
 
-.notificare .notificare__ios-app-ui-text-alert-notification-actions {
+.notificare .notificare__push__ios__alert__app-ui__actions {
     font-size: 14px;
     font-weight: 700;
     border-top: 1px solid #f2f4f6;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-action {
+.notificare .notificare__push__ios__alert__app-ui__action {
     padding: 10px 20px;
     text-align: center;
     overflow: hidden;
@@ -57,42 +57,42 @@
 
 /* Single Actions */
 
-.notificare .notificare__ios-app-ui-text-alert-notification-actions-single {
+.notificare .notificare__push__ios__alert__app-ui__actions-single {
     display: flex;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-single-cancel {
+.notificare .notificare__push__ios__alert__app-ui__single-cancel {
     padding: 10px 20px;
     border-right: 1px solid #f2f4f6;
     width: 50%;
     text-align: center;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-action--single {
+.notificare .notificare__push__ios__alert__app-ui__action--single {
     width: 50%;
 }
 
 /* Multiple Actions */
 
-.notificare .notificare__ios-app-ui-text-alert-notification-actions-multiple {
+.notificare .notificare__push__ios__alert__app-ui__actions-multiple {
     display: flex;
     flex-direction: column;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-multiple-cancel {
+.notificare .notificare__push__ios__alert__app-ui__multiple-cancel {
     padding: 10px 20px;
     width: 100%;
     text-align: center;
 }
 
-.notificare .notificare__ios-app-ui-text-alert-notification-action--multiple {
+.notificare .notificare__push__ios__alert__app-ui__action--multiple {
     width: 100%;
     border-bottom: 1px solid #f2f4f6;
 }
 
 /* No Actions */
 
-.notificare .notificare__ios-app-ui-text-alert-notification-no-actions {
+.notificare .notificare__push__ios__alert__app-ui__no-actions {
     width: 100%;
     text-align: center;
     padding: 10px 20px;

@@ -1,6 +1,6 @@
 /* Top Bar */
 
-.notificare .notificare__ios-app-ui-app-recommendation-notification-bar {
+.notificare .notificare__push__ios__store__app-ui__bar {
     display: flex;
     width: 100%;
     border-radius: 20px 20px 0 0;
@@ -15,34 +15,28 @@
     margin-top: 10px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-notification-content-background {
-    background-color: #fff;
-    width: 100%;
-    height: 601px;
-}
-
 /* --- App Recommendation Content --- */
 
-.notificare .notificare__ios-app-ui-app-recommendation {
+.notificare .notificare__push__ios__store__app-ui {
     height: 566px;
     background-color: #fff;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page {
+.notificare .notificare__push__ios__store__app-ui__page {
     width: 100%;
     overflow: hidden;
 }
 
 /* Header */
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-header {
+.notificare .notificare__push__ios__store__app-ui__page-header {
     width: 100%;
     padding: 15px;
     display: flex;
     column-gap: 15px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-app-icon {
+.notificare .notificare__push__ios__store__app-ui__app-icon {
     width: 90px;
     height: 90px;
     border-radius: 15px;
@@ -50,22 +44,22 @@
     flex-shrink: 0;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-app-info {
+.notificare .notificare__push__ios__store__app-ui__page-app-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-app-name {
+.notificare .notificare__push__ios__store__app-ui__page-app-name {
     font-size: 16px;
     font-weight: 700;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-app-category {
+.notificare .notificare__push__ios__store__app-ui__page-app-category {
     font-size: 12px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-install {
+.notificare .notificare__push__ios__store__app-ui__page-install {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -78,7 +72,7 @@
 
 /* Other info */
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-other-app-info-wrapper {
+.notificare .notificare__push__ios__store__app-ui__page-other-app-info-wrapper {
     padding: 0 15px;
     width: calc(100% - 15px);
     overflow: hidden;
@@ -86,7 +80,7 @@
     margin-bottom: 15px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-other-app-info {
+.notificare .notificare__push__ios__store__app-ui__page-other-app-info {
     display: flex;
     width: 1000px;
     border-bottom: 1px solid #f2f4f6;
@@ -95,7 +89,7 @@
     box-sizing: border-box;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-info-block {
+.notificare .notificare__push__ios__store__app-ui__page-info-block {
     padding: 5px;
     width: 85px;
     display: flex;
@@ -104,59 +98,59 @@
     justify-content: space-between;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-info-block-title {
+.notificare .notificare__push__ios__store__app-ui__page-info-block-title {
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-info-block-value {
+.notificare .notificare__push__ios__store__app-ui__page-info-block-value {
     font-size: 30px;
     text-align: center;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-info-block-icon {
+.notificare .notificare__push__ios__store__app-ui__page-info-block-icon {
     height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-info-block-bottom-text {
+.notificare .notificare__push__ios__store__app-ui__page-info-block-bottom-text {
     font-size: 11px;
     text-align: center;
 }
 
 /* History */
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-history {
+.notificare .notificare__push__ios__store__app-ui__page-history {
     margin: 0 15px;
     border-bottom: 1px solid #f2f4f6;
     padding-bottom: 15px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-history-title {
+.notificare .notificare__push__ios__store__app-ui__page-history-title {
     font-size: 16px;
     font-weight: 700;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-history-version-last-update {
+.notificare .notificare__push__ios__store__app-ui__page-history-version-last-update {
     display: flex;
     justify-content: space-between;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-history-version {
+.notificare .notificare__push__ios__store__app-ui__page-history-version {
     font-size: 12px;
     color: #64706e;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-history-last-update {
+.notificare .notificare__push__ios__store__app-ui__page-history-last-update {
     font-size: 11px;
     color: #64706e;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-history-notes {
+.notificare .notificare__push__ios__store__app-ui__page-history-notes {
     margin-top: 5px;
     font-size: 12px;
     max-height: 60px;
@@ -170,17 +164,17 @@
 
 /* Previews */
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-previews {
+.notificare .notificare__push__ios__store__app-ui__page-previews {
     margin-top: 15px;
     padding: 0 15px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-previews-title {
+.notificare .notificare__push__ios__store__app-ui__page-previews-title {
     font-size: 16px;
     font-weight: 700;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-previews-images {
+.notificare .notificare__push__ios__store__app-ui__page-previews-images {
     display: flex;
     max-height: 400px;
     overflow: hidden;
@@ -188,7 +182,7 @@
     margin-top: 10px;
 }
 
-.notificare .notificare__ios-app-ui-app-recommendation-page-preview-image {
+.notificare .notificare__push__ios__store__app-ui__page-preview-image {
     border-radius: 15px;
     width: 150px;
 }

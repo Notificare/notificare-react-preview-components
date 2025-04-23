@@ -1,4 +1,4 @@
-.notificare .notificare__unavailable-preview {
+.notificare .notificare__web__phone__app-ui__web__phone__app-ui__unavailable-preview {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,12 +7,12 @@
     height: 540px;
 }
 
-.notificare .notificare__unavailable-preview-icon {
+.notificare .notificare__web__phone__app-ui__unavailable-preview-icon {
     width: 72px;
     margin-bottom: 20px;
 }
 
-.notificare .notificare__unavailable-preview-text {
+.notificare .notificare__web__phone__app-ui__unavailable-preview-text {
     font-weight: 700;
     font-size: 16px;
     color: #232c2a;
@@ -20,6 +20,6 @@
     padding: 0 10px;
 }
 
-.notificare .notificare__unavailable-preview-text-notification-type {
+.notificare .notificare__web__phone__app-ui__unavailable-preview-text-notification-type {
     color: #f85b5b;
 }

@@ -94,10 +94,10 @@ export default function Controls({
   ];
 
   return (
-    <div className="notificare__preview-controls" data-testid="controls">
+    <div className="notificare__push__preview-controls" data-testid="controls">
       {/* Toggle Groups */}
 
-      <div className="notificare__preview-controls-toggle-groups">
+      <div className="notificare__push__preview-controls-toggle-groups">
         <ToggleGroup
           label="Platform"
           options={platforms.map((platform) => platform)}

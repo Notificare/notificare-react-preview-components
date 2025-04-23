@@ -10,54 +10,54 @@ export default function LockScreenNotification({
 }: AndroidLockScreenPushProps) {
   return (
     <div
-      className="notificare__android-lock-screen-notification"
+      className="notificare__push__android__lock-screen"
       data-testid="android-lock-screen-notification"
     >
-      <div className="notificare__android-lock-screen-notification-app-icon">
+      <div className="notificare__push__android__lock-screen__app-icon">
         <img
-          className="notificare__android-lock-screen-notification-app-icon-image"
+          className="notificare__push__android__lock-screen__app-icon-image"
           alt="App icon"
           src={appIcon}
         />
       </div>
-      <div className="notificare__android-lock-screen-notification-text-content">
-        <div className="notificare__android-lock-screen-notification-text-content-top">
+      <div className="notificare__push__android__lock-screen__text-content">
+        <div className="notificare__push__android__lock-screen__text-content-top">
           <div
-            className={`notificare__android-lock-screen-notification-title-and-subtitle ${hasFirstAttachment(notification) && !expanded && 'notificare__android-lock-screen-notification-title-and-subtitle--has-media'}`}
+            className={`notificare__push__android__lock-screen__title-and-subtitle ${hasFirstAttachment(notification) && !expanded && 'notificare__push__android__lock-screen__title-and-subtitle--has-media'}`}
           >
-            <p className="notificare__android-lock-screen-notification-text notificare__android-lock-screen-notification-text--title">
+            <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--title">
               {!expanded ? notification.title || appName : appName}
             </p>
             {notification.subtitle && !hasFirstAttachment(notification) && (
-              <p className="notificare__android-lock-screen-notification-text notificare__android-lock-screen-notification-text--subtitle">
+              <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--subtitle">
                 {notification.subtitle}
               </p>
             )}
           </div>
-          <p className="notificare__android-lock-screen-notification-text notificare__android-lock-screen-notification-text--time">
+          <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--time">
             now
           </p>
         </div>
 
         {expanded && (
-          <p className="notificare__android-lock-screen-notification-text notificare__android-lock-screen-notification-text--expanded-title">
+          <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--expanded-title">
             {notification.title}
           </p>
         )}
 
         <p
-          className={`notificare__android-lock-screen-notification-text ${expanded && 'notificare__android-lock-screen-notification-text--expanded-message'} ${hasFirstAttachment(notification) && !expanded ? 'notificare__android-lock-screen-notification-text--message-with-media' : 'notificare__android-lock-screen-notification-text--message-without-media'}`}
+          className={`notificare__push__android__lock-screen__text ${expanded && 'notificare__push__android__lock-screen__text--expanded-message'} ${hasFirstAttachment(notification) && !expanded ? 'notificare__push__android__lock-screen__text--message-with-media' : 'notificare__push__android__lock-screen__text--message-without-media'}`}
         >
           {notification.message}
         </p>
 
         {hasFirstAttachment(notification) && expanded && (
           <div
-            className="notificare__android-lock-screen-notification-expanded-media"
+            className="notificare__push__android__lock-screen__expanded-media"
             data-testid="android-lock-screen-notification-expanded-media"
           >
             <img
-              className="notificare__android-lock-screen-notification-expanded-media-image"
+              className="notificare__push__android__lock-screen__expanded-media-image"
               src={notification.attachments?.[0].uri}
               alt="Expanded media"
             />
@@ -67,11 +67,11 @@ export default function LockScreenNotification({
 
       {hasFirstAttachment(notification) && !expanded && (
         <div
-          className="notificare__android-lock-screen-notification-media"
+          className="notificare__push__android__lock-screen__media"
           data-testid="android-lock-screen-notification-media"
         >
           <img
-            className="notificare__android-lock-screen-notification-media-image"
+            className="notificare__push__android__lock-screen__media-image"
             src={notification.attachments?.[0].uri}
             alt="Media icon"
           />

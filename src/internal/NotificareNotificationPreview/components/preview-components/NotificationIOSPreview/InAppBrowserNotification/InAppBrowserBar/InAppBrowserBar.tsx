@@ -10,13 +10,13 @@ export default function InAppBrowserBar(props: InAppBrowserBarProps) {
   const { url } = props;
 
   return (
-    <div className="notificare__ios-app-ui-in-app-browser-bar">
-      <p className="notificare__ios-app-ui-in-app-browser-bar-done-button"> Done </p>
-      <div className="notificare__ios-app-ui-in-app-browser-bar-domain">
+    <div className="notificare__push__ios__in-app-browser__app-ui__bar">
+      <p className="notificare__push__ios__in-app-browser__app-ui__bar-done-button"> Done </p>
+      <div className="notificare__push__ios__in-app-browser__app-ui__bar-domain">
         {isSecureUrl(url) ? (
           <>
             <svg
-              className="notificare__ios-app-ui-in-app-browser-bar-lock-icon"
+              className="notificare__push__ios__in-app-browser__app-ui__bar-lock-icon"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
             >
@@ -24,10 +24,14 @@ export default function InAppBrowserBar(props: InAppBrowserBarProps) {
             </svg>
           </>
         ) : (
-          <p className="notificare__ios-app-ui-in-app-browser-bar-not-secure">Not Secure —</p>
+          <p className="notificare__push__ios__in-app-browser__app-ui__bar-not-secure">
+            Not Secure —
+          </p>
         )}
 
-        <p className="notificare__ios-app-ui-in-app-browser-bar-url">{getUrlMainDomain(url)}</p>
+        <p className="notificare__push__ios__in-app-browser__app-ui__bar-url">
+          {getUrlMainDomain(url)}
+        </p>
       </div>
     </div>
   );

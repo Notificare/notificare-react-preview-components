@@ -22,7 +22,7 @@ export default function NotificationIOSPreview({
 }: NotificationIOSPreviewProps) {
   return (
     <IOSPhoneBackground theme={getTheme(notification.type, mobileVariant)}>
-      <div className="notificare__ios-preview">
+      <div className="notificare__push__ios__preview">
         {(mobileVariant === 'lockscreen' || mobileVariant === 'lockscreen-expanded') && (
           <LockScreenNotification
             notification={notification}

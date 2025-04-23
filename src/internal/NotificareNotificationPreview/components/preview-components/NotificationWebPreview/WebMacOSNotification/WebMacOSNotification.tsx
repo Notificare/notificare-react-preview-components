@@ -37,13 +37,13 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
   return (
     <div
       ref={previewRef}
-      className="notificare__web-macos"
+      className="notificare__push__web__desktop__lock-screen"
       onMouseEnter={() => setMouseOverNotification(() => true)}
       onMouseLeave={() => setMouseOverNotification(() => openOptions)}
-      data-testid="web-mac-os-notification"
+      data-testid="web-desktop-notification"
     >
       {((expandable && mouseOverNotification) || expanded || isClosing) && (
-        <div className="notificare__web-macos-expand-button-container">
+        <div className="notificare__push__web__desktop__lock-screen__expand-button-container">
           <ExpandButton
             open={expanded}
             disabled={isClosing || isExpanding}
@@ -84,32 +84,32 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
       )}
 
       {!mouseOverNotification && !expanded && !isClosing && (
-        <div className="notificare__web-macos-time-container">
-          <p className="notificare__web-macos-time"> now </p>
+        <div className="notificare__push__web__desktop__lock-screen__time-container">
+          <p className="notificare__push__web__desktop__lock-screen__time"> now </p>
         </div>
       )}
 
-      <div className="notificare__web-macos-main-content">
-        <div className="notificare__web-macos-browser-icon">
-          <div className="notificare__web-macos-browser-icon-background">
+      <div className="notificare__push__web__desktop__lock-screen__main-content">
+        <div className="notificare__push__web__desktop__lock-screen__browser-icon">
+          <div className="notificare__push__web__desktop__lock-screen__browser-icon-background">
             <img
-              className="notificare__web-macos-browser-icon-image"
+              className="notificare__push__web__desktop__lock-screen__browser-icon-image"
               src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg"
               alt="Google Chrome Icon"
             />
           </div>
         </div>
 
-        <div className="notificare__web-macos-text-content">
-          <p className="notificare__web-macos-text notificare__web-macos-text--title">
+        <div className="notificare__push__web__desktop__lock-screen__text-content">
+          <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--title">
             {notification.title || appName}
           </p>
-          <p className="notificare__web-macos-text notificare__web-macos-text--domain">
+          <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--domain">
             {extractDomain(appDomain)}
           </p>
           <p
             ref={messageRef}
-            className={`notificare__web-macos-text ${expanded || isClosing ? 'notificare__web-macos-text--expandable-message' : 'notificare__web-macos-text--message'}`}
+            className={`notificare__push__web__desktop__lock-screen__text ${expanded || isClosing ? 'notificare__push__web__desktop__lock-screen__text--expandable-message' : 'notificare__push__web__desktop__lock-screen__text--message'}`}
           >
             {notification.message}
           </p>
@@ -117,24 +117,24 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
 
         {hasFirstAttachment(notification) && !expanded && !isClosing && !mouseOverNotification && (
           <img
-            className="notificare__web-macos-small-media"
+            className="notificare__push__web__desktop__lock-screen__small-media"
             src={notification.attachments?.[0].uri}
             alt="Small media icon"
           />
         )}
 
         {mouseOverNotification && !expanded && !isClosing && (
-          <div className="notificare__web-macos-settings-button-container">
+          <div className="notificare__push__web__desktop__lock-screen__settings-button-container">
             {notification.actions && notification.actions.length > 0 ? (
               <>
                 <button
-                  className="notificare__web-macos-settings-button"
+                  className="notificare__push__web__desktop__lock-screen__settings-button"
                   onClick={() => setOpenOptions((prevState) => !prevState)}
-                  data-testid="web-mac-os-settings-button"
+                  data-testid="web-desktop-settings-button"
                 >
                   Options
                   <svg
-                    className="notificare__web-macos-settings-button-expand-icon"
+                    className="notificare__push__web__desktop__lock-screen__settings-button-expand-icon"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                   >
@@ -143,61 +143,63 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
                 </button>
 
                 {openOptions && (
-                  <div className="notificare__web-macos-settings-selector">
+                  <div className="notificare__push__web__desktop__lock-screen__settings-selector">
                     {notification.actions.map((option, index) => (
                       <button
                         key={index}
-                        className="notificare__web-macos-settings-selector-option"
-                        data-testid={`web-mac-os-options-action-${index}`}
+                        className="notificare__push__web__desktop__lock-screen__settings-selector-option"
+                        data-testid={`web-desktop-options-action-${index}`}
                       >
                         {option.label}
                       </button>
                     ))}
 
-                    <button className="notificare__web-macos-settings-selector-option">
+                    <button className="notificare__push__web__desktop__lock-screen__settings-selector-option">
                       Settings
                     </button>
                   </div>
                 )}
               </>
             ) : (
-              <button className="notificare__web-macos-settings-button"> Settings </button>
+              <button className="notificare__push__web__desktop__lock-screen__settings-button">
+                Settings
+              </button>
             )}
           </div>
         )}
       </div>
 
       {(expanded || isClosing) && (
-        <div className="notificare__web-macos-expanded-content">
+        <div className="notificare__push__web__desktop__lock-screen__expanded-content">
           {hasFirstAttachment(notification) && (
             <img
-              className="notificare__web-macos-expanded-media"
+              className="notificare__push__web__desktop__lock-screen__expanded-media"
               src={notification.attachments?.[0].uri}
               alt="Expanded media"
             />
           )}
 
-          <hr className="notificare__web-macos-expanded-divisor" />
+          <hr className="notificare__push__web__desktop__lock-screen__expanded-divisor" />
 
           {notification.actions?.map((action, index) => (
-            <div key={index} className="notificare__web-macos-action">
+            <div key={index} className="notificare__push__web__desktop__lock-screen__action">
               <button
-                className="notificare__web-macos-expanded-button"
+                className="notificare__push__web__desktop__lock-screen__expanded-button"
                 onMouseEnter={() => setMouseOverButtonIndex(index)}
                 onMouseLeave={() => setMouseOverButtonIndex(-1)}
-                data-testid={`web-mac-os-expanded-action-${index}`}
+                data-testid={`web-desktop-expanded-action-${index}`}
               >
                 {action.label}
               </button>
 
               <hr
-                className={`notificare__web-macos-expanded-buttons-divisor ${(mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index) && 'notificare__web-macos-expanded-buttons-divisor--transparent'}`}
+                className={`notificare__push__web__desktop__lock-screen__expanded-buttons-divisor ${(mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index) && 'notificare__push__web__desktop__lock-screen__expanded-buttons-divisor--transparent'}`}
               />
             </div>
           ))}
 
           <button
-            className={'notificare__web-macos-expanded-button'}
+            className={'notificare__push__web__desktop__lock-screen__expanded-button'}
             onMouseEnter={() => setMouseOverButtonIndex(notification.actions?.length || -1)}
             onMouseLeave={() => setMouseOverButtonIndex(-1)}
           >

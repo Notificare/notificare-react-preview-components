@@ -1,4 +1,4 @@
-.notificare .notificare__ios-app-ui-in-app-browser-bar {
+.notificare .notificare__push__ios__in-app-browser__app-ui__bar {
     display: flex;
     width: 100%;
     padding: 12px 0;
@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.notificare .notificare__ios-app-ui-in-app-browser-bar-done-button {
+.notificare .notificare__push__ios__in-app-browser__app-ui__bar-done-button {
     font-size: 14px;
     font-weight: 700;
     position: absolute;
@@ -18,23 +18,23 @@
     margin-left: 15px;
 }
 
-.notificare .notificare__ios-app-ui-in-app-browser-bar-lock-icon {
+.notificare .notificare__push__ios__in-app-browser__app-ui__bar-lock-icon {
     height: 14px;
 }
 
-.notificare .notificare__ios-app-ui-in-app-browser-bar-domain {
+.notificare .notificare__push__ios__in-app-browser__app-ui__bar-domain {
     display: flex;
     column-gap: 5px;
     font-size: 14px;
     font-weight: 700;
 }
 
-.notificare .notificare__ios-app-ui-in-app-browser-bar-not-secure {
+.notificare .notificare__push__ios__in-app-browser__app-ui__bar-not-secure {
     color: #64706e;
     font-weight: 400;
 }
 
-.notificare .notificare__ios-app-ui-in-app-browser-bar-url {
+.notificare .notificare__push__ios__in-app-browser__app-ui__bar-url {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

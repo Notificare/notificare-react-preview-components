@@ -33,15 +33,15 @@ export default function Selector<T extends string | undefined>({
 
   if (options.length > 0) {
     return (
-      <div className="notificare__preview-controls-selector">
-        <p className="notificare__preview-controls-selector-label">Variant</p>
+      <div className="notificare__push__preview-controls-selector">
+        <p className="notificare__push__preview-controls-selector-label">Variant</p>
         <button
-          className="notificare__preview-controls-selector-button"
+          className="notificare__push__preview-controls-selector-button"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {options.find((option) => option.key === selected)?.label}
           <svg
-            className="notificare__preview-controls-selector-button-expand-icon"
+            className="notificare__push__preview-controls-selector-button-expand-icon"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
           >
@@ -50,11 +50,11 @@ export default function Selector<T extends string | undefined>({
         </button>
 
         {isExpanded && (
-          <div className="notificare__preview-controls-selector-options" ref={optionsRef}>
+          <div className="notificare__push__preview-controls-selector-options" ref={optionsRef}>
             {options.map((option) => (
               <button
                 key={option.key}
-                className={`notificare__preview-controls-selector-option-button ${selected === option.key && 'notificare__preview-controls-selector-option-button--selected'}`}
+                className={`notificare__push__preview-controls-selector-option-button ${selected === option.key && 'notificare__push__preview-controls-selector-option-button--selected'}`}
                 onClick={() => {
                   setSelected(option.key);
                   setIsExpanded(false);

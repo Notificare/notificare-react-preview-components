@@ -14,7 +14,7 @@ export default function MapRichContent({ markers, width, height }: MapRichConten
 
   return (
     <MapContainer
-      className="notificare__map-rich-content"
+      className="notificare__push__map-rich-content"
       center={[markers[0].latitude, markers[0].longitude]}
       zoom={13}
       scrollWheelZoom={false}

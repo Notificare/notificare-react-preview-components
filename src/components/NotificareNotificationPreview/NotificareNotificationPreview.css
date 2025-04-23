@@ -1,8 +1,8 @@
-.notificare .notificare__notification-preview {
+.notificare .notificare__push__preview {
     margin-top: 20px;
 }
 
-.notificare .notificare__notification-previews-wrapper {
+.notificare .notificare__push__previews-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
 
 /* Preview Error */
 
-.notificare .notificare__notification-preview-error-warning {
+.notificare .notificare__push__preview-error-warning {
     width: 350px;
     background-color: #fff1cc;
     border: 1px solid #d5d5d5;
@@ -22,28 +22,28 @@
     column-gap: 14px;
 }
 
-.notificare .notificare__notification-preview-error-text-container {
+.notificare .notificare__push__preview-error-text-container {
     display: flex;
     flex-direction: column;
     row-gap: 2px;
 }
 
-.notificare .notificare__notification-preview-error-title {
+.notificare .notificare__push__preview-error-title {
     font-size: 15px;
     color: #232323;
     font-weight: bold;
 }
 
-.notificare .notificare__notification-preview-error-reason-text {
+.notificare .notificare__push__preview-error-reason-text {
     font-size: 13px;
     color: #bd6868;
 }
 
-.notificare .notificare__notification-preview-error-alert-icon {
+.notificare .notificare__push__preview-error-alert-icon {
     width: 40px;
 }
 
-.notificare .notificare__notification-preview-error-check-console-text {
+.notificare .notificare__push__preview-error-check-console-text {
     font-size: 12px;
     color: #989898;
     text-align: right;

@@ -8,12 +8,12 @@ interface TitleBarProps {
 
 export default function TitleBar({ appName, title, showOptions }: TitleBarProps) {
   return (
-    <div className="notificare__ios-app-ui-title-bar">
-      <div className="notificare__ios-app-ui-title-bar-text">{title || appName}</div>
+    <div className="notificare__push__ios__app-ui__title-bar">
+      <div className="notificare__push__ios__app-ui__title-bar-text">{title || appName}</div>
 
       {showOptions && (
         <svg
-          className="notificare__ios-app-ui-title-bar-options-button"
+          className="notificare__push__ios__app-ui__title-bar-options-button"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
           data-testid="ios-app-ui-title-bar-options-button"

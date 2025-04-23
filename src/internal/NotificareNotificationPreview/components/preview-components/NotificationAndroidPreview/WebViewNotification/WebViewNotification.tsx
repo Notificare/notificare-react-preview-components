@@ -18,7 +18,7 @@ export default function WebViewNotification(props: WebViewNotificationProps) {
       />
 
       <iframe
-        className="notificare__android-app-ui-web-view-content"
+        className="notificare__push__android__web-view__app-ui__content"
         srcDoc={html}
         sandbox="allow-same-origin"
       />

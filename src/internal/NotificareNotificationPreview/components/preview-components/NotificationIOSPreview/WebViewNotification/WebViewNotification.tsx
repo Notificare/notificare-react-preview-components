@@ -15,7 +15,7 @@ export default function WebViewNotification({ notification, appName }: WebViewNo
         showOptions={hasActions(notification) && !markupHasNotificareOpenActionQueryParameter(html)}
       />
       <iframe
-        className="notificare__ios-app-ui-web-view-content"
+        className="notificare__push__ios__web-view__app-ui__content"
         srcDoc={html}
         sandbox="allow-same-origin"
       />
