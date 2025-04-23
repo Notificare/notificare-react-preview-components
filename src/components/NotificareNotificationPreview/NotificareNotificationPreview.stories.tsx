@@ -27,45 +27,7 @@ InvalidNotification.args = {
       },
     ],
   },
-  applicationId: '123',
-  variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
-  showControls: true,
-};
-
-export const InvalidApplication = Template.bind({});
-InvalidApplication.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message',
-  },
-  applicationId: '', // invalid
-  variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
-  showControls: true,
-};
-
-export const InvalidNotificationAndApplication = Template.bind({});
-InvalidNotificationAndApplication.args = {
-  notification: {
-    type: 'invalid-type', // has an invalid type
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message',
-    attachments: [
-      {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
-        mimeType: 'image/jpeg',
-      },
-    ],
-  },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -89,7 +51,7 @@ IOSLockScreenWithMedia.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -111,7 +73,7 @@ IOSLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-lockscreen-expanded',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -127,7 +89,7 @@ IOSLockScreenWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -151,7 +113,7 @@ AndroidLockScreenWithMedia.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -167,7 +129,7 @@ AndroidLockScreenWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -189,7 +151,7 @@ AndroidLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-lockscreen',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -205,7 +167,7 @@ AndroidLockScreenWithoutMediaExpanded.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-lockscreen-expanded',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -223,7 +185,7 @@ AndroidAppUITextAlert.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -253,7 +215,7 @@ AndroidAppUITextAlertWithActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -269,7 +231,7 @@ AndroidAppUIRate.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -291,7 +253,7 @@ AndroidAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -327,7 +289,7 @@ AndroidAppUIWebViewWithActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -363,7 +325,7 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -385,7 +347,7 @@ AndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -407,7 +369,7 @@ AndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -429,7 +391,7 @@ AndroidAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -455,7 +417,7 @@ AndroidAppUIImage.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -477,7 +439,7 @@ AndroidAppUIInAppBrowser.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -499,7 +461,7 @@ AndroidAppUIWebPage.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -530,7 +492,7 @@ AndroidAppUIWebPageWithActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -561,7 +523,7 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -597,7 +559,7 @@ AndroidAppUIMap.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -619,7 +581,7 @@ AndroidAppUIDigitalCard.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -641,7 +603,7 @@ AndroidAppUIAppRecommendation.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -659,7 +621,7 @@ IOSAppUITextAlert.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -684,7 +646,7 @@ IOSAppUITextAlertWithSingleAction.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -714,7 +676,7 @@ IOSAppUITextAlertWithMultipleActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -736,7 +698,7 @@ IOSAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -772,7 +734,7 @@ IOSAppUIWebViewWithActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -808,7 +770,7 @@ IOSAppUIMap.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -831,7 +793,7 @@ IOSAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -853,7 +815,7 @@ IOSAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -875,7 +837,7 @@ IOSAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -897,7 +859,7 @@ IOSAppUIWebPage.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -923,7 +885,7 @@ IOSAppUIImage.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -939,7 +901,7 @@ IOSAppUIRate.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -961,7 +923,7 @@ IOSAppUIDigitalCard.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -983,7 +945,7 @@ IOSAppUIInAppBrowser.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1010,7 +972,7 @@ IOSAppUIAppRecommendation.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'ios-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1048,7 +1010,7 @@ WebMacOSWithMediaAndActions.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-desktop-macos',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1064,7 +1026,7 @@ WebMacOSWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-desktop-macos',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1098,7 +1060,7 @@ WebAndroidAppUITextAlert.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1129,7 +1091,7 @@ WebAndroidAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1174,7 +1136,7 @@ WebAndroidAppUIMap.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1196,7 +1158,7 @@ WebAndroidAppUIURL.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1218,7 +1180,7 @@ WebAndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1240,7 +1202,7 @@ WebAndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1262,7 +1224,7 @@ WebAndroidAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1297,7 +1259,7 @@ WebAndroidAppUIImage.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-android-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1344,7 +1306,7 @@ WebIphoneAppUITextAlert.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1375,7 +1337,7 @@ WebIphoneAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1420,7 +1382,7 @@ WebIphoneAppUIMap.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1442,7 +1404,7 @@ WebIphoneAppUIURL.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1464,7 +1426,7 @@ WebIphoneAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1486,7 +1448,7 @@ WebIphoneAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1508,7 +1470,7 @@ WebIphoneAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,
@@ -1543,7 +1505,7 @@ WebIphoneAppUIImage.args = {
       },
     ],
   },
-  applicationId: '123',
+  applicationId: '',
   variant: 'web-iphone-app-ui',
   configKeys: {
     serviceKey: CONFIG.API_KEY,

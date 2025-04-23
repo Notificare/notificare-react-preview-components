@@ -167,14 +167,14 @@ export default function NotificareNotificationPreview({
  * Component that displays a notification preview for different platforms.
  *
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
- * @param {string} applicationId - The unique identifier of a Notificare application.
+ * @param {string} applicationId - The unique identifier of a Notificare application (optional).
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
  * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
  * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for some API requests (optional).
  */
 interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
-  applicationId: string;
+  applicationId?: string;
   showControls?: boolean;
   variant: NotificareNotificationVariant;
   configKeys?: NotificareNotificationConfigKeys;
