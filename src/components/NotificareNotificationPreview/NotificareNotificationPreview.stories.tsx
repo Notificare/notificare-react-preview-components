@@ -1,17 +1,24 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { CONFIG } from '../../../config';
 import NotificareNotificationPreview from './NotificareNotificationPreview';
 
-export default {
+const meta: Meta<typeof NotificareNotificationPreview> = {
   title: 'ReactComponentLibrary/NotificareNotificationPreview',
   component: NotificareNotificationPreview,
-} as Meta<typeof NotificareNotificationPreview>;
+};
+export default meta;
 
 const Template: StoryFn<typeof NotificareNotificationPreview> = (args) => (
   <NotificareNotificationPreview {...args} />
 );
 
-/* Invalid Notification OR Application */
+/* Option Keys */
+
+// @ts-expect-error import.meta.env is not being detected
+const serviceKey = import.meta.env.VITE_SERVICE_KEY;
+// @ts-expect-error import.meta.env is not being detected
+const googleMapsAPIKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+/* Invalid Notification */
 
 export const InvalidNotification = Template.bind({});
 InvalidNotification.args = {
@@ -27,12 +34,10 @@ InvalidNotification.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
   showControls: true,
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
 };
 
 /* iOS Lock Screen */
@@ -51,11 +56,9 @@ IOSLockScreenWithMedia.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -73,11 +76,9 @@ IOSLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-lockscreen-expanded',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -89,11 +90,9 @@ IOSLockScreenWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'ios-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -113,11 +112,9 @@ AndroidLockScreenWithMedia.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -129,11 +126,9 @@ AndroidLockScreenWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'android-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -151,11 +146,9 @@ AndroidLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-lockscreen',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -167,11 +160,9 @@ AndroidLockScreenWithoutMediaExpanded.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'android-lockscreen-expanded',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -185,11 +176,9 @@ AndroidAppUITextAlert.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -215,11 +204,9 @@ AndroidAppUITextAlertWithActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -231,11 +218,9 @@ AndroidAppUIRate.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -253,11 +238,9 @@ AndroidAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -289,11 +272,9 @@ AndroidAppUIWebViewWithActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -325,11 +306,9 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -347,11 +326,9 @@ AndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -369,11 +346,9 @@ AndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -391,11 +366,9 @@ AndroidAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -417,11 +390,9 @@ AndroidAppUIImage.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -439,11 +410,9 @@ AndroidAppUIInAppBrowser.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -461,11 +430,9 @@ AndroidAppUIWebPage.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -492,11 +459,9 @@ AndroidAppUIWebPageWithActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -523,11 +488,9 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -559,11 +522,9 @@ AndroidAppUIMap.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -581,11 +542,9 @@ AndroidAppUIDigitalCard.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -603,11 +562,9 @@ AndroidAppUIAppRecommendation.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -621,11 +578,9 @@ IOSAppUITextAlert.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -646,11 +601,9 @@ IOSAppUITextAlertWithSingleAction.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -676,11 +629,9 @@ IOSAppUITextAlertWithMultipleActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -698,11 +649,9 @@ IOSAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -734,11 +683,9 @@ IOSAppUIWebViewWithActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -770,12 +717,9 @@ IOSAppUIMap.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-    googleMapsApiKey: CONFIG.GOOGLE_MAPS_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -793,11 +737,9 @@ IOSAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -815,11 +757,9 @@ IOSAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -837,11 +777,9 @@ IOSAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -859,11 +797,9 @@ IOSAppUIWebPage.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -885,11 +821,9 @@ IOSAppUIImage.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -901,11 +835,9 @@ IOSAppUIRate.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -923,11 +855,9 @@ IOSAppUIDigitalCard.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -945,11 +875,9 @@ IOSAppUIInAppBrowser.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -972,11 +900,9 @@ IOSAppUIAppRecommendation.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'ios-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1010,11 +936,9 @@ WebMacOSWithMediaAndActions.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-desktop-macos',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1026,11 +950,9 @@ WebMacOSWithoutMedia.args = {
     subtitle: 'Subtitle',
     message: 'Message example',
   },
-  applicationId: '',
   variant: 'web-desktop-macos',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1060,11 +982,9 @@ WebAndroidAppUITextAlert.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1091,11 +1011,9 @@ WebAndroidAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1136,11 +1054,9 @@ WebAndroidAppUIMap.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1158,11 +1074,9 @@ WebAndroidAppUIURL.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1180,11 +1094,9 @@ WebAndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1202,11 +1114,9 @@ WebAndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1224,11 +1134,9 @@ WebAndroidAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1259,11 +1167,9 @@ WebAndroidAppUIImage.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-android-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1306,11 +1212,9 @@ WebIphoneAppUITextAlert.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1337,11 +1241,9 @@ WebIphoneAppUIWebView.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1382,11 +1284,9 @@ WebIphoneAppUIMap.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1404,11 +1304,9 @@ WebIphoneAppUIURL.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1426,11 +1324,9 @@ WebIphoneAppUI_HTML5Video.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1448,11 +1344,9 @@ WebIphoneAppUIVimeoVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1470,11 +1364,9 @@ WebIphoneAppUIYouTubeVideo.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
 
@@ -1505,10 +1397,8 @@ WebIphoneAppUIImage.args = {
       },
     ],
   },
-  applicationId: '',
   variant: 'web-iphone-app-ui',
-  configKeys: {
-    serviceKey: CONFIG.API_KEY,
-  },
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };

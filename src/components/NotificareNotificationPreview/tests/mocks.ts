@@ -1,6 +1,4 @@
-import { CONFIG } from '../../../../config';
 import { NotificareNotification } from '../models/notificare-notification';
-import { NotificareNotificationConfigKeys } from '../models/notificare-notification-config';
 
 /* Notifications */
 
@@ -177,10 +175,4 @@ export const appRecommendationNotificationMock: NotificareNotification = {
       data: 'Subway Surfers',
     },
   ],
-};
-
-/* Config Keys */
-
-export const configKeysMock: NotificareNotificationConfigKeys = {
-  serviceKey: CONFIG.API_KEY,
 };

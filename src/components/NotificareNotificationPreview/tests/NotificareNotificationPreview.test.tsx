@@ -5,7 +5,6 @@ import NotificareNotificationPreview from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,
   appRecommendationNotificationMock,
-  configKeysMock,
   html5VideoNotificationMock,
   imageNotificationMock,
   inAppBrowserNotificationMock,
@@ -31,9 +30,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={true}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'android-lockscreen'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -49,9 +47,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'android-lockscreen'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -69,9 +66,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'android-lockscreen'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -97,9 +93,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, attachments }}
-        applicationId=""
         variant={'android-lockscreen'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -117,9 +112,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'android-lockscreen-expanded'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -145,9 +139,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, attachments }}
-        applicationId=""
         variant={'android-lockscreen-expanded'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -167,9 +160,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -187,9 +179,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={rateNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -207,9 +198,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webViewNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -227,9 +217,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={html5VideoNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -247,9 +236,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={imageNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -273,9 +261,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={inAppBrowserNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -299,9 +286,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -319,9 +305,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={mapNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -339,9 +324,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={passbookNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -359,9 +343,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={appRecommendationNotificationMock}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -399,9 +382,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -431,9 +413,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...passbookNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -461,9 +442,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...imageNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -491,9 +471,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...imageNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -521,9 +500,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...mapNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -563,9 +541,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webPageNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -605,9 +582,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webPageNotificationMock, actions }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -642,9 +618,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webViewNotificationMock, actions, content }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -679,9 +654,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webPageNotificationMock, actions, content }}
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -699,9 +673,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'ios-lockscreen'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -726,9 +699,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, attachments }}
-        applicationId=""
         variant={'ios-lockscreen'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -746,9 +718,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'ios-lockscreen-expanded'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -774,9 +745,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, attachments }}
-        applicationId=""
         variant={'ios-lockscreen-expanded'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -796,9 +766,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -816,9 +785,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={rateNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -836,9 +804,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webViewNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -856,9 +823,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={html5VideoNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -876,9 +842,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={imageNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -902,9 +867,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={inAppBrowserNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -928,9 +892,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -948,9 +911,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={mapNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -968,9 +930,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={passbookNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -988,9 +949,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={appRecommendationNotificationMock}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1026,9 +986,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1058,9 +1017,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1088,9 +1046,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...passbookNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1118,9 +1075,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...imageNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1148,9 +1104,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...imageNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1178,9 +1133,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...mapNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1220,9 +1174,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webPageNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1262,9 +1215,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webPageNotificationMock, actions }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1299,9 +1251,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webViewNotificationMock, actions, content }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1336,9 +1287,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webPageNotificationMock, actions, content }}
-        applicationId=""
         variant={'ios-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1356,9 +1306,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'web-desktop-macos'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1392,9 +1341,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webViewNotificationMock, actions }}
-        applicationId=""
         variant={'web-desktop-macos'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1443,9 +1391,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...alertNotificationMock, actions, attachments }}
-        applicationId=""
         variant={'web-desktop-macos'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1471,9 +1418,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1491,9 +1437,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webViewNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1511,9 +1456,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={html5VideoNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1531,9 +1475,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={imageNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1551,9 +1494,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1571,9 +1513,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={mapNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1591,9 +1532,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={inAppBrowserNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1609,9 +1549,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={rateNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1627,9 +1566,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={appRecommendationNotificationMock}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1663,9 +1601,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webViewNotificationMock, actions }}
-        applicationId=""
         variant={'web-android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1685,9 +1622,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={alertNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1705,9 +1641,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webViewNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1725,9 +1660,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={html5VideoNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1745,9 +1679,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={imageNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1765,9 +1698,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1785,9 +1717,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={mapNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1805,9 +1736,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={inAppBrowserNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1823,9 +1753,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={rateNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1841,9 +1770,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={appRecommendationNotificationMock}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1877,9 +1805,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={{ ...webViewNotificationMock, actions }}
-        applicationId=""
         variant={'web-iphone-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1899,9 +1826,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={invalidNotificationMock} // has invalid type
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 
@@ -1931,9 +1857,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
-        applicationId=""
+        serviceKey="123"
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
       />,
     );
 
@@ -1959,9 +1884,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
-        applicationId=""
+        serviceKey="123"
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
       />,
     );
 
@@ -1989,10 +1913,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Request webshot mock
-      if (
-        url ===
-        'https://push-test.notifica.re/webshot?apiKey=3c8da54de0ba4d09f7de52c5a349e632d4f51d670456c58e1eb8779467aacf17'
-      ) {
+      if (url === 'https://push-test.notifica.re/webshot?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -2001,10 +1922,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Check webshot request status mock
-      if (
-        url ===
-        'https://push-test.notifica.re/webshot/1?apiKey=3c8da54de0ba4d09f7de52c5a349e632d4f51d670456c58e1eb8779467aacf17'
-      ) {
+      if (url === 'https://push-test.notifica.re/webshot/1?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -2017,10 +1935,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Get webshot mock
-      if (
-        url ===
-        'https://push-test.notifica.re/webshot/1/result?apiKey=3c8da54de0ba4d09f7de52c5a349e632d4f51d670456c58e1eb8779467aacf17'
-      ) {
+      if (url === 'https://push-test.notifica.re/webshot/1/result?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -2036,9 +1951,8 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         showControls={false}
         notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
-        applicationId=""
         variant={'android-app-ui'}
-        configKeys={configKeysMock}
+        serviceKey="123"
       />,
     );
 

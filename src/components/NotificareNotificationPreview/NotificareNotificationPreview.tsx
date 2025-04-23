@@ -2,26 +2,25 @@ import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useEffect, useState } from 'react';
 import { ZodIssue } from 'zod';
-import { AuthProvider } from '../../internal/NotificareNotificationPreview/components/AuthProvider/AuthProvider';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
+import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
+import LoadingIcon from '../../internal/NotificareNotificationPreview/components/shared-components/LoadingIcon/LoadingIcon';
 import { NotificationPreviewVariant } from '../../internal/NotificareNotificationPreview/models/notification-preview-variant';
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
 import { NotificareApplication } from './models/notificare-application';
 import { NotificareNotification } from './models/notificare-notification';
-import { NotificareNotificationConfigKeys } from './models/notificare-notification-config';
 import { NotificareNotificationVariant } from './models/notificare-notification-variant';
 
 const defaultApplication: NotificareApplication = {
   name: 'My App',
-  appStoreId: '1631845803',
-  androidPackageName: 're.notifica.sample.app',
+  androidPackageName: 'com.example.app',
   websitePushConfig: {
     icon: '/website-push/07ef418649d1338ff6881d1efddaa32179f5150e0c6dabea9a78a10e6798c84e/3420c494d8076c07dd761fdc8521b71f884c7be0a1333073803c89d6e7b2eda2',
   },
-  allowedDomains: ['https://sample-app.notificare.com/'],
+  allowedDomains: ['https://my-app.com/'],
 };
 
 export default function NotificareNotificationPreview({
@@ -29,16 +28,17 @@ export default function NotificareNotificationPreview({
   applicationId,
   showControls = false,
   variant,
-  configKeys = { serviceKey: '', googleMapsApiKey: '' },
+  serviceKey,
+  googleMapsAPIKey,
 }: NotificareNotificationPreviewProps) {
   const [application, setApplication] = useState<NotificareApplication>();
 
   useEffect(() => {
-    if (applicationId) {
-      (async function fetchApplicationData() {
+    (async function fetchApplicationData() {
+      if (applicationId) {
         try {
           const response = await fetch(
-            `https://push-test.notifica.re/application/${applicationId}/info?apiKey=${configKeys.serviceKey}`,
+            `https://push.notifica.re/application/${applicationId}/info?apiKey=${serviceKey}`,
           );
           const data = await response.json();
           const application = data.application;
@@ -50,14 +50,14 @@ export default function NotificareNotificationPreview({
             setApplication(application);
           }
         } catch (error) {
-          console.error('Error fetching the application', error);
+          console.error('Error fetching the application: ', error);
           setApplication(defaultApplication);
         }
-      })();
-    } else {
-      setApplication(defaultApplication);
-    }
-  }, [applicationId, configKeys.serviceKey]);
+      } else {
+        setApplication(defaultApplication);
+      }
+    })();
+  }, [applicationId, serviceKey]);
 
   const notificationPreviewVariants = new Map<
     NotificareNotificationPreviewProps['variant'],
@@ -102,26 +102,26 @@ export default function NotificareNotificationPreview({
     showNotificationErrors(notificationResult.error.errors);
   }
 
-  if (application) {
-    return (
-      <AuthProvider configKeys={configKeys}>
-        <div className="notificare">
-          <div className="notificare__notification-previews-wrapper">
-            {showControls && (
-              <Controls
-                platform={platform}
-                mobileVariant={mobileVariant}
-                webDevice={webDevice}
-                webMobileType={webMobileType}
-                webDesktopOS={webDesktopOS}
-                setPlatform={setPlatform}
-                setMobileVariant={setMobileVariant}
-                setWebDesktopOS={setWebDesktopOS}
-                setWebDevice={setWebDevice}
-                setWebMobileType={setWebMobileType}
-              />
-            )}
+  return (
+    <OptionsProvider options={{ serviceKey, googleMapsAPIKey }}>
+      <div className="notificare">
+        <div className="notificare__notification-previews-wrapper">
+          {showControls && (
+            <Controls
+              platform={platform}
+              mobileVariant={mobileVariant}
+              webDevice={webDevice}
+              webMobileType={webMobileType}
+              webDesktopOS={webDesktopOS}
+              setPlatform={setPlatform}
+              setMobileVariant={setMobileVariant}
+              setWebDesktopOS={setWebDesktopOS}
+              setWebDevice={setWebDevice}
+              setWebMobileType={setWebMobileType}
+            />
+          )}
 
+          {application ? (
             <div className="notificare__notification-preview">
               {notificationResult.success ? (
                 <>
@@ -156,11 +156,13 @@ export default function NotificareNotificationPreview({
                 <NotificareNotificationPreviewError />
               )}
             </div>
-          </div>
+          ) : (
+            <LoadingIcon />
+          )}
         </div>
-      </AuthProvider>
-    );
-  }
+      </div>
+    </OptionsProvider>
+  );
 }
 
 /**
@@ -170,14 +172,16 @@ export default function NotificareNotificationPreview({
  * @param {string} applicationId - The unique identifier of a Notificare application (optional).
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
  * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
- * @param {NotificareNotificationConfigKeys} [configKeys] - Configuration keys required for some API requests (optional).
+ * @property {string} [serviceKey] - A service key provided by a Notificare admin.
+ * @property {string} [googleMapsApiKey] - A Google Maps API key (optional).
  */
 interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   applicationId?: string;
   showControls?: boolean;
   variant: NotificareNotificationVariant;
-  configKeys?: NotificareNotificationConfigKeys;
+  serviceKey: string;
+  googleMapsAPIKey?: string;
 }
 
 function NotificareNotificationPreviewError() {
