@@ -14,25 +14,25 @@ export default function ToggleGroup<T extends string | undefined>({
   }, []);
 
   return (
-    <div className="notificare__preview-controls-toggle-group">
-      <p className="notificare__preview-controls-toggle-group-label"> {label} </p>
-      <div className="notificare__preview-controls-toggle-group-options">
+    <div className="notificare__push__preview-controls-toggle-group">
+      <p className="notificare__push__preview-controls-toggle-group-label"> {label} </p>
+      <div className="notificare__push__preview-controls-toggle-group-options">
         {options.map((option, index) => (
           <Fragment key={option.key}>
             <button
-              className={`notificare__preview-controls-toggle-group-option ${selected === option.key && 'notificare__preview-controls-toggle-group-option--selected'}`}
+              className={`notificare__push__preview-controls-toggle-group-option ${selected === option.key ? 'notificare__push__preview-controls-toggle-group-option--selected' : ''}`}
               onClick={() => setSelected(option.key)}
               aria-label={`Button with option '${option.key}'`}
               data-testid={`toggle-option-${option.key}`}
             >
               <div
-                className={`notificare__preview-controls-toggle-group-option-icon ${selected === option.key && 'notificare__preview-controls-toggle-group-option-icon--selected'}`}
+                className={`notificare__push__preview-controls-toggle-group-option-icon ${selected === option.key ? 'notificare__push__preview-controls-toggle-group-option-icon--selected' : ''}`}
               >
                 {option.icon}
               </div>
             </button>
             {index !== options.length - 1 && (
-              <div className="notificare__preview-controls-toggle-group-divisor" />
+              <div className="notificare__push__preview-controls-toggle-group-divisor" />
             )}
           </Fragment>
         ))}

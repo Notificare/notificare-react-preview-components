@@ -1,4 +1,4 @@
-.notificare .notificare__android-app-ui-navigation-bar {
+.notificare .notificare__push__android__app-ui__navigation-bar {
     display: flex;
     width: 338px;
     height: 45px;
@@ -8,12 +8,12 @@
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 
-.notificare .notificare__android-app-ui-navigation-bar-arrow-icon {
+.notificare .notificare__push__android__app-ui__navigation-bar-arrow-icon {
     margin-right: 20px;
     height: 24px;
 }
 
-.notificare .notificare__android-app-ui-navigation-bar-title {
+.notificare .notificare__push__android__app-ui__navigation-bar-title {
     width: 100%;
     font-size: 18px;
     font-weight: 700;
@@ -22,7 +22,7 @@
     white-space: nowrap;
 }
 
-.notificare .notificare__android-app-ui-navigation-bar-options-button {
+.notificare .notificare__push__android__app-ui__navigation-bar-options-button {
     margin-left: auto;
     height: 24px;
 }

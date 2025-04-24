@@ -1,4 +1,4 @@
-.notificare .notificare__android-lock-screen-notification {
+.notificare .notificare__push__android__lock-screen {
   position: absolute;
   font-family: 'Roboto', sans-serif;
   background-color: #f2f4f6;
@@ -13,14 +13,13 @@
   top: 40px;
 }
 
-.notificare .notificare__android-lock-screen-notification-wrapper {
+.notificare .notificare__push__android__lock-screen__wrapper {
   position: relative;
-
 }
 
 /* App Icon */
 
-.notificare .notificare__android-lock-screen-notification-app-icon {
+.notificare .notificare__push__android__lock-screen__app-icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,37 +29,37 @@
   overflow: hidden;
 }
 
-.notificare .notificare__android-lock-screen-notification-app-icon-image {
+.notificare .notificare__push__android__lock-screen__app-icon-image {
   width: 100%;
 }
 
 /* Text Content */
 
-.notificare .notificare__android-lock-screen-notification-text-content {
+.notificare .notificare__push__android__lock-screen__text-content {
   display: flex;
   flex-direction: column;
   row-gap: 2px;
 }
 
-.notificare .notificare__android-lock-screen-notification-text-content-top {
+.notificare .notificare__push__android__lock-screen__text-content-top {
   display: flex;
   column-gap: 5px;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.notificare .notificare__android-lock-screen-notification-title-and-subtitle {
+.notificare .notificare__push__android__lock-screen__title-and-subtitle {
   display: flex;
   overflow: hidden;
   column-gap: 6px;
   max-width: 223px;
 }
 
-.notificare .notificare__android-lock-screen-notification-title-and-subtitle--has-media {
+.notificare .notificare__push__android__lock-screen__title-and-subtitle--has-media {
   max-width: 160px;
 }
 
-.notificare .notificare__android-lock-screen-notification-text {
+.notificare .notificare__push__android__lock-screen__text {
   margin-top: 0;
   margin-bottom: 0;
   white-space: nowrap;
@@ -68,41 +67,41 @@
   text-overflow: ellipsis;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--title {
+.notificare .notificare__push__android__lock-screen__text--title {
   font-weight: 700;
   font-size: 14px;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--expanded-title {
+.notificare .notificare__push__android__lock-screen__text--expanded-title {
   font-weight: 700;
   font-size: 14px;
   margin-top: 5px;
   width: 223px;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--subtitle {
+.notificare .notificare__push__android__lock-screen__text--subtitle {
   color: #64706e;
   font-size: 12px;
   font-weight: 400;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--time {
+.notificare .notificare__push__android__lock-screen__text--time {
   color: #64706e;
   font-size: 12px;
   font-weight: 400;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--message-without-media {
+.notificare .notificare__push__android__lock-screen__text--message-without-media {
   font-size: 14px;
   width: 252px;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--message-with-media {
+.notificare .notificare__push__android__lock-screen__text--message-with-media {
   font-size: 14px;
   width: 191px;
 }
 
-.notificare .notificare__android-lock-screen-notification-text--expanded-message {
+.notificare .notificare__push__android__lock-screen__text--expanded-message {
   font-size: 14px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -114,23 +113,23 @@
 
 /* Media */
 
-.notificare .notificare__android-lock-screen-notification-media {
+.notificare .notificare__push__android__lock-screen__media {
   display: flex;
   width: 50px;
 }
 
-.notificare .notificare__android-lock-screen-notification-media-image {
+.notificare .notificare__push__android__lock-screen__media-image {
   width: 50px;
   border-radius: 5px;
   object-fit: cover;
 }
 
-.notificare .notificare__android-lock-screen-notification-expanded-media {
+.notificare .notificare__push__android__lock-screen__expanded-media {
   margin-top: 5px;
   width: 252px;
 }
 
-.notificare .notificare__android-lock-screen-notification-expanded-media-image {
+.notificare .notificare__push__android__lock-screen__expanded-media-image {
   width: 100%;
   max-height: 168px;
   border-radius: 15px;

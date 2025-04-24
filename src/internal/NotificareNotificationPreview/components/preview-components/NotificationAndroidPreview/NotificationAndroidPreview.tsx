@@ -22,7 +22,7 @@ export function NotificationAndroidPreview({
 }: NotificationAndroidPreviewProps) {
   return (
     <AndroidPhoneBackground theme={getTheme(notification.type, mobileVariant)}>
-      <div className="notificare__android-preview">
+      <div className="notificare__push__android__preview">
         {(mobileVariant === 'lockscreen' || mobileVariant === 'lockscreen-expanded') && (
           <LockScreenNotification
             notification={notification}

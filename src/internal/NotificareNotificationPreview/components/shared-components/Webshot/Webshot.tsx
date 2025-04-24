@@ -72,7 +72,7 @@ export default function Webshot({
   }, [url]);
 
   return (
-    <div className="notificare__webshot-background" style={{ width: width, height: height }}>
+    <div className="notificare__push__webshot-background" style={{ width: width, height: height }}>
       {hasError ? (
         <PreviewError />
       ) : isLoading || !canShow ? (
@@ -86,7 +86,7 @@ export default function Webshot({
 
 interface WebshotProps {
   url: string;
-  platform: 'Android' | 'iOS';
+  platform: 'Android' | 'iOS' | 'Web';
   width: number;
   height: number;
   onLoadingChange?: (isLoading: boolean) => void;

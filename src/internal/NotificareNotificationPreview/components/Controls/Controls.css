@@ -1,4 +1,4 @@
-.notificare .notificare__preview-controls {
+.notificare .notificare__push__preview-controls {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,18 +6,18 @@
     row-gap: 14px;
 }
 
-.notificare .notificare__preview-controls-preview {
+.notificare .notificare__push__preview-controls-preview {
     margin-top: 14px;
 }
 
-.notificare .notificare__preview-controls-toggle-groups {
+.notificare .notificare__push__preview-controls-toggle-groups {
     display: flex;
     align-items: center;
     column-gap: 30px;
     align-self: start;
 }
 
-.notificare .notificare__preview-controls-toggle-group-divider {
+.notificare .notificare__push__preview-controls-toggle-group-divider {
     width: 20px;
     height: 20px;
     animation: fadeIn 0.3s ease-out;

@@ -1,4 +1,4 @@
-.notificare .notificare__ios-app-ui-images-rich-content {
+.notificare .notificare__push__ios__image__app-ui__rich-content {
     display: flex;
     align-items: center;
     width: 100%;
@@ -6,7 +6,7 @@
     background-color: white;
 }
 
-.notificare .notificare__ios-app-ui-image-slider {
+.notificare .notificare__push__ios__image__app-ui__slider {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -14,11 +14,11 @@
     scrollbar-width: none; /* Hide in Firefox */
 }
 
-.notificare .notificare__ios-app-ui-image-slider::-webkit-scrollbar {
+.notificare .notificare__push__ios__image__app-ui__slider::-webkit-scrollbar {
     display: none; /* Hide in Chrome and Safari */
 }
 
-.notificare .notificare__ios-app-ui-image-slider-item {
+.notificare .notificare__push__ios__image__app-ui__slider-item {
     display: flex;
     min-width: 100%;
     scroll-snap-align: start;

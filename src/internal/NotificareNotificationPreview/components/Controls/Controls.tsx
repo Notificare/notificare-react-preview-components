@@ -20,14 +20,6 @@ export default function Controls({
 
   const platforms: OptionsGroup<typeof platform>[] = [
     {
-      key: 'ios',
-      icon: (
-        <svg key="iOS Icon" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-          <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-        </svg>
-      ) as ReactNode,
-    },
-    {
       key: 'android',
       icon: (
         <svg
@@ -37,6 +29,14 @@ export default function Controls({
           viewBox="0 0 576 512"
         >
           <path d="M420.6 301.9a24 24 0 1 1 24-24 24 24 0 0 1 -24 24m-265.1 0a24 24 0 1 1 24-24 24 24 0 0 1 -24 24m273.7-144.5 47.9-83a10 10 0 1 0 -17.3-10h0l-48.5 84.1a301.3 301.3 0 0 0 -246.6 0L116.2 64.5a10 10 0 1 0 -17.3 10h0l47.9 83C64.5 202.2 8.2 285.6 0 384H576c-8.2-98.5-64.5-181.8-146.9-226.6" />
+        </svg>
+      ) as ReactNode,
+    },
+    {
+      key: 'ios',
+      icon: (
+        <svg key="iOS Icon" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+          <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
         </svg>
       ) as ReactNode,
     },
@@ -76,14 +76,6 @@ export default function Controls({
 
   const webMobileTypes: OptionsGroup<typeof webMobileType>[] = [
     {
-      key: 'iphone',
-      icon: (
-        <svg key="iOS Icon" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-          <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-        </svg>
-      ) as ReactNode,
-    },
-    {
       key: 'android',
       icon: (
         <svg key="iOS Icon" width="22px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -91,13 +83,21 @@ export default function Controls({
         </svg>
       ) as ReactNode,
     },
+    {
+      key: 'iphone',
+      icon: (
+        <svg key="iOS Icon" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+          <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+        </svg>
+      ) as ReactNode,
+    },
   ];
 
   return (
-    <div className="notificare__preview-controls" data-testid="controls">
+    <div className="notificare__push__preview-controls" data-testid="controls">
       {/* Toggle Groups */}
 
-      <div className="notificare__preview-controls-toggle-groups">
+      <div className="notificare__push__preview-controls-toggle-groups">
         <ToggleGroup
           label="Platform"
           options={platforms.map((platform) => platform)}
@@ -108,7 +108,7 @@ export default function Controls({
         {platform === 'web' && (
           <>
             <ToggleGroup
-              label="Device"
+              label="Form Factor"
               options={webDevices.map((webDevice) => webDevice)}
               selected={webDevice}
               setSelected={setWebDevice}

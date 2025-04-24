@@ -24,7 +24,7 @@ export default function VideoRichContent({ videoData, width, height }: VideoRich
   ) {
     return (
       <iframe
-        className="notificare__video-rich-content"
+        className="notificare__push__video-rich-content"
         src={getVideoUrl()}
         sandbox="allow-scripts allow-same-origin"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -35,7 +35,7 @@ export default function VideoRichContent({ videoData, width, height }: VideoRich
   } else {
     return (
       <video
-        className="notificare__video-rich-content"
+        className="notificare__push__video-rich-content"
         width={width}
         height={height}
         autoPlay

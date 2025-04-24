@@ -1,4 +1,4 @@
-.notificare .notificare__ios-app-ui-title-bar {
+.notificare .notificare__push__ios__app-ui__title-bar {
     display: flex;
     align-items: center;
     width: 100%;
@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.notificare .notificare__ios-app-ui-title-bar-text {
+.notificare .notificare__push__ios__app-ui__title-bar-text {
     padding: 11px 25px;
     font-size: 14px;
     font-weight: 700;
@@ -22,7 +22,7 @@
     transform: translateX(-50%);
 }
 
-.notificare .notificare__ios-app-ui-title-bar-options-button {
+.notificare .notificare__push__ios__app-ui__title-bar-options-button {
     width: 20px;
     margin-left: auto;
     margin-right: 12px;

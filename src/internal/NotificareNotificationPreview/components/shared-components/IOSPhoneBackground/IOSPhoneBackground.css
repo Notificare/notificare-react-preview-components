@@ -1,4 +1,4 @@
-.notificare .notificare__ios-phone-background {
+.notificare .notificare__push__ios__phone-background {
     width: 350px;
     border-radius: 40px;
     border: 6px solid #c6c6c6;
@@ -6,12 +6,12 @@
     overflow: hidden;
 }
 
-.notificare .notificare__ios-phone-background--dark {
+.notificare .notificare__push__ios__phone-background--dark {
     background-color: #9ea2a1;
     border-color: #dfdfdf;
 }
 
-.notificare .notificare__ios-phone-background-camera {
+.notificare .notificare__push__ios__phone-background-camera {
     width: 80px;
     height: 20px;
     background: #c6c6c6;
@@ -19,7 +19,7 @@
     border-radius: 20px;
 }
 
-.notificare .notificare__ios-phone-background-content {
+.notificare .notificare__push__ios__phone-background-content {
     width: 100%;
     height: 615px;
     overflow: hidden;

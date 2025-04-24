@@ -45,20 +45,20 @@ export default function WebMobileAppUINotification({
     notification.type === 're.notifica.notification.Image'
   ) {
     return (
-      <div className="notificare__web-mobile-app-ui-notification">
-        <div className="notificare__web-mobile-app-ui-notification-background">
-          <div className="notificare__web-mobile-app-ui-notification-header">
+      <div className="notificare__web__phone__app-ui">
+        <div className="notificare__web__phone__app-ui__background">
+          <div className="notificare__web__phone__app-ui__header">
             <img
-              className="notificare__web-mobile-app-ui-notification-app-icon"
+              className="notificare__web__phone__app-ui__app-icon"
               src={appIcon}
               alt="App icon"
             />
-            <p className="notificare__web-mobile-app-ui-notification-app-name">{appName}</p>
-            <button className="notificare__web-mobile-app-ui-notification-close-button">
+            <p className="notificare__web__phone__app-ui__app-name">{appName}</p>
+            <button className="notificare__web__phone__app-ui__close-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
-                className="notificare__web-mobile-app-ui-notification-close-button-icon"
+                className="notificare__web__phone__app-ui__close-button-icon"
               >
                 <path d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"></path>
               </svg>
@@ -69,20 +69,18 @@ export default function WebMobileAppUINotification({
             <div data-testid="web-mobile-app-ui-text-alert-notification">
               {hasFirstAttachment(notification) && (
                 <img
-                  className="notificare__web-mobile-app-ui-notification-media"
+                  className="notificare__web__phone__alert__app-ui__media"
                   src={notification.attachments?.[0].uri}
                   alt="Notification attachment"
                 />
               )}
 
               <div>
-                <p className="notificare__web-mobile-app-ui-notification-title">
-                  {notification.title}
-                </p>
-                <p className="notificare__web-mobile-app-ui-notification-subtitle">
+                <p className="notificare__web__phone__alert__app-ui__title">{notification.title}</p>
+                <p className="notificare__web__phone__alert__app-ui__subtitle">
                   {notification.subtitle}
                 </p>
-                <p className="notificare__web-mobile-app-ui-notification-message">
+                <p className="notificare__web__phone__alert__app-ui__message">
                   {notification.message}
                 </p>
               </div>
@@ -91,7 +89,7 @@ export default function WebMobileAppUINotification({
 
           {notification.type === 're.notifica.notification.WebView' && (
             <iframe
-              className="notificare__web-mobile-app-ui-notification-web-view-content"
+              className="notificare__web__phone__web-view__app-ui__content"
               srcDoc={notification.content[0].data}
               sandbox="allow-same-origin"
               data-testid="web-mobile-app-ui-web-view-notification"
@@ -122,7 +120,7 @@ export default function WebMobileAppUINotification({
 
           {notification.type == 're.notifica.notification.URL' && (
             <iframe
-              className="notificare__web-mobile-app-ui-notification-url"
+              className="notificare__web__phone__url__app-ui__url-text"
               src={notification.content[0].data}
               data-testid="web-mobile-app-ui-url-notification"
             />
@@ -136,13 +134,13 @@ export default function WebMobileAppUINotification({
 
           {notification.type === 're.notifica.notification.Image' && (
             <div
-              className="notificare__web-mobile-app-ui-notification-image-slider"
+              className="notificare__web__phone__image__app-ui__image-slider"
               data-testid="web-mobile-app-ui-image-notification"
             >
               {notification.content.map((image, index) => (
                 <img
                   key={index}
-                  className="notificare__web-mobile-app-ui-notification-image-slider-item"
+                  className="notificare__web__phone__image__app-ui__image-slider-item"
                   src={image.data}
                   alt="Slider image"
                 />
@@ -152,12 +150,12 @@ export default function WebMobileAppUINotification({
 
           {notification.actions && (
             <div
-              className={`${notification.actions.length >= 3 ? 'notificare__web-mobile-app-ui-notification-actions-column' : 'notificare__web-mobile-app-ui-notification-actions-row'}`}
+              className={`${notification.actions.length >= 3 ? 'notificare__web__phone__app-ui__actions-column' : 'notificare__web__phone__app-ui__actions-row'}`}
             >
               {notification.actions.map((action, index) => (
                 <button
                   key={index}
-                  className={`notificare__web-mobile-app-ui-notification-action ${index === 0 ? 'notificare__web-mobile-app-ui-notification-action--primary' : 'notificare__web-mobile-app-ui-notification-action--secondary'}`}
+                  className={`notificare__web__phone__app-ui__action ${index === 0 ? 'notificare__web__phone__app-ui__action--primary' : 'notificare__web__phone__app-ui__action--secondary'}`}
                   data-testid={`web-mobile-app-ui-action-${index}`}
                 >
                   {action.label}

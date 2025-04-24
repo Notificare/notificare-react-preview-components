@@ -11,12 +11,12 @@ export default function ImagesNotification({ notification, appName }: ImagesNoti
         title={notification.title}
         showOptions={hasActions(notification)}
       />
-      <div className="notificare__android-app-ui-images-rich-content">
-        <div className="notificare__android-app-ui-image-slider">
+      <div className="notificare__push__android__image__app-ui__rich-content">
+        <div className="notificare__push__android__image__app-ui__image-slider">
           {notification.content.map((image, index) => (
             <img
               key={index}
-              className="notificare__android-app-ui-image-slider-item"
+              className="notificare__push__android__image__app-ui__image-slider-item"
               src={image.data}
               alt="Slider image"
             />

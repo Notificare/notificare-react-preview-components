@@ -18,7 +18,7 @@ export default function DigitalCardNotification({
 
       <Webshot
         url={`https://push.notifica.re/pass/web/${notification.content[0].data.split('/')[5]}`}
-        platform="iOS"
+        platform="Web"
         width={338}
         height={566}
       />

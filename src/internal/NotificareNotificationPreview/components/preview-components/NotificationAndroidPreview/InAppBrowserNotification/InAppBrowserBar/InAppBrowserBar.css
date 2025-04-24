@@ -1,4 +1,4 @@
-.notificare .notificare__android-app-ui-in-app-browser-bar {
+.notificare .notificare__push__android__in-app-browser__app-ui__bar {
     display: flex;
     width: 334px;
     height: 45px;
@@ -7,38 +7,38 @@
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-bar-x-mark-icon {
+.notificare .notificare__push__android__in-app-browser__app-ui__x-mark-icon {
     margin-right: 20px;
     height: 24px;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-bar-lock-icon {
+.notificare .notificare__push__android__in-app-browser__app-ui__bar-lock-icon {
     margin-right: 7px;
     height: 14px;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-loading-icon {
+.notificare .notificare__push__android__in-app-browser__app-ui__loading-icon {
     margin-right: 7px;
     height: 14px;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-bar-domain {
+.notificare .notificare__push__android__in-app-browser__app-ui__bar-domain {
     display: flex;
     flex-direction: column;
     flex: 1;
     min-width: 0;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-bar-text {
+.notificare .notificare__push__android__in-app-browser__app-ui__bar-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-bar-text--title {
+.notificare .notificare__push__android__in-app-browser__app-ui__bar-text--title {
     font-size: 14px;
 }
 
-.notificare .notificare__android-app-ui-in-app-browser-bar-text--url {
+.notificare .notificare__push__android__in-app-browser__app-ui__bar-text--url {
     font-size: 12px;
 }

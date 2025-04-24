@@ -2,9 +2,9 @@ import './LoadingIcon.css';
 
 export default function LoadingIcon() {
   return (
-    <div className="notificare__webshot-loading-icon" data-testid="loading-icon">
+    <div className="notificare__push__webshot-loading-icon" data-testid="loading-icon">
       <svg
-        className="notificare__webshot-loading-icon-svg"
+        className="notificare__push__webshot-loading-icon-svg"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
       >

@@ -1,6 +1,6 @@
 /* Preview Wrapper */
 
-.notificare .notificare__web-macos {
+.notificare .notificare__push__web__desktop__lock-screen {
   position: relative;
   background-color: #f4f4f4;
   width: 340px;
@@ -13,7 +13,7 @@
 
 /* Expand Button */
 
-.notificare .notificare__web-macos-expand-button-container {
+.notificare .notificare__push__web__desktop__lock-screen__expand-button-container {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -22,7 +22,7 @@
 
 /* --- MAIN CONTENT --- */
 
-.notificare .notificare__web-macos-main-content {
+.notificare .notificare__push__web__desktop__lock-screen__main-content {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -32,13 +32,13 @@
 
 /* Browser Icon */
 
-.notificare .notificare__web-macos-browser-icon {
+.notificare .notificare__push__web__desktop__lock-screen__browser-icon {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.notificare .notificare__web-macos-browser-icon-background {
+.notificare .notificare__push__web__desktop__lock-screen__browser-icon-background {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 4px;
@@ -47,17 +47,17 @@
   align-items: center;
 }
 
-.notificare .notificare__web-macos-browser-icon-image {
+.notificare .notificare__push__web__desktop__lock-screen__browser-icon-image {
   width: 30px;
 }
 
 /* Text */
 
-.notificare .notificare__web-macos-text-content {
+.notificare .notificare__push__web__desktop__lock-screen__text-content {
   width: 219px;
 }
 
-.notificare .notificare__web-macos-text {
+.notificare .notificare__push__web__desktop__lock-screen__text {
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
@@ -66,16 +66,16 @@
   margin-bottom: 0;
 }
 
-.notificare .notificare__web-macos-text--title {
+.notificare .notificare__push__web__desktop__lock-screen__text--title {
   font-weight: 700;
 }
 
-.notificare .notificare__web-macos-text--domain {
+.notificare .notificare__push__web__desktop__lock-screen__text--domain {
   font-weight: 700;
   margin-top: 2px;
 }
 
-.notificare .notificare__web-macos-text--message {
+.notificare .notificare__push__web__desktop__lock-screen__text--message {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   word-break: break-word;
@@ -86,7 +86,7 @@
   transition: height 0.3s ease-in-out;
 }
 
-.notificare .notificare__web-macos-text--expandable-message {
+.notificare .notificare__push__web__desktop__lock-screen__text--expandable-message {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   word-break: break-word;
@@ -98,7 +98,7 @@
 
 /* Small Media */
 
-.notificare .notificare__web-macos-small-media {
+.notificare .notificare__push__web__desktop__lock-screen__small-media {
   position: absolute;
   display: flex;
   justify-content: flex-end;
@@ -113,28 +113,28 @@
 
 /* Expanded Media */
 
-.notificare .notificare__web-macos-expanded-media {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-media {
   width: 100%;
   display: block;
 }
 
 /* Time */
 
-.notificare .notificare__web-macos-time-container {
+.notificare .notificare__push__web__desktop__lock-screen__time-container {
   position: absolute;
   top: 8px;
   right: 14px;
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-.notificare .notificare__web-macos-time {
+.notificare .notificare__push__web__desktop__lock-screen__time {
   font-size: 12px;
   color: #64706e;
 }
 
 /* SETTINGS */
 
-.notificare .notificare__web-macos-settings-button-container {
+.notificare .notificare__push__web__desktop__lock-screen__settings-button-container {
   position: absolute;
   bottom: 10px;
   right: 14px;
@@ -143,7 +143,7 @@
 
 /* Settings Button */
 
-.notificare .notificare__web-macos-settings-button {
+.notificare .notificare__push__web__desktop__lock-screen__settings-button {
   min-width: 70px;
   display: flex;
   background-color: #d6d6d6;
@@ -157,7 +157,7 @@
   position: relative;
 }
 
-.notificare .notificare__web-macos-settings-button-expand-icon {
+.notificare .notificare__push__web__desktop__lock-screen__settings-button-expand-icon {
   width: 9px;
   margin-left: 4px;
   color: #000000;
@@ -165,7 +165,7 @@
 
 /* Settings Selector */
 
-.notificare .notificare__web-macos-settings-selector {
+.notificare .notificare__push__web__desktop__lock-screen__settings-selector {
   background-color: #eaeaea;
   border-radius: 7px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -178,7 +178,7 @@
   right: 0;
 }
 
-.notificare .notificare__web-macos-settings-selector-option {
+.notificare .notificare__push__web__desktop__lock-screen__settings-selector-option {
   min-width: 70px;
   background-color: transparent;
   border-radius: 7px;
@@ -188,26 +188,26 @@
   flex: 1;
 }
 
-.notificare .notificare__web-macos-settings-selector-option:hover {
+.notificare .notificare__push__web__desktop__lock-screen__settings-selector-option:hover {
   background-color: #3b82f6;
   color: #fff;
 }
 
 /* Expanded Options - Actions & Settings */
 
-.notificare .notificare__web-macos-expanded-content {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-content {
   padding: 0 14px 14px;
   width: 100%;
 }
 
-.notificare .notificare__web-macos-expanded-divisor {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-divisor {
   border: none;
   border-top: 1px solid #d6d6d6;
   width: 102%;
   margin-left: -1%;
 }
 
-.notificare .notificare__web-macos-expanded-button {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-button {
   font-size: 14px;
   border-radius: 7px;
   width: 100%;
@@ -216,16 +216,16 @@
   background-color: transparent;
 }
 
-.notificare .notificare__web-macos-expanded-button:hover {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-button:hover {
   background-color: #efefef;
 }
 
-.notificare .notificare__web-macos-expanded-buttons-divisor {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-buttons-divisor {
   border: none;
   border-top: 1px solid #d6d6d6;
 }
 
-.notificare .notificare__web-macos-expanded-buttons-divisor--transparent {
+.notificare .notificare__push__web__desktop__lock-screen__expanded-buttons-divisor--transparent {
   border-top: 1px solid transparent;
 }
 
