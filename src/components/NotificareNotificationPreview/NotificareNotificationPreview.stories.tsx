@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import NotificareNotificationPreview from './NotificareNotificationPreview';
 
 const meta: Meta<typeof NotificareNotificationPreview> = {
@@ -18,7 +18,7 @@ const serviceKey = import.meta.env.VITE_SERVICE_KEY;
 // @ts-expect-error import.meta.env is not being detected
 const googleMapsAPIKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-/* Invalid Notification OR Application */
+/* Invalid Notification */
 
 export const InvalidNotification = Template.bind({});
 InvalidNotification.args = {
@@ -34,59 +34,10 @@ InvalidNotification.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-lockscreen',
   showControls: true,
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
-};
-
-export const InvalidApplication = Template.bind({});
-InvalidApplication.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message',
-  },
-  application: {
-    name: '', // invalid app name
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
-  variant: 'ios-lockscreen',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const InvalidNotificationAndApplication = Template.bind({});
-InvalidNotificationAndApplication.args = {
-  notification: {
-    type: 'invalid-type', // has an invalid type
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message',
-    attachments: [
-      {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
-        mimeType: 'image/jpeg',
-      },
-    ],
-  },
-  application: {
-    name: '', // invalid app name
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
-  variant: 'ios-lockscreen',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
 };
 
 /* iOS Lock Screen */
@@ -104,11 +55,6 @@ IOSLockScreenWithMedia.args = {
         mimeType: 'image/jpeg',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   serviceKey: serviceKey,
@@ -130,11 +76,6 @@ IOSLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-lockscreen-expanded',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -148,11 +89,6 @@ IOSLockScreenWithoutMedia.args = {
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-lockscreen',
   serviceKey: serviceKey,
@@ -176,11 +112,6 @@ AndroidLockScreenWithMedia.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-lockscreen',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -194,11 +125,6 @@ AndroidLockScreenWithoutMedia.args = {
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-lockscreen',
   serviceKey: serviceKey,
@@ -220,11 +146,6 @@ AndroidLockScreenWithMediaExpanded.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-lockscreen',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -238,11 +159,6 @@ AndroidLockScreenWithoutMediaExpanded.args = {
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-lockscreen-expanded',
   serviceKey: serviceKey,
@@ -259,11 +175,6 @@ AndroidAppUITextAlert.args = {
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -293,11 +204,6 @@ AndroidAppUITextAlertWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -311,11 +217,6 @@ AndroidAppUIRate.args = {
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -336,11 +237,6 @@ AndroidAppUIWebView.args = {
         data: '<p>Example</p>',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -376,11 +272,6 @@ AndroidAppUIWebViewWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -415,11 +306,6 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -439,11 +325,6 @@ AndroidAppUI_HTML5Video.args = {
         data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -465,11 +346,6 @@ AndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -489,11 +365,6 @@ AndroidAppUIYouTubeVideo.args = {
         data: '3t_EN-HZVLw',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -519,11 +390,6 @@ AndroidAppUIImage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -544,11 +410,6 @@ AndroidAppUIInAppBrowser.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -568,11 +429,6 @@ AndroidAppUIWebPage.args = {
         data: 'https://notificare.com/',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -603,11 +459,6 @@ AndroidAppUIWebPageWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -636,11 +487,6 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
         keyboard: false,
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -676,11 +522,6 @@ AndroidAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -700,11 +541,6 @@ AndroidAppUIDigitalCard.args = {
         data: 'https://push.notifica.re/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
@@ -726,11 +562,6 @@ AndroidAppUIAppRecommendation.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -746,11 +577,6 @@ IOSAppUITextAlert.args = {
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -774,11 +600,6 @@ IOSAppUITextAlertWithSingleAction.args = {
         keyboard: false,
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -808,11 +629,6 @@ IOSAppUITextAlertWithMultipleActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -832,11 +648,6 @@ IOSAppUIWebView.args = {
         data: '<p>Example</p>',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -872,11 +683,6 @@ IOSAppUIWebViewWithActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -911,11 +717,6 @@ IOSAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -935,11 +736,6 @@ IOSAppUI_HTML5Video.args = {
         data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -961,11 +757,6 @@ IOSAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -986,11 +777,6 @@ IOSAppUIYouTubeVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1010,11 +796,6 @@ IOSAppUIWebPage.args = {
         data: 'https://www.wikipedia.org/',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -1040,11 +821,6 @@ IOSAppUIImage.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1058,11 +834,6 @@ IOSAppUIRate.args = {
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -1084,11 +855,6 @@ IOSAppUIDigitalCard.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1108,11 +874,6 @@ IOSAppUIInAppBrowser.args = {
         data: 'https://notificare.com/',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -1138,11 +899,6 @@ IOSAppUIAppRecommendation.args = {
         },
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'ios-app-ui',
   serviceKey: serviceKey,
@@ -1180,11 +936,6 @@ WebMacOSWithMediaAndActions.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-desktop-macos',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1198,11 +949,6 @@ WebMacOSWithoutMedia.args = {
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
     message: 'Message example',
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-desktop-macos',
   serviceKey: serviceKey,
@@ -1236,11 +982,6 @@ WebAndroidAppUITextAlert.args = {
       },
     ],
   },
-  application: {
-    name: 'NC Clothing',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'nc-clothing.com',
-  },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1269,11 +1010,6 @@ WebAndroidAppUIWebView.args = {
         keyboard: false,
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
@@ -1318,11 +1054,6 @@ WebAndroidAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1342,11 +1073,6 @@ WebAndroidAppUIURL.args = {
         data: 'https://www.wikipedia.org/',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
@@ -1368,11 +1094,6 @@ WebAndroidAppUI_HTML5Video.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1393,11 +1114,6 @@ WebAndroidAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1417,11 +1133,6 @@ WebAndroidAppUIYouTubeVideo.args = {
         data: '3t_EN-HZVLw',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
@@ -1455,11 +1166,6 @@ WebAndroidAppUIImage.args = {
         keyboard: false,
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-android-app-ui',
   serviceKey: serviceKey,
@@ -1506,11 +1212,6 @@ WebIphoneAppUITextAlert.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1539,11 +1240,6 @@ WebIphoneAppUIWebView.args = {
         keyboard: false,
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
@@ -1588,11 +1284,6 @@ WebIphoneAppUIMap.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1612,11 +1303,6 @@ WebIphoneAppUIURL.args = {
         data: 'https://notificare.com/',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
@@ -1638,11 +1324,6 @@ WebIphoneAppUI_HTML5Video.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1663,11 +1344,6 @@ WebIphoneAppUIVimeoVideo.args = {
       },
     ],
   },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
-  },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
@@ -1687,11 +1363,6 @@ WebIphoneAppUIYouTubeVideo.args = {
         data: '3t_EN-HZVLw',
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,
@@ -1725,11 +1396,6 @@ WebIphoneAppUIImage.args = {
         keyboard: false,
       },
     ],
-  },
-  application: {
-    name: 'Demo Notificare',
-    icon: 'https://push.notifica.re/upload/notifications/b77ca471199bf01369377693f0252dd54910373b13a040a380bbe64555149a24/3ce0bdb115367a19cd5ae7f0195e43a6c2f3ba9830a97e0ce9fe96f1d3a32063',
-    domain: 'notificare.com',
   },
   variant: 'web-iphone-app-ui',
   serviceKey: serviceKey,

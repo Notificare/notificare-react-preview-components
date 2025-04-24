@@ -5,7 +5,7 @@
  * @property {string} [title] - The title of the notification (optional).
  * @property {string} [subtitle] - The subtitle of the notification (optional).
  * @property {string} message - The message of the notification.
- * @property {NotificareNotificationContent[]} [content] - An array of content objects associated with the notification (optional). Their structure depend on the notification type.
+ * @property {NotificareNotificationContent[]} [content] - An array of content objects associated with the notification (optional). Their structure depends on the notification type.
  * @property {NotificareNotificationAction[]} [actions] - An array of actions associated with the notification (optional).
  * @property {NotificareNotificationAttachment[]} [attachments] - An array of attachments associated with the notification (optional).
  */

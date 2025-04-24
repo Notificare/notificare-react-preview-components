@@ -1,6 +1,6 @@
 import './NotificationIOSPreview.css';
+import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
-import { NotificareApplicationSchema } from '../../../schemas/notificare-application/notificare-application-schema';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import AppRecommendationNotification from './AppRecommendationNotification/AppRecommendationNotification';
@@ -27,7 +27,7 @@ export default function NotificationIOSPreview({
           <LockScreenNotification
             notification={notification}
             appName={application.name}
-            appIcon={application.icon}
+            appIcon={`https://push.notifica.re/upload${application.websitePushConfig.icon}`}
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
@@ -60,7 +60,7 @@ export default function NotificationIOSPreview({
                 return <MapNotification notification={notification} appName={application.name} />;
 
               case 're.notifica.notification.Rate':
-                return <RateNotification appName={application.name} />;
+                return <RateNotification title={notification.title} appName={application.name} />;
 
               case 're.notifica.notification.Passbook':
                 return (
@@ -81,7 +81,7 @@ export default function NotificationIOSPreview({
 
 interface NotificationIOSPreviewProps {
   notification: NotificareNotificationSchema;
-  application: NotificareApplicationSchema;
+  application: NotificareApplication;
   mobileVariant: NotificationPreviewVariant['mobileVariant'];
 }
 

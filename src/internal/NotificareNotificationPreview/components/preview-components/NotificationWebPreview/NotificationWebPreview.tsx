@@ -1,5 +1,5 @@
+import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
-import { NotificareApplicationSchema } from '../../../schemas/notificare-application/notificare-application-schema';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
@@ -20,7 +20,7 @@ export function NotificationWebPreview({
         key={notification.message}
         notification={notification}
         appName={application.name}
-        appDomain={application.domain}
+        appDomain={application.websitePushConfig.allowedDomains[0]}
       />
     );
   }
@@ -39,7 +39,7 @@ export function NotificationWebPreview({
           <WebMobileAppUINotification
             notification={notification}
             appName={application.name}
-            appIcon={application.icon}
+            appIcon={`https://push.notifica.re/upload${application.websitePushConfig.icon}`}
           />
         </PhoneBackground>
       );
@@ -49,7 +49,7 @@ export function NotificationWebPreview({
 
 interface NotificationWebPreviewProps {
   notification: NotificareNotificationSchema;
-  application: NotificareApplicationSchema;
+  application: NotificareApplication;
   mobileVariant: NotificationPreviewVariant['mobileVariant'];
   webDevice: NotificationPreviewVariant['webDevice'];
   webMobileType: NotificationPreviewVariant['webMobileType'];
