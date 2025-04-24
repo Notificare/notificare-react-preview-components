@@ -61,7 +61,8 @@
     "build-storybook": "storybook build",
     "build-rollup": "rollup -c",
     "dev-rollup": "rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.6",

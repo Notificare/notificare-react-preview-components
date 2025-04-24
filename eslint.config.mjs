@@ -17,6 +17,7 @@ export default [
   importPlugin.flatConfigs.typescript,
   ...storybook.configs['flat/recommended'],
 
+  { ignores: ['dist/', 'storybook-static/'] },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
@@ -51,8 +52,7 @@ export default [
         },
       ],
       'import/no-unresolved': 'off', // solves typescript-eslint import error bug
-      // solves 'React must be in scope when using JSX'
-      'react/react-in-jsx-scope': 'off',
+      'react/react-in-jsx-scope': 'off', // solves 'React must be in scope when using JSX'
       'react/jsx-uses-react': 'off',
     },
   },
