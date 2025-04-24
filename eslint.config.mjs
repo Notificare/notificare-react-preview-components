@@ -52,7 +52,8 @@ export default [
         },
       ],
       'import/no-unresolved': 'off', // solves typescript-eslint import error bug
-      'react/react-in-jsx-scope': 'off', // solves 'React must be in scope when using JSX'
+      // solves 'React must be in scope when using JSX'
+      'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
     },
   },
