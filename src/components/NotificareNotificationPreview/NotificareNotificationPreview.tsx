@@ -105,7 +105,7 @@ export default function NotificareNotificationPreview({
   return (
     <OptionsProvider options={{ serviceKey, googleMapsAPIKey }}>
       <div className="notificare">
-        <div className="notificare__push__previews-wrapper">
+        <div className="notificare__push__preview-wrapper">
           {showControls && (
             <Controls
               platform={platform}
@@ -173,7 +173,7 @@ export default function NotificareNotificationPreview({
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
  * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
  * @property {string} [serviceKey] - A service key provided by a Notificare admin.
- * @property {string} [googleMapsApiKey] - A Google Maps API key (optional).
+ * @property {string} [googleMapsAPIKey] - A Google Maps API key (optional).
  */
 interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
