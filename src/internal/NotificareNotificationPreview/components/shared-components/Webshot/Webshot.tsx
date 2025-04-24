@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Webshot.css';
+import { PUSH_API_HOST } from '../../../../api';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import LoadingIcon from '../LoadingIcon/LoadingIcon';
 import PreviewError from '../PreviewError/PreviewError';
@@ -102,7 +103,7 @@ async function requestWebshot(
   platform: 'Android' | 'iOS' | 'Web',
   serviceKey: string,
 ) {
-  const response = await fetch(`https://push-test.notifica.re/webshot?apiKey=${serviceKey}`, {
+  const response = await fetch(`${PUSH_API_HOST}/webshot?apiKey=${serviceKey}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -124,15 +125,13 @@ async function requestWebshot(
 }
 
 async function getWebshotStatus(id: string, serviceKey: string) {
-  const response = await fetch(`https://push-test.notifica.re/webshot/${id}?apiKey=${serviceKey}`);
+  const response = await fetch(`${PUSH_API_HOST}/webshot/${id}?apiKey=${serviceKey}`);
   const data = await response.json();
   return data.webshot.status;
 }
 
 async function getWebshot(id: string, serviceKey: string) {
-  const response = await fetch(
-    `https://push-test.notifica.re/webshot/${id}/result?apiKey=${serviceKey}`,
-  );
+  const response = await fetch(`${PUSH_API_HOST}/webshot/${id}/result?apiKey=${serviceKey}`);
 
   const blob = await response.blob();
   return URL.createObjectURL(blob);
