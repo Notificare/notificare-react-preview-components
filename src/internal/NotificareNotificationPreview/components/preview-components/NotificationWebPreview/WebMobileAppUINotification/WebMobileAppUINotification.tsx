@@ -8,6 +8,7 @@ import {
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
+import Webshot from '../../../shared-components/Webshot/Webshot';
 import UnavailablePreview from './UnavailablePreview/UnavailablePreview';
 
 export default function WebMobileAppUINotification({
@@ -119,11 +120,14 @@ export default function WebMobileAppUINotification({
           )}
 
           {notification.type == 're.notifica.notification.URL' && (
-            <iframe
-              className="notificare__web__phone__url__app-ui__url-text"
-              src={notification.content[0].data}
-              data-testid="web-mobile-app-ui-url-notification"
-            />
+            <div data-testid="web-mobile-app-ui-url-notification">
+              <Webshot
+                url={notification.content[0].data}
+                platform={'Android'}
+                width={268}
+                height={430}
+              />
+            </div>
           )}
 
           {notification.type === 're.notifica.notification.Video' && (
