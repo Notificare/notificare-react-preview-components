@@ -86,7 +86,7 @@ export default function Webshot({
 
 interface WebshotProps {
   url: string;
-  platform: 'Android' | 'iOS';
+  platform: 'Android' | 'iOS' | 'Web';
   width: number;
   height: number;
   onLoadingChange?: (isLoading: boolean) => void;

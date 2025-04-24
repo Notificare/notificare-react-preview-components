@@ -54,7 +54,7 @@ export default function Selector<T extends string | undefined>({
             {options.map((option) => (
               <button
                 key={option.key}
-                className={`notificare__push__preview-controls-selector-option-button ${selected === option.key && 'notificare__push__preview-controls-selector-option-button--selected'}`}
+                className={`notificare__push__preview-controls-selector-option-button ${selected === option.key ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
                 onClick={() => {
                   setSelected(option.key);
                   setIsExpanded(false);

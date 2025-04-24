@@ -20,13 +20,13 @@ export default function ToggleGroup<T extends string | undefined>({
         {options.map((option, index) => (
           <Fragment key={option.key}>
             <button
-              className={`notificare__push__preview-controls-toggle-group-option ${selected === option.key && 'notificare__push__preview-controls-toggle-group-option--selected'}`}
+              className={`notificare__push__preview-controls-toggle-group-option ${selected === option.key ? 'notificare__push__preview-controls-toggle-group-option--selected' : ''}`}
               onClick={() => setSelected(option.key)}
               aria-label={`Button with option '${option.key}'`}
               data-testid={`toggle-option-${option.key}`}
             >
               <div
-                className={`notificare__push__preview-controls-toggle-group-option-icon ${selected === option.key && 'notificare__push__preview-controls-toggle-group-option-icon--selected'}`}
+                className={`notificare__push__preview-controls-toggle-group-option-icon ${selected === option.key ? 'notificare__push__preview-controls-toggle-group-option-icon--selected' : ''}`}
               >
                 {option.icon}
               </div>

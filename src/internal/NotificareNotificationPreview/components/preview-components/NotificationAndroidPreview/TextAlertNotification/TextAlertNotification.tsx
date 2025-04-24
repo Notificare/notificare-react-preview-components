@@ -31,7 +31,7 @@ export default function TextAlertNotification({
           <div className="notificare__push__android__alert__app-ui__actions">
             {notification.actions?.map((action, index) => (
               <p
-                key="action-button-label"
+                key={index}
                 className="notificare__push__android__alert__app-ui__action-label"
                 data-testid={`android-app-ui-text-alert-notification-action-${index}`}
               >

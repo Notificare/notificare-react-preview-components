@@ -23,7 +23,7 @@ export default function LockScreenNotification({
       <div className="notificare__push__android__lock-screen__text-content">
         <div className="notificare__push__android__lock-screen__text-content-top">
           <div
-            className={`notificare__push__android__lock-screen__title-and-subtitle ${hasFirstAttachment(notification) && !expanded && 'notificare__push__android__lock-screen__title-and-subtitle--has-media'}`}
+            className={`notificare__push__android__lock-screen__title-and-subtitle ${hasFirstAttachment(notification) && !expanded ? 'notificare__push__android__lock-screen__title-and-subtitle--has-media' : ''}`}
           >
             <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--title">
               {!expanded ? notification.title || appName : appName}
@@ -46,7 +46,7 @@ export default function LockScreenNotification({
         )}
 
         <p
-          className={`notificare__push__android__lock-screen__text ${expanded && 'notificare__push__android__lock-screen__text--expanded-message'} ${hasFirstAttachment(notification) && !expanded ? 'notificare__push__android__lock-screen__text--message-with-media' : 'notificare__push__android__lock-screen__text--message-without-media'}`}
+          className={`notificare__push__android__lock-screen__text ${expanded ? 'notificare__push__android__lock-screen__text--expanded-message' : ''} ${hasFirstAttachment(notification) && !expanded ? 'notificare__push__android__lock-screen__text--message-with-media' : 'notificare__push__android__lock-screen__text--message-without-media'}`}
         >
           {notification.message}
         </p>
