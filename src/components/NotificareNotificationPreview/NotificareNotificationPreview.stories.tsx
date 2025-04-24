@@ -1,4 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
+import { PUSH_API } from '../../internal/api';
 import NotificareNotificationPreview from './NotificareNotificationPreview';
 
 const meta: Meta<typeof NotificareNotificationPreview> = {
@@ -29,7 +30,7 @@ InvalidNotification.args = {
     message: 'Message',
     attachments: [
       {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -51,7 +52,7 @@ IOSLockScreenWithMedia.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -71,7 +72,7 @@ IOSLockScreenWithMediaExpanded.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -107,7 +108,7 @@ AndroidLockScreenWithMedia.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -141,7 +142,7 @@ AndroidLockScreenWithMediaExpanded.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -222,6 +223,7 @@ AndroidAppUIRate.args = {
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
+  applicationId: '6511625f445cc1c81d47fd6f',
 };
 
 export const AndroidAppUIWebView = Template.bind({});
@@ -322,7 +324,7 @@ AndroidAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -382,11 +384,11 @@ AndroidAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
       },
     ],
   },
@@ -538,7 +540,7 @@ AndroidAppUIDigitalCard.args = {
     content: [
       {
         type: 're.notifica.content.PKPass',
-        data: 'https://push.notifica.re/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c',
+        data: `${PUSH_API}/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c`,
       },
     ],
   },
@@ -733,7 +735,7 @@ IOSAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -813,11 +815,11 @@ IOSAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
       },
     ],
   },
@@ -839,6 +841,7 @@ IOSAppUIRate.args = {
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
+  applicationId: '6511625f445cc1c81d47fd6f',
 };
 
 export const IOSAppUIDigitalCard = Template.bind({});
@@ -851,7 +854,7 @@ IOSAppUIDigitalCard.args = {
     content: [
       {
         type: 're.notifica.content.PKPass',
-        data: 'https://push.notifica.re/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c',
+        data: `${PUSH_API}/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c`,
       },
     ],
   },
@@ -917,7 +920,7 @@ WebMacOSWithMediaAndActions.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
+        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -1090,7 +1093,7 @@ WebAndroidAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -1150,11 +1153,11 @@ WebAndroidAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d`,
       },
     ],
     actions: [
@@ -1300,7 +1303,7 @@ WebIphoneAppUIURL.args = {
     content: [
       {
         type: 're.notifica.content.URL',
-        data: 'https://notificare.com/',
+        data: 'https://www.wikipedia.org/',
       },
     ],
   },
@@ -1320,7 +1323,7 @@ WebIphoneAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -1380,11 +1383,11 @@ WebIphoneAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d',
+        data: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d`,
       },
     ],
     actions: [

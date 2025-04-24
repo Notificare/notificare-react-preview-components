@@ -2,6 +2,7 @@ import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useEffect, useState } from 'react';
 import { ZodIssue } from 'zod';
+import { PUSH_API } from '../../internal/api';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
@@ -38,7 +39,7 @@ export default function NotificareNotificationPreview({
       if (applicationId) {
         try {
           const response = await fetch(
-            `https://push-test.notifica.re/application/${applicationId}/info?apiKey=${serviceKey}`,
+            `${PUSH_API}/application/${applicationId}/info?apiKey=${serviceKey}`,
           );
 
           if (!response.ok) {
