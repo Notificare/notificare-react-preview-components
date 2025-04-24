@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './InAppBrowserBar.css';
+import { DASHBOARD_API } from '../../../../../../api';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 
@@ -67,7 +68,7 @@ interface InAppBrowserBarProps {
 
 async function getPageTitle(url: string) {
   try {
-    const response = await fetch(`https://dashboard.notifica.re/api/v2/proxy/?url=${url}`);
+    const response = await fetch(`${DASHBOARD_API}/api/v2/proxy/?url=${url}`);
     const html = await response.text();
 
     const parser = new DOMParser();

@@ -1,4 +1,5 @@
 import './DigitalCardNotification.css';
+import { PUSH_API } from '../../../../../api';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import Webshot from '../../../shared-components/Webshot/Webshot';
@@ -16,7 +17,7 @@ export default function DigitalCardNotification({
         showOptions={hasActions(notification)}
       />
       <Webshot
-        url={`https://push.notifica.re/pass/web/${notification.content[0].data.split('/')[5]}`}
+        url={`${PUSH_API}/pass/web/${notification.content[0].data.split('/')[5]}`}
         platform="Android"
         width={338}
         height={570}

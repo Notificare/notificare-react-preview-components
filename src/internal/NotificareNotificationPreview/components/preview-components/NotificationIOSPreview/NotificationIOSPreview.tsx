@@ -1,5 +1,6 @@
 import './NotificationIOSPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
+import { PUSH_API } from '../../../../api';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
@@ -27,7 +28,7 @@ export default function NotificationIOSPreview({
           <LockScreenNotification
             notification={notification}
             appName={application.name}
-            appIcon={`https://push.notifica.re/upload${application.websitePushConfig.icon}`}
+            appIcon={`${PUSH_API}/upload${application.websitePushConfig.icon}`}
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
