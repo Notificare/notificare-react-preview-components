@@ -1,6 +1,6 @@
 import './NotificationAndroidPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
-import { PUSH_API } from '../../../../api';
+import { PUSH_API_HOST } from '../../../../api';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
@@ -28,7 +28,7 @@ export function NotificationAndroidPreview({
           <LockScreenNotification
             notification={notification}
             appName={application.name}
-            appIcon={`${PUSH_API}/upload${application.websitePushConfig.icon}`}
+            appIcon={`${PUSH_API_HOST}/upload${application.websitePushConfig.icon}`}
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
@@ -41,7 +41,7 @@ export function NotificationAndroidPreview({
                   <TextAlertNotification
                     notification={notification}
                     appName={application.name}
-                    appIcon={`${PUSH_API}/upload${application.websitePushConfig.icon}`}
+                    appIcon={`${PUSH_API_HOST}/upload${application.websitePushConfig.icon}`}
                   />
                 );
 

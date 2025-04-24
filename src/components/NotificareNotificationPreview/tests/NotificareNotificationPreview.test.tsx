@@ -1,7 +1,7 @@
 import { act } from 'react';
 import { waitFor } from '@storybook/test';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { DASHBOARD_API, PUSH_API } from '../../../internal/api';
+import { DASHBOARD_API, PUSH_API_HOST } from '../../../internal/api';
 import NotificareNotificationPreview from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,
@@ -84,7 +84,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -130,7 +130,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -690,7 +690,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -736,7 +736,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -1382,7 +1382,7 @@ describe('NotificareNotificationPreview', () => {
 
     const attachments = [
       {
-        uri: `${PUSH_API}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ]; // add attachments so the notification becomes expandable
@@ -1912,7 +1912,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Request webshot mock
-      if (url === `${PUSH_API}/webshot?apiKey=123`) {
+      if (url === `${PUSH_API_HOST}/webshot?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1921,7 +1921,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Check webshot request status mock
-      if (url === `${PUSH_API}/webshot/1?apiKey=123`) {
+      if (url === `${PUSH_API_HOST}/webshot/1?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1934,7 +1934,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Get webshot mock
-      if (url === `${PUSH_API}/webshot/1/result?apiKey=123`) {
+      if (url === `${PUSH_API_HOST}/webshot/1/result?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
