@@ -123,7 +123,7 @@ export default function WebMobileAppUINotification({
             <div data-testid="web-mobile-app-ui-url-notification">
               <Webshot
                 url={notification.content[0].data}
-                platform={'Android'}
+                platform={'Web'}
                 width={268}
                 height={430}
               />
