@@ -1,12 +1,29 @@
 {
   "name": "notificare-react-preview-components",
   "version": "0.0.1",
-  "files": [
-    "dist/"
-  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build-rollup": "rollup -c",
+    "dev-rollup": "rollup -c -w",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@react-google-maps/api": "^2.20.6",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^5.0.0",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.26.9",
@@ -55,22 +72,5 @@
     "tslib": "^2.8.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
-  },
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build-rollup": "rollup -c",
-    "dev-rollup": "rollup -c -w",
-    "test": "jest",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "@react-google-maps/api": "^2.20.6",
-    "leaflet": "^1.9.4",
-    "react-leaflet": "^5.0.0",
-    "zod": "^3.24.1"
-  },
-  "peerDependencies": {
-    "react": "^19.0.0"
   }
 }
