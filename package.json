@@ -5,12 +5,12 @@
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "storybook": "storybook dev -p 6006",
+    "build": "rollup -c",
     "build-storybook": "storybook build",
-    "build-rollup": "rollup -c",
-    "dev-rollup": "rollup -c -w",
-    "test": "jest",
-    "lint": "eslint ."
+    "dev": "rollup -c -w",
+    "lint": "eslint .",
+    "storybook": "storybook dev -p 6006",
+    "test": "jest"
   },
   "files": [
     "dist"
