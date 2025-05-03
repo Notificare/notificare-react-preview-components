@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { PUSH_API_HOST } from '../../internal/api';
-import NotificareNotificationPreview from './NotificareNotificationPreview';
+import { NotificareNotificationPreview } from './NotificareNotificationPreview';
 
 const meta: Meta<typeof NotificareNotificationPreview> = {
   title: 'ReactComponentLibrary/NotificareNotificationPreview',
@@ -49,7 +49,8 @@ IOSLockScreenWithMedia.args = {
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
-    message: 'Message example',
+    message:
+      'Message example Message exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage example',
     attachments: [
       {
         uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,

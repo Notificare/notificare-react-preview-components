@@ -1,42 +1,18 @@
 import './WebMobileAppUINotification.css';
-import { useCallback } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import {
-  getMarkersFromNotification,
-  hasFirstAttachment,
-} from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
-import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
-import Webshot from '../../../shared-components/Webshot/Webshot';
+import AlertNotification from './AlertNotification/AlertNotification';
+import ImageNotification from './ImageNotification/ImageNotification';
+import MapNotification from './MapNotification/MapNotification';
 import UnavailablePreview from './UnavailablePreview/UnavailablePreview';
+import URLNotification from './URLNotification/URLNotification';
+import WebViewNotification from './WebViewNotification/WebViewNotification';
 
 export default function WebMobileAppUINotification({
   notification,
   appName,
   appIcon,
 }: WebMobileAppUIProps) {
-  const { googleMapsAPIKey } = useOptions().options;
-
-  let markers: { id: number; lat: number; lng: number; title: string }[] = [];
-
-  if (notification.type === 're.notifica.notification.Map') {
-    markers = getMarkersFromNotification(notification).map((marker, index) => {
-      return { id: index, lat: marker.latitude, lng: marker.longitude, title: marker.title };
-    });
-  }
-
-  const onLoad = useCallback((mapInstance: google.maps.Map) => {
-    const bounds = new google.maps.LatLngBounds();
-
-    markers.forEach((marker) => {
-      const position = new google.maps.LatLng(marker.lat, marker.lng);
-      bounds.extend(position);
-    });
-
-    mapInstance.fitBounds(bounds);
-  }, []);
-
   if (
     notification.type === 're.notifica.notification.Alert' ||
     notification.type === 're.notifica.notification.Map' ||
@@ -66,91 +42,35 @@ export default function WebMobileAppUINotification({
             </button>
           </div>
 
-          {notification.type === 're.notifica.notification.Alert' && (
-            <div data-testid="web-mobile-app-ui-text-alert-notification">
-              {hasFirstAttachment(notification) && (
-                <img
-                  className="notificare__web__phone__alert__app-ui__media"
-                  src={notification.attachments?.[0].uri}
-                  alt="Notification attachment"
-                />
-              )}
+          {(() => {
+            switch (notification.type) {
+              case 're.notifica.notification.Alert':
+                return <AlertNotification notification={notification} />;
 
-              <div>
-                <p className="notificare__web__phone__alert__app-ui__title">{notification.title}</p>
-                <p className="notificare__web__phone__alert__app-ui__subtitle">
-                  {notification.subtitle}
-                </p>
-                <p className="notificare__web__phone__alert__app-ui__message">
-                  {notification.message}
-                </p>
-              </div>
-            </div>
-          )}
+              case 're.notifica.notification.WebView':
+                return <WebViewNotification notification={notification} />;
 
-          {notification.type === 're.notifica.notification.WebView' && (
-            <iframe
-              className="notificare__web__phone__web-view__app-ui__content"
-              srcDoc={notification.content[0].data}
-              sandbox="allow-same-origin"
-              data-testid="web-mobile-app-ui-web-view-notification"
-            />
-          )}
+              case 're.notifica.notification.URL':
+                return <URLNotification notification={notification} />;
 
-          {notification.type === 're.notifica.notification.Map' && (
-            <div data-testid="web-mobile-app-ui-map-notification">
-              <LoadScript googleMapsApiKey={googleMapsAPIKey || ''}>
-                <GoogleMap
-                  id="map"
-                  mapContainerStyle={{ width: '100%', height: '400px' }}
-                  zoom={10}
-                  center={{ lat: markers[0].lat, lng: markers[0].lng }} // Posição inicial
-                  onLoad={onLoad}
-                >
-                  {markers.map((marker) => (
-                    <Marker
-                      key={marker.id}
-                      position={{ lat: marker.lat, lng: marker.lng }}
-                      title={marker.title}
+              case 're.notifica.notification.Image':
+                return <ImageNotification notification={notification} />;
+
+              case 're.notifica.notification.Map':
+                return <MapNotification notification={notification} />;
+
+              case 're.notifica.notification.Video':
+                return (
+                  <div data-testid="web-mobile-app-ui-video-notification">
+                    <VideoRichContent
+                      videoData={notification.content[0]}
+                      width="100%"
+                      height="430px"
                     />
-                  ))}
-                </GoogleMap>
-              </LoadScript>
-            </div>
-          )}
-
-          {notification.type == 're.notifica.notification.URL' && (
-            <div data-testid="web-mobile-app-ui-url-notification">
-              <Webshot
-                url={notification.content[0].data}
-                platform={'Web'}
-                width={268}
-                height={430}
-              />
-            </div>
-          )}
-
-          {notification.type === 're.notifica.notification.Video' && (
-            <div data-testid="web-mobile-app-ui-video-notification">
-              <VideoRichContent videoData={notification.content[0]} width="100%" height="430px" />
-            </div>
-          )}
-
-          {notification.type === 're.notifica.notification.Image' && (
-            <div
-              className="notificare__web__phone__image__app-ui__image-slider"
-              data-testid="web-mobile-app-ui-image-notification"
-            >
-              {notification.content.map((image, index) => (
-                <img
-                  key={index}
-                  className="notificare__web__phone__image__app-ui__image-slider-item"
-                  src={image.data}
-                  alt="Slider image"
-                />
-              ))}
-            </div>
-          )}
+                  </div>
+                );
+            }
+          })()}
 
           {notification.actions && (
             <div

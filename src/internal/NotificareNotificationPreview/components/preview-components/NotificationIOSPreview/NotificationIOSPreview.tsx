@@ -1,7 +1,10 @@
 import './NotificationIOSPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { PUSH_API_HOST } from '../../../../api';
-import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
+import {
+  NotificationPreviewModel,
+  NotificationPreviewModelDisplayMode,
+} from '../../../types/notification-preview-model';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import AppRecommendationNotification from './AppRecommendationNotification/AppRecommendationNotification';
@@ -19,21 +22,21 @@ import WebViewNotification from './WebViewNotification/WebViewNotification';
 export default function NotificationIOSPreview({
   notification,
   application,
-  mobileVariant,
+  displayMode = 'lockscreen',
 }: NotificationIOSPreviewProps) {
   return (
-    <IOSPhoneBackground theme={getTheme(notification.type, mobileVariant)}>
+    <IOSPhoneBackground theme={getTheme(notification.type, displayMode)}>
       <div className="notificare__push__ios__preview">
-        {(mobileVariant === 'lockscreen' || mobileVariant === 'lockscreen-expanded') && (
+        {(displayMode === 'lockscreen' || displayMode === 'lockscreen-expanded') && (
           <LockScreenNotification
             notification={notification}
             appName={application.name}
             appIcon={`${PUSH_API_HOST}/upload${application.websitePushConfig.icon}`}
-            expanded={mobileVariant === 'lockscreen-expanded'}
+            expanded={displayMode === 'lockscreen-expanded'}
           />
         )}
 
-        {mobileVariant === 'app-ui' &&
+        {displayMode === 'app-ui' &&
           (() => {
             switch (notification.type) {
               case 're.notifica.notification.Alert':
@@ -83,14 +86,14 @@ export default function NotificationIOSPreview({
 interface NotificationIOSPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
-  mobileVariant: NotificationPreviewVariant['mobileVariant'];
+  displayMode?: NotificationPreviewModelDisplayMode;
 }
 
 function getTheme(
   notificationType: NotificareNotificationSchema['type'],
-  mobileVariant: NotificationPreviewVariant['mobileVariant'],
+  displayMode: NotificationPreviewModelDisplayMode,
 ) {
-  if (mobileVariant !== 'app-ui') {
+  if (displayMode !== 'app-ui') {
     return 'light';
   }
 

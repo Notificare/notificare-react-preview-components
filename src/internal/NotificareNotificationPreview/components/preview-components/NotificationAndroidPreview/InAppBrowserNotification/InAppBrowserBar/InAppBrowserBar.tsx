@@ -8,17 +8,20 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
   const [pageTitle, setPageTitle] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
+  useEffect(
+    function loadPageTitle() {
+      (async () => {
+        setIsLoading(true);
 
-      const pageTitle = await getPageTitle(url);
-      setPageTitle(pageTitle);
+        const pageTitle = await fetchPageTitle(url);
+        setPageTitle(pageTitle);
 
-      setIsLoading(false);
-      onLoadingChange?.(false);
-    })();
-  }, [url]);
+        setIsLoading(false);
+        onLoadingChange?.(false);
+      })();
+    },
+    [url],
+  );
 
   return (
     <div className="notificare__push__android__in-app-browser__app-ui__bar">
@@ -66,7 +69,7 @@ interface InAppBrowserBarProps {
   canShow: boolean;
 }
 
-async function getPageTitle(url: string) {
+async function fetchPageTitle(url: string) {
   try {
     const response = await fetch(`${DASHBOARD_API}/api/v2/proxy/?url=${url}`);
     const html = await response.text();

@@ -9,11 +9,18 @@ import { NotificationAndroidPreview } from '../../internal/NotificareNotificatio
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
 import LoadingIcon from '../../internal/NotificareNotificationPreview/components/shared-components/LoadingIcon/LoadingIcon';
-import { NotificationPreviewVariant } from '../../internal/NotificareNotificationPreview/models/notification-preview-variant';
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
+import {
+  NotificationPreviewModel,
+  NotificationPreviewModelPlatform,
+  NotificationPreviewModelDisplayMode,
+  NotificationPreviewModelWebDesktopOS,
+  NotificationPreviewModelWebDevice,
+  NotificationPreviewModelWebMobileType,
+} from '../../internal/NotificareNotificationPreview/types/notification-preview-model';
 import { NotificareApplication } from './models/notificare-application';
 import { NotificareNotification } from './models/notificare-notification';
-import { NotificareNotificationVariant } from './models/notificare-notification-variant';
+import { NotificareNotificationPreviewVariant } from './models/notificare-notification-preview-variant';
 
 const defaultApplication: NotificareApplication = {
   name: 'My App',
@@ -24,7 +31,28 @@ const defaultApplication: NotificareApplication = {
   },
 };
 
-export default function NotificareNotificationPreview({
+const notificationPreviewModels = new Map<
+  NotificareNotificationPreviewVariant,
+  NotificationPreviewModel
+>([
+  ['android-lockscreen', { platform: 'android', displayMode: 'lockscreen' }],
+  ['android-lockscreen-expanded', { platform: 'android', displayMode: 'lockscreen-expanded' }],
+  ['android-app-ui', { platform: 'android', displayMode: 'app-ui' }],
+  ['ios-lockscreen', { platform: 'ios', displayMode: 'lockscreen' }],
+  ['ios-lockscreen-expanded', { platform: 'ios', displayMode: 'lockscreen-expanded' }],
+  ['ios-app-ui', { platform: 'ios', displayMode: 'app-ui' }],
+  ['web-desktop-macos', { platform: 'web', webDevice: 'desktop', webDesktopOS: 'macOS' }],
+  [
+    'web-iphone-app-ui',
+    { platform: 'web', webDevice: 'phone', webMobileType: 'iphone', displayMode: 'app-ui' },
+  ],
+  [
+    'web-android-app-ui',
+    { platform: 'web', webDevice: 'phone', webMobileType: 'android', displayMode: 'app-ui' },
+  ],
+]);
+
+export function NotificareNotificationPreview({
   notification,
   applicationId,
   showControls = false,
@@ -34,68 +62,50 @@ export default function NotificareNotificationPreview({
 }: NotificareNotificationPreviewProps) {
   const [application, setApplication] = useState<NotificareApplication>();
 
-  useEffect(() => {
-    (async function fetchApplicationData() {
-      if (applicationId) {
-        try {
-          const response = await fetch(
-            `${PUSH_API_HOST}/application/${applicationId}/info?apiKey=${serviceKey}`,
-          );
+  useEffect(
+    function fetchApplicationData() {
+      (async () => {
+        if (applicationId) {
+          try {
+            const response = await fetch(
+              `${PUSH_API_HOST}/application/${applicationId}/info?apiKey=${serviceKey}`,
+            );
 
-          if (!response.ok) {
-            const { error } = await response.json();
-            console.error(`There was an error trying to get the application: ${error}`);
+            if (!response.ok) {
+              const { error } = await response.json();
+              console.error(`There was an error trying to get the application: ${error}`);
+              setApplication(defaultApplication);
+            } else {
+              const { application } = await response.json();
+              setApplication(application);
+            }
+          } catch (error) {
+            console.error('Error fetching the application: ', error);
             setApplication(defaultApplication);
-          } else {
-            const { application } = await response.json();
-            setApplication(application);
           }
-        } catch (error) {
-          console.error('Error fetching the application: ', error);
+        } else {
           setApplication(defaultApplication);
         }
-      } else {
-        setApplication(defaultApplication);
-      }
-    })();
-  }, [applicationId, serviceKey]);
+      })();
+    },
+    [applicationId, serviceKey],
+  );
 
-  const notificationPreviewVariants = new Map<
-    NotificareNotificationPreviewProps['variant'],
-    NotificationPreviewVariant
-  >([
-    ['android-lockscreen', { platform: 'android', mobileVariant: 'lockscreen' }],
-    ['android-lockscreen-expanded', { platform: 'android', mobileVariant: 'lockscreen-expanded' }],
-    ['android-app-ui', { platform: 'android', mobileVariant: 'app-ui' }],
-    ['ios-lockscreen', { platform: 'ios', mobileVariant: 'lockscreen' }],
-    ['ios-lockscreen-expanded', { platform: 'ios', mobileVariant: 'lockscreen-expanded' }],
-    ['ios-app-ui', { platform: 'ios', mobileVariant: 'app-ui' }],
-    ['web-desktop-macos', { platform: 'web', webDevice: 'desktop', webDesktopOS: 'macOS' }],
-    [
-      'web-iphone-app-ui',
-      { platform: 'web', webDevice: 'phone', webMobileType: 'iphone', mobileVariant: 'app-ui' },
-    ],
-    [
-      'web-android-app-ui',
-      { platform: 'web', webDevice: 'phone', webMobileType: 'android', mobileVariant: 'app-ui' },
-    ],
-  ]);
-
-  const [platform, setPlatform] = useState<NotificationPreviewVariant['platform']>(
-    notificationPreviewVariants.get(variant)?.platform,
+  const [platform, setPlatform] = useState<NotificationPreviewModelPlatform | undefined>(
+    notificationPreviewModels.get(variant)?.platform,
   );
-  const [mobileVariant, setMobileVariant] = useState<NotificationPreviewVariant['mobileVariant']>(
-    notificationPreviewVariants.get(variant)?.mobileVariant,
+  const [displayMode, setDisplayMode] = useState<NotificationPreviewModelDisplayMode | undefined>(
+    notificationPreviewModels.get(variant)?.displayMode,
   );
-  const [webDevice, setWebDevice] = useState<NotificationPreviewVariant['webDevice']>(
-    notificationPreviewVariants.get(variant)?.webDevice,
+  const [webDevice, setWebDevice] = useState<NotificationPreviewModelWebDevice | undefined>(
+    notificationPreviewModels.get(variant)?.webDevice,
   );
-  const [webMobileType, setWebMobileType] = useState<NotificationPreviewVariant['webMobileType']>(
-    notificationPreviewVariants.get(variant)?.webMobileType,
-  );
-  const [webDesktopOS, setWebDesktopOS] = useState<NotificationPreviewVariant['webDesktopOS']>(
-    notificationPreviewVariants.get(variant)?.webDesktopOS,
-  );
+  const [webMobileType, setWebMobileType] = useState<
+    NotificationPreviewModelWebMobileType | undefined
+  >(notificationPreviewModels.get(variant)?.webMobileType);
+  const [webDesktopOS, setWebDesktopOS] = useState<
+    NotificationPreviewModelWebDesktopOS | undefined
+  >(notificationPreviewModels.get(variant)?.webDesktopOS);
 
   const notificationResult = notificareNotificationSchema.safeParse(notification);
 
@@ -110,12 +120,12 @@ export default function NotificareNotificationPreview({
           {showControls && (
             <Controls
               platform={platform}
-              mobileVariant={mobileVariant}
+              displayMode={displayMode}
               webDevice={webDevice}
               webMobileType={webMobileType}
               webDesktopOS={webDesktopOS}
               setPlatform={setPlatform}
-              setMobileVariant={setMobileVariant}
+              setDisplayMode={setDisplayMode}
               setWebDesktopOS={setWebDesktopOS}
               setWebDevice={setWebDevice}
               setWebMobileType={setWebMobileType}
@@ -130,7 +140,7 @@ export default function NotificareNotificationPreview({
                     <NotificationAndroidPreview
                       notification={notificationResult.data}
                       application={application}
-                      mobileVariant={mobileVariant}
+                      displayMode={displayMode}
                     />
                   )}
 
@@ -138,7 +148,7 @@ export default function NotificareNotificationPreview({
                     <NotificationIOSPreview
                       notification={notificationResult.data}
                       application={application}
-                      mobileVariant={mobileVariant}
+                      displayMode={displayMode}
                     />
                   )}
 
@@ -146,7 +156,7 @@ export default function NotificareNotificationPreview({
                     <NotificationWebPreview
                       notification={notificationResult.data}
                       application={application}
-                      mobileVariant={mobileVariant}
+                      displayMode={displayMode}
                       webDevice={webDevice}
                       webMobileType={webMobileType}
                       webDesktopOS={webDesktopOS}
@@ -172,7 +182,7 @@ export default function NotificareNotificationPreview({
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
  * @param {string} applicationId - The unique identifier of a Notificare application (optional).
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
- * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
+ * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview.
  * @property {string} [serviceKey] - A service key provided by a Notificare admin.
  * @property {string} [googleMapsAPIKey] - A Google Maps API key (optional).
  */
@@ -180,7 +190,7 @@ interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   applicationId?: string;
   showControls?: boolean;
-  variant: NotificareNotificationVariant;
+  variant: NotificareNotificationPreviewVariant;
   serviceKey: string;
   googleMapsAPIKey?: string;
 }
@@ -189,14 +199,9 @@ function NotificareNotificationPreviewError() {
   return (
     <div data-testid="notificare-push-preview-error">
       <div className="notificare__push__preview-error-warning">
-        <svg
-          className="notificare__push__preview-error-alert-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
-        >
+        <svg width="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
         </svg>
-
         <div className="notificare__push__preview-error-text-container">
           <div className="notificare__push__preview-error-title">Preview could not be loaded</div>
           <div

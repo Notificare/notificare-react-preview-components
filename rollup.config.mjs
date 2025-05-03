@@ -1,4 +1,3 @@
-import { createRequire } from 'module';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
@@ -6,10 +5,8 @@ import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-
-const require = createRequire(import.meta.url);
-const { visualizer } = require('rollup-plugin-visualizer');
-const packageJson = require('./package.json');
+import { visualizer } from 'rollup-plugin-visualizer';
+import packageJson from './package.json' with { type: 'json' };
 
 export default [
   {

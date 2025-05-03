@@ -1,7 +1,12 @@
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { PUSH_API_HOST } from '../../../../api';
-import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
+import {
+  NotificationPreviewModelDisplayMode,
+  NotificationPreviewModelWebDesktopOS,
+  NotificationPreviewModelWebDevice,
+  NotificationPreviewModelWebMobileType,
+} from '../../../types/notification-preview-model';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import WebMacOSNotification from './WebMacOSNotification/WebMacOSNotification';
@@ -10,10 +15,10 @@ import WebMobileAppUINotification from './WebMobileAppUINotification/WebMobileAp
 export function NotificationWebPreview({
   notification,
   application,
-  mobileVariant,
-  webDevice,
+  displayMode = 'app-ui',
+  webDevice = 'desktop',
   webMobileType,
-  webDesktopOS,
+  webDesktopOS = 'macOS',
 }: NotificationWebPreviewProps) {
   if (webDevice === 'desktop' && webDesktopOS === 'macOS') {
     return (
@@ -26,7 +31,7 @@ export function NotificationWebPreview({
     );
   }
 
-  if (webDevice === 'phone' && mobileVariant === 'app-ui') {
+  if (webDevice === 'phone' && displayMode === 'app-ui') {
     const PhoneBackground =
       webMobileType === 'android'
         ? AndroidPhoneBackground
@@ -51,10 +56,10 @@ export function NotificationWebPreview({
 interface NotificationWebPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
-  mobileVariant: NotificationPreviewVariant['mobileVariant'];
-  webDevice: NotificationPreviewVariant['webDevice'];
-  webMobileType: NotificationPreviewVariant['webMobileType'];
-  webDesktopOS: NotificationPreviewVariant['webDesktopOS'];
+  displayMode?: NotificationPreviewModelDisplayMode;
+  webDevice?: NotificationPreviewModelWebDevice;
+  webMobileType?: NotificationPreviewModelWebMobileType;
+  webDesktopOS?: NotificationPreviewModelWebDesktopOS;
 }
 
 function getTheme(notificationType: NotificareNotificationSchema['type']) {

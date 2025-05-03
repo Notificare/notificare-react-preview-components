@@ -1,1 +1,1 @@
-export { default as NotificareNotificationPreview } from './NotificareNotificationPreview';
+export { NotificareNotificationPreview } from './NotificareNotificationPreview';

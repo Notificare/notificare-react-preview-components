@@ -1,6 +1,5 @@
 import './AppRecommendationNotification.css';
 import { useEffect, useState } from 'react';
-import { AppStoreApp } from '../../../../models/app-store-app';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import LoadingIcon from '../../../shared-components/LoadingIcon/LoadingIcon';
 import PreviewError from '../../../shared-components/PreviewError/PreviewError';
@@ -15,32 +14,35 @@ export default function AppRecommendationNotification({
   const [appStoreData, setAppStoreData] = useState<AppStoreApp>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
+  useEffect(
+    function loadAppData() {
+      (async () => {
+        setIsLoading(true);
 
-      if (content.type === 're.notifica.content.AppStore' && typeof content.data !== 'string') {
-        try {
-          const response = await fetch(
-            `https://itunes.apple.com/lookup?country=GB&id=${content.data.identifier}`,
-          );
+        if (content.type === 're.notifica.content.AppStore' && typeof content.data !== 'string') {
+          try {
+            const response = await fetch(
+              `https://itunes.apple.com/lookup?country=GB&id=${content.data.identifier}`,
+            );
 
-          const data = await response.json();
-          setAppStoreData(data);
+            const data = await response.json();
+            setAppStoreData(data);
 
-          if (appStoreData?.resultCount === 0) {
+            if (appStoreData?.resultCount === 0) {
+              setHasError(true);
+            }
+          } catch {
             setHasError(true);
           }
-        } catch {
+        } else {
           setHasError(true);
         }
-      } else {
-        setHasError(true);
-      }
 
-      setIsLoading(false);
-    })();
-  }, [content.data]);
+        setIsLoading(false);
+      })();
+    },
+    [content.data],
+  );
 
   return (
     <div data-testid="ios-app-ui-app-recommendation-notification">
@@ -207,3 +209,22 @@ function formatNumber(num: number): string {
   }
   return num.toString();
 }
+
+type AppStoreApp = {
+  resultCount: number;
+  results: AppStoreAppData[];
+};
+
+type AppStoreAppData = {
+  artworkUrl512: string;
+  screenshotUrls: string[];
+  averageUserRating: number;
+  sellerName: string;
+  trackName: string;
+  primaryGenreName: string;
+  currentVersionReleaseDate: string;
+  releaseNotes: string;
+  version: string;
+  trackContentRating: string;
+  userRatingCount: number;
+};

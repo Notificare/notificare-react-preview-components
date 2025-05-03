@@ -65,35 +65,6 @@
     height: 24px;
 }
 
-/* TEXT ALERT */
-
-.notificare .notificare__web__phone__alert__app-ui__media {
-    max-width: 100%;
-    max-height: 250px;
-    aspect-ratio: 16 / 9;
-    margin-bottom: 10px;
-}
-
-.notificare .notificare__web__phone__alert__app-ui__title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.notificare .notificare__web__phone__alert__app-ui__subtitle {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-}
-
-.notificare .notificare__web__phone__alert__app-ui__message {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 /* Actions */
 
 .notificare .notificare__web__phone__app-ui__actions-row {
@@ -146,45 +117,3 @@
 .notificare .notificare__web__phone__app-ui__action--secondary:hover {
     background-color: #f4f5f9;
 }
-
-/* WEB VIEW */
-
-.notificare .notificare__web__phone__web-view__app-ui__content {
-    border: 0;
-    width: 100%;
-    height: 360px;
-    background-color: #fff;
-}
-
-/* IMAGE */
-
-.notificare .notificare__web__phone__image__app-ui__image-slider {
-    display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    width: 100%;
-    scroll-behavior: smooth;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #bbb transparent; /* Firefox */
-}
-
-.notificare .notificare__web__phone__image__app-ui__image-slider-item {
-    display: flex;
-    min-width: 100%;
-    scroll-snap-align: start;
-}
-
-/* For Chrome, Edge and Safari */
-.notificare .notificare__web__phone__image__app-ui__image-slider::-webkit-scrollbar {
-    height: 4px;
-}
-
-.notificare .notificare__web__phone__image__app-ui__image-slider-webkit-scrollbar-thumb {
-    background: #999;
-    border-radius: 10px;
-}
-
-.notificare .notificare__web__phone__image__app-ui__image-slider-webkit-scrollbar-track {
-    background: transparent;
-}
-

@@ -1,6 +1,6 @@
 import { DASHBOARD_API } from '../../api';
 
-export async function getWebsiteMarkup(url: string) {
+export async function fetchWebsiteMarkup(url: string) {
   try {
     const response = await fetch(`${DASHBOARD_API}/api/v2/proxy/?url=${url}`);
     return response.text();

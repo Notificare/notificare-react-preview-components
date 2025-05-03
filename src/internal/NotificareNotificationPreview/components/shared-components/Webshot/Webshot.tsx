@@ -19,58 +19,63 @@ export default function Webshot({
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    if (!serviceKey) {
-      setHasError(true);
-      console.error('The service key is missing');
-      return;
-    }
-
-    if (!isValidUrl(url)) {
-      setHasError(true);
-      console.error('The URL is invalid');
-      return;
-    }
-
-    setIsLoading(true);
-    onLoadingChange?.(true);
-    setHasError(false);
-
-    let checkStatusLoop: NodeJS.Timeout;
-
-    const debounce = setTimeout(async () => {
-      try {
-        const webshotId = await requestWebshot(url, width, height, platform, serviceKey);
-
-        checkStatusLoop = setInterval(async () => {
-          const webshotStatus = await getWebshotStatus(webshotId, serviceKey);
-
-          if (webshotStatus === 'error') {
-            setHasError(true);
-            setIsLoading(false);
-            onLoadingChange?.(false);
-            clearInterval(checkStatusLoop);
-          } else if (webshotStatus === 'finished') {
-            const webshot = await getWebshot(webshotId, serviceKey);
-            setWebshot(webshot);
-            setIsLoading(false);
-            onLoadingChange?.(false);
-            clearInterval(checkStatusLoop);
-          }
-        }, 3000);
-      } catch (error) {
-        console.error(error);
+  useEffect(
+    function loadWebshot() {
+      if (!serviceKey) {
         setHasError(true);
-        setIsLoading(false);
-        onLoadingChange?.(false);
+        console.error(
+          'It was not possible to load the page webshot because the service key is empty!',
+        );
+        return;
       }
-    }, 3000);
 
-    return () => {
-      clearTimeout(debounce);
-      clearInterval(checkStatusLoop);
-    };
-  }, [url]);
+      if (!isValidUrl(url)) {
+        setHasError(true);
+        console.error('It was not possible to load the page webshot because the URL is invalid!');
+        return;
+      }
+
+      setIsLoading(true);
+      onLoadingChange?.(true);
+      setHasError(false);
+
+      let checkStatusLoop: NodeJS.Timeout;
+
+      const debounce = setTimeout(async () => {
+        try {
+          const webshotId = await requestWebshot(url, width, height, platform, serviceKey);
+
+          checkStatusLoop = setInterval(async () => {
+            const webshotStatus = await getWebshotStatus(webshotId, serviceKey);
+
+            if (webshotStatus === 'error') {
+              setHasError(true);
+              setIsLoading(false);
+              onLoadingChange?.(false);
+              clearInterval(checkStatusLoop);
+            } else if (webshotStatus === 'finished') {
+              const webshot = await getWebshot(webshotId, serviceKey);
+              setWebshot(webshot);
+              setIsLoading(false);
+              onLoadingChange?.(false);
+              clearInterval(checkStatusLoop);
+            }
+          }, 3000);
+        } catch (error) {
+          console.error('There was an error while processing the page webshot:\n', error);
+          setHasError(true);
+          setIsLoading(false);
+          onLoadingChange?.(false);
+        }
+      }, 3000);
+
+      return () => {
+        clearTimeout(debounce);
+        clearInterval(checkStatusLoop);
+      };
+    },
+    [url],
+  );
 
   return (
     <div className="notificare__push__webshot-background" style={{ width: width, height: height }}>

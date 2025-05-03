@@ -2,7 +2,7 @@ import { act } from 'react';
 import { waitFor } from '@storybook/test';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { DASHBOARD_API, PUSH_API_HOST } from '../../../internal/api';
-import NotificareNotificationPreview from '../NotificareNotificationPreview';
+import { NotificareNotificationPreview } from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,
   appRecommendationNotificationMock,
