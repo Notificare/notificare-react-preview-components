@@ -1,5 +1,5 @@
 import './DigitalCardNotification.css';
-import { PUSH_API_HOST } from '../../../../../api';
+import { getPushAPIHost } from '../../../../../../config/api';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import Webshot from '../../../shared-components/Webshot/Webshot';
@@ -18,7 +18,7 @@ export default function DigitalCardNotification({
       />
 
       <Webshot
-        url={`${PUSH_API_HOST}/pass/web/${notification.content[0].data.split('/')[5]}`}
+        url={`${getPushAPIHost()}/pass/web/${notification.content[0].data.split('/')[5]}`}
         platform="Web"
         width={338}
         height={566}
