@@ -1,6 +1,6 @@
 {
   "name": "notificare-react-preview-components",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A set of React components for your admin applications that lets you preview how Notificare notifications, in-app messages, and wallet passes will appear on a user’s device.",
   "author": "Notificare <info@notificare.com> (https://notificare.com)",
   "license": "MIT",
