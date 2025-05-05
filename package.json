@@ -22,11 +22,12 @@
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clean; rollup -c",
     "build-storybook": "storybook build",
     "clean": "rm -rf dist",
     "dev": "rollup -c -w",
     "lint": "eslint .",
+    "prepack": "npm run build",
     "storybook": "storybook dev -p 6006",
     "test": "jest"
   },
