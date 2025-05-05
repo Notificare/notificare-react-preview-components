@@ -27,8 +27,8 @@ const defaultApplication: NotificareApplication = {
 export default function NotificareNotificationPreview({
   notification,
   applicationId,
-  showControls = false,
-  variant,
+  showControls = true,
+  variant = 'android-lockscreen',
   serviceKey,
   googleMapsAPIKey,
 }: NotificareNotificationPreviewProps) {
@@ -171,8 +171,8 @@ export default function NotificareNotificationPreview({
  *
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
  * @param {string} applicationId - The unique identifier of a Notificare application (optional).
- * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's false by default.
- * @param {NotificareNotificationVariant} variant - The variant of the notification preview.
+ * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's true by default.
+ * @param {NotificareNotificationVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
  * @property {string} [serviceKey] - A service key provided by a Notificare admin.
  * @property {string} [googleMapsAPIKey] - A Google Maps API key (optional).
  */
@@ -180,7 +180,7 @@ interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   applicationId?: string;
   showControls?: boolean;
-  variant: NotificareNotificationVariant;
+  variant?: NotificareNotificationVariant;
   serviceKey: string;
   googleMapsAPIKey?: string;
 }
