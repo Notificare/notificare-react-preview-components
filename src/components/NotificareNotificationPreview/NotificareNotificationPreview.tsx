@@ -2,7 +2,7 @@ import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useEffect, useState } from 'react';
 import { ZodIssue } from 'zod';
-import { PUSH_API_HOST } from '../../internal/api';
+import { getPushAPIHost } from '../../config/api';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
@@ -19,7 +19,7 @@ const defaultApplication: NotificareApplication = {
   name: 'My App',
   androidPackageName: 'com.example.app',
   websitePushConfig: {
-    icon: '/website-push/07ef418649d1338ff6881d1efddaa32179f5150e0c6dabea9a78a10e6798c84e/3420c494d8076c07dd761fdc8521b71f884c7be0a1333073803c89d6e7b2eda2',
+    icon: '/website-push/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/0eda6e82ad04fedee79c0771b92ea30c121e84167f0e2ec6e4064997b4e36a23',
     allowedDomains: ['https://my-app.com/'],
   },
 };
@@ -39,7 +39,7 @@ export default function NotificareNotificationPreview({
       if (applicationId) {
         try {
           const response = await fetch(
-            `${PUSH_API_HOST}/application/${applicationId}/info?apiKey=${serviceKey}`,
+            `${getPushAPIHost()}/application/${applicationId}/info?apiKey=${serviceKey}`,
           );
 
           if (!response.ok) {
