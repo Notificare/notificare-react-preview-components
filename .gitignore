@@ -16,6 +16,7 @@ Thumbs.db
 build/
 dist/
 storybook-static/
+stats.html
 
 # IDE configs
 .vscode/
