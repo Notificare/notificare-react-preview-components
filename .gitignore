@@ -17,6 +17,7 @@ build/
 dist/
 storybook-static/
 stats.html
+notificare-react-preview-components-*.tgz
 
 # IDE configs
 .vscode/
