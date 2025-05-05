@@ -36,7 +36,7 @@ The output will be at `/storybook-static`.
 #### Library build:
 
 ```shell
-npm run build-rollup
+npm run build
 ```
 
 The output will be at `dist/`.
