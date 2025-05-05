@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import './InAppBrowserBar.css';
-import { DASHBOARD_API } from '../../../../../../api';
+import { getPushAPIHost } from '../../../../../../../config/api';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
+import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 
 export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { serviceKey } = useOptions().options;
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
 
-      const pageTitle = await getPageTitle(url);
+      const pageTitle = await getPageTitle(serviceKey, url);
       setPageTitle(pageTitle);
 
       setIsLoading(false);
@@ -66,9 +68,10 @@ interface InAppBrowserBarProps {
   canShow: boolean;
 }
 
-async function getPageTitle(url: string) {
+async function getPageTitle(apiKey: string, url: string) {
   try {
-    const response = await fetch(`${DASHBOARD_API}/api/v2/proxy/?url=${url}`);
+    const params = new URLSearchParams({ apiKey, url });
+    const response = await fetch(`${getPushAPIHost()}/proxy/?${params.toString()}`);
     const html = await response.text();
 
     const parser = new DOMParser();

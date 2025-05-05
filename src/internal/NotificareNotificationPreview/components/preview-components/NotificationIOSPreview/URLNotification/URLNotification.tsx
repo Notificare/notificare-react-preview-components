@@ -1,9 +1,10 @@
 import './URLNotification.css';
 import { useEffect, useState } from 'react';
-import { getWebsiteMarkup } from '../../../../helpers/getWebsiteMarkup';
+import { fetchWebsiteMarkup } from '../../../../helpers/fetchWebsiteMarkup';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 import Webshot from '../../../shared-components/Webshot/Webshot';
 import TitleBar from '../TitleBar/TitleBar';
 
@@ -12,9 +13,11 @@ export default function URLNotification({ notification, appName }: URLNotificati
 
   const [websiteMarkup, setWebsiteMarkup] = useState('');
 
+  const { serviceKey } = useOptions().options;
+
   useEffect(() => {
     (async () => {
-      setWebsiteMarkup(await getWebsiteMarkup(url));
+      setWebsiteMarkup(await fetchWebsiteMarkup(serviceKey, url));
     })();
   }, []);
 

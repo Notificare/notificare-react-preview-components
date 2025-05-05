@@ -1,18 +1,8 @@
 import './MapRichContent.css';
-import { Icon } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { DASHBOARD_API } from '../../../../api';
 
 export default function MapRichContent({ markers, width, height }: MapRichContentProps) {
-  const customIcon = new Icon({
-    iconUrl:
-      `${DASHBOARD_API}/assets/images/marker-point-702cf1ad06eb9a69f5e589d8ae311b79.png`,
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -30],
-  });
-
   return (
     <MapContainer
       className="notificare__push__map-rich-content"
@@ -26,7 +16,7 @@ export default function MapRichContent({ markers, width, height }: MapRichConten
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png"
       />
       {markers.map((marker, index) => (
-        <Marker key={index} position={[marker.latitude, marker.longitude]} icon={customIcon}>
+        <Marker key={index} position={[marker.latitude, marker.longitude]}>
           <Popup>{marker.title}</Popup>
         </Marker>
       ))}
