@@ -3,7 +3,9 @@ import { NotificareApplication } from '../../../../../components/NotificareNotif
 import { getPushAPIHost } from '../../../../../config/api';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
+import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
+import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
 import AppRecommendationNotification from './AppRecommendationNotification/AppRecommendationNotification';
 import DigitalCardNotification from './DigitalCardNotification/DigitalCardNotification';
 import ImagesNotification from './ImagesNotification/ImagesNotification';
@@ -21,6 +23,21 @@ export default function NotificationIOSPreview({
   application,
   mobileVariant,
 }: NotificationIOSPreviewProps) {
+  const { googleMapsAPIKey } = useOptions().options;
+
+  if (
+    notification.type === 're.notifica.notification.Map' &&
+    !googleMapsAPIKey &&
+    mobileVariant === 'app-ui'
+  ) {
+    return (
+      <UnavailablePreview
+        message="→ A Google Maps API key should be provided"
+        showConsoleWarning={false}
+      />
+    );
+  }
+
   return (
     <IOSPhoneBackground theme={getTheme(notification.type, mobileVariant)}>
       <div className="notificare__push__ios__preview">
@@ -28,7 +45,11 @@ export default function NotificationIOSPreview({
           <LockScreenNotification
             notification={notification}
             appName={application.name}
-            appIcon={`${getPushAPIHost()}/upload${application.websitePushConfig.icon}`}
+            appIcon={
+              application.websitePushConfig.icon.startsWith('/website-push')
+                ? `${getPushAPIHost()}/upload${application.websitePushConfig.icon}`
+                : application.websitePushConfig.icon // ou outra URL alternativa
+            }
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
