@@ -44,6 +44,7 @@ export default function NotificationComposer() {
     <NotificareNotificationPreview
       applicationId="..."
       notification={...}
+      serviceKey="..."
     />
   )
 }
