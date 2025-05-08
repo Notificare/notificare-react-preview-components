@@ -1,6 +1,6 @@
 import './NotificationAndroidPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
-import { getPushAPIHost } from '../../../../../config/api';
+import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
@@ -45,11 +45,7 @@ export function NotificationAndroidPreview({
           <LockScreenNotification
             notification={notification}
             appName={application.name}
-            appIcon={
-              application.websitePushConfig.icon.startsWith('/website-push')
-                ? `${getPushAPIHost()}/upload${application.websitePushConfig.icon}`
-                : application.websitePushConfig.icon // ou outra URL alternativa
-            }
+            appIcon={getAppIconURL(application.websitePushConfig.icon)}
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
@@ -62,11 +58,7 @@ export function NotificationAndroidPreview({
                   <TextAlertNotification
                     notification={notification}
                     appName={application.name}
-                    appIcon={
-                      application.websitePushConfig.icon.startsWith('/website-push')
-                        ? `${getPushAPIHost()}/upload${application.websitePushConfig.icon}`
-                        : application.websitePushConfig.icon // ou outra URL alternativa
-                    }
+                    appIcon={getAppIconURL(application.websitePushConfig.icon)}
                   />
                 );
 
