@@ -1,0 +1,21 @@
+.notificare .notificare__push__preview-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 440px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.notificare .notificare__push__preview-error-icon {
+    width: 72px;
+    margin-bottom: 20px;
+}
+
+.notificare .notificare__push__preview-error-text {
+    font-weight: 700;
+    font-size: 16px;
+    color: #232c2a;
+}

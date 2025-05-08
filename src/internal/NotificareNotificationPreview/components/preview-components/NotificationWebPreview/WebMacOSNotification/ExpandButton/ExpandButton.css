@@ -1,0 +1,20 @@
+.notificare .notificare__push__web__desktop__lock-screen__expand-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.notificare .notificare__push__web__desktop__lock-screen__expand-button--rotated {
+    transform: rotate(90deg);
+}
+
+.notificare .notificare__push__web__desktop__lock-screen__expand-button-svg {
+    width: 11px;
+    height: 11px;
+    fill: #9e9e9e;
+}

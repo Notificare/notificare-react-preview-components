@@ -8,17 +8,20 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# SO
+# OS
 .DS_Store
 Thumbs.db
 
 # Build
 build/
 dist/
+storybook-static/
+stats.html
+notificare-react-preview-components-*.tgz
 
 # IDE configs
 .vscode/
 .idea/
 
-# Environment
+# Config variables
 .env

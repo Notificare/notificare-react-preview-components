@@ -1,0 +1,33 @@
+.notificare .notificare__push__preview-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    row-gap: 14px;
+}
+
+.notificare .notificare__push__preview-controls-preview {
+    margin-top: 14px;
+}
+
+.notificare .notificare__push__preview-controls-toggle-groups {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    align-self: start;
+}
+
+.notificare .notificare__push__preview-controls-toggle-group-divider {
+    width: 20px;
+    height: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

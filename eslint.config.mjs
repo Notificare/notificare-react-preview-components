@@ -17,6 +17,7 @@ export default [
   importPlugin.flatConfigs.typescript,
   ...storybook.configs['flat/recommended'],
 
+  { ignores: ['dist/', 'build/', 'storybook-static/'] },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {

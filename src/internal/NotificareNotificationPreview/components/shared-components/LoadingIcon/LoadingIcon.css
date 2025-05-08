@@ -1,0 +1,21 @@
+@keyframes notificare-push-webshot-loading-icon-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.notificare .notificare__push__webshot-loading-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.notificare .notificare__push__webshot-loading-icon-svg {
+    width: 60px;
+    height: 60px;
+    animation: notificare-push-webshot-loading-icon-spin 2s linear infinite;
+}
