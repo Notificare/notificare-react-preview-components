@@ -313,6 +313,7 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'android-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -508,6 +509,7 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...mapNotificationMock, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -919,6 +921,7 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'ios-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -1141,6 +1144,7 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...mapNotificationMock, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -1521,11 +1525,12 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'web-android-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
     const phoneBackground = screen.queryByTestId('android-phone-background');
-    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-map-notification');
+    const notificationPreview = screen.queryByTestId('map-notification');
 
     // ASSERT
     expect(phoneBackground).toBeInTheDocument();
@@ -1543,7 +1548,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1560,7 +1565,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1577,7 +1582,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1725,11 +1730,12 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
     const phoneBackground = screen.queryByTestId('ios-phone-background');
-    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-map-notification');
+    const notificationPreview = screen.queryByTestId('map-notification');
 
     // ASSERT
     expect(phoneBackground).toBeInTheDocument();
@@ -1747,7 +1753,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1764,7 +1770,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1781,7 +1787,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1837,8 +1843,10 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const previewError = screen.queryByTestId('notificare-push-preview-error');
-    const previewErrorMessage = screen.queryByTestId('notificare-push-preview-error-reason-text');
+    const previewError = screen.queryByTestId('notificare-push-unavailable-preview');
+    const previewErrorMessage = screen.queryByTestId(
+      'notificare-push-unavailable-preview-reason-text',
+    );
 
     // ASSERT
     expect(previewError).toBeInTheDocument();

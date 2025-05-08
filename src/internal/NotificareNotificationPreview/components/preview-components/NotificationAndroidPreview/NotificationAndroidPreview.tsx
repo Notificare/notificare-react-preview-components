@@ -1,9 +1,11 @@
 import './NotificationAndroidPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
-import { getPushAPIHost } from '../../../../../config/api';
+import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
+import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
+import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
 import AppRecommendationNotification from './AppRecommendationNotification/AppRecommendationNotification';
 import DigitalCardNotification from './DigitalCardNotification/DigitalCardNotification';
 import ImagesNotification from './ImagesNotification/ImagesNotification';
@@ -21,6 +23,21 @@ export function NotificationAndroidPreview({
   application,
   mobileVariant,
 }: NotificationAndroidPreviewProps) {
+  const { googleMapsAPIKey } = useOptions().options;
+
+  if (
+    notification.type === 're.notifica.notification.Map' &&
+    !googleMapsAPIKey &&
+    mobileVariant === 'app-ui'
+  ) {
+    return (
+      <UnavailablePreview
+        message="→ A Google Maps API key should be provided"
+        showConsoleWarning={false}
+      />
+    );
+  }
+
   return (
     <AndroidPhoneBackground theme={getTheme(notification.type, mobileVariant)}>
       <div className="notificare__push__android__preview">
@@ -28,7 +45,7 @@ export function NotificationAndroidPreview({
           <LockScreenNotification
             notification={notification}
             appName={application.name}
-            appIcon={`${getPushAPIHost()}/upload${application.websitePushConfig.icon}`}
+            appIcon={getAppIconURL(application.websitePushConfig.icon)}
             expanded={mobileVariant === 'lockscreen-expanded'}
           />
         )}
@@ -41,7 +58,7 @@ export function NotificationAndroidPreview({
                   <TextAlertNotification
                     notification={notification}
                     appName={application.name}
-                    appIcon={`${getPushAPIHost()}/upload${application.websitePushConfig.icon}`}
+                    appIcon={getAppIconURL(application.websitePushConfig.icon)}
                   />
                 );
 

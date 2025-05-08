@@ -1157,7 +1157,7 @@ WebAndroidAppUIImage.args = {
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
     ],
     actions: [
@@ -1387,7 +1387,7 @@ WebIphoneAppUIImage.args = {
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
     ],
     actions: [

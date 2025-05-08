@@ -1,42 +1,15 @@
 import './WebMobileAppUINotification.css';
-import { useCallback } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import {
-  getMarkersFromNotification,
-  hasFirstAttachment,
-} from '../../../../helpers/notification-utils';
+import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
-import { useOptions } from '../../../OptionsProvider/OptionsProvider';
+import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
 import Webshot from '../../../shared-components/Webshot/Webshot';
-import UnavailablePreview from './UnavailablePreview/UnavailablePreview';
 
 export default function WebMobileAppUINotification({
   notification,
   appName,
   appIcon,
 }: WebMobileAppUIProps) {
-  const { googleMapsAPIKey } = useOptions().options;
-
-  let markers: { id: number; lat: number; lng: number; title: string }[] = [];
-
-  if (notification.type === 're.notifica.notification.Map') {
-    markers = getMarkersFromNotification(notification).map((marker, index) => {
-      return { id: index, lat: marker.latitude, lng: marker.longitude, title: marker.title };
-    });
-  }
-
-  const onLoad = useCallback((mapInstance: google.maps.Map) => {
-    const bounds = new google.maps.LatLngBounds();
-
-    markers.forEach((marker) => {
-      const position = new google.maps.LatLng(marker.lat, marker.lng);
-      bounds.extend(position);
-    });
-
-    mapInstance.fitBounds(bounds);
-  }, []);
-
   if (
     notification.type === 're.notifica.notification.Alert' ||
     notification.type === 're.notifica.notification.Map' ||
@@ -98,25 +71,7 @@ export default function WebMobileAppUINotification({
           )}
 
           {notification.type === 're.notifica.notification.Map' && (
-            <div data-testid="web-mobile-app-ui-map-notification">
-              <LoadScript googleMapsApiKey={googleMapsAPIKey || ''}>
-                <GoogleMap
-                  id="map"
-                  mapContainerStyle={{ width: '100%', height: '400px' }}
-                  zoom={10}
-                  center={{ lat: markers[0].lat, lng: markers[0].lng }} // Posição inicial
-                  onLoad={onLoad}
-                >
-                  {markers.map((marker) => (
-                    <Marker
-                      key={marker.id}
-                      position={{ lat: marker.lat, lng: marker.lng }}
-                      title={marker.title}
-                    />
-                  ))}
-                </GoogleMap>
-              </LoadScript>
-            </div>
+            <MapRichContent notification={notification} width={'100%'} height={'400px'} />
           )}
 
           {notification.type == 're.notifica.notification.URL' && (
@@ -170,8 +125,6 @@ export default function WebMobileAppUINotification({
         </div>
       </div>
     );
-  } else {
-    return <UnavailablePreview notificationType={notification.type} />;
   }
 }
 
