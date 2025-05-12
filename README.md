@@ -54,7 +54,7 @@ export default function NotificationComposer() {
 }
 ```
 
-Check the component [documentation](https://github.com/notificare/notificare-react-preview-components/blob/main/docs/push.md) for more information.
+Check the component [documentation](./docs/push.md) for more information.
 
 ## Theming
 
