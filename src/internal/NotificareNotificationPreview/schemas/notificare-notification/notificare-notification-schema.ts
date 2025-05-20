@@ -1,26 +1,26 @@
 import { z } from 'zod';
-import { alertSchema } from './internal/alert-schema';
-import { imageSchema } from './internal/image-schema';
-import { inAppBrowserSchema } from './internal/in-app-browser-schema';
-import { mapSchema } from './internal/map-schema';
-import { passbookSchema } from './internal/passbook-schema';
-import { rateSchema } from './internal/rate-schema';
-import { storeSchema } from './internal/store-schema';
-import { urlSchema } from './internal/url-schema';
-import { videoSchema } from './internal/video-schema';
-import { webViewSchema } from './internal/web-view-schema';
+import { alertNotificationSchema } from './notification-variants/alert-notification-schema';
+import { imageNotificationSchema } from './notification-variants/image-notification-schema';
+import { inAppBrowserNotificationSchema } from './notification-variants/in-app-browser-notification-schema';
+import { mapNotificationSchema } from './notification-variants/map-notification-schema';
+import { passbookNotificationSchema } from './notification-variants/passbook-notification-schema';
+import { rateNotificationSchema } from './notification-variants/rate-notification-schema';
+import { storeNotificationSchema } from './notification-variants/store-notification-schema';
+import { urlNotificationSchema } from './notification-variants/url-notification-schema';
+import { videoNotificationSchema } from './notification-variants/video-notification-schema';
+import { webViewNotificationSchema } from './notification-variants/web-view-notification-schema';
 
 export const notificareNotificationSchema = z.discriminatedUnion('type', [
-  alertSchema,
-  webViewSchema,
-  urlSchema,
-  inAppBrowserSchema,
-  imageSchema,
-  mapSchema,
-  rateSchema,
-  passbookSchema,
-  videoSchema,
-  storeSchema,
+  alertNotificationSchema,
+  webViewNotificationSchema,
+  urlNotificationSchema,
+  inAppBrowserNotificationSchema,
+  imageNotificationSchema,
+  mapNotificationSchema,
+  rateNotificationSchema,
+  passbookNotificationSchema,
+  videoNotificationSchema,
+  storeNotificationSchema,
 ]);
 
 export type NotificareNotificationSchema = z.infer<typeof notificareNotificationSchema>;
