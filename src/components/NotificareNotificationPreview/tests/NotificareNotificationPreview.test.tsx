@@ -1,7 +1,8 @@
 import { act } from 'react';
 import { waitFor } from '@storybook/test';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { DASHBOARD_API, PUSH_API_HOST } from '../../../internal/api';
+import { getPushAPIHost, setPushAPIHost } from '../../../config/api';
+import { TEST_PUSH_API_HOST } from '../../../constants/constants';
 import { NotificareNotificationPreview } from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,
@@ -19,6 +20,10 @@ import {
 import '@testing-library/jest-dom';
 
 describe('NotificareNotificationPreview', () => {
+  beforeAll(() => {
+    setPushAPIHost(TEST_PUSH_API_HOST);
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -84,7 +89,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -130,7 +135,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -308,6 +313,7 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'android-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -503,6 +509,7 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...mapNotificationMock, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -515,7 +522,7 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website hasn't any actionable markup, it shows the options button as expected", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${DASHBOARD_API}/api/v2/proxy/?url=https://notificare.com/`) {
+      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -556,7 +563,7 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${DASHBOARD_API}/api/v2/proxy/?url=https://notificare.com/`) {
+      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -690,7 +697,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -736,7 +743,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -914,6 +921,7 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'ios-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -1136,6 +1144,7 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...mapNotificationMock, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
@@ -1148,7 +1157,7 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website hasn't any actionable markup, it shows the options button as expected", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${DASHBOARD_API}/api/v2/proxy/?url=https://notificare.com/`) {
+      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1189,7 +1198,7 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${DASHBOARD_API}/api/v2/proxy/?url=${url}`) {
+      if (url === `${getPushAPIHost()}/proxy/?url=${url}`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1382,7 +1391,7 @@ describe('NotificareNotificationPreview', () => {
 
     const attachments = [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ]; // add attachments so the notification becomes expandable
@@ -1516,11 +1525,12 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'web-android-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
     const phoneBackground = screen.queryByTestId('android-phone-background');
-    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-map-notification');
+    const notificationPreview = screen.queryByTestId('map-notification');
 
     // ASSERT
     expect(phoneBackground).toBeInTheDocument();
@@ -1538,7 +1548,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1555,7 +1565,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1572,7 +1582,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1720,11 +1730,12 @@ describe('NotificareNotificationPreview', () => {
         notification={mapNotificationMock}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
+        googleMapsAPIKey="123"
       />,
     );
 
     const phoneBackground = screen.queryByTestId('ios-phone-background');
-    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-map-notification');
+    const notificationPreview = screen.queryByTestId('map-notification');
 
     // ASSERT
     expect(phoneBackground).toBeInTheDocument();
@@ -1742,7 +1753,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1759,7 +1770,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1776,7 +1787,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1832,8 +1843,10 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const previewError = screen.queryByTestId('notificare-push-preview-error');
-    const previewErrorMessage = screen.queryByTestId('notificare-push-preview-error-reason-text');
+    const previewError = screen.queryByTestId('notificare-push-unavailable-preview');
+    const previewErrorMessage = screen.queryByTestId(
+      'notificare-push-unavailable-preview-reason-text',
+    );
 
     // ASSERT
     expect(previewError).toBeInTheDocument();
@@ -1903,7 +1916,7 @@ describe('NotificareNotificationPreview', () => {
 
     global.fetch = jest.fn((url) => {
       // Fetch website mock
-      if (url === `${DASHBOARD_API}/api/v2/proxy/?url=https://notificare.com/`) {
+      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1912,7 +1925,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Request webshot mock
-      if (url === `${PUSH_API_HOST}/webshot?apiKey=123`) {
+      if (url === `${getPushAPIHost()}/webshot?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1921,7 +1934,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Check webshot request status mock
-      if (url === `${PUSH_API_HOST}/webshot/1?apiKey=123`) {
+      if (url === `${getPushAPIHost()}/webshot/1?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1934,7 +1947,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Get webshot mock
-      if (url === `${PUSH_API_HOST}/webshot/1/result?apiKey=123`) {
+      if (url === `${getPushAPIHost()}/webshot/1/result?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,

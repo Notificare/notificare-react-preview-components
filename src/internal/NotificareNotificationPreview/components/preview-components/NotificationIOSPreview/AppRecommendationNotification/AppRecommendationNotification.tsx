@@ -19,7 +19,7 @@ export default function AppRecommendationNotification({
       (async () => {
         setIsLoading(true);
 
-        if (content.type === 're.notifica.content.AppStore' && typeof content.data !== 'string') {
+        if (content.type === 're.notifica.content.AppStore') {
           try {
             const response = await fetch(
               `https://itunes.apple.com/lookup?country=GB&id=${content.data.identifier}`,

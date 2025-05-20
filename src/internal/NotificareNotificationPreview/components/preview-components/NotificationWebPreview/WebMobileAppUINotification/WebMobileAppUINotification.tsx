@@ -1,11 +1,10 @@
 import './WebMobileAppUINotification.css';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
+import Webshot from '../../../shared-components/Webshot/Webshot';
 import AlertNotification from './AlertNotification/AlertNotification';
 import ImageNotification from './ImageNotification/ImageNotification';
-import MapNotification from './MapNotification/MapNotification';
-import UnavailablePreview from './UnavailablePreview/UnavailablePreview';
-import URLNotification from './URLNotification/URLNotification';
 import WebViewNotification from './WebViewNotification/WebViewNotification';
 
 export default function WebMobileAppUINotification({
@@ -51,13 +50,24 @@ export default function WebMobileAppUINotification({
                 return <WebViewNotification notification={notification} />;
 
               case 're.notifica.notification.URL':
-                return <URLNotification notification={notification} />;
+                return (
+                  <div data-testid="web-mobile-app-ui-url-notification">
+                    <Webshot
+                      url={notification.content[0].data}
+                      platform={'Web'}
+                      width={268}
+                      height={430}
+                    />
+                  </div>
+                );
 
               case 're.notifica.notification.Image':
                 return <ImageNotification notification={notification} />;
 
               case 're.notifica.notification.Map':
-                return <MapNotification notification={notification} />;
+                return (
+                  <MapRichContent notification={notification} width={'100%'} height={'400px'} />
+                );
 
               case 're.notifica.notification.Video':
                 return (
@@ -90,8 +100,6 @@ export default function WebMobileAppUINotification({
         </div>
       </div>
     );
-  } else {
-    return <UnavailablePreview notificationType={notification.type} />;
   }
 }
 

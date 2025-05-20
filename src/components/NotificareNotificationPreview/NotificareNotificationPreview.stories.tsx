@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { PUSH_API_HOST } from '../../internal/api';
+import { getPushAPIHost } from '../../config/api';
 import { NotificareNotificationPreview } from './NotificareNotificationPreview';
 
 const meta: Meta<typeof NotificareNotificationPreview> = {
@@ -30,7 +30,7 @@ InvalidNotification.args = {
     message: 'Message',
     attachments: [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -49,11 +49,10 @@ IOSLockScreenWithMedia.args = {
     type: 're.notifica.notification.Alert',
     title: 'Demo Notificare',
     subtitle: 'Subtitle',
-    message:
-      'Message example Message exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage exampleMessage example',
+    message: 'Message example',
     attachments: [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -73,7 +72,7 @@ IOSLockScreenWithMediaExpanded.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -109,7 +108,7 @@ AndroidLockScreenWithMedia.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -143,7 +142,7 @@ AndroidLockScreenWithMediaExpanded.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -224,7 +223,7 @@ AndroidAppUIRate.args = {
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
-  applicationId: '6511625f445cc1c81d47fd6f',
+  applicationId: '618d0f4edc09fbed1864e8d0',
 };
 
 export const AndroidAppUIWebView = Template.bind({});
@@ -325,7 +324,7 @@ AndroidAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
+        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -385,11 +384,11 @@ AndroidAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
     ],
   },
@@ -541,7 +540,7 @@ AndroidAppUIDigitalCard.args = {
     content: [
       {
         type: 're.notifica.content.PKPass',
-        data: `${PUSH_API_HOST}/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c`,
+        data: `${getPushAPIHost()}/pass/pkpass/79af019c-b575-478c-bb35-14b32e5bfcf1`,
       },
     ],
   },
@@ -736,7 +735,7 @@ IOSAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
+        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -816,11 +815,11 @@ IOSAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
     ],
   },
@@ -842,7 +841,7 @@ IOSAppUIRate.args = {
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
-  applicationId: '6511625f445cc1c81d47fd6f',
+  applicationId: '618d0f4edc09fbed1864e8d0',
 };
 
 export const IOSAppUIDigitalCard = Template.bind({});
@@ -855,7 +854,7 @@ IOSAppUIDigitalCard.args = {
     content: [
       {
         type: 're.notifica.content.PKPass',
-        data: `${PUSH_API_HOST}/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c`,
+        data: `${getPushAPIHost()}/pass/pkpass/79af019c-b575-478c-bb35-14b32e5bfcf1`,
       },
     ],
   },
@@ -921,7 +920,7 @@ WebMacOSWithMediaAndActions.args = {
     message: 'Message example',
     attachments: [
       {
-        uri: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -1094,7 +1093,7 @@ WebAndroidAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
+        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -1154,11 +1153,11 @@ WebAndroidAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
     ],
     actions: [
@@ -1324,7 +1323,7 @@ WebIphoneAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
+        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
       },
     ],
   },
@@ -1384,11 +1383,11 @@ WebIphoneAppUIImage.args = {
     content: [
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${PUSH_API_HOST}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/cd896ef556ffea7645f22d7a86592da2c25a47aa69701ea0ae1e4d6e89f84c2d`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
       },
     ],
     actions: [
