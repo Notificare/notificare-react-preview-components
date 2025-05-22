@@ -1,4 +1,5 @@
 import './WebMobileAppUINotification.css';
+import ThinXMarkIcon from '../../../../../../../.assets/thin-x-mark.svg';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
@@ -29,13 +30,7 @@ export default function WebMobileAppUINotification({
             />
             <p className="notificare__web__phone__app-ui__app-name">{appName}</p>
             <button className="notificare__web__phone__app-ui__close-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 48 48"
-                className="notificare__web__phone__app-ui__close-button-icon"
-              >
-                <path d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"></path>
-              </svg>
+              <ThinXMarkIcon className="notificare__web__phone__app-ui__close-button-icon" />
             </button>
           </div>
 

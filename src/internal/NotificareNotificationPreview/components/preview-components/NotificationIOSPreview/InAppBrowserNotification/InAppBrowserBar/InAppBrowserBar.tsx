@@ -1,4 +1,5 @@
 import './InAppBrowserBar.css';
+import LockerIcon from '../../../../../../../../.assets/locker.svg';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 
@@ -14,15 +15,7 @@ export default function InAppBrowserBar(props: InAppBrowserBarProps) {
       <p className="notificare__push__ios__in-app-browser__app-ui__bar-done-button"> Done </p>
       <div className="notificare__push__ios__in-app-browser__app-ui__bar-domain">
         {isSecureUrl(url) ? (
-          <>
-            <svg
-              className="notificare__push__ios__in-app-browser__app-ui__bar-lock-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 448 512"
-            >
-              <path d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z" />
-            </svg>
-          </>
+          <LockerIcon className="notificare__push__ios__in-app-browser__app-ui__bar-lock-icon" />
         ) : (
           <p className="notificare__push__ios__in-app-browser__app-ui__bar-not-secure">
             Not Secure —
