@@ -14,9 +14,7 @@ const Template: StoryFn<typeof NotificareNotificationPreview> = (args) => (
 
 /* Option Keys */
 
-// @ts-expect-error import.meta.env is not being detected
 const serviceKey = import.meta.env.VITE_SERVICE_KEY;
-// @ts-expect-error import.meta.env is not being detected
 const googleMapsAPIKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 /* Invalid Notification */
