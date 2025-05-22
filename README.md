@@ -65,7 +65,7 @@ We’ve also prioritized style isolation to prevent conflicts. By using scoped, 
 For example, to adjust the size of the loading animation, you can simply add the following CSS:
 
 ```css
-.notificare .notificare__push__webshot-loading-icon-svg {
+.notificare .notificare__push__loading-icon {
     width: 48px;
     height: 48px;
 }

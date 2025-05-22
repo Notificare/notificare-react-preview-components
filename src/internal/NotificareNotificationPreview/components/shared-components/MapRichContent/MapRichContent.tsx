@@ -10,7 +10,7 @@ import {
 import { getMarkersFromNotification } from '../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
-import LoadingIcon from '../LoadingIcon/LoadingIcon';
+import Loading from '../Loading/Loading';
 import PreviewError from '../PreviewError/PreviewError';
 
 export default function MapRichContent({ notification, width, height }: MapRichContentProps) {
@@ -37,7 +37,7 @@ export default function MapRichContent({ notification, width, height }: MapRichC
   }, []);
 
   if (markers.length === 0 || !isClient) {
-    return <LoadingIcon />;
+    return <Loading />;
   }
 
   return (
@@ -72,7 +72,7 @@ function MapWithStatus({
         overflow: 'hidden',
       }}
     >
-      {apiLoadStatus === APILoadingStatus.LOADING && <LoadingIcon />}
+      {apiLoadStatus === APILoadingStatus.LOADING && <Loading />}
 
       {apiLoadStatus === APILoadingStatus.AUTH_FAILURE && (
         <PreviewError message="Authentication failure. Your Google Maps API key might be invalid. Check console for more information." />

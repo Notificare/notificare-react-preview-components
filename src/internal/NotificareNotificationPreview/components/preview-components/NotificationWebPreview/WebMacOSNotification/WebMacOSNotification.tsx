@@ -1,5 +1,7 @@
 import { Key, useEffect, useRef, useState } from 'react';
 import './WebMacOSNotification.css';
+import ExpandIcon from '../../../../../../../.assets/expand.svg';
+import GoogleChromeIcon from '../../../../../../../.assets/google-chrome.svg';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import ExpandButton from './ExpandButton/ExpandButton';
@@ -92,10 +94,9 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
       <div className="notificare__push__web__desktop__lock-screen__main-content">
         <div className="notificare__push__web__desktop__lock-screen__browser-icon">
           <div className="notificare__push__web__desktop__lock-screen__browser-icon-background">
-            <img
-              className="notificare__push__web__desktop__lock-screen__browser-icon-image"
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg"
-              alt="Google Chrome Icon"
+            <GoogleChromeIcon
+              className="notificare__push__web__desktop__lock-screen__browser-icon-svg"
+              aria-label="Google Chrome icon"
             />
           </div>
         </div>
@@ -133,13 +134,7 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
                   data-testid="web-desktop-settings-button"
                 >
                   Options
-                  <svg
-                    className="notificare__push__web__desktop__lock-screen__settings-button-expand-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                  >
-                    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                  </svg>
+                  <ExpandIcon className="notificare__push__web__desktop__lock-screen__settings-button-expand-icon" />
                 </button>
 
                 {openOptions && (

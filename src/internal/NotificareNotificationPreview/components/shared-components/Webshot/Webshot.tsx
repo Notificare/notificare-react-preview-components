@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './Webshot.css';
 import { getPushAPIHost } from '../../../../../config/api';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
-import LoadingIcon from '../LoadingIcon/LoadingIcon';
+import Loading from '../Loading/Loading';
 import PreviewError from '../PreviewError/PreviewError';
 
 export default function Webshot({
@@ -77,7 +77,7 @@ export default function Webshot({
       {hasError ? (
         <PreviewError />
       ) : isLoading || !canShow ? (
-        <LoadingIcon />
+        <Loading />
       ) : (
         <img src={webshot} alt="Webshot" data-testid="webshot" />
       )}

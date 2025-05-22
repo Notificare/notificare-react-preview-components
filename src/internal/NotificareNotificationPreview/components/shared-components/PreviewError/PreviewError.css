@@ -12,6 +12,7 @@
 .notificare .notificare__push__preview-error-icon {
     width: 72px;
     margin-bottom: 20px;
+    height: auto;
 }
 
 .notificare .notificare__push__preview-error-text {

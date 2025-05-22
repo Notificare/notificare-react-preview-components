@@ -47,8 +47,9 @@
   align-items: center;
 }
 
-.notificare .notificare__push__web__desktop__lock-screen__browser-icon-image {
+.notificare .notificare__push__web__desktop__lock-screen__browser-icon-svg {
   width: 30px;
+  height: auto;
 }
 
 /* Text */

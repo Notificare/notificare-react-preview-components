@@ -11,6 +11,7 @@
 .notificare .notificare__push__android__app-ui__navigation-bar-arrow-icon {
     margin-right: 20px;
     height: 24px;
+    width: auto;
 }
 
 .notificare .notificare__push__android__app-ui__navigation-bar-title {
