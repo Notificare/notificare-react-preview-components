@@ -1,5 +1,5 @@
 import './AppRecommendationNotification.css';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import LayerGroupIcon from '../../../../../../assets/layer-group.svg';
 import UserIcon from '../../../../../../assets/user.svg';
 import { AppStoreApp } from '../../../../models/app-store-app';
@@ -13,13 +13,16 @@ export default function AppRecommendationNotification({
 }: AppRecommendationNotificationProps) {
   const content = notification.content[0];
 
-  const [hasError, setHasError] = useState(false);
+  const [status, setStatus] = useState<StatusState>({
+    isLoading: true,
+    hasError: false,
+    error: '',
+  });
   const [appStoreData, setAppStoreData] = useState<AppStoreApp>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
+      updateComponentStatus(true, false, setStatus);
 
       if (content.type === 're.notifica.content.AppStore' && typeof content.data !== 'string') {
         try {
@@ -31,16 +34,14 @@ export default function AppRecommendationNotification({
           setAppStoreData(data);
 
           if (appStoreData?.resultCount === 0) {
-            setHasError(true);
+            updateComponentStatus(false, true, setStatus);
           }
         } catch {
-          setHasError(true);
+          updateComponentStatus(false, true, setStatus);
         }
       } else {
-        setHasError(true);
+        updateComponentStatus(false, true, setStatus);
       }
-
-      setIsLoading(false);
     })();
   }, [content.data]);
 
@@ -48,9 +49,9 @@ export default function AppRecommendationNotification({
     <div data-testid="ios-app-ui-app-recommendation-notification">
       <div className="notificare__push__ios__store__app-ui__bar">Done</div>
       <div className="notificare__push__ios__store__app-ui">
-        {hasError ? (
-          <PreviewError />
-        ) : isLoading ? (
+        {status.hasError ? (
+          <PreviewError message={status.error} />
+        ) : status.isLoading ? (
           <Loading />
         ) : (
           appStoreData && (
@@ -163,6 +164,12 @@ interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
 }
 
+type StatusState = {
+  isLoading: boolean;
+  hasError: boolean;
+  error: string;
+};
+
 function timeAgo(isoDate: string) {
   const date = new Date(isoDate);
   const now = new Date();
@@ -196,4 +203,16 @@ function formatNumber(num: number): string {
     return (num / 1_000).toFixed(1) + 'K';
   }
   return num.toString();
+}
+
+/* Status update */
+
+function updateComponentStatus(
+  isLoading: boolean,
+  hasError: boolean,
+  setStatus: Dispatch<SetStateAction<StatusState>>,
+  error?: string,
+) {
+  setStatus({ isLoading: isLoading, hasError: hasError, error: error || '' });
+  return;
 }
