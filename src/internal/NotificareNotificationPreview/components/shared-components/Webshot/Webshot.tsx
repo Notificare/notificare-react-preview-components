@@ -52,7 +52,13 @@ export default function Webshot({
 
           if (webshotStatusData.status === 'error') {
             console.error('Webshot error:\n\n' + webshotStatusData.result);
-            updateComponentStatus(false, true, setStatus, notifyLoadingChange);
+            updateComponentStatus(
+              false,
+              true,
+              setStatus,
+              notifyLoadingChange,
+              'Webshot failed to be loaded. Check console for more details.',
+            );
             clearInterval(checkStatusLoop);
           } else if (webshotStatusData.status === 'finished') {
             const webshot = await getWebshot(webshotId, serviceKey);
@@ -63,7 +69,13 @@ export default function Webshot({
         }, 3000);
       } catch (error) {
         console.error('Webshot error:\n\n' + error);
-        updateComponentStatus(false, true, setStatus, notifyLoadingChange);
+        updateComponentStatus(
+          false,
+          true,
+          setStatus,
+          notifyLoadingChange,
+          'Webshot failed to be loaded. Check console for more details.',
+        );
       }
     }, 3000);
 

@@ -34,10 +34,16 @@ export default function AppRecommendationNotification({
           setAppStoreData(data);
 
           if (appStoreData?.resultCount === 0) {
-            updateComponentStatus(false, true, setStatus);
+            updateComponentStatus(
+              false,
+              true,
+              setStatus,
+              'The app was not found. Check the identifier and try again.',
+            );
           }
-        } catch {
-          updateComponentStatus(false, true, setStatus);
+        } catch (error) {
+          console.error('Error while trying to get the app information:\n\n', error);
+          updateComponentStatus(false, true, setStatus, 'Check console for more details.');
         }
       } else {
         updateComponentStatus(false, true, setStatus);
