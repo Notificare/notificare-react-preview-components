@@ -20,6 +20,7 @@
 
 .notificare .notificare__push__ios__in-app-browser__app-ui__bar-lock-icon {
     height: 14px;
+    width: auto;
 }
 
 .notificare .notificare__push__ios__in-app-browser__app-ui__bar-domain {

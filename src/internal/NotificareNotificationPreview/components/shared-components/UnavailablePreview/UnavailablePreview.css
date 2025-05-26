@@ -29,6 +29,7 @@
 
 .notificare .notificare__push__unavailable-preview-alert-icon {
     width: 40px;
+    height: auto;
 }
 
 .notificare .notificare__push__unavailable-preview-check-console-text {

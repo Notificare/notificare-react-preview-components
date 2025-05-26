@@ -8,7 +8,7 @@ import { OptionsProvider } from '../../internal/NotificareNotificationPreview/co
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
-import LoadingIcon from '../../internal/NotificareNotificationPreview/components/shared-components/LoadingIcon/LoadingIcon';
+import Loading from '../../internal/NotificareNotificationPreview/components/shared-components/Loading/Loading';
 import UnavailablePreview from '../../internal/NotificareNotificationPreview/components/shared-components/UnavailablePreview/UnavailablePreview';
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
 import {
@@ -169,7 +169,7 @@ export function NotificareNotificationPreview({
               )}
             </div>
           ) : (
-            <LoadingIcon />
+            <Loading />
           )}
         </div>
       </div>

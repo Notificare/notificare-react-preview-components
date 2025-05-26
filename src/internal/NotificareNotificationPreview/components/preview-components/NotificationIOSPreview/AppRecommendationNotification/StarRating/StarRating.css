@@ -3,3 +3,12 @@
     flex-grow: 0;
     position: relative;
 }
+
+.notificare .notificare__push__ios__store__app-ui__star-icon {
+    width: 10px;
+    height: 10px;
+}
+
+.notificare .notificare__push__ios__store__app-ui__star-icon--empty {
+    fill: #EAEAEA;
+}

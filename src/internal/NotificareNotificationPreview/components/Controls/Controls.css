@@ -23,6 +23,33 @@
     animation: fadeIn 0.3s ease-out;
 }
 
+/* Icons */
+
+.notificare .notificare__push__preview-controls-android-icon {
+    width: 22px;
+    height: auto;
+}
+
+.notificare .notificare__push__preview-controls-ios-icon {
+    width: 28px;
+    height: auto;
+}
+
+.notificare .notificare__push__preview-controls-html5-icon {
+    width: 28px;
+    height: auto;
+}
+
+.notificare .notificare__push__preview-controls-desktop-icon {
+    width: 22px;
+    height: auto;
+}
+
+.notificare .notificare__push__preview-controls-phone-icon {
+    width: 24px;
+    height: auto;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
