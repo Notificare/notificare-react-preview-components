@@ -1,7 +1,7 @@
 import './AppRecommendationNotification.css';
 import { useEffect, useState } from 'react';
-import LayerGroupIcon from '../../../../../../../.assets/layer-group.svg';
-import UserIcon from '../../../../../../../.assets/user.svg';
+import LayerGroupIcon from '../../../../../../assets/layer-group.svg';
+import UserIcon from '../../../../../../assets/user.svg';
 import { AppStoreApp } from '../../../../models/app-store-app';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import Loading from '../../../shared-components/Loading/Loading';

@@ -1,6 +1,6 @@
 import './NavigationBar.css';
-import LeftArrowIcon from '../../../../../../../.assets/left-arrow.svg';
-import OptionsIcon from '../../../../../../../.assets/options.svg';
+import LeftArrowIcon from '../../../../../../assets/left-arrow.svg';
+import OptionsIcon from '../../../../../../assets/options.svg';
 
 export default function NavigationBar({ appName, title, showOptions }: NavigationBarProps) {
   return (

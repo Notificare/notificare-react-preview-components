@@ -1,6 +1,6 @@
 import './StarRating.css';
-import FullStar from '../../../../../../../../.assets/full-star.svg';
-import HalfStar from '../../../../../../../../.assets/half-star.svg';
+import FullStar from '../../../../../../../assets/full-star.svg';
+import HalfStar from '../../../../../../../assets/half-star.svg';
 
 type StarRatingProps = {
   rating: number;

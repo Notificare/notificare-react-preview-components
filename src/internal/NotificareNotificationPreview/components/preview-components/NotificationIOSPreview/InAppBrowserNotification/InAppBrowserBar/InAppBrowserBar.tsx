@@ -1,5 +1,5 @@
 import './InAppBrowserBar.css';
-import LockerIcon from '../../../../../../../../.assets/locker.svg';
+import LockerIcon from '../../../../../../../assets/locker.svg';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 

@@ -1,6 +1,6 @@
 import './Selector.css';
 import { useEffect, useRef, useState } from 'react';
-import ExpandIcon from '../../../../../../.assets/expand.svg';
+import ExpandIcon from '../../../../../assets/expand.svg';
 
 export default function Selector<T extends string | undefined>({
   options,

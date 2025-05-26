@@ -1,7 +1,7 @@
 import { Key, useEffect, useRef, useState } from 'react';
 import './WebMacOSNotification.css';
-import ExpandIcon from '../../../../../../../.assets/expand.svg';
-import GoogleChromeIcon from '../../../../../../../.assets/google-chrome.svg';
+import ExpandIcon from '../../../../../../assets/expand.svg';
+import GoogleChromeIcon from '../../../../../../assets/google-chrome.svg';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import ExpandButton from './ExpandButton/ExpandButton';

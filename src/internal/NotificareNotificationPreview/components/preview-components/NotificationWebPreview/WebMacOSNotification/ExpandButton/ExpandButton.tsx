@@ -1,5 +1,5 @@
 import './ExpandButton.css';
-import ExpandButtonIcon from '../../../../../../../../.assets/expand.svg';
+import ExpandButtonIcon from '../../../../../../../assets/expand.svg';
 
 interface ExpandButtonProps {
   open: boolean;

@@ -1,5 +1,5 @@
 import './TitleBar.css';
-import OptionsIcon from '../../../../../../../.assets/options.svg';
+import OptionsIcon from '../../../../../../assets/options.svg';
 
 interface TitleBarProps {
   appName: string;

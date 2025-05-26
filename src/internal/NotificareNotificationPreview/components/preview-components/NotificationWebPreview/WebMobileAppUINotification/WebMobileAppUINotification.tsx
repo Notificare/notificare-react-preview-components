@@ -1,5 +1,5 @@
 import './WebMobileAppUINotification.css';
-import ThinXMarkIcon from '../../../../../../../.assets/thin-x-mark.svg';
+import ThinXMarkIcon from '../../../../../../assets/thin-x-mark.svg';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';

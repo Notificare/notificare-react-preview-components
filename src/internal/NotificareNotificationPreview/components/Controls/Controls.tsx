@@ -1,10 +1,10 @@
 import './Controls.css';
 import { ReactNode } from 'react';
-import AndroidIcon from '../../../../../.assets/android.svg';
-import DesktopIcon from '../../../../../.assets/desktop.svg';
-import HTML5Icon from '../../../../../.assets/html5.svg';
-import IOSIcon from '../../../../../.assets/ios.svg';
-import PhoneIcon from '../../../../../.assets/phone.svg';
+import AndroidIcon from '../../../../assets/android.svg';
+import DesktopIcon from '../../../../assets/desktop.svg';
+import HTML5Icon from '../../../../assets/html5.svg';
+import IOSIcon from '../../../../assets/ios.svg';
+import PhoneIcon from '../../../../assets/phone.svg';
 import { NotificationPreviewVariant } from '../../models/notification-preview-variant';
 import Selector from './Selector/Selector';
 import ToggleGroup from './ToggleGroup/ToggleGroup';

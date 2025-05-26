@@ -1,5 +1,5 @@
 import './PreviewError.css';
-import AlertIcon from '../../../../../../.assets/alert.svg';
+import AlertIcon from '../../../../../assets/alert.svg';
 
 export default function PreviewError({ message }: PreviewErrorProps) {
   return (

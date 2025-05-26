@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './InAppBrowserBar.css';
-import LoadingIcon from '../../../../../../../../.assets/loading.svg';
-import LockerIcon from '../../../../../../../../.assets/locker.svg';
-import XMarkIcon from '../../../../../../../../.assets/x-mark.svg';
+import LoadingIcon from '../../../../../../../assets/loading.svg';
+import LockerIcon from '../../../../../../../assets/locker.svg';
+import XMarkIcon from '../../../../../../../assets/x-mark.svg';
 import { getPushAPIHost } from '../../../../../../../config/api';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
