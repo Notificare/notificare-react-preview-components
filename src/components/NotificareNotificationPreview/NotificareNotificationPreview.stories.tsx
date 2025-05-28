@@ -39,74 +39,19 @@ InvalidNotification.args = {
   googleMapsAPIKey: googleMapsAPIKey,
 };
 
-/* iOS Lock Screen */
+/* Text Alert */
 
-export const IOSLockScreenWithMedia = Template.bind({});
-IOSLockScreenWithMedia.args = {
+export const TextAlertWithAttachment = Template.bind({});
+TextAlertWithAttachment.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
     attachments: [
       {
-        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-        mimeType: 'image/jpeg',
-      },
-    ],
-  },
-  variant: 'ios-lockscreen',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSLockScreenWithMediaExpanded = Template.bind({});
-IOSLockScreenWithMediaExpanded.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    attachments: [
-      {
-        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-        mimeType: 'image/jpeg',
-      },
-    ],
-  },
-  variant: 'ios-lockscreen-expanded',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSLockScreenWithoutMedia = Template.bind({});
-IOSLockScreenWithoutMedia.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-  },
-  variant: 'ios-lockscreen',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-/* Android Lock Screen */
-
-export const AndroidLockScreenWithMedia = Template.bind({});
-AndroidLockScreenWithMedia.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    attachments: [
-      {
-        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/3db6e2b6f2a22ef7c3099180d9e2b95469efee10ba655455117586613a5f56f9`,
         mimeType: 'image/jpeg',
       },
     ],
@@ -116,83 +61,62 @@ AndroidLockScreenWithMedia.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+TextAlertWithAttachment.storyName = 'Text Alert with Attachment';
 
-export const AndroidLockScreenWithoutMedia = Template.bind({});
-AndroidLockScreenWithoutMedia.args = {
+export const TextAlertWithoutAttachment = Template.bind({});
+TextAlertWithoutAttachment.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
   },
   variant: 'android-lockscreen',
   serviceKey: serviceKey,
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+TextAlertWithoutAttachment.storyName = 'Text Alert without Attachment';
 
-export const AndroidLockScreenWithMediaExpanded = Template.bind({});
-AndroidLockScreenWithMediaExpanded.args = {
+export const TextAlertWithSingleAction = Template.bind({});
+TextAlertWithSingleAction.args = {
   notification: {
     type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    attachments: [
-      {
-        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-        mimeType: 'image/jpeg',
-      },
-    ],
-  },
-  variant: 'android-lockscreen',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const AndroidLockScreenWithoutMediaExpanded = Template.bind({});
-AndroidLockScreenWithoutMediaExpanded.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-  },
-  variant: 'android-lockscreen-expanded',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-/* Android App UI */
-
-export const AndroidAppUITextAlert = Template.bind({});
-AndroidAppUITextAlert.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-  },
-  variant: 'android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const AndroidAppUITextAlertWithActions = Template.bind({});
-AndroidAppUITextAlertWithActions.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
     actions: [
       {
-        type: 're.notifica.action.Callback',
-        label: 'Go to Notificare website',
-        target: 'https://notificare.com/',
+        type: 're.notifica.action.Browser',
+        label: 'Visit website',
+        target: 'https://ncclothing.com/',
+        camera: false,
+        keyboard: false,
+      },
+    ],
+  },
+  variant: 'ios-app-ui',
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
+  showControls: true,
+};
+TextAlertWithSingleAction.storyName = 'Text Alert with single Action';
+
+export const TextAlertWithMultipleActions = Template.bind({});
+TextAlertWithMultipleActions.args = {
+  notification: {
+    type: 're.notifica.notification.Alert',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
+    actions: [
+      {
+        type: 're.notifica.action.Browser',
+        label: 'Visit website',
+        target: 'https://ncclothing.com/',
         camera: false,
         keyboard: false,
       },
@@ -208,9 +132,48 @@ AndroidAppUITextAlertWithActions.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+TextAlertWithMultipleActions.storyName = 'Text Alert with multiple Actions';
 
-export const AndroidAppUIRate = Template.bind({});
-AndroidAppUIRate.args = {
+export const TextAlertWithAttachmentAndActions = Template.bind({});
+TextAlertWithAttachmentAndActions.args = {
+  notification: {
+    type: 're.notifica.notification.Alert',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
+    attachments: [
+      {
+        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/3db6e2b6f2a22ef7c3099180d9e2b95469efee10ba655455117586613a5f56f9`,
+        mimeType: 'image/jpeg',
+      },
+    ],
+    actions: [
+      {
+        type: 're.notifica.action.Browser',
+        label: 'Visit website',
+        target: 'https://ncclothing.com/',
+        camera: false,
+        keyboard: false,
+      },
+      {
+        type: 're.notifica.action.Telephone',
+        label: 'Make a call',
+        target: 'tel:0500666858',
+      },
+    ],
+  },
+  variant: 'web-desktop-macos',
+  serviceKey: serviceKey,
+  googleMapsAPIKey: googleMapsAPIKey,
+  showControls: true,
+};
+TextAlertWithAttachmentAndActions.storyName = 'Text Alert with Attachment and Actions';
+
+/* Rate */
+
+export const Rate = Template.bind({});
+Rate.args = {
   notification: {
     type: 're.notifica.notification.Rate',
     title: 'Title',
@@ -224,8 +187,10 @@ AndroidAppUIRate.args = {
   applicationId: '618d0f4edc09fbed1864e8d0',
 };
 
-export const AndroidAppUIWebView = Template.bind({});
-AndroidAppUIWebView.args = {
+/* Web View */
+
+export const WebView = Template.bind({});
+WebView.args = {
   notification: {
     type: 're.notifica.notification.WebView',
     title: 'Title',
@@ -244,8 +209,8 @@ AndroidAppUIWebView.args = {
   showControls: true,
 };
 
-export const AndroidAppUIWebViewWithActions = Template.bind({});
-AndroidAppUIWebViewWithActions.args = {
+export const WebViewWithActions = Template.bind({});
+WebViewWithActions.args = {
   notification: {
     type: 're.notifica.notification.WebView',
     title: 'Title',
@@ -278,8 +243,8 @@ AndroidAppUIWebViewWithActions.args = {
   showControls: true,
 };
 
-export const AndroidAppUIWebViewWithActionsAndActionableMarkup = Template.bind({});
-AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
+export const WebViewWithActionsAndActionableMarkup = Template.bind({});
+WebViewWithActionsAndActionableMarkup.args = {
   notification: {
     type: 're.notifica.notification.WebView',
     title: 'Title',
@@ -311,9 +276,12 @@ AndroidAppUIWebViewWithActionsAndActionableMarkup.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+WebViewWithActionsAndActionableMarkup.storyName = 'Webview with Actions and Actionable Markup';
 
-export const AndroidAppUI_HTML5Video = Template.bind({});
-AndroidAppUI_HTML5Video.args = {
+/* HTML5 Video */
+
+export const HTML5Video = Template.bind({});
+HTML5Video.args = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -322,7 +290,7 @@ AndroidAppUI_HTML5Video.args = {
     content: [
       {
         type: 're.notifica.content.HTML5Video',
-        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/75fa502cbaeb5293b7c8f30e8080f11ca98cc54ab627a6a3dff2b715a683a52e`,
       },
     ],
   },
@@ -332,8 +300,10 @@ AndroidAppUI_HTML5Video.args = {
   showControls: true,
 };
 
-export const AndroidAppUIVimeoVideo = Template.bind({});
-AndroidAppUIVimeoVideo.args = {
+/* Vimeo Video */
+
+export const VimeoVideo = Template.bind({});
+VimeoVideo.args = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -352,8 +322,10 @@ AndroidAppUIVimeoVideo.args = {
   showControls: true,
 };
 
-export const AndroidAppUIYouTubeVideo = Template.bind({});
-AndroidAppUIYouTubeVideo.args = {
+/* YouTube Video */
+
+export const YouTubeVideo = Template.bind({});
+YouTubeVideo.args = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -371,9 +343,12 @@ AndroidAppUIYouTubeVideo.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+YouTubeVideo.storyName = 'YouTube Video';
 
-export const AndroidAppUIImage = Template.bind({});
-AndroidAppUIImage.args = {
+/* Image */
+
+export const Image = Template.bind({});
+Image.args = {
   notification: {
     type: 're.notifica.notification.Image',
     title: 'Title',
@@ -386,7 +361,7 @@ AndroidAppUIImage.args = {
       },
       {
         type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
+        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/c60831b542d92ec19842750038e160cef3563caa20d7e4b2702d7f4451364f25`,
       },
     ],
   },
@@ -396,8 +371,10 @@ AndroidAppUIImage.args = {
   showControls: true,
 };
 
-export const AndroidAppUIInAppBrowser = Template.bind({});
-AndroidAppUIInAppBrowser.args = {
+/* In-app browser */
+
+export const InAppBrowser = Template.bind({});
+InAppBrowser.args = {
   notification: {
     type: 're.notifica.notification.InAppBrowser',
     title: 'Title',
@@ -415,9 +392,12 @@ AndroidAppUIInAppBrowser.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+InAppBrowser.storyName = 'In-app Browser';
 
-export const AndroidAppUIWebPage = Template.bind({});
-AndroidAppUIWebPage.args = {
+/* Web Page (URL) */
+
+export const WebPage = Template.bind({});
+WebPage.args = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -435,9 +415,10 @@ AndroidAppUIWebPage.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+WebPage.storyName = 'Web Page (URL)';
 
-export const AndroidAppUIWebPageWithActions = Template.bind({});
-AndroidAppUIWebPageWithActions.args = {
+export const WebPageWithActions = Template.bind({});
+WebPageWithActions.args = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -464,9 +445,10 @@ AndroidAppUIWebPageWithActions.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+WebPageWithActions.storyName = 'Web Page (URL) with Actions';
 
-export const AndroidAppUIWebPageWithActionableMarkupAndActions = Template.bind({});
-AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
+export const WebPageWithActionsAndActionableMarkup = Template.bind({});
+WebPageWithActionsAndActionableMarkup.args = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -493,9 +475,13 @@ AndroidAppUIWebPageWithActionableMarkupAndActions.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+WebPageWithActionsAndActionableMarkup.storyName =
+  'Web Page (URL) with Actions and Actionable Markup';
 
-export const AndroidAppUIMap = Template.bind({});
-AndroidAppUIMap.args = {
+/* Map */
+
+export const Map = Template.bind({});
+Map.args = {
   notification: {
     type: 're.notifica.notification.Map',
     title: 'Title',
@@ -528,8 +514,10 @@ AndroidAppUIMap.args = {
   showControls: true,
 };
 
-export const AndroidAppUIDigitalCard = Template.bind({});
-AndroidAppUIDigitalCard.args = {
+/* Passbook */
+
+export const Passbook = Template.bind({});
+Passbook.args = {
   notification: {
     type: 're.notifica.notification.Passbook',
     title: 'Title',
@@ -548,8 +536,10 @@ AndroidAppUIDigitalCard.args = {
   showControls: true,
 };
 
-export const AndroidAppUIAppRecommendation = Template.bind({});
-AndroidAppUIAppRecommendation.args = {
+/* Store */
+
+export const GooglePlaySearchStore = Template.bind({});
+GooglePlaySearchStore.args = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',
@@ -567,323 +557,10 @@ AndroidAppUIAppRecommendation.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
+GooglePlaySearchStore.storyName = 'Store - Google Play Search';
 
-/* iOS App UI */
-
-export const IOSAppUITextAlert = Template.bind({});
-IOSAppUITextAlert.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUITextAlertWithSingleAction = Template.bind({});
-IOSAppUITextAlertWithSingleAction.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Go to Notificare website',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUITextAlertWithMultipleActions = Template.bind({});
-IOSAppUITextAlertWithMultipleActions.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Go to Notificare website',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        type: 're.notifica.action.Telephone',
-        label: 'Make a call',
-        target: 'tel:0500666858',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIWebView = Template.bind({});
-IOSAppUIWebView.args = {
-  notification: {
-    type: 're.notifica.notification.WebView',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML',
-        data: '<p>Example</p>',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIWebViewWithActions = Template.bind({});
-IOSAppUIWebViewWithActions.args = {
-  notification: {
-    type: 're.notifica.notification.WebView',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML',
-        data: '<p>Example</p>',
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Go to Notificare website',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        type: 're.notifica.action.Telephone',
-        label: 'Make a call',
-        target: 'tel:0500666858',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIMap = Template.bind({});
-IOSAppUIMap.args = {
-  notification: {
-    type: 're.notifica.notification.Map',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.Marker',
-        data: {
-          title: 'Place A',
-          description: 'Some description about the place',
-          latitude: 5.098765,
-          longitude: 6.08875,
-        },
-      },
-      {
-        type: 're.notifica.content.Marker',
-        data: {
-          title: 'Place B',
-          description: 'Some description about the place',
-          latitude: -2.098765,
-          longitude: -4.08875,
-        },
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUI_HTML5Video = Template.bind({});
-IOSAppUI_HTML5Video.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML5Video',
-        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIVimeoVideo = Template.bind({});
-IOSAppUIVimeoVideo.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.Vimeo',
-        data: '75196023',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIYouTubeVideo = Template.bind({});
-IOSAppUIYouTubeVideo.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.YouTube',
-        data: '3t_EN-HZVLw',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIWebPage = Template.bind({});
-IOSAppUIWebPage.args = {
-  notification: {
-    type: 're.notifica.notification.URL',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.URL',
-        data: 'https://www.wikipedia.org/',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIImage = Template.bind({});
-IOSAppUIImage.args = {
-  notification: {
-    type: 're.notifica.notification.Image',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-      },
-      {
-        type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIRate = Template.bind({});
-IOSAppUIRate.args = {
-  notification: {
-    type: 're.notifica.notification.Rate',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-  applicationId: '618d0f4edc09fbed1864e8d0',
-};
-
-export const IOSAppUIDigitalCard = Template.bind({});
-IOSAppUIDigitalCard.args = {
-  notification: {
-    type: 're.notifica.notification.Passbook',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.PKPass',
-        data: `${getPushAPIHost()}/pass/pkpass/79af019c-b575-478c-bb35-14b32e5bfcf1`,
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIInAppBrowser = Template.bind({});
-IOSAppUIInAppBrowser.args = {
-  notification: {
-    type: 're.notifica.notification.InAppBrowser',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.URL',
-        data: 'https://notificare.com/',
-      },
-    ],
-  },
-  variant: 'ios-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const IOSAppUIAppRecommendation = Template.bind({});
-IOSAppUIAppRecommendation.args = {
+export const AppStore = Template.bind({});
+AppStore.args = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',
@@ -906,500 +583,4 @@ IOSAppUIAppRecommendation.args = {
   googleMapsAPIKey: googleMapsAPIKey,
   showControls: true,
 };
-
-/* Web macOS */
-
-export const WebMacOSWithMediaAndActions = Template.bind({});
-WebMacOSWithMediaAndActions.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    attachments: [
-      {
-        uri: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-        mimeType: 'image/jpeg',
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Go to Notificare website',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        type: 're.notifica.action.Telephone',
-        label: 'Make a call',
-        target: 'tel:0500666858',
-      },
-    ],
-  },
-  variant: 'web-desktop-macos',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebMacOSWithoutMedia = Template.bind({});
-WebMacOSWithoutMedia.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Demo Notificare',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-  },
-  variant: 'web-desktop-macos',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-/* Web Android App UI */
-
-export const WebAndroidAppUITextAlert = Template.bind({});
-WebAndroidAppUITextAlert.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: '30% off on selected products',
-    subtitle: 'From shirts, shoes, and much more!',
-    message:
-      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
-    attachments: [
-      {
-        uri: 'https://t4.ftcdn.net/jpg/01/19/56/47/360_F_119564758_3Zj8GjaFFt9MVNkZYR7LvAGz6KS1JIqD.jpg',
-        mimeType: 'image/jpeg',
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Browser',
-        label: 'Visit website',
-        target: 'https://ncclothing.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUIWebView = Template.bind({});
-WebAndroidAppUIWebView.args = {
-  notification: {
-    type: 're.notifica.notification.WebView',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML',
-        data: '<p>Example</p>',
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUIMap = Template.bind({});
-WebAndroidAppUIMap.args = {
-  notification: {
-    type: 're.notifica.notification.Map',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.Marker',
-        data: {
-          title: 'Place A',
-          description: 'Some description about the place',
-          latitude: 5.098765,
-          longitude: 6.08875,
-        },
-      },
-      {
-        type: 're.notifica.content.Marker',
-        data: {
-          title: 'Place B',
-          description: 'Some description about the place',
-          latitude: -2.098765,
-          longitude: -4.08875,
-        },
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUIURL = Template.bind({});
-WebAndroidAppUIURL.args = {
-  notification: {
-    type: 're.notifica.notification.URL',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.URL',
-        data: 'https://www.wikipedia.org/',
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUI_HTML5Video = Template.bind({});
-WebAndroidAppUI_HTML5Video.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML5Video',
-        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUIVimeoVideo = Template.bind({});
-WebAndroidAppUIVimeoVideo.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.Vimeo',
-        data: '75196023',
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUIYouTubeVideo = Template.bind({});
-WebAndroidAppUIYouTubeVideo.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.YouTube',
-        data: '3t_EN-HZVLw',
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebAndroidAppUIImage = Template.bind({});
-WebAndroidAppUIImage.args = {
-  notification: {
-    type: 're.notifica.notification.Image',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-      },
-      {
-        type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-android-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-/* Web Iphone App UI */
-
-export const WebIphoneAppUITextAlert = Template.bind({});
-WebIphoneAppUITextAlert.args = {
-  notification: {
-    type: 're.notifica.notification.Alert',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    attachments: [
-      {
-        uri: 'https://i0.wp.com/touristjourney.com/wp-content/uploads/2020/10/shutterstock_1706807566-scaled.jpg?fit=2560%2C1707&ssl=1',
-        mimeType: 'image/jpeg',
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button B',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button C',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUIWebView = Template.bind({});
-WebIphoneAppUIWebView.args = {
-  notification: {
-    type: 're.notifica.notification.WebView',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML',
-        data: '<p>Example</p>',
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUIMap = Template.bind({});
-WebIphoneAppUIMap.args = {
-  notification: {
-    type: 're.notifica.notification.Map',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.Marker',
-        data: {
-          title: 'Place A',
-          description: 'Some description about the place',
-          latitude: 5.098765,
-          longitude: 6.08875,
-        },
-      },
-      {
-        type: 're.notifica.content.Marker',
-        data: {
-          title: 'Place B',
-          description: 'Some description about the place',
-          latitude: -2.098765,
-          longitude: -4.08875,
-        },
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUIURL = Template.bind({});
-WebIphoneAppUIURL.args = {
-  notification: {
-    type: 're.notifica.notification.URL',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.URL',
-        data: 'https://www.wikipedia.org/',
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUI_HTML5Video = Template.bind({});
-WebIphoneAppUI_HTML5Video.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.HTML5Video',
-        data: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8`,
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUIVimeoVideo = Template.bind({});
-WebIphoneAppUIVimeoVideo.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.Vimeo',
-        data: '75196023',
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUIYouTubeVideo = Template.bind({});
-WebIphoneAppUIYouTubeVideo.args = {
-  notification: {
-    type: 're.notifica.notification.Video',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.YouTube',
-        data: '3t_EN-HZVLw',
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
-
-export const WebIphoneAppUIImage = Template.bind({});
-WebIphoneAppUIImage.args = {
-  notification: {
-    type: 're.notifica.notification.Image',
-    title: 'Title',
-    subtitle: 'Subtitle',
-    message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-      },
-      {
-        type: 're.notifica.content.PNG',
-        data: `${getPushAPIHost()}/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
-      },
-    ],
-    actions: [
-      {
-        type: 're.notifica.action.Callback',
-        label: 'Button A',
-        target: 'https://notificare.com/',
-        camera: false,
-        keyboard: false,
-      },
-    ],
-  },
-  variant: 'web-iphone-app-ui',
-  serviceKey: serviceKey,
-  googleMapsAPIKey: googleMapsAPIKey,
-  showControls: true,
-};
+AppStore.storyName = 'Store - App Store';

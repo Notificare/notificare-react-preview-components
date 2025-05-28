@@ -1,154 +1,53 @@
-import { useEffect, useState } from 'react';
-import './Webshot.css';
-import { getPushAPIHost } from '../../../../../config/api';
-import { useOptions } from '../../OptionsProvider/OptionsProvider';
+import { useEffect } from 'react';
 import Loading from '../Loading/Loading';
 import PreviewError from '../PreviewError/PreviewError';
+import { useWebshotRequest } from './hooks';
+import './Webshot.css';
 
 export default function Webshot({
   url,
   platform,
   width,
   height,
-  onLoadingChange,
+  onLoadingChanged,
   canShow = true,
 }: WebshotProps) {
-  const { serviceKey } = useOptions();
-
-  const [webshot, setWebshot] = useState('');
-  const [hasError, setHasError] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const state = useWebshotRequest({ url, platform, width, height });
 
   useEffect(
-    function loadWebshot() {
-      if (!serviceKey) {
-        setHasError(true);
-        console.error(
-          'It was not possible to load the page webshot because the service key is empty!',
-        );
-        return;
+    function dispatchLoadingChange() {
+      switch (state.status) {
+        case 'idle':
+        case 'loading':
+          onLoadingChanged?.(true);
+          break;
+        case 'success':
+        case 'error':
+          onLoadingChanged?.(false);
+          break;
       }
-
-      if (!isValidUrl(url)) {
-        setHasError(true);
-        console.error('It was not possible to load the page webshot because the URL is invalid!');
-        return;
-      }
-
-      setIsLoading(true);
-      onLoadingChange?.(true);
-      setHasError(false);
-
-      let checkStatusLoop: NodeJS.Timeout;
-
-      const debounce = setTimeout(async () => {
-        try {
-          const webshotId = await requestWebshot(url, width, height, platform, serviceKey);
-
-          checkStatusLoop = setInterval(async () => {
-            const webshotStatus = await getWebshotStatus(webshotId, serviceKey);
-
-            if (webshotStatus === 'error') {
-              setHasError(true);
-              setIsLoading(false);
-              onLoadingChange?.(false);
-              clearInterval(checkStatusLoop);
-            } else if (webshotStatus === 'finished') {
-              const webshot = await getWebshot(webshotId, serviceKey);
-              setWebshot(webshot);
-              setIsLoading(false);
-              onLoadingChange?.(false);
-              clearInterval(checkStatusLoop);
-            }
-          }, 3000);
-        } catch (error) {
-          console.error('There was an error while processing the page webshot:\n', error);
-          setHasError(true);
-          setIsLoading(false);
-          onLoadingChange?.(false);
-        }
-      }, 3000);
-
-      return () => {
-        clearTimeout(debounce);
-        clearInterval(checkStatusLoop);
-      };
     },
-    [url],
+    [state],
   );
 
   return (
     <div className="notificare__push__webshot-background" style={{ width: width, height: height }}>
-      {hasError ? (
-        <PreviewError />
-      ) : isLoading || !canShow ? (
-        <Loading />
-      ) : (
-        <img src={webshot} alt="Webshot" data-testid="webshot" />
+      {state.status === 'loading' && <Loading />}
+
+      {state.status === 'success' && canShow && (
+        <img src={state.data} alt="Webshot" data-testid="webshot" />
       )}
+
+      {state.status === 'error' && <PreviewError message={state.error.message} />}
     </div>
   );
 }
 
-interface WebshotProps {
+export interface WebshotProps {
   url: string;
   platform: 'Android' | 'iOS' | 'Web';
   width: number;
   height: number;
-  onLoadingChange?: (isLoading: boolean) => void;
+  onLoadingChanged?: (loading: boolean) => void;
   canShow?: boolean;
-}
-
-/* Webshot requests */
-
-async function requestWebshot(
-  url: string,
-  width: number,
-  height: number,
-  platform: 'Android' | 'iOS' | 'Web',
-  serviceKey: string,
-) {
-  const response = await fetch(`${getPushAPIHost()}/webshot?apiKey=${serviceKey}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      url: url,
-      delay: 3000,
-      platform: platform,
-      type: 'png',
-      params: {
-        width: width,
-        height: height,
-      },
-    }),
-  });
-
-  const data = await response.json();
-  return data.webshot.id;
-}
-
-async function getWebshotStatus(id: string, serviceKey: string) {
-  const response = await fetch(`${getPushAPIHost()}/webshot/${id}?apiKey=${serviceKey}`);
-  const data = await response.json();
-  return data.webshot.status;
-}
-
-async function getWebshot(id: string, serviceKey: string) {
-  const response = await fetch(`${getPushAPIHost()}/webshot/${id}/result?apiKey=${serviceKey}`);
-
-  const blob = await response.blob();
-  return URL.createObjectURL(blob);
-}
-
-/* URL validation */
-
-function isValidUrl(url: string): boolean {
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
 }

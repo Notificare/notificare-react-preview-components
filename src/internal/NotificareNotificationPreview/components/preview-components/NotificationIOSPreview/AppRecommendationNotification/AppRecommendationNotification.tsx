@@ -1,5 +1,5 @@
 import './AppRecommendationNotification.css';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import LayerGroupIcon from '../../../../../../assets/layer-group.svg';
 import UserIcon from '../../../../../../assets/user.svg';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
@@ -12,14 +12,17 @@ export default function AppRecommendationNotification({
 }: AppRecommendationNotificationProps) {
   const content = notification.content[0];
 
-  const [hasError, setHasError] = useState(false);
+  const [status, setStatus] = useState<StatusState>({
+    isLoading: true,
+    hasError: false,
+    error: '',
+  });
   const [appStoreData, setAppStoreData] = useState<AppStoreApp>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(
     function loadAppData() {
       (async () => {
-        setIsLoading(true);
+        updateComponentStatus(true, false, setStatus);
 
         if (content.type === 're.notifica.content.AppStore') {
           try {
@@ -30,19 +33,25 @@ export default function AppRecommendationNotification({
             const response = await fetch(url);
 
             const data = await response.json();
-            setAppStoreData(data);
 
-            if (appStoreData?.resultCount === 0) {
-              setHasError(true);
+            if (data.resultCount === 0) {
+              updateComponentStatus(
+                false,
+                true,
+                setStatus,
+                'The app was not found. Check the identifier and try again.',
+              );
+            } else {
+              setAppStoreData(data);
+              updateComponentStatus(false, false, setStatus);
             }
-          } catch {
-            setHasError(true);
+          } catch (error) {
+            console.error('Error while trying to get the app information:\n\n', error);
+            updateComponentStatus(false, true, setStatus, 'Check console for more details.');
           }
         } else {
-          setHasError(true);
+          updateComponentStatus(false, true, setStatus);
         }
-
-        setIsLoading(false);
       })();
     },
     [content.data],
@@ -52,9 +61,9 @@ export default function AppRecommendationNotification({
     <div data-testid="ios-app-ui-app-recommendation-notification">
       <div className="notificare__push__ios__store__app-ui__bar">Done</div>
       <div className="notificare__push__ios__store__app-ui">
-        {hasError ? (
-          <PreviewError />
-        ) : isLoading ? (
+        {status.hasError ? (
+          <PreviewError message={status.error} />
+        ) : status.isLoading ? (
           <Loading />
         ) : (
           appStoreData && (
@@ -167,6 +176,12 @@ interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
 }
 
+type StatusState = {
+  isLoading: boolean;
+  hasError: boolean;
+  error: string;
+};
+
 function timeAgo(isoDate: string) {
   const date = new Date(isoDate);
   const now = new Date();
@@ -220,3 +235,15 @@ type AppStoreAppData = {
   trackContentRating: string;
   userRatingCount: number;
 };
+
+/* Status update */
+
+function updateComponentStatus(
+  isLoading: boolean,
+  hasError: boolean,
+  setStatus: Dispatch<SetStateAction<StatusState>>,
+  error?: string,
+) {
+  setStatus({ isLoading: isLoading, hasError: hasError, error: error || '' });
+  return;
+}
