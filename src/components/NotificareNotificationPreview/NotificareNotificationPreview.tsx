@@ -11,17 +11,16 @@ import { NotificationWebPreview } from '../../internal/NotificareNotificationPre
 import Loading from '../../internal/NotificareNotificationPreview/components/shared-components/Loading/Loading';
 import UnavailablePreview from '../../internal/NotificareNotificationPreview/components/shared-components/UnavailablePreview/UnavailablePreview';
 import {
+  NotificationPreviewDisplayMode,
   NotificationPreviewModel,
   NotificationPreviewPlatform,
-  NotificationPreviewDisplayMode,
   NotificationPreviewWebDesktopOS,
   NotificationPreviewWebDevice,
   NotificationPreviewWebMobileType,
 } from '../../internal/NotificareNotificationPreview/types/notification-preview-model';
 import { notificareNotificationSchema } from '../../internal/schemas/notificare-notification/notificare-notification-schema';
+import { NotificareNotification, NotificareNotificationPreviewVariant } from '../../models';
 import { NotificareApplication } from './models/notificare-application';
-import { NotificareNotification } from './models/notificare-notification';
-import { NotificareNotificationPreviewVariant } from './models/notificare-notification-preview-variant';
 
 const defaultApplication: NotificareApplication = {
   name: 'My App',
