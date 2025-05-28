@@ -1,6 +1,6 @@
 import './AlertNotification.css';
+import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasFirstAttachment } from '../../../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 
 export default function AlertNotification({ notification }: AlertNotificationProps) {
   return (

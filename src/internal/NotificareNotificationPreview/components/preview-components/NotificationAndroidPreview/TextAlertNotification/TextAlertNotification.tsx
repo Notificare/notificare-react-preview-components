@@ -1,6 +1,6 @@
 import './TextAlertNotification.css';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 
 export default function TextAlertNotification({
   notification,

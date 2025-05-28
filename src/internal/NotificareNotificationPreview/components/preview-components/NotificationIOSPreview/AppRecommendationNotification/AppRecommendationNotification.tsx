@@ -2,7 +2,7 @@ import './AppRecommendationNotification.css';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import LayerGroupIcon from '../../../../../../assets/layer-group.svg';
 import UserIcon from '../../../../../../assets/user.svg';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import Loading from '../../../shared-components/Loading/Loading';
 import PreviewError from '../../../shared-components/PreviewError/PreviewError';
 import StarRating from './StarRating/StarRating';

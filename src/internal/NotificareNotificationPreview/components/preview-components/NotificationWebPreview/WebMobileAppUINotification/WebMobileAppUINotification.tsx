@@ -1,6 +1,6 @@
 import './WebMobileAppUINotification.css';
 import ThinXMarkIcon from '../../../../../../assets/thin-x-mark.svg';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
 import Webshot from '../../../shared-components/Webshot/Webshot';

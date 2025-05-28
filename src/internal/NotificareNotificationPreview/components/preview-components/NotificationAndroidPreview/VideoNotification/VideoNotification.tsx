@@ -1,6 +1,6 @@
 import './VideoNotification.css';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
 import NavigationBar from '../NavigationBar/NavigationBar';
 

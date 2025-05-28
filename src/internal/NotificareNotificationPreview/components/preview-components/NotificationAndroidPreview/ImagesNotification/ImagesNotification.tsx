@@ -1,6 +1,6 @@
 import './ImagesNotification.css';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 export default function ImagesNotification({ notification, appName }: ImagesNotificationProps) {

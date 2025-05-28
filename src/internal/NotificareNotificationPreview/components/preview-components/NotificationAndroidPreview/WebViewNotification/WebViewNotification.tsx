@@ -1,7 +1,7 @@
 import './WebViewNotification.css';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 export default function WebViewNotification(props: WebViewNotificationProps) {

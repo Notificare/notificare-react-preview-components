@@ -7,8 +7,8 @@ import {
   useApiLoadingStatus,
   APILoadingStatus,
 } from '@vis.gl/react-google-maps';
+import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import { getMarkersFromNotification } from '../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import Loading from '../Loading/Loading';
 import PreviewError from '../PreviewError/PreviewError';

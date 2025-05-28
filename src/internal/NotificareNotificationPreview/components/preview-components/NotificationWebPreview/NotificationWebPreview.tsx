@@ -1,6 +1,6 @@
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
+import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
-import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewWebDesktopOS,

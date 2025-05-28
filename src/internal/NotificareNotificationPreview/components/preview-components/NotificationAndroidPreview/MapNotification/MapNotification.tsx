@@ -1,6 +1,6 @@
 import './MapNotification.css';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
 import NavigationBar from '../NavigationBar/NavigationBar';
 

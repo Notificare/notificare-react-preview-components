@@ -1,5 +1,5 @@
 import './RateNotification.css';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import Webshot from '../../../shared-components/Webshot/Webshot';
 import NavigationBar from '../NavigationBar/NavigationBar';
 

@@ -1,7 +1,7 @@
 import './NotificationAndroidPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
+import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
-import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import { NotificationPreviewDisplayMode } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
