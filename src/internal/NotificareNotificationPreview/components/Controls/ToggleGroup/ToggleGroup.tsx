@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, useEffect } from 'react';
+import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect } from 'react';
 import './ToggleGroup.css';
 
 export default function ToggleGroup<T extends string | undefined>({
@@ -7,7 +7,7 @@ export default function ToggleGroup<T extends string | undefined>({
   selected,
   setSelected,
 }: NewToggleGroupProps<T>) {
-  useEffect(() => {
+  useEffect(function selectDefaultOption() {
     if (!selected) {
       setSelected(options[0].key);
     }
@@ -45,5 +45,5 @@ interface NewToggleGroupProps<T> {
   label: string;
   options: { key: T; icon: ReactNode }[];
   selected: T;
-  setSelected: (value: T) => void;
+  setSelected: Dispatch<SetStateAction<T>>;
 }

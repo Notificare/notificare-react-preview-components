@@ -1,0 +1,26 @@
+.notificare .notificare__web__phone__alert__app-ui__media {
+    max-width: 100%;
+    max-height: 250px;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 10px;
+}
+
+.notificare .notificare__web__phone__alert__app-ui__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.notificare .notificare__web__phone__alert__app-ui__subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.notificare .notificare__web__phone__alert__app-ui__message {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

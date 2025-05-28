@@ -1,7 +1,7 @@
 /**
  * Defines the notification preview variant to be shown.
  */
-export type NotificareNotificationVariant =
+export type NotificareNotificationPreviewVariant =
   | 'android-lockscreen'
   | 'android-lockscreen-expanded'
   | 'android-app-ui'

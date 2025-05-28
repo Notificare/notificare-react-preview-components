@@ -40,7 +40,7 @@ export async function fetchWebshotRequestStatus(
   id: string,
   serviceKey: string,
 ): Promise<WebshotRequestStatusResponse> {
-  const url = new URL(`/webshot/${encodeURIComponent(id)}a`, getPushAPIHost());
+  const url = new URL(`/webshot/${encodeURIComponent(id)}`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
   const response = await fetch(url);

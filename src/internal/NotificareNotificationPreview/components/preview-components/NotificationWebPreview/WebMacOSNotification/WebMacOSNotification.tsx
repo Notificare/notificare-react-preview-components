@@ -6,6 +6,9 @@ import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import ExpandButton from './ExpandButton/ExpandButton';
 
+const maxMessageLines = 3;
+const messageLineHeight = 16.7;
+
 export default function WebMacOSNotification({ notification, appName, appDomain }: WebPushProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [mouseOverNotification, setMouseOverNotification] = useState<boolean>(false);
@@ -15,22 +18,23 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
   const [isClosing, setIsClosing] = useState<boolean>(false);
   const [isExpanding, setIsExpanding] = useState<boolean>(false);
   const [initialPreviewHeight, setInitialPreviewHeight] = useState<string>('');
-  //const [initialMessageHeight, setInitialMessageHeight] = useState<string>('');
   const previewRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
-  const maxMessageLines = 3;
-  const messageLineHeight = 16.7;
 
-  useEffect(() => {
+  useEffect(function enableExpandableOnMessageHeightAndSetInitialPreviewHeight() {
     if (previewRef.current && messageRef.current) {
+      // calculate the message height
       const fullTextHeight = messageRef.current.scrollHeight;
       setExpandable(fullTextHeight > maxMessageLines * messageLineHeight);
 
+      // set the scroll height of the preview as the REAL height of the preview and keep it in a state. It's necessary for expand/collapse animations to work properly
       const previewHeight = `${previewRef.current.scrollHeight}px`;
       previewRef.current.style.height = previewHeight;
       setInitialPreviewHeight(previewHeight);
     }
+  }, []);
 
+  useEffect(function enableExpandableOnAttachment() {
     if (hasFirstAttachment(notification)) {
       setExpandable(true);
     }
@@ -49,29 +53,28 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
           <ExpandButton
             open={expanded}
             disabled={isClosing || isExpanding}
-            onToggle={() => {
+            onToggle={function animatePreview() {
               const previewElement = previewRef.current;
               const messageElement = messageRef.current;
 
               if (previewElement && messageElement) {
                 if (expanded) {
                   previewElement.style.backgroundColor = '#f4f4f4';
-                  previewElement.style.height = initialPreviewHeight;
-                  //messageElement.style.height = initialMessageHeight;
+                  previewElement.style.height = initialPreviewHeight; // reset the preview height to the initial height so the animation starts
                   setIsClosing(true);
                   setExpanded(false);
                   setTimeout(() => {
                     setIsClosing(false);
-                    previewElement.style.overflow = '';
+                    previewElement.style.overflow = ''; // unset overflow property (if it's 'hidden', it hides the expanded options)
                   }, 300);
                 } else {
                   previewElement.style.backgroundColor = '#fff';
-                  previewElement.style.overflow = 'hidden';
+                  previewElement.style.overflow = 'hidden'; // set preview overflow property to 'hidden' so the expanded content is not shown immediately (but progressively with the animation)
                   setIsExpanding(true);
                   setExpanded(true);
                   setTimeout(() => {
-                    previewElement.style.height = `${previewElement.scrollHeight - messageElement.clientHeight + messageElement.scrollHeight}px`;
-                    //messageElement.style.height = `${messageElement.scrollHeight}px`;
+                    // update the preview element REAL height with the current scroll height to start the animation
+                    previewElement.style.height = `${previewElement.scrollHeight}px`;
                   }, 10);
                   setTimeout(() => {
                     setIsExpanding(false);

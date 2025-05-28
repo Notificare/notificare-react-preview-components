@@ -1,8 +1,8 @@
 import './NotificationIOSPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
-import { NotificationPreviewVariant } from '../../../models/notification-preview-variant';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
+import { NotificationPreviewDisplayMode } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
@@ -21,14 +21,14 @@ import WebViewNotification from './WebViewNotification/WebViewNotification';
 export default function NotificationIOSPreview({
   notification,
   application,
-  mobileVariant,
+  displayMode = 'lockscreen',
 }: NotificationIOSPreviewProps) {
-  const { googleMapsAPIKey } = useOptions().options;
+  const { googleMapsAPIKey } = useOptions();
 
   if (
     notification.type === 're.notifica.notification.Map' &&
     !googleMapsAPIKey &&
-    mobileVariant === 'app-ui'
+    displayMode === 'app-ui'
   ) {
     return (
       <UnavailablePreview
@@ -39,18 +39,18 @@ export default function NotificationIOSPreview({
   }
 
   return (
-    <IOSPhoneBackground theme={getTheme(notification.type, mobileVariant)}>
+    <IOSPhoneBackground theme={getTheme(notification.type, displayMode)}>
       <div className="notificare__push__ios__preview">
-        {(mobileVariant === 'lockscreen' || mobileVariant === 'lockscreen-expanded') && (
+        {(displayMode === 'lockscreen' || displayMode === 'lockscreen-expanded') && (
           <LockScreenNotification
             notification={notification}
             appName={application.name}
             appIcon={getAppIconURL(application.websitePushConfig.icon)}
-            expanded={mobileVariant === 'lockscreen-expanded'}
+            expanded={displayMode === 'lockscreen-expanded'}
           />
         )}
 
-        {mobileVariant === 'app-ui' &&
+        {displayMode === 'app-ui' &&
           (() => {
             switch (notification.type) {
               case 're.notifica.notification.Alert':
@@ -100,14 +100,14 @@ export default function NotificationIOSPreview({
 interface NotificationIOSPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
-  mobileVariant: NotificationPreviewVariant['mobileVariant'];
+  displayMode?: NotificationPreviewDisplayMode;
 }
 
 function getTheme(
   notificationType: NotificareNotificationSchema['type'],
-  mobileVariant: NotificationPreviewVariant['mobileVariant'],
+  displayMode: NotificationPreviewDisplayMode,
 ) {
-  if (mobileVariant !== 'app-ui') {
+  if (displayMode !== 'app-ui') {
     return 'light';
   }
 

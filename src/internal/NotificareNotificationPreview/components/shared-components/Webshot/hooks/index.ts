@@ -10,7 +10,7 @@ import { isValidUrl } from '../../../../../utils/url';
 import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
-  const { serviceKey } = useOptions().options;
+  const { serviceKey } = useOptions();
   const { url, platform, width, height } = useDebounce(props, 500);
 
   const [state, setState] = useState<WebshotState>({ status: 'idle' });

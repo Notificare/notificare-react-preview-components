@@ -15,7 +15,7 @@ export const useOptions = () => {
   if (!context) {
     throw new Error('useOptions should be used inside an OptionsProvider');
   }
-  return context;
+  return context.options;
 };
 
 const OptionsContext = createContext<{ options: NotificareNotificationOptions } | undefined>(

@@ -14,16 +14,17 @@ import Loading from '../Loading/Loading';
 import PreviewError from '../PreviewError/PreviewError';
 
 export default function MapRichContent({ notification, width, height }: MapRichContentProps) {
-  const { googleMapsAPIKey } = useOptions().options;
-
-  const markers = getMarkersFromNotification(notification).map((marker, index) => ({
-    id: index,
-    lat: marker.latitude,
-    lng: marker.longitude,
-    title: marker.title,
-  }));
-
+  const { googleMapsAPIKey } = useOptions();
   const [isClient, setIsClient] = useState(false);
+
+  const markers = useMemo(() => {
+    return getMarkersFromNotification(notification).map((marker, index) => ({
+      id: index,
+      lat: marker.latitude,
+      lng: marker.longitude,
+      title: marker.title,
+    }));
+  }, [notification.content]);
 
   const center = useMemo(() => {
     if (markers.length > 0) {
@@ -103,7 +104,7 @@ function MapWithStatus({
   );
 }
 
-interface MapRichContentProps {
+export interface MapRichContentProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Map' }>;
   width: string;
   height: string;

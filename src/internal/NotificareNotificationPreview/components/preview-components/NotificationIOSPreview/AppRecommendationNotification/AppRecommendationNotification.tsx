@@ -2,7 +2,6 @@ import './AppRecommendationNotification.css';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import LayerGroupIcon from '../../../../../../assets/layer-group.svg';
 import UserIcon from '../../../../../../assets/user.svg';
-import { AppStoreApp } from '../../../../models/app-store-app';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import Loading from '../../../shared-components/Loading/Loading';
 import PreviewError from '../../../shared-components/PreviewError/PreviewError';
@@ -20,36 +19,43 @@ export default function AppRecommendationNotification({
   });
   const [appStoreData, setAppStoreData] = useState<AppStoreApp>();
 
-  useEffect(() => {
-    (async () => {
-      updateComponentStatus(true, false, setStatus);
+  useEffect(
+    function loadAppData() {
+      (async () => {
+        updateComponentStatus(true, false, setStatus);
 
-      if (content.type === 're.notifica.content.AppStore' && typeof content.data !== 'string') {
-        try {
-          const response = await fetch(
-            `https://itunes.apple.com/lookup?country=GB&id=${content.data.identifier}`,
-          );
+        if (content.type === 're.notifica.content.AppStore') {
+          try {
+            const url = new URL('/lookup', 'https://itunes.apple.com');
+            url.searchParams.set('country', 'GB');
+            url.searchParams.set('id', content.data.identifier);
 
-          const data = await response.json();
-          setAppStoreData(data);
+            const response = await fetch(url);
 
-          if (appStoreData?.resultCount === 0) {
-            updateComponentStatus(
-              false,
-              true,
-              setStatus,
-              'The app was not found. Check the identifier and try again.',
-            );
+            const data = await response.json();
+
+            if (data.resultCount === 0) {
+              updateComponentStatus(
+                false,
+                true,
+                setStatus,
+                'The app was not found. Check the identifier and try again.',
+              );
+            } else {
+              setAppStoreData(data);
+              updateComponentStatus(false, false, setStatus);
+            }
+          } catch (error) {
+            console.error('Error while trying to get the app information:\n\n', error);
+            updateComponentStatus(false, true, setStatus, 'Check console for more details.');
           }
-        } catch (error) {
-          console.error('Error while trying to get the app information:\n\n', error);
-          updateComponentStatus(false, true, setStatus, 'Check console for more details.');
+        } else {
+          updateComponentStatus(false, true, setStatus);
         }
-      } else {
-        updateComponentStatus(false, true, setStatus);
-      }
-    })();
-  }, [content.data]);
+      })();
+    },
+    [content.data],
+  );
 
   return (
     <div data-testid="ios-app-ui-app-recommendation-notification">
@@ -210,6 +216,25 @@ function formatNumber(num: number): string {
   }
   return num.toString();
 }
+
+type AppStoreApp = {
+  resultCount: number;
+  results: AppStoreAppData[];
+};
+
+type AppStoreAppData = {
+  artworkUrl512: string;
+  screenshotUrls: string[];
+  averageUserRating: number;
+  sellerName: string;
+  trackName: string;
+  primaryGenreName: string;
+  currentVersionReleaseDate: string;
+  releaseNotes: string;
+  version: string;
+  trackContentRating: string;
+  userRatingCount: number;
+};
 
 /* Status update */
 

@@ -1,10 +1,12 @@
 import './WebMobileAppUINotification.css';
 import ThinXMarkIcon from '../../../../../../assets/thin-x-mark.svg';
-import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
 import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
 import Webshot from '../../../shared-components/Webshot/Webshot';
+import AlertNotification from './AlertNotification/AlertNotification';
+import ImageNotification from './ImageNotification/ImageNotification';
+import WebViewNotification from './WebViewNotification/WebViewNotification';
 
 export default function WebMobileAppUINotification({
   notification,
@@ -34,73 +36,46 @@ export default function WebMobileAppUINotification({
             </button>
           </div>
 
-          {notification.type === 're.notifica.notification.Alert' && (
-            <div data-testid="web-mobile-app-ui-text-alert-notification">
-              {hasFirstAttachment(notification) && (
-                <img
-                  className="notificare__web__phone__alert__app-ui__media"
-                  src={notification.attachments?.[0].uri}
-                  alt="Notification attachment"
-                />
-              )}
+          {(() => {
+            switch (notification.type) {
+              case 're.notifica.notification.Alert':
+                return <AlertNotification notification={notification} />;
 
-              <div>
-                <p className="notificare__web__phone__alert__app-ui__title">{notification.title}</p>
-                <p className="notificare__web__phone__alert__app-ui__subtitle">
-                  {notification.subtitle}
-                </p>
-                <p className="notificare__web__phone__alert__app-ui__message">
-                  {notification.message}
-                </p>
-              </div>
-            </div>
-          )}
+              case 're.notifica.notification.WebView':
+                return <WebViewNotification notification={notification} />;
 
-          {notification.type === 're.notifica.notification.WebView' && (
-            <iframe
-              className="notificare__web__phone__web-view__app-ui__content"
-              srcDoc={notification.content[0].data}
-              sandbox="allow-same-origin"
-              data-testid="web-mobile-app-ui-web-view-notification"
-            />
-          )}
+              case 're.notifica.notification.URL':
+                return (
+                  <div data-testid="web-mobile-app-ui-url-notification">
+                    <Webshot
+                      url={notification.content[0].data}
+                      platform={'Web'}
+                      width={268}
+                      height={430}
+                    />
+                  </div>
+                );
 
-          {notification.type === 're.notifica.notification.Map' && (
-            <MapRichContent notification={notification} width={'100%'} height={'400px'} />
-          )}
+              case 're.notifica.notification.Image':
+                return <ImageNotification notification={notification} />;
 
-          {notification.type == 're.notifica.notification.URL' && (
-            <div data-testid="web-mobile-app-ui-url-notification">
-              <Webshot
-                url={notification.content[0].data}
-                platform={'Web'}
-                width={268}
-                height={430}
-              />
-            </div>
-          )}
+              case 're.notifica.notification.Map':
+                return (
+                  <MapRichContent notification={notification} width={'100%'} height={'400px'} />
+                );
 
-          {notification.type === 're.notifica.notification.Video' && (
-            <div data-testid="web-mobile-app-ui-video-notification">
-              <VideoRichContent videoData={notification.content[0]} width="100%" height="430px" />
-            </div>
-          )}
-
-          {notification.type === 're.notifica.notification.Image' && (
-            <div
-              className="notificare__web__phone__image__app-ui__image-slider"
-              data-testid="web-mobile-app-ui-image-notification"
-            >
-              {notification.content.map((image, index) => (
-                <img
-                  key={index}
-                  className="notificare__web__phone__image__app-ui__image-slider-item"
-                  src={image.data}
-                  alt="Slider image"
-                />
-              ))}
-            </div>
-          )}
+              case 're.notifica.notification.Video':
+                return (
+                  <div data-testid="web-mobile-app-ui-video-notification">
+                    <VideoRichContent
+                      videoData={notification.content[0]}
+                      width="100%"
+                      height="430px"
+                    />
+                  </div>
+                );
+            }
+          })()}
 
           {notification.actions && (
             <div

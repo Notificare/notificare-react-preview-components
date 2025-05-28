@@ -1,92 +1,100 @@
 import './Controls.css';
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 import AndroidIcon from '../../../../assets/android.svg';
 import DesktopIcon from '../../../../assets/desktop.svg';
 import HTML5Icon from '../../../../assets/html5.svg';
 import IOSIcon from '../../../../assets/ios.svg';
 import PhoneIcon from '../../../../assets/phone.svg';
-import { NotificationPreviewVariant } from '../../models/notification-preview-variant';
+import {
+  NotificationPreviewDisplayMode,
+  NotificationPreviewPlatform,
+  NotificationPreviewWebDesktopOS,
+  NotificationPreviewWebDevice,
+  NotificationPreviewWebMobileType,
+} from '../../types/notification-preview-model';
 import Selector from './Selector/Selector';
 import ToggleGroup from './ToggleGroup/ToggleGroup';
 
+/* Toggle Groups data */
+
+const platforms: OptionsGroup<NotificationPreviewPlatform>[] = [
+  {
+    key: 'android',
+    icon: (
+      <AndroidIcon
+        key="platforms-android-icon"
+        className="notificare__push__preview-controls-android-icon"
+      />
+    ),
+  },
+  {
+    key: 'ios',
+    icon: (
+      <IOSIcon key="platform-ios-icon" className="notificare__push__preview-controls-ios-icon" />
+    ),
+  },
+  {
+    key: 'web',
+    icon: (
+      <HTML5Icon
+        key="platform-html5-icon"
+        className="notificare__push__preview-controls-html5-icon"
+      />
+    ),
+  },
+];
+
+const webDevices: OptionsGroup<NotificationPreviewWebDevice>[] = [
+  {
+    key: 'desktop',
+    icon: (
+      <DesktopIcon
+        key="form-factor-desktop-icon"
+        className="notificare__push__preview-controls-desktop-icon"
+      />
+    ),
+  },
+  {
+    key: 'phone',
+    icon: (
+      <PhoneIcon
+        key="form-factor-phone-icon"
+        className="notificare__push__preview-controls-phone-icon"
+      />
+    ),
+  },
+];
+
+const webMobileTypes: OptionsGroup<NotificationPreviewWebMobileType>[] = [
+  {
+    key: 'android',
+    icon: (
+      <AndroidIcon
+        key="device-android-icon"
+        className="notificare__push__preview-controls-android-icon"
+      />
+    ),
+  },
+  {
+    key: 'iphone',
+    icon: (
+      <IOSIcon key="device-iphone-icon" className="notificare__push__preview-controls-ios-icon" />
+    ),
+  },
+];
+
 export default function Controls({
   platform,
-  mobileVariant,
+  displayMode,
   webDevice,
   webMobileType,
   webDesktopOS,
   setPlatform,
-  setMobileVariant,
+  setDisplayMode,
   setWebDevice,
   setWebMobileType,
   setWebDesktopOS,
 }: ControlsProps) {
-  const platforms: OptionsGroup<typeof platform>[] = [
-    {
-      key: 'android',
-      icon: (
-        <AndroidIcon
-          key="platforms-android-icon"
-          className="notificare__push__preview-controls-android-icon"
-        />
-      ),
-    },
-    {
-      key: 'ios',
-      icon: (
-        <IOSIcon key="platform-ios-icon" className="notificare__push__preview-controls-ios-icon" />
-      ),
-    },
-    {
-      key: 'web',
-      icon: (
-        <HTML5Icon
-          key="platform-html5-icon"
-          className="notificare__push__preview-controls-html5-icon"
-        />
-      ),
-    },
-  ];
-
-  const webDevices: OptionsGroup<typeof webDevice>[] = [
-    {
-      key: 'desktop',
-      icon: (
-        <DesktopIcon
-          key="form-factor-desktop-icon"
-          className="notificare__push__preview-controls-desktop-icon"
-        />
-      ),
-    },
-    {
-      key: 'phone',
-      icon: (
-        <PhoneIcon
-          key="form-factor-phone-icon"
-          className="notificare__push__preview-controls-phone-icon"
-        />
-      ),
-    },
-  ];
-
-  const webMobileTypes: OptionsGroup<typeof webMobileType>[] = [
-    {
-      key: 'android',
-      icon: (
-        <AndroidIcon
-          key="device-android-icon"
-          className="notificare__push__preview-controls-android-icon"
-        />
-      ),
-    },
-    {
-      key: 'iphone',
-      icon: (
-        <IOSIcon key="device-iphone-icon" className="notificare__push__preview-controls-ios-icon" />
-      ),
-    },
-  ];
-
   return (
     <div className="notificare__push__preview-controls" data-testid="controls">
       <div className="notificare__push__preview-controls-toggle-groups">
@@ -125,8 +133,8 @@ export default function Controls({
             { key: 'lockscreen-expanded', label: 'Lock Screen Expanded' },
             { key: 'app-ui', label: 'App UI' },
           ]}
-          selected={mobileVariant}
-          setSelected={setMobileVariant}
+          selected={displayMode}
+          setSelected={setDisplayMode}
         />
       )}
 
@@ -135,8 +143,8 @@ export default function Controls({
           {webDevice === 'phone' && (
             <Selector
               options={[{ key: 'app-ui', label: 'App UI' }]}
-              selected={mobileVariant}
-              setSelected={setMobileVariant}
+              selected={displayMode}
+              setSelected={setDisplayMode}
             />
           )}
 
@@ -154,16 +162,16 @@ export default function Controls({
 }
 
 interface ControlsProps {
-  platform: NotificationPreviewVariant['platform'];
-  mobileVariant: NotificationPreviewVariant['mobileVariant'];
-  webDevice: NotificationPreviewVariant['webDevice'];
-  webMobileType: NotificationPreviewVariant['webMobileType'];
-  webDesktopOS: NotificationPreviewVariant['webDesktopOS'];
-  setPlatform: (value: NotificationPreviewVariant['platform']) => void;
-  setMobileVariant: (value: NotificationPreviewVariant['mobileVariant']) => void;
-  setWebDevice: (value: NotificationPreviewVariant['webDevice']) => void;
-  setWebMobileType: (value: NotificationPreviewVariant['webMobileType']) => void;
-  setWebDesktopOS: (value: NotificationPreviewVariant['webDesktopOS']) => void;
+  platform?: NotificationPreviewPlatform;
+  displayMode?: NotificationPreviewDisplayMode;
+  webDevice?: NotificationPreviewWebDevice;
+  webMobileType?: NotificationPreviewWebMobileType;
+  webDesktopOS?: NotificationPreviewWebDesktopOS;
+  setPlatform: Dispatch<SetStateAction<NotificationPreviewPlatform | undefined>>;
+  setDisplayMode: Dispatch<SetStateAction<NotificationPreviewDisplayMode | undefined>>;
+  setWebDevice: Dispatch<SetStateAction<NotificationPreviewWebDevice | undefined>>;
+  setWebMobileType: Dispatch<SetStateAction<NotificationPreviewWebMobileType | undefined>>;
+  setWebDesktopOS: Dispatch<SetStateAction<NotificationPreviewWebDesktopOS | undefined>>;
 }
 
 type OptionsGroup<T> = {

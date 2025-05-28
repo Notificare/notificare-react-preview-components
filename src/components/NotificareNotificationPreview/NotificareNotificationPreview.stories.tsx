@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { getPushAPIHost } from '../../config/api';
-import NotificareNotificationPreview from './NotificareNotificationPreview';
+import { NotificareNotificationPreview } from './NotificareNotificationPreview';
 
 const meta: Meta<typeof NotificareNotificationPreview> = {
   title: 'ReactComponentLibrary/NotificareNotificationPreview',

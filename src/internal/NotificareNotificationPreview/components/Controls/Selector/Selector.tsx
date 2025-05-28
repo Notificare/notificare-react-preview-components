@@ -1,5 +1,5 @@
 import './Selector.css';
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import ExpandIcon from '../../../../../assets/expand.svg';
 
 export default function Selector<T extends string | undefined>({
@@ -10,7 +10,7 @@ export default function Selector<T extends string | undefined>({
   const [isExpanded, setIsExpanded] = useState(false);
   const optionsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useEffect(function selectDefaultOption() {
     setIsExpanded(false);
 
     if (!options.find((option) => option.key === selected) || !selected) {
@@ -18,7 +18,7 @@ export default function Selector<T extends string | undefined>({
     }
   }, []);
 
-  useEffect(() => {
+  useEffect(function closeSelectorWhenClickingOutside() {
     function handleClickOutside(event: MouseEvent) {
       if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) {
         setIsExpanded(false);
@@ -69,5 +69,5 @@ export default function Selector<T extends string | undefined>({
 interface SelectorProps<T> {
   options: { key: T; label: string }[];
   selected: T;
-  setSelected: (value: T) => void;
+  setSelected: Dispatch<SetStateAction<T>>;
 }

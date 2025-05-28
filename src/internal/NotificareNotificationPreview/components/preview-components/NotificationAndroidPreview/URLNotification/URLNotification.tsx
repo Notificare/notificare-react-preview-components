@@ -13,11 +13,16 @@ export default function URLNotification({ notification, appName }: URLNotificati
 
   const [websiteMarkup, setWebsiteMarkup] = useState('');
 
-  const { serviceKey } = useOptions().options;
+  const { serviceKey } = useOptions();
 
-  useEffect(() => {
+  useEffect(function loadWebsiteMarkup() {
     (async () => {
-      setWebsiteMarkup(await fetchWebsiteMarkup(serviceKey, url));
+      try {
+        const response = await fetchWebsiteMarkup(serviceKey, url);
+        setWebsiteMarkup(response);
+      } catch (error) {
+        console.error('Error fetching website markup:\n\n', error);
+      }
     })();
   }, []);
 

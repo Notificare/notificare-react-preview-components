@@ -3,7 +3,7 @@ import { waitFor } from '@storybook/test';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { getPushAPIHost, setPushAPIHost } from '../../../config/api';
 import { TEST_PUSH_API_HOST } from '../../../constants/constants';
-import NotificareNotificationPreview from '../NotificareNotificationPreview';
+import { NotificareNotificationPreview } from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,
   appRecommendationNotificationMock,

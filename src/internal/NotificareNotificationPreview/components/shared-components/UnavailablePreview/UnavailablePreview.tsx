@@ -32,7 +32,7 @@ export default function UnavailablePreview({
   );
 }
 
-interface UnavailablePreviewProps {
+export interface UnavailablePreviewProps {
   message: string;
   showConsoleWarning: boolean;
 }
