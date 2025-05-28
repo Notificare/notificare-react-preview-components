@@ -1,23 +1,22 @@
-import { createContext, ReactNode, useContext } from 'react';
-import { NotificareNotificationOptions } from '../../../../components/NotificareNotificationPreview/models/notificare-notification-config';
+import { createContext, PropsWithChildren, useContext } from 'react';
 
-export function OptionsProvider({ options, children }: OptionsProviderProps) {
-  return <OptionsContext.Provider value={{ options }}>{children}</OptionsContext.Provider>;
+const OptionsContext = createContext<NotificareNotificationOptions | undefined>(undefined);
+
+export function OptionsProvider({ children, ...props }: OptionsProviderProps) {
+  return <OptionsContext.Provider value={{ ...props }}>{children}</OptionsContext.Provider>;
 }
 
-interface OptionsProviderProps {
-  options: NotificareNotificationOptions;
-  children: ReactNode;
+export type OptionsProviderProps = PropsWithChildren & NotificareNotificationOptions;
+
+export interface NotificareNotificationOptions {
+  serviceKey: string;
+  googleMapsAPIKey?: string;
 }
 
-export const useOptions = () => {
+export function useOptions() {
   const context = useContext(OptionsContext);
   if (!context) {
     throw new Error('useOptions should be used inside an OptionsProvider');
   }
-  return context.options;
-};
-
-const OptionsContext = createContext<{ options: NotificareNotificationOptions } | undefined>(
-  undefined,
-);
+  return context;
+}
