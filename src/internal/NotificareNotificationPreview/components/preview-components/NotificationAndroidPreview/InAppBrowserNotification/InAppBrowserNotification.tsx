@@ -14,7 +14,7 @@ export default function InAppBrowserNotification({ notification }: InAppBrowserN
     <div data-testid="android-app-ui-in-app-browser-notification">
       <InAppBrowserBar
         url={url}
-        onLoadingChange={setIsPageTitleLoading}
+        onLoadingChanged={setIsPageTitleLoading}
         canShow={!isWebshotLoading}
       />
       <Webshot
@@ -22,7 +22,7 @@ export default function InAppBrowserNotification({ notification }: InAppBrowserN
         platform="Android"
         width={338}
         height={570}
-        onLoadingChange={setIsWebshotLoading}
+        onLoadingChanged={setIsWebshotLoading}
         canShow={!isPageTitleLoading}
       />
     </div>

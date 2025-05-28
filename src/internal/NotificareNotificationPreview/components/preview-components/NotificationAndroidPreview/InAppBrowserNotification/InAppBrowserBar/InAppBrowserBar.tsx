@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './InAppBrowserBar.css';
 import LoadingIcon from '../../../../../../../assets/loading.svg';
 import LockerIcon from '../../../../../../../assets/locker.svg';
@@ -8,20 +8,23 @@ import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 
-export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InAppBrowserBarProps) {
+export default function InAppBrowserBar({
+  url,
+  onLoadingChanged,
+  canShow,
+}: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<StatusState>({ isLoading: true });
   const { serviceKey } = useOptions().options;
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
+      updateComponentStatus(true, setStatus, onLoadingChanged);
 
       const pageTitle = await getPageTitle(serviceKey, url);
       setPageTitle(pageTitle);
 
-      setIsLoading(false);
-      onLoadingChange?.(false);
+      updateComponentStatus(false, setStatus, onLoadingChanged);
     })();
   }, [url]);
 
@@ -37,7 +40,7 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
 
       <div className="notificare__push__android__in-app-browser__app-ui__bar-domain">
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--title">
-          {!isLoading && canShow ? pageTitle : 'Loading...'}
+          {!status.isLoading && canShow ? pageTitle : 'Loading...'}
         </p>
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--url">
           {getUrlMainDomain(url)}
@@ -49,9 +52,13 @@ export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InApp
 
 interface InAppBrowserBarProps {
   url: string;
-  onLoadingChange?: (isLoading: boolean) => void;
+  onLoadingChanged?: Dispatch<SetStateAction<boolean>>;
   canShow: boolean;
 }
+
+type StatusState = {
+  isLoading: boolean;
+};
 
 async function getPageTitle(apiKey: string, url: string) {
   try {
@@ -64,7 +71,19 @@ async function getPageTitle(apiKey: string, url: string) {
 
     return doc.querySelector('title')?.textContent ?? '';
   } catch (error) {
-    console.error('Error getting page title: ', error);
+    console.error('Error getting page title:\n\n', error);
     return '';
   }
+}
+
+/* Status update */
+
+function updateComponentStatus(
+  isLoading: boolean,
+  setStatus: Dispatch<SetStateAction<StatusState>>,
+  notifyLoadingChange?: Dispatch<SetStateAction<boolean>>,
+) {
+  setStatus({ isLoading: isLoading });
+  notifyLoadingChange?.(isLoading);
+  return;
 }
