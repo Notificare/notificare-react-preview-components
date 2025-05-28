@@ -13,7 +13,7 @@ export default function Webshot({
   onLoadingChange,
   canShow = true,
 }: WebshotProps) {
-  const { serviceKey } = useOptions().options;
+  const { serviceKey } = useOptions();
 
   const [webshot, setWebshot] = useState('');
   const [hasError, setHasError] = useState(false);

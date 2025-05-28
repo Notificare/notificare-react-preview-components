@@ -2,7 +2,7 @@ import './NotificationAndroidPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
-import { NotificationPreviewModelDisplayMode } from '../../../types/notification-preview-model';
+import { NotificationPreviewDisplayMode } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
 import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
@@ -23,7 +23,7 @@ export function NotificationAndroidPreview({
   application,
   displayMode = 'lockscreen',
 }: NotificationAndroidPreviewProps) {
-  const { googleMapsAPIKey } = useOptions().options;
+  const { googleMapsAPIKey } = useOptions();
 
   if (
     notification.type === 're.notifica.notification.Map' &&
@@ -120,12 +120,12 @@ export function NotificationAndroidPreview({
 interface NotificationAndroidPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
-  displayMode?: NotificationPreviewModelDisplayMode;
+  displayMode?: NotificationPreviewDisplayMode;
 }
 
 function getTheme(
   notificationType: NotificareNotificationSchema['type'],
-  displayMode: NotificationPreviewModelDisplayMode,
+  displayMode: NotificationPreviewDisplayMode,
 ) {
   if (displayMode !== 'app-ui') {
     return 'light';

@@ -2,10 +2,10 @@ import { NotificareApplication } from '../../../../../components/NotificareNotif
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
 import {
-  NotificationPreviewModelDisplayMode,
-  NotificationPreviewModelWebDesktopOS,
-  NotificationPreviewModelWebDevice,
-  NotificationPreviewModelWebMobileType,
+  NotificationPreviewDisplayMode,
+  NotificationPreviewWebDesktopOS,
+  NotificationPreviewWebDevice,
+  NotificationPreviewWebMobileType,
 } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
@@ -22,7 +22,7 @@ export function NotificationWebPreview({
   webMobileType,
   webDesktopOS = 'macOS',
 }: NotificationWebPreviewProps) {
-  const { googleMapsAPIKey } = useOptions().options;
+  const { googleMapsAPIKey } = useOptions();
 
   if (webDevice === 'desktop' && webDesktopOS === 'macOS') {
     return (
@@ -86,10 +86,10 @@ export function NotificationWebPreview({
 interface NotificationWebPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
-  displayMode?: NotificationPreviewModelDisplayMode;
-  webDevice?: NotificationPreviewModelWebDevice;
-  webMobileType?: NotificationPreviewModelWebMobileType;
-  webDesktopOS?: NotificationPreviewModelWebDesktopOS;
+  displayMode?: NotificationPreviewDisplayMode;
+  webDevice?: NotificationPreviewWebDevice;
+  webMobileType?: NotificationPreviewWebMobileType;
+  webDesktopOS?: NotificationPreviewWebDesktopOS;
 }
 
 function getTheme(notificationType: NotificareNotificationSchema['type']) {

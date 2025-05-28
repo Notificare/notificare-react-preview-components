@@ -23,9 +23,11 @@ export default function AppRecommendationNotification({
 
         if (content.type === 're.notifica.content.AppStore') {
           try {
-            const response = await fetch(
-              `https://itunes.apple.com/lookup?country=GB&id=${content.data.identifier}`,
-            );
+            const url = new URL('/lookup', 'https://itunes.apple.com');
+            url.searchParams.set('country', 'GB');
+            url.searchParams.set('id', content.data.identifier);
+
+            const response = await fetch(url);
 
             const data = await response.json();
             setAppStoreData(data);

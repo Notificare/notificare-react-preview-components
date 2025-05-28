@@ -47,7 +47,7 @@ export default function VideoRichContent({ videoData, width, height }: VideoRich
   }
 }
 
-interface VideoRichContentProps {
+export interface VideoRichContentProps {
   videoData: Extract<
     NotificareNotificationSchema,
     { type: 're.notifica.notification.Video' }

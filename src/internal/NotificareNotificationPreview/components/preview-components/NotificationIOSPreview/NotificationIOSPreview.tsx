@@ -2,7 +2,7 @@ import './NotificationIOSPreview.css';
 import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificareNotificationSchema } from '../../../schemas/notificare-notification/notificare-notification-schema';
-import { NotificationPreviewModelDisplayMode } from '../../../types/notification-preview-model';
+import { NotificationPreviewDisplayMode } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
@@ -23,7 +23,7 @@ export default function NotificationIOSPreview({
   application,
   displayMode = 'lockscreen',
 }: NotificationIOSPreviewProps) {
-  const { googleMapsAPIKey } = useOptions().options;
+  const { googleMapsAPIKey } = useOptions();
 
   if (
     notification.type === 're.notifica.notification.Map' &&
@@ -100,12 +100,12 @@ export default function NotificationIOSPreview({
 interface NotificationIOSPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
-  displayMode?: NotificationPreviewModelDisplayMode;
+  displayMode?: NotificationPreviewDisplayMode;
 }
 
 function getTheme(
   notificationType: NotificareNotificationSchema['type'],
-  displayMode: NotificationPreviewModelDisplayMode,
+  displayMode: NotificationPreviewDisplayMode,
 ) {
   if (displayMode !== 'app-ui') {
     return 'light';

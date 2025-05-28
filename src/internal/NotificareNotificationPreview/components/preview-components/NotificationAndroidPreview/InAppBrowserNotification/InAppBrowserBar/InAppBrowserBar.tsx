@@ -11,7 +11,7 @@ import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 export default function InAppBrowserBar({ url, onLoadingChange, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { serviceKey } = useOptions().options;
+  const { serviceKey } = useOptions();
 
   useEffect(
     function loadPageTitle() {

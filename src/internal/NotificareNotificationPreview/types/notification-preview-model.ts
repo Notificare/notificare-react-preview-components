@@ -1,13 +1,13 @@
 export type NotificationPreviewModel = {
-  platform?: NotificationPreviewModelPlatform;
-  displayMode?: NotificationPreviewModelDisplayMode;
-  webDevice?: NotificationPreviewModelWebDevice;
-  webMobileType?: NotificationPreviewModelWebMobileType;
-  webDesktopOS?: NotificationPreviewModelWebDesktopOS;
+  platform?: NotificationPreviewPlatform;
+  displayMode?: NotificationPreviewDisplayMode;
+  webDevice?: NotificationPreviewWebDevice;
+  webMobileType?: NotificationPreviewWebMobileType;
+  webDesktopOS?: NotificationPreviewWebDesktopOS;
 };
 
-export type NotificationPreviewModelPlatform = 'ios' | 'android' | 'web';
-export type NotificationPreviewModelDisplayMode = 'lockscreen' | 'lockscreen-expanded' | 'app-ui';
-export type NotificationPreviewModelWebDevice = 'desktop' | 'phone';
-export type NotificationPreviewModelWebMobileType = 'iphone' | 'android';
-export type NotificationPreviewModelWebDesktopOS = 'macOS';
+export type NotificationPreviewPlatform = 'ios' | 'android' | 'web';
+export type NotificationPreviewDisplayMode = 'lockscreen' | 'lockscreen-expanded' | 'app-ui';
+export type NotificationPreviewWebDevice = 'desktop' | 'phone';
+export type NotificationPreviewWebMobileType = 'iphone' | 'android';
+export type NotificationPreviewWebDesktopOS = 'macOS';

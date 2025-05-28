@@ -13,11 +13,11 @@ import UnavailablePreview from '../../internal/NotificareNotificationPreview/com
 import { notificareNotificationSchema } from '../../internal/NotificareNotificationPreview/schemas/notificare-notification/notificare-notification-schema';
 import {
   NotificationPreviewModel,
-  NotificationPreviewModelPlatform,
-  NotificationPreviewModelDisplayMode,
-  NotificationPreviewModelWebDesktopOS,
-  NotificationPreviewModelWebDevice,
-  NotificationPreviewModelWebMobileType,
+  NotificationPreviewPlatform,
+  NotificationPreviewDisplayMode,
+  NotificationPreviewWebDesktopOS,
+  NotificationPreviewWebDevice,
+  NotificationPreviewWebMobileType,
 } from '../../internal/NotificareNotificationPreview/types/notification-preview-model';
 import { NotificareApplication } from './models/notificare-application';
 import { NotificareNotification } from './models/notificare-notification';
@@ -68,9 +68,13 @@ export function NotificareNotificationPreview({
       (async () => {
         if (applicationId) {
           try {
-            const response = await fetch(
-              `${getPushAPIHost()}/application/${applicationId}/info?apiKey=${serviceKey}`,
+            const url = new URL(
+              `/application/${encodeURIComponent(applicationId)}/info`,
+              getPushAPIHost(),
             );
+            url.searchParams.set('apiKey', serviceKey);
+
+            const response = await fetch(url);
 
             if (!response.ok) {
               const { error } = await response.json();
@@ -92,21 +96,21 @@ export function NotificareNotificationPreview({
     [applicationId, serviceKey],
   );
 
-  const [platform, setPlatform] = useState<NotificationPreviewModelPlatform | undefined>(
+  const [platform, setPlatform] = useState<NotificationPreviewPlatform | undefined>(
     notificationPreviewModels.get(variant)?.platform,
   );
-  const [displayMode, setDisplayMode] = useState<NotificationPreviewModelDisplayMode | undefined>(
+  const [displayMode, setDisplayMode] = useState<NotificationPreviewDisplayMode | undefined>(
     notificationPreviewModels.get(variant)?.displayMode,
   );
-  const [webDevice, setWebDevice] = useState<NotificationPreviewModelWebDevice | undefined>(
+  const [webDevice, setWebDevice] = useState<NotificationPreviewWebDevice | undefined>(
     notificationPreviewModels.get(variant)?.webDevice,
   );
-  const [webMobileType, setWebMobileType] = useState<
-    NotificationPreviewModelWebMobileType | undefined
-  >(notificationPreviewModels.get(variant)?.webMobileType);
-  const [webDesktopOS, setWebDesktopOS] = useState<
-    NotificationPreviewModelWebDesktopOS | undefined
-  >(notificationPreviewModels.get(variant)?.webDesktopOS);
+  const [webMobileType, setWebMobileType] = useState<NotificationPreviewWebMobileType | undefined>(
+    notificationPreviewModels.get(variant)?.webMobileType,
+  );
+  const [webDesktopOS, setWebDesktopOS] = useState<NotificationPreviewWebDesktopOS | undefined>(
+    notificationPreviewModels.get(variant)?.webDesktopOS,
+  );
 
   const notificationResult = notificareNotificationSchema.safeParse(notification);
 
@@ -197,14 +201,14 @@ interface NotificareNotificationPreviewProps {
 }
 
 function showNotificationErrors(errors: ZodIssue[]) {
-  // Errors related to notification types and content types are handled manually here.
-  // discriminatedUnion() from zod do not support custom messages when a discriminator doesn't correspond
+  // Errors related to notification types and content types are handled manually here
+  // discriminatedUnion() from Zod do not support custom messages when a discriminator doesn't correspond
 
   const invalidNotificationType = errors.find(
     (e) =>
       e.code === 'invalid_union_discriminator' &&
       e.path.includes('type') &&
-      !e.path.includes('content'), // check if notification type is invalid
+      !e.path.includes('content'),
   );
 
   if (invalidNotificationType) {
@@ -216,9 +220,7 @@ function showNotificationErrors(errors: ZodIssue[]) {
       `Notification error:\n\nInvalid notification type. Expected one of: ${validNotificationTypes.join(', ')}\n`,
     );
   } else {
-    // Show remaining errors
     const messages = errors.map((e) => {
-      // Check if there is an invalid content type
       if (
         e.code === 'invalid_union_discriminator' &&
         e.path.includes('type') &&

@@ -17,6 +17,6 @@ export default function PreviewError({ message }: PreviewErrorProps) {
   );
 }
 
-interface PreviewErrorProps {
+export interface PreviewErrorProps {
   message?: string;
 }

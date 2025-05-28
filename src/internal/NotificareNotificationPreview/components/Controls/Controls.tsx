@@ -6,18 +6,18 @@ import HTML5Icon from '../../../../assets/html5.svg';
 import IOSIcon from '../../../../assets/ios.svg';
 import PhoneIcon from '../../../../assets/phone.svg';
 import {
-  NotificationPreviewModelDisplayMode,
-  NotificationPreviewModelPlatform,
-  NotificationPreviewModelWebDesktopOS,
-  NotificationPreviewModelWebDevice,
-  NotificationPreviewModelWebMobileType,
+  NotificationPreviewDisplayMode,
+  NotificationPreviewPlatform,
+  NotificationPreviewWebDesktopOS,
+  NotificationPreviewWebDevice,
+  NotificationPreviewWebMobileType,
 } from '../../types/notification-preview-model';
 import Selector from './Selector/Selector';
 import ToggleGroup from './ToggleGroup/ToggleGroup';
 
 /* Toggle Groups data */
 
-const platforms: OptionsGroup<NotificationPreviewModelPlatform>[] = [
+const platforms: OptionsGroup<NotificationPreviewPlatform>[] = [
   {
     key: 'android',
     icon: (
@@ -44,7 +44,7 @@ const platforms: OptionsGroup<NotificationPreviewModelPlatform>[] = [
   },
 ];
 
-const webDevices: OptionsGroup<NotificationPreviewModelWebDevice>[] = [
+const webDevices: OptionsGroup<NotificationPreviewWebDevice>[] = [
   {
     key: 'desktop',
     icon: (
@@ -65,7 +65,7 @@ const webDevices: OptionsGroup<NotificationPreviewModelWebDevice>[] = [
   },
 ];
 
-const webMobileTypes: OptionsGroup<NotificationPreviewModelWebMobileType>[] = [
+const webMobileTypes: OptionsGroup<NotificationPreviewWebMobileType>[] = [
   {
     key: 'android',
     icon: (
@@ -82,8 +82,6 @@ const webMobileTypes: OptionsGroup<NotificationPreviewModelWebMobileType>[] = [
     ),
   },
 ];
-
-
 
 export default function Controls({
   platform,
@@ -164,16 +162,16 @@ export default function Controls({
 }
 
 interface ControlsProps {
-  platform?: NotificationPreviewModelPlatform;
-  displayMode?: NotificationPreviewModelDisplayMode;
-  webDevice?: NotificationPreviewModelWebDevice;
-  webMobileType?: NotificationPreviewModelWebMobileType;
-  webDesktopOS?: NotificationPreviewModelWebDesktopOS;
-  setPlatform: Dispatch<SetStateAction<NotificationPreviewModelPlatform | undefined>>;
-  setDisplayMode: Dispatch<SetStateAction<NotificationPreviewModelDisplayMode | undefined>>;
-  setWebDevice: Dispatch<SetStateAction<NotificationPreviewModelWebDevice | undefined>>;
-  setWebMobileType: Dispatch<SetStateAction<NotificationPreviewModelWebMobileType | undefined>>;
-  setWebDesktopOS: Dispatch<SetStateAction<NotificationPreviewModelWebDesktopOS | undefined>>;
+  platform?: NotificationPreviewPlatform;
+  displayMode?: NotificationPreviewDisplayMode;
+  webDevice?: NotificationPreviewWebDevice;
+  webMobileType?: NotificationPreviewWebMobileType;
+  webDesktopOS?: NotificationPreviewWebDesktopOS;
+  setPlatform: Dispatch<SetStateAction<NotificationPreviewPlatform | undefined>>;
+  setDisplayMode: Dispatch<SetStateAction<NotificationPreviewDisplayMode | undefined>>;
+  setWebDevice: Dispatch<SetStateAction<NotificationPreviewWebDevice | undefined>>;
+  setWebMobileType: Dispatch<SetStateAction<NotificationPreviewWebMobileType | undefined>>;
+  setWebDesktopOS: Dispatch<SetStateAction<NotificationPreviewWebDesktopOS | undefined>>;
 }
 
 type OptionsGroup<T> = {
