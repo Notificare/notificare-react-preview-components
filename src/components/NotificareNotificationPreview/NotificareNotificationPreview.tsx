@@ -2,7 +2,7 @@ import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useEffect, useState } from 'react';
 import { ZodIssue } from 'zod';
-import { getPushAPIHost } from '../../config/api';
+import { getPushAPIHost } from '../../internal/network/api';
 import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';

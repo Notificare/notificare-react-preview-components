@@ -1,4 +1,4 @@
-import { getPushAPIHost } from '../../../config/api';
+import { getPushAPIHost } from '../api';
 import { NetworkRequestError } from '../errors';
 
 export async function createWebshotRequest(

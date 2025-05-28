@@ -1,8 +1,7 @@
 import type { Preview } from '@storybook/react';
-import { setPushAPIHost } from '../src/config/api';
-import { TEST_PUSH_API_HOST } from '../src/constants/constants';
+import { PUSH_API_TEST_HOST, setPushAPIHost } from '../src/internal/network/api';
 
-setPushAPIHost(TEST_PUSH_API_HOST);
+setPushAPIHost(PUSH_API_TEST_HOST);
 
 const preview: Preview = {
   parameters: {

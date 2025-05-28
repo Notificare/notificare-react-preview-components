@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { getPushAPIHost } from '../../config/api';
+import { getPushAPIHost } from '../../internal/network/api';
 import { NotificareNotificationPreview } from './NotificareNotificationPreview';
 
 const meta: Meta<typeof NotificareNotificationPreview> = {

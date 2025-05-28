@@ -1,5 +1,5 @@
 import './DigitalCardNotification.css';
-import { getPushAPIHost } from '../../../../../../config/api';
+import { getPushAPIHost } from '../../../../../network/api';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import Webshot from '../../../shared-components/Webshot/Webshot';

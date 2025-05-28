@@ -3,7 +3,7 @@ import './InAppBrowserBar.css';
 import AlertIcon from '../../../../../../../assets/alert.svg';
 import LockerIcon from '../../../../../../../assets/locker.svg';
 import XMarkIcon from '../../../../../../../assets/x-mark.svg';
-import { getPushAPIHost } from '../../../../../../../config/api';
+import { getPushAPIHost } from '../../../../../../network/api';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 import { useOptions } from '../../../../OptionsProvider/OptionsProvider';

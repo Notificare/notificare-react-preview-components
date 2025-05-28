@@ -1,4 +1,4 @@
-import { getPushAPIHost } from '../../../config/api';
+import { getPushAPIHost } from '../../network/api';
 
 export async function fetchWebsiteMarkup(serviceKey: string, websiteUrl: string) {
   const url = new URL('/proxy', getPushAPIHost());
