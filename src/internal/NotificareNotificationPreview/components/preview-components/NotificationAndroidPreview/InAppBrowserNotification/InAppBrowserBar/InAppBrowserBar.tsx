@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './InAppBrowserBar.css';
-import LoadingIcon from '../../../../../../../assets/loading.svg';
+import AlertIcon from '../../../../../../../assets/alert.svg';
 import LockerIcon from '../../../../../../../assets/locker.svg';
 import XMarkIcon from '../../../../../../../assets/x-mark.svg';
 import { getPushAPIHost } from '../../../../../../../config/api';
@@ -8,11 +8,7 @@ import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 
-export default function InAppBrowserBar({
-  url,
-  onLoadingChanged,
-  canShow,
-}: InAppBrowserBarProps) {
+export default function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
   const [status, setStatus] = useState<StatusState>({ isLoading: true });
   const { serviceKey } = useOptions();
@@ -22,8 +18,12 @@ export default function InAppBrowserBar({
       (async () => {
         updateComponentStatus(true, setStatus, onLoadingChanged);
 
-        const pageTitle = await fetchPageTitle(serviceKey, url);
-        setPageTitle(pageTitle);
+        try {
+          const pageTitle = await fetchPageTitle(serviceKey, url);
+          setPageTitle(pageTitle);
+        } catch (error) {
+          console.error('Error while getting page title:\n\n', error);
+        }
 
         updateComponentStatus(false, setStatus, onLoadingChanged);
       })();
@@ -38,7 +38,7 @@ export default function InAppBrowserBar({
       {isSecureUrl(url) ? (
         <LockerIcon className="notificare__push__android__in-app-browser__app-ui__bar-lock-icon" />
       ) : (
-        <LoadingIcon className="notificare__push__android__in-app-browser__app-ui__loading-icon" />
+        <AlertIcon className="notificare__push__android__in-app-browser__app-ui__alert-icon" />
       )}
 
       <div className="notificare__push__android__in-app-browser__app-ui__bar-domain">
@@ -63,20 +63,17 @@ type StatusState = {
   isLoading: boolean;
 };
 
-async function fetchPageTitle(apiKey: string, url: string) {
-  try {
-    const params = new URLSearchParams({ apiKey, url });
-    const response = await fetch(`${getPushAPIHost()}/proxy/?${params.toString()}`);
-    const html = await response.text();
+async function fetchPageTitle(serviceKey: string, websiteUrl: string) {
+  const url = new URL('/proxy', getPushAPIHost());
+  url.searchParams.set('apiKey', serviceKey);
+  url.searchParams.set('url', websiteUrl);
+  const response = await fetch(url);
+  const html = await response.text();
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
 
-    return doc.querySelector('title')?.textContent ?? '';
-  } catch (error) {
-    console.error('Error getting page title:\n\n', error);
-    return '';
-  }
+  return doc.querySelector('title')?.textContent ?? '';
 }
 
 /* Status update */
