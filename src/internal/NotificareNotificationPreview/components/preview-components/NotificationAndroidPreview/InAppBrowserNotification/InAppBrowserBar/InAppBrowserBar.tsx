@@ -10,7 +10,7 @@ import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 
 export default function InAppBrowserBar({
   url,
-  notifyLoadingChange,
+  onLoadingChanged,
   canShow,
 }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
@@ -19,12 +19,12 @@ export default function InAppBrowserBar({
 
   useEffect(() => {
     (async () => {
-      updateComponentStatus(true, setStatus, notifyLoadingChange);
+      updateComponentStatus(true, setStatus, onLoadingChanged);
 
       const pageTitle = await getPageTitle(serviceKey, url);
       setPageTitle(pageTitle);
 
-      updateComponentStatus(false, setStatus, notifyLoadingChange);
+      updateComponentStatus(false, setStatus, onLoadingChanged);
     })();
   }, [url]);
 
@@ -52,7 +52,7 @@ export default function InAppBrowserBar({
 
 interface InAppBrowserBarProps {
   url: string;
-  notifyLoadingChange?: Dispatch<SetStateAction<boolean>>;
+  onLoadingChanged?: Dispatch<SetStateAction<boolean>>;
   canShow: boolean;
 }
 
