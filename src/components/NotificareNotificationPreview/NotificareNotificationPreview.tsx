@@ -6,10 +6,10 @@ import { getPushAPIHost } from '../../internal/network/api';
 import { Controls } from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
-import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
+import { NotificationIOSPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
-import Loading from '../../internal/NotificareNotificationPreview/components/shared-components/Loading/Loading';
-import UnavailablePreview from '../../internal/NotificareNotificationPreview/components/shared-components/UnavailablePreview/UnavailablePreview';
+import { Loading } from '../../internal/NotificareNotificationPreview/components/shared-components/Loading/Loading';
+import { UnavailablePreview } from '../../internal/NotificareNotificationPreview/components/shared-components/UnavailablePreview/UnavailablePreview';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewModel,

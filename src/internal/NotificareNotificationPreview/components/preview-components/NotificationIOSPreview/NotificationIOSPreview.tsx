@@ -18,7 +18,7 @@ import { URLNotification } from './URLNotification/URLNotification';
 import { VideoNotification } from './VideoNotification/VideoNotification';
 import { WebViewNotification } from './WebViewNotification/WebViewNotification';
 
-export default function NotificationIOSPreview({
+export function NotificationIOSPreview({
   notification,
   application,
   displayMode = 'lockscreen',
