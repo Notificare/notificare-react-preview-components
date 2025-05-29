@@ -1,12 +1,12 @@
 import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect } from 'react';
 import './ToggleGroup.css';
 
-export default function ToggleGroup<T extends string | undefined>({
+export function ToggleGroup<T extends string | undefined>({
   label,
   options,
   selected,
   setSelected,
-}: NewToggleGroupProps<T>) {
+}: ToggleGroupProps<T>) {
   useEffect(function selectDefaultOption() {
     if (!selected) {
       setSelected(options[0].key);
@@ -41,7 +41,7 @@ export default function ToggleGroup<T extends string | undefined>({
   );
 }
 
-interface NewToggleGroupProps<T> {
+export interface ToggleGroupProps<T> {
   label: string;
   options: { key: T; icon: ReactNode }[];
   selected: T;

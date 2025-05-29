@@ -1,9 +1,9 @@
 import './InAppBrowserNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import Webshot from '../../../shared-components/Webshot/Webshot';
-import InAppBrowserBar from './InAppBrowserBar/InAppBrowserBar';
+import { Webshot } from '../../../shared-components/Webshot/Webshot';
+import { InAppBrowserBar } from './InAppBrowserBar/InAppBrowserBar';
 
-export default function InAppBrowserNotification({ notification }: URLNotificationProps) {
+export function InAppBrowserNotification({ notification }: URLNotificationProps) {
   const url = notification.content[0].data;
 
   return (
@@ -14,7 +14,7 @@ export default function InAppBrowserNotification({ notification }: URLNotificati
   );
 }
 
-interface URLNotificationProps {
+export interface URLNotificationProps {
   notification: Extract<
     NotificareNotificationSchema,
     { type: 're.notifica.notification.InAppBrowser' }

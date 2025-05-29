@@ -2,7 +2,7 @@ import './Selector.css';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import ExpandIcon from '../../../../../assets/expand.svg';
 
-export default function Selector<T extends string | undefined>({
+export function Selector<T extends string | undefined>({
   options,
   selected,
   setSelected,
@@ -10,6 +10,7 @@ export default function Selector<T extends string | undefined>({
   const [isExpanded, setIsExpanded] = useState(false);
   const optionsRef = useRef<HTMLDivElement>(null);
 
+  // TODO: uh?
   useEffect(function selectDefaultOption() {
     setIsExpanded(false);
 
@@ -32,6 +33,7 @@ export default function Selector<T extends string | undefined>({
     };
   }, []);
 
+  // TODO: you should always return an element inside a component. even if it's a fragment.
   if (options.length > 0) {
     return (
       <div className="notificare__push__preview-controls-selector">
@@ -66,7 +68,7 @@ export default function Selector<T extends string | undefined>({
   }
 }
 
-interface SelectorProps<T> {
+export interface SelectorProps<T> {
   options: { key: T; label: string }[];
   selected: T;
   setSelected: Dispatch<SetStateAction<T>>;

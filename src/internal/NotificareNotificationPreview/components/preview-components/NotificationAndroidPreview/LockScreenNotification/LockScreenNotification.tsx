@@ -2,7 +2,7 @@ import './LockScreenNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 
-export default function LockScreenNotification({
+export function LockScreenNotification({
   notification,
   appName,
   appIcon,

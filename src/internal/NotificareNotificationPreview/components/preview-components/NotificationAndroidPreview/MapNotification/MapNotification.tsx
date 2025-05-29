@@ -1,10 +1,10 @@
 import './MapNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import { MapRichContent } from '../../../shared-components/MapRichContent/MapRichContent';
+import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export default function MapNotification({ notification, appName }: MapNotificationProps) {
+export function MapNotification({ notification, appName }: MapNotificationProps) {
   return (
     <div data-testid="android-app-ui-map-notification">
       <NavigationBar appName={appName} showOptions={hasActions(notification)} />
@@ -13,7 +13,7 @@ export default function MapNotification({ notification, appName }: MapNotificati
   );
 }
 
-interface MapNotificationProps {
+export interface MapNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Map' }>;
   appName: string;
 }

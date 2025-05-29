@@ -10,10 +10,10 @@ import {
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import { getMarkersFromNotification } from '../../../helpers/notification-utils';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
-import Loading from '../Loading/Loading';
-import PreviewError from '../PreviewError/PreviewError';
+import { Loading } from '../Loading/Loading';
+import { PreviewError } from '../PreviewError/PreviewError';
 
-export default function MapRichContent({ notification, width, height }: MapRichContentProps) {
+export function MapRichContent({ notification, width, height }: MapRichContentProps) {
   const { googleMapsAPIKey } = useOptions();
   const [isClient, setIsClient] = useState(false);
 

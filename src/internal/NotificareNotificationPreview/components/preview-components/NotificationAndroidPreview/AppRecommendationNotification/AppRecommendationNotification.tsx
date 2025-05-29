@@ -1,9 +1,9 @@
 import './AppRecommendationNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import Webshot from '../../../shared-components/Webshot/Webshot';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import { Webshot } from '../../../shared-components/Webshot/Webshot';
+import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export default function AppRecommendationNotification({
+export function AppRecommendationNotification({
   notification,
   appName,
 }: AppRecommendationNotificationProps) {
@@ -20,7 +20,7 @@ export default function AppRecommendationNotification({
   );
 }
 
-interface AppRecommendationNotificationProps {
+export interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
   appName: string;
 }

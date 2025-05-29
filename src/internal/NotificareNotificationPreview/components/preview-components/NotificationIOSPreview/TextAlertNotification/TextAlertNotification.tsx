@@ -2,7 +2,7 @@ import './TextAlertNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasSingleAction, hasMultipleActions } from '../../../../helpers/notification-utils';
 
-export default function TextAlertNotification({
+export function TextAlertNotification({
   notification,
   appName,
 }: TextAlertNotificationProps) {
@@ -51,7 +51,7 @@ export default function TextAlertNotification({
   );
 }
 
-interface TextAlertNotificationProps {
+export interface TextAlertNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Alert' }>;
   appName: string;
 }

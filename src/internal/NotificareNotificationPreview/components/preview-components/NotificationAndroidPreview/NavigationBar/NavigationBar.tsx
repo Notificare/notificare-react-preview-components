@@ -2,7 +2,7 @@ import './NavigationBar.css';
 import LeftArrowIcon from '../../../../../../assets/left-arrow.svg';
 import OptionsIcon from '../../../../../../assets/options.svg';
 
-export default function NavigationBar({ appName, title, showOptions }: NavigationBarProps) {
+export function NavigationBar({ appName, title, showOptions }: NavigationBarProps) {
   return (
     <div className="notificare__push__android__app-ui__navigation-bar">
       <LeftArrowIcon className="notificare__push__android__app-ui__navigation-bar-arrow-icon" />
@@ -19,7 +19,7 @@ export default function NavigationBar({ appName, title, showOptions }: Navigatio
   );
 }
 
-interface NavigationBarProps {
+export interface NavigationBarProps {
   appName: string;
   title?: string;
   showOptions: boolean;

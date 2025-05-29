@@ -3,11 +3,11 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import LayerGroupIcon from '../../../../../../assets/layer-group.svg';
 import UserIcon from '../../../../../../assets/user.svg';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import Loading from '../../../shared-components/Loading/Loading';
-import PreviewError from '../../../shared-components/PreviewError/PreviewError';
-import StarRating from './StarRating/StarRating';
+import { Loading } from '../../../shared-components/Loading/Loading';
+import { PreviewError } from '../../../shared-components/PreviewError/PreviewError';
+import { StarRating } from './StarRating/StarRating';
 
-export default function AppRecommendationNotification({
+export function AppRecommendationNotification({
   notification,
 }: AppRecommendationNotificationProps) {
   const content = notification.content[0];
@@ -172,7 +172,7 @@ export default function AppRecommendationNotification({
   );
 }
 
-interface AppRecommendationNotificationProps {
+export interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
 }
 

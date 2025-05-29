@@ -2,9 +2,9 @@ import './WebViewNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
-import TitleBar from '../TitleBar/TitleBar';
+import { TitleBar } from '../TitleBar/TitleBar';
 
-export default function WebViewNotification({ notification, appName }: WebViewNotificationProps) {
+export function WebViewNotification({ notification, appName }: WebViewNotificationProps) {
   const html = notification.content[0].data;
 
   return (
@@ -23,7 +23,7 @@ export default function WebViewNotification({ notification, appName }: WebViewNo
   );
 }
 
-interface WebViewNotificationProps {
+export interface WebViewNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.WebView' }>;
   appName: string;
 }

@@ -1,7 +1,7 @@
 import './UnavailablePreview.css';
 import AlertIcon from '../../../../../assets/alert.svg';
 
-export default function UnavailablePreview({
+export function UnavailablePreview({
   message,
   showConsoleWarning,
 }: UnavailablePreviewProps) {

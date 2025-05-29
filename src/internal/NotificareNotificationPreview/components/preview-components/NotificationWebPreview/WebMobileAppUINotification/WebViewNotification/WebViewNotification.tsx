@@ -2,7 +2,7 @@ import './WebViewNotification.css';
 
 import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
 
-export default function WebViewNotification({ notification }: WebViewNotificationProps) {
+export function WebViewNotification({ notification }: WebViewNotificationProps) {
   return (
     <iframe
       className="notificare__web__phone__web-view__app-ui__content"
@@ -13,6 +13,6 @@ export default function WebViewNotification({ notification }: WebViewNotificatio
   );
 }
 
-interface WebViewNotificationProps {
+export interface WebViewNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.WebView' }>;
 }

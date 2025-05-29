@@ -3,11 +3,7 @@ import LockerIcon from '../../../../../../../assets/locker.svg';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 
-interface InAppBrowserBarProps {
-  url: string;
-}
-
-export default function InAppBrowserBar(props: InAppBrowserBarProps) {
+export function InAppBrowserBar(props: InAppBrowserBarProps) {
   const { url } = props;
 
   return (
@@ -28,4 +24,8 @@ export default function InAppBrowserBar(props: InAppBrowserBarProps) {
       </div>
     </div>
   );
+}
+
+export interface InAppBrowserBarProps {
+  url: string;
 }

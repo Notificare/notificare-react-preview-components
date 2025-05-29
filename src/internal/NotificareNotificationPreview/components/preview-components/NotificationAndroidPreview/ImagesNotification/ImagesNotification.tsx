@@ -1,9 +1,9 @@
 import './ImagesNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export default function ImagesNotification({ notification, appName }: ImagesNotificationProps) {
+export function ImagesNotification({ notification, appName }: ImagesNotificationProps) {
   return (
     <div data-testid="android-app-ui-images-notification">
       <NavigationBar
@@ -27,7 +27,7 @@ export default function ImagesNotification({ notification, appName }: ImagesNoti
   );
 }
 
-interface ImagesNotificationProps {
+export interface ImagesNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Image' }>;
   appName: string;
 }

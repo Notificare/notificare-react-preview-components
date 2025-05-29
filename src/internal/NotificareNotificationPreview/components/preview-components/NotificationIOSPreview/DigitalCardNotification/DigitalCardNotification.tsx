@@ -2,10 +2,10 @@ import './DigitalCardNotification.css';
 import { getPushAPIHost } from '../../../../../network/api';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import Webshot from '../../../shared-components/Webshot/Webshot';
-import TitleBar from '../TitleBar/TitleBar';
+import { Webshot } from '../../../shared-components/Webshot/Webshot';
+import { TitleBar } from '../TitleBar/TitleBar';
 
-export default function DigitalCardNotification({
+export function DigitalCardNotification({
   notification,
   appName,
 }: DigitalCardNotificationProps) {
@@ -27,7 +27,7 @@ export default function DigitalCardNotification({
   );
 }
 
-interface DigitalCardNotificationProps {
+export interface DigitalCardNotificationProps {
   notification: Extract<
     NotificareNotificationSchema,
     { type: 're.notifica.notification.Passbook' }

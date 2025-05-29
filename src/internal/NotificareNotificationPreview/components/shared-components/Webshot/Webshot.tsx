@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import Loading from '../Loading/Loading';
-import PreviewError from '../PreviewError/PreviewError';
+import { Loading } from '../Loading/Loading';
+import { PreviewError } from '../PreviewError/PreviewError';
 import { useWebshotRequest } from './hooks';
 import './Webshot.css';
 
-export default function Webshot({
+export function Webshot({
   url,
   platform,
   width,

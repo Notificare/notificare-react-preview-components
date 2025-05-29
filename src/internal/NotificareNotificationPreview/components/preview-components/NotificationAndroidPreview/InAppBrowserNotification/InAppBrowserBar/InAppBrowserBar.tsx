@@ -8,7 +8,7 @@ import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
 import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 
-export default function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowserBarProps) {
+export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
   const [status, setStatus] = useState<StatusState>({ isLoading: true });
   const { serviceKey } = useOptions();
@@ -53,7 +53,7 @@ export default function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAp
   );
 }
 
-interface InAppBrowserBarProps {
+export interface InAppBrowserBarProps {
   url: string;
   onLoadingChanged?: Dispatch<SetStateAction<boolean>>;
   canShow: boolean;

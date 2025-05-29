@@ -2,11 +2,7 @@ import './StarRating.css';
 import FullStar from '../../../../../../../assets/full-star.svg';
 import HalfStar from '../../../../../../../assets/half-star.svg';
 
-type StarRatingProps = {
-  rating: number;
-};
-
-export default function StarRating(props: StarRatingProps) {
+export function StarRating(props: StarRatingProps) {
   const { rating } = props;
 
   const totalStars = 5;
@@ -29,3 +25,7 @@ export default function StarRating(props: StarRatingProps) {
 
   return <div className="notificare__push__ios__store__app-ui__star-rating">{stars}</div>;
 }
+
+export type StarRatingProps = {
+  rating: number;
+};

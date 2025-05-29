@@ -1,14 +1,14 @@
 import './WebMobileAppUINotification.css';
 import ThinXMarkIcon from '../../../../../../assets/thin-x-mark.svg';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import MapRichContent from '../../../shared-components/MapRichContent/MapRichContent';
-import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
-import Webshot from '../../../shared-components/Webshot/Webshot';
-import AlertNotification from './AlertNotification/AlertNotification';
-import ImageNotification from './ImageNotification/ImageNotification';
-import WebViewNotification from './WebViewNotification/WebViewNotification';
+import { MapRichContent } from '../../../shared-components/MapRichContent/MapRichContent';
+import { VideoRichContent } from '../../../shared-components/VideoRichContent/VideoRichContent';
+import { Webshot } from '../../../shared-components/Webshot/Webshot';
+import { AlertNotification } from './AlertNotification/AlertNotification';
+import { ImageNotification } from './ImageNotification/ImageNotification';
+import { WebViewNotification } from './WebViewNotification/WebViewNotification';
 
-export default function WebMobileAppUINotification({
+export function WebMobileAppUINotification({
   notification,
   appName,
   appIcon,
@@ -98,7 +98,7 @@ export default function WebMobileAppUINotification({
   }
 }
 
-interface WebMobileAppUIProps {
+export interface WebMobileAppUIProps {
   notification: NotificareNotificationSchema;
   appName: string;
   appIcon: string;

@@ -1,7 +1,7 @@
 import './ImageNotification.css';
 import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
 
-export default function ImageNotification({ notification }: ImageNotificationProps) {
+export function ImageNotification({ notification }: ImageNotificationProps) {
   return (
     <div
       className="notificare__web__phone__image__app-ui__image-slider"
@@ -19,6 +19,6 @@ export default function ImageNotification({ notification }: ImageNotificationPro
   );
 }
 
-interface ImageNotificationProps {
+export interface ImageNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Image' }>;
 }

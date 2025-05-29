@@ -1,13 +1,7 @@
 import './ExpandButton.css';
 import ExpandButtonIcon from '../../../../../../../assets/expand.svg';
 
-interface ExpandButtonProps {
-  open: boolean;
-  disabled: boolean;
-  onToggle: () => void;
-}
-
-export default function ExpandButton(props: ExpandButtonProps) {
+export function ExpandButton(props: ExpandButtonProps) {
   const { open, disabled, onToggle } = props;
 
   return (
@@ -20,4 +14,10 @@ export default function ExpandButton(props: ExpandButtonProps) {
       <ExpandButtonIcon className="notificare__push__web__desktop__lock-screen__expand-button-svg" />
     </button>
   );
+}
+
+export interface ExpandButtonProps {
+  open: boolean;
+  disabled: boolean;
+  onToggle: () => void;
 }

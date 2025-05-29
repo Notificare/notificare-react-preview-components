@@ -4,12 +4,12 @@ import ExpandIcon from '../../../../../../assets/expand.svg';
 import GoogleChromeIcon from '../../../../../../assets/google-chrome.svg';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
-import ExpandButton from './ExpandButton/ExpandButton';
+import { ExpandButton } from './ExpandButton/ExpandButton';
 
 const maxMessageLines = 3;
 const messageLineHeight = 16.7;
 
-export default function WebMacOSNotification({ notification, appName, appDomain }: WebPushProps) {
+export function WebMacOSNotification({ notification, appName, appDomain }: WebPushProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [mouseOverNotification, setMouseOverNotification] = useState<boolean>(false);
   const [mouseOverButtonIndex, setMouseOverButtonIndex] = useState<number>(-1);
@@ -209,8 +209,8 @@ export default function WebMacOSNotification({ notification, appName, appDomain 
   );
 }
 
-interface WebPushProps {
-  key?: Key;
+export interface WebPushProps {
+  key?: Key; // why do we receive a key?
   notification: NotificareNotificationSchema;
   appName: string;
   appDomain: string;

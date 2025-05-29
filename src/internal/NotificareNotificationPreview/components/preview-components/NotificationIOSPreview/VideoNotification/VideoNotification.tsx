@@ -1,10 +1,10 @@
 import './VideoNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
-import VideoRichContent from '../../../shared-components/VideoRichContent/VideoRichContent';
-import TitleBar from '../TitleBar/TitleBar';
+import { VideoRichContent } from '../../../shared-components/VideoRichContent/VideoRichContent';
+import { TitleBar } from '../TitleBar/TitleBar';
 
-export default function VideoNotification({ notification, appName }: VideoNotificationProps) {
+export function VideoNotification({ notification, appName }: VideoNotificationProps) {
   const videoData = notification.content[0];
 
   return (
@@ -19,7 +19,7 @@ export default function VideoNotification({ notification, appName }: VideoNotifi
   );
 }
 
-interface VideoNotificationProps {
+export interface VideoNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Video' }>;
   appName: string;
 }

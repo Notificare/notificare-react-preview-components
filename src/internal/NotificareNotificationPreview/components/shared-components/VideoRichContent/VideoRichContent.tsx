@@ -1,7 +1,7 @@
 import './VideoRichContent.css';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 
-export default function VideoRichContent({ videoData, width, height }: VideoRichContentProps) {
+export function VideoRichContent({ videoData, width, height }: VideoRichContentProps) {
   const getVideoUrl = (): string => {
     switch (videoData.type) {
       case 're.notifica.content.YouTube':

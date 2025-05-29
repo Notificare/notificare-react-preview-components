@@ -1,9 +1,9 @@
 import './RateNotification.css';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import Webshot from '../../../shared-components/Webshot/Webshot';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import { Webshot } from '../../../shared-components/Webshot/Webshot';
+import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export default function RateNotification({
+export function RateNotification({
   notification,
   appName,
   appAndroidPackageName,
@@ -21,7 +21,7 @@ export default function RateNotification({
   );
 }
 
-interface RateNotificationProps {
+export interface RateNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Rate' }>;
   appName: string;
   appAndroidPackageName: string;

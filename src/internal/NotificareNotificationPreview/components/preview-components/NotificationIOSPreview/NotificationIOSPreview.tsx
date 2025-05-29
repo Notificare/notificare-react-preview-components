@@ -4,19 +4,19 @@ import { NotificareNotificationSchema } from '../../../../schemas/notificare-not
 import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificationPreviewDisplayMode } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
-import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
-import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
-import AppRecommendationNotification from './AppRecommendationNotification/AppRecommendationNotification';
-import DigitalCardNotification from './DigitalCardNotification/DigitalCardNotification';
-import ImagesNotification from './ImagesNotification/ImagesNotification';
-import InAppBrowserNotification from './InAppBrowserNotification/InAppBrowserNotification';
-import LockScreenNotification from './LockScreenNotification/LockScreenNotification';
-import MapNotification from './MapNotification/MapNotification';
-import RateNotification from './RateNotification/RateNotification';
-import TextAlertNotification from './TextAlertNotification/TextAlertNotification';
-import URLNotification from './URLNotification/URLNotification';
-import VideoNotification from './VideoNotification/VideoNotification';
-import WebViewNotification from './WebViewNotification/WebViewNotification';
+import { IOSPhoneBackground } from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
+import { UnavailablePreview } from '../../shared-components/UnavailablePreview/UnavailablePreview';
+import { AppRecommendationNotification } from './AppRecommendationNotification/AppRecommendationNotification';
+import { DigitalCardNotification } from './DigitalCardNotification/DigitalCardNotification';
+import { ImagesNotification } from './ImagesNotification/ImagesNotification';
+import { InAppBrowserNotification } from './InAppBrowserNotification/InAppBrowserNotification';
+import { LockScreenNotification } from './LockScreenNotification/LockScreenNotification';
+import { MapNotification } from './MapNotification/MapNotification';
+import { RateNotification } from './RateNotification/RateNotification';
+import { TextAlertNotification } from './TextAlertNotification/TextAlertNotification';
+import { URLNotification } from './URLNotification/URLNotification';
+import { VideoNotification } from './VideoNotification/VideoNotification';
+import { WebViewNotification } from './WebViewNotification/WebViewNotification';
 
 export default function NotificationIOSPreview({
   notification,
@@ -97,7 +97,7 @@ export default function NotificationIOSPreview({
   );
 }
 
-interface NotificationIOSPreviewProps {
+export interface NotificationIOSPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
   displayMode?: NotificationPreviewDisplayMode;

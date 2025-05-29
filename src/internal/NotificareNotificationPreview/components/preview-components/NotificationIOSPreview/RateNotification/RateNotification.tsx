@@ -1,6 +1,6 @@
 import './RateNotification.css';
 
-export default function RateNotification({ appName, title }: RateAppNotificationProps) {
+export function RateNotification({ appName, title }: RateAppNotificationProps) {
   return (
     <div className="notificare__push__ios__rate__app-ui" data-testid="ios-app-ui-rate-notification">
       <div className="notificare__push__ios__rate__app-ui__wrapper">
@@ -13,7 +13,7 @@ export default function RateNotification({ appName, title }: RateAppNotification
   );
 }
 
-interface RateAppNotificationProps {
+export interface RateAppNotificationProps {
   appName: string;
   title: string | undefined;
 }

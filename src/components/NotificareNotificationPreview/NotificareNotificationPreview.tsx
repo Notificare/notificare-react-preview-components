@@ -3,7 +3,7 @@ import './NotificareNotificationPreview.css';
 import { useEffect, useState } from 'react';
 import { ZodIssue } from 'zod';
 import { getPushAPIHost } from '../../internal/network/api';
-import Controls from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
+import { Controls } from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
 import NotificationIOSPreview from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
@@ -118,7 +118,7 @@ export function NotificareNotificationPreview({
   }
 
   return (
-    <OptionsProvider options={{ serviceKey, googleMapsAPIKey }}>
+    <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
       <div className="notificare">
         <div className="notificare__push__preview-wrapper">
           {showControls && (
@@ -180,7 +180,7 @@ export function NotificareNotificationPreview({
   );
 }
 
-/**
+export interface NotificareNotificationPreviewProps {
  * Component that displays a notification preview for different platforms.
  *
  * @param {NotificareNotification} notification - The notification to be displayed in the preview.
@@ -190,7 +190,6 @@ export function NotificareNotificationPreview({
  * @property {string} [serviceKey] - A service key provided by a Notificare admin.
  * @property {string} [googleMapsAPIKey] - A Google Maps API key (optional).
  */
-interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   applicationId?: string;
   showControls?: boolean;

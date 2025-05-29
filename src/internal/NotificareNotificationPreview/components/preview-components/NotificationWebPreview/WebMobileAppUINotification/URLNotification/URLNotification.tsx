@@ -9,6 +9,6 @@ export default function URLNotification({ notification }: URLNotificationProps) 
   );
 }
 
-interface URLNotificationProps {
+export interface URLNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.URL' }>;
 }

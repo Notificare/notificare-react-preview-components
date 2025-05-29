@@ -5,10 +5,10 @@ import { fetchWebsiteMarkup } from '../../../../helpers/fetchWebsiteMarkup';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { useOptions } from '../../../OptionsProvider/OptionsProvider';
-import Webshot from '../../../shared-components/Webshot/Webshot';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import { Webshot } from '../../../shared-components/Webshot/Webshot';
+import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export default function URLNotification({ notification, appName }: URLNotificationProps) {
+export function URLNotification({ notification, appName }: URLNotificationProps) {
   const url = notification.content[0].data;
 
   const [websiteMarkup, setWebsiteMarkup] = useState('');
@@ -40,7 +40,7 @@ export default function URLNotification({ notification, appName }: URLNotificati
   );
 }
 
-interface URLNotificationProps {
+export interface URLNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.URL' }>;
   appName: string;
 }

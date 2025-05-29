@@ -1,7 +1,7 @@
 import './IOSPhoneBackground.css';
 import { ReactNode } from 'react';
 
-export default function IOSPhoneBackground({ children, theme }: IosPhoneBackgroundProps) {
+export function IOSPhoneBackground({ children, theme }: IosPhoneBackgroundProps) {
   return (
     <div
       className={`notificare__push__ios__phone-background ${theme === 'dark' ? 'notificare__push__ios__phone-background--dark' : ''}`}

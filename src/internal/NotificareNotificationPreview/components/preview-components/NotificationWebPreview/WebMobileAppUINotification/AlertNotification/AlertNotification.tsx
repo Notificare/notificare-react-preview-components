@@ -2,7 +2,7 @@ import './AlertNotification.css';
 import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasFirstAttachment } from '../../../../../helpers/notification-utils';
 
-export default function AlertNotification({ notification }: AlertNotificationProps) {
+export function AlertNotification({ notification }: AlertNotificationProps) {
   return (
     <div data-testid="web-mobile-app-ui-text-alert-notification">
       {hasFirstAttachment(notification) && (
@@ -22,6 +22,6 @@ export default function AlertNotification({ notification }: AlertNotificationPro
   );
 }
 
-interface AlertNotificationProps {
+export interface AlertNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Alert' }>;
 }

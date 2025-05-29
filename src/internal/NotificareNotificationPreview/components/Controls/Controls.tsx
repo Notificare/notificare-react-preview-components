@@ -12,8 +12,8 @@ import {
   NotificationPreviewWebDevice,
   NotificationPreviewWebMobileType,
 } from '../../types/notification-preview-model';
-import Selector from './Selector/Selector';
-import ToggleGroup from './ToggleGroup/ToggleGroup';
+import { Selector } from './Selector/Selector';
+import { ToggleGroup } from './ToggleGroup/ToggleGroup';
 
 /* Toggle Groups data */
 
@@ -83,7 +83,7 @@ const webMobileTypes: OptionsGroup<NotificationPreviewWebMobileType>[] = [
   },
 ];
 
-export default function Controls({
+export function Controls({
   platform,
   displayMode,
   webDevice,
@@ -100,7 +100,7 @@ export default function Controls({
       <div className="notificare__push__preview-controls-toggle-groups">
         <ToggleGroup
           label="Platform"
-          options={platforms.map((platform) => platform)}
+          options={platforms}
           selected={platform}
           setSelected={setPlatform}
         />
@@ -109,7 +109,7 @@ export default function Controls({
           <>
             <ToggleGroup
               label="Form Factor"
-              options={webDevices.map((webDevice) => webDevice)}
+              options={webDevices}
               selected={webDevice}
               setSelected={setWebDevice}
             />
@@ -117,7 +117,7 @@ export default function Controls({
             {webDevice === 'phone' && (
               <ToggleGroup
                 label="Phone Model"
-                options={webMobileTypes.map((webMobileType) => webMobileType)}
+                options={webMobileTypes}
                 selected={webMobileType}
                 setSelected={setWebMobileType}
               />
@@ -161,7 +161,7 @@ export default function Controls({
   );
 }
 
-interface ControlsProps {
+export interface ControlsProps {
   platform?: NotificationPreviewPlatform;
   displayMode?: NotificationPreviewDisplayMode;
   webDevice?: NotificationPreviewWebDevice;

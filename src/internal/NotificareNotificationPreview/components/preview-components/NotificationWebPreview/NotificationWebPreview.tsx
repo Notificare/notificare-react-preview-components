@@ -8,11 +8,11 @@ import {
   NotificationPreviewWebMobileType,
 } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
-import AndroidPhoneBackground from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
-import IOSPhoneBackground from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
-import UnavailablePreview from '../../shared-components/UnavailablePreview/UnavailablePreview';
-import WebMacOSNotification from './WebMacOSNotification/WebMacOSNotification';
-import WebMobileAppUINotification from './WebMobileAppUINotification/WebMobileAppUINotification';
+import { AndroidPhoneBackground } from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
+import { IOSPhoneBackground } from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
+import { UnavailablePreview } from '../../shared-components/UnavailablePreview/UnavailablePreview';
+import { WebMacOSNotification } from './WebMacOSNotification/WebMacOSNotification';
+import { WebMobileAppUINotification } from './WebMobileAppUINotification/WebMobileAppUINotification';
 
 export function NotificationWebPreview({
   notification,
@@ -83,7 +83,7 @@ export function NotificationWebPreview({
   }
 }
 
-interface NotificationWebPreviewProps {
+export interface NotificationWebPreviewProps {
   notification: NotificareNotificationSchema;
   application: NotificareApplication;
   displayMode?: NotificationPreviewDisplayMode;
