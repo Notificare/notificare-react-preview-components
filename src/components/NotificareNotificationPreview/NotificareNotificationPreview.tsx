@@ -52,6 +52,16 @@ const notificationPreviewModels = new Map<
   ],
 ]);
 
+/**
+ * Component that displays a notification preview for different platforms.
+ *
+ * @param {NotificareNotification} notification - The notification to be displayed in the preview.
+ * @param {string} applicationId - The unique identifier of a Notificare application (optional).
+ * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's true by default.
+ * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
+ * @param {string} [serviceKey] - A service key provided by a Notificare admin.
+ * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
+ */
 export function NotificareNotificationPreview({
   notification,
   applicationId,
@@ -181,15 +191,6 @@ export function NotificareNotificationPreview({
 }
 
 export interface NotificareNotificationPreviewProps {
- * Component that displays a notification preview for different platforms.
- *
- * @param {NotificareNotification} notification - The notification to be displayed in the preview.
- * @param {string} applicationId - The unique identifier of a Notificare application (optional).
- * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's true by default.
- * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
- * @property {string} [serviceKey] - A service key provided by a Notificare admin.
- * @property {string} [googleMapsAPIKey] - A Google Maps API key (optional).
- */
   notification: NotificareNotification;
   applicationId?: string;
   showControls?: boolean;
