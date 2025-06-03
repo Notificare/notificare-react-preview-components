@@ -21,8 +21,12 @@
     align-items: center;
 }
 
-.notificare .notificare__push__preview-controls-selector-button:hover {
+.notificare .notificare__push__preview-controls-selector-button:not(:disabled) {
     cursor: pointer;
+}
+
+.notificare .notificare__push__preview-controls-selector-button:disabled {
+    color: #b3b3b3;
 }
 
 .notificare .notificare__push__preview-controls-selector-button-expand-icon {
@@ -30,6 +34,10 @@
     height: 16px;
     margin-left: auto;
     margin-right: 14px;
+}
+
+.notificare .notificare__push__preview-controls-selector-button:disabled .notificare__push__preview-controls-selector-button-expand-icon {
+    fill: #b3b3b3;
 }
 
 .notificare .notificare__push__preview-controls-selector-options {

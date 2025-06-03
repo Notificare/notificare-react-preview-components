@@ -25,3 +25,5 @@ export const notificareNotificationSchema = z.discriminatedUnion('type', [
 
 // TODO: This isn't the actual notification schema. This is more of a "verified notification".
 export type NotificareNotificationSchema = z.infer<typeof notificareNotificationSchema>;
+
+export type NotificareNotificationType = NotificareNotificationSchema['type'];

@@ -11,40 +11,57 @@ import { NotificationIOSPreview } from '../../internal/NotificareNotificationPre
 import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
 import { Loading } from '../../internal/NotificareNotificationPreview/components/shared-components/Loading/Loading';
 import { UnavailablePreview } from '../../internal/NotificareNotificationPreview/components/shared-components/UnavailablePreview/UnavailablePreview';
-import {
-  NotificationPreviewDisplayMode,
-  NotificationPreviewModel,
-  NotificationPreviewPlatform,
-  NotificationPreviewWebDesktopOS,
-  NotificationPreviewWebDevice,
-  NotificationPreviewWebMobileType,
-} from '../../internal/NotificareNotificationPreview/types/notification-preview-model';
+import { NotificationPreviewState } from '../../internal/NotificareNotificationPreview/types/notification-preview';
 import {
   NotificareNotificationSchema,
   notificareNotificationSchema,
 } from '../../internal/schemas/notificare-notification/notificare-notification-schema';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '../../models';
 
-const notificationPreviewModels = new Map<
-  NotificareNotificationPreviewVariant,
-  NotificationPreviewModel
->([
-  ['android-lockscreen', { platform: 'android', displayMode: 'lockscreen' }],
-  ['android-lockscreen-expanded', { platform: 'android', displayMode: 'lockscreen-expanded' }],
-  ['android-app-ui', { platform: 'android', displayMode: 'app-ui' }],
-  ['ios-lockscreen', { platform: 'ios', displayMode: 'lockscreen' }],
-  ['ios-lockscreen-expanded', { platform: 'ios', displayMode: 'lockscreen-expanded' }],
-  ['ios-app-ui', { platform: 'ios', displayMode: 'app-ui' }],
-  ['web-desktop-macos', { platform: 'web', webDevice: 'desktop', webDesktopOS: 'macOS' }],
-  [
-    'web-iphone-app-ui',
-    { platform: 'web', webDevice: 'phone', webMobileType: 'iphone', displayMode: 'app-ui' },
-  ],
-  [
-    'web-android-app-ui',
-    { platform: 'web', webDevice: 'phone', webMobileType: 'android', displayMode: 'app-ui' },
-  ],
-]);
+const DEFAULT_STATES = {
+  'android-lockscreen': {
+    platform: 'android',
+    displayMode: 'lockscreen',
+  },
+  'android-lockscreen-expanded': {
+    platform: 'android',
+    displayMode: 'lockscreen-expanded',
+  },
+  'android-app-ui': {
+    platform: 'android',
+    displayMode: 'app-ui',
+  },
+  'ios-lockscreen': {
+    platform: 'ios',
+    displayMode: 'lockscreen',
+  },
+  'ios-lockscreen-expanded': {
+    platform: 'ios',
+    displayMode: 'lockscreen-expanded',
+  },
+  'ios-app-ui': {
+    platform: 'ios',
+    displayMode: 'app-ui',
+  },
+  'web-desktop-macos': {
+    platform: 'web',
+    displayMode: 'lockscreen',
+    formFactor: 'desktop',
+    os: 'macos',
+  },
+  'web-android-app-ui': {
+    platform: 'web',
+    displayMode: 'lockscreen',
+    formFactor: 'phone',
+    os: 'android',
+  },
+  'web-iphone-app-ui': {
+    platform: 'web',
+    displayMode: 'lockscreen',
+    formFactor: 'phone',
+    os: 'ios',
+  },
+} satisfies Record<NotificareNotificationPreviewVariant, NotificationPreviewState>;
 
 /**
  * Component that displays a notification preview for different platforms.
@@ -69,20 +86,8 @@ export function NotificareNotificationPreview({
     serviceKey,
   });
 
-  const [platform, setPlatform] = useState<NotificationPreviewPlatform | undefined>(
-    notificationPreviewModels.get(variant)?.platform,
-  );
-  const [displayMode, setDisplayMode] = useState<NotificationPreviewDisplayMode | undefined>(
-    notificationPreviewModels.get(variant)?.displayMode,
-  );
-  const [webDevice, setWebDevice] = useState<NotificationPreviewWebDevice | undefined>(
-    notificationPreviewModels.get(variant)?.webDevice,
-  );
-  const [webMobileType, setWebMobileType] = useState<NotificationPreviewWebMobileType | undefined>(
-    notificationPreviewModels.get(variant)?.webMobileType,
-  );
-  const [webDesktopOS, setWebDesktopOS] = useState<NotificationPreviewWebDesktopOS | undefined>(
-    notificationPreviewModels.get(variant)?.webDesktopOS,
+  const [previewState, setPreviewState] = useState<NotificationPreviewState>(
+    DEFAULT_STATES[variant],
   );
 
   // TODO: This should be memoized since it's an expensive operation.
@@ -97,18 +102,7 @@ export function NotificareNotificationPreview({
       <div className="notificare">
         <div className="notificare__push__preview-wrapper">
           {showControls && (
-            <Controls
-              platform={platform}
-              displayMode={displayMode}
-              webDevice={webDevice}
-              webMobileType={webMobileType}
-              webDesktopOS={webDesktopOS}
-              setPlatform={setPlatform}
-              setDisplayMode={setDisplayMode}
-              setWebDesktopOS={setWebDesktopOS}
-              setWebDevice={setWebDevice}
-              setWebMobileType={setWebMobileType}
-            />
+            <Controls previewState={previewState} onPreviewStateChanged={setPreviewState} />
           )}
 
           {(() => {
@@ -123,11 +117,7 @@ export function NotificareNotificationPreview({
                       {notificationResult.success ? (
                         <PreviewContent
                           notification={notificationResult.data}
-                          platform={platform}
-                          displayMode={displayMode}
-                          webDevice={webDevice}
-                          webMobileType={webMobileType}
-                          webDesktopOS={webDesktopOS}
+                          previewState={previewState}
                         />
                       ) : (
                         <UnavailablePreview
@@ -157,34 +147,18 @@ export interface NotificareNotificationPreviewProps {
 
 function PreviewContent({
   notification,
-  platform,
-  displayMode,
-  webDevice,
-  webMobileType,
-  webDesktopOS,
+  previewState,
 }: {
   notification: NotificareNotificationSchema;
-  platform?: NotificationPreviewPlatform;
-  displayMode?: NotificationPreviewDisplayMode;
-  webDevice?: NotificationPreviewWebDevice;
-  webMobileType?: NotificationPreviewWebMobileType;
-  webDesktopOS?: NotificationPreviewWebDesktopOS;
+  previewState: NotificationPreviewState;
 }) {
-  switch (platform) {
+  switch (previewState.platform) {
     case 'android':
-      return <NotificationAndroidPreview notification={notification} displayMode={displayMode} />;
+      return <NotificationAndroidPreview notification={notification} previewState={previewState} />;
     case 'ios':
-      return <NotificationIOSPreview notification={notification} displayMode={displayMode} />;
+      return <NotificationIOSPreview notification={notification} previewState={previewState} />;
     case 'web':
-      return (
-        <NotificationWebPreview
-          notification={notification}
-          displayMode={displayMode}
-          webDevice={webDevice}
-          webMobileType={webMobileType}
-          webDesktopOS={webDesktopOS}
-        />
-      );
+      return <NotificationWebPreview notification={notification} previewState={previewState} />;
   }
 }
 

@@ -1,24 +1,18 @@
 import './Selector.css';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { Key, useEffect, useRef, useState } from 'react';
 import ExpandIcon from '../../../../../assets/expand.svg';
 
-export function Selector<T extends string | undefined>({
+export function Selector<T extends Key>({
+  label,
   options,
-  selected,
-  setSelected,
+  value,
+  onValueChanged,
+  disabled = false,
 }: SelectorProps<T>) {
   const [isExpanded, setIsExpanded] = useState(false);
   const optionsRef = useRef<HTMLDivElement>(null);
 
-  // TODO: uh?
-  useEffect(function selectDefaultOption() {
-    setIsExpanded(false);
-
-    if (!options.find((option) => option.key === selected) || !selected) {
-      setSelected(options[0].key);
-    }
-  }, []);
-
+  // TODO: refactor to a separate ClickOutside component.
   useEffect(function closeSelectorWhenClickingOutside() {
     function handleClickOutside(event: MouseEvent) {
       if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) {
@@ -37,12 +31,13 @@ export function Selector<T extends string | undefined>({
   if (options.length > 0) {
     return (
       <div className="notificare__push__preview-controls-selector">
-        <p className="notificare__push__preview-controls-selector-label">Variant</p>
+        <p className="notificare__push__preview-controls-selector-label">{label}</p>
         <button
           className="notificare__push__preview-controls-selector-button"
           onClick={() => setIsExpanded(!isExpanded)}
+          disabled={disabled}
         >
-          {options.find((option) => option.key === selected)?.label}
+          {options.find((option) => option.value === value)?.label}
           <ExpandIcon className="notificare__push__preview-controls-selector-button-expand-icon" />
         </button>
 
@@ -50,13 +45,13 @@ export function Selector<T extends string | undefined>({
           <div className="notificare__push__preview-controls-selector-options" ref={optionsRef}>
             {options.map((option) => (
               <button
-                key={option.key}
-                className={`notificare__push__preview-controls-selector-option-button ${selected === option.key ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
+                key={option.value}
+                className={`notificare__push__preview-controls-selector-option-button ${value === option.value ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
                 onClick={() => {
-                  setSelected(option.key);
+                  onValueChanged?.(option.value);
                   setIsExpanded(false);
                 }}
-                data-testid={`selector-option-${option.key}`}
+                data-testid={`selector-option-${option.value}`}
               >
                 {option.label}
               </button>
@@ -69,7 +64,9 @@ export function Selector<T extends string | undefined>({
 }
 
 export interface SelectorProps<T> {
-  options: { key: T; label: string }[];
-  selected: T;
-  setSelected: Dispatch<SetStateAction<T>>;
+  label: string;
+  options: { value: T; label: string }[];
+  value: T;
+  onValueChanged?: (value: T) => void;
+  disabled?: boolean;
 }

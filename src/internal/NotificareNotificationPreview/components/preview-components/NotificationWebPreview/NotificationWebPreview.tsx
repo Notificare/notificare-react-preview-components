@@ -1,10 +1,11 @@
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import {
-  NotificationPreviewDisplayMode,
-  NotificationPreviewWebDesktopOS,
-  NotificationPreviewWebDevice,
-  NotificationPreviewWebMobileType,
-} from '../../../types/notification-preview-model';
+  NotificareNotificationSchema,
+  NotificareNotificationType,
+} from '../../../../schemas/notificare-notification/notificare-notification-schema';
+import {
+  NotificationPreviewStateWebDesktop,
+  NotificationPreviewStateWebMobile,
+} from '../../../types/notification-preview';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import { AndroidPhoneBackground } from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
 import { IOSPhoneBackground } from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
@@ -14,76 +15,74 @@ import { WebMobileAppUINotification } from './WebMobileAppUINotification/WebMobi
 
 export function NotificationWebPreview({
   notification,
-  displayMode = 'app-ui',
-  webDevice = 'desktop',
-  webMobileType,
-  webDesktopOS = 'macOS',
+  previewState,
 }: NotificationWebPreviewProps) {
   const { googleMapsAPIKey } = useOptions();
 
-  if (webDevice === 'desktop' && webDesktopOS === 'macOS') {
-    return (
-      <WebMacOSNotification
-        key={notification.message}
-        notification={notification}
-      />
-    );
-  }
+  switch (previewState.formFactor) {
+    case 'desktop':
+      switch (previewState.os) {
+        case 'macos':
+          return <WebMacOSNotification key={notification.message} notification={notification} />;
+      }
+      break;
 
-  if (webDevice === 'phone' && displayMode === 'app-ui') {
-    if (
-      !(
-        notification.type === 're.notifica.notification.Alert' ||
-        notification.type === 're.notifica.notification.Map' ||
-        notification.type === 're.notifica.notification.WebView' ||
-        notification.type === 're.notifica.notification.URL' ||
-        notification.type === 're.notifica.notification.Video' ||
-        notification.type === 're.notifica.notification.Image'
-      )
-    ) {
-      return (
-        <UnavailablePreview
-          message={`→ The preview for the notification type '${notification.type}' does not exist in this variant`}
-          showConsoleWarning={false}
-        />
-      );
-    }
+    case 'phone':
+      switch (previewState.displayMode) {
+        case 'lockscreen':
+        case 'lockscreen-expanded':
+          return (
+            <UnavailablePreview
+              message="→ Notification preview variant not supported"
+              showConsoleWarning={false}
+            />
+          );
+        case 'app-ui': {
+          if (!SUPPORTED_MOBILE_APP_UI_NOTIFICATION_TYPES.includes(notification.type)) {
+            return (
+              <UnavailablePreview
+                message={`→ The preview for the notification type '${notification.type}' does not exist in this variant`}
+                showConsoleWarning={false}
+              />
+            );
+          }
 
-    if (notification.type === 're.notifica.notification.Map' && !googleMapsAPIKey) {
-      return (
-        <UnavailablePreview
-          message="→ A Google Maps API key should be provided"
-          showConsoleWarning={false}
-        />
-      );
-    }
-    const PhoneBackground =
-      webMobileType === 'android'
-        ? AndroidPhoneBackground
-        : webMobileType === 'iphone'
-          ? IOSPhoneBackground
-          : null;
+          if (notification.type === 're.notifica.notification.Map' && !googleMapsAPIKey) {
+            return (
+              <UnavailablePreview
+                message="→ A Google Maps API key should be provided"
+                showConsoleWarning={false}
+              />
+            );
+          }
 
-    if (PhoneBackground) {
-      return (
-        <PhoneBackground theme={getTheme(notification.type)}>
-          <WebMobileAppUINotification notification={notification}/>
-        </PhoneBackground>
-      );
-    }
+          switch (previewState.os) {
+            case 'android':
+              return (
+                <AndroidPhoneBackground theme={getTheme(notification.type)}>
+                  <WebMobileAppUINotification notification={notification} />
+                </AndroidPhoneBackground>
+              );
+
+            case 'ios':
+              return (
+                <IOSPhoneBackground theme={getTheme(notification.type)}>
+                  <WebMobileAppUINotification notification={notification} />
+                </IOSPhoneBackground>
+              );
+          }
+        }
+      }
   }
 }
 
 export interface NotificationWebPreviewProps {
   notification: NotificareNotificationSchema;
-  displayMode?: NotificationPreviewDisplayMode;
-  webDevice?: NotificationPreviewWebDevice;
-  webMobileType?: NotificationPreviewWebMobileType;
-  webDesktopOS?: NotificationPreviewWebDesktopOS;
+  previewState: NotificationPreviewStateWebDesktop | NotificationPreviewStateWebMobile;
 }
 
-function getTheme(notificationType: NotificareNotificationSchema['type']) {
-  const darkThemeTypes: NotificareNotificationSchema['type'][] = [
+function getTheme(notificationType: NotificareNotificationType) {
+  const darkThemeTypes: NotificareNotificationType[] = [
     're.notifica.notification.Alert',
     're.notifica.notification.Map',
     're.notifica.notification.WebView',
@@ -93,3 +92,12 @@ function getTheme(notificationType: NotificareNotificationSchema['type']) {
   ];
   return darkThemeTypes.includes(notificationType) ? 'dark' : 'light';
 }
+
+const SUPPORTED_MOBILE_APP_UI_NOTIFICATION_TYPES: NotificareNotificationType[] = [
+  're.notifica.notification.Alert',
+  're.notifica.notification.Map',
+  're.notifica.notification.WebView',
+  're.notifica.notification.URL',
+  're.notifica.notification.Video',
+  're.notifica.notification.Image',
+];

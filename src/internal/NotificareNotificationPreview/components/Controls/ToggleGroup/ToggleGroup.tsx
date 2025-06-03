@@ -1,32 +1,26 @@
-import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect } from 'react';
+import { Fragment, Key, ReactNode } from 'react';
 import './ToggleGroup.css';
 
-export function ToggleGroup<T extends string | undefined>({
+export function ToggleGroup<T extends Key>({
   label,
   options,
-  selected,
-  setSelected,
+  value,
+  onValueChanged,
 }: ToggleGroupProps<T>) {
-  useEffect(function selectDefaultOption() {
-    if (!selected) {
-      setSelected(options[0].key);
-    }
-  }, []);
-
   return (
     <div className="notificare__push__preview-controls-toggle-group">
-      <p className="notificare__push__preview-controls-toggle-group-label"> {label} </p>
+      <p className="notificare__push__preview-controls-toggle-group-label">{label}</p>
       <div className="notificare__push__preview-controls-toggle-group-options">
         {options.map((option, index) => (
-          <Fragment key={option.key}>
+          <Fragment key={option.value}>
             <button
-              className={`notificare__push__preview-controls-toggle-group-option ${selected === option.key ? 'notificare__push__preview-controls-toggle-group-option--selected' : ''}`}
-              onClick={() => setSelected(option.key)}
-              aria-label={`Button with option '${option.key}'`}
-              data-testid={`toggle-option-${option.key}`}
+              className={`notificare__push__preview-controls-toggle-group-option ${value === option.value ? 'notificare__push__preview-controls-toggle-group-option--selected' : ''}`}
+              onClick={() => onValueChanged(option.value)}
+              aria-label={`Button with option '${option.value}'`}
+              data-testid={`toggle-option-${option.value}`}
             >
               <div
-                className={`notificare__push__preview-controls-toggle-group-option-icon ${selected === option.key ? 'notificare__push__preview-controls-toggle-group-option-icon--selected' : ''}`}
+                className={`notificare__push__preview-controls-toggle-group-option-icon ${value === option.value ? 'notificare__push__preview-controls-toggle-group-option-icon--selected' : ''}`}
               >
                 {option.icon}
               </div>
@@ -43,7 +37,7 @@ export function ToggleGroup<T extends string | undefined>({
 
 export interface ToggleGroupProps<T> {
   label: string;
-  options: { key: T; icon: ReactNode }[];
-  selected: T;
-  setSelected: Dispatch<SetStateAction<T>>;
+  options: { value: T; icon: ReactNode }[];
+  value: T;
+  onValueChanged: (value: T) => void;
 }

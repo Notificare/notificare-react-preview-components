@@ -1,25 +1,157 @@
 import './Controls.css';
-import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { ReactNode } from 'react';
 import AndroidIcon from '../../../../assets/android.svg';
 import DesktopIcon from '../../../../assets/desktop.svg';
 import HTML5Icon from '../../../../assets/html5.svg';
 import IOSIcon from '../../../../assets/ios.svg';
 import PhoneIcon from '../../../../assets/phone.svg';
 import {
+  NotificationPreviewDesktopOperatingSystem,
   NotificationPreviewDisplayMode,
+  NotificationPreviewFormFactor,
+  NotificationPreviewMobileOperatingSystem,
   NotificationPreviewPlatform,
-  NotificationPreviewWebDesktopOS,
-  NotificationPreviewWebDevice,
-  NotificationPreviewWebMobileType,
-} from '../../types/notification-preview-model';
+  NotificationPreviewState,
+} from '../../types/notification-preview';
 import { Selector } from './Selector/Selector';
 import { ToggleGroup } from './ToggleGroup/ToggleGroup';
 
-/* Toggle Groups data */
+export function Controls({ previewState, onPreviewStateChanged }: ControlsProps) {
+  function handlePlatformChanged(platform: NotificationPreviewPlatform) {
+    if (previewState.platform === platform) return;
 
-const platforms: OptionsGroup<NotificationPreviewPlatform>[] = [
+    switch (platform) {
+      case 'android':
+      case 'ios':
+        onPreviewStateChanged({
+          ...previewState,
+          platform,
+        });
+        break;
+      case 'web':
+        onPreviewStateChanged({
+          ...previewState,
+          platform: 'web',
+          formFactor: 'desktop',
+          os: 'macos',
+          // Reset the display mode to a value supported by the Web Desktop Notification component.
+          displayMode: 'lockscreen',
+        });
+        break;
+    }
+  }
+
+  function handleFormFactorChanged(formFactor: NotificationPreviewFormFactor) {
+    if (previewState.platform !== 'web' || previewState.formFactor === formFactor) return;
+
+    switch (formFactor) {
+      case 'desktop':
+        onPreviewStateChanged({
+          ...previewState,
+          formFactor,
+          os: 'macos',
+          // Reset the display mode to a value supported by the Web Desktop Notification component.
+          displayMode: 'lockscreen',
+        });
+        break;
+      case 'phone':
+        onPreviewStateChanged({
+          ...previewState,
+          formFactor,
+          os: 'android',
+          // Reset the display mode to a value supported by the Web Mobile Notification component.
+          displayMode: 'app-ui',
+        });
+        break;
+    }
+  }
+
+  function handleOperatingSystemChanged(os: NotificationPreviewMobileOperatingSystem) {
+    if (
+      previewState.platform !== 'web' ||
+      previewState.formFactor !== 'phone' ||
+      previewState.os === os
+    ) {
+      return;
+    }
+
+    onPreviewStateChanged({
+      ...previewState,
+      os,
+    });
+  }
+
+  function handleDisplayModeChanged(displayMode: NotificationPreviewDisplayMode) {
+    if (previewState.displayMode === displayMode) return;
+
+    onPreviewStateChanged({
+      ...previewState,
+      displayMode,
+    });
+  }
+
+  return (
+    <div className="notificare__push__preview-controls" data-testid="controls">
+      <div className="notificare__push__preview-controls-toggle-groups">
+        <ToggleGroup
+          label="Platform"
+          options={PLATFORM_OPTIONS}
+          value={previewState.platform}
+          onValueChanged={handlePlatformChanged}
+        />
+
+        {previewState.platform === 'web' && (
+          <ToggleGroup
+            label="Form Factor"
+            options={FORM_FACTOR_OPTIONS}
+            value={previewState.formFactor}
+            onValueChanged={handleFormFactorChanged}
+          />
+        )}
+
+        {previewState.platform === 'web' && previewState.formFactor === 'phone' && (
+          <ToggleGroup
+            label="OS"
+            options={MOBILE_OPERATING_SYSTEM_OPTIONS}
+            value={previewState.os}
+            onValueChanged={handleOperatingSystemChanged}
+          />
+        )}
+      </div>
+
+      {(previewState.platform === 'android' || previewState.platform === 'ios') && (
+        <Selector
+          label="Variant"
+          options={DISPLAY_MODE_OPTIONS}
+          value={previewState.displayMode}
+          onValueChanged={handleDisplayModeChanged}
+        />
+      )}
+
+      {previewState.platform === 'web' && previewState.formFactor === 'desktop' && (
+        <Selector
+          label="OS"
+          options={DESKTOP_OPERATING_SYSTEM_OPTIONS}
+          value={previewState.os}
+          disabled
+        />
+      )}
+
+      {previewState.platform === 'web' && previewState.formFactor === 'phone' && (
+        <Selector label="Variant" options={DISPLAY_MODE_OPTIONS} value="app-ui" disabled />
+      )}
+    </div>
+  );
+}
+
+export interface ControlsProps {
+  previewState: NotificationPreviewState;
+  onPreviewStateChanged: (state: NotificationPreviewState) => void;
+}
+
+const PLATFORM_OPTIONS = [
   {
-    key: 'android',
+    value: 'android',
     icon: (
       <AndroidIcon
         key="platforms-android-icon"
@@ -28,13 +160,13 @@ const platforms: OptionsGroup<NotificationPreviewPlatform>[] = [
     ),
   },
   {
-    key: 'ios',
+    value: 'ios',
     icon: (
       <IOSIcon key="platform-ios-icon" className="notificare__push__preview-controls-ios-icon" />
     ),
   },
   {
-    key: 'web',
+    value: 'web',
     icon: (
       <HTML5Icon
         key="platform-html5-icon"
@@ -42,11 +174,11 @@ const platforms: OptionsGroup<NotificationPreviewPlatform>[] = [
       />
     ),
   },
-];
+] satisfies Array<{ value: NotificationPreviewPlatform; icon: ReactNode }>;
 
-const webDevices: OptionsGroup<NotificationPreviewWebDevice>[] = [
+const FORM_FACTOR_OPTIONS = [
   {
-    key: 'desktop',
+    value: 'desktop',
     icon: (
       <DesktopIcon
         key="form-factor-desktop-icon"
@@ -55,7 +187,7 @@ const webDevices: OptionsGroup<NotificationPreviewWebDevice>[] = [
     ),
   },
   {
-    key: 'phone',
+    value: 'phone',
     icon: (
       <PhoneIcon
         key="form-factor-phone-icon"
@@ -63,11 +195,11 @@ const webDevices: OptionsGroup<NotificationPreviewWebDevice>[] = [
       />
     ),
   },
-];
+] satisfies Array<{ value: NotificationPreviewFormFactor; icon: ReactNode }>;
 
-const webMobileTypes: OptionsGroup<NotificationPreviewWebMobileType>[] = [
+const MOBILE_OPERATING_SYSTEM_OPTIONS = [
   {
-    key: 'android',
+    value: 'android',
     icon: (
       <AndroidIcon
         key="device-android-icon"
@@ -76,105 +208,20 @@ const webMobileTypes: OptionsGroup<NotificationPreviewWebMobileType>[] = [
     ),
   },
   {
-    key: 'iphone',
+    value: 'ios',
     icon: (
       <IOSIcon key="device-iphone-icon" className="notificare__push__preview-controls-ios-icon" />
     ),
   },
-];
+] satisfies Array<{ value: NotificationPreviewMobileOperatingSystem; icon: ReactNode }>;
 
-export function Controls({
-  platform,
-  displayMode,
-  webDevice,
-  webMobileType,
-  webDesktopOS,
-  setPlatform,
-  setDisplayMode,
-  setWebDevice,
-  setWebMobileType,
-  setWebDesktopOS,
-}: ControlsProps) {
-  return (
-    <div className="notificare__push__preview-controls" data-testid="controls">
-      <div className="notificare__push__preview-controls-toggle-groups">
-        <ToggleGroup
-          label="Platform"
-          options={platforms}
-          selected={platform}
-          setSelected={setPlatform}
-        />
+const DISPLAY_MODE_OPTIONS = [
+  { value: 'lockscreen', label: 'Lock Screen' },
+  { value: 'lockscreen-expanded', label: 'Lock Screen Expanded' },
+  { value: 'app-ui', label: 'App UI' },
+] satisfies Array<{ value: NotificationPreviewDisplayMode; label: string }>;
 
-        {platform === 'web' && (
-          <>
-            <ToggleGroup
-              label="Form Factor"
-              options={webDevices}
-              selected={webDevice}
-              setSelected={setWebDevice}
-            />
-
-            {webDevice === 'phone' && (
-              <ToggleGroup
-                label="Phone Model"
-                options={webMobileTypes}
-                selected={webMobileType}
-                setSelected={setWebMobileType}
-              />
-            )}
-          </>
-        )}
-      </div>
-
-      {(platform === 'ios' || platform === 'android') && (
-        <Selector
-          options={[
-            { key: 'lockscreen', label: 'Lock Screen' },
-            { key: 'lockscreen-expanded', label: 'Lock Screen Expanded' },
-            { key: 'app-ui', label: 'App UI' },
-          ]}
-          selected={displayMode}
-          setSelected={setDisplayMode}
-        />
-      )}
-
-      {platform === 'web' && (
-        <>
-          {webDevice === 'phone' && (
-            <Selector
-              options={[{ key: 'app-ui', label: 'App UI' }]}
-              selected={displayMode}
-              setSelected={setDisplayMode}
-            />
-          )}
-
-          {webDevice === 'desktop' && (
-            <Selector
-              options={[{ key: 'macOS', label: 'macOS' }]}
-              selected={webDesktopOS}
-              setSelected={setWebDesktopOS}
-            />
-          )}
-        </>
-      )}
-    </div>
-  );
-}
-
-export interface ControlsProps {
-  platform?: NotificationPreviewPlatform;
-  displayMode?: NotificationPreviewDisplayMode;
-  webDevice?: NotificationPreviewWebDevice;
-  webMobileType?: NotificationPreviewWebMobileType;
-  webDesktopOS?: NotificationPreviewWebDesktopOS;
-  setPlatform: Dispatch<SetStateAction<NotificationPreviewPlatform | undefined>>;
-  setDisplayMode: Dispatch<SetStateAction<NotificationPreviewDisplayMode | undefined>>;
-  setWebDevice: Dispatch<SetStateAction<NotificationPreviewWebDevice | undefined>>;
-  setWebMobileType: Dispatch<SetStateAction<NotificationPreviewWebMobileType | undefined>>;
-  setWebDesktopOS: Dispatch<SetStateAction<NotificationPreviewWebDesktopOS | undefined>>;
-}
-
-type OptionsGroup<T> = {
-  key: T;
-  icon: ReactNode;
-};
+const DESKTOP_OPERATING_SYSTEM_OPTIONS = [{ value: 'macos', label: 'macOS' }] satisfies Array<{
+  value: NotificationPreviewDesktopOperatingSystem;
+  label: string;
+}>;
