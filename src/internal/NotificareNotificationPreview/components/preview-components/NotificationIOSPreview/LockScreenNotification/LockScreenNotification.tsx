@@ -1,9 +1,11 @@
 import './LockScreenNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
+import { getAppIconURL } from '../../../../helpers/getAppIconURL';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 
-export function LockScreenNotification(props: IOSLockScreenPushProps) {
-  const { notification, appName, appIcon, expanded } = props;
+export function LockScreenNotification( { notification, expanded }: IOSLockScreenPushProps) {
+  const application = useApplication();
 
   return (
     <div className="notificare__push__ios__lock-screen" data-testid="ios-lock-screen-notification">
@@ -12,7 +14,7 @@ export function LockScreenNotification(props: IOSLockScreenPushProps) {
           <img
             className="notificare__push__ios__lock-screen__app-icon-image"
             alt="App icon"
-            src={appIcon}
+            src={getAppIconURL(application.websitePushConfig.icon)}
           />
         </div>
         <div className="notificare__push__ios__lock-screen__text-content">
@@ -20,7 +22,7 @@ export function LockScreenNotification(props: IOSLockScreenPushProps) {
             <p
               className={`notificare__push__ios__lock-screen__text ${!expanded ? 'notificare__push__ios__lock-screen__text--title-or-subtitle' : 'notificare__push__ios__lock-screen__text--expanded-title-or-subtitle'}`}
             >
-              {notification.title || appName}
+              {notification.title || application.name}
             </p>
 
             <p className="notificare__push__ios__lock-screen__text notificare__push__ios__lock-screen__text--time">
@@ -68,7 +70,5 @@ export function LockScreenNotification(props: IOSLockScreenPushProps) {
 
 export interface IOSLockScreenPushProps {
   notification: NotificareNotificationSchema;
-  appName: string;
-  appIcon: string;
   expanded: boolean;
 }

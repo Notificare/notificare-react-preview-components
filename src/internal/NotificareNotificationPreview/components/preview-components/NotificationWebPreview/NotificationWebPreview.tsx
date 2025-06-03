@@ -1,6 +1,4 @@
-import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
-import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewWebDesktopOS,
@@ -16,7 +14,6 @@ import { WebMobileAppUINotification } from './WebMobileAppUINotification/WebMobi
 
 export function NotificationWebPreview({
   notification,
-  application,
   displayMode = 'app-ui',
   webDevice = 'desktop',
   webMobileType,
@@ -29,8 +26,6 @@ export function NotificationWebPreview({
       <WebMacOSNotification
         key={notification.message}
         notification={notification}
-        appName={application.name}
-        appDomain={application.websitePushConfig.allowedDomains[0]}
       />
     );
   }
@@ -72,11 +67,7 @@ export function NotificationWebPreview({
     if (PhoneBackground) {
       return (
         <PhoneBackground theme={getTheme(notification.type)}>
-          <WebMobileAppUINotification
-            notification={notification}
-            appName={application.name}
-            appIcon={getAppIconURL(application.websitePushConfig.icon)}
-          />
+          <WebMobileAppUINotification notification={notification}/>
         </PhoneBackground>
       );
     }
@@ -85,7 +76,6 @@ export function NotificationWebPreview({
 
 export interface NotificationWebPreviewProps {
   notification: NotificareNotificationSchema;
-  application: NotificareApplication;
   displayMode?: NotificationPreviewDisplayMode;
   webDevice?: NotificationPreviewWebDevice;
   webMobileType?: NotificationPreviewWebMobileType;

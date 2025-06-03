@@ -1,8 +1,9 @@
 import '../../preset.css';
 import './NotificareNotificationPreview.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ZodIssue } from 'zod';
-import { getPushAPIHost } from '../../internal/network/api';
+import { ApplicationProvider } from '../../internal/context/application';
+import { useApplicationLoader } from '../../internal/hooks';
 import { Controls } from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
 import { OptionsProvider } from '../../internal/NotificareNotificationPreview/components/OptionsProvider/OptionsProvider';
 import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
@@ -18,18 +19,11 @@ import {
   NotificationPreviewWebDevice,
   NotificationPreviewWebMobileType,
 } from '../../internal/NotificareNotificationPreview/types/notification-preview-model';
-import { notificareNotificationSchema } from '../../internal/schemas/notificare-notification/notificare-notification-schema';
+import {
+  NotificareNotificationSchema,
+  notificareNotificationSchema,
+} from '../../internal/schemas/notificare-notification/notificare-notification-schema';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '../../models';
-import { NotificareApplication } from './models/notificare-application';
-
-const defaultApplication: NotificareApplication = {
-  name: 'My App',
-  androidPackageName: 'com.example.app',
-  websitePushConfig: {
-    icon: 'https://avatars.githubusercontent.com/u/1728060?s=200&v=4',
-    allowedDomains: ['https://my-app.com/'],
-  },
-};
 
 const notificationPreviewModels = new Map<
   NotificareNotificationPreviewVariant,
@@ -70,40 +64,10 @@ export function NotificareNotificationPreview({
   serviceKey,
   googleMapsAPIKey,
 }: NotificareNotificationPreviewProps) {
-  const [application, setApplication] = useState<NotificareApplication>();
-
-  useEffect(
-    function fetchApplicationData() {
-      (async () => {
-        if (applicationId) {
-          try {
-            const url = new URL(
-              `/application/${encodeURIComponent(applicationId)}/info`,
-              getPushAPIHost(),
-            );
-            url.searchParams.set('apiKey', serviceKey);
-
-            const response = await fetch(url);
-
-            if (!response.ok) {
-              const { error } = await response.json();
-              console.error(`There was an error trying to get the application: ${error}`);
-              setApplication(defaultApplication);
-            } else {
-              const { application } = await response.json();
-              setApplication(application);
-            }
-          } catch (error) {
-            console.error('Error fetching the application: ', error);
-            setApplication(defaultApplication);
-          }
-        } else {
-          setApplication(defaultApplication);
-        }
-      })();
-    },
-    [applicationId, serviceKey],
-  );
+  const applicationState = useApplicationLoader({
+    id: applicationId,
+    serviceKey,
+  });
 
   const [platform, setPlatform] = useState<NotificationPreviewPlatform | undefined>(
     notificationPreviewModels.get(variant)?.platform,
@@ -121,6 +85,7 @@ export function NotificareNotificationPreview({
     notificationPreviewModels.get(variant)?.webDesktopOS,
   );
 
+  // TODO: This should be memoized since it's an expensive operation.
   const notificationResult = notificareNotificationSchema.safeParse(notification);
 
   if (!notificationResult.success) {
@@ -146,44 +111,35 @@ export function NotificareNotificationPreview({
             />
           )}
 
-          {application ? (
-            <div className="notificare__push__preview">
-              {notificationResult.success ? (
-                <>
-                  {platform === 'android' && (
-                    <NotificationAndroidPreview
-                      notification={notificationResult.data}
-                      application={application}
-                      displayMode={displayMode}
-                    />
-                  )}
-
-                  {platform === 'ios' && (
-                    <NotificationIOSPreview
-                      notification={notificationResult.data}
-                      application={application}
-                      displayMode={displayMode}
-                    />
-                  )}
-
-                  {platform === 'web' && (
-                    <NotificationWebPreview
-                      notification={notificationResult.data}
-                      application={application}
-                      displayMode={displayMode}
-                      webDevice={webDevice}
-                      webMobileType={webMobileType}
-                      webDesktopOS={webDesktopOS}
-                    />
-                  )}
-                </>
-              ) : (
-                <UnavailablePreview message={'→ Invalid Notification'} showConsoleWarning={true} />
-              )}
-            </div>
-          ) : (
-            <Loading />
-          )}
+          {(() => {
+            switch (applicationState.status) {
+              case 'idle':
+              case 'loading':
+                return <Loading />;
+              case 'success':
+                return (
+                  <ApplicationProvider application={applicationState.data}>
+                    <div className="notificare__push__preview">
+                      {notificationResult.success ? (
+                        <PreviewContent
+                          notification={notificationResult.data}
+                          platform={platform}
+                          displayMode={displayMode}
+                          webDevice={webDevice}
+                          webMobileType={webMobileType}
+                          webDesktopOS={webDesktopOS}
+                        />
+                      ) : (
+                        <UnavailablePreview
+                          message={'→ Invalid Notification'}
+                          showConsoleWarning={true}
+                        />
+                      )}
+                    </div>
+                  </ApplicationProvider>
+                );
+            }
+          })()}
         </div>
       </div>
     </OptionsProvider>
@@ -197,6 +153,39 @@ export interface NotificareNotificationPreviewProps {
   variant?: NotificareNotificationPreviewVariant;
   serviceKey: string;
   googleMapsAPIKey?: string;
+}
+
+function PreviewContent({
+  notification,
+  platform,
+  displayMode,
+  webDevice,
+  webMobileType,
+  webDesktopOS,
+}: {
+  notification: NotificareNotificationSchema;
+  platform?: NotificationPreviewPlatform;
+  displayMode?: NotificationPreviewDisplayMode;
+  webDevice?: NotificationPreviewWebDevice;
+  webMobileType?: NotificationPreviewWebMobileType;
+  webDesktopOS?: NotificationPreviewWebDesktopOS;
+}) {
+  switch (platform) {
+    case 'android':
+      return <NotificationAndroidPreview notification={notification} displayMode={displayMode} />;
+    case 'ios':
+      return <NotificationIOSPreview notification={notification} displayMode={displayMode} />;
+    case 'web':
+      return (
+        <NotificationWebPreview
+          notification={notification}
+          displayMode={displayMode}
+          webDevice={webDevice}
+          webMobileType={webMobileType}
+          webDesktopOS={webDesktopOS}
+        />
+      );
+  }
 }
 
 function showNotificationErrors(errors: ZodIssue[]) {

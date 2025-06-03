@@ -1,10 +1,10 @@
 import './TitleBar.css';
 import OptionsIcon from '../../../../../../assets/options.svg';
 
-export function TitleBar({ appName, title, showOptions }: TitleBarProps) {
+export function TitleBar({ title, showOptions }: TitleBarProps) {
   return (
     <div className="notificare__push__ios__app-ui__title-bar">
-      <div className="notificare__push__ios__app-ui__title-bar-text">{title || appName}</div>
+      <div className="notificare__push__ios__app-ui__title-bar-text">{title}</div>
 
       {showOptions && (
         <OptionsIcon
@@ -17,7 +17,6 @@ export function TitleBar({ appName, title, showOptions }: TitleBarProps) {
 }
 
 export interface TitleBarProps {
-  appName: string;
-  title?: string;
+  title: string;
   showOptions: boolean;
 }

@@ -1,13 +1,12 @@
 import './LockScreenNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
+import { getAppIconURL } from '../../../../helpers/getAppIconURL';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 
-export function LockScreenNotification({
-  notification,
-  appName,
-  appIcon,
-  expanded,
-}: AndroidLockScreenPushProps) {
+export function LockScreenNotification({ notification, expanded }: AndroidLockScreenPushProps) {
+  const application = useApplication();
+
   return (
     <div
       className="notificare__push__android__lock-screen"
@@ -17,7 +16,7 @@ export function LockScreenNotification({
         <img
           className="notificare__push__android__lock-screen__app-icon-image"
           alt="App icon"
-          src={appIcon}
+          src={getAppIconURL(application.websitePushConfig.icon)}
         />
       </div>
       <div className="notificare__push__android__lock-screen__text-content">
@@ -26,7 +25,7 @@ export function LockScreenNotification({
             className={`notificare__push__android__lock-screen__title-and-subtitle ${hasFirstAttachment(notification) && !expanded ? 'notificare__push__android__lock-screen__title-and-subtitle--has-media' : ''}`}
           >
             <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--title">
-              {!expanded ? notification.title || appName : appName}
+              {!expanded ? notification.title || application.name : application.name}
             </p>
             {notification.subtitle && !hasFirstAttachment(notification) && (
               <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--subtitle">
@@ -83,7 +82,5 @@ export function LockScreenNotification({
 
 export interface AndroidLockScreenPushProps {
   notification: NotificareNotificationSchema;
-  appName: string;
-  appIcon: string;
   expanded: boolean;
 }

@@ -1,15 +1,17 @@
 import './AppRecommendationNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { Webshot } from '../../../shared-components/Webshot/Webshot';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
 export function AppRecommendationNotification({
   notification,
-  appName,
 }: AppRecommendationNotificationProps) {
+  const application = useApplication();
+
   return (
     <div data-testid="android-app-ui-app-recommendation-notification">
-      <NavigationBar appName={appName} title={notification.title} showOptions={false} />
+      <NavigationBar title={notification.title || application.name} showOptions={false} />
       <Webshot
         url={getUrlByContentType(notification.content[0])}
         platform="Android"
@@ -22,7 +24,6 @@ export function AppRecommendationNotification({
 
 export interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
-  appName: string;
 }
 
 function getUrlByContentType(

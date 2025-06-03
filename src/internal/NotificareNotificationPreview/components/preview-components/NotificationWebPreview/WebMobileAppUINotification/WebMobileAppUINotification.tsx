@@ -1,6 +1,8 @@
 import './WebMobileAppUINotification.css';
 import ThinXMarkIcon from '../../../../../../assets/thin-x-mark.svg';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
+import { getAppIconURL } from '../../../../helpers/getAppIconURL';
 import { MapRichContent } from '../../../shared-components/MapRichContent/MapRichContent';
 import { VideoRichContent } from '../../../shared-components/VideoRichContent/VideoRichContent';
 import { Webshot } from '../../../shared-components/Webshot/Webshot';
@@ -10,9 +12,9 @@ import { WebViewNotification } from './WebViewNotification/WebViewNotification';
 
 export function WebMobileAppUINotification({
   notification,
-  appName,
-  appIcon,
 }: WebMobileAppUIProps) {
+  const application = useApplication();
+
   if (
     notification.type === 're.notifica.notification.Alert' ||
     notification.type === 're.notifica.notification.Map' ||
@@ -27,10 +29,10 @@ export function WebMobileAppUINotification({
           <div className="notificare__web__phone__app-ui__header">
             <img
               className="notificare__web__phone__app-ui__app-icon"
-              src={appIcon}
+              src={getAppIconURL(application.websitePushConfig.icon)}
               alt="App icon"
             />
-            <p className="notificare__web__phone__app-ui__app-name">{appName}</p>
+            <p className="notificare__web__phone__app-ui__app-name">{application.name}</p>
             <button className="notificare__web__phone__app-ui__close-button">
               <ThinXMarkIcon className="notificare__web__phone__app-ui__close-button-icon" />
             </button>
@@ -100,6 +102,4 @@ export function WebMobileAppUINotification({
 
 export interface WebMobileAppUIProps {
   notification: NotificareNotificationSchema;
-  appName: string;
-  appIcon: string;
 }

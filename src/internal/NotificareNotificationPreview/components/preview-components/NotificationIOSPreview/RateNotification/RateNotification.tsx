@@ -1,10 +1,13 @@
 import './RateNotification.css';
+import { useApplication } from '../../../../../context/application';
 
-export function RateNotification({ appName, title }: RateAppNotificationProps) {
+export function RateNotification({ title }: RateAppNotificationProps) {
+  const application = useApplication();
+
   return (
     <div className="notificare__push__ios__rate__app-ui" data-testid="ios-app-ui-rate-notification">
       <div className="notificare__push__ios__rate__app-ui__wrapper">
-        <p className="notificare__push__ios__rate__app-ui__header">{title || appName}</p>
+        <p className="notificare__push__ios__rate__app-ui__header">{title || application.name}</p>
 
         <div className="notificare__push__ios__rate__app-ui__action">Yes, I&#39;ll Rate Now</div>
         <div className="notificare__push__ios__rate__app-ui__action">No, Thanks</div>
@@ -14,6 +17,5 @@ export function RateNotification({ appName, title }: RateAppNotificationProps) {
 }
 
 export interface RateAppNotificationProps {
-  appName: string;
   title: string | undefined;
 }

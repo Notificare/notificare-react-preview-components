@@ -1,14 +1,16 @@
 import './ImagesNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { TitleBar } from '../TitleBar/TitleBar';
 
-export function ImagesNotification({ notification, appName }: ImagesNotificationProps) {
+export function ImagesNotification({ notification }: ImagesNotificationProps) {
+  const application = useApplication();
+
   return (
     <div data-testid="ios-app-ui-images-notification">
       <TitleBar
-        appName={appName}
-        title={notification.title}
+        title={notification.title || application.name}
         showOptions={hasActions(notification)}
       />
       <div className="notificare__push__ios__image__app-ui__rich-content">
@@ -29,5 +31,4 @@ export function ImagesNotification({ notification, appName }: ImagesNotification
 
 export interface ImagesNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Image' }>;
-  appName: string;
 }

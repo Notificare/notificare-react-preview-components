@@ -1,12 +1,12 @@
 import './TextAlertNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
+import { getAppIconURL } from '../../../../helpers/getAppIconURL';
 import { hasActions } from '../../../../helpers/notification-utils';
 
-export function TextAlertNotification({
-  notification,
-  appName,
-  appIcon,
-}: TextAlertNotificationProps) {
+export function TextAlertNotification({ notification }: TextAlertNotificationProps) {
+  const application = useApplication();
+
   return (
     <div
       className="notificare__push__android__alert__app-ui"
@@ -18,11 +18,11 @@ export function TextAlertNotification({
             <img
               className="notificare__push__android__alert__app-ui__app-icon-image"
               alt="App icon"
-              src={appIcon}
+              src={getAppIconURL(application.websitePushConfig.icon)}
             />
           </div>
           <p className="notificare__push__android__alert__app-ui__title">
-            {notification.title || appName}
+            {notification.title || application.name}
           </p>
         </div>
         <p className="notificare__push__android__alert__app-ui__message">{notification.message}</p>
@@ -53,6 +53,4 @@ export function TextAlertNotification({
 
 export interface TextAlertNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Alert' }>;
-  appName: string;
-  appIcon: string;
 }

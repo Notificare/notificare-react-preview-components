@@ -2,6 +2,7 @@ import { Key, useEffect, useRef, useState } from 'react';
 import './WebMacOSNotification.css';
 import ExpandIcon from '../../../../../../assets/expand.svg';
 import GoogleChromeIcon from '../../../../../../assets/google-chrome.svg';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasFirstAttachment } from '../../../../helpers/notification-utils';
 import { ExpandButton } from './ExpandButton/ExpandButton';
@@ -9,7 +10,7 @@ import { ExpandButton } from './ExpandButton/ExpandButton';
 const maxMessageLines = 3;
 const messageLineHeight = 16.7;
 
-export function WebMacOSNotification({ notification, appName, appDomain }: WebPushProps) {
+export function WebMacOSNotification({ notification }: WebPushProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [mouseOverNotification, setMouseOverNotification] = useState<boolean>(false);
   const [mouseOverButtonIndex, setMouseOverButtonIndex] = useState<number>(-1);
@@ -20,6 +21,8 @@ export function WebMacOSNotification({ notification, appName, appDomain }: WebPu
   const [initialPreviewHeight, setInitialPreviewHeight] = useState<string>('');
   const previewRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
+
+  const application = useApplication();
 
   useEffect(function enableExpandableOnMessageHeightAndSetInitialPreviewHeight() {
     if (previewRef.current && messageRef.current) {
@@ -106,10 +109,10 @@ export function WebMacOSNotification({ notification, appName, appDomain }: WebPu
 
         <div className="notificare__push__web__desktop__lock-screen__text-content">
           <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--title">
-            {notification.title || appName}
+            {notification.title || application.name}
           </p>
           <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--domain">
-            {extractDomain(appDomain)}
+            {extractDomain(application.websitePushConfig.allowedDomains[0])}
           </p>
           <p
             ref={messageRef}
@@ -212,8 +215,6 @@ export function WebMacOSNotification({ notification, appName, appDomain }: WebPu
 export interface WebPushProps {
   key?: Key; // why do we receive a key?
   notification: NotificareNotificationSchema;
-  appName: string;
-  appDomain: string;
 }
 
 function extractDomain(url: string): string {

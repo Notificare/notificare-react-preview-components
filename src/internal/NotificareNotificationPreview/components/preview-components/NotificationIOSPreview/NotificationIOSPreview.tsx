@@ -1,7 +1,5 @@
 import './NotificationIOSPreview.css';
-import { NotificareApplication } from '../../../../../components/NotificareNotificationPreview/models/notificare-application';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
-import { getAppIconURL } from '../../../helpers/getAppIconURL';
 import { NotificationPreviewDisplayMode } from '../../../types/notification-preview-model';
 import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import { IOSPhoneBackground } from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
@@ -20,7 +18,6 @@ import { WebViewNotification } from './WebViewNotification/WebViewNotification';
 
 export function NotificationIOSPreview({
   notification,
-  application,
   displayMode = 'lockscreen',
 }: NotificationIOSPreviewProps) {
   const { googleMapsAPIKey } = useOptions();
@@ -44,8 +41,6 @@ export function NotificationIOSPreview({
         {(displayMode === 'lockscreen' || displayMode === 'lockscreen-expanded') && (
           <LockScreenNotification
             notification={notification}
-            appName={application.name}
-            appIcon={getAppIconURL(application.websitePushConfig.icon)}
             expanded={displayMode === 'lockscreen-expanded'}
           />
         )}
@@ -54,39 +49,31 @@ export function NotificationIOSPreview({
           (() => {
             switch (notification.type) {
               case 're.notifica.notification.Alert':
-                return (
-                  <TextAlertNotification notification={notification} appName={application.name} />
-                );
+                return <TextAlertNotification notification={notification} />;
 
               case 're.notifica.notification.WebView':
-                return (
-                  <WebViewNotification notification={notification} appName={application.name} />
-                );
+                return <WebViewNotification notification={notification} />;
 
               case 're.notifica.notification.URL':
-                return <URLNotification notification={notification} appName={application.name} />;
+                return <URLNotification notification={notification} />;
 
               case 're.notifica.notification.InAppBrowser':
                 return <InAppBrowserNotification notification={notification} />;
 
               case 're.notifica.notification.Image':
-                return (
-                  <ImagesNotification notification={notification} appName={application.name} />
-                );
+                return <ImagesNotification notification={notification} />;
 
               case 're.notifica.notification.Map':
-                return <MapNotification notification={notification} appName={application.name} />;
+                return <MapNotification notification={notification} />;
 
               case 're.notifica.notification.Rate':
-                return <RateNotification title={notification.title} appName={application.name} />;
+                return <RateNotification title={notification.title} />;
 
               case 're.notifica.notification.Passbook':
-                return (
-                  <DigitalCardNotification notification={notification} appName={application.name} />
-                );
+                return <DigitalCardNotification notification={notification} />;
 
               case 're.notifica.notification.Video':
-                return <VideoNotification notification={notification} appName={application.name} />;
+                return <VideoNotification notification={notification} />;
 
               case 're.notifica.notification.Store':
                 return <AppRecommendationNotification notification={notification} />;
@@ -99,7 +86,6 @@ export function NotificationIOSPreview({
 
 export interface NotificationIOSPreviewProps {
   notification: NotificareNotificationSchema;
-  application: NotificareApplication;
   displayMode?: NotificationPreviewDisplayMode;
 }
 

@@ -1,5 +1,6 @@
 import './URLNotification.css';
 import { useEffect, useState } from 'react';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { fetchWebsiteMarkup } from '../../../../helpers/fetchWebsiteMarkup';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
@@ -8,8 +9,9 @@ import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 import { Webshot } from '../../../shared-components/Webshot/Webshot';
 import { TitleBar } from '../TitleBar/TitleBar';
 
-export function URLNotification({ notification, appName }: URLNotificationProps) {
+export function URLNotification({ notification }: URLNotificationProps) {
   const url = notification.content[0].data;
+  const application = useApplication();
 
   const [websiteMarkup, setWebsiteMarkup] = useState('');
 
@@ -29,8 +31,7 @@ export function URLNotification({ notification, appName }: URLNotificationProps)
   return (
     <div data-testid="ios-app-ui-url-notification">
       <TitleBar
-        appName={appName}
-        title={notification.title}
+        title={notification.title || application.name}
         showOptions={
           hasActions(notification) && !markupHasNotificareOpenActionQueryParameter(websiteMarkup)
         }
@@ -42,5 +43,4 @@ export function URLNotification({ notification, appName }: URLNotificationProps)
 
 export interface URLNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.URL' }>;
-  appName: string;
 }

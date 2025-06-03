@@ -34,5 +34,4 @@ export interface InAppBrowserNotificationProps {
     NotificareNotificationSchema,
     { type: 're.notifica.notification.InAppBrowser' }
   >;
-  appName: string;
 }

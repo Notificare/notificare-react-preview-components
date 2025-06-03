@@ -1,19 +1,18 @@
 import './DigitalCardNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { getPushAPIHost } from '../../../../../network/api';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { Webshot } from '../../../shared-components/Webshot/Webshot';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export function DigitalCardNotification({
-  notification,
-  appName,
-}: DigitalCardNotificationProps) {
+export function DigitalCardNotification({ notification }: DigitalCardNotificationProps) {
+  const application = useApplication();
+
   return (
     <div data-testid="android-app-ui-passbook-notification">
       <NavigationBar
-        appName={appName}
-        title={notification.title}
+        title={notification.title || application.name}
         showOptions={hasActions(notification)}
       />
       <Webshot
@@ -32,5 +31,4 @@ export interface DigitalCardNotificationProps {
     NotificareNotificationSchema,
     { type: 're.notifica.notification.Passbook' }
   >;
-  appName: string;
 }

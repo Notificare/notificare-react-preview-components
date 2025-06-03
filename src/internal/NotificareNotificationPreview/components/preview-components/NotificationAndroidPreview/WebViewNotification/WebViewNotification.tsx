@@ -1,19 +1,18 @@
 import './WebViewNotification.css';
+import { useApplication } from '../../../../../context/application';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
-export function WebViewNotification(props: WebViewNotificationProps) {
-  const { notification, appName } = props;
-
+export function WebViewNotification({ notification }: WebViewNotificationProps) {
+  const application = useApplication();
   const html = notification.content[0].data;
 
   return (
     <div data-testid="android-app-ui-web-view-notification">
       <NavigationBar
-        appName={appName}
-        title={notification.title}
+        title={notification.title || application.name}
         showOptions={hasActions(notification) && !markupHasNotificareOpenActionQueryParameter(html)}
       />
 
@@ -28,5 +27,4 @@ export function WebViewNotification(props: WebViewNotificationProps) {
 
 export interface WebViewNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.WebView' }>;
-  appName: string;
 }
