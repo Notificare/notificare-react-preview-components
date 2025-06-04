@@ -29,7 +29,8 @@
     "lint": "eslint .",
     "prepack": "npm run build",
     "storybook": "storybook dev -p 6006",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist"
