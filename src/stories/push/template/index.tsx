@@ -1,5 +1,5 @@
 import { StoryFn } from '@storybook/react';
-import { NotificareNotificationPreview } from '../../components';
+import { NotificareNotificationPreview } from '../../../components';
 
 export const NotificareNotificationPreviewTemplate: StoryFn<
   typeof NotificareNotificationPreview

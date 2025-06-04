@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '../components';
+import { NotificareNotificationPreview } from '../../components';
 import { NotificareNotificationPreviewTemplate } from './template';
 
 export default {
@@ -7,19 +7,20 @@ export default {
   component: NotificareNotificationPreview,
 } satisfies Meta<typeof NotificareNotificationPreview>;
 
-export const Passbook = NotificareNotificationPreviewTemplate.bind({});
-Passbook.args = {
+export const InAppBrowser = NotificareNotificationPreviewTemplate.bind({});
+InAppBrowser.args = {
   notification: {
-    type: 're.notifica.notification.Passbook',
+    type: 're.notifica.notification.InAppBrowser',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
     content: [
       {
-        type: 're.notifica.content.PKPass',
-        data: `https://push-test.notifica.re/pass/pkpass/79af019c-b575-478c-bb35-14b32e5bfcf1`,
+        type: 're.notifica.content.URL',
+        data: 'https://notificare.com/',
       },
     ],
   },
   variant: 'android-app-ui',
 };
+InAppBrowser.storyName = 'InAppBrowser';

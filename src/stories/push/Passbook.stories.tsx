@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '../components';
+import { NotificareNotificationPreview } from '../../components';
 import { NotificareNotificationPreviewTemplate } from './template';
 
 export default {
@@ -7,16 +7,19 @@ export default {
   component: NotificareNotificationPreview,
 } satisfies Meta<typeof NotificareNotificationPreview>;
 
-/* Rate */
-
-export const Rate = NotificareNotificationPreviewTemplate.bind({});
-Rate.args = {
+export const Passbook = NotificareNotificationPreviewTemplate.bind({});
+Passbook.args = {
   notification: {
-    type: 're.notifica.notification.Rate',
+    type: 're.notifica.notification.Passbook',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.PKPass',
+        data: `https://push-test.notifica.re/pass/pkpass/79af019c-b575-478c-bb35-14b32e5bfcf1`,
+      },
+    ],
   },
   variant: 'android-app-ui',
-  applicationId: '618d0f4edc09fbed1864e8d0',
 };

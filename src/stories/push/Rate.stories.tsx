@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '../components';
+import { NotificareNotificationPreview } from '../../components';
 import { NotificareNotificationPreviewTemplate } from './template';
 
 export default {
@@ -7,20 +7,16 @@ export default {
   component: NotificareNotificationPreview,
 } satisfies Meta<typeof NotificareNotificationPreview>;
 
-export const InAppBrowser = NotificareNotificationPreviewTemplate.bind({});
-InAppBrowser.args = {
+/* Rate */
+
+export const Rate = NotificareNotificationPreviewTemplate.bind({});
+Rate.args = {
   notification: {
-    type: 're.notifica.notification.InAppBrowser',
+    type: 're.notifica.notification.Rate',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message example',
-    content: [
-      {
-        type: 're.notifica.content.URL',
-        data: 'https://notificare.com/',
-      },
-    ],
   },
   variant: 'android-app-ui',
+  applicationId: '618d0f4edc09fbed1864e8d0',
 };
-InAppBrowser.storyName = 'InAppBrowser';
