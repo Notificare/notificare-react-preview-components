@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '../NotificareNotificationPreview';
+import { NotificareNotificationPreview } from '../components';
 import { NotificareNotificationPreviewTemplate } from './template';
 
 export default {
