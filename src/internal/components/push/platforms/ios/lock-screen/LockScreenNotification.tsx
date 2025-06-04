@@ -1,6 +1,5 @@
 import './LockScreenNotification.css';
 import { useApplication } from '../../../../../context/application';
-import { getAppIconURL } from '../../../../../NotificareNotificationPreview/helpers/getAppIconURL';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasFirstAttachment } from '../../../../../utils/push-previews/notification';
 
@@ -14,7 +13,7 @@ export function LockScreenNotification( { notification, expanded }: IOSLockScree
           <img
             className="notificare__push__ios__lock-screen__app-icon-image"
             alt="App icon"
-            src={getAppIconURL(application.websitePushConfig.icon)}
+            src={application.websitePushConfig.icon}
           />
         </div>
         <div className="notificare__push__ios__lock-screen__text-content">

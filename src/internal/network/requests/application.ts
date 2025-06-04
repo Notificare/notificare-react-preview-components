@@ -17,8 +17,16 @@ export async function fetchApplication(id: string, serviceKey: string): Promise<
     name: application.name,
     androidPackageName: application.androidPackageName,
     websitePushConfig: application.websitePushConfig && {
-      icon: application.websitePushConfig.icon,
+      icon: calculateCompleteIconUrl(application.websitePushConfig.icon),
       allowedDomains: application.websitePushConfig.allowedDomains,
     },
   };
+}
+
+function calculateCompleteIconUrl(url: string) {
+  if (!url.startsWith('https://') && !url.startsWith('http://')) {
+    return `${getPushAPIHost()}/upload${url}`;
+  } else {
+    return url;
+  }
 }

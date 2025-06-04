@@ -1,6 +1,5 @@
 import './TextAlertNotification.css';
 import { useApplication } from '../../../../../../context/application';
-import { getAppIconURL } from '../../../../../../NotificareNotificationPreview/helpers/getAppIconURL';
 import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { hasActions } from '../../../../../../utils/push-previews/notification';
 
@@ -18,7 +17,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
             <img
               className="notificare__push__android__alert__app-ui__app-icon-image"
               alt="App icon"
-              src={getAppIconURL(application.websitePushConfig.icon)}
+              src={application.websitePushConfig.icon}
             />
           </div>
           <p className="notificare__push__android__alert__app-ui__title">
