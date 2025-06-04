@@ -1,10 +1,10 @@
 import './NotificationIOSPreview.css';
+import { useOptions } from '../../../../context/options';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
 } from '../../../types/notification-preview';
-import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import { IOSPhoneBackground } from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import { UnavailablePreview } from '../../shared-components/UnavailablePreview/UnavailablePreview';
 import { AppRecommendationNotification } from './AppRecommendationNotification/AppRecommendationNotification';

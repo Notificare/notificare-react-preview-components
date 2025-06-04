@@ -1,11 +1,11 @@
 import './URLNotification.css';
 import { useEffect, useState } from 'react';
 import { useApplication } from '../../../../../context/application';
+import { useOptions } from '../../../../../context/options';
 import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 import { fetchWebsiteMarkup } from '../../../../helpers/fetchWebsiteMarkup';
 import { markupHasNotificareOpenActionQueryParameter } from '../../../../helpers/markupHasNotificareOpenActionQueryParameter';
 import { hasActions } from '../../../../helpers/notification-utils';
-import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 import { Webshot } from '../../../shared-components/Webshot/Webshot';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 

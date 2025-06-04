@@ -1,10 +1,10 @@
 import './NotificationAndroidPreview.css';
+import { useOptions } from '../../../../context/options';
 import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
 } from '../../../types/notification-preview';
-import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import { AndroidPhoneBackground } from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
 import { UnavailablePreview } from '../../shared-components/UnavailablePreview/UnavailablePreview';
 import { AppRecommendationNotification } from './AppRecommendationNotification/AppRecommendationNotification';

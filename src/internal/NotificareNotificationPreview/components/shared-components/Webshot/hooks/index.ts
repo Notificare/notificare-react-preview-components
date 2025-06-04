@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useOptions } from '../../../../../context/options';
 import { useDebounce } from '../../../../../hooks';
 import {
   createWebshotRequest,
@@ -7,7 +8,6 @@ import {
 } from '../../../../../network/requests/webshot';
 import { RequestState } from '../../../../../network/state';
 import { isValidUrl } from '../../../../../utils/url';
-import { useOptions } from '../../../OptionsProvider/OptionsProvider';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const { serviceKey } = useOptions();

@@ -3,10 +3,10 @@ import './InAppBrowserBar.css';
 import AlertIcon from '../../../../../../../assets/alert.svg';
 import LockerIcon from '../../../../../../../assets/locker.svg';
 import XMarkIcon from '../../../../../../../assets/x-mark.svg';
+import { useOptions } from '../../../../../../context/options';
 import { getPushAPIHost } from '../../../../../../network/api';
 import { getUrlMainDomain } from '../../../../../helpers/getURLMainDomain';
 import { isSecureUrl } from '../../../../../helpers/isSecureURL';
-import { useOptions } from '../../../../OptionsProvider/OptionsProvider';
 
 export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');

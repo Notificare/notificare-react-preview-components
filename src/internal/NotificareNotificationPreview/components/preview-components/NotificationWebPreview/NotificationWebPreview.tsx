@@ -1,3 +1,4 @@
+import { useOptions } from '../../../../context/options';
 import {
   NotificareNotificationSchema,
   NotificareNotificationType,
@@ -6,7 +7,6 @@ import {
   NotificationPreviewStateWebDesktop,
   NotificationPreviewStateWebMobile,
 } from '../../../types/notification-preview';
-import { useOptions } from '../../OptionsProvider/OptionsProvider';
 import { AndroidPhoneBackground } from '../../shared-components/AndroidPhoneBackground/AndroidPhoneBackground';
 import { IOSPhoneBackground } from '../../shared-components/IOSPhoneBackground/IOSPhoneBackground';
 import { UnavailablePreview } from '../../shared-components/UnavailablePreview/UnavailablePreview';
