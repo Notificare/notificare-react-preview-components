@@ -46,13 +46,13 @@ const DEFAULT_STATES = {
   },
   'web-android-app-ui': {
     platform: 'web',
-    displayMode: 'lockscreen',
+    displayMode: 'app-ui',
     formFactor: 'phone',
     os: 'android',
   },
   'web-iphone-app-ui': {
     platform: 'web',
-    displayMode: 'lockscreen',
+    displayMode: 'app-ui',
     formFactor: 'phone',
     os: 'ios',
   },
