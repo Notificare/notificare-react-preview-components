@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { NotificareApplication } from '../../components/NotificareNotificationPreview/models/notificare-application';
 import { fetchApplication } from '../network/requests/application';
 import { RequestState } from '../network/state';
 import { ApplicationInfo } from '../types/application-info';
@@ -41,6 +40,6 @@ export type ApplicationLoaderParams = {
 };
 
 export type ApplicationLoaderState = Exclude<
-  RequestState<NotificareApplication>,
+  RequestState<ApplicationInfo>,
   { status: 'error' }
 >;

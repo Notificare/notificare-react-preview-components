@@ -1,7 +1,7 @@
 import { createContext, PropsWithChildren, useContext } from 'react';
-import { NotificareApplication } from '../../components/NotificareNotificationPreview/models/notificare-application';
+import { ApplicationInfo } from '../types/application-info';
 
-export const ApplicationContext = createContext<NotificareApplication | undefined>(undefined);
+export const ApplicationContext = createContext<ApplicationInfo | undefined>(undefined);
 
 export function ApplicationProvider({
   application,
@@ -11,7 +11,7 @@ export function ApplicationProvider({
 }
 
 export interface ApplicationProviderProps {
-  application: NotificareApplication;
+  application: ApplicationInfo;
 }
 
 export function useApplication() {
