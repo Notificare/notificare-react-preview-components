@@ -1,7 +1,7 @@
 import { act } from 'react';
 import { waitFor } from '@storybook/test';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { getPushAPIHost, PUSH_API_TEST_HOST, setPushAPIHost } from '../../../internal/network/api';
+import { PUSH_API_TEST_HOST, setPushAPIHost } from '../../../internal/network/api';
 import { NotificareNotificationPreview } from '../NotificareNotificationPreview';
 import {
   alertNotificationMock,

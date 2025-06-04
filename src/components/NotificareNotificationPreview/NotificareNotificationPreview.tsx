@@ -2,20 +2,15 @@ import '../../preset.css';
 import './NotificareNotificationPreview.css';
 import { useState } from 'react';
 import { ZodIssue } from 'zod';
+import { NotificationPreviewState } from '../../internal/components/push/notification-preview-state';
+import { NotificationPreview } from '../../internal/components/push/NotificationPreview';
+import { Controls } from '../../internal/components/push/preview-controls/Controls';
+import { Loading } from '../../internal/components/shared/Loading/Loading';
+import { UnavailablePreview } from '../../internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { ApplicationProvider } from '../../internal/context/application';
 import { OptionsProvider } from '../../internal/context/options';
 import { useApplicationLoader } from '../../internal/hooks';
-import { Controls } from '../../internal/NotificareNotificationPreview/components/Controls/Controls';
-import { NotificationAndroidPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationAndroidPreview/NotificationAndroidPreview';
-import { NotificationIOSPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationIOSPreview/NotificationIOSPreview';
-import { NotificationWebPreview } from '../../internal/NotificareNotificationPreview/components/preview-components/NotificationWebPreview/NotificationWebPreview';
-import { Loading } from '../../internal/NotificareNotificationPreview/components/shared-components/Loading/Loading';
-import { UnavailablePreview } from '../../internal/NotificareNotificationPreview/components/shared-components/UnavailablePreview/UnavailablePreview';
-import { NotificationPreviewState } from '../../internal/NotificareNotificationPreview/types/notification-preview';
-import {
-  NotificareNotificationSchema,
-  notificareNotificationSchema,
-} from '../../internal/schemas/notificare-notification/notificare-notification-schema';
+import { notificareNotificationSchema } from '../../internal/schemas/notificare-notification/notificare-notification-schema';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '../../models';
 
 const DEFAULT_STATES = {
@@ -115,7 +110,7 @@ export function NotificareNotificationPreview({
                   <ApplicationProvider application={applicationState.data}>
                     <div className="notificare__push__preview">
                       {notificationResult.success ? (
-                        <PreviewContent
+                        <NotificationPreview
                           notification={notificationResult.data}
                           previewState={previewState}
                         />
@@ -143,23 +138,6 @@ export interface NotificareNotificationPreviewProps {
   variant?: NotificareNotificationPreviewVariant;
   serviceKey: string;
   googleMapsAPIKey?: string;
-}
-
-function PreviewContent({
-  notification,
-  previewState,
-}: {
-  notification: NotificareNotificationSchema;
-  previewState: NotificationPreviewState;
-}) {
-  switch (previewState.platform) {
-    case 'android':
-      return <NotificationAndroidPreview notification={notification} previewState={previewState} />;
-    case 'ios':
-      return <NotificationIOSPreview notification={notification} previewState={previewState} />;
-    case 'web':
-      return <NotificationWebPreview notification={notification} previewState={previewState} />;
-  }
 }
 
 function showNotificationErrors(errors: ZodIssue[]) {
