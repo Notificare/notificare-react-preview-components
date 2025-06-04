@@ -6,7 +6,7 @@ import { UnavailablePreview } from '../../../shared/UnavailablePreview/Unavailab
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
-} from '../../notification-preview';
+} from '../../notification-preview-state';
 import { AppRecommendationNotification } from './app-ui/AppRecommendationNotification/AppRecommendationNotification';
 import { DigitalCardNotification } from './app-ui/DigitalCardNotification/DigitalCardNotification';
 import { ImagesNotification } from './app-ui/ImagesNotification/ImagesNotification';

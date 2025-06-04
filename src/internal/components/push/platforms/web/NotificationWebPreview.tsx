@@ -9,7 +9,7 @@ import { UnavailablePreview } from '../../../shared/UnavailablePreview/Unavailab
 import {
   NotificationPreviewStateWebDesktop,
   NotificationPreviewStateWebMobile,
-} from '../../notification-preview';
+} from '../../notification-preview-state';
 import { WebMobileAppUINotification } from './app-ui/mobile/WebMobileAppUINotification';
 import { WebMacOSNotification } from './lockscreen/WebMacOSNotification';
 

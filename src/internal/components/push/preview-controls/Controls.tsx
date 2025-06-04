@@ -14,7 +14,7 @@ import {
   NotificationPreviewMobileOperatingSystem,
   NotificationPreviewPlatform,
   NotificationPreviewState,
-} from '../notification-preview';
+} from '../notification-preview-state';
 
 export function Controls({ previewState, onPreviewStateChanged }: ControlsProps) {
   function handlePlatformChanged(platform: NotificationPreviewPlatform) {
