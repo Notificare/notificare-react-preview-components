@@ -1,11 +1,12 @@
-import './WebViewNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import {
   hasActions,
   markupContainsNotificareOpenActionQueryParameter
-} from '../../../../../../utils/push-previews/notification';
+} from '~/internal/utils/push-previews/notification';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
+
+import './WebViewNotification.css';
 
 export function WebViewNotification({ notification }: WebViewNotificationProps) {
   const application = useApplication();

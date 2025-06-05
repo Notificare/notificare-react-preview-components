@@ -1,5 +1,6 @@
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+
 import './VideoRichContent.css';
-import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
 
 export function VideoRichContent({ videoData, width, height }: VideoRichContentProps) {
   const getVideoUrl = (): string => {

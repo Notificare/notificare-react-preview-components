@@ -1,5 +1,6 @@
+import ExpandButtonIcon from '~/assets/expand.svg';
+
 import './ExpandButton.css';
-import ExpandButtonIcon from '../../../../../../../assets/expand.svg';
 
 export function ExpandButton(props: ExpandButtonProps) {
   const { open, disabled, onToggle } = props;

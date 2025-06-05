@@ -1,6 +1,6 @@
-import './WebViewNotification.css';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 
-import { NotificareNotificationSchema } from '../../../../../../../schemas/notificare-notification/notificare-notification-schema';
+import './WebViewNotification.css';
 
 export function WebViewNotification({ notification }: WebViewNotificationProps) {
   return (

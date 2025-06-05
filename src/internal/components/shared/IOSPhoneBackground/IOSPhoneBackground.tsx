@@ -1,5 +1,6 @@
-import './IOSPhoneBackground.css';
 import { ReactNode } from 'react';
+
+import './IOSPhoneBackground.css';
 
 export function IOSPhoneBackground({ children, theme }: IosPhoneBackgroundProps) {
   return (

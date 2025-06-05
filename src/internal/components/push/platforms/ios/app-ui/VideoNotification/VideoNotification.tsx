@@ -1,9 +1,10 @@
-import './VideoNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasActions } from '../../../../../../utils/push-previews/notification';
-import { VideoRichContent } from '../../../shared/VideoRichContent/VideoRichContent';
+import { VideoRichContent } from '~/internal/components/push/platforms/shared/VideoRichContent/VideoRichContent';
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasActions } from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
+
+import './VideoNotification.css';
 
 export function VideoNotification({ notification }: VideoNotificationProps) {
   const videoData = notification.content[0];

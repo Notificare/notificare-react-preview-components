@@ -1,8 +1,9 @@
-import './AppRecommendationNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { Webshot } from '../../../../../shared/Webshot/Webshot';
+import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
+
+import './AppRecommendationNotification.css';
 
 export function AppRecommendationNotification({
   notification,

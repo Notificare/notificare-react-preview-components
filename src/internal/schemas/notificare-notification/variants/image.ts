@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { baseNotificationSchema } from './base-notification-schema';
+import { BaseSchema } from '../base';
 
-export const imageNotificationSchema = z
+export const ImageSchema = z
   .object({
     type: z.literal('re.notifica.notification.Image'),
     content: z.array(
@@ -20,4 +20,4 @@ export const imageNotificationSchema = z
       { message: "The notification must be content-rich. Property 'content' is required" },
     ),
   })
-  .merge(baseNotificationSchema);
+  .merge(BaseSchema);

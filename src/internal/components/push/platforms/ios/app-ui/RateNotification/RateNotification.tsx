@@ -1,5 +1,6 @@
+import { useApplication } from '~/internal/context/application';
+
 import './RateNotification.css';
-import { useApplication } from '../../../../../../context/application';
 
 export function RateNotification({ title }: RateAppNotificationProps) {
   const application = useApplication();

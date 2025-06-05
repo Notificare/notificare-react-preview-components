@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { fetchApplication } from '../network/requests/application';
-import { RequestState } from '../network/state';
-import { ApplicationInfo } from '../types/application-info';
+import { fetchApplication } from '~/internal/network/requests/application';
+import { RequestState } from '~/internal/network/state';
+import { ApplicationInfo } from '~/internal/types/application-info';
 
 const DEFAULT_APPLICATION = {
   name: 'My app',
@@ -39,7 +39,4 @@ export type ApplicationLoaderParams = {
   serviceKey: string;
 };
 
-export type ApplicationLoaderState = Exclude<
-  RequestState<ApplicationInfo>,
-  { status: 'error' }
->;
+export type ApplicationLoaderState = Exclude<RequestState<ApplicationInfo>, { status: 'error' }>;

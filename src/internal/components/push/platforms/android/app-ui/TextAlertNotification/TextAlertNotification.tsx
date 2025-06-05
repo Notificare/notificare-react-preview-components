@@ -1,7 +1,8 @@
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasActions } from '~/internal/utils/push-previews/notification';
+
 import './TextAlertNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasActions } from '../../../../../../utils/push-previews/notification';
 
 export function TextAlertNotification({ notification }: TextAlertNotificationProps) {
   const application = useApplication();

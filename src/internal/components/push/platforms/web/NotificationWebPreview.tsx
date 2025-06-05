@@ -1,15 +1,15 @@
-import { useOptions } from '../../../../context/options';
-import {
-  NotificareNotificationSchema,
-  NotificareNotificationType,
-} from '../../../../schemas/notificare-notification/notificare-notification-schema';
-import { AndroidPhoneBackground } from '../../../shared/AndroidPhoneBackground/AndroidPhoneBackground';
-import { IOSPhoneBackground } from '../../../shared/IOSPhoneBackground/IOSPhoneBackground';
-import { UnavailablePreview } from '../../../shared/UnavailablePreview/UnavailablePreview';
 import {
   NotificationPreviewStateWebDesktop,
   NotificationPreviewStateWebMobile,
-} from '../../notification-preview-state';
+} from '~/internal/components/push/notification-preview-state';
+import { AndroidPhoneBackground } from '~/internal/components/shared/AndroidPhoneBackground/AndroidPhoneBackground';
+import { IOSPhoneBackground } from '~/internal/components/shared/IOSPhoneBackground/IOSPhoneBackground';
+import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
+import { useOptions } from '~/internal/context/options';
+import {
+  NotificareNotificationSchema,
+  NotificareNotificationType,
+} from '~/internal/schemas/notificare-notification';
 import { WebMobileAppUINotification } from './app-ui/mobile/WebMobileAppUINotification';
 import { WebMacOSNotification } from './lockscreen/WebMacOSNotification';
 

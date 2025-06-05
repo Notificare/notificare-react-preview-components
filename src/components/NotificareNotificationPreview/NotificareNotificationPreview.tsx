@@ -1,17 +1,18 @@
-import '../../preset.css';
-import './NotificareNotificationPreview.css';
 import { useState } from 'react';
 import { ZodIssue } from 'zod';
-import { NotificationPreviewState } from '../../internal/components/push/notification-preview-state';
-import { NotificationPreview } from '../../internal/components/push/NotificationPreview';
-import { Controls } from '../../internal/components/push/preview-controls/Controls';
-import { Loading } from '../../internal/components/shared/Loading/Loading';
-import { UnavailablePreview } from '../../internal/components/shared/UnavailablePreview/UnavailablePreview';
-import { ApplicationProvider } from '../../internal/context/application';
-import { OptionsProvider } from '../../internal/context/options';
-import { useApplicationLoader } from '../../internal/hooks';
-import { notificareNotificationSchema } from '../../internal/schemas/notificare-notification/notificare-notification-schema';
-import { NotificareNotification, NotificareNotificationPreviewVariant } from '../../models';
+import { NotificationPreviewState } from '~/internal/components/push/notification-preview-state';
+import { NotificationPreview } from '~/internal/components/push/NotificationPreview';
+import { Controls } from '~/internal/components/push/preview-controls/Controls';
+import { Loading } from '~/internal/components/shared/Loading/Loading';
+import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
+import { ApplicationProvider } from '~/internal/context/application';
+import { OptionsProvider } from '~/internal/context/options';
+import { useApplicationLoader } from '~/internal/hooks';
+import { NotificationSchema } from '~/internal/schemas/notificare-notification';
+import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
+
+import '~/preset.css';
+import './NotificareNotificationPreview.css';
 
 const DEFAULT_STATES = {
   'android-lockscreen': {
@@ -86,7 +87,7 @@ export function NotificareNotificationPreview({
   );
 
   // TODO: This should be memoized since it's an expensive operation.
-  const notificationResult = notificareNotificationSchema.safeParse(notification);
+  const notificationResult = NotificationSchema.safeParse(notification);
 
   if (!notificationResult.success) {
     showNotificationErrors(notificationResult.error.errors);
@@ -152,7 +153,7 @@ function showNotificationErrors(errors: ZodIssue[]) {
   );
 
   if (invalidNotificationType) {
-    const validNotificationTypes = notificareNotificationSchema.options.map(
+    const validNotificationTypes = NotificationSchema.options.map(
       (schema) => schema.shape.type.value,
     );
 

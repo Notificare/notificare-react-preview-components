@@ -1,5 +1,6 @@
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+
 import './ImageNotification.css';
-import { NotificareNotificationSchema } from '../../../../../../../schemas/notificare-notification/notificare-notification-schema';
 
 export function ImageNotification({ notification }: ImageNotificationProps) {
   return (

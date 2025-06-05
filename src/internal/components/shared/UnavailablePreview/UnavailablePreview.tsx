@@ -1,5 +1,6 @@
+import AlertIcon from '~/assets/alert.svg';
+
 import './UnavailablePreview.css';
-import AlertIcon from '../../../../assets/alert.svg';
 
 export function UnavailablePreview({
   message,

@@ -1,11 +1,12 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import AlertIcon from '~/assets/alert.svg';
+import LockerIcon from '~/assets/locker.svg';
+import XMarkIcon from '~/assets/x-mark.svg';
+import { useOptions } from '~/internal/context/options';
+import { getPushAPIHost } from '~/internal/network/api';
+import { getTopLevelDomain, isSecureUrl } from '~/internal/utils/url';
+
 import './InAppBrowserBar.css';
-import AlertIcon from '../../../../../../../../assets/alert.svg';
-import LockerIcon from '../../../../../../../../assets/locker.svg';
-import XMarkIcon from '../../../../../../../../assets/x-mark.svg';
-import { useOptions } from '../../../../../../../context/options';
-import { getPushAPIHost } from '../../../../../../../network/api';
-import { getTopLevelDomain, isSecureUrl } from '../../../../../../../utils/url';
 
 export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');

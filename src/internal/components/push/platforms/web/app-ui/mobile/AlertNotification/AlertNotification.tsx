@@ -1,6 +1,7 @@
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
+
 import './AlertNotification.css';
-import { NotificareNotificationSchema } from '../../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasFirstAttachment } from '../../../../../../../utils/push-previews/notification';
 
 export function AlertNotification({ notification }: AlertNotificationProps) {
   return (

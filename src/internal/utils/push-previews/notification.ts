@@ -1,4 +1,4 @@
-import { NotificareNotificationSchema } from '../../schemas/notificare-notification/notificare-notification-schema';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 
 export function hasActions(notification: NotificareNotificationSchema) {
   return !!(notification.actions && notification.actions.length > 0);

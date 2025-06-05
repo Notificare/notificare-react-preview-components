@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useOptions } from '../../../../context/options';
-import { useDebounce } from '../../../../hooks';
+import { useOptions } from '~/internal/context/options';
+import { useDebounce } from '~/internal/hooks';
 import {
   createWebshotRequest,
   fetchWebshotRequestStatus,
   fetchWebshotResult,
-} from '../../../../network/requests/webshot';
-import { RequestState } from '../../../../network/state';
-import { isValidUrl } from '../../../../utils/url';
+} from '~/internal/network/requests/webshot';
+import { RequestState } from '~/internal/network/state';
+import { isValidUrl } from '~/internal/utils/url';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const { serviceKey } = useOptions();
@@ -18,8 +18,6 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
   useEffect(
     function createRequest() {
-      // TODO: this could be moved outside of the component, and an actual URL is passed down,
-      //  thus ensuring its validity.
       if (!isValidUrl(url)) {
         setState({ status: 'error', error: new Error('The URL is invalid.') });
         return;

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { Loading } from '../Loading/Loading';
-import { PreviewError } from '../PreviewError/PreviewError';
-import { useWebshotRequest } from './hooks';
+import { Loading } from '~/internal/components/shared/Loading/Loading';
+import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
+import { useWebshotRequest } from '~/internal/components/shared/Webshot/hooks';
+
 import './Webshot.css';
 
 export function Webshot({

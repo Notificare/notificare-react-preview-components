@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const baseNotificationSchema = z.object({
+export const BaseSchema = z.object({
   title: z.string({ message: "Property 'title' should be a string" }).optional(),
   subtitle: z.string({ message: "Property 'subtitle' should be a string" }).optional(),
   message: z

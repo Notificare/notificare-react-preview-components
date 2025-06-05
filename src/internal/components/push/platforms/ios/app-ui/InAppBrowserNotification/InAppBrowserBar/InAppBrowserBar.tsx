@@ -1,6 +1,7 @@
+import LockerIcon from '~/assets/locker.svg';
+import { getTopLevelDomain, isSecureUrl } from '~/internal/utils/url';
+
 import './InAppBrowserBar.css';
-import LockerIcon from '../../../../../../../../assets/locker.svg';
-import { getTopLevelDomain, isSecureUrl } from '../../../../../../../utils/url';
 
 export function InAppBrowserBar(props: InAppBrowserBarProps) {
   const { url } = props;

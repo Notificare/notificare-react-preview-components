@@ -1,5 +1,6 @@
-import './AndroidPhoneBackground.css';
 import { ReactNode } from 'react';
+
+import './AndroidPhoneBackground.css';
 
 export function AndroidPhoneBackground({ children, theme }: AndroidPhoneBackgroundProps) {
   return (

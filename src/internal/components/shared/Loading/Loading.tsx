@@ -1,5 +1,6 @@
+import LoadingIcon from '~/assets/loading.svg';
+
 import './Loading.css';
-import LoadingIcon from '../../../../assets/loading.svg';
 
 export function Loading() {
   return (

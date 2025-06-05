@@ -1,11 +1,12 @@
-import './AppRecommendationNotification.css';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import LayerGroupIcon from '../../../../../../../assets/layer-group.svg';
-import UserIcon from '../../../../../../../assets/user.svg';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { Loading } from '../../../../../shared/Loading/Loading';
-import { PreviewError } from '../../../../../shared/PreviewError/PreviewError';
+import LayerGroupIcon from '~/assets/layer-group.svg';
+import UserIcon from '~/assets/user.svg';
+import { Loading } from '~/internal/components/shared/Loading/Loading';
+import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { StarRating } from './StarRating/StarRating';
+
+import './AppRecommendationNotification.css';
 
 export function AppRecommendationNotification({
   notification,

@@ -1,7 +1,8 @@
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
+
 import './LockScreenNotification.css';
-import { useApplication } from '../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasFirstAttachment } from '../../../../../utils/push-previews/notification';
 
 export function LockScreenNotification( { notification, expanded }: IOSLockScreenPushProps) {
   const application = useApplication();

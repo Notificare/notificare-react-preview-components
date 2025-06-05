@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { baseNotificationSchema } from './base-notification-schema';
+import { BaseSchema } from '../base';
 
-export const videoNotificationSchema = z
+export const VideoSchema = z
   .object({
     type: z.literal('re.notifica.notification.Video'),
     content: z
@@ -46,4 +46,4 @@ export const videoNotificationSchema = z
         });
       }),
   })
-  .merge(baseNotificationSchema);
+  .merge(BaseSchema);

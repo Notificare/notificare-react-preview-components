@@ -1,5 +1,6 @@
+import OptionsIcon from '~/assets/options.svg';
+
 import './TitleBar.css';
-import OptionsIcon from '../../../../../../../assets/options.svg';
 
 export function TitleBar({ title, showOptions }: TitleBarProps) {
   return (

@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { baseNotificationSchema } from './base-notification-schema';
+import { BaseSchema } from '../base';
 
-export const passbookNotificationSchema = z
+export const PassbookSchema = z
   .object({
     type: z.literal('re.notifica.notification.Passbook'),
     content: z.array(
@@ -16,4 +16,4 @@ export const passbookNotificationSchema = z
       { message: "The notification must be content-rich. Property 'content' is required" },
     ),
   })
-  .merge(baseNotificationSchema);
+  .merge(BaseSchema);

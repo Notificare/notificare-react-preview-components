@@ -1,12 +1,11 @@
-import './Controls.css';
 import { ReactNode } from 'react';
-import AndroidIcon from '../../../../assets/android.svg';
-import DesktopIcon from '../../../../assets/desktop.svg';
-import HTML5Icon from '../../../../assets/html5.svg';
-import IOSIcon from '../../../../assets/ios.svg';
-import PhoneIcon from '../../../../assets/phone.svg';
-import { Selector } from '../../shared/Selector/Selector';
-import { ToggleGroup } from '../../shared/ToggleGroup/ToggleGroup';
+import AndroidIcon from '~/assets/android.svg';
+import DesktopIcon from '~/assets/desktop.svg';
+import HTML5Icon from '~/assets/html5.svg';
+import IOSIcon from '~/assets/ios.svg';
+import PhoneIcon from '~/assets/phone.svg';
+import { Selector } from '~/internal/components/shared/Selector/Selector';
+import { ToggleGroup } from '~/internal/components/shared/ToggleGroup/ToggleGroup';
 import {
   NotificationPreviewDesktopOperatingSystem,
   NotificationPreviewDisplayMode,
@@ -15,6 +14,8 @@ import {
   NotificationPreviewPlatform,
   NotificationPreviewState,
 } from '../notification-preview-state';
+
+import './Controls.css';
 
 export function Controls({ previewState, onPreviewStateChanged }: ControlsProps) {
   function handlePlatformChanged(platform: NotificationPreviewPlatform) {

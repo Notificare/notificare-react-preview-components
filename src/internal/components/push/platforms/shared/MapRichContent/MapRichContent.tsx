@@ -1,4 +1,3 @@
-import './MapRichContent.css';
 import { useEffect, useMemo, useState } from 'react';
 import {
   APIProvider,
@@ -7,11 +6,13 @@ import {
   useApiLoadingStatus,
   APILoadingStatus,
 } from '@vis.gl/react-google-maps';
-import { useOptions } from '../../../../../context/options';
-import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { getMarkersFromNotification } from '../../../../../utils/push-previews/notification';
-import { Loading } from '../../../../shared/Loading/Loading';
-import { PreviewError } from '../../../../shared/PreviewError/PreviewError';
+import { Loading } from '~/internal/components/shared/Loading/Loading';
+import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
+import { useOptions } from '~/internal/context/options';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { getMarkersFromNotification } from '~/internal/utils/push-previews/notification';
+
+import './MapRichContent.css';
 
 export function MapRichContent({ notification, width, height }: MapRichContentProps) {
   const { googleMapsAPIKey } = useOptions();

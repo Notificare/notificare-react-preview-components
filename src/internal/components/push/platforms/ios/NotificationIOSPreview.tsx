@@ -1,12 +1,11 @@
-import './NotificationIOSPreview.css';
-import { useOptions } from '../../../../context/options';
-import { NotificareNotificationSchema } from '../../../../schemas/notificare-notification/notificare-notification-schema';
-import { IOSPhoneBackground } from '../../../shared/IOSPhoneBackground/IOSPhoneBackground';
-import { UnavailablePreview } from '../../../shared/UnavailablePreview/UnavailablePreview';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
-} from '../../notification-preview-state';
+} from '~/internal/components/push/notification-preview-state';
+import { IOSPhoneBackground } from '~/internal/components/shared/IOSPhoneBackground/IOSPhoneBackground';
+import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
+import { useOptions } from '~/internal/context/options';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { AppRecommendationNotification } from './app-ui/AppRecommendationNotification/AppRecommendationNotification';
 import { DigitalCardNotification } from './app-ui/DigitalCardNotification/DigitalCardNotification';
 import { ImagesNotification } from './app-ui/ImagesNotification/ImagesNotification';
@@ -18,6 +17,8 @@ import { URLNotification } from './app-ui/URLNotification/URLNotification';
 import { VideoNotification } from './app-ui/VideoNotification/VideoNotification';
 import { WebViewNotification } from './app-ui/WebViewNotification/WebViewNotification';
 import { LockScreenNotification } from './lock-screen/LockScreenNotification';
+
+import './NotificationIOSPreview.css';
 
 export function NotificationIOSPreview({
   notification,

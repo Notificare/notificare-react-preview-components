@@ -1,15 +1,16 @@
-import './URLNotification.css';
 import { useEffect, useState } from 'react';
-import { useApplication } from '../../../../../../context/application';
-import { useOptions } from '../../../../../../context/options';
-import { fetchWebsiteMarkup } from '../../../../../../network/requests/website-markup';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
+import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
+import { useApplication } from '~/internal/context/application';
+import { useOptions } from '~/internal/context/options';
+import { fetchWebsiteMarkup } from '~/internal/network/requests/website-markup';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import {
   hasActions,
   markupContainsNotificareOpenActionQueryParameter
-} from '../../../../../../utils/push-previews/notification';
-import { Webshot } from '../../../../../shared/Webshot/Webshot';
+} from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
+
+import './URLNotification.css';
 
 export function URLNotification({ notification }: URLNotificationProps) {
   const url = notification.content[0].data;

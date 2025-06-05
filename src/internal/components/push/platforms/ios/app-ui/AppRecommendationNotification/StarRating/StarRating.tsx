@@ -1,6 +1,7 @@
+import FullStar from '~/assets/full-star.svg';
+import HalfStar from '~/assets/half-star.svg';
+
 import './StarRating.css';
-import FullStar from '../../../../../../../../assets/full-star.svg';
-import HalfStar from '../../../../../../../../assets/half-star.svg';
 
 export function StarRating(props: StarRatingProps) {
   const { rating } = props;

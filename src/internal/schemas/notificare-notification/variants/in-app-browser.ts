@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { baseNotificationSchema } from './base-notification-schema';
+import { BaseSchema } from '../base';
 
-export const urlNotificationSchema = z
+export const InAppBrowserSchema = z
   .object({
-    type: z.literal('re.notifica.notification.URL'),
+    type: z.literal('re.notifica.notification.InAppBrowser'),
     content: z.array(
       z.object({
         type: z.literal('re.notifica.content.URL', {
@@ -16,4 +16,4 @@ export const urlNotificationSchema = z
       { message: "The notification must be content-rich. Property 'content' is required" },
     ),
   })
-  .merge(baseNotificationSchema);
+  .merge(BaseSchema);

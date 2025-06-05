@@ -1,4 +1,5 @@
 import { Fragment, Key, ReactNode } from 'react';
+
 import './ToggleGroup.css';
 
 export function ToggleGroup<T extends Key>({

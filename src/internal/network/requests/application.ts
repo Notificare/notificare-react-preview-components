@@ -1,6 +1,6 @@
-import { ApplicationInfo } from '../../types/application-info';
-import { getPushAPIHost } from '../api';
-import { NetworkRequestError } from '../errors';
+import { getPushAPIHost } from '~/internal/network/api';
+import { NetworkRequestError } from '~/internal/network/errors';
+import { ApplicationInfo } from '~/internal/types/application-info';
 
 export async function fetchApplication(id: string, serviceKey: string): Promise<ApplicationInfo> {
   const url = new URL(`/application/${encodeURIComponent(id)}/info`, getPushAPIHost());

@@ -1,11 +1,12 @@
 import { Key, useEffect, useRef, useState } from 'react';
-import './WebMacOSNotification.css';
-import ExpandIcon from '../../../../../../assets/expand.svg';
-import GoogleChromeIcon from '../../../../../../assets/google-chrome.svg';
-import { useApplication } from '../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasFirstAttachment } from '../../../../../utils/push-previews/notification';
+import ExpandIcon from '~/assets/expand.svg';
+import GoogleChromeIcon from '~/assets/google-chrome.svg';
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
 import { ExpandButton } from './ExpandButton/ExpandButton';
+
+import './WebMacOSNotification.css';
 
 const maxMessageLines = 3;
 const messageLineHeight = 16.7;

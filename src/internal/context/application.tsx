@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, useContext } from 'react';
-import { ApplicationInfo } from '../types/application-info';
+import { ApplicationInfo } from '~/internal/types/application-info';
 
 export const ApplicationContext = createContext<ApplicationInfo | undefined>(undefined);
 

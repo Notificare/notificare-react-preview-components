@@ -1,8 +1,9 @@
-import './ImagesNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasActions } from '../../../../../../utils/push-previews/notification';
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasActions } from '~/internal/utils/push-previews/notification';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
+
+import './ImagesNotification.css';
 
 export function ImagesNotification({ notification }: ImagesNotificationProps) {
   const application = useApplication();

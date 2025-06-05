@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import './InAppBrowserNotification.css';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { Webshot } from '../../../../../shared/Webshot/Webshot';
+import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { InAppBrowserBar } from './InAppBrowserBar/InAppBrowserBar';
+
+import './InAppBrowserNotification.css';
 
 export function InAppBrowserNotification({ notification }: InAppBrowserNotificationProps) {
   const [isPageTitleLoading, setIsPageTitleLoading] = useState(true);

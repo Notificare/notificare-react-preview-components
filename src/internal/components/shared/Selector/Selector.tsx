@@ -1,6 +1,7 @@
-import './Selector.css';
 import { Key, useEffect, useRef, useState } from 'react';
-import ExpandIcon from '../../../../assets/expand.svg';
+import ExpandIcon from '~/assets/expand.svg';
+
+import './Selector.css';
 
 export function Selector<T extends Key>({
   label,

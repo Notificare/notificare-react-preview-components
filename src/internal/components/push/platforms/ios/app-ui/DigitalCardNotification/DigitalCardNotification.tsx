@@ -1,10 +1,11 @@
-import './DigitalCardNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { getPushAPIHost } from '../../../../../../network/api';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasActions } from '../../../../../../utils/push-previews/notification';
-import { Webshot } from '../../../../../shared/Webshot/Webshot';
+import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
+import { useApplication } from '~/internal/context/application';
+import { getPushAPIHost } from '~/internal/network/api';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasActions } from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
+
+import './DigitalCardNotification.css';
 
 export function DigitalCardNotification({ notification }: DigitalCardNotificationProps) {
   const application = useApplication();

@@ -1,9 +1,10 @@
-import './MapNotification.css';
-import { useApplication } from '../../../../../../context/application';
-import { NotificareNotificationSchema } from '../../../../../../schemas/notificare-notification/notificare-notification-schema';
-import { hasActions } from '../../../../../../utils/push-previews/notification';
-import { MapRichContent } from '../../../shared/MapRichContent/MapRichContent';
+import { MapRichContent } from '~/internal/components/push/platforms/shared/MapRichContent/MapRichContent';
+import { useApplication } from '~/internal/context/application';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { hasActions } from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
+
+import './MapNotification.css';
 
 export function MapNotification({ notification }: MapNotificationProps) {
   const application = useApplication();

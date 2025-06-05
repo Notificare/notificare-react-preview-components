@@ -1,4 +1,4 @@
-import { NotificareNotificationSchema } from '../../schemas/notificare-notification/notificare-notification-schema';
+import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NotificationPreviewState } from './notification-preview-state';
 import { NotificationAndroidPreview } from './platforms/android/NotificationAndroidPreview';
 import { NotificationIOSPreview } from './platforms/ios/NotificationIOSPreview';
