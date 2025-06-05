@@ -1,0 +1,71 @@
+.notificare .notificare__push__preview-controls-selector {
+    position: relative;
+}
+
+.notificare .notificare__push__preview-controls-selector-label {
+    font-size: 14px;
+    color: #6e6e6e;
+    margin-bottom: 7px;
+}
+
+.notificare .notificare__push__preview-controls-selector-button {
+    width: 350px;
+    height: 42px;
+    background-color: #F6F6F6;
+    color: #1c1c1c;
+    border: 1px solid #E8E8E8;
+    text-align: left;
+    padding-left: 14px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.notificare .notificare__push__preview-controls-selector-button:not(:disabled) {
+    cursor: pointer;
+}
+
+.notificare .notificare__push__preview-controls-selector-button:disabled {
+    color: #b3b3b3;
+}
+
+.notificare .notificare__push__preview-controls-selector-button-expand-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    margin-right: 14px;
+}
+
+.notificare .notificare__push__preview-controls-selector-button:disabled .notificare__push__preview-controls-selector-button-expand-icon {
+    fill: #b3b3b3;
+}
+
+.notificare .notificare__push__preview-controls-selector-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 63px;
+    z-index: 1;
+    box-shadow: 0 14px 10px -10px rgba(0, 0, 0, 0.2);
+}
+
+.notificare .notificare__push__preview-controls-selector-option-button {
+    width: 350px;
+    height: 42px;
+    background-color: #ececec;
+    color: #151515;
+    border: 0;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 14px;
+}
+
+.notificare .notificare__push__preview-controls-selector-option-button--selected {
+    background-color: #c8c8c8;
+}
+
+.notificare .notificare__push__preview-controls-selector-option-button:hover {
+    background-color: #5E5E5E;
+    color: white;
+    cursor: pointer;
+}

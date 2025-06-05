@@ -29,7 +29,8 @@
     "lint": "eslint .",
     "prepack": "npm run build",
     "storybook": "storybook dev -p 6006",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist"
@@ -49,6 +50,7 @@
     "@babel/preset-typescript": "^7.27.0",
     "@chromatic-com/storybook": "^3.2.3",
     "@eslint/js": "^9.18.0",
+    "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
@@ -88,10 +90,12 @@
     "rollup-plugin-visualizer": "^5.14.0",
     "storybook": "^8.6.12",
     "style-loader": "^4.0.0",
+    "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

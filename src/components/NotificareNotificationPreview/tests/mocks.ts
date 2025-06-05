@@ -1,4 +1,4 @@
-import { NotificareNotification } from '../models/notificare-notification';
+import { NotificareNotification } from '~/models';
 
 /* Notifications */
 

@@ -1,3 +1,6 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
@@ -8,6 +11,10 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { visualizer } from 'rollup-plugin-visualizer';
 import packageJson from './package.json' with { type: 'json' };
+import tsconfig from './tsconfig.json' with { type: 'json' };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default [
   {
@@ -25,6 +32,7 @@ export default [
       },
     ],
     plugins: [
+      alias({ entries: getTSPathAliases() }),
       svgr({
         icon: true,
         exportType: 'default',
@@ -57,7 +65,24 @@ export default [
   {
     input: 'src/index.ts',
     output: [{ file: 'dist/types.d.ts', format: 'esm' }],
-    plugins: [dts()],
+    plugins: [
+      alias({ entries: getTSPathAliases() }),
+      dts(),
+    ],
     external: [/\.css$/],
   },
 ];
+
+function getTSPathAliases() {
+  const paths = tsconfig.compilerOptions.paths ?? {};
+  const baseUrl = tsconfig.compilerOptions.baseUrl ?? '.';
+
+  return Object.entries(paths).flatMap(([key, values]) => {
+    const find = key.replace('/*', '');
+    return values.map((p) => {
+
+      const replacement = path.resolve(__dirname, baseUrl, p.replace('/*', ''));
+      return { find, replacement };
+    });
+  });
+}
