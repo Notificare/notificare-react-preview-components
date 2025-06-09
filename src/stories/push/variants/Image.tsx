@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-export const ImageSingle = NotificareNotificationPreviewTemplate.bind({});
-ImageSingle.args = {
+export const imageSingle: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Image',
     title: 'Title',
@@ -23,10 +15,8 @@ ImageSingle.args = {
   },
   variant: 'android-app-ui',
 };
-ImageSingle.storyName = 'Image - single image';
 
-export const ImageMultiple = NotificareNotificationPreviewTemplate.bind({});
-ImageMultiple.args = {
+export const imageMultiple: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Image',
     title: 'Title',
@@ -45,4 +35,3 @@ ImageMultiple.args = {
   },
   variant: 'android-app-ui',
 };
-ImageMultiple.storyName = 'Image - two images';

@@ -1,16 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-/* HTML5 Video */
-
-export const VideoHTML5 = NotificareNotificationPreviewTemplate.bind({});
-VideoHTML5.args = {
+export const videoHTML5: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -25,12 +15,10 @@ VideoHTML5.args = {
   },
   variant: 'android-app-ui',
 };
-VideoHTML5.storyName = 'Video - HTML5';
 
 /* Vimeo Video */
 
-export const VideoVimeo = NotificareNotificationPreviewTemplate.bind({});
-VideoVimeo.args = {
+export const videoVimeo: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -45,12 +33,10 @@ VideoVimeo.args = {
   },
   variant: 'android-app-ui',
 };
-VideoVimeo.storyName = 'Video - Vimeo';
 
 /* YouTube Video */
 
-export const VideoYouTube = NotificareNotificationPreviewTemplate.bind({});
-VideoYouTube.args = {
+export const videoYouTube: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -65,4 +51,3 @@ VideoYouTube.args = {
   },
   variant: 'android-app-ui',
 };
-VideoYouTube.storyName = 'Video - YouTube';

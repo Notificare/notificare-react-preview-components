@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-export const MapWithSingleMarker = NotificareNotificationPreviewTemplate.bind({});
-MapWithSingleMarker.args = {
+export const mapWithSingleMarker: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Map',
     title: 'Title',
@@ -28,10 +20,8 @@ MapWithSingleMarker.args = {
   },
   variant: 'android-app-ui',
 };
-MapWithSingleMarker.storyName = 'Map - with single marker';
 
-export const MapWithTwoMarkers = NotificareNotificationPreviewTemplate.bind({});
-MapWithTwoMarkers.args = {
+export const mapWithTwoMarkers: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Map',
     title: 'Title',
@@ -60,4 +50,3 @@ MapWithTwoMarkers.args = {
   },
   variant: 'android-app-ui',
 };
-MapWithTwoMarkers.storyName = 'Map - with two markers';

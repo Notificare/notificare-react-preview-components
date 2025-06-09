@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-export const Url = NotificareNotificationPreviewTemplate.bind({});
-Url.args = {
+export const url: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -23,10 +15,8 @@ Url.args = {
   },
   variant: 'android-app-ui',
 };
-Url.storyName = 'URL';
 
-export const UrlWithAction = NotificareNotificationPreviewTemplate.bind({});
-UrlWithAction.args = {
+export const urlWithAction: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -50,10 +40,8 @@ UrlWithAction.args = {
   },
   variant: 'android-app-ui',
 };
-UrlWithAction.storyName = 'URL - with single action';
 
-export const UrlWithActionsAndActionableMarkup = NotificareNotificationPreviewTemplate.bind({});
-UrlWithActionsAndActionableMarkup.args = {
+export const urlWithActionsAndActionableMarkup: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -77,4 +65,3 @@ UrlWithActionsAndActionableMarkup.args = {
   },
   variant: 'android-app-ui',
 };
-UrlWithActionsAndActionableMarkup.storyName = 'URL - with single action and Actionable Markup';
