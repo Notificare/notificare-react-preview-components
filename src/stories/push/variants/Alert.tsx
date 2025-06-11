@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-export const AlertWithAttachment = NotificareNotificationPreviewTemplate.bind({});
-AlertWithAttachment.args = {
+export const alertWithAttachment: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Alert',
     title: '30% off on selected products',
@@ -24,10 +16,8 @@ AlertWithAttachment.args = {
   },
   variant: 'android-lockscreen',
 };
-AlertWithAttachment.storyName = 'Alert - with attachment';
 
-export const AlertWithoutAttachment = NotificareNotificationPreviewTemplate.bind({});
-AlertWithoutAttachment.args = {
+export const alertWithoutAttachment: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Alert',
     title: '30% off on selected products',
@@ -37,10 +27,8 @@ AlertWithoutAttachment.args = {
   },
   variant: 'android-lockscreen',
 };
-AlertWithoutAttachment.storyName = 'Alert - without attachment';
 
-export const AlertWithSingleAction = NotificareNotificationPreviewTemplate.bind({});
-AlertWithSingleAction.args = {
+export const alertWithSingleAction: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Alert',
     title: '30% off on selected products',
@@ -59,10 +47,8 @@ AlertWithSingleAction.args = {
   },
   variant: 'ios-app-ui',
 };
-AlertWithSingleAction.storyName = 'Alert - with single action';
 
-export const AlertWithMultipleActions = NotificareNotificationPreviewTemplate.bind({});
-AlertWithMultipleActions.args = {
+export const alertWithMultipleActions: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Alert',
     title: '30% off on selected products',
@@ -86,10 +72,8 @@ AlertWithMultipleActions.args = {
   },
   variant: 'android-app-ui',
 };
-AlertWithMultipleActions.storyName = 'Alert - with multiple actions';
 
-export const AlertWithAttachmentAndMultipleActions = NotificareNotificationPreviewTemplate.bind({});
-AlertWithAttachmentAndMultipleActions.args = {
+export const alertWithAttachmentAndMultipleActions: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Alert',
     title: '30% off on selected products',
@@ -119,4 +103,3 @@ AlertWithAttachmentAndMultipleActions.args = {
   },
   variant: 'web-desktop-macos',
 };
-AlertWithAttachmentAndMultipleActions.storyName = 'Alert - with attachment and multiple actions';

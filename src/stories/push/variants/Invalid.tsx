@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-export const Invalid = NotificareNotificationPreviewTemplate.bind({});
-Invalid.args = {
+export const invalid: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 'invalid-type', // has an invalid type
     title: 'Title',

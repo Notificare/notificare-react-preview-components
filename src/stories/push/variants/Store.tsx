@@ -1,14 +1,6 @@
-import { Meta } from '@storybook/react';
-import { NotificareNotificationPreview } from '~/components';
-import { NotificareNotificationPreviewTemplate } from './template';
+import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export default {
-  title: 'Public Components/Push/NotificareNotificationPreview',
-  component: NotificareNotificationPreview,
-} satisfies Meta<typeof NotificareNotificationPreview>;
-
-export const GooglePlaySearchStore = NotificareNotificationPreviewTemplate.bind({});
-GooglePlaySearchStore.args = {
+export const googlePlaySearchStore: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',
@@ -23,10 +15,8 @@ GooglePlaySearchStore.args = {
   },
   variant: 'android-app-ui',
 };
-GooglePlaySearchStore.storyName = 'Store - Google Play Search';
 
-export const AppStore = NotificareNotificationPreviewTemplate.bind({});
-AppStore.args = {
+export const appStore: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',
@@ -46,4 +36,3 @@ AppStore.args = {
   },
   variant: 'ios-app-ui',
 };
-AppStore.storyName = 'Store - App Store';
