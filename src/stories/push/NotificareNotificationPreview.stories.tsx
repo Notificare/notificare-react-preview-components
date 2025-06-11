@@ -36,123 +36,123 @@ const meta = {
 } satisfies Meta<typeof NotificareNotificationPreview>;
 export default meta;
 
-type NotificareNotificationPreviewStory = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>;
 
 /* STORIES */
 
 /* ALERT */
-export const AlertWithAttachment: NotificareNotificationPreviewStory = {
+export const AlertWithAttachment: Story = {
   name: 'Alert - with attachment',
   args: alertWithAttachment,
 };
 
-export const AlertWithoutAttachment: NotificareNotificationPreviewStory = {
+export const AlertWithoutAttachment: Story = {
   name: 'Alert - without attachment',
   args: alertWithoutAttachment,
 };
 
-export const AlertWithSingleAction: NotificareNotificationPreviewStory = {
+export const AlertWithSingleAction: Story = {
   name: 'Alert - with single action',
   args: alertWithSingleAction,
 };
 
-export const AlertWithMultipleActions: NotificareNotificationPreviewStory = {
+export const AlertWithMultipleActions: Story = {
   name: 'Alert - with multiple actions',
   args: alertWithMultipleActions,
 };
 
 /* IMAGE */
-export const ImageSingle: NotificareNotificationPreviewStory = {
+export const ImageSingle: Story = {
   name: 'Image - with single image',
   args: imageSingle,
 };
 
-export const ImageMultiple: NotificareNotificationPreviewStory = {
+export const ImageMultiple: Story = {
   name: 'Image - with two images',
   args: imageMultiple,
 };
 
 /* IN-APP BROWSER */
-export const InAppBrowser: NotificareNotificationPreviewStory = {
+export const InAppBrowser: Story = {
   name: 'InAppBrowser',
   args: inAppBrowser,
 };
 
 /* MAP */
-export const MapWithSingleMarker: NotificareNotificationPreviewStory = {
+export const MapWithSingleMarker: Story = {
   name: 'Map - with single marker',
   args: mapWithSingleMarker,
 };
 
-export const MapWithTwoMarkers: NotificareNotificationPreviewStory = {
+export const MapWithTwoMarkers: Story = {
   name: 'Map - with two markers',
   args: mapWithTwoMarkers,
 };
 
 /* PASSBOOK */
-export const Passbook: NotificareNotificationPreviewStory = { args: passbook };
+export const Passbook: Story = { args: passbook };
 
 /* RATE */
-export const Rate: NotificareNotificationPreviewStory = { args: rate };
+export const Rate: Story = { args: rate };
 
 /* STORE */
-export const GooglePlaySearchStore: NotificareNotificationPreviewStory = {
+export const GooglePlaySearchStore: Story = {
   name: 'Store - Google Play Search',
   args: googlePlaySearchStore,
 };
 
-export const AppStore: NotificareNotificationPreviewStory = {
+export const AppStore: Story = {
   name: 'Store - App Store',
   args: appStore,
 };
 
 /* URL */
-export const Url: NotificareNotificationPreviewStory = {
+export const Url: Story = {
   name: 'URL',
   args: url,
 };
 
-export const UrlWithAction: NotificareNotificationPreviewStory = {
+export const UrlWithAction: Story = {
   name: 'URL - with single action',
   args: urlWithAction,
 };
 
-export const UrlWithActionsAndActionableMarkup: NotificareNotificationPreviewStory = {
+export const UrlWithActionsAndActionableMarkup: Story = {
   name: 'URL - with single action and Actionable Markup',
   args: urlWithActionsAndActionableMarkup,
 };
 
 /* VIDEO */
-export const VideoHtml5: NotificareNotificationPreviewStory = {
+export const VideoHtml5: Story = {
   name: 'Video - HTML5',
   args: videoHTML5,
 };
 
-export const VideoVimeo: NotificareNotificationPreviewStory = {
+export const VideoVimeo: Story = {
   name: 'Video - Vimeo',
   args: videoVimeo,
 };
 
-export const VideoYoutube: NotificareNotificationPreviewStory = {
+export const VideoYoutube: Story = {
   name: 'Video - YouTube',
   args: videoYouTube,
 };
 
 /* WEB VIEW */
-export const WebView: NotificareNotificationPreviewStory = {
+export const WebView: Story = {
   name: 'WebView',
   args: webView,
 };
 
-export const WebViewWithMultipleActions: NotificareNotificationPreviewStory = {
+export const WebViewWithMultipleActions: Story = {
   name: 'WebView - with multiple actions',
   args: webViewWithMultipleActions,
 };
 
-export const WebViewWithMultipleActionsAndActionableMarkup: NotificareNotificationPreviewStory = {
+export const WebViewWithMultipleActionsAndActionableMarkup: Story = {
   name: 'WebView -  with multiple actions and Actionable Markup',
   args: webViewWithMultipleActionsAndActionableMarkup,
 };
 
 /* INVALID */
-export const Invalid: NotificareNotificationPreviewStory = { args: invalid };
+export const Invalid: Story = { args: invalid };
