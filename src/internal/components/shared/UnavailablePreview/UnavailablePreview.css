@@ -1,5 +1,9 @@
-.notificare .notificare__push__unavailable-preview-warning {
+.notificare .notificare__push__unavailable-preview-warning-wrapper {
     width: 350px;
+}
+
+.notificare .notificare__push__unavailable-preview-warning {
+    width: 100%;
     background-color: #fff1cc;
     border: 1px solid #d5d5d5;
     display: flex;
@@ -39,4 +43,5 @@
     margin-top: 6px;
     margin-right: 3px;
     font-style: italic;
+    position: relative;
 }

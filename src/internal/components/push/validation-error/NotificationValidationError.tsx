@@ -1,0 +1,60 @@
+import { useIntl } from 'react-intl';
+import { ZodIssue } from 'zod';
+import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
+import { NotificationSchema } from '~/internal/schemas/notificare-notification';
+
+import '~/preset.css';
+import './NotificationValidationError.css';
+
+export function NotificationValidationError({ errors }: NotificationValidationErrorProps) {
+  const intl = useIntl();
+
+  showNotificationErrors(errors);
+
+  return (
+    <div className="notificare__push__notification-validation-error ">
+      <UnavailablePreview
+        message={intl.formatMessage({ id: 'preview.error.invalidNotification' })}
+        showConsoleWarning={true}
+      />
+    </div>
+  );
+}
+
+export interface NotificationValidationErrorProps {
+  errors: ZodIssue[];
+}
+
+function showNotificationErrors(errors: ZodIssue[]) {
+  // Errors related to notification types and content types are handled manually here
+  // discriminatedUnion() from Zod do not support custom messages when a discriminator doesn't correspond
+
+  const invalidNotificationType = errors.find(
+    (e) =>
+      e.code === 'invalid_union_discriminator' &&
+      e.path.includes('type') &&
+      !e.path.includes('content'),
+  );
+
+  if (invalidNotificationType) {
+    const validNotificationTypes = NotificationSchema.options.map(
+      (schema) => schema.shape.type.value,
+    );
+
+    console.error(
+      `Notification error:\n\nInvalid notification type. Expected one of: ${validNotificationTypes.join(', ')}\n`,
+    );
+  } else {
+    const messages = errors.map((e) => {
+      if (
+        e.code === 'invalid_union_discriminator' &&
+        e.path.includes('type') &&
+        e.path.includes('content')
+      ) {
+        return `Invalid content type. Expected one of: ${e.options.join(', ')}\n`;
+      }
+      return e.message;
+    });
+    console.error('Notification errors:\n\n' + messages.join('\n'));
+  }
+}

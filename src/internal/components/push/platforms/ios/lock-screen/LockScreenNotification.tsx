@@ -1,10 +1,11 @@
+import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
 
 import './LockScreenNotification.css';
 
-export function LockScreenNotification( { notification, expanded }: IOSLockScreenPushProps) {
+export function LockScreenNotification({ notification, expanded }: IOSLockScreenPushProps) {
   const application = useApplication();
 
   return (
@@ -26,7 +27,7 @@ export function LockScreenNotification( { notification, expanded }: IOSLockScree
             </p>
 
             <p className="notificare__push__ios__lock-screen__text notificare__push__ios__lock-screen__text--time">
-              Now
+              <FormattedMessage id="preview.ios.lockScreen.time" />
             </p>
           </div>
 

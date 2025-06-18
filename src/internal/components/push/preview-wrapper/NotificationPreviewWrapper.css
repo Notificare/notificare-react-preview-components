@@ -1,9 +1,15 @@
+.notificare .notificare__push__preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+}
+
 .notificare .notificare__push__preview {
     margin-top: 20px;
 }
 
 /* Disable label selection in every preview */
-
 .notificare .notificare__push__preview p,
 .notificare .notificare__push__preview span,
 .notificare .notificare__push__preview div,
@@ -14,11 +20,4 @@
 .notificare .notificare__push__preview h5,
 .notificare .notificare__push__preview h6 {
     user-select: none;
-}
-
-.notificare .notificare__push__preview-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: max-content;
 }

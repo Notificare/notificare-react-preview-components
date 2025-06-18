@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
@@ -34,7 +35,7 @@ export function LockScreenNotification({ notification, expanded }: AndroidLockSc
             )}
           </div>
           <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--time">
-            now
+            <FormattedMessage id="preview.android.lockscreen.time" />
           </p>
         </div>
 

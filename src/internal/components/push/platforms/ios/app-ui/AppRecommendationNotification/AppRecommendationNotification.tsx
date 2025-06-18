@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import LayerGroupIcon from '~/assets/layer-group.svg';
 import UserIcon from '~/assets/user.svg';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
@@ -12,6 +13,8 @@ export function AppRecommendationNotification({
   notification,
 }: AppRecommendationNotificationProps) {
   const content = notification.content[0];
+  const intl = useIntl();
+  const actualLanguage = intl.locale;
 
   const [status, setStatus] = useState<StatusState>({
     isLoading: true,
@@ -40,7 +43,7 @@ export function AppRecommendationNotification({
                 false,
                 true,
                 setStatus,
-                'The app was not found. Check the identifier and try again.',
+                intl.formatMessage({ id: 'preview.error.appleStoreAppNotFound' }),
               );
             } else {
               setAppStoreData(data);
@@ -48,7 +51,12 @@ export function AppRecommendationNotification({
             }
           } catch (error) {
             console.error('Error while trying to get the app information:\n\n', error);
-            updateComponentStatus(false, true, setStatus, 'Check console for more details.');
+            updateComponentStatus(
+              false,
+              true,
+              setStatus,
+              intl.formatMessage({ id: 'preview.error.checkConsole' }),
+            );
           }
         } else {
           updateComponentStatus(false, true, setStatus);
@@ -60,7 +68,9 @@ export function AppRecommendationNotification({
 
   return (
     <div data-testid="ios-app-ui-app-recommendation-notification">
-      <div className="notificare__push__ios__store__app-ui__bar">Done</div>
+      <div className="notificare__push__ios__store__app-ui__bar">
+        <FormattedMessage id="preview.ios.store.appUi.done" />
+      </div>
       <div className="notificare__push__ios__store__app-ui">
         {status.hasError ? (
           <PreviewError message={status.error} />
@@ -84,7 +94,9 @@ export function AppRecommendationNotification({
                       {appStoreData.results[0].primaryGenreName}
                     </p>
                   </div>
-                  <div className="notificare__push__ios__store__app-ui__page-install">Install</div>
+                  <div className="notificare__push__ios__store__app-ui__page-install">
+                    <FormattedMessage id="preview.ios.store.appUi.install" />
+                  </div>
                 </div>
               </div>
 
@@ -92,7 +104,12 @@ export function AppRecommendationNotification({
                 <div className="notificare__push__ios__store__app-ui__page-other-app-info">
                   <div className="notificare__push__ios__store__app-ui__page-info-block">
                     <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      {formatNumber(appStoreData.results[0].userRatingCount)} RATINGS
+                      <FormattedMessage
+                        id="preview.ios.store.appUi.ratings"
+                        values={{
+                          userRatingCount: formatNumber(appStoreData.results[0].userRatingCount),
+                        }}
+                      />
                     </p>
                     <p className="notificare__push__ios__store__app-ui__page-info-block-value">
                       {appStoreData.results[0].averageUserRating.toFixed(1)}
@@ -103,18 +120,18 @@ export function AppRecommendationNotification({
 
                   <div className="notificare__push__ios__store__app-ui__page-info-block">
                     <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      AGE
+                      <FormattedMessage id="preview.ios.store.appUi.age" />
                     </p>
                     <p className="notificare__push__ios__store__app-ui__page-info-block-value">
                       {appStoreData.results[0].trackContentRating}
                     </p>
                     <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
-                      Years Old
+                      <FormattedMessage id="preview.ios.store.appUi.yearsOld" />
                     </p>
                   </div>
                   <div className="notificare__push__ios__store__app-ui__page-info-block">
                     <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      CATEGORY
+                      <FormattedMessage id="preview.ios.store.appUi.category" />
                     </p>
                     <LayerGroupIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
                     <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
@@ -123,7 +140,7 @@ export function AppRecommendationNotification({
                   </div>
                   <div className="notificare__push__ios__store__app-ui__page-info-block">
                     <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      DEVELOPER
+                      <FormattedMessage id="preview.ios.store.appUi.developer" />
                     </p>
                     <UserIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
                     <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
@@ -135,14 +152,20 @@ export function AppRecommendationNotification({
 
               <div className="notificare__push__ios__store__app-ui__page-history">
                 <p className="notificare__push__ios__store__app-ui__page-history-title">
-                  What&#39;s New
+                  <FormattedMessage id="preview.ios.store.appUi.whatsNew" />
                 </p>
                 <div className="notificare__push__ios__store__app-ui__page-history-version-last-update">
                   <p className="notificare__push__ios__store__app-ui__page-history-version">
-                    Version {appStoreData.results[0].version}
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.historyVersion"
+                      values={{ version: appStoreData.results[0].version }}
+                    />
                   </p>
                   <p className="notificare__push__ios__store__app-ui__page-history-last-update">
-                    {timeAgo(appStoreData.results[0].currentVersionReleaseDate)}
+                    {timeAgo(
+                      appStoreData.results[0].currentVersionReleaseDate,
+                      getValidLanguage(actualLanguage),
+                    )}
                   </p>
                 </div>
                 <p className="notificare__push__ios__store__app-ui__page-history-notes">
@@ -151,7 +174,9 @@ export function AppRecommendationNotification({
               </div>
 
               <div className="notificare__push__ios__store__app-ui__page-previews">
-                <p className="notificare__push__ios__store__app-ui__page-previews-title">Preview</p>
+                <p className="notificare__push__ios__store__app-ui__page-previews-title">
+                  <FormattedMessage id="preview.ios.store.appUi.screenshots" />
+                </p>
                 <div className="notificare__push__ios__store__app-ui__page-previews-images">
                   <img
                     src={appStoreData.results[0].screenshotUrls[0]}
@@ -183,30 +208,71 @@ type StatusState = {
   error: string;
 };
 
-function timeAgo(isoDate: string) {
+function timeAgo(isoDate: string, language: SupportedLanguage) {
   const date = new Date(isoDate);
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  const intervals: { value: number; label: string }[] = [
-    { value: 60, label: 'second' },
-    { value: 60 * 60, label: 'minute' },
-    { value: 60 * 60 * 24, label: 'hour' },
-    { value: 60 * 60 * 24 * 7, label: 'day' },
-    { value: 60 * 60 * 24 * 30, label: 'week' },
-    { value: 60 * 60 * 24 * 365, label: 'month' },
-    { value: Infinity, label: 'year' },
+  const labels = {
+    en: {
+      second: ['second', 'seconds'],
+      minute: ['minute', 'minutes'],
+      hour: ['hour', 'hours'],
+      day: ['day', 'days'],
+      week: ['week', 'weeks'],
+      month: ['month', 'months'],
+      year: ['year', 'years'],
+    },
+    pt: {
+      second: ['segundo', 'segundos'],
+      minute: ['minuto', 'minutos'],
+      hour: ['hora', 'horas'],
+      day: ['dia', 'dias'],
+      week: ['semana', 'semanas'],
+      month: ['mês', 'meses'],
+      year: ['ano', 'anos'],
+    },
+  };
+
+  const intervals: { value: number; labels: string[] }[] = [
+    { value: 60, labels: labels[language].second },
+    {
+      value: 60 * 60,
+      labels: labels[language].minute,
+    },
+    {
+      value: 60 * 60 * 24,
+      labels: labels[language].hour,
+    },
+    { value: 60 * 60 * 24 * 7, labels: labels[language].day },
+    { value: 60 * 60 * 24 * 30, labels: labels[language].week },
+    { value: 60 * 60 * 24 * 365, labels: labels[language].month },
+    { value: Infinity, labels: labels[language].year },
   ];
 
   for (let i = 0; i < intervals.length; i++) {
-    const { value, label } = intervals[i];
+    const { value, labels } = intervals[i];
     if (diffInSeconds < value) {
       const count = Math.floor(diffInSeconds / (intervals[i - 1]?.value || 1));
-      return count <= 1 ? `a ${label} ago` : `${count} ${label}s ago`;
+
+      switch (language) {
+        case 'en':
+          return count <= 1
+            ? `${labels[0] === 'hour' ? 'an' : 'a'} ${labels[0]} ago`
+            : `${count} ${labels[1]} ago`;
+        case 'pt':
+          return `há ${count} ${count <= 1 ? labels[0] : labels[1]}`;
+      }
     }
   }
 
-  return 'a long time ago';
+  switch (language) {
+    case 'en':
+      return 'a long time ago';
+
+    case 'pt':
+      return 'há muito tempo';
+  }
 }
 
 function formatNumber(num: number): string {
@@ -237,6 +303,8 @@ type AppStoreAppData = {
   userRatingCount: number;
 };
 
+type SupportedLanguage = 'en' | 'pt';
+
 /* Status update */
 
 function updateComponentStatus(
@@ -247,4 +315,12 @@ function updateComponentStatus(
 ) {
   setStatus({ isLoading: isLoading, hasError: hasError, error: error || '' });
   return;
+}
+
+function getValidLanguage(locale: string): SupportedLanguage {
+  const supportedLanguages: SupportedLanguage[] = ['en', 'pt'];
+
+  return supportedLanguages.includes(locale as SupportedLanguage)
+    ? (locale as SupportedLanguage)
+    : 'en';
 }

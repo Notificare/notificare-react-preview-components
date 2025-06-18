@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import {
   NotificationPreviewStateWebDesktop,
   NotificationPreviewStateWebMobile,
@@ -18,6 +19,7 @@ export function NotificationWebPreview({
   previewState,
 }: NotificationWebPreviewProps) {
   const { googleMapsAPIKey } = useOptions();
+  const intl = useIntl();
 
   switch (previewState.formFactor) {
     case 'desktop':
@@ -33,7 +35,7 @@ export function NotificationWebPreview({
         case 'lockscreen-expanded':
           return (
             <UnavailablePreview
-              message="→ Notification preview variant not supported"
+              message={intl.formatMessage({ id: 'preview.error.notSupportedPreviewVariant' })}
               showConsoleWarning={false}
             />
           );
@@ -41,7 +43,12 @@ export function NotificationWebPreview({
           if (!SUPPORTED_MOBILE_APP_UI_NOTIFICATION_TYPES.includes(notification.type)) {
             return (
               <UnavailablePreview
-                message={`→ The preview for the notification type '${notification.type}' does not exist in this variant`}
+                message={intl.formatMessage(
+                  {
+                    id: 'preview.error.notSupportedNotificationTypePreviewVariant',
+                  },
+                  { notificationType: notification.type },
+                )}
                 showConsoleWarning={false}
               />
             );
@@ -50,7 +57,9 @@ export function NotificationWebPreview({
           if (notification.type === 're.notifica.notification.Map' && !googleMapsAPIKey) {
             return (
               <UnavailablePreview
-                message="→ A Google Maps API key should be provided"
+                message={intl.formatMessage({
+                  id: 'preview.error.provideGoogleMapsApiKey',
+                })}
                 showConsoleWarning={false}
               />
             );
