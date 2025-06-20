@@ -1,4 +1,4 @@
-.notificare .notificare__push__preview-error {
+.notificare .notificare__preview-error__wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,13 +9,13 @@
     padding: 0 20px;
 }
 
-.notificare .notificare__push__preview-error-icon {
+.notificare .notificare__preview-error__icon {
     width: 72px;
     margin-bottom: 20px;
     height: auto;
 }
 
-.notificare .notificare__push__preview-error-text {
+.notificare .notificare__preview-error__text {
     font-weight: 700;
     font-size: 16px;
     color: #232c2a;

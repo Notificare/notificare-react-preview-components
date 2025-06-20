@@ -2,22 +2,17 @@ import AlertIcon from '~/assets/alert.svg';
 
 import './UnavailablePreview.css';
 
-export function UnavailablePreview({
-  message,
-  showConsoleWarning,
-}: UnavailablePreviewProps) {
+export function UnavailablePreview({ message, showConsoleWarning }: UnavailablePreviewProps) {
   return (
-    <div data-testid="notificare-push-unavailable-preview">
-      <div className="notificare__push__unavailable-preview-warning">
-        <AlertIcon className="notificare__push__unavailable-preview-alert-icon" />
+    <div data-testid="unavailable-preview">
+      <div className="notificare__unavailable-preview__wrapper">
+        <AlertIcon className="notificare__unavailable-preview__alert-icon" />
 
-        <div className="notificare__push__unavailable-preview-text-container">
-          <div className="notificare__push__unavailable-preview-title">
-            Preview could not be loaded
-          </div>
+        <div className="notificare__unavailable-preview__text-container">
+          <div className="notificare__unavailable-preview__title">Preview could not be loaded</div>
           <div
-            className="notificare__push__unavailable-preview-reason-text"
-            data-testid="notificare-push-unavailable-preview-reason-text"
+            className="notificare__unavailable-preview__reason-text"
+            data-testid="unavailable-preview-reason-text"
           >
             {message}
           </div>
@@ -25,7 +20,7 @@ export function UnavailablePreview({
       </div>
 
       {showConsoleWarning && (
-        <div className="notificare__push__unavailable-preview-check-console-text">
+        <div className="notificare__unavailable-preview__check-console-text">
           Check console for more information
         </div>
       )}

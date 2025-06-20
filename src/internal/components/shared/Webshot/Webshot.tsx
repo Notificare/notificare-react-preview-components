@@ -32,7 +32,7 @@ export function Webshot({
   );
 
   return (
-    <div className="notificare__push__webshot-background" style={{ width: width, height: height }}>
+    <div className="notificare__webshot__wrapper" style={{ width: width, height: height }}>
       {state.status === 'loading' && <Loading />}
 
       {state.status === 'success' && canShow && (

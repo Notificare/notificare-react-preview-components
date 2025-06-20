@@ -9,26 +9,24 @@ export function ToggleGroup<T extends Key>({
   onValueChanged,
 }: ToggleGroupProps<T>) {
   return (
-    <div className="notificare__push__preview-controls-toggle-group">
-      <p className="notificare__push__preview-controls-toggle-group-label">{label}</p>
-      <div className="notificare__push__preview-controls-toggle-group-options">
+    <div className="notificare__toggle-group__wrapper">
+      <p className="notificare__toggle-group__label">{label}</p>
+      <div className="notificare__toggle-group__options">
         {options.map((option, index) => (
           <Fragment key={option.value}>
             <button
-              className={`notificare__push__preview-controls-toggle-group-option ${value === option.value ? 'notificare__push__preview-controls-toggle-group-option--selected' : ''}`}
+              className={`notificare__toggle-group__option-button ${value === option.value ? 'notificare__toggle-group__option-button--selected' : ''}`}
               onClick={() => onValueChanged(option.value)}
               aria-label={`Button with option '${option.value}'`}
-              data-testid={`toggle-option-${option.value}`}
+              data-testid={`toggle-group-option-${option.value}`}
             >
               <div
-                className={`notificare__push__preview-controls-toggle-group-option-icon ${value === option.value ? 'notificare__push__preview-controls-toggle-group-option-icon--selected' : ''}`}
+                className={`notificare__toggle-group__option-button-icon ${value === option.value ? 'notificare__toggle-group__option-button-icon--selected' : ''}`}
               >
                 {option.icon}
               </div>
             </button>
-            {index !== options.length - 1 && (
-              <div className="notificare__push__preview-controls-toggle-group-divisor" />
-            )}
+            {index !== options.length - 1 && <div className="notificare__toggle-group__border" />}
           </Fragment>
         ))}
       </div>
