@@ -209,70 +209,32 @@ type StatusState = {
 };
 
 function timeAgo(isoDate: string, language: SupportedLanguage) {
+  const rtf = new Intl.RelativeTimeFormat(language, { style: 'long' });
+
   const date = new Date(isoDate);
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  const labels = {
-    en: {
-      second: ['second', 'seconds'],
-      minute: ['minute', 'minutes'],
-      hour: ['hour', 'hours'],
-      day: ['day', 'days'],
-      week: ['week', 'weeks'],
-      month: ['month', 'months'],
-      year: ['year', 'years'],
-    },
-    pt: {
-      second: ['segundo', 'segundos'],
-      minute: ['minuto', 'minutos'],
-      hour: ['hora', 'horas'],
-      day: ['dia', 'dias'],
-      week: ['semana', 'semanas'],
-      month: ['mês', 'meses'],
-      year: ['ano', 'anos'],
-    },
-  };
-
-  const intervals: { value: number; labels: string[] }[] = [
-    { value: 60, labels: labels[language].second },
-    {
-      value: 60 * 60,
-      labels: labels[language].minute,
-    },
-    {
-      value: 60 * 60 * 24,
-      labels: labels[language].hour,
-    },
-    { value: 60 * 60 * 24 * 7, labels: labels[language].day },
-    { value: 60 * 60 * 24 * 30, labels: labels[language].week },
-    { value: 60 * 60 * 24 * 365, labels: labels[language].month },
-    { value: Infinity, labels: labels[language].year },
+  const intervals: { value: number; unit: Intl.RelativeTimeFormatUnit }[] = [
+    { value: 60, unit: 'second' },
+    { value: 60 * 60, unit: 'minute' },
+    { value: 60 * 60 * 24, unit: 'hour' },
+    { value: 60 * 60 * 24 * 7, unit: 'day' },
+    { value: 60 * 60 * 24 * 30, unit: 'week' },
+    { value: 60 * 60 * 24 * 365, unit: 'month' },
   ];
 
   for (let i = 0; i < intervals.length; i++) {
-    const { value, labels } = intervals[i];
+    const { value, unit } = intervals[i];
+
     if (diffInSeconds < value) {
       const count = Math.floor(diffInSeconds / (intervals[i - 1]?.value || 1));
-
-      switch (language) {
-        case 'en':
-          return count <= 1
-            ? `${labels[0] === 'hour' ? 'an' : 'a'} ${labels[0]} ago`
-            : `${count} ${labels[1]} ago`;
-        case 'pt':
-          return `há ${count} ${count <= 1 ? labels[0] : labels[1]}`;
-      }
+      return rtf.format(count, unit);
     }
   }
 
-  switch (language) {
-    case 'en':
-      return 'a long time ago';
-
-    case 'pt':
-      return 'há muito tempo';
-  }
+  const count = Math.floor(diffInSeconds / intervals[intervals.length - 1].value);
+  return rtf.format(count, 'year');
 }
 
 function formatNumber(num: number): string {
