@@ -3,9 +3,9 @@ import { useEffect, RefObject } from 'react';
 export function useOutsideClick({ refs, onClickOutside }: OutsideClickParams) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      const isOutside = refs
-        .filter((ref) => ref.current)
-        .every((ref) => !ref.current!.contains(event.target as Node));
+      const isOutside = refs.every((ref) => {
+        return !ref.current || !ref.current.contains(event.target as Node);
+      });
 
       if (isOutside) {
         onClickOutside();
