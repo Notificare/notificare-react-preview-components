@@ -1,14 +1,14 @@
-.notificare .notificare__push__preview-controls-selector {
+.notificare .notificare__selector__wrapper {
     position: relative;
 }
 
-.notificare .notificare__push__preview-controls-selector-label {
+.notificare .notificare__selector__label {
     font-size: 14px;
     color: #6e6e6e;
     margin-bottom: 7px;
 }
 
-.notificare .notificare__push__preview-controls-selector-button {
+.notificare .notificare__selector__button {
     width: 350px;
     height: 42px;
     background-color: #F6F6F6;
@@ -21,26 +21,26 @@
     align-items: center;
 }
 
-.notificare .notificare__push__preview-controls-selector-button:not(:disabled) {
+.notificare .notificare__selector__button:not(:disabled) {
     cursor: pointer;
 }
 
-.notificare .notificare__push__preview-controls-selector-button:disabled {
+.notificare .notificare__selector__button:disabled {
     color: #b3b3b3;
 }
 
-.notificare .notificare__push__preview-controls-selector-button-expand-icon {
+.notificare .notificare__selector__button-expand-icon {
     width: 16px;
     height: 16px;
     margin-left: auto;
     margin-right: 14px;
 }
 
-.notificare .notificare__push__preview-controls-selector-button:disabled .notificare__push__preview-controls-selector-button-expand-icon {
+.notificare .notificare__selector__button:disabled .notificare__selector__button-expand-icon {
     fill: #b3b3b3;
 }
 
-.notificare .notificare__push__preview-controls-selector-options {
+.notificare .notificare__selector__options {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -49,7 +49,7 @@
     box-shadow: 0 14px 10px -10px rgba(0, 0, 0, 0.2);
 }
 
-.notificare .notificare__push__preview-controls-selector-option-button {
+.notificare .notificare__selector__option-button {
     width: 350px;
     height: 42px;
     background-color: #ececec;
@@ -60,11 +60,11 @@
     padding-left: 14px;
 }
 
-.notificare .notificare__push__preview-controls-selector-option-button--selected {
+.notificare .notificare__selector__option-button--selected {
     background-color: #c8c8c8;
 }
 
-.notificare .notificare__push__preview-controls-selector-option-button:hover {
+.notificare .notificare__selector__option-button:hover {
     background-color: #5E5E5E;
     color: white;
     cursor: pointer;
