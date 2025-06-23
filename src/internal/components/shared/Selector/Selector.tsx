@@ -2,7 +2,7 @@ import { Key, useRef, useState } from 'react';
 import ExpandIcon from '~/assets/expand.svg';
 
 import './Selector.css';
-import { useOutsideClick } from '~/internal/hooks/click-outside';
+import { useOutsideClick } from '~/internal/hooks/outside-click';
 
 export function Selector<T extends Key>({
   label,
