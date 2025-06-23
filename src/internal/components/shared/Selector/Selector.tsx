@@ -31,23 +31,23 @@ export function Selector<T extends Key>({
   // TODO: you should always return an element inside a component. even if it's a fragment.
   if (options.length > 0) {
     return (
-      <div className="notificare__push__preview-controls-selector">
-        <p className="notificare__push__preview-controls-selector-label">{label}</p>
+      <div className="notificare__selector__wrapper">
+        <p className="notificare__selector__label">{label}</p>
         <button
-          className="notificare__push__preview-controls-selector-button"
+          className="notificare__selector__button"
           onClick={() => setIsExpanded(!isExpanded)}
           disabled={disabled}
         >
           {options.find((option) => option.value === value)?.label}
-          <ExpandIcon className="notificare__push__preview-controls-selector-button-expand-icon" />
+          <ExpandIcon className="notificare__selector__button-expand-icon" />
         </button>
 
         {isExpanded && (
-          <div className="notificare__push__preview-controls-selector-options" ref={optionsRef}>
+          <div className="notificare__selector__options" ref={optionsRef}>
             {options.map((option) => (
               <button
                 key={option.value}
-                className={`notificare__push__preview-controls-selector-option-button ${value === option.value ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
+                className={`notificare__selector__option-button ${value === option.value ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
                 onClick={() => {
                   onValueChanged?.(option.value);
                   setIsExpanded(false);
