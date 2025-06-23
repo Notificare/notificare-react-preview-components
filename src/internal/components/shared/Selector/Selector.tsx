@@ -40,7 +40,7 @@ export function Selector<T extends Key>({
           {options.map((option) => (
             <button
               key={option.value}
-              className={`notificare__selector__option-button ${value === option.value ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
+              className={`notificare__selector__option-button ${value === option.value ? 'notificare__selector__option-button--selected' : ''}`}
               onClick={() => {
                 onValueChanged?.(option.value);
                 setExpanded(false);
