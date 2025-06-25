@@ -7,9 +7,9 @@ import { NotificationSchema } from '~/internal/schemas/notificare-notification';
 import { MESSAGES_EN } from '~/locales/push/en';
 import { MESSAGES_PT } from '~/locales/push/pt';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
+import { NotificareNotificationPreviewLanguage } from '~/models/push/notificare-notification-preview-language';
 
 import '~/preset.css';
-import { NotificareNotificationPreviewLanguage } from '~/models/push/notificare-notification-preview-language';
 
 const MESSAGES: Record<string, Record<string, string>> = {
   en: MESSAGES_EN,
