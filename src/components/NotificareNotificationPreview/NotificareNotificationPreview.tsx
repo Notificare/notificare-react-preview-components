@@ -36,13 +36,21 @@ export function NotificareNotificationPreview({
   googleMapsAPIKey,
   language = 'en',
 }: NotificareNotificationPreviewProps) {
+  const mergedMessages = useMemo(
+    () => ({
+      ...MESSAGES['en'],
+      ...MESSAGES[language],
+    }),
+    [language],
+  );
+
   const notificationResult = useMemo(() => {
     return NotificationSchema.safeParse(notification);
   }, [notification]);
 
   return (
     <div className="notificare">
-      <IntlProvider locale={language} defaultLocale="en" messages={MESSAGES[language]}>
+      <IntlProvider locale={language} defaultLocale="en" messages={mergedMessages}>
         <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
           {notificationResult.success ? (
             <NotificationPreviewWrapper
