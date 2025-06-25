@@ -1,15 +1,15 @@
-.notificare .notificare__push__preview-controls-toggle-group {
+.notificare .notificare__toggle-group__wrapper {
     display: flex;
     flex-direction: column;
     row-gap: 7px;
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-label {
+.notificare .notificare__toggle-group__label {
     font-size: 14px;
     color: #6e6e6e;
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-options {
+.notificare .notificare__toggle-group__options {
     display: flex;
     border-radius: 8px;
     border: 1px solid #DADADA;
@@ -19,7 +19,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-option {
+.notificare .notificare__toggle-group__option-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,23 +32,23 @@
     cursor: pointer;
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-option--selected {
+.notificare .notificare__toggle-group__option-button--selected {
     background: #5E5E5E;
     color: #ffffff;
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-option-icon {
+.notificare .notificare__toggle-group__option-button-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     fill: #C0C0C0;
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-option-icon--selected {
+.notificare .notificare__toggle-group__option-button-icon--selected {
     fill: #FFF
 }
 
-.notificare .notificare__push__preview-controls-toggle-group-divisor {
+.notificare .notificare__toggle-group__border {
     width: 1px;
     height: 40px;
     background: #DADADA;

@@ -5,11 +5,11 @@ import './AndroidPhoneBackground.css';
 export function AndroidPhoneBackground({ children, theme }: AndroidPhoneBackgroundProps) {
   return (
     <div
-      className={`notificare__push__android__phone-background ${theme === 'dark' ? 'notificare__push__android__phone-background--dark' : ''}`}
+      className={`notificare__android-phone-background__wrapper ${theme === 'dark' ? 'notificare__android-phone-background__wrapper--dark' : ''}`}
       data-testid="android-phone-background"
     >
-      <div className="notificare__push__android__phone-background-camera" />
-      <div className="notificare__push__android__phone-background-content">{children}</div>
+      <div className="notificare__android-phone-background__camera" />
+      <div className="notificare__android-phone-background__content">{children}</div>
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import { Key, useEffect, useRef, useState } from 'react';
+import { Key, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
 
 import './Selector.css';
+import { useOutsideClick } from '~/internal/hooks/outside-click';
 
 export function Selector<T extends Key>({
   label,
@@ -13,9 +14,10 @@ export function Selector<T extends Key>({
 }: SelectorProps<T>) {
   const intl = useIntl();
 
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [currentOptionLabel, setCurrentOptionLabel] = useState<string>(loadDefaultOptionLabel);
   const optionsRef = useRef<HTMLDivElement>(null);
+  const selectorButtonRef = useRef<HTMLButtonElement>(null);
 
   function loadDefaultOptionLabel() {
     const option = options.find((option) => option.value === value);
@@ -31,56 +33,45 @@ export function Selector<T extends Key>({
     return translate ? intl.formatMessage({ id: label }) : label;
   }
 
-  // TODO: refactor to a separate ClickOutside component.
-  useEffect(function closeSelectorWhenClickingOutside() {
-    function handleClickOutside(event: MouseEvent) {
-      if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) {
-        setIsExpanded(false);
-      }
-    }
+  useOutsideClick({
+    refs: [optionsRef, selectorButtonRef],
+    onClickOutside: () => setExpanded(false),
+  });
 
-    document.addEventListener('mousedown', handleClickOutside);
+  return (
+    <div className="notificare__selector__wrapper">
+      <p className="notificare__selector__label">{label}</p>
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+      <button
+        className="notificare__selector__button"
+        onClick={() => setExpanded(!expanded)}
+        disabled={disabled}
+        ref={selectorButtonRef}
+      >
+        {currentOptionLabel}
+        <ExpandIcon className="notificare__selector__button-expand-icon" />
+      </button>
 
-  // TODO: you should always return an element inside a component. even if it's a fragment.
-  if (options.length > 0) {
-    return (
-      <div className="notificare__push__preview-controls-selector">
-        <p className="notificare__push__preview-controls-selector-label">{label}</p>
-        <button
-          className="notificare__push__preview-controls-selector-button"
-          onClick={() => setIsExpanded(!isExpanded)}
-          disabled={disabled}
-        >
-          {currentOptionLabel}
-          <ExpandIcon className="notificare__push__preview-controls-selector-button-expand-icon" />
-        </button>
-
-        {isExpanded && (
-          <div className="notificare__push__preview-controls-selector-options" ref={optionsRef}>
-            {options.map((option) => (
-              <button
-                key={option.value}
-                className={`notificare__push__preview-controls-selector-option-button ${value === option.value ? 'notificare__push__preview-controls-selector-option-button--selected' : ''}`}
-                onClick={() => {
-                  onValueChanged?.(option.value);
-                  setIsExpanded(false);
+      {expanded && (
+        <div className="notificare__selector__options" ref={optionsRef}>
+          {options.map((option) => (
+            <button
+              key={option.value}
+              className={`notificare__selector__option-button ${value === option.value ? 'notificare__selector__option-button--selected' : ''}`}
+              onClick={() => {
+                onValueChanged?.(option.value);
+                setExpanded(false);
                   setCurrentOptionLabel(loadOptionLabel(option.label, option.translateLabel));
                 }}
                 data-testid={`selector-option-${option.value}`}
               >
                 {loadOptionLabel(option.label, option.translateLabel)}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-    );
-  }
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export interface SelectorProps<T> {

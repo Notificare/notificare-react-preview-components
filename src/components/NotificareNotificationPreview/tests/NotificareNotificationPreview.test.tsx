@@ -1546,7 +1546,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1563,7 +1563,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1580,7 +1580,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1751,7 +1751,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1768,7 +1768,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1785,7 +1785,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1841,10 +1841,8 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    const previewError = screen.queryByTestId('notificare-push-unavailable-preview');
-    const previewErrorMessage = screen.queryByTestId(
-      'notificare-push-unavailable-preview-reason-text',
-    );
+    const previewError = screen.queryByTestId('unavailable-preview');
+    const previewErrorMessage = screen.queryByTestId('unavailable-preview-reason-text');
 
     // ASSERT
     expect(previewError).toBeInTheDocument();
@@ -1874,7 +1872,7 @@ describe('NotificareNotificationPreview', () => {
 
     await act(async () => jest.runAllTimers()); // skip timers;
 
-    const loadingIcon = screen.getByTestId('loading-icon');
+    const loadingIcon = screen.getByTestId('loading');
 
     // ASSERT
     expect(loadingIcon).toBeInTheDocument();

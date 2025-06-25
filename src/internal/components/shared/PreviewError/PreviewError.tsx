@@ -7,9 +7,9 @@ export function PreviewError({ message }: PreviewErrorProps) {
   const intl = useIntl();
 
   return (
-    <div className="notificare__push__preview-error" data-testid="preview-error">
-      <AlertIcon className="notificare__push__preview-error-icon" />
-      <p className="notificare__push__preview-error-text">
+    <div className="notificare__preview-error__wrapper" data-testid="preview-error">
+      <AlertIcon className="notificare__preview-error__icon" />
+      <p className="notificare__preview-error__text">
         {intl.formatMessage({ id: 'preview.error.notGeneratedPreview' })}
         {message && (
           <>

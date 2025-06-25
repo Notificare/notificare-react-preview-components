@@ -1,8 +1,8 @@
-.notificare .notificare__push__unavailable-preview-warning-wrapper {
+.notificare .notificare__unavailable-preview__wrapper {
     width: 350px;
 }
 
-.notificare .notificare__push__unavailable-preview-warning {
+.notificare .notificare__unavailable-preview__warning {
     width: 100%;
     background-color: #fff1cc;
     border: 1px solid #d5d5d5;
@@ -13,30 +13,30 @@
     column-gap: 14px;
 }
 
-.notificare .notificare__push__unavailable-preview-text-container {
+.notificare .notificare__unavailable-preview__text-container {
     display: flex;
     flex-direction: column;
     row-gap: 2px;
     width: 100%;
 }
 
-.notificare .notificare__push__unavailable-preview-title {
+.notificare .notificare__unavailable-preview__title {
     font-size: 15px;
     color: #232323;
     font-weight: bold;
 }
 
-.notificare .notificare__push__unavailable-preview-reason-text {
+.notificare .notificare__unavailable-preview__reason-text {
     font-size: 13px;
     color: #bd6868;
 }
 
-.notificare .notificare__push__unavailable-preview-alert-icon {
+.notificare .notificare__unavailable-preview__alert-icon {
     width: 40px;
     height: auto;
 }
 
-.notificare .notificare__push__unavailable-preview-check-console-text {
+.notificare .notificare__unavailable-preview__check-console-text {
     font-size: 12px;
     color: #989898;
     text-align: right;
