@@ -33,5 +33,5 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
 
 export interface UnavailablePreviewProps {
   message: string;
-  showConsoleWarning: boolean;
+  showConsoleWarning?: boolean;
 }
