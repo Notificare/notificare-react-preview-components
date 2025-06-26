@@ -13,7 +13,7 @@ import { invalid } from './variants/Invalid';
 import { mapWithSingleMarker, mapWithTwoMarkers } from './variants/Map';
 import { passbook } from './variants/Passbook';
 import { rate } from './variants/Rate';
-import { appStore, googlePlaySearchStore } from './variants/Store';
+import { appStore, googlePlaySearchStore, multipleStore } from './variants/Store';
 import { url, urlWithAction, urlWithActionsAndActionableMarkup } from './variants/Url';
 import { videoHTML5, videoVimeo, videoYouTube } from './variants/Video';
 import {
@@ -104,6 +104,11 @@ export const GooglePlaySearchStore: Story = {
 export const AppStore: Story = {
   name: 'Store - App Store',
   args: appStore,
+};
+
+export const MultipleStore: Story = {
+  name: 'Store - Multiple Stores (App Store/Google Play)',
+  args: multipleStore,
 };
 
 /* URL */
