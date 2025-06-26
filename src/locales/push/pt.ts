@@ -1,4 +1,6 @@
-export const MESSAGES_PT = {
+import { NotificarePushTranslationKey } from '~/locales/push/en';
+
+export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'controls.platform': 'Plataforma',
   'controls.formFactor': 'Formato',
   'controls.operatingSystem': 'SO',
@@ -15,7 +17,7 @@ export const MESSAGES_PT = {
   'preview.error.invalidUrl': 'A URL é inválida.',
   'preview.error.appleStoreAppNotFound':
     'A aplicação não foi encontrada. Verifique o identificador único e tente novamente.',
-  'preview.error.webshotLoadFail':
+  'preview.error.webshotFail':
     'Não foi possível efetuar a captura da página web. Consulte a consola para mais informações.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
     "→ A pré-visualização de notificações do tipo ''{notificationType}'' não é possível nesta variante",

@@ -1,4 +1,4 @@
 /**
- * Defines the UI language to be used.
+ * The language/region code for the UI.
  */
-export type NotificareNotificationPreviewLanguage = 'en' | 'pt';
+export type NotificareNotificationPreviewLocale = string;

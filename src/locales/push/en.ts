@@ -1,4 +1,4 @@
-export const MESSAGES_EN = {
+export const MESSAGES = {
   'controls.platform': 'Platform',
   'controls.formFactor': 'Form Factor',
   'controls.operatingSystem': 'OS',
@@ -46,3 +46,8 @@ export const MESSAGES_EN = {
   'preview.web.desktop.macos.lockScreen.settings': 'Settings',
   'preview.web.desktop.macos.lockScreen.options': 'Options',
 };
+
+/**
+ * The set of translation keys for push notification previews.
+ */
+export type NotificarePushTranslationKey = keyof typeof MESSAGES;
