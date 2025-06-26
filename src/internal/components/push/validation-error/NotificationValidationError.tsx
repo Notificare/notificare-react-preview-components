@@ -12,12 +12,10 @@ export function NotificationValidationError({ errors }: NotificationValidationEr
   showNotificationErrors(errors);
 
   return (
-    <div className="notificare__push__notification-validation-error ">
-      <UnavailablePreview
-        message={intl.formatMessage({ id: 'preview.error.invalidNotification' })}
-        showConsoleWarning={true}
-      />
-    </div>
+    <UnavailablePreview
+      message={intl.formatMessage({ id: 'preview.error.invalidNotification' })}
+      showConsoleWarning={true}
+    />
   );
 }
 
