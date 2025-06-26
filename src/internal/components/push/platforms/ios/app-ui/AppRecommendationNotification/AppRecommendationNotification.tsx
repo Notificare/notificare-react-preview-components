@@ -1,10 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, FormattedNumber, useIntl } from 'react-intl';
 import LayerGroupIcon from '~/assets/layer-group.svg';
 import UserIcon from '~/assets/user.svg';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { timeAgo } from '~/internal/utils/time-ago';
 import { StarRating } from './StarRating/StarRating';
 
 import './AppRecommendationNotification.css';
@@ -14,7 +15,6 @@ export function AppRecommendationNotification({
 }: AppRecommendationNotificationProps) {
   const content = notification.content[0];
   const intl = useIntl();
-  const actualLanguage = intl.locale;
 
   const [status, setStatus] = useState<StatusState>({
     isLoading: true,
@@ -107,7 +107,14 @@ export function AppRecommendationNotification({
                       <FormattedMessage
                         id="preview.ios.store.appUi.ratings"
                         values={{
-                          userRatingCount: formatNumber(appStoreData.results[0].userRatingCount),
+                          userRatingCount: (
+                            <FormattedNumber
+                              value={appStoreData.results[0].userRatingCount}
+                              notation="compact"
+                              compactDisplay="short"
+                              maximumFractionDigits={1}
+                            />
+                          ),
                         }}
                       />
                     </p>
@@ -162,10 +169,7 @@ export function AppRecommendationNotification({
                     />
                   </p>
                   <p className="notificare__push__ios__store__app-ui__page-history-last-update">
-                    {timeAgo(
-                      appStoreData.results[0].currentVersionReleaseDate,
-                      getValidLanguage(actualLanguage),
-                    )}
+                    {timeAgo(appStoreData.results[0].currentVersionReleaseDate, intl.locale)}
                   </p>
                 </div>
                 <p className="notificare__push__ios__store__app-ui__page-history-notes">
@@ -208,44 +212,6 @@ type StatusState = {
   error: string;
 };
 
-function timeAgo(isoDate: string, language: SupportedLanguage) {
-  const rtf = new Intl.RelativeTimeFormat(language, { style: 'long' });
-
-  const date = new Date(isoDate);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  const intervals: { value: number; unit: Intl.RelativeTimeFormatUnit }[] = [
-    { value: 60, unit: 'second' },
-    { value: 60 * 60, unit: 'minute' },
-    { value: 60 * 60 * 24, unit: 'hour' },
-    { value: 60 * 60 * 24 * 7, unit: 'day' },
-    { value: 60 * 60 * 24 * 30, unit: 'week' },
-    { value: 60 * 60 * 24 * 365, unit: 'month' },
-  ];
-
-  for (let i = 0; i < intervals.length; i++) {
-    const { value, unit } = intervals[i];
-
-    if (diffInSeconds < value) {
-      const count = Math.floor(diffInSeconds / (intervals[i - 1]?.value || 1));
-      return rtf.format(count, unit);
-    }
-  }
-
-  const count = Math.floor(diffInSeconds / intervals[intervals.length - 1].value);
-  return rtf.format(count, 'year');
-}
-
-function formatNumber(num: number): string {
-  if (num >= 1_000_000) {
-    return (num / 1_000_000).toFixed(1) + 'M';
-  } else if (num >= 1_000) {
-    return (num / 1_000).toFixed(1) + 'K';
-  }
-  return num.toString();
-}
-
 type AppStoreApp = {
   resultCount: number;
   results: AppStoreAppData[];
@@ -264,9 +230,6 @@ type AppStoreAppData = {
   trackContentRating: string;
   userRatingCount: number;
 };
-
-type SupportedLanguage = 'en' | 'pt';
-
 /* Status update */
 
 function updateComponentStatus(
@@ -277,12 +240,4 @@ function updateComponentStatus(
 ) {
   setStatus({ isLoading: isLoading, hasError: hasError, error: error || '' });
   return;
-}
-
-function getValidLanguage(locale: string): SupportedLanguage {
-  const supportedLanguages: SupportedLanguage[] = ['en', 'pt'];
-
-  return supportedLanguages.includes(locale as SupportedLanguage)
-    ? (locale as SupportedLanguage)
-    : 'en';
 }
