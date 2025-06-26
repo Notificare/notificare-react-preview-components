@@ -38,7 +38,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error(intl.formatMessage({ id: 'preview.error.webshotLoadFail' })),
+            error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
           });
         });
     },
@@ -66,7 +66,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
             setState({
               status: 'error',
-              error: new Error(intl.formatMessage({ id: 'preview.error.webshotLoadFail' })),
+              error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
             });
 
             clearInterval(handler);
@@ -76,7 +76,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error(intl.formatMessage({ id: 'preview.error.webshotLoadFail' })),
+            error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
           });
 
           clearInterval(handler);
