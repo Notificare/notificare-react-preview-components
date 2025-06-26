@@ -24,5 +24,5 @@ export function timeAgo(isoDate: string, locale: string) {
   }
 
   const count = Math.floor(diffInSeconds / intervals[intervals.length - 1].value);
-  return rtf.format(count, 'year');
+  return rtf.format(-count, 'year');
 }
