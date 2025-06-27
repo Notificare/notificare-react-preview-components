@@ -1,7 +1,7 @@
-import { IosStoreApps } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-apps';
+import { IosStoreApp } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-app';
 import { NetworkRequestError } from '~/internal/network/errors';
 
-export async function fetchIosStoreApp(appId: string): Promise<IosStoreApps> {
+export async function fetchIosStoreApp(appId: string): Promise<IosStoreApp> {
   const url = new URL('/lookup', 'https://itunes.apple.com');
   url.searchParams.set('country', 'NL');
   url.searchParams.set('id', appId);

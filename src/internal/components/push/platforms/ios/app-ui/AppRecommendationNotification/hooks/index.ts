@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { fetchIosStoreApp } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/requests/ios-store-app';
-import { IosStoreAppData } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-apps';
+import { IosStoreAppData } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-app';
 import { useDebounce } from '~/internal/hooks';
 import { RequestState } from '~/internal/network/state';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';

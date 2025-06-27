@@ -1,4 +1,4 @@
-export type IosStoreApps = {
+export type IosStoreApp = {
   resultCount: number;
   results: IosStoreAppData[];
 };
