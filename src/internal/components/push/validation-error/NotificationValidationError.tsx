@@ -16,7 +16,10 @@ export function NotificationValidationError({ errors }: NotificationValidationEr
 
   return (
     <UnavailablePreview
-      message={intl.formatMessage({ id: 'preview.error.invalidNotification' })}
+      message={intl.formatMessage({
+        id: 'preview.error.invalidNotification',
+        defaultMessage: '→ Invalid Notification',
+      })}
       showConsoleWarning={true}
     />
   );

@@ -27,7 +27,7 @@ export function LockScreenNotification({ notification, expanded }: IOSLockScreen
             </p>
 
             <p className="notificare__push__ios__lock-screen__text notificare__push__ios__lock-screen__text--time">
-              <FormattedMessage id="preview.ios.lockScreen.time" />
+              <FormattedMessage id="preview.ios.lockScreen.time" defaultMessage="Now" />
             </p>
           </div>
 

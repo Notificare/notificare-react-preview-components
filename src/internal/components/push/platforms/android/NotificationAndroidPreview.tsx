@@ -35,7 +35,10 @@ export function NotificationAndroidPreview({
   ) {
     return (
       <UnavailablePreview
-        message={intl.formatMessage({ id: 'preview.error.provideGoogleMapsApiKey' })}
+        message={intl.formatMessage({
+          id: 'preview.error.provideGoogleMapsApiKey',
+          defaultMessage: '→ A Google Maps API key should be provided',
+        })}
         showConsoleWarning={false}
       />
     );

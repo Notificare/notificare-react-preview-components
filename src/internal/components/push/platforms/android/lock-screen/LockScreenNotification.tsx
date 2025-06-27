@@ -35,7 +35,7 @@ export function LockScreenNotification({ notification, expanded }: AndroidLockSc
             )}
           </div>
           <p className="notificare__push__android__lock-screen__text notificare__push__android__lock-screen__text--time">
-            <FormattedMessage id="preview.android.lockscreen.time" />
+            <FormattedMessage id="preview.android.lockscreen.time" defaultMessage="now" />
           </p>
         </div>
 

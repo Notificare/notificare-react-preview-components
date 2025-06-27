@@ -10,14 +10,17 @@ export function InAppBrowserBar(props: InAppBrowserBarProps) {
   return (
     <div className="notificare__push__ios__in-app-browser__app-ui__bar">
       <p className="notificare__push__ios__in-app-browser__app-ui__bar-done-button">
-        <FormattedMessage id="preview.ios.inAppBrowser.appUi.done" />
+        <FormattedMessage id="preview.ios.inAppBrowser.appUi.done" defaultMessage="Done" />
       </p>
       <div className="notificare__push__ios__in-app-browser__app-ui__bar-domain">
         {isSecureUrl(url) ? (
           <LockerIcon className="notificare__push__ios__in-app-browser__app-ui__bar-lock-icon" />
         ) : (
           <p className="notificare__push__ios__in-app-browser__app-ui__bar-not-secure">
-            <FormattedMessage id="preview.ios.inAppBrowser.appUi.notSecure" />
+            <FormattedMessage
+              id="preview.ios.inAppBrowser.appUi.notSecure"
+              defaultMessage="Not Secure —"
+            />
           </p>
         )}
 

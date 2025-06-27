@@ -35,7 +35,10 @@ export function NotificationWebPreview({
         case 'lockscreen-expanded':
           return (
             <UnavailablePreview
-              message={intl.formatMessage({ id: 'preview.error.notSupportedPreviewVariant' })}
+              message={intl.formatMessage({
+                id: 'preview.error.notSupportedPreviewVariant',
+                defaultMessage: '→ Not supported variant',
+              })}
               showConsoleWarning={false}
             />
           );
@@ -46,6 +49,8 @@ export function NotificationWebPreview({
                 message={intl.formatMessage(
                   {
                     id: 'preview.error.notSupportedNotificationTypePreviewVariant',
+                    defaultMessage:
+                      "→ Previewing notifications of type ''{notificationType}'' is not possible in this variant",
                   },
                   { notificationType: notification.type },
                 )}
@@ -59,6 +64,7 @@ export function NotificationWebPreview({
               <UnavailablePreview
                 message={intl.formatMessage({
                   id: 'preview.error.provideGoogleMapsApiKey',
+                  defaultMessage: '→ A Google Maps API key should be provided',
                 })}
                 showConsoleWarning={false}
               />

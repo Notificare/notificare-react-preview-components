@@ -43,7 +43,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
               className="notificare__push__android__alert__app-ui__cancel-label"
               key="cancel-button-label"
             >
-              <FormattedMessage id="preview.android.alert.appUi.cancel" />
+              <FormattedMessage id="preview.android.alert.appUi.cancel" defaultMessage="Cancel" />
             </p>
           </div>
         )}

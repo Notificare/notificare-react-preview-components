@@ -10,7 +10,10 @@ export function PreviewError({ message }: PreviewErrorProps) {
     <div className="notificare__preview-error__wrapper" data-testid="preview-error">
       <AlertIcon className="notificare__preview-error__icon" />
       <p className="notificare__preview-error__text">
-        {intl.formatMessage({ id: 'preview.error.notGeneratedPreview' })}
+        {intl.formatMessage({
+          id: 'preview.error.notGeneratedPreview',
+          defaultMessage: 'Preview could not be generated',
+        })}
         {message && (
           <>
             <br /> <br /> {message}

@@ -79,11 +79,22 @@ function MapWithStatus({
       {apiLoadStatus === APILoadingStatus.LOADING && <Loading />}
 
       {apiLoadStatus === APILoadingStatus.AUTH_FAILURE && (
-        <PreviewError message={intl.formatMessage({ id: 'preview.error.googleMapsAuthFailure' })} />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.googleMapsAuthFailure',
+            defaultMessage:
+              'Authentication failure. Your Google Maps API key might be invalid. Check console for more information.',
+          })}
+        />
       )}
 
       {apiLoadStatus === APILoadingStatus.FAILED && (
-        <PreviewError message={intl.formatMessage({ id: 'preview.error.googleMapsLoadFailure' })} />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.googleMapsLoadFailure',
+            defaultMessage: 'Google Maps failed to be loaded. Check console for more information.',
+          })}
+        />
       )}
 
       {apiLoadStatus === APILoadingStatus.LOADED && (

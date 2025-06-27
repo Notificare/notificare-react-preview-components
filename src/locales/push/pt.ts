@@ -9,6 +9,7 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'controls.displayMode.lockScreen': 'Ecrã de Bloqueio',
   'controls.displayMode.expandedLockScreen': 'Ecrã de Bloqueio - Expandido',
   'controls.displayMode.appUi': 'App UI',
+  'controls.displayMode.macOs': 'macOS',
   'preview.error.notGeneratedPreview': 'Não foi possível gerar a pré-visualização',
   'preview.error.checkConsole': 'Consulte a consola para mais informações',
   'preview.error.invalidNotification': '→ Notificação inválida',

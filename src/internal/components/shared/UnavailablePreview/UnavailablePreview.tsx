@@ -11,7 +11,10 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
 
         <div className="notificare__unavailable-preview__text-container">
           <div className="notificare__unavailable-preview__title">
-            <FormattedMessage id="preview.error.notGeneratedPreview" />
+            <FormattedMessage
+              id="preview.error.notGeneratedPreview"
+              defaultMessage="Preview could not be generated"
+            />
           </div>
           <div
             className="notificare__unavailable-preview__reason-text"
@@ -24,7 +27,10 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
 
       {showConsoleWarning && (
         <div className="notificare__unavailable-preview__check-console-text">
-          <FormattedMessage id="preview.error.checkConsole" />
+          <FormattedMessage
+            id="preview.error.checkConsole"
+            defaultMessage="Check console for more information"
+          />
         </div>
       )}
     </div>

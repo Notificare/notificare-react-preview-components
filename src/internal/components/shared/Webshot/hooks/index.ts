@@ -23,7 +23,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
       if (!isValidUrl(url)) {
         setState({
           status: 'error',
-          error: new Error(intl.formatMessage({ id: 'preview.error.invalidUrl' })),
+          error: new Error(
+            intl.formatMessage({
+              id: 'preview.error.invalidUrl',
+              defaultMessage: 'The URL is invalid.',
+            }),
+          ),
         });
         return;
       }
@@ -38,7 +43,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.webshotFail',
+                defaultMessage: 'Webshot failed to be loaded. Check console for more details.',
+              }),
+            ),
           });
         });
     },
@@ -66,7 +76,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
             setState({
               status: 'error',
-              error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
+              error: new Error(
+                intl.formatMessage({
+                  id: 'preview.error.webshotFail',
+                  defaultMessage: 'Webshot failed to be loaded. Check console for more details.',
+                }),
+              ),
             });
 
             clearInterval(handler);
@@ -76,7 +91,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.webshotFail',
+                defaultMessage: 'Webshot failed to be loaded. Check console for more details.',
+              }),
+            ),
           });
 
           clearInterval(handler);

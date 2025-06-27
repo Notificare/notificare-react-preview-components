@@ -11,10 +11,13 @@ export function RateNotification({ title }: RateAppNotificationProps) {
       <div className="notificare__push__ios__rate__app-ui__wrapper">
         <p className="notificare__push__ios__rate__app-ui__header">{title || application.name}</p>
         <div className="notificare__push__ios__rate__app-ui__action">
-          <FormattedMessage id="preview.ios.rate.appUi.rateNow" />
+          <FormattedMessage
+            id="preview.ios.rate.appUi.rateNow"
+            defaultMessage="Yes, I'll Rate Now"
+          />
         </div>
         <div className="notificare__push__ios__rate__app-ui__action">
-          <FormattedMessage id="preview.ios.rate.appUi.doNotRate" />
+          <FormattedMessage id="preview.ios.rate.appUi.doNotRate" defaultMessage="No, Thanks" />
         </div>
       </div>
     </div>

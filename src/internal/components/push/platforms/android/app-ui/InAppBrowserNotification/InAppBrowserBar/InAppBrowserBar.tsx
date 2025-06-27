@@ -48,7 +48,10 @@ export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowser
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--title">
           {!status.isLoading && canShow
             ? pageTitle
-            : intl.formatMessage({ id: 'preview.android.inAppBrowser.appUi.pageTitleLoading' })}
+            : intl.formatMessage({
+                id: 'preview.android.inAppBrowser.appUi.pageTitleLoading',
+                defaultMessage: 'Loading...',
+              })}
         </p>
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--url">
           {getTopLevelDomain(url)}
