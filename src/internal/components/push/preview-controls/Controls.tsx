@@ -230,15 +230,10 @@ const DESKTOP_OPERATING_SYSTEM_OPTIONS = [{ value: 'macos', label: 'macOS' }] sa
 }>;
 
 const DISPLAY_MODE_OPTIONS = [
-  { value: 'lockscreen', label: 'controls.displayMode.lockScreen', translateLabel: true },
-  {
-    value: 'lockscreen-expanded',
-    label: 'controls.displayMode.expandedLockScreen',
-    translateLabel: true,
-  },
-  { value: 'app-ui', label: 'controls.displayMode.appUi', translateLabel: true },
+  { value: 'lockscreen', label: 'controls.displayMode.lockScreen' },
+  { value: 'lockscreen-expanded', label: 'controls.displayMode.expandedLockScreen' },
+  { value: 'app-ui', label: 'controls.displayMode.appUi' },
 ] satisfies Array<{
   value: NotificationPreviewDisplayMode;
   label: string;
-  translateLabel?: boolean;
 }>;

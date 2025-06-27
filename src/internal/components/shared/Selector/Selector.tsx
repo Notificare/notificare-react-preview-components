@@ -1,9 +1,9 @@
 import { Key, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
+import { useOutsideClick } from '~/internal/hooks/outside-click';
 
 import './Selector.css';
-import { useOutsideClick } from '~/internal/hooks/outside-click';
 
 export function Selector<T extends Key>({
   label,
@@ -26,11 +26,11 @@ export function Selector<T extends Key>({
       throw new Error(`Value "${String(value)}" not found in the Selector options.`);
     }
 
-    return loadOptionLabel(option.label, option.translateLabel);
+    return loadOptionLabel(option.label);
   }
 
-  function loadOptionLabel(label: string, translate?: boolean) {
-    return translate ? intl.formatMessage({ id: label }) : label;
+  function loadOptionLabel(label: string) {
+    return intl.formatMessage({ id: label });
   }
 
   useOutsideClick({
@@ -61,11 +61,11 @@ export function Selector<T extends Key>({
               onClick={() => {
                 onValueChanged?.(option.value);
                 setExpanded(false);
-                  setCurrentOptionLabel(loadOptionLabel(option.label, option.translateLabel));
-                }}
-                data-testid={`selector-option-${option.value}`}
-              >
-                {loadOptionLabel(option.label, option.translateLabel)}
+                setCurrentOptionLabel(loadOptionLabel(option.label));
+              }}
+              data-testid={`selector-option-${option.value}`}
+            >
+              {loadOptionLabel(option.label)}
             </button>
           ))}
         </div>
@@ -76,7 +76,7 @@ export function Selector<T extends Key>({
 
 export interface SelectorProps<T> {
   label: string;
-  options: { value: T; label: string; translateLabel?: boolean }[];
+  options: { value: T; label: string }[];
   value: T;
   onValueChanged?: (value: T) => void;
   disabled?: boolean;
