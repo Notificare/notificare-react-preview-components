@@ -44,7 +44,7 @@ export function AppRecommendationNotification({
                 true,
                 setStatus,
                 intl.formatMessage({
-                  id: 'preview.error.appleStoreAppNotFound',
+                  id: 'preview.error.iosStoreAppNotFound',
                   defaultMessage:
                     'The app was not found. Check the unique identifier and try again.',
                 }),

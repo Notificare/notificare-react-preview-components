@@ -16,7 +16,7 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'preview.error.provideGoogleMapsApiKey': '→ Deve ser fornecida uma chave de API do Google Maps',
   'preview.error.notSupportedPreviewVariant': '→ Variante não suportada',
   'preview.error.invalidUrl': 'A URL é inválida.',
-  'preview.error.appleStoreAppNotFound':
+  'preview.error.iosStoreAppNotFound':
     'A aplicação não foi encontrada. Verifique o identificador único e tente novamente.',
   'preview.error.webshotFail':
     'Não foi possível efetuar a captura da página web. Consulte a consola para mais informações.',
