@@ -1,17 +1,21 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import AlertIcon from '~/assets/alert.svg';
 import LockerIcon from '~/assets/locker.svg';
 import XMarkIcon from '~/assets/x-mark.svg';
 import { useOptions } from '~/internal/context/options';
 import { getPushAPIHost } from '~/internal/network/api';
 import { getTopLevelDomain, isSecureUrl } from '~/internal/utils/url';
+import { MESSAGES } from '~/locales/push/en';
 
 import './InAppBrowserBar.css';
 
 export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowserBarProps) {
   const [pageTitle, setPageTitle] = useState('');
   const [status, setStatus] = useState<StatusState>({ isLoading: true });
+
   const { serviceKey } = useOptions();
+  const intl = useIntl();
 
   useEffect(
     function loadPageTitle() {
@@ -43,7 +47,12 @@ export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowser
 
       <div className="notificare__push__android__in-app-browser__app-ui__bar-domain">
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--title">
-          {!status.isLoading && canShow ? pageTitle : 'Loading...'}
+          {!status.isLoading && canShow
+            ? pageTitle
+            : intl.formatMessage({
+                id: 'preview.android.inAppBrowser.appUi.pageTitleLoading',
+                defaultMessage: MESSAGES['preview.android.inAppBrowser.appUi.pageTitleLoading'],
+              })}
         </p>
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--url">
           {getTopLevelDomain(url)}

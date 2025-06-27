@@ -6,11 +6,13 @@ import {
   useApiLoadingStatus,
   APILoadingStatus,
 } from '@vis.gl/react-google-maps';
+import { useIntl } from 'react-intl';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { useOptions } from '~/internal/context/options';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { getMarkersFromNotification } from '~/internal/utils/push-previews/notification';
+import { MESSAGES } from '~/locales/push/en';
 
 import './MapRichContent.css';
 
@@ -63,6 +65,7 @@ function MapWithStatus({
   height: string;
 }) {
   const apiLoadStatus = useApiLoadingStatus();
+  const intl = useIntl();
 
   return (
     <div
@@ -77,11 +80,21 @@ function MapWithStatus({
       {apiLoadStatus === APILoadingStatus.LOADING && <Loading />}
 
       {apiLoadStatus === APILoadingStatus.AUTH_FAILURE && (
-        <PreviewError message="Authentication failure. Your Google Maps API key might be invalid. Check console for more information." />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.googleMapsAuthFailure',
+            defaultMessage: MESSAGES['preview.error.googleMapsAuthFailure'],
+          })}
+        />
       )}
 
       {apiLoadStatus === APILoadingStatus.FAILED && (
-        <PreviewError message="Google Maps failed to be loaded. Check console for more information." />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.googleMapsLoadFailure',
+            defaultMessage: MESSAGES['preview.error.googleMapsLoadFailure'],
+          })}
+        />
       )}
 
       {apiLoadStatus === APILoadingStatus.LOADED && (

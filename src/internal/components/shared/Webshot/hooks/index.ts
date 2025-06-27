@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { useOptions } from '~/internal/context/options';
 import { useDebounce } from '~/internal/hooks';
 import {
@@ -8,9 +9,11 @@ import {
 } from '~/internal/network/requests/webshot';
 import { RequestState } from '~/internal/network/state';
 import { isValidUrl } from '~/internal/utils/url';
+import { MESSAGES } from '~/locales/push/en';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const { serviceKey } = useOptions();
+  const intl = useIntl();
   const { url, platform, width, height } = useDebounce(props, 500);
 
   const [state, setState] = useState<WebshotState>({ status: 'idle' });
@@ -19,7 +22,15 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   useEffect(
     function createRequest() {
       if (!isValidUrl(url)) {
-        setState({ status: 'error', error: new Error('The URL is invalid.') });
+        setState({
+          status: 'error',
+          error: new Error(
+            intl.formatMessage({
+              id: 'preview.error.invalidUrl',
+              defaultMessage: MESSAGES['preview.error.invalidUrl'],
+            }),
+          ),
+        });
         return;
       }
 
@@ -33,7 +44,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error('Webshot failed to be loaded. Check console for more details.'),
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.webshotFail',
+                defaultMessage: MESSAGES['preview.error.webshotFail'],
+              }),
+            ),
           });
         });
     },
@@ -61,7 +77,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
             setState({
               status: 'error',
-              error: new Error('Webshot failed to be loaded. Check console for more details.'),
+              error: new Error(
+                intl.formatMessage({
+                  id: 'preview.error.webshotFail',
+                  defaultMessage: MESSAGES['preview.error.webshotFail'],
+                }),
+              ),
             });
 
             clearInterval(handler);
@@ -71,7 +92,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error('Webshot failed to be loaded. Check console for more details.'),
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.webshotFail',
+                defaultMessage: MESSAGES['preview.error.webshotFail'],
+              }),
+            ),
           });
 
           clearInterval(handler);

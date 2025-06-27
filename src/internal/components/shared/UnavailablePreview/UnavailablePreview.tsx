@@ -1,15 +1,22 @@
+import { FormattedMessage } from 'react-intl';
 import AlertIcon from '~/assets/alert.svg';
+import { MESSAGES } from '~/locales/push/en';
 
 import './UnavailablePreview.css';
 
 export function UnavailablePreview({ message, showConsoleWarning }: UnavailablePreviewProps) {
   return (
-    <div data-testid="unavailable-preview">
-      <div className="notificare__unavailable-preview__wrapper">
+    <div className="notificare__unavailable-preview__wrapper" data-testid="unavailable-preview">
+      <div className="notificare__unavailable-preview__warning">
         <AlertIcon className="notificare__unavailable-preview__alert-icon" />
 
         <div className="notificare__unavailable-preview__text-container">
-          <div className="notificare__unavailable-preview__title">Preview could not be loaded</div>
+          <div className="notificare__unavailable-preview__title">
+            <FormattedMessage
+              id="preview.error.notGeneratedPreview"
+              defaultMessage={MESSAGES['preview.error.notGeneratedPreview']}
+            />
+          </div>
           <div
             className="notificare__unavailable-preview__reason-text"
             data-testid="unavailable-preview-reason-text"
@@ -21,7 +28,10 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
 
       {showConsoleWarning && (
         <div className="notificare__unavailable-preview__check-console-text">
-          Check console for more information
+          <FormattedMessage
+            id="preview.error.checkConsole"
+            defaultMessage={MESSAGES['preview.error.checkConsole']}
+          />
         </div>
       )}
     </div>
@@ -30,5 +40,5 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
 
 export interface UnavailablePreviewProps {
   message: string;
-  showConsoleWarning: boolean;
+  showConsoleWarning?: boolean;
 }

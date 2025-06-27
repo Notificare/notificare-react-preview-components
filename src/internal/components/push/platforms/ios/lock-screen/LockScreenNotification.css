@@ -64,12 +64,12 @@
 
 .notificare .notificare__push__ios__lock-screen__text--title-or-subtitle {
     font-weight: 700;
-    width: 218px;
+    width: 210px;
 }
 
 .notificare .notificare__push__ios__lock-screen__text--expanded-title-or-subtitle {
     font-weight: 700;
-    width: 218px;
+    width: 210px;
     white-space: wrap;
     word-break: break-word;
 }

@@ -1,9 +1,12 @@
+import { FormattedMessage, useIntl } from 'react-intl';
 import LayerGroupIcon from '~/assets/layer-group.svg';
 import UserIcon from '~/assets/user.svg';
 import { useStoreRequest } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/hooks';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { timeAgo } from '~/internal/utils/time-ago';
+import { MESSAGES } from '~/locales/push/en';
 import { StarRating } from './StarRating/StarRating';
 
 import './AppRecommendationNotification.css';
@@ -13,11 +16,17 @@ export function AppRecommendationNotification({
 }: AppRecommendationNotificationProps) {
   const contentList = notification.content;
 
+  const intl = useIntl();
   const state = useStoreRequest({ contentList });
 
   return (
     <div data-testid="ios-app-ui-app-recommendation-notification">
-      <div className="notificare__push__ios__store__app-ui__bar">Done</div>
+      <div className="notificare__push__ios__store__app-ui__bar">
+        <FormattedMessage
+          id="preview.ios.store.appUi.done"
+          defaultMessage={MESSAGES['preview.ios.store.appUi.done']}
+        />
+      </div>
       <div className="notificare__push__ios__store__app-ui">
         {state.status === 'loading' && <Loading />}
 
@@ -40,7 +49,12 @@ export function AppRecommendationNotification({
                     {state.data.primaryGenreName}
                   </p>
                 </div>
-                <div className="notificare__push__ios__store__app-ui__page-install">Install</div>
+                <div className="notificare__push__ios__store__app-ui__page-install">
+                  <FormattedMessage
+                    id="preview.ios.store.appUi.install"
+                    defaultMessage={MESSAGES['preview.ios.store.appUi.install']}
+                  />
+                </div>
               </div>
             </div>
 
@@ -48,7 +62,11 @@ export function AppRecommendationNotification({
               <div className="notificare__push__ios__store__app-ui__page-other-app-info">
                 <div className="notificare__push__ios__store__app-ui__page-info-block">
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                    {formatNumber(state.data.userRatingCount)} RATINGS
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.ratings"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.ratings']}
+                      values={{ userRatingCount: state.data.userRatingCount }}
+                    />
                   </p>
                   <p className="notificare__push__ios__store__app-ui__page-info-block-value">
                     {state.data.averageUserRating.toFixed(1)}
@@ -58,17 +76,28 @@ export function AppRecommendationNotification({
                 </div>
 
                 <div className="notificare__push__ios__store__app-ui__page-info-block">
-                  <p className="notificare__push__ios__store__app-ui__page-info-block-title">AGE</p>
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-title">
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.age"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.age']}
+                    />
+                  </p>
                   <p className="notificare__push__ios__store__app-ui__page-info-block-value">
                     {state.data.trackContentRating}
                   </p>
                   <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
-                    Years Old
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.yearsOld"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.yearsOld']}
+                    />
                   </p>
                 </div>
                 <div className="notificare__push__ios__store__app-ui__page-info-block">
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                    CATEGORY
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.category"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.category']}
+                    />
                   </p>
                   <LayerGroupIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
                   <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
@@ -77,7 +106,10 @@ export function AppRecommendationNotification({
                 </div>
                 <div className="notificare__push__ios__store__app-ui__page-info-block">
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                    DEVELOPER
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.developer"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.developer']}
+                    />
                   </p>
                   <UserIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
                   <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
@@ -89,14 +121,21 @@ export function AppRecommendationNotification({
 
             <div className="notificare__push__ios__store__app-ui__page-history">
               <p className="notificare__push__ios__store__app-ui__page-history-title">
-                What&#39;s New
+                <FormattedMessage
+                  id="preview.ios.store.appUi.whatsNew"
+                  defaultMessage={MESSAGES['preview.ios.store.appUi.whatsNew']}
+                />
               </p>
               <div className="notificare__push__ios__store__app-ui__page-history-version-last-update">
                 <p className="notificare__push__ios__store__app-ui__page-history-version">
-                  Version {state.data.version}
+                  <FormattedMessage
+                    id="preview.ios.store.appUi.historyVersion"
+                    defaultMessage={MESSAGES['preview.ios.store.appUi.historyVersion']}
+                    values={{ version: state.data.version }}
+                  />
                 </p>
                 <p className="notificare__push__ios__store__app-ui__page-history-last-update">
-                  {timeAgo(state.data.currentVersionReleaseDate)}
+                  {timeAgo(state.data.currentVersionReleaseDate, intl.locale)}
                 </p>
               </div>
               <p className="notificare__push__ios__store__app-ui__page-history-notes">
@@ -105,7 +144,12 @@ export function AppRecommendationNotification({
             </div>
 
             <div className="notificare__push__ios__store__app-ui__page-previews">
-              <p className="notificare__push__ios__store__app-ui__page-previews-title">Preview</p>
+              <p className="notificare__push__ios__store__app-ui__page-previews-title">
+                <FormattedMessage
+                  id="preview.ios.store.appUi.screenshots"
+                  defaultMessage={MESSAGES['preview.ios.store.appUi.screenshots']}
+                />
+              </p>
               <div className="notificare__push__ios__store__app-ui__page-previews-images">
                 <img
                   src={state.data.screenshotUrls[0]}
@@ -128,39 +172,4 @@ export function AppRecommendationNotification({
 
 export interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
-}
-
-function timeAgo(isoDate: string) {
-  const date = new Date(isoDate);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-
-  const intervals: { value: number; label: string }[] = [
-    { value: 60, label: 'second' },
-    { value: 60 * 60, label: 'minute' },
-    { value: 60 * 60 * 24, label: 'hour' },
-    { value: 60 * 60 * 24 * 7, label: 'day' },
-    { value: 60 * 60 * 24 * 30, label: 'week' },
-    { value: 60 * 60 * 24 * 365, label: 'month' },
-    { value: Infinity, label: 'year' },
-  ];
-
-  for (let i = 0; i < intervals.length; i++) {
-    const { value, label } = intervals[i];
-    if (diffInSeconds < value) {
-      const count = Math.floor(diffInSeconds / (intervals[i - 1]?.value || 1));
-      return count <= 1 ? `a ${label} ago` : `${count} ${label}s ago`;
-    }
-  }
-
-  return 'a long time ago';
-}
-
-function formatNumber(num: number): string {
-  if (num >= 1_000_000) {
-    return (num / 1_000_000).toFixed(1) + 'M';
-  } else if (num >= 1_000) {
-    return (num / 1_000).toFixed(1) + 'K';
-  }
-  return num.toString();
 }

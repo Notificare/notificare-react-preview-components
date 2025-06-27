@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
@@ -6,6 +7,7 @@ import { IOSPhoneBackground } from '~/internal/components/shared/IOSPhoneBackgro
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { useOptions } from '~/internal/context/options';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { MESSAGES } from '~/locales/push/en';
 import { AppRecommendationNotification } from './app-ui/AppRecommendationNotification/AppRecommendationNotification';
 import { DigitalCardNotification } from './app-ui/DigitalCardNotification/DigitalCardNotification';
 import { ImagesNotification } from './app-ui/ImagesNotification/ImagesNotification';
@@ -25,6 +27,7 @@ export function NotificationIOSPreview({
   previewState,
 }: NotificationIOSPreviewProps) {
   const { googleMapsAPIKey } = useOptions();
+  const intl = useIntl();
 
   if (
     notification.type === 're.notifica.notification.Map' &&
@@ -33,7 +36,10 @@ export function NotificationIOSPreview({
   ) {
     return (
       <UnavailablePreview
-        message="→ A Google Maps API key should be provided"
+        message={intl.formatMessage({
+          id: 'preview.error.provideGoogleMapsApiKey',
+          defaultMessage: MESSAGES['preview.error.provideGoogleMapsApiKey'],
+        })}
         showConsoleWarning={false}
       />
     );

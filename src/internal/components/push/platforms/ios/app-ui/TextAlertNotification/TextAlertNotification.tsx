@@ -1,12 +1,12 @@
+import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasSingleAction, hasMultipleActions } from '~/internal/utils/push-previews/notification';
+import { MESSAGES } from '~/locales/push/en';
 
 import './TextAlertNotification.css';
 
-export function TextAlertNotification({
-  notification,
-}: TextAlertNotificationProps) {
+export function TextAlertNotification({ notification }: TextAlertNotificationProps) {
   const application = useApplication();
 
   return (
@@ -24,7 +24,12 @@ export function TextAlertNotification({
         <div className="notificare__push__ios__alert__app-ui__actions">
           {hasSingleAction(notification) ? (
             <div className="notificare__push__ios__alert__app-ui__actions-single">
-              <div className="notificare__push__ios__alert__app-ui__single-cancel">Cancel</div>
+              <div className="notificare__push__ios__alert__app-ui__single-cancel">
+                <FormattedMessage
+                  id="preview.ios.alert.appUi.cancel"
+                  defaultMessage={MESSAGES['preview.ios.alert.appUi.cancel']}
+                />
+              </div>
               <div
                 className="notificare__push__ios__alert__app-ui__action notificare__push__ios__alert__app-ui__action--single"
                 data-testid="ios-app-ui-text-alert-notification-single-action"
@@ -43,10 +48,20 @@ export function TextAlertNotification({
                   {action.label}
                 </div>
               ))}
-              <div className="notificare__push__ios__alert__app-ui__multiple-cancel">Cancel</div>
+              <div className="notificare__push__ios__alert__app-ui__multiple-cancel">
+                <FormattedMessage
+                  id="preview.ios.alert.appUi.cancel"
+                  defaultMessage={MESSAGES['preview.ios.alert.appUi.cancel']}
+                />
+              </div>
             </div>
           ) : (
-            <div className="notificare__push__ios__alert__app-ui__no-actions">OK</div>
+            <div className="notificare__push__ios__alert__app-ui__no-actions">
+              <FormattedMessage
+                id="preview.ios.alert.appUi.ok"
+                defaultMessage={MESSAGES['preview.ios.alert.appUi.ok']}
+              />
+            </div>
           )}
         </div>
       </div>
