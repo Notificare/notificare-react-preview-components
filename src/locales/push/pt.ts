@@ -1,4 +1,4 @@
-import { NotificarePushTranslationKey } from '~/locales/push/en';
+import { NotificarePushTranslationKey } from '~/locales';
 
 export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'controls.platform': 'Plataforma',

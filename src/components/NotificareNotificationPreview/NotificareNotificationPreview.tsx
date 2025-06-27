@@ -6,9 +6,10 @@ import { NotificationValidationError } from '~/internal/components/push/validati
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { OptionsProvider } from '~/internal/context/options';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
-import { MESSAGES, NotificarePushTranslationKey } from '~/locales/push/en';
+import { NotificarePushTranslationKey } from '~/locales';
+import { MESSAGES } from '~/locales/push/en';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
-import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-language';
+import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-locale';
 
 import '~/preset.css';
 

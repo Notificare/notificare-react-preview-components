@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { ZodIssue } from 'zod';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
@@ -9,7 +10,9 @@ import './NotificationValidationError.css';
 export function NotificationValidationError({ errors }: NotificationValidationErrorProps) {
   const intl = useIntl();
 
-  showNotificationErrors(errors);
+  useEffect(() => {
+    showNotificationErrors(errors);
+  }, [errors]);
 
   return (
     <UnavailablePreview
