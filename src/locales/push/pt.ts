@@ -15,7 +15,7 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'preview.error.provideGoogleMapsApiKey': '→ Deve ser fornecida uma chave de API do Google Maps',
   'preview.error.notSupportedPreviewVariant': '→ Variante não suportada',
   'preview.error.invalidUrl': 'A URL é inválida.',
-  'preview.error.appleStoreAppNotFound':
+  'preview.error.iosStoreAppNotFound':
     'A aplicação não foi encontrada. Verifique o identificador único e tente novamente.',
   'preview.error.webshotFail':
     'Não foi possível efetuar a captura da página web. Consulte a consola para mais informações.',
@@ -36,7 +36,7 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'preview.ios.rate.appUi.doNotRate': 'Não, obrigado',
   'preview.ios.store.appUi.done': 'OK',
   'preview.ios.store.appUi.install': 'Obter',
-  'preview.ios.store.appUi.ratings': '{userRatingCount} Classificações',
+  'preview.ios.store.appUi.ratings': '{userRatingCount, number, ::compact-short} Classificações',
   'preview.ios.store.appUi.age': 'Idade',
   'preview.ios.store.appUi.yearsOld': 'Anos',
   'preview.ios.store.appUi.category': 'Categoria',

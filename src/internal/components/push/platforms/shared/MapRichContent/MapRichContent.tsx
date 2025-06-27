@@ -12,6 +12,7 @@ import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewE
 import { useOptions } from '~/internal/context/options';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { getMarkersFromNotification } from '~/internal/utils/push-previews/notification';
+import { MESSAGES } from '~/locales/push/en';
 
 import './MapRichContent.css';
 
@@ -79,11 +80,21 @@ function MapWithStatus({
       {apiLoadStatus === APILoadingStatus.LOADING && <Loading />}
 
       {apiLoadStatus === APILoadingStatus.AUTH_FAILURE && (
-        <PreviewError message={intl.formatMessage({ id: 'preview.error.googleMapsAuthFailure' })} />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.googleMapsAuthFailure',
+            defaultMessage: MESSAGES['preview.error.googleMapsAuthFailure'],
+          })}
+        />
       )}
 
       {apiLoadStatus === APILoadingStatus.FAILED && (
-        <PreviewError message={intl.formatMessage({ id: 'preview.error.googleMapsLoadFailure' })} />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.googleMapsLoadFailure',
+            defaultMessage: MESSAGES['preview.error.googleMapsLoadFailure'],
+          })}
+        />
       )}
 
       {apiLoadStatus === APILoadingStatus.LOADED && (

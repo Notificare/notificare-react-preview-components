@@ -11,6 +11,7 @@ import {
   NotificareNotificationSchema,
   NotificareNotificationType,
 } from '~/internal/schemas/notificare-notification';
+import { MESSAGES } from '~/locales/push/en';
 import { WebMobileAppUINotification } from './app-ui/mobile/WebMobileAppUINotification';
 import { WebMacOSNotification } from './lockscreen/WebMacOSNotification';
 
@@ -35,7 +36,10 @@ export function NotificationWebPreview({
         case 'lockscreen-expanded':
           return (
             <UnavailablePreview
-              message={intl.formatMessage({ id: 'preview.error.notSupportedPreviewVariant' })}
+              message={intl.formatMessage({
+                id: 'preview.error.notSupportedPreviewVariant',
+                defaultMessage: MESSAGES['preview.error.notSupportedPreviewVariant'],
+              })}
               showConsoleWarning={false}
             />
           );
@@ -46,6 +50,8 @@ export function NotificationWebPreview({
                 message={intl.formatMessage(
                   {
                     id: 'preview.error.notSupportedNotificationTypePreviewVariant',
+                    defaultMessage:
+                      MESSAGES['preview.error.notSupportedNotificationTypePreviewVariant'],
                   },
                   { notificationType: notification.type },
                 )}
@@ -59,6 +65,7 @@ export function NotificationWebPreview({
               <UnavailablePreview
                 message={intl.formatMessage({
                   id: 'preview.error.provideGoogleMapsApiKey',
+                  defaultMessage: MESSAGES['preview.error.provideGoogleMapsApiKey'],
                 })}
                 showConsoleWarning={false}
               />

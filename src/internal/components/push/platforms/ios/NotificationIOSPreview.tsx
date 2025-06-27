@@ -7,6 +7,7 @@ import { IOSPhoneBackground } from '~/internal/components/shared/IOSPhoneBackgro
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { useOptions } from '~/internal/context/options';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { MESSAGES } from '~/locales/push/en';
 import { AppRecommendationNotification } from './app-ui/AppRecommendationNotification/AppRecommendationNotification';
 import { DigitalCardNotification } from './app-ui/DigitalCardNotification/DigitalCardNotification';
 import { ImagesNotification } from './app-ui/ImagesNotification/ImagesNotification';
@@ -35,7 +36,10 @@ export function NotificationIOSPreview({
   ) {
     return (
       <UnavailablePreview
-        message={intl.formatMessage({ id: 'preview.error.provideGoogleMapsApiKey' })}
+        message={intl.formatMessage({
+          id: 'preview.error.provideGoogleMapsApiKey',
+          defaultMessage: MESSAGES['preview.error.provideGoogleMapsApiKey'],
+        })}
         showConsoleWarning={false}
       />
     );

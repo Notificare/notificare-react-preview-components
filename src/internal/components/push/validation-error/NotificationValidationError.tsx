@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { ZodIssue } from 'zod';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
+import { MESSAGES } from '~/locales/push/en';
 
 import '~/preset.css';
 import './NotificationValidationError.css';
@@ -16,7 +17,10 @@ export function NotificationValidationError({ errors }: NotificationValidationEr
 
   return (
     <UnavailablePreview
-      message={intl.formatMessage({ id: 'preview.error.invalidNotification' })}
+      message={intl.formatMessage({
+        id: 'preview.error.invalidNotification',
+        defaultMessage: MESSAGES['preview.error.invalidNotification'],
+      })}
       showConsoleWarning={true}
     />
   );

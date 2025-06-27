@@ -13,7 +13,7 @@ export const MESSAGES = {
   'preview.error.provideGoogleMapsApiKey': '→ A Google Maps API key should be provided',
   'preview.error.notSupportedPreviewVariant': '→ Not supported variant',
   'preview.error.invalidUrl': 'The URL is invalid.',
-  'preview.error.appleStoreAppNotFound':
+  'preview.error.iosStoreAppNotFound':
     'The app was not found. Check the unique identifier and try again.',
   'preview.error.webshotFail': 'Webshot failed to be loaded. Check console for more details.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
@@ -33,7 +33,7 @@ export const MESSAGES = {
   'preview.ios.rate.appUi.doNotRate': 'No, Thanks',
   'preview.ios.store.appUi.done': 'Done',
   'preview.ios.store.appUi.install': 'Install',
-  'preview.ios.store.appUi.ratings': '{userRatingCount} Ratings',
+  'preview.ios.store.appUi.ratings': '{userRatingCount, number, ::compact-short} Ratings',
   'preview.ios.store.appUi.age': 'Age',
   'preview.ios.store.appUi.yearsOld': 'Years Old',
   'preview.ios.store.appUi.category': 'Category',

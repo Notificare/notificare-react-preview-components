@@ -9,6 +9,7 @@ import {
 } from '~/internal/network/requests/webshot';
 import { RequestState } from '~/internal/network/state';
 import { isValidUrl } from '~/internal/utils/url';
+import { MESSAGES } from '~/locales/push/en';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const { serviceKey } = useOptions();
@@ -23,7 +24,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
       if (!isValidUrl(url)) {
         setState({
           status: 'error',
-          error: new Error(intl.formatMessage({ id: 'preview.error.invalidUrl' })),
+          error: new Error(
+            intl.formatMessage({
+              id: 'preview.error.invalidUrl',
+              defaultMessage: MESSAGES['preview.error.invalidUrl'],
+            }),
+          ),
         });
         return;
       }
@@ -38,7 +44,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.webshotFail',
+                defaultMessage: MESSAGES['preview.error.webshotFail'],
+              }),
+            ),
           });
         });
     },
@@ -66,7 +77,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
             setState({
               status: 'error',
-              error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
+              error: new Error(
+                intl.formatMessage({
+                  id: 'preview.error.webshotFail',
+                  defaultMessage: MESSAGES['preview.error.webshotFail'],
+                }),
+              ),
             });
 
             clearInterval(handler);
@@ -76,7 +92,12 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
           setState({
             status: 'error',
-            error: new Error(intl.formatMessage({ id: 'preview.error.webshotFail' })),
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.webshotFail',
+                defaultMessage: MESSAGES['preview.error.webshotFail'],
+              }),
+            ),
           });
 
           clearInterval(handler);

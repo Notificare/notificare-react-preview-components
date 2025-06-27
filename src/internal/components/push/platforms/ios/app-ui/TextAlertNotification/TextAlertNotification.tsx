@@ -2,6 +2,7 @@ import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasSingleAction, hasMultipleActions } from '~/internal/utils/push-previews/notification';
+import { MESSAGES } from '~/locales/push/en';
 
 import './TextAlertNotification.css';
 
@@ -24,7 +25,10 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
           {hasSingleAction(notification) ? (
             <div className="notificare__push__ios__alert__app-ui__actions-single">
               <div className="notificare__push__ios__alert__app-ui__single-cancel">
-                <FormattedMessage id="preview.ios.alert.appUi.cancel" />
+                <FormattedMessage
+                  id="preview.ios.alert.appUi.cancel"
+                  defaultMessage={MESSAGES['preview.ios.alert.appUi.cancel']}
+                />
               </div>
               <div
                 className="notificare__push__ios__alert__app-ui__action notificare__push__ios__alert__app-ui__action--single"
@@ -45,12 +49,18 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
                 </div>
               ))}
               <div className="notificare__push__ios__alert__app-ui__multiple-cancel">
-                <FormattedMessage id="preview.ios.alert.appUi.cancel" />
+                <FormattedMessage
+                  id="preview.ios.alert.appUi.cancel"
+                  defaultMessage={MESSAGES['preview.ios.alert.appUi.cancel']}
+                />
               </div>
             </div>
           ) : (
             <div className="notificare__push__ios__alert__app-ui__no-actions">
-              <FormattedMessage id="preview.ios.alert.appUi.ok" />
+              <FormattedMessage
+                id="preview.ios.alert.appUi.ok"
+                defaultMessage={MESSAGES['preview.ios.alert.appUi.ok']}
+              />
             </div>
           )}
         </div>

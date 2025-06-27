@@ -6,6 +6,7 @@ import XMarkIcon from '~/assets/x-mark.svg';
 import { useOptions } from '~/internal/context/options';
 import { getPushAPIHost } from '~/internal/network/api';
 import { getTopLevelDomain, isSecureUrl } from '~/internal/utils/url';
+import { MESSAGES } from '~/locales/push/en';
 
 import './InAppBrowserBar.css';
 
@@ -48,7 +49,10 @@ export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowser
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--title">
           {!status.isLoading && canShow
             ? pageTitle
-            : intl.formatMessage({ id: 'preview.android.inAppBrowser.appUi.pageTitleLoading' })}
+            : intl.formatMessage({
+                id: 'preview.android.inAppBrowser.appUi.pageTitleLoading',
+                defaultMessage: MESSAGES['preview.android.inAppBrowser.appUi.pageTitleLoading'],
+              })}
         </p>
         <p className="notificare__push__android__in-app-browser__app-ui__bar-text notificare__push__android__in-app-browser__app-ui__bar-text--url">
           {getTopLevelDomain(url)}

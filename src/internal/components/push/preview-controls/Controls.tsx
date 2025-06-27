@@ -7,6 +7,7 @@ import IOSIcon from '~/assets/ios.svg';
 import PhoneIcon from '~/assets/phone.svg';
 import { Selector } from '~/internal/components/shared/Selector/Selector';
 import { ToggleGroup } from '~/internal/components/shared/ToggleGroup/ToggleGroup';
+import { MESSAGES } from '~/locales/push/en';
 import {
   NotificationPreviewDesktopOperatingSystem,
   NotificationPreviewDisplayMode,
@@ -98,7 +99,10 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
     <div className="notificare__push__preview-controls" data-testid="controls">
       <div className="notificare__push__preview-controls-toggle-groups">
         <ToggleGroup
-          label={intl.formatMessage({ id: 'controls.platform' })}
+          label={intl.formatMessage({
+            id: 'controls.platform',
+            defaultMessage: MESSAGES['controls.platform'],
+          })}
           options={PLATFORM_OPTIONS}
           value={previewState.platform}
           onValueChanged={handlePlatformChanged}
@@ -106,7 +110,10 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
 
         {previewState.platform === 'web' && (
           <ToggleGroup
-            label={intl.formatMessage({ id: 'controls.formFactor' })}
+            label={intl.formatMessage({
+              id: 'controls.formFactor',
+              defaultMessage: MESSAGES['controls.formFactor'],
+            })}
             options={FORM_FACTOR_OPTIONS}
             value={previewState.formFactor}
             onValueChanged={handleFormFactorChanged}
@@ -115,7 +122,10 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
 
         {previewState.platform === 'web' && previewState.formFactor === 'phone' && (
           <ToggleGroup
-            label={intl.formatMessage({ id: 'controls.operatingSystem' })}
+            label={intl.formatMessage({
+              id: 'controls.operatingSystem',
+              defaultMessage: MESSAGES['controls.operatingSystem'],
+            })}
             options={MOBILE_OPERATING_SYSTEM_OPTIONS}
             value={previewState.os}
             onValueChanged={handleOperatingSystemChanged}
@@ -125,7 +135,10 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
 
       {(previewState.platform === 'android' || previewState.platform === 'ios') && (
         <Selector
-          label={intl.formatMessage({ id: 'controls.variant' })}
+          label={intl.formatMessage({
+            id: 'controls.variant',
+            defaultMessage: MESSAGES['controls.variant'],
+          })}
           options={DISPLAY_MODE_OPTIONS}
           value={previewState.displayMode}
           onValueChanged={handleDisplayModeChanged}
@@ -134,7 +147,10 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
 
       {previewState.platform === 'web' && previewState.formFactor === 'desktop' && (
         <Selector
-          label={intl.formatMessage({ id: 'controls.operatingSystem' })}
+          label={intl.formatMessage({
+            id: 'controls.operatingSystem',
+            defaultMessage: MESSAGES['controls.operatingSystem'],
+          })}
           options={DESKTOP_OPERATING_SYSTEM_OPTIONS}
           value={previewState.os}
           disabled
@@ -143,7 +159,10 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
 
       {previewState.platform === 'web' && previewState.formFactor === 'phone' && (
         <Selector
-          label={intl.formatMessage({ id: 'controls.variant' })}
+          label={intl.formatMessage({
+            id: 'controls.variant',
+            defaultMessage: MESSAGES['controls.variant'],
+          })}
           options={DISPLAY_MODE_OPTIONS}
           value="app-ui"
           disabled
@@ -224,16 +243,36 @@ const MOBILE_OPERATING_SYSTEM_OPTIONS = [
   },
 ] satisfies Array<{ value: NotificationPreviewMobileOperatingSystem; icon: ReactNode }>;
 
-const DESKTOP_OPERATING_SYSTEM_OPTIONS = [{ value: 'macos', label: 'macOS' }] satisfies Array<{
+const DESKTOP_OPERATING_SYSTEM_OPTIONS = [
+  {
+    value: 'macos',
+    labelId: 'controls.operatingSystem.macos',
+    defaultLabel: MESSAGES['controls.operatingSystem.macos'],
+  },
+] satisfies Array<{
   value: NotificationPreviewDesktopOperatingSystem;
-  label: string;
+  labelId: string;
+  defaultLabel: string;
 }>;
 
 const DISPLAY_MODE_OPTIONS = [
-  { value: 'lockscreen', label: 'controls.displayMode.lockScreen' },
-  { value: 'lockscreen-expanded', label: 'controls.displayMode.expandedLockScreen' },
-  { value: 'app-ui', label: 'controls.displayMode.appUi' },
+  {
+    value: 'lockscreen',
+    labelId: 'controls.displayMode.lockScreen',
+    defaultLabel: MESSAGES['controls.displayMode.lockScreen'],
+  },
+  {
+    value: 'lockscreen-expanded',
+    labelId: 'controls.displayMode.expandedLockScreen',
+    defaultLabel: MESSAGES['controls.displayMode.expandedLockScreen'],
+  },
+  {
+    value: 'app-ui',
+    labelId: 'controls.displayMode.appUi',
+    defaultLabel: MESSAGES['controls.displayMode.appUi'],
+  },
 ] satisfies Array<{
   value: NotificationPreviewDisplayMode;
-  label: string;
+  labelId: string;
+  defaultLabel: string;
 }>;

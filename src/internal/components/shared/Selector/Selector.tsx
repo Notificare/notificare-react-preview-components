@@ -26,11 +26,7 @@ export function Selector<T extends Key>({
       throw new Error(`Value "${String(value)}" not found in the Selector options.`);
     }
 
-    return loadOptionLabel(option.label);
-  }
-
-  function loadOptionLabel(label: string) {
-    return intl.formatMessage({ id: label });
+    return intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel });
   }
 
   useOutsideClick({
@@ -61,11 +57,13 @@ export function Selector<T extends Key>({
               onClick={() => {
                 onValueChanged?.(option.value);
                 setExpanded(false);
-                setCurrentOptionLabel(loadOptionLabel(option.label));
+                setCurrentOptionLabel(
+                  intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel }),
+                );
               }}
               data-testid={`selector-option-${option.value}`}
             >
-              {loadOptionLabel(option.label)}
+              {intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel })}
             </button>
           ))}
         </div>
@@ -76,7 +74,7 @@ export function Selector<T extends Key>({
 
 export interface SelectorProps<T> {
   label: string;
-  options: { value: T; label: string }[];
+  options: { value: T; labelId: string; defaultLabel: string }[];
   value: T;
   onValueChanged?: (value: T) => void;
   disabled?: boolean;
