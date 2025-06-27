@@ -1,10 +1,7 @@
-import {
-  IosStoreApps,
-  IosStoreAppData,
-} from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-apps';
+import { IosStoreApps } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-apps';
 import { NetworkRequestError } from '~/internal/network/errors';
 
-export async function fetchIosStoreApp(appId: string): Promise<IosStoreAppData> {
+export async function fetchIosStoreApp(appId: string): Promise<IosStoreApps> {
   const url = new URL('/lookup', 'https://itunes.apple.com');
   url.searchParams.set('country', 'NL');
   url.searchParams.set('id', appId);
@@ -18,11 +15,5 @@ export async function fetchIosStoreApp(appId: string): Promise<IosStoreAppData> 
     throw new NetworkRequestError(response);
   }
 
-  const data: IosStoreApps = await response.json();
-
-  if (data.resultCount === 0) {
-    throw new Error('The app was not found. Check the identifier and try again.');
-  }
-
-  return data.results[0];
+  return await response.json();
 }

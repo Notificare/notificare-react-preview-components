@@ -16,7 +16,7 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'preview.error.notSupportedPreviewVariant': '→ Variante não suportada',
   'preview.error.invalidUrl': 'A URL é inválida.',
   'preview.error.iosStoreAppNotFound':
-    'A aplicação não foi encontrada. Verifique o identificador único e tente novamente.',
+    'A aplicação não foi encontrada. Verifique o identificador único e tente novamente',
   'preview.error.webshotFail':
     'Não foi possível efetuar a captura da página web. Consulte a consola para mais informações.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
@@ -25,6 +25,9 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
     'Falha de autenticação. A chave da API do Google Maps poderá ser inválida. Consulte a consola para mais informações.',
   'preview.error.googleMapsLoadFailure':
     'Não foi possível carregar o Google Maps. Consulte a consola para mais informações.',
+  'preview.error.noValidContentObject': 'Nenhum objeto válido foi fornecido',
+  'preview.error.iosStoreAppLoadFailure':
+    'Não foi possível carregar a aplicação. Consulte a consola para mais informações',
   'preview.android.alert.appUi.cancel': 'Cancelar',
   'preview.android.inAppBrowser.appUi.pageTitleLoading': 'A carregar...',
   'preview.android.lockscreen.time': 'agora',
