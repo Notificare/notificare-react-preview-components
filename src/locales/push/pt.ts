@@ -36,7 +36,7 @@ export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
   'preview.ios.rate.appUi.doNotRate': 'Não, obrigado',
   'preview.ios.store.appUi.done': 'OK',
   'preview.ios.store.appUi.install': 'Obter',
-  'preview.ios.store.appUi.ratings': '{userRatingCount} Classificações',
+  'preview.ios.store.appUi.ratings': '{userRatingCount, number, ::compact-short} Classificações',
   'preview.ios.store.appUi.age': 'Idade',
   'preview.ios.store.appUi.yearsOld': 'Anos',
   'preview.ios.store.appUi.category': 'Categoria',

@@ -1,5 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
+import { MESSAGES } from '~/locales/push/en';
 
 import './RateNotification.css';
 
@@ -13,11 +14,14 @@ export function RateNotification({ title }: RateAppNotificationProps) {
         <div className="notificare__push__ios__rate__app-ui__action">
           <FormattedMessage
             id="preview.ios.rate.appUi.rateNow"
-            defaultMessage="Yes, I'll Rate Now"
+            defaultMessage={MESSAGES['preview.ios.rate.appUi.rateNow']}
           />
         </div>
         <div className="notificare__push__ios__rate__app-ui__action">
-          <FormattedMessage id="preview.ios.rate.appUi.doNotRate" defaultMessage="No, Thanks" />
+          <FormattedMessage
+            id="preview.ios.rate.appUi.doNotRate"
+            defaultMessage={MESSAGES['preview.ios.rate.appUi.doNotRate']}
+          />
         </div>
       </div>
     </div>

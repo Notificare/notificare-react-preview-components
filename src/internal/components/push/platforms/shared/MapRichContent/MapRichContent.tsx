@@ -12,6 +12,7 @@ import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewE
 import { useOptions } from '~/internal/context/options';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { getMarkersFromNotification } from '~/internal/utils/push-previews/notification';
+import { MESSAGES } from '~/locales/push/en';
 
 import './MapRichContent.css';
 
@@ -82,8 +83,7 @@ function MapWithStatus({
         <PreviewError
           message={intl.formatMessage({
             id: 'preview.error.googleMapsAuthFailure',
-            defaultMessage:
-              'Authentication failure. Your Google Maps API key might be invalid. Check console for more information.',
+            defaultMessage: MESSAGES['preview.error.googleMapsAuthFailure'],
           })}
         />
       )}
@@ -92,7 +92,7 @@ function MapWithStatus({
         <PreviewError
           message={intl.formatMessage({
             id: 'preview.error.googleMapsLoadFailure',
-            defaultMessage: 'Google Maps failed to be loaded. Check console for more information.',
+            defaultMessage: MESSAGES['preview.error.googleMapsLoadFailure'],
           })}
         />
       )}

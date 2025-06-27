@@ -5,6 +5,7 @@ import GoogleChromeIcon from '~/assets/google-chrome.svg';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
+import { MESSAGES } from '~/locales/push/en';
 import { ExpandButton } from './ExpandButton/ExpandButton';
 
 import './WebMacOSNotification.css';
@@ -96,7 +97,10 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
       {!mouseOverNotification && !expanded && !isClosing && (
         <div className="notificare__push__web__desktop__lock-screen__time-container">
           <p className="notificare__push__web__desktop__lock-screen__time">
-            <FormattedMessage id="preview.web.desktop.macos.lockScreen.time" defaultMessage="now" />
+            <FormattedMessage
+              id="preview.web.desktop.macos.lockScreen.time"
+              defaultMessage={MESSAGES['preview.web.desktop.macos.lockScreen.time']}
+            />
           </p>
         </div>
       )}
@@ -145,7 +149,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
                 >
                   <FormattedMessage
                     id="preview.web.desktop.macos.lockScreen.options"
-                    defaultMessage="Options"
+                    defaultMessage={MESSAGES['preview.web.desktop.macos.lockScreen.options']}
                   />
                   <ExpandIcon className="notificare__push__web__desktop__lock-screen__settings-button-expand-icon" />
                 </button>
@@ -165,7 +169,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
                     <button className="notificare__push__web__desktop__lock-screen__settings-selector-option">
                       <FormattedMessage
                         id="preview.web.desktop.macos.lockScreen.settings"
-                        defaultMessage="Settings"
+                        defaultMessage={MESSAGES['preview.web.desktop.macos.lockScreen.settings']}
                       />
                     </button>
                   </div>
@@ -175,7 +179,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
               <button className="notificare__push__web__desktop__lock-screen__settings-button">
                 <FormattedMessage
                   id="preview.web.desktop.macos.lockScreen.settings"
-                  defaultMessage="Settings"
+                  defaultMessage={MESSAGES['preview.web.desktop.macos.lockScreen.settings']}
                 />
               </button>
             )}

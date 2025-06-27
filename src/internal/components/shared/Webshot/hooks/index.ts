@@ -9,6 +9,7 @@ import {
 } from '~/internal/network/requests/webshot';
 import { RequestState } from '~/internal/network/state';
 import { isValidUrl } from '~/internal/utils/url';
+import { MESSAGES } from '~/locales/push/en';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const { serviceKey } = useOptions();
@@ -26,7 +27,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
           error: new Error(
             intl.formatMessage({
               id: 'preview.error.invalidUrl',
-              defaultMessage: 'The URL is invalid.',
+              defaultMessage: MESSAGES['preview.error.invalidUrl'],
             }),
           ),
         });
@@ -46,7 +47,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
             error: new Error(
               intl.formatMessage({
                 id: 'preview.error.webshotFail',
-                defaultMessage: 'Webshot failed to be loaded. Check console for more details.',
+                defaultMessage: MESSAGES['preview.error.webshotFail'],
               }),
             ),
           });
@@ -79,7 +80,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
               error: new Error(
                 intl.formatMessage({
                   id: 'preview.error.webshotFail',
-                  defaultMessage: 'Webshot failed to be loaded. Check console for more details.',
+                  defaultMessage: MESSAGES['preview.error.webshotFail'],
                 }),
               ),
             });
@@ -94,7 +95,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
             error: new Error(
               intl.formatMessage({
                 id: 'preview.error.webshotFail',
-                defaultMessage: 'Webshot failed to be loaded. Check console for more details.',
+                defaultMessage: MESSAGES['preview.error.webshotFail'],
               }),
             ),
           });
