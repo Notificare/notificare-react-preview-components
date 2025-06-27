@@ -7,7 +7,7 @@ import { MESSAGES_PT } from '~/locales/push/pt';
 
 const SUPPORTED_LOCALES = ['en-GB', 'pt-PT'] as const;
 
-export function useLocalisationLoader({ locale, messages }: LocalisationLoaderParams) {
+export function useLocalizationLoader({ locale, messages }: LocalizationLoaderParams) {
   const [state, setState] = useState<LocalisationLoaderState>({ status: 'idle' });
 
   const localeMessages = useMemo(() => {
@@ -57,7 +57,7 @@ export function useLocalisationLoader({ locale, messages }: LocalisationLoaderPa
   return state;
 }
 
-export type LocalisationLoaderParams = {
+export type LocalizationLoaderParams = {
   locale: string;
   messages?: Partial<Record<NotificarePushTranslationKey, string>>;
 };
@@ -70,10 +70,11 @@ export type LocalisationLoaderState = Exclude<
 type SupportedLocales = (typeof SUPPORTED_LOCALES)[number];
 
 function getMessagesForLocale(locale: SupportedLocales) {
-  const messages = {
-    'en-GB': MESSAGES,
-    'pt-PT': MESSAGES_PT,
-  };
+  switch (locale) {
+    case 'en-GB':
+      return MESSAGES;
 
-  return messages[locale];
+    case 'pt-PT':
+      return MESSAGES_PT;
+  }
 }

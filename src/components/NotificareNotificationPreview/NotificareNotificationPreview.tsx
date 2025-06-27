@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
-import { useLocalisationLoader } from '~/components/NotificareNotificationPreview/hooks/localisation-loader';
+import { useLocalizationLoader } from '~/components/NotificareNotificationPreview/hooks/localization-loader';
 import { NotificationPreviewWrapper } from '~/internal/components/push/preview-wrapper/NotificationPreviewWrapper';
 import { NotificationValidationError } from '~/internal/components/push/validation-error/NotificationValidationError';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
@@ -35,7 +35,7 @@ export function NotificareNotificationPreview({
   locale = 'en-GB',
   messages,
 }: NotificareNotificationPreviewProps) {
-  const localisation = useLocalisationLoader({ locale, messages });
+  const localization = useLocalizationLoader({ locale, messages });
 
   const notificationResult = useMemo(() => {
     return NotificationSchema.safeParse(notification);
@@ -43,11 +43,11 @@ export function NotificareNotificationPreview({
 
   return (
     <div className="notificare">
-      {localisation.status === 'success' && (
+      {localization.status === 'success' && (
         <IntlProvider
-          locale={localisation.data.locale}
+          locale={localization.data.locale}
           defaultLocale="en-GB"
-          messages={localisation.data.messages}
+          messages={localization.data.messages}
         >
           <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
             {notificationResult.success ? (
@@ -64,9 +64,9 @@ export function NotificareNotificationPreview({
         </IntlProvider>
       )}
 
-      {localisation.status === 'error' && (
+      {localization.status === 'error' && (
         <IntlProvider locale="en-GB" messages={MESSAGES}>
-          <UnavailablePreview message={localisation.error.message} />
+          <UnavailablePreview message={localization.error.message} />
         </IntlProvider>
       )}
     </div>
