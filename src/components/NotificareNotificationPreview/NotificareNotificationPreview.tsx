@@ -1,63 +1,17 @@
-import { useState } from 'react';
-import { ZodIssue } from 'zod';
-import { NotificationPreviewState } from '~/internal/components/push/notification-preview-state';
-import { NotificationPreview } from '~/internal/components/push/NotificationPreview';
-import { Controls } from '~/internal/components/push/preview-controls/Controls';
-import { Loading } from '~/internal/components/shared/Loading/Loading';
+import { useMemo } from 'react';
+import { IntlProvider } from 'react-intl';
+import { useLocalizationLoader } from '~/components/NotificareNotificationPreview/hooks/localization-loader';
+import { NotificationPreviewWrapper } from '~/internal/components/push/preview-wrapper/NotificationPreviewWrapper';
+import { NotificationValidationError } from '~/internal/components/push/validation-error/NotificationValidationError';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
-import { ApplicationProvider } from '~/internal/context/application';
 import { OptionsProvider } from '~/internal/context/options';
-import { useApplicationLoader } from '~/internal/hooks';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
+import { NotificarePushTranslationKey } from '~/locales';
+import { MESSAGES } from '~/locales/push/en';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
+import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-locale';
 
 import '~/preset.css';
-import './NotificareNotificationPreview.css';
-
-const DEFAULT_STATES = {
-  'android-lockscreen': {
-    platform: 'android',
-    displayMode: 'lockscreen',
-  },
-  'android-lockscreen-expanded': {
-    platform: 'android',
-    displayMode: 'lockscreen-expanded',
-  },
-  'android-app-ui': {
-    platform: 'android',
-    displayMode: 'app-ui',
-  },
-  'ios-lockscreen': {
-    platform: 'ios',
-    displayMode: 'lockscreen',
-  },
-  'ios-lockscreen-expanded': {
-    platform: 'ios',
-    displayMode: 'lockscreen-expanded',
-  },
-  'ios-app-ui': {
-    platform: 'ios',
-    displayMode: 'app-ui',
-  },
-  'web-desktop-macos': {
-    platform: 'web',
-    displayMode: 'lockscreen',
-    formFactor: 'desktop',
-    os: 'macos',
-  },
-  'web-android-app-ui': {
-    platform: 'web',
-    displayMode: 'app-ui',
-    formFactor: 'phone',
-    os: 'android',
-  },
-  'web-iphone-app-ui': {
-    platform: 'web',
-    displayMode: 'app-ui',
-    formFactor: 'phone',
-    os: 'ios',
-  },
-} satisfies Record<NotificareNotificationPreviewVariant, NotificationPreviewState>;
 
 /**
  * Component that displays a notification preview for different platforms.
@@ -68,6 +22,8 @@ const DEFAULT_STATES = {
  * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
  * @param {string} [serviceKey] - A service key provided by a Notificare admin.
  * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
+ * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-GB' by default.
+ * @param {string} [messages] - Set of custom messages to replace the translations used (optional).
  */
 export function NotificareNotificationPreview({
   notification,
@@ -76,59 +32,44 @@ export function NotificareNotificationPreview({
   variant = 'android-lockscreen',
   serviceKey,
   googleMapsAPIKey,
+  locale = 'en-GB',
+  messages,
 }: NotificareNotificationPreviewProps) {
-  const applicationState = useApplicationLoader({
-    id: applicationId,
-    serviceKey,
-  });
+  const localization = useLocalizationLoader({ locale, messages });
 
-  const [previewState, setPreviewState] = useState<NotificationPreviewState>(
-    DEFAULT_STATES[variant],
-  );
-
-  // TODO: This should be memoized since it's an expensive operation.
-  const notificationResult = NotificationSchema.safeParse(notification);
-
-  if (!notificationResult.success) {
-    showNotificationErrors(notificationResult.error.errors);
-  }
+  const notificationResult = useMemo(() => {
+    return NotificationSchema.safeParse(notification);
+  }, [notification]);
 
   return (
-    <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
-      <div className="notificare">
-        <div className="notificare__push__preview-wrapper">
-          {showControls && (
-            <Controls previewState={previewState} onPreviewStateChanged={setPreviewState} />
-          )}
+    <div className="notificare">
+      {localization.status === 'success' && (
+        <IntlProvider
+          locale={localization.data.locale}
+          defaultLocale="en-GB"
+          messages={localization.data.messages}
+        >
+          <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
+            {notificationResult.success ? (
+              <NotificationPreviewWrapper
+                notification={notificationResult.data}
+                applicationId={applicationId}
+                showControls={showControls}
+                variant={variant}
+              />
+            ) : (
+              <NotificationValidationError errors={notificationResult.error.errors} />
+            )}
+          </OptionsProvider>
+        </IntlProvider>
+      )}
 
-          {(() => {
-            switch (applicationState.status) {
-              case 'idle':
-              case 'loading':
-                return <Loading />;
-              case 'success':
-                return (
-                  <ApplicationProvider application={applicationState.data}>
-                    <div className="notificare__push__preview">
-                      {notificationResult.success ? (
-                        <NotificationPreview
-                          notification={notificationResult.data}
-                          previewState={previewState}
-                        />
-                      ) : (
-                        <UnavailablePreview
-                          message={'→ Invalid Notification'}
-                          showConsoleWarning={true}
-                        />
-                      )}
-                    </div>
-                  </ApplicationProvider>
-                );
-            }
-          })()}
-        </div>
-      </div>
-    </OptionsProvider>
+      {localization.status === 'error' && (
+        <IntlProvider locale="en-GB" messages={MESSAGES}>
+          <UnavailablePreview message={localization.error.message} />
+        </IntlProvider>
+      )}
+    </div>
   );
 }
 
@@ -139,38 +80,6 @@ export interface NotificareNotificationPreviewProps {
   variant?: NotificareNotificationPreviewVariant;
   serviceKey: string;
   googleMapsAPIKey?: string;
-}
-
-function showNotificationErrors(errors: ZodIssue[]) {
-  // Errors related to notification types and content types are handled manually here
-  // discriminatedUnion() from Zod do not support custom messages when a discriminator doesn't correspond
-
-  const invalidNotificationType = errors.find(
-    (e) =>
-      e.code === 'invalid_union_discriminator' &&
-      e.path.includes('type') &&
-      !e.path.includes('content'),
-  );
-
-  if (invalidNotificationType) {
-    const validNotificationTypes = NotificationSchema.options.map(
-      (schema) => schema.shape.type.value,
-    );
-
-    console.error(
-      `Notification error:\n\nInvalid notification type. Expected one of: ${validNotificationTypes.join(', ')}\n`,
-    );
-  } else {
-    const messages = errors.map((e) => {
-      if (
-        e.code === 'invalid_union_discriminator' &&
-        e.path.includes('type') &&
-        e.path.includes('content')
-      ) {
-        return `Invalid content type. Expected one of: ${e.options.join(', ')}\n`;
-      }
-      return e.message;
-    });
-    console.error('Notification errors:\n\n' + messages.join('\n'));
-  }
+  locale?: NotificareNotificationPreviewLocale;
+  messages?: Partial<Record<NotificarePushTranslationKey, string>>;
 }

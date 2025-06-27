@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
@@ -25,6 +26,7 @@ export function NotificationIOSPreview({
   previewState,
 }: NotificationIOSPreviewProps) {
   const { googleMapsAPIKey } = useOptions();
+  const intl = useIntl();
 
   if (
     notification.type === 're.notifica.notification.Map' &&
@@ -33,7 +35,7 @@ export function NotificationIOSPreview({
   ) {
     return (
       <UnavailablePreview
-        message="→ A Google Maps API key should be provided"
+        message={intl.formatMessage({ id: 'preview.error.provideGoogleMapsApiKey' })}
         showConsoleWarning={false}
       />
     );

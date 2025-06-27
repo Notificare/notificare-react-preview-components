@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
@@ -42,7 +43,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
               className="notificare__push__android__alert__app-ui__cancel-label"
               key="cancel-button-label"
             >
-              Cancel
+              <FormattedMessage id="preview.android.alert.appUi.cancel" />
             </p>
           </div>
         )}

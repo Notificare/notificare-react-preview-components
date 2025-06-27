@@ -1,8 +1,9 @@
 import { Key, useRef, useState } from 'react';
+import { useIntl } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
+import { useOutsideClick } from '~/internal/hooks/outside-click';
 
 import './Selector.css';
-import { useOutsideClick } from '~/internal/hooks/outside-click';
 
 export function Selector<T extends Key>({
   label,
@@ -11,10 +12,26 @@ export function Selector<T extends Key>({
   onValueChanged,
   disabled = false,
 }: SelectorProps<T>) {
-  const [expanded, setExpanded] = useState(false);
+  const intl = useIntl();
 
+  const [expanded, setExpanded] = useState(false);
+  const [currentOptionLabel, setCurrentOptionLabel] = useState<string>(loadDefaultOptionLabel);
   const optionsRef = useRef<HTMLDivElement>(null);
   const selectorButtonRef = useRef<HTMLButtonElement>(null);
+
+  function loadDefaultOptionLabel() {
+    const option = options.find((option) => option.value === value);
+
+    if (!option) {
+      throw new Error(`Value "${String(value)}" not found in the Selector options.`);
+    }
+
+    return loadOptionLabel(option.label);
+  }
+
+  function loadOptionLabel(label: string) {
+    return intl.formatMessage({ id: label });
+  }
 
   useOutsideClick({
     refs: [optionsRef, selectorButtonRef],
@@ -31,7 +48,7 @@ export function Selector<T extends Key>({
         disabled={disabled}
         ref={selectorButtonRef}
       >
-        {options.find((option) => option.value === value)?.label}
+        {currentOptionLabel}
         <ExpandIcon className="notificare__selector__button-expand-icon" />
       </button>
 
@@ -44,10 +61,11 @@ export function Selector<T extends Key>({
               onClick={() => {
                 onValueChanged?.(option.value);
                 setExpanded(false);
+                setCurrentOptionLabel(loadOptionLabel(option.label));
               }}
               data-testid={`selector-option-${option.value}`}
             >
-              {option.label}
+              {loadOptionLabel(option.label)}
             </button>
           ))}
         </div>

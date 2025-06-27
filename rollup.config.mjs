@@ -65,10 +65,7 @@ export default [
   {
     input: 'src/index.ts',
     output: [{ file: 'dist/types.d.ts', format: 'esm' }],
-    plugins: [
-      alias({ entries: getTSPathAliases() }),
-      dts(),
-    ],
+    plugins: [alias({ entries: getTSPathAliases() }), dts()],
     external: [/\.css$/],
   },
 ];
@@ -80,7 +77,6 @@ function getTSPathAliases() {
   return Object.entries(paths).flatMap(([key, values]) => {
     const find = key.replace('/*', '');
     return values.map((p) => {
-
       const replacement = path.resolve(__dirname, baseUrl, p.replace('/*', ''));
       return { find, replacement };
     });
