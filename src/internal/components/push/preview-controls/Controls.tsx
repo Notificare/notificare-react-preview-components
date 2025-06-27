@@ -225,7 +225,7 @@ const MOBILE_OPERATING_SYSTEM_OPTIONS = [
 ] satisfies Array<{ value: NotificationPreviewMobileOperatingSystem; icon: ReactNode }>;
 
 const DESKTOP_OPERATING_SYSTEM_OPTIONS = [
-  { value: 'macos', labelId: 'macOS', defaultLabel: 'macOS' },
+  { value: 'macos', labelId: 'controls.operatingSystem.macos', defaultLabel: 'macOS' },
 ] satisfies Array<{
   value: NotificationPreviewDesktopOperatingSystem;
   labelId: string;

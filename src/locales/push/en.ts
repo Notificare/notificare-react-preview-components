@@ -7,7 +7,6 @@ export const MESSAGES = {
   'controls.displayMode.lockScreen': 'Lock Screen',
   'controls.displayMode.expandedLockScreen': 'Lock Screen - Expanded',
   'controls.displayMode.appUi': 'App UI',
-  'controls.displayMode.macOs': 'macOS',
   'preview.error.notGeneratedPreview': 'Preview could not be generated',
   'preview.error.checkConsole': 'Check console for more information',
   'preview.error.invalidNotification': '→ Invalid Notification',
