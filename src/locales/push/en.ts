@@ -14,7 +14,7 @@ export const MESSAGES = {
   'preview.error.notSupportedPreviewVariant': '→ Not supported variant',
   'preview.error.invalidUrl': 'The URL is invalid.',
   'preview.error.iosStoreAppNotFound':
-    'The app was not found. Check the unique identifier and try again.',
+    'The app was not found. Check the unique identifier and try again',
   'preview.error.webshotFail': 'Webshot failed to be loaded. Check console for more details.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
     "→ Previewing notifications of type ''{notificationType}'' is not possible in this variant",
@@ -22,6 +22,9 @@ export const MESSAGES = {
     'Authentication failure. Your Google Maps API key might be invalid. Check console for more information.',
   'preview.error.googleMapsLoadFailure':
     'Google Maps failed to be loaded. Check console for more information.',
+  'preview.error.noValidContentObject': 'No valid content object was provided',
+  'preview.error.iosStoreAppLoadFailure':
+    'The app failed to be loaded. Check console for more details',
   'preview.android.alert.appUi.cancel': 'Cancel',
   'preview.android.inAppBrowser.appUi.pageTitleLoading': 'Loading...',
   'preview.android.lockscreen.time': 'now',

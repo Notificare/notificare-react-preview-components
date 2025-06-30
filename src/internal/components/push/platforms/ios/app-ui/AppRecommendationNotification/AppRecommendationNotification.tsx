@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import LayerGroupIcon from '~/assets/layer-group.svg';
 import UserIcon from '~/assets/user.svg';
+import { useStoreRequest } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/hooks';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
@@ -14,64 +14,10 @@ import './AppRecommendationNotification.css';
 export function AppRecommendationNotification({
   notification,
 }: AppRecommendationNotificationProps) {
-  const content = notification.content[0];
+  const contentList = notification.content;
+
   const intl = useIntl();
-
-  const [status, setStatus] = useState<StatusState>({
-    isLoading: true,
-    hasError: false,
-    error: '',
-  });
-  const [appStoreData, setAppStoreData] = useState<AppStoreApp>();
-
-  useEffect(
-    function loadAppData() {
-      (async () => {
-        updateComponentStatus(true, false, setStatus);
-
-        if (content.type === 're.notifica.content.AppStore') {
-          try {
-            const url = new URL('/lookup', 'https://itunes.apple.com');
-            url.searchParams.set('country', 'GB');
-            url.searchParams.set('id', content.data.identifier);
-
-            const response = await fetch(url);
-
-            const data = await response.json();
-
-            if (data.resultCount === 0) {
-              updateComponentStatus(
-                false,
-                true,
-                setStatus,
-                intl.formatMessage({
-                  id: 'preview.error.iosStoreAppNotFound',
-                  defaultMessage: MESSAGES['preview.error.iosStoreAppNotFound'],
-                }),
-              );
-            } else {
-              setAppStoreData(data);
-              updateComponentStatus(false, false, setStatus);
-            }
-          } catch (error) {
-            console.error('Error while trying to get the app information:\n\n', error);
-            updateComponentStatus(
-              false,
-              true,
-              setStatus,
-              intl.formatMessage({
-                id: 'preview.error.checkConsole',
-                defaultMessage: MESSAGES['preview.error.checkConsole'],
-              }),
-            );
-          }
-        } else {
-          updateComponentStatus(false, true, setStatus);
-        }
-      })();
-    },
-    [content.data],
-  );
+  const state = useStoreRequest({ contentList });
 
   return (
     <div data-testid="ios-app-ui-app-recommendation-notification">
@@ -82,144 +28,142 @@ export function AppRecommendationNotification({
         />
       </div>
       <div className="notificare__push__ios__store__app-ui">
-        {status.hasError ? (
-          <PreviewError message={status.error} />
-        ) : status.isLoading ? (
-          <Loading />
-        ) : (
-          appStoreData && (
-            <div className="notificare__push__ios__store__app-ui__page">
-              <div className="notificare__push__ios__store__app-ui__page-header">
-                <img
-                  src={appStoreData.results[0].artworkUrl512}
-                  className="notificare__push__ios__store__app-ui__app-icon"
-                  alt="App icon"
-                />
-                <div className="notificare__push__ios__store__app-ui__page-app-info">
-                  <div>
-                    <p className="notificare__push__ios__store__app-ui__page-app-name">
-                      {appStoreData.results[0].trackName}
-                    </p>
-                    <p className="notificare__push__ios__store__app-ui__page-app-category">
-                      {appStoreData.results[0].primaryGenreName}
-                    </p>
-                  </div>
-                  <div className="notificare__push__ios__store__app-ui__page-install">
-                    <FormattedMessage
-                      id="preview.ios.store.appUi.install"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.install']}
-                    />
-                  </div>
-                </div>
-              </div>
+        {state.status === 'loading' && <Loading />}
 
-              <div className="notificare__push__ios__store__app-ui__page-other-app-info-wrapper">
-                <div className="notificare__push__ios__store__app-ui__page-other-app-info">
-                  <div className="notificare__push__ios__store__app-ui__page-info-block">
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      <FormattedMessage
-                        id="preview.ios.store.appUi.ratings"
-                        defaultMessage={MESSAGES['preview.ios.store.appUi.ratings']}
-                        values={{ userRatingCount: appStoreData.results[0].userRatingCount }}
-                      />
-                    </p>
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-value">
-                      {appStoreData.results[0].averageUserRating.toFixed(1)}
-                    </p>
+        {state.status === 'error' && <PreviewError message={state.error.message} />}
 
-                    <StarRating rating={appStoreData.results[0].averageUserRating} />
-                  </div>
-
-                  <div className="notificare__push__ios__store__app-ui__page-info-block">
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      <FormattedMessage
-                        id="preview.ios.store.appUi.age"
-                        defaultMessage={MESSAGES['preview.ios.store.appUi.age']}
-                      />
-                    </p>
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-value">
-                      {appStoreData.results[0].trackContentRating}
-                    </p>
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
-                      <FormattedMessage
-                        id="preview.ios.store.appUi.yearsOld"
-                        defaultMessage={MESSAGES['preview.ios.store.appUi.yearsOld']}
-                      />
-                    </p>
-                  </div>
-                  <div className="notificare__push__ios__store__app-ui__page-info-block">
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      <FormattedMessage
-                        id="preview.ios.store.appUi.category"
-                        defaultMessage={MESSAGES['preview.ios.store.appUi.category']}
-                      />
-                    </p>
-                    <LayerGroupIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
-                      {appStoreData.results[0].primaryGenreName}
-                    </p>
-                  </div>
-                  <div className="notificare__push__ios__store__app-ui__page-info-block">
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-title">
-                      <FormattedMessage
-                        id="preview.ios.store.appUi.developer"
-                        defaultMessage={MESSAGES['preview.ios.store.appUi.developer']}
-                      />
-                    </p>
-                    <UserIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
-                    <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
-                      {appStoreData.results[0].sellerName}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="notificare__push__ios__store__app-ui__page-history">
-                <p className="notificare__push__ios__store__app-ui__page-history-title">
-                  <FormattedMessage
-                    id="preview.ios.store.appUi.whatsNew"
-                    defaultMessage={MESSAGES['preview.ios.store.appUi.whatsNew']}
-                  />
-                </p>
-                <div className="notificare__push__ios__store__app-ui__page-history-version-last-update">
-                  <p className="notificare__push__ios__store__app-ui__page-history-version">
-                    <FormattedMessage
-                      id="preview.ios.store.appUi.historyVersion"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.historyVersion']}
-                      values={{ version: appStoreData.results[0].version }}
-                    />
+        {state.status === 'success' && (
+          <div className="notificare__push__ios__store__app-ui__page">
+            <div className="notificare__push__ios__store__app-ui__page-header">
+              <img
+                src={state.data.artworkUrl512}
+                className="notificare__push__ios__store__app-ui__app-icon"
+                alt="App icon"
+              />
+              <div className="notificare__push__ios__store__app-ui__page-app-info">
+                <div>
+                  <p className="notificare__push__ios__store__app-ui__page-app-name">
+                    {state.data.trackName}
                   </p>
-                  <p className="notificare__push__ios__store__app-ui__page-history-last-update">
-                    {timeAgo(appStoreData.results[0].currentVersionReleaseDate, intl.locale)}
+                  <p className="notificare__push__ios__store__app-ui__page-app-category">
+                    {state.data.primaryGenreName}
                   </p>
                 </div>
-                <p className="notificare__push__ios__store__app-ui__page-history-notes">
-                  {appStoreData.results[0].releaseNotes}
-                </p>
-              </div>
-
-              <div className="notificare__push__ios__store__app-ui__page-previews">
-                <p className="notificare__push__ios__store__app-ui__page-previews-title">
+                <div className="notificare__push__ios__store__app-ui__page-install">
                   <FormattedMessage
-                    id="preview.ios.store.appUi.screenshots"
-                    defaultMessage={MESSAGES['preview.ios.store.appUi.screenshots']}
-                  />
-                </p>
-                <div className="notificare__push__ios__store__app-ui__page-previews-images">
-                  <img
-                    src={appStoreData.results[0].screenshotUrls[0]}
-                    className="notificare__push__ios__store__app-ui__page-preview-image"
-                    alt="App preview"
-                  />
-                  <img
-                    src={appStoreData.results[0].screenshotUrls[1]}
-                    className="notificare__push__ios__store__app-ui__page-preview-image"
-                    alt="App preview"
+                    id="preview.ios.store.appUi.install"
+                    defaultMessage={MESSAGES['preview.ios.store.appUi.install']}
                   />
                 </div>
               </div>
             </div>
-          )
+
+            <div className="notificare__push__ios__store__app-ui__page-other-app-info-wrapper">
+              <div className="notificare__push__ios__store__app-ui__page-other-app-info">
+                <div className="notificare__push__ios__store__app-ui__page-info-block">
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-title">
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.ratings"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.ratings']}
+                      values={{ userRatingCount: state.data.userRatingCount }}
+                    />
+                  </p>
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-value">
+                    {state.data.averageUserRating.toFixed(1)}
+                  </p>
+
+                  <StarRating rating={state.data.averageUserRating} />
+                </div>
+
+                <div className="notificare__push__ios__store__app-ui__page-info-block">
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-title">
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.age"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.age']}
+                    />
+                  </p>
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-value">
+                    {state.data.trackContentRating}
+                  </p>
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.yearsOld"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.yearsOld']}
+                    />
+                  </p>
+                </div>
+                <div className="notificare__push__ios__store__app-ui__page-info-block">
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-title">
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.category"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.category']}
+                    />
+                  </p>
+                  <LayerGroupIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
+                    {state.data.primaryGenreName}
+                  </p>
+                </div>
+                <div className="notificare__push__ios__store__app-ui__page-info-block">
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-title">
+                    <FormattedMessage
+                      id="preview.ios.store.appUi.developer"
+                      defaultMessage={MESSAGES['preview.ios.store.appUi.developer']}
+                    />
+                  </p>
+                  <UserIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
+                  <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
+                    {state.data.sellerName}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="notificare__push__ios__store__app-ui__page-history">
+              <p className="notificare__push__ios__store__app-ui__page-history-title">
+                <FormattedMessage
+                  id="preview.ios.store.appUi.whatsNew"
+                  defaultMessage={MESSAGES['preview.ios.store.appUi.whatsNew']}
+                />
+              </p>
+              <div className="notificare__push__ios__store__app-ui__page-history-version-last-update">
+                <p className="notificare__push__ios__store__app-ui__page-history-version">
+                  <FormattedMessage
+                    id="preview.ios.store.appUi.historyVersion"
+                    defaultMessage={MESSAGES['preview.ios.store.appUi.historyVersion']}
+                    values={{ version: state.data.version }}
+                  />
+                </p>
+                <p className="notificare__push__ios__store__app-ui__page-history-last-update">
+                  {timeAgo(state.data.currentVersionReleaseDate, intl.locale)}
+                </p>
+              </div>
+              <p className="notificare__push__ios__store__app-ui__page-history-notes">
+                {state.data.releaseNotes}
+              </p>
+            </div>
+
+            <div className="notificare__push__ios__store__app-ui__page-previews">
+              <p className="notificare__push__ios__store__app-ui__page-previews-title">
+                <FormattedMessage
+                  id="preview.ios.store.appUi.screenshots"
+                  defaultMessage={MESSAGES['preview.ios.store.appUi.screenshots']}
+                />
+              </p>
+              <div className="notificare__push__ios__store__app-ui__page-previews-images">
+                <img
+                  src={state.data.screenshotUrls[0]}
+                  className="notificare__push__ios__store__app-ui__page-preview-image"
+                  alt="App preview"
+                />
+                <img
+                  src={state.data.screenshotUrls[1]}
+                  className="notificare__push__ios__store__app-ui__page-preview-image"
+                  alt="App preview"
+                />
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
@@ -228,41 +172,4 @@ export function AppRecommendationNotification({
 
 export interface AppRecommendationNotificationProps {
   notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
-}
-
-type StatusState = {
-  isLoading: boolean;
-  hasError: boolean;
-  error: string;
-};
-
-type AppStoreApp = {
-  resultCount: number;
-  results: AppStoreAppData[];
-};
-
-type AppStoreAppData = {
-  artworkUrl512: string;
-  screenshotUrls: string[];
-  averageUserRating: number;
-  sellerName: string;
-  trackName: string;
-  primaryGenreName: string;
-  currentVersionReleaseDate: string;
-  releaseNotes: string;
-  version: string;
-  trackContentRating: string;
-  userRatingCount: number;
-};
-
-/* Status update */
-
-function updateComponentStatus(
-  isLoading: boolean,
-  hasError: boolean,
-  setStatus: Dispatch<SetStateAction<StatusState>>,
-  error?: string,
-) {
-  setStatus({ isLoading: isLoading, hasError: hasError, error: error || '' });
-  return;
 }
