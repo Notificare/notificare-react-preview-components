@@ -1,63 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink"
      version="1.1"
      width="900"
      height="900"
      viewBox="1709.13 1602.51 900 900"
      xml:space="preserve"
-     preserveAspectRatio="xMidYMid slice">
-    <rect x="0" y="0" width="100%" height="100%" fill="transparent" />
+     preserveAspectRatio="xMidYMid slice"
+>
+  <rect x="0" y="0" width="100%" height="100%" fill="transparent" />
 
-    <g transform="matrix(1 0 0 1 450 450)" id="background-layer">
-    <rect x="-450" y="-450" width="900" height="900"
-          style="fill: rgb(255,255,255); visibility: hidden;" />
+  <g transform="matrix(1 0 0 1 450 450)" id="background-layer">
+    <rect x="-450" y="-450" width="900" height="900" style="fill: rgb(255,255,255); visibility: hidden;" />
   </g>
 
-    <g transform="matrix(12.2 0 0 12.2 2160.42 2051.46)" id="base-square">
-    <rect x="-33.085" y="-33.085" width="66.17" height="66.17"
-          style="fill: rgb(35,44,42); stroke-width: 1;" />
+  <g transform="matrix(12.2 0 0 12.2 2160.42 2051.46)" id="base-square">
+    <rect x="-33.085" y="-33.085" width="66.17" height="66.17" style="fill: rgb(35,44,42); stroke-width: 1;" />
   </g>
 
-    <g transform="matrix(7.2 0 0 7.2 2160.42 2051.79)" id="center-circle">
-    <circle cx="0" cy="0" r="35"
-            style="fill: rgb(35,44,42); stroke: rgb(68,68,68); stroke-width: 1;" />
+  <g transform="matrix(7.2 0 0 7.2 2160.42 2051.79)" id="center-circle">
+    <circle cx="0" cy="0" r="35" style="fill: rgb(35,44,42); stroke: rgb(68,68,68); stroke-width: 1;" />
   </g>
 
-    <g transform="matrix(-10.74 -10.74 -0.05 0.05 2160.33 2052.81)" id="shape-1">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(-10.74 -10.74 -0.05 0.05 2160.33 2052.81)" id="shape-1">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 
-    <g transform="matrix(10.71 -10.71 -0.05 -0.05 2160.62 2052.92)" id="shape-2">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(10.71 -10.71 -0.05 -0.05 2160.62 2052.92)" id="shape-2">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 
-    <g transform="matrix(10.69 0 0 -0.07 2160.36 2053.16)" id="shape-3">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(10.69 0 0 -0.07 2160.36 2053.16)" id="shape-3">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 
-    <g transform="matrix(0 -10.69 -0.07 0 1896.9 2052.81)" id="shape-4">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(0 -10.69 -0.07 0 1896.9 2052.81)" id="shape-4">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 
-    <g transform="matrix(0 -10.69 -0.07 0 2423.68 2053.49)" id="shape-5">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(0 -10.69 -0.07 0 2423.68 2053.49)" id="shape-5">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 
-    <g transform="matrix(-10.69 0 0 0.07 2160.38 1790.29)" id="shape-6">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(-10.69 0 0 0.07 2160.38 1790.29)" id="shape-6">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 
-    <g transform="matrix(-10.68 0 0 0.07 2160.42 2317.82)" id="shape-7">
-    <rect x="-17.46" y="-19.415" width="34.92" height="38.83"
-          style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
+  <g transform="matrix(-10.68 0 0 0.07 2160.42 2317.82)" id="shape-7">
+    <rect x="-17.46" y="-19.415" width="34.92" height="38.83" style="fill: rgb(68,68,68); stroke: rgb(68,68,68); stroke-width: 40;" />
   </g>
 </svg>
