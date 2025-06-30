@@ -33,6 +33,12 @@
   width: 100%;
 }
 
+.notificare .notificare__push__android__lock-screen__no-app-icon-svg {
+  height: 112%;
+  width: 112%;
+  display: block;
+}
+
 /* Text Content */
 
 .notificare .notificare__push__android__lock-screen__text-content {

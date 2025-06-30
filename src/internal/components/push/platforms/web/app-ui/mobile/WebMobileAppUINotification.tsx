@@ -10,9 +10,7 @@ import { WebViewNotification } from './WebViewNotification/WebViewNotification';
 
 import './WebMobileAppUINotification.css';
 
-export function WebMobileAppUINotification({
-  notification,
-}: WebMobileAppUIProps) {
+export function WebMobileAppUINotification({ notification }: WebMobileAppUIProps) {
   const application = useApplication();
 
   if (
@@ -29,7 +27,7 @@ export function WebMobileAppUINotification({
           <div className="notificare__web__phone__app-ui__header">
             <img
               className="notificare__web__phone__app-ui__app-icon"
-              src={application.websitePushConfig.icon}
+              src={application.websitePushConfig.icon || 'src/assets/no-app-icon.svg'}
               alt="App icon"
             />
             <p className="notificare__web__phone__app-ui__app-name">{application.name}</p>

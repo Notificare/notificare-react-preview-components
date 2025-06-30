@@ -1,4 +1,5 @@
 import { FormattedMessage } from 'react-intl';
+import NoAppIcon from '~/assets/no-app-icon.svg';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
@@ -17,11 +18,15 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
       <div className="notificare__push__android__alert__app-ui__wrapper">
         <div className="notificare__push__android__alert__app-ui__header">
           <div className="notificare__push__android__alert__app-ui__app-icon">
-            <img
-              className="notificare__push__android__alert__app-ui__app-icon-image"
-              alt="App icon"
-              src={application.websitePushConfig.icon}
-            />
+            {application.icon ? (
+              <img
+                className="notificare__push__android__alert__app-ui__app-icon-image"
+                alt="App icon"
+                src={application.icon}
+              />
+            ) : (
+              <NoAppIcon className="notificare__push__android__alert__app-ui__no-app-icon-svg" />
+            )}
           </div>
           <p className="notificare__push__android__alert__app-ui__title">
             {notification.title || application.name}

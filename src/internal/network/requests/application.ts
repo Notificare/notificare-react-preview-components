@@ -15,9 +15,12 @@ export async function fetchApplication(id: string, serviceKey: string): Promise<
   const { application } = await response.json();
   return {
     name: application.name,
+    icon: application.icon,
     androidPackageName: application.androidPackageName,
     websitePushConfig: application.websitePushConfig && {
-      icon: calculateCompleteIconUrl(application.websitePushConfig.icon),
+      icon: application.websitePushConfig.icon
+        ? calculateCompleteIconUrl(application.websitePushConfig.icon)
+        : undefined,
       allowedDomains: application.websitePushConfig.allowedDomains,
     },
   };

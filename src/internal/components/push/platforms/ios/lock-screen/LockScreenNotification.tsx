@@ -1,4 +1,5 @@
 import { FormattedMessage } from 'react-intl';
+import NoAppIcon from '~/assets/no-app-icon.svg';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
@@ -13,11 +14,15 @@ export function LockScreenNotification({ notification, expanded }: IOSLockScreen
     <div className="notificare__push__ios__lock-screen" data-testid="ios-lock-screen-notification">
       <div className="notificare__push__ios__lock-screen__main-content">
         <div className="notificare__push__ios__lock-screen__app-icon">
-          <img
-            className="notificare__push__ios__lock-screen__app-icon-image"
-            alt="App icon"
-            src={application.websitePushConfig.icon}
-          />
+          {application.icon ? (
+            <img
+              className="notificare__push__ios__lock-screen__app-icon-image"
+              alt="App icon"
+              src={application.icon}
+            />
+          ) : (
+            <NoAppIcon className="notificare__push__ios__lock-screen__no-app-icon-svg" />
+          )}
         </div>
         <div className="notificare__push__ios__lock-screen__text-content">
           <div className="notificare__push__ios__lock-screen__title-and-time">
