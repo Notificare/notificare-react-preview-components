@@ -1,7 +1,9 @@
+import { useIntl } from 'react-intl';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { MESSAGES } from '~/locales/push/en';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
 import './AppRecommendationNotification.css';
@@ -10,6 +12,7 @@ export function AppRecommendationNotification({
   notification,
 }: AppRecommendationNotificationProps) {
   const application = useApplication();
+  const intl = useIntl();
 
   const url = getUrlByContentType(notification.content);
 
@@ -19,7 +22,12 @@ export function AppRecommendationNotification({
       {url ? (
         <Webshot url={url} platform="Android" width={338} height={570} />
       ) : (
-        <PreviewError message={'No valid content object was provided'} />
+        <PreviewError
+          message={intl.formatMessage({
+            id: 'preview.error.noValidContentObject',
+            defaultMessage: MESSAGES['preview.error.noValidContentObject'],
+          })}
+        />
       )}
     </div>
   );
