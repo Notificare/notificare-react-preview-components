@@ -5,22 +5,16 @@ import { NavigationBar } from '../NavigationBar/NavigationBar';
 
 import './RateNotification.css';
 
-export function RateNotification({
-  notification,
-}: RateNotificationProps) {
+export function RateNotification({ notification }: RateNotificationProps) {
   const application = useApplication();
 
-  // TODO: the package name should be URL encoded.
+  const url = new URL('/store/apps/details', 'https://play.google.com');
+  url.searchParams.set('id', application.androidPackageName || '');
 
   return (
     <div data-testid="android-app-ui-rate-notification">
       <NavigationBar title={notification.title || application.name} showOptions={false} />
-      <Webshot
-        url={`https://play.google.com/store/apps/details?id=${application.androidPackageName}&hl=en`}
-        platform={'Android'}
-        width={338}
-        height={570}
-      />
+      <Webshot url={url.toString()} platform="Android" width={338} height={570} />
     </div>
   );
 }

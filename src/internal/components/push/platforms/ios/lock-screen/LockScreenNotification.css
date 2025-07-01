@@ -34,6 +34,11 @@
     width: 100%;
 }
 
+.notificare .notificare__push__ios__lock-screen__default-app-icon {
+    height: 100%;
+    width: 100%;
+}
+
 /*  Text Content */
 
 .notificare .notificare__push__ios__lock-screen__text-content {

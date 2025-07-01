@@ -31,6 +31,11 @@
     width: 100%;
 }
 
+.notificare .notificare__push__android__alert__app-ui__default-app-icon {
+    height: 100%;
+    width: 100%;
+}
+
 .notificare .notificare__push__android__alert__app-ui__header {
     display: flex;
     align-items: center;

@@ -29,9 +29,22 @@
 }
 
 .notificare .notificare__web__phone__app-ui__app-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 4px;
     height: 32px;
     width: 32px;
+    overflow: hidden;
+}
+
+.notificare .notificare__web__phone__app-ui__app-icon-image {
+    width: 100%;
+}
+
+.notificare .notificare__web__phone__app-ui__default-app-icon {
+    height: 100%;
+    width: 100%;
 }
 
 .notificare .notificare__web__phone__app-ui__app-name {

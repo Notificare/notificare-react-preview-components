@@ -5,9 +5,10 @@ import { ApplicationInfo } from '~/internal/types/application-info';
 
 const DEFAULT_APPLICATION = {
   name: 'My app',
+  icon: undefined,
   androidPackageName: 'com.example.app',
   websitePushConfig: {
-    icon: 'https://avatars.githubusercontent.com/u/1728060?s=200&v=4',
+    icon: undefined,
     allowedDomains: ['https://my-app.com/'],
   },
 } satisfies ApplicationInfo;

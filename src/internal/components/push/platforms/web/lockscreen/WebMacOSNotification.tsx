@@ -120,7 +120,9 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
             {notification.title || application.name}
           </p>
           <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--domain">
-            {extractDomain(application.websitePushConfig.allowedDomains[0])}
+            {application.websitePushConfig.allowedDomains.length > 0
+              ? extractDomain(application.websitePushConfig.allowedDomains[0])
+              : 'example.com'}
           </p>
           <p
             ref={messageRef}
