@@ -34,9 +34,8 @@
 }
 
 .notificare .notificare__push__android__lock-screen__no-app-icon-svg {
-  height: 112%;
-  width: 112%;
-  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 /* Text Content */

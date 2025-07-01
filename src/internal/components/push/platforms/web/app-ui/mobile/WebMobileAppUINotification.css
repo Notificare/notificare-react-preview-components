@@ -42,10 +42,9 @@
     width: 100%;
 }
 
-.notificare .notificare__web__phone__app-ui__app-icon-svg {
-    width: 112%;
-    height: 112%;
-    display: block;
+.notificare .notificare__web__phone__app-ui__no-app-icon-svg {
+    height: 100%;
+    width: 100%;
 }
 
 .notificare .notificare__web__phone__app-ui__app-name {
