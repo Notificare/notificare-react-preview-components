@@ -25,7 +25,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
                 src={application.icon}
               />
             ) : (
-              <NoAppIcon className="notificare__push__android__alert__app-ui__no-app-icon-svg" />
+              <NoAppIcon className="notificare__push__android__alert__app-ui__default-app-icon" />
             )}
           </div>
           <p className="notificare__push__android__alert__app-ui__title">

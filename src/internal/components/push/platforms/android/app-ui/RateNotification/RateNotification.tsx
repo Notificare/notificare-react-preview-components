@@ -14,7 +14,7 @@ export function RateNotification({ notification }: RateNotificationProps) {
   return (
     <div data-testid="android-app-ui-rate-notification">
       <NavigationBar title={notification.title || application.name} showOptions={false} />
-      <Webshot url={url.toString()} platform={'Android'} width={338} height={570} />
+      <Webshot url={url.toString()} platform="Android" width={338} height={570} />
     </div>
   );
 }

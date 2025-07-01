@@ -34,7 +34,7 @@ export function WebMobileAppUINotification({ notification }: WebMobileAppUIProps
                   alt="App icon"
                 />
               ) : (
-                <NoAppIcon className="notificare__web__phone__app-ui__no-app-icon-svg" />
+                <NoAppIcon className="notificare__web__phone__app-ui__default-app-icon" />
               )}
             </div>
 

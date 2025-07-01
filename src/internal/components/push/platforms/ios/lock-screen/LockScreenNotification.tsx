@@ -21,7 +21,7 @@ export function LockScreenNotification({ notification, expanded }: IOSLockScreen
               src={application.icon}
             />
           ) : (
-            <NoAppIcon className="notificare__push__ios__lock-screen__no-app-icon-svg" />
+            <NoAppIcon className="notificare__push__ios__lock-screen__default-app-icon" />
           )}
         </div>
         <div className="notificare__push__ios__lock-screen__text-content">
