@@ -1,4 +1,4 @@
-import NoAppIcon from '~/assets/no-app-icon.svg';
+import DefaultAppIcon from '~/assets/default-app-icon.svg';
 import ThinXMarkIcon from '~/assets/thin-x-mark.svg';
 import { MapRichContent } from '~/internal/components/push/platforms/shared/MapRichContent/MapRichContent';
 import { VideoRichContent } from '~/internal/components/push/platforms/shared/VideoRichContent/VideoRichContent';
@@ -34,7 +34,7 @@ export function WebMobileAppUINotification({ notification }: WebMobileAppUIProps
                   alt="App icon"
                 />
               ) : (
-                <NoAppIcon className="notificare__web__phone__app-ui__default-app-icon" />
+                <DefaultAppIcon className="notificare__web__phone__app-ui__default-app-icon" />
               )}
             </div>
 

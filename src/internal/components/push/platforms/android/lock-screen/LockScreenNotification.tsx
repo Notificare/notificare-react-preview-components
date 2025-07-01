@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'react-intl';
-import NoAppIcon from '~/assets/no-app-icon.svg';
+import DefaultAppIcon from '~/assets/default-app-icon.svg';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
@@ -23,7 +23,7 @@ export function LockScreenNotification({ notification, expanded }: AndroidLockSc
             src={application.icon}
           />
         ) : (
-          <NoAppIcon className="notificare__push__android__lock-screen__default-app-icon " />
+          <DefaultAppIcon className="notificare__push__android__lock-screen__default-app-icon " />
         )}
       </div>
       <div className="notificare__push__android__lock-screen__text-content">
