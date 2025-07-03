@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { RequestState } from '~/internal/network/state';
 import { isValidLocale } from '~/internal/utils/locale';
-import { NotificarePushTranslationKey } from '~/locales';
-import { IN_APP_MESSAGES, NotificareInAppTranslationKey } from '~/locales/in-app/en';
+import { NotificarePushTranslationKey, NotificareInAppTranslationKey } from '~/locales';
+import { IN_APP_MESSAGES } from '~/locales/in-app/en';
 import { IN_APP_MESSAGES_PT } from '~/locales/in-app/pt';
 import { PUSH_MESSAGES } from '~/locales/push/en';
 import { PUSH_MESSAGES_PT } from '~/locales/push/pt';
