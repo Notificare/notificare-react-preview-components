@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
-import { useLocalizationLoader } from '~/components/NotificareNotificationPreview/hooks/localization-loader';
 import { NotificationPreviewWrapper } from '~/internal/components/push/preview-wrapper/NotificationPreviewWrapper';
 import { NotificationValidationError } from '~/internal/components/push/validation-error/NotificationValidationError';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { OptionsProvider } from '~/internal/context/options';
+import { useLocalizationLoader } from '~/internal/hooks';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NotificarePushTranslationKey } from '~/locales';
 import { PUSH_MESSAGES } from '~/locales/push/en';
