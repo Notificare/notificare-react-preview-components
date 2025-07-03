@@ -39,20 +39,6 @@ export function useLocalizationLoader<T extends 'push' | 'in-app'>({
   }, [locale, type]);
 
   useEffect(() => {
-    if (localeMessages) {
-      setState({
-        status: 'success',
-        data: {
-          locale: locale,
-          messages: {
-            ...localeMessages,
-            ...messages,
-          },
-        },
-      });
-      return;
-    }
-
     if (!isValidLocale(locale)) {
       setState({
         status: 'error',
@@ -65,9 +51,12 @@ export function useLocalizationLoader<T extends 'push' | 'in-app'>({
       status: 'success',
       data: {
         locale: locale,
-        messages: {
-          ...messages,
-        },
+        messages: localeMessages
+          ? {
+              ...localeMessages,
+              ...messages,
+            }
+          : { ...messages },
       },
     });
   }, [locale, messages, localeMessages]);
