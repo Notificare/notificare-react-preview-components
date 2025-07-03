@@ -84,7 +84,12 @@ export type LocalizationLoaderParams<T extends 'push' | 'in-app'> = {
 };
 
 export type LocalisationLoaderState = Exclude<
-  RequestState<{ locale: string; messages: Partial<Record<NotificarePushTranslationKey, string>> }>,
+  RequestState<{
+    locale: string;
+    messages:
+      | Partial<Record<NotificarePushTranslationKey, string>>
+      | Partial<Record<NotificareInAppTranslationKey, string>>;
+  }>,
   { status: 'loading' }
 >;
 
