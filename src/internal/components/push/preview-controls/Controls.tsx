@@ -7,7 +7,7 @@ import IOSIcon from '~/assets/ios.svg';
 import PhoneIcon from '~/assets/phone.svg';
 import { Selector } from '~/internal/components/shared/Selector/Selector';
 import { ToggleGroup } from '~/internal/components/shared/ToggleGroup/ToggleGroup';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_MESSAGES } from '~/locales/push/en';
 import {
   NotificationPreviewDesktopOperatingSystem,
   NotificationPreviewDisplayMode,
@@ -101,7 +101,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <ToggleGroup
           label={intl.formatMessage({
             id: 'controls.platform',
-            defaultMessage: MESSAGES['controls.platform'],
+            defaultMessage: PUSH_MESSAGES['controls.platform'],
           })}
           options={PLATFORM_OPTIONS}
           value={previewState.platform}
@@ -112,7 +112,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
           <ToggleGroup
             label={intl.formatMessage({
               id: 'controls.formFactor',
-              defaultMessage: MESSAGES['controls.formFactor'],
+              defaultMessage: PUSH_MESSAGES['controls.formFactor'],
             })}
             options={FORM_FACTOR_OPTIONS}
             value={previewState.formFactor}
@@ -124,7 +124,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
           <ToggleGroup
             label={intl.formatMessage({
               id: 'controls.operatingSystem',
-              defaultMessage: MESSAGES['controls.operatingSystem'],
+              defaultMessage: PUSH_MESSAGES['controls.operatingSystem'],
             })}
             options={MOBILE_OPERATING_SYSTEM_OPTIONS}
             value={previewState.os}
@@ -137,7 +137,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <Selector
           label={intl.formatMessage({
             id: 'controls.variant',
-            defaultMessage: MESSAGES['controls.variant'],
+            defaultMessage: PUSH_MESSAGES['controls.variant'],
           })}
           options={DISPLAY_MODE_OPTIONS}
           value={previewState.displayMode}
@@ -149,7 +149,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <Selector
           label={intl.formatMessage({
             id: 'controls.operatingSystem',
-            defaultMessage: MESSAGES['controls.operatingSystem'],
+            defaultMessage: PUSH_MESSAGES['controls.operatingSystem'],
           })}
           options={DESKTOP_OPERATING_SYSTEM_OPTIONS}
           value={previewState.os}
@@ -161,7 +161,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <Selector
           label={intl.formatMessage({
             id: 'controls.variant',
-            defaultMessage: MESSAGES['controls.variant'],
+            defaultMessage: PUSH_MESSAGES['controls.variant'],
           })}
           options={DISPLAY_MODE_OPTIONS}
           value="app-ui"
@@ -247,7 +247,7 @@ const DESKTOP_OPERATING_SYSTEM_OPTIONS = [
   {
     value: 'macos',
     labelId: 'controls.operatingSystem.macos',
-    defaultLabel: MESSAGES['controls.operatingSystem.macos'],
+    defaultLabel: PUSH_MESSAGES['controls.operatingSystem.macos'],
   },
 ] satisfies Array<{
   value: NotificationPreviewDesktopOperatingSystem;
@@ -259,17 +259,17 @@ const DISPLAY_MODE_OPTIONS = [
   {
     value: 'lockscreen',
     labelId: 'controls.displayMode.lockScreen',
-    defaultLabel: MESSAGES['controls.displayMode.lockScreen'],
+    defaultLabel: PUSH_MESSAGES['controls.displayMode.lockScreen'],
   },
   {
     value: 'lockscreen-expanded',
     labelId: 'controls.displayMode.expandedLockScreen',
-    defaultLabel: MESSAGES['controls.displayMode.expandedLockScreen'],
+    defaultLabel: PUSH_MESSAGES['controls.displayMode.expandedLockScreen'],
   },
   {
     value: 'app-ui',
     labelId: 'controls.displayMode.appUi',
-    defaultLabel: MESSAGES['controls.displayMode.appUi'],
+    defaultLabel: PUSH_MESSAGES['controls.displayMode.appUi'],
   },
 ] satisfies Array<{
   value: NotificationPreviewDisplayMode;

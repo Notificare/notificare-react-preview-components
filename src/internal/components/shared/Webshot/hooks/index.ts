@@ -9,7 +9,7 @@ import {
 } from '~/internal/network/requests/webshot';
 import { RequestState } from '~/internal/network/state';
 import { isValidUrl } from '~/internal/utils/url';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_MESSAGES } from '~/locales/push/en';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const { serviceKey } = useOptions();
@@ -27,7 +27,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
           error: new Error(
             intl.formatMessage({
               id: 'preview.error.invalidUrl',
-              defaultMessage: MESSAGES['preview.error.invalidUrl'],
+              defaultMessage: PUSH_MESSAGES['preview.error.invalidUrl'],
             }),
           ),
         });
@@ -47,7 +47,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
             error: new Error(
               intl.formatMessage({
                 id: 'preview.error.webshotFail',
-                defaultMessage: MESSAGES['preview.error.webshotFail'],
+                defaultMessage: PUSH_MESSAGES['preview.error.webshotFail'],
               }),
             ),
           });
@@ -80,7 +80,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
               error: new Error(
                 intl.formatMessage({
                   id: 'preview.error.webshotFail',
-                  defaultMessage: MESSAGES['preview.error.webshotFail'],
+                  defaultMessage: PUSH_MESSAGES['preview.error.webshotFail'],
                 }),
               ),
             });
@@ -95,7 +95,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
             error: new Error(
               intl.formatMessage({
                 id: 'preview.error.webshotFail',
-                defaultMessage: MESSAGES['preview.error.webshotFail'],
+                defaultMessage: PUSH_MESSAGES['preview.error.webshotFail'],
               }),
             ),
           });

@@ -6,7 +6,7 @@ import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { timeAgo } from '~/internal/utils/time-ago';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_MESSAGES } from '~/locales/push/en';
 import { StarRating } from './StarRating/StarRating';
 
 import './AppRecommendationNotification.css';
@@ -24,7 +24,7 @@ export function AppRecommendationNotification({
       <div className="notificare__push__ios__store__app-ui__bar">
         <FormattedMessage
           id="preview.ios.store.appUi.done"
-          defaultMessage={MESSAGES['preview.ios.store.appUi.done']}
+          defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.done']}
         />
       </div>
       <div className="notificare__push__ios__store__app-ui">
@@ -52,7 +52,7 @@ export function AppRecommendationNotification({
                 <div className="notificare__push__ios__store__app-ui__page-install">
                   <FormattedMessage
                     id="preview.ios.store.appUi.install"
-                    defaultMessage={MESSAGES['preview.ios.store.appUi.install']}
+                    defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.install']}
                   />
                 </div>
               </div>
@@ -64,7 +64,7 @@ export function AppRecommendationNotification({
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
                     <FormattedMessage
                       id="preview.ios.store.appUi.ratings"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.ratings']}
+                      defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.ratings']}
                       values={{ userRatingCount: state.data.userRatingCount }}
                     />
                   </p>
@@ -79,7 +79,7 @@ export function AppRecommendationNotification({
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
                     <FormattedMessage
                       id="preview.ios.store.appUi.age"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.age']}
+                      defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.age']}
                     />
                   </p>
                   <p className="notificare__push__ios__store__app-ui__page-info-block-value">
@@ -88,7 +88,7 @@ export function AppRecommendationNotification({
                   <p className="notificare__push__ios__store__app-ui__page-info-block-bottom-text">
                     <FormattedMessage
                       id="preview.ios.store.appUi.yearsOld"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.yearsOld']}
+                      defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.yearsOld']}
                     />
                   </p>
                 </div>
@@ -96,7 +96,7 @@ export function AppRecommendationNotification({
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
                     <FormattedMessage
                       id="preview.ios.store.appUi.category"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.category']}
+                      defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.category']}
                     />
                   </p>
                   <LayerGroupIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
@@ -108,7 +108,7 @@ export function AppRecommendationNotification({
                   <p className="notificare__push__ios__store__app-ui__page-info-block-title">
                     <FormattedMessage
                       id="preview.ios.store.appUi.developer"
-                      defaultMessage={MESSAGES['preview.ios.store.appUi.developer']}
+                      defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.developer']}
                     />
                   </p>
                   <UserIcon className="notificare__push__ios__store__app-ui__page-info-block-icon" />
@@ -123,14 +123,14 @@ export function AppRecommendationNotification({
               <p className="notificare__push__ios__store__app-ui__page-history-title">
                 <FormattedMessage
                   id="preview.ios.store.appUi.whatsNew"
-                  defaultMessage={MESSAGES['preview.ios.store.appUi.whatsNew']}
+                  defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.whatsNew']}
                 />
               </p>
               <div className="notificare__push__ios__store__app-ui__page-history-version-last-update">
                 <p className="notificare__push__ios__store__app-ui__page-history-version">
                   <FormattedMessage
                     id="preview.ios.store.appUi.historyVersion"
-                    defaultMessage={MESSAGES['preview.ios.store.appUi.historyVersion']}
+                    defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.historyVersion']}
                     values={{ version: state.data.version }}
                   />
                 </p>
@@ -147,7 +147,7 @@ export function AppRecommendationNotification({
               <p className="notificare__push__ios__store__app-ui__page-previews-title">
                 <FormattedMessage
                   id="preview.ios.store.appUi.screenshots"
-                  defaultMessage={MESSAGES['preview.ios.store.appUi.screenshots']}
+                  defaultMessage={PUSH_MESSAGES['preview.ios.store.appUi.screenshots']}
                 />
               </p>
               <div className="notificare__push__ios__store__app-ui__page-previews-images">

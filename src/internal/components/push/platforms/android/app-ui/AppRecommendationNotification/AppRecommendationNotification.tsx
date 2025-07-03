@@ -3,7 +3,7 @@ import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewE
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_MESSAGES } from '~/locales/push/en';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
 import './AppRecommendationNotification.css';
@@ -25,7 +25,7 @@ export function AppRecommendationNotification({
         <PreviewError
           message={intl.formatMessage({
             id: 'preview.error.noValidContentObject',
-            defaultMessage: MESSAGES['preview.error.noValidContentObject'],
+            defaultMessage: PUSH_MESSAGES['preview.error.noValidContentObject'],
           })}
         />
       )}

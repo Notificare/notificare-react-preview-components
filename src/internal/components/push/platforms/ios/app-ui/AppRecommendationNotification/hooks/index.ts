@@ -5,7 +5,7 @@ import { IosStoreAppData } from '~/internal/components/push/platforms/ios/app-ui
 import { useDebounce } from '~/internal/hooks';
 import { RequestState } from '~/internal/network/state';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_MESSAGES } from '~/locales/push/en';
 
 export function useStoreRequest(props: UseStoreRequestProps): StoreState {
   const { contentList } = useDebounce(props, 500);
@@ -24,7 +24,7 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
             error: new Error(
               intl.formatMessage({
                 id: 'preview.error.noValidContentObject',
-                defaultMessage: MESSAGES['preview.error.noValidContentObject'],
+                defaultMessage: PUSH_MESSAGES['preview.error.noValidContentObject'],
               }),
             ),
           });
@@ -41,7 +41,7 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
                 error: new Error(
                   intl.formatMessage({
                     id: 'preview.error.iosStoreAppNotFound',
-                    defaultMessage: MESSAGES['preview.error.iosStoreAppNotFound'],
+                    defaultMessage: PUSH_MESSAGES['preview.error.iosStoreAppNotFound'],
                   }),
                 ),
               });
@@ -58,7 +58,7 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
               error: new Error(
                 intl.formatMessage({
                   id: 'preview.error.iosStoreAppLoadFailure',
-                  defaultMessage: MESSAGES['preview.error.iosStoreAppLoadFailure'],
+                  defaultMessage: PUSH_MESSAGES['preview.error.iosStoreAppLoadFailure'],
                 }),
               ),
             });

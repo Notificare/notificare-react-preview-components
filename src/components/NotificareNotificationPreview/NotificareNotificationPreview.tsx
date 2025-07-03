@@ -7,7 +7,7 @@ import { UnavailablePreview } from '~/internal/components/shared/UnavailablePrev
 import { OptionsProvider } from '~/internal/context/options';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NotificarePushTranslationKey } from '~/locales';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_MESSAGES } from '~/locales/push/en';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
 import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-locale';
 
@@ -35,7 +35,7 @@ export function NotificareNotificationPreview({
   locale = 'en-GB',
   messages,
 }: NotificareNotificationPreviewProps) {
-  const localization = useLocalizationLoader({ locale, messages });
+  const localization = useLocalizationLoader({ locale, messages, type: 'push' });
 
   const notificationResult = useMemo(() => {
     return NotificationSchema.safeParse(notification);
@@ -65,7 +65,7 @@ export function NotificareNotificationPreview({
       )}
 
       {localization.status === 'error' && (
-        <IntlProvider locale="en-GB" messages={MESSAGES}>
+        <IntlProvider locale="en-GB" messages={PUSH_MESSAGES}>
           <UnavailablePreview message={localization.error.message} />
         </IntlProvider>
       )}
