@@ -3,7 +3,7 @@ import DefaultAppIcon from '~/assets/default-app-icon.svg';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
-import { PUSH_MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 import './TextAlertNotification.css';
 
@@ -51,7 +51,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
             >
               <FormattedMessage
                 id="preview.android.alert.appUi.cancel"
-                defaultMessage={PUSH_MESSAGES['preview.android.alert.appUi.cancel']}
+                defaultMessage={PUSH_TRANSLATIONS['preview.android.alert.appUi.cancel']}
               />
             </p>
           </div>

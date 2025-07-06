@@ -12,7 +12,7 @@ import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewE
 import { useOptions } from '~/internal/context/options';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { getMarkersFromNotification } from '~/internal/utils/push-previews/notification';
-import { PUSH_MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 import './MapRichContent.css';
 
@@ -83,7 +83,7 @@ function MapWithStatus({
         <PreviewError
           message={intl.formatMessage({
             id: 'preview.error.googleMapsAuthFailure',
-            defaultMessage: PUSH_MESSAGES['preview.error.googleMapsAuthFailure'],
+            defaultMessage: PUSH_TRANSLATIONS['preview.error.googleMapsAuthFailure'],
           })}
         />
       )}
@@ -92,7 +92,7 @@ function MapWithStatus({
         <PreviewError
           message={intl.formatMessage({
             id: 'preview.error.googleMapsLoadFailure',
-            defaultMessage: PUSH_MESSAGES['preview.error.googleMapsLoadFailure'],
+            defaultMessage: PUSH_TRANSLATIONS['preview.error.googleMapsLoadFailure'],
           })}
         />
       )}

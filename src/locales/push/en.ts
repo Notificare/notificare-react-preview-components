@@ -1,4 +1,4 @@
-export const PUSH_MESSAGES = {
+export const PUSH_TRANSLATIONS = {
   'controls.platform': 'Platform',
   'controls.formFactor': 'Form Factor',
   'controls.operatingSystem': 'OS',
@@ -53,4 +53,4 @@ export const PUSH_MESSAGES = {
 /**
  * The set of translation keys for push notification previews.
  */
-export type NotificarePushTranslationKey = keyof typeof PUSH_MESSAGES;
+export type NotificarePushTranslationKey = keyof typeof PUSH_TRANSLATIONS;

@@ -2,15 +2,19 @@ import { useEffect, useMemo, useState } from 'react';
 import { RequestState } from '~/internal/network/state';
 import { isValidLocale } from '~/internal/utils/locale';
 import { NotificarePushTranslationKey, NotificareInAppTranslationKey } from '~/locales';
-import { IN_APP_MESSAGES } from '~/locales/in-app/en';
-import { IN_APP_MESSAGES_PT } from '~/locales/in-app/pt';
-import { PUSH_MESSAGES } from '~/locales/push/en';
-import { PUSH_MESSAGES_PT } from '~/locales/push/pt';
+import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
+import { IN_APP_TRANSLATIONS_PT } from '~/locales/in-app-messaging/pt';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
 
 const SUPPORTED_LOCALES = ['en-GB', 'pt-PT'] as const;
 type SupportedLocales = (typeof SUPPORTED_LOCALES)[number];
 
-export function useLocalizationLoader({ locale, messages, type }: LocalizationLoaderParams) {
+export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>({
+  locale,
+  translations,
+  type,
+}: LocalizationLoaderParams<T>) {
   const [state, setState] = useState<LocalisationLoaderState>({ status: 'idle' });
 
   const localeMessages = useMemo(() => {
@@ -36,45 +40,41 @@ export function useLocalizationLoader({ locale, messages, type }: LocalizationLo
       status: 'success',
       data: {
         locale: locale,
-        messages: {
-          ...localeMessages,
-          ...messages,
-        },
+        translations: { ...localeMessages, ...translations },
       },
     });
-  }, [locale, messages, localeMessages]);
+  }, [locale, translations, localeMessages]);
 
   return state;
 }
 
-export type LocalizationLoaderParams =
-  | {
-      locale: string;
-      type: 'push';
-      messages?: Partial<Record<NotificarePushTranslationKey, string>>;
-    }
-  | {
-      locale: string;
-      type: 'in-app';
-      messages?: Partial<Record<NotificareInAppTranslationKey, string>>;
-    };
+type LocalizedFeatureTranslations = {
+  push: NotificarePushTranslationKey;
+  'in-app': NotificareInAppTranslationKey;
+};
+
+export type LocalizedFeatureTranslationKeys = keyof LocalizedFeatureTranslations;
+
+export type LocalizationLoaderParams<T extends LocalizedFeatureTranslationKeys> = {
+  locale: string;
+  type: T;
+  translations?: Partial<Record<LocalizedFeatureTranslations[T], string>>;
+};
 
 export type LocalisationLoaderState = Exclude<
-  RequestState<{
-    locale: string;
-    messages:
-      | Partial<Record<NotificarePushTranslationKey, string>>
-      | Partial<Record<NotificareInAppTranslationKey, string>>;
-  }>,
+  RequestState<{ locale: string; translations: Record<string, string> }>,
   { status: 'loading' }
 >;
 
-function getMessagesForLocale(locale: SupportedLocales, type: 'push' | 'in-app') {
+function getMessagesForLocale<T extends LocalizedFeatureTranslationKeys>(
+  locale: SupportedLocales,
+  type: T,
+) {
   switch (locale) {
     case 'en-GB':
-      return type === 'push' ? PUSH_MESSAGES : IN_APP_MESSAGES;
+      return type === 'push' ? PUSH_TRANSLATIONS : IN_APP_TRANSLATIONS;
 
     case 'pt-PT':
-      return type === 'push' ? PUSH_MESSAGES_PT : IN_APP_MESSAGES_PT;
+      return type === 'push' ? PUSH_TRANSLATIONS_PT : IN_APP_TRANSLATIONS_PT;
   }
 }

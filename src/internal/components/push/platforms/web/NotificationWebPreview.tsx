@@ -11,7 +11,7 @@ import {
   NotificareNotificationSchema,
   NotificareNotificationType,
 } from '~/internal/schemas/notificare-notification';
-import { PUSH_MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { WebMobileAppUINotification } from './app-ui/mobile/WebMobileAppUINotification';
 import { WebMacOSNotification } from './lockscreen/WebMacOSNotification';
 
@@ -38,7 +38,7 @@ export function NotificationWebPreview({
             <UnavailablePreview
               message={intl.formatMessage({
                 id: 'preview.error.notSupportedPreviewVariant',
-                defaultMessage: PUSH_MESSAGES['preview.error.notSupportedPreviewVariant'],
+                defaultMessage: PUSH_TRANSLATIONS['preview.error.notSupportedPreviewVariant'],
               })}
               showConsoleWarning={false}
             />
@@ -51,7 +51,7 @@ export function NotificationWebPreview({
                   {
                     id: 'preview.error.notSupportedNotificationTypePreviewVariant',
                     defaultMessage:
-                      PUSH_MESSAGES['preview.error.notSupportedNotificationTypePreviewVariant'],
+                      PUSH_TRANSLATIONS['preview.error.notSupportedNotificationTypePreviewVariant'],
                   },
                   { notificationType: notification.type },
                 )}
@@ -65,7 +65,7 @@ export function NotificationWebPreview({
               <UnavailablePreview
                 message={intl.formatMessage({
                   id: 'preview.error.provideGoogleMapsApiKey',
-                  defaultMessage: PUSH_MESSAGES['preview.error.provideGoogleMapsApiKey'],
+                  defaultMessage: PUSH_TRANSLATIONS['preview.error.provideGoogleMapsApiKey'],
                 })}
                 showConsoleWarning={false}
               />

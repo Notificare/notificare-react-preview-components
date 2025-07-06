@@ -7,7 +7,7 @@ import IOSIcon from '~/assets/ios.svg';
 import PhoneIcon from '~/assets/phone.svg';
 import { Selector } from '~/internal/components/shared/Selector/Selector';
 import { ToggleGroup } from '~/internal/components/shared/ToggleGroup/ToggleGroup';
-import { PUSH_MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import {
   NotificationPreviewDesktopOperatingSystem,
   NotificationPreviewDisplayMode,
@@ -101,7 +101,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <ToggleGroup
           label={intl.formatMessage({
             id: 'controls.platform',
-            defaultMessage: PUSH_MESSAGES['controls.platform'],
+            defaultMessage: PUSH_TRANSLATIONS['controls.platform'],
           })}
           options={PLATFORM_OPTIONS}
           value={previewState.platform}
@@ -112,7 +112,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
           <ToggleGroup
             label={intl.formatMessage({
               id: 'controls.formFactor',
-              defaultMessage: PUSH_MESSAGES['controls.formFactor'],
+              defaultMessage: PUSH_TRANSLATIONS['controls.formFactor'],
             })}
             options={FORM_FACTOR_OPTIONS}
             value={previewState.formFactor}
@@ -124,7 +124,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
           <ToggleGroup
             label={intl.formatMessage({
               id: 'controls.operatingSystem',
-              defaultMessage: PUSH_MESSAGES['controls.operatingSystem'],
+              defaultMessage: PUSH_TRANSLATIONS['controls.operatingSystem'],
             })}
             options={MOBILE_OPERATING_SYSTEM_OPTIONS}
             value={previewState.os}
@@ -137,7 +137,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <Selector
           label={intl.formatMessage({
             id: 'controls.variant',
-            defaultMessage: PUSH_MESSAGES['controls.variant'],
+            defaultMessage: PUSH_TRANSLATIONS['controls.variant'],
           })}
           options={DISPLAY_MODE_OPTIONS}
           value={previewState.displayMode}
@@ -149,7 +149,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <Selector
           label={intl.formatMessage({
             id: 'controls.operatingSystem',
-            defaultMessage: PUSH_MESSAGES['controls.operatingSystem'],
+            defaultMessage: PUSH_TRANSLATIONS['controls.operatingSystem'],
           })}
           options={DESKTOP_OPERATING_SYSTEM_OPTIONS}
           value={previewState.os}
@@ -161,7 +161,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
         <Selector
           label={intl.formatMessage({
             id: 'controls.variant',
-            defaultMessage: PUSH_MESSAGES['controls.variant'],
+            defaultMessage: PUSH_TRANSLATIONS['controls.variant'],
           })}
           options={DISPLAY_MODE_OPTIONS}
           value="app-ui"
@@ -247,7 +247,7 @@ const DESKTOP_OPERATING_SYSTEM_OPTIONS = [
   {
     value: 'macos',
     labelId: 'controls.operatingSystem.macos',
-    defaultLabel: PUSH_MESSAGES['controls.operatingSystem.macos'],
+    defaultLabel: PUSH_TRANSLATIONS['controls.operatingSystem.macos'],
   },
 ] satisfies Array<{
   value: NotificationPreviewDesktopOperatingSystem;
@@ -259,17 +259,17 @@ const DISPLAY_MODE_OPTIONS = [
   {
     value: 'lockscreen',
     labelId: 'controls.displayMode.lockScreen',
-    defaultLabel: PUSH_MESSAGES['controls.displayMode.lockScreen'],
+    defaultLabel: PUSH_TRANSLATIONS['controls.displayMode.lockScreen'],
   },
   {
     value: 'lockscreen-expanded',
     labelId: 'controls.displayMode.expandedLockScreen',
-    defaultLabel: PUSH_MESSAGES['controls.displayMode.expandedLockScreen'],
+    defaultLabel: PUSH_TRANSLATIONS['controls.displayMode.expandedLockScreen'],
   },
   {
     value: 'app-ui',
     labelId: 'controls.displayMode.appUi',
-    defaultLabel: PUSH_MESSAGES['controls.displayMode.appUi'],
+    defaultLabel: PUSH_TRANSLATIONS['controls.displayMode.appUi'],
   },
 ] satisfies Array<{
   value: NotificationPreviewDisplayMode;
