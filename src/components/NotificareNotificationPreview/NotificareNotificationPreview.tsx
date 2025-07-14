@@ -9,7 +9,7 @@ import { NotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NotificarePushTranslationKey } from '~/locales';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
-import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-locale';
+import { NotificareNotificationPreviewLocale } from '~/models/shared/notificare-notification-preview-locale';
 
 import '~/preset.css';
 
