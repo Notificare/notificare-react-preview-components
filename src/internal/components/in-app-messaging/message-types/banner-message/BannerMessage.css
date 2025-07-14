@@ -1,0 +1,43 @@
+.notificare .notificare__in-app__banner__wrapper {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    display: flex;
+}
+
+.notificare .notificare__in-app__banner__window {
+    width: 320px;
+    border-radius: 5px;
+    display: flex;
+    background-color: #fff;
+    padding: 16px;
+    column-gap: 12px;
+}
+
+.notificare .notificare__in-app__banner__image {
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+}
+
+.notificare .notificare__in-app__banner__text-content {
+    width: 100%;
+    overflow: hidden;
+}
+
+.notificare .notificare__in-app__banner__title {
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 18px;
+}
+
+.notificare .notificare__in-app__banner__message {
+    font-size: 13px;
+    width: 100%;
+    word-break: break-word;
+    line-height: 18px;
+}
