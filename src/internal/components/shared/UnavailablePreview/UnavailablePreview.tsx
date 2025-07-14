@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 import AlertIcon from '~/assets/alert.svg';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 import './UnavailablePreview.css';
 
@@ -14,7 +14,7 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
           <div className="notificare__unavailable-preview__title">
             <FormattedMessage
               id="preview.error.notGeneratedPreview"
-              defaultMessage={MESSAGES['preview.error.notGeneratedPreview']}
+              defaultMessage={PUSH_TRANSLATIONS['preview.error.notGeneratedPreview']}
             />
           </div>
           <div
@@ -30,7 +30,7 @@ export function UnavailablePreview({ message, showConsoleWarning }: UnavailableP
         <div className="notificare__unavailable-preview__check-console-text">
           <FormattedMessage
             id="preview.error.checkConsole"
-            defaultMessage={MESSAGES['preview.error.checkConsole']}
+            defaultMessage={PUSH_TRANSLATIONS['preview.error.checkConsole']}
           />
         </div>
       )}

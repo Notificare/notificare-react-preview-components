@@ -1,7 +1,7 @@
 import { Key, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
-import { useOutsideClick } from '~/internal/hooks/outside-click';
+import { useOutsideClick } from '~/internal/hooks';
 
 import './Selector.css';
 

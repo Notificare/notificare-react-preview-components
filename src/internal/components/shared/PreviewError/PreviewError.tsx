@@ -1,6 +1,6 @@
 import { useIntl } from 'react-intl';
 import AlertIcon from '~/assets/alert.svg';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 import './PreviewError.css';
 
@@ -13,7 +13,7 @@ export function PreviewError({ message }: PreviewErrorProps) {
       <p className="notificare__preview-error__text">
         {intl.formatMessage({
           id: 'preview.error.notGeneratedPreview',
-          defaultMessage: MESSAGES['preview.error.notGeneratedPreview'],
+          defaultMessage: PUSH_TRANSLATIONS['preview.error.notGeneratedPreview'],
         })}
         {message && (
           <>

@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
-import { useLocalizationLoader } from '~/components/NotificareNotificationPreview/hooks/localization-loader';
 import { NotificationPreviewWrapper } from '~/internal/components/push/preview-wrapper/NotificationPreviewWrapper';
 import { NotificationValidationError } from '~/internal/components/push/validation-error/NotificationValidationError';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { OptionsProvider } from '~/internal/context/options';
+import { useLocalizationLoader } from '~/internal/hooks';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NotificarePushTranslationKey } from '~/locales';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
 import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-locale';
 
@@ -23,7 +23,7 @@ import '~/preset.css';
  * @param {string} [serviceKey] - A service key provided by a Notificare admin.
  * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
  * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-GB' by default.
- * @param {string} [messages] - Set of custom messages to replace the translations used (optional).
+ * @param {string} [translations] - A set of custom translations to override the default ones (optional).
  */
 export function NotificareNotificationPreview({
   notification,
@@ -33,9 +33,9 @@ export function NotificareNotificationPreview({
   serviceKey,
   googleMapsAPIKey,
   locale = 'en-GB',
-  messages,
+  translations,
 }: NotificareNotificationPreviewProps) {
-  const localization = useLocalizationLoader({ locale, messages });
+  const localization = useLocalizationLoader({ locale, translations, type: 'push' });
 
   const notificationResult = useMemo(() => {
     return NotificationSchema.safeParse(notification);
@@ -47,7 +47,7 @@ export function NotificareNotificationPreview({
         <IntlProvider
           locale={localization.data.locale}
           defaultLocale="en-GB"
-          messages={localization.data.messages}
+          messages={localization.data.translations}
         >
           <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
             {notificationResult.success ? (
@@ -65,7 +65,7 @@ export function NotificareNotificationPreview({
       )}
 
       {localization.status === 'error' && (
-        <IntlProvider locale="en-GB" messages={MESSAGES}>
+        <IntlProvider locale="en-GB" messages={PUSH_TRANSLATIONS}>
           <UnavailablePreview message={localization.error.message} />
         </IntlProvider>
       )}
@@ -81,5 +81,5 @@ export interface NotificareNotificationPreviewProps {
   serviceKey: string;
   googleMapsAPIKey?: string;
   locale?: NotificareNotificationPreviewLocale;
-  messages?: Partial<Record<NotificarePushTranslationKey, string>>;
+  translations?: Partial<Record<NotificarePushTranslationKey, string>>;
 }

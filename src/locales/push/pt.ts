@@ -1,6 +1,6 @@
 import { NotificarePushTranslationKey } from '~/locales';
 
-export const MESSAGES_PT: Record<NotificarePushTranslationKey, string> = {
+export const PUSH_TRANSLATIONS_PT: Record<NotificarePushTranslationKey, string> = {
   'controls.platform': 'Plataforma',
   'controls.formFactor': 'Formato',
   'controls.operatingSystem': 'SO',

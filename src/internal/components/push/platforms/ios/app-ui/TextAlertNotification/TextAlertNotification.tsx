@@ -2,7 +2,7 @@ import { FormattedMessage } from 'react-intl';
 import { useApplication } from '~/internal/context/application';
 import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
 import { hasSingleAction, hasMultipleActions } from '~/internal/utils/push-previews/notification';
-import { MESSAGES } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 import './TextAlertNotification.css';
 
@@ -27,7 +27,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
               <div className="notificare__push__ios__alert__app-ui__single-cancel">
                 <FormattedMessage
                   id="preview.ios.alert.appUi.cancel"
-                  defaultMessage={MESSAGES['preview.ios.alert.appUi.cancel']}
+                  defaultMessage={PUSH_TRANSLATIONS['preview.ios.alert.appUi.cancel']}
                 />
               </div>
               <div
@@ -51,7 +51,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
               <div className="notificare__push__ios__alert__app-ui__multiple-cancel">
                 <FormattedMessage
                   id="preview.ios.alert.appUi.cancel"
-                  defaultMessage={MESSAGES['preview.ios.alert.appUi.cancel']}
+                  defaultMessage={PUSH_TRANSLATIONS['preview.ios.alert.appUi.cancel']}
                 />
               </div>
             </div>
@@ -59,7 +59,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
             <div className="notificare__push__ios__alert__app-ui__no-actions">
               <FormattedMessage
                 id="preview.ios.alert.appUi.ok"
-                defaultMessage={MESSAGES['preview.ios.alert.appUi.ok']}
+                defaultMessage={PUSH_TRANSLATIONS['preview.ios.alert.appUi.ok']}
               />
             </div>
           )}
