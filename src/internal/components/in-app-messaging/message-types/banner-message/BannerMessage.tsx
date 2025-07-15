@@ -1,4 +1,4 @@
-import { VerifiedInAppMessage } from '~/internal/schemas/notificare-in-app-message';
+import { VerifiedInAppMessage } from '~/internal/schemas/in-app-message';
 
 import './BannerMessage.css';
 

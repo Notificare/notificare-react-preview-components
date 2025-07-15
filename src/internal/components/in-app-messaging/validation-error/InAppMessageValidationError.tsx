@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { ZodIssue } from 'zod';
-import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
-import { InAppMessageSchema } from '~/internal/schemas/notificare-in-app-message';
+import { UnavailablePreview } from '~/internal/components/shared';
+import { InAppMessageSchema } from '~/internal/schemas/in-app-message';
 import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
 
 export function InAppMessageValidationError({ errors }: InAppMessageValidationErrorProps) {

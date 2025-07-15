@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { NotificareInAppMessagePreview } from '~/components';
+import { PUSH_API_TEST_HOST, setPushAPIHost } from '~/internal/network/api';
 import {
   BANNER_MESSAGE_MOCK,
   CARD_MESSAGE_MOCK,
@@ -7,8 +8,7 @@ import {
   CARD_MESSAGE_WITH_SECONDARY_ACTION_MOCK,
   FULLSCREEN_MESSAGE_MOCK,
   INVALID_IN_APP_MESSAGE_MOCK,
-} from '~/components/NotificareInAppMessagePreview/tests/mocks';
-import { PUSH_API_TEST_HOST, setPushAPIHost } from '~/internal/network/api';
+} from './mocks';
 import '@testing-library/jest-dom';
 
 describe('NotificareInAppMessagePreview', () => {

@@ -1,8 +1,10 @@
-import { BannerMessage } from '~/internal/components/in-app-messaging/message-types/banner-message/BannerMessage';
-import { CardMessage } from '~/internal/components/in-app-messaging/message-types/card-message/CardMessage';
-import { FullscreenMessage } from '~/internal/components/in-app-messaging/message-types/fullscreen-message/FullscreenMessage';
-import { AndroidPhoneBackground } from '~/internal/components/shared/AndroidPhoneBackground/AndroidPhoneBackground';
-import { VerifiedInAppMessage } from '~/internal/schemas/notificare-in-app-message';
+import {
+  BannerMessage,
+  CardMessage,
+  FullscreenMessage,
+} from '~/internal/components/in-app-messaging/message-types';
+import { AndroidPhoneBackground } from '~/internal/components/shared';
+import { VerifiedInAppMessage } from '~/internal/schemas/in-app-message';
 
 import './InAppMessagePreview.css';
 

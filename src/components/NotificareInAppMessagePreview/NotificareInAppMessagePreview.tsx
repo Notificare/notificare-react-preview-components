@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
-import { InAppMessagePreview } from '~/internal/components/in-app-messaging/InAppMessagePreview';
+import { InAppMessagePreview } from '~/internal/components/in-app-messaging/preview/InAppMessagePreview';
 import { InAppMessageValidationError } from '~/internal/components/in-app-messaging/validation-error/InAppMessageValidationError';
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { useLocalizationLoader } from '~/internal/hooks';
-import { InAppMessageSchema } from '~/internal/schemas/notificare-in-app-message';
+import { InAppMessageSchema } from '~/internal/schemas/in-app-message';
 import { NotificareInAppTranslationKey } from '~/locales';
 import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
 import { NotificareInAppMessage } from '~/models';
