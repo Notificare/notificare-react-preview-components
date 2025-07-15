@@ -7,7 +7,7 @@ import { useLocalizationLoader } from '~/internal/hooks';
 import { InAppMessageSchema } from '~/internal/schemas/notificare-in-app-message';
 import { NotificareInAppTranslationKey } from '~/locales';
 import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
-import { NotificareInAppMessage } from '~/models/in-app-messaging/notificare-in-app-message';
+import { NotificareInAppMessage } from '~/models';
 
 import '~/preset.css';
 
