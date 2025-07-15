@@ -1,4 +1,4 @@
-# In-app messages
+# In-app messaging
 
 The `NotificareInAppMessagePreview` lets you easily preview how a Notificare in-app message will appear on a mobile device.
 
