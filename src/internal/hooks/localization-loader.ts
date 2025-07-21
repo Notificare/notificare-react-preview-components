@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { RequestState } from '~/internal/network/state';
 import { isValidLocale } from '~/internal/utils/locale';
-import { NotificarePushTranslationKey, NotificareInAppTranslationKey } from '~/locales';
-import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
-import { IN_APP_TRANSLATIONS_PT } from '~/locales/in-app-messaging/pt';
+import { NotificarePushTranslationKey, NotificareInAppMessagingTranslationKey } from '~/locales';
+import { IN_APP_MESSAGING_TRANSLATIONS } from '~/locales/in-app-messaging/en';
+import { IN_APP_MESSAGING_TRANSLATIONS_PT } from '~/locales/in-app-messaging/pt';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
 
@@ -50,7 +50,7 @@ export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>
 
 type LocalizedFeatureTranslations = {
   push: NotificarePushTranslationKey;
-  'in-app': NotificareInAppTranslationKey;
+  'in-app': NotificareInAppMessagingTranslationKey;
 };
 
 export type LocalizedFeatureTranslationKeys = keyof LocalizedFeatureTranslations;
@@ -72,9 +72,9 @@ function getMessagesForLocale<T extends LocalizedFeatureTranslationKeys>(
 ) {
   switch (locale) {
     case 'en-GB':
-      return type === 'push' ? PUSH_TRANSLATIONS : IN_APP_TRANSLATIONS;
+      return type === 'push' ? PUSH_TRANSLATIONS : IN_APP_MESSAGING_TRANSLATIONS;
 
     case 'pt-PT':
-      return type === 'push' ? PUSH_TRANSLATIONS_PT : IN_APP_TRANSLATIONS_PT;
+      return type === 'push' ? PUSH_TRANSLATIONS_PT : IN_APP_MESSAGING_TRANSLATIONS_PT;
   }
 }
