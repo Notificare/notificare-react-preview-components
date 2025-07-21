@@ -5,8 +5,8 @@ import { InAppMessageValidationError } from '~/internal/components/in-app-messag
 import { UnavailablePreview } from '~/internal/components/shared/UnavailablePreview/UnavailablePreview';
 import { useLocalizationLoader } from '~/internal/hooks';
 import { InAppMessageSchema } from '~/internal/schemas/in-app-message';
-import { NotificareInAppTranslationKey } from '~/locales';
-import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
+import { NotificareInAppMessagingTranslationKey } from '~/locales';
+import { IN_APP_MESSAGING_TRANSLATIONS } from '~/locales/in-app-messaging/en';
 import { NotificareInAppMessage } from '~/models';
 
 import '~/preset.css';
@@ -47,7 +47,7 @@ export function NotificareInAppMessagePreview({
       )}
 
       {localization.status === 'error' && (
-        <IntlProvider locale="en-GB" messages={IN_APP_TRANSLATIONS}>
+        <IntlProvider locale="en-GB" messages={IN_APP_MESSAGING_TRANSLATIONS}>
           <UnavailablePreview message={localization.error.message} />
         </IntlProvider>
       )}
@@ -58,5 +58,5 @@ export function NotificareInAppMessagePreview({
 export interface NotificareInAppMessagePreviewProps {
   inAppMessage: NotificareInAppMessage;
   locale?: string;
-  translations?: Partial<Record<NotificareInAppTranslationKey, string>>;
+  translations?: Partial<Record<NotificareInAppMessagingTranslationKey, string>>;
 }

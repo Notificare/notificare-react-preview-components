@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { ZodIssue } from 'zod';
 import { UnavailablePreview } from '~/internal/components/shared';
 import { InAppMessageSchema } from '~/internal/schemas/in-app-message';
-import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
+import { IN_APP_MESSAGING_TRANSLATIONS } from '~/locales/in-app-messaging/en';
 
 export function InAppMessageValidationError({ errors }: InAppMessageValidationErrorProps) {
   const intl = useIntl();
@@ -16,7 +16,7 @@ export function InAppMessageValidationError({ errors }: InAppMessageValidationEr
     <UnavailablePreview
       message={intl.formatMessage({
         id: 'preview.error.invalidInAppMessage',
-        defaultMessage: IN_APP_TRANSLATIONS['preview.error.invalidInAppMessage'],
+        defaultMessage: IN_APP_MESSAGING_TRANSLATIONS['preview.error.invalidInAppMessage'],
       })}
       showConsoleWarning={true}
     />

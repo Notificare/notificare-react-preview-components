@@ -5,43 +5,49 @@ import './CardMessage.css';
 
 export function CardMessage({ inAppMessage }: CardMessageProps) {
   return (
-    <div className="notificare__in-app__card__wrapper" data-testid="in-app-card-preview-wrapper">
-      <div className="notificare__in-app__card__window">
-        <div className="notificare__in-app__card__header">
-          <button className="notificare__in-app__card__close-button">
-            <ThinXMark className="notificare__in-app__card__close-button-icon" />
+    <div
+      className="notificare__in-app-messaging__card__wrapper"
+      data-testid="in-app-messaging-card-preview-wrapper"
+    >
+      <div className="notificare__in-app-messaging__card__window">
+        <div className="notificare__in-app-messaging__card__header">
+          <button className="notificare__in-app-messaging__card__close-button">
+            <ThinXMark className="notificare__in-app-messaging__card__close-button-icon" />
           </button>
           <img
             alt="App icon"
-            className="notificare__in-app__card__image"
+            className="notificare__in-app-messaging__card__image"
             src={inAppMessage.image}
-            data-testid="in-app-card-preview-image"
+            data-testid="in-app-messaging-card-preview-image"
           />
         </div>
-        <div className="notificare__in-app__card__text-content">
-          <p className="notificare__in-app__card__title" data-testid="in-app-card-preview-title">
+        <div className="notificare__in-app-messaging__card__text-content">
+          <p
+            className="notificare__in-app-messaging__card__title"
+            data-testid="in-app-messaging-card-preview-title"
+          >
             {inAppMessage.title}
           </p>
           <p
-            className="notificare__in-app__card__message"
-            data-testid="in-app-card-preview-message"
+            className="notificare__in-app-messaging__card__message"
+            data-testid="in-app-messaging-card-preview-message"
           >
             {inAppMessage.message}
           </p>
         </div>
 
-        <div className="notificare__in-app__card__actions">
+        <div className="notificare__in-app-messaging__card__actions">
           <button
-            className={`notificare__in-app__card__action-button notificare__in-app__card__action-button--primary ${inAppMessage.primaryAction.destructive ? 'notificare__in-app__card__action-button--destructive' : ''}`}
-            data-testid="in-app-card-preview-primary-action-label"
+            className={`notificare__in-app-messaging__card__action-button notificare__in-app-messaging__card__action-button--primary ${inAppMessage.primaryAction.destructive ? 'notificare__in-app-messaging__card__action-button--destructive' : ''}`}
+            data-testid="in-app-messaging-card-preview-primary-action-label"
           >
             {inAppMessage.primaryAction.label}
           </button>
 
           {inAppMessage.secondaryAction && (
             <button
-              className={`notificare__in-app__card__action-button notificare__in-app__card__action-button--secondary ${inAppMessage.secondaryAction.destructive ? 'notificare__in-app__card__action-button--destructive' : ''}`}
-              data-testid="in-app-card-preview-secondary-action-label"
+              className={`notificare__in-app-messaging__card__action-button notificare__in-app-messaging__card__action-button--secondary ${inAppMessage.secondaryAction.destructive ? 'notificare__in-app-messaging__card__action-button--destructive' : ''}`}
+              data-testid="in-app-messaging-card-preview-secondary-action-label"
             >
               {inAppMessage.secondaryAction.label}
             </button>

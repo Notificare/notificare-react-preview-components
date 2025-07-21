@@ -26,10 +26,10 @@ describe('NotificareInAppMessagePreview', () => {
     // ACT
     render(<NotificareInAppMessagePreview inAppMessage={BANNER_MESSAGE_MOCK} />);
 
-    const bannerPreview = screen.queryByTestId('in-app-banner-preview-wrapper');
-    const bannerPreviewImage = screen.queryByTestId('in-app-banner-preview-image');
-    const bannerPreviewTitle = screen.queryByTestId('in-app-banner-preview-title');
-    const bannerPreviewMessage = screen.queryByTestId('in-app-banner-preview-message');
+    const bannerPreview = screen.queryByTestId('in-app-messaging-banner-preview-wrapper');
+    const bannerPreviewImage = screen.queryByTestId('in-app-messaging-banner-preview-image');
+    const bannerPreviewTitle = screen.queryByTestId('in-app-messaging-banner-preview-title');
+    const bannerPreviewMessage = screen.queryByTestId('in-app-messaging-banner-preview-message');
 
     // ASSERT
     expect(bannerPreview).toBeInTheDocument();
@@ -47,12 +47,12 @@ describe('NotificareInAppMessagePreview', () => {
     // ACT
     render(<NotificareInAppMessagePreview inAppMessage={CARD_MESSAGE_MOCK} />);
 
-    const cardPreview = screen.queryByTestId('in-app-card-preview-wrapper');
-    const cardPreviewImage = screen.queryByTestId('in-app-card-preview-image');
-    const cardPreviewTitle = screen.queryByTestId('in-app-card-preview-title');
-    const cardPreviewMessage = screen.queryByTestId('in-app-card-preview-message');
+    const cardPreview = screen.queryByTestId('in-app-messaging-card-preview-wrapper');
+    const cardPreviewImage = screen.queryByTestId('in-app-messaging-card-preview-image');
+    const cardPreviewTitle = screen.queryByTestId('in-app-messaging-card-preview-title');
+    const cardPreviewMessage = screen.queryByTestId('in-app-messaging-card-preview-message');
     const cardPreviewPrimaryActionLabel = screen.queryByTestId(
-      'in-app-card-preview-primary-action-label',
+      'in-app-messaging-card-preview-primary-action-label',
     );
 
     // ASSERT
@@ -73,7 +73,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
 
     const cardPreviewSecondaryActionLabel = screen.queryByTestId(
-      'in-app-card-preview-secondary-action-label',
+      'in-app-messaging-card-preview-secondary-action-label',
     );
 
     // ASSERT
@@ -89,12 +89,12 @@ describe('NotificareInAppMessagePreview', () => {
     );
 
     const cardPreviewPrimaryActionLabel = screen.queryByTestId(
-      'in-app-card-preview-primary-action-label',
+      'in-app-messaging-card-preview-primary-action-label',
     );
 
     // ASSERT
     expect(cardPreviewPrimaryActionLabel).toHaveClass(
-      'notificare__in-app__card__action-button--destructive',
+      'notificare__in-app-messaging__card__action-button--destructive',
     );
   });
 
@@ -104,10 +104,16 @@ describe('NotificareInAppMessagePreview', () => {
     // ACT
     render(<NotificareInAppMessagePreview inAppMessage={FULLSCREEN_MESSAGE_MOCK} />);
 
-    const fullscreenPreview = screen.queryByTestId('in-app-fullscreen-preview-wrapper');
-    const fullscreenPreviewImage = screen.queryByTestId('in-app-fullscreen-preview-image');
-    const fullscreenPreviewTitle = screen.queryByTestId('in-app-fullscreen-preview-title');
-    const fullscreenPreviewMessage = screen.queryByTestId('in-app-fullscreen-preview-message');
+    const fullscreenPreview = screen.queryByTestId('in-app-messaging-fullscreen-preview-wrapper');
+    const fullscreenPreviewImage = screen.queryByTestId(
+      'in-app-messaging-fullscreen-preview-image',
+    );
+    const fullscreenPreviewTitle = screen.queryByTestId(
+      'in-app-messaging-fullscreen-preview-title',
+    );
+    const fullscreenPreviewMessage = screen.queryByTestId(
+      'in-app-messaging-fullscreen-preview-message',
+    );
 
     // ASSERT
     expect(fullscreenPreview).toBeInTheDocument();

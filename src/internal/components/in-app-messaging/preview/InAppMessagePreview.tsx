@@ -10,7 +10,7 @@ import './InAppMessagePreview.css';
 
 export function InAppMessagePreview({ inAppMessage }: InAppMessagePreviewProps) {
   return (
-    <div className="notificare__in-app__preview">
+    <div className="notificare__in-app-messaging__preview">
       <AndroidPhoneBackground theme="dark">
         {(() => {
           switch (inAppMessage.type) {
