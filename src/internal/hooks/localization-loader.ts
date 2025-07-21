@@ -3,11 +3,13 @@ import { RequestState } from '~/internal/network/state';
 import { isValidLocale } from '~/internal/utils/locale';
 import { NotificarePushTranslationKey, NotificareInAppTranslationKey } from '~/locales';
 import { IN_APP_TRANSLATIONS } from '~/locales/in-app-messaging/en';
+import { IN_APP_TRANSLATIONS_FR } from '~/locales/in-app-messaging/fr';
 import { IN_APP_TRANSLATIONS_PT } from '~/locales/in-app-messaging/pt';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS_FR } from '~/locales/push/fr';
 import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
 
-const SUPPORTED_LOCALES = ['en-GB', 'pt-PT'] as const;
+const SUPPORTED_LOCALES = ['en-GB', 'pt-PT', 'fr-FR'] as const;
 type SupportedLocales = (typeof SUPPORTED_LOCALES)[number];
 
 export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>({
@@ -76,5 +78,8 @@ function getMessagesForLocale<T extends LocalizedFeatureTranslationKeys>(
 
     case 'pt-PT':
       return type === 'push' ? PUSH_TRANSLATIONS_PT : IN_APP_TRANSLATIONS_PT;
+
+    case 'fr-FR':
+      return type === 'push' ? PUSH_TRANSLATIONS_FR : IN_APP_TRANSLATIONS_FR;
   }
 }
