@@ -8,8 +8,11 @@ import { useLocalizationLoader } from '~/internal/hooks';
 import { NotificationSchema } from '~/internal/schemas/notificare-notification';
 import { NotificarePushTranslationKey } from '~/locales';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
-import { NotificareNotification, NotificareNotificationPreviewVariant } from '~/models';
-import { NotificareNotificationPreviewLocale } from '~/models/push/notificare-notification-preview-locale';
+import {
+  NotificareNotification,
+  NotificareNotificationPreviewVariant,
+  NotificareNotificationPreviewLocale,
+} from '~/models';
 
 import '~/preset.css';
 

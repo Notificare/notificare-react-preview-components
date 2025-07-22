@@ -83,6 +83,8 @@
     color: #64706e;
     font-size: 12px;
     text-align: right;
+    flex-shrink: 0;
+    max-width: 130px;
 }
 
 .notificare .notificare__push__ios__lock-screen__text--message-without-media {
