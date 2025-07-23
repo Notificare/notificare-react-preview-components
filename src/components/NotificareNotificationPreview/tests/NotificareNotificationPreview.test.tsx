@@ -3,17 +3,17 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { NotificareNotificationPreview } from '~/components';
 import { PUSH_API_TEST_HOST, setPushAPIHost } from '~/internal/network/api';
 import {
-  alertNotificationMock,
-  appRecommendationNotificationMock,
-  html5VideoNotificationMock,
-  imageNotificationMock,
-  inAppBrowserNotificationMock,
-  invalidNotificationMock,
-  mapNotificationMock,
-  passbookNotificationMock,
-  rateNotificationMock,
-  webPageNotificationMock,
-  webViewNotificationMock,
+  ALERT_NOTIFICATION_MOCK,
+  APP_RECOMMENDATION_NOTIFICATION_MOCK,
+  HTML_5_VIDEO_NOTIFICATION_MOCK,
+  IMAGE_NOTIFICATION_MOCK,
+  IN_APP_BROWSER_NOTIFICATION_MOCK,
+  INVALID_NOTIFICATION_MOCK,
+  MAP_NOTIFICATION_MOCK,
+  PASSBOOK_NOTIFICATION_MOCK,
+  RATE_NOTIFICATION_MOCK,
+  WEB_PAGE_NOTIFICATION_MOCK,
+  WEB_VIEW_NOTIFICATION_MOCK,
 } from './mocks';
 import '@testing-library/jest-dom';
 
@@ -33,7 +33,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={true}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -50,7 +50,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -69,7 +69,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -96,7 +96,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -115,7 +115,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -142,7 +142,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'android-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -163,7 +163,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -178,11 +178,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a Rate notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -201,7 +207,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -220,7 +226,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -239,7 +245,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -264,7 +270,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -289,7 +295,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -308,7 +314,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -324,11 +330,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a Passbook notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={passbookNotificationMock}
+        notification={PASSBOOK_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -343,11 +355,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a App Recommendation notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -386,7 +404,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -402,6 +420,12 @@ describe('NotificareNotificationPreview', () => {
 
   test("when the preview variant is 'android-app-ui', it's a Passbook notification and it has actions, it shows the options button as expected", () => {
     // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    // ARRANGE
     const actions = [
       {
         _id: '1',
@@ -417,7 +441,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...passbookNotificationMock, actions }}
+        notification={{ ...PASSBOOK_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -446,7 +470,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -475,7 +499,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -504,7 +528,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...mapNotificationMock, actions }}
+        notification={{ ...MAP_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -520,7 +544,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website hasn't any actionable markup, it shows the options button as expected", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `https://push-test.notifica.re/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -546,7 +573,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -561,7 +588,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `https://push-test.notifica.re/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -587,7 +617,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -623,7 +653,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -659,7 +689,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -678,7 +708,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'ios-lockscreen'}
         serviceKey="123"
       />,
@@ -704,7 +734,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'ios-lockscreen'}
         serviceKey="123"
       />,
@@ -723,7 +753,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'ios-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -750,7 +780,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'ios-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -771,7 +801,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -790,7 +820,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -809,7 +839,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -828,7 +858,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -847,7 +877,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -872,7 +902,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -897,7 +927,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -916,7 +946,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -932,11 +962,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'ios-app-ui' and it's a Passbook notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={passbookNotificationMock}
+        notification={PASSBOOK_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -955,7 +991,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -992,7 +1028,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1023,7 +1059,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1037,6 +1073,12 @@ describe('NotificareNotificationPreview', () => {
 
   test("when the preview variant is 'ios-app-ui', it's a Passbook notification and it has actions, it shows the options button as expected", () => {
     // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    // ARRANGE
     const actions = [
       {
         _id: '1',
@@ -1052,7 +1094,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...passbookNotificationMock, actions }}
+        notification={{ ...PASSBOOK_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1081,7 +1123,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1110,7 +1152,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1139,7 +1181,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...mapNotificationMock, actions }}
+        notification={{ ...MAP_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -1155,7 +1197,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website hasn't any actionable markup, it shows the options button as expected", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `https://push-test.notifica.re/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1181,7 +1226,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1196,7 +1241,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `https://push-test.notifica.re/proxy/?url=${url}`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1222,7 +1270,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1258,7 +1306,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1294,7 +1342,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1313,7 +1361,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'web-desktop-macos'}
         serviceKey="123"
       />,
@@ -1348,7 +1396,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions }}
         variant={'web-desktop-macos'}
         serviceKey="123"
       />,
@@ -1398,7 +1446,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions, attachments }}
         variant={'web-desktop-macos'}
         serviceKey="123"
       />,
@@ -1425,7 +1473,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1444,7 +1492,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1463,7 +1511,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1482,7 +1530,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1497,11 +1545,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-android-app-ui' and it's a Web Page notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1520,7 +1574,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -1540,7 +1594,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1557,7 +1611,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1574,7 +1628,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1609,7 +1663,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions }}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1630,7 +1684,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1649,7 +1703,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1668,7 +1722,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1687,7 +1741,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1702,11 +1756,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-iphone-app-ui' and it's a Web Page notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1725,7 +1785,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -1745,7 +1805,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1762,7 +1822,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1779,7 +1839,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1814,7 +1874,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions }}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1835,7 +1895,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={invalidNotificationMock} // has invalid type
+        notification={INVALID_NOTIFICATION_MOCK} // has invalid type
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -1864,7 +1924,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
+        notification={WEB_PAGE_NOTIFICATION_MOCK} // needs to fetch a webshot from the given URL
         serviceKey="123"
         variant={'android-app-ui'}
       />,
@@ -1891,7 +1951,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
+        notification={WEB_PAGE_NOTIFICATION_MOCK} // needs to fetch a webshot from the given URL
         serviceKey="123"
         variant={'android-app-ui'}
       />,
@@ -1912,7 +1972,10 @@ describe('NotificareNotificationPreview', () => {
 
     global.fetch = jest.fn((url) => {
       // Fetch website mock
-      if (url === `https://push-test.notifica.re/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1921,7 +1984,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Request webshot mock
-      if (url === `https://push-test.notifica.re/webshot?apiKey=123`) {
+      if (url.toString() === `https://push-test.notifica.re/webshot?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1930,7 +1993,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Check webshot request status mock
-      if (url === `https://push-test.notifica.re/webshot/1?apiKey=123`) {
+      if (url.toString() === `https://push-test.notifica.re/webshot/1?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1943,7 +2006,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Get webshot mock
-      if (url === `https://push-test.notifica.re/webshot/1/result?apiKey=123`) {
+      if (url.toString() === `https://push-test.notifica.re/webshot/1/result?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1951,14 +2014,14 @@ describe('NotificareNotificationPreview', () => {
         } as Response);
       }
 
-      return new Promise(() => {}); // fetch pending
+      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
     });
 
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
+        notification={WEB_PAGE_NOTIFICATION_MOCK} // needs to fetch a webshot from the given URL
         variant={'android-app-ui'}
         serviceKey="123"
       />,
