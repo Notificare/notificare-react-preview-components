@@ -2,6 +2,9 @@ import { act } from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { NotificareNotificationPreview } from '~/components';
 import { PUSH_API_TEST_HOST, setPushAPIHost } from '~/internal/network/api';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS_FR } from '~/locales/push/fr';
+import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
 import {
   ALERT_NOTIFICATION_MOCK,
   APP_RECOMMENDATION_NOTIFICATION_MOCK,
@@ -15,6 +18,7 @@ import {
   WEB_PAGE_NOTIFICATION_MOCK,
   WEB_VIEW_NOTIFICATION_MOCK,
 } from './mocks';
+
 import '@testing-library/jest-dom';
 
 describe('NotificareNotificationPreview', () => {
@@ -2041,5 +2045,204 @@ describe('NotificareNotificationPreview', () => {
     await waitFor(() => {
       expect(screen.getByTestId('webshot')).toBeInTheDocument();
     });
+  });
+
+  /* Localization */
+
+  test('when consumer provides an invalid locale, it renders an error message as expected', async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="invalid-locale"
+      />,
+    );
+
+    // get the error message
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      '→ The locale you chose is invalid. Choose a different one and try again',
+    );
+  });
+
+  test("when consumer doesn't provide any locale, it loads default messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
+  });
+
+  test("when consumer provides locale 'en', it loads en messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="en"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
+  });
+
+  test("when consumer provides locale 'en-GB', it loads en messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="en-GB"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
+  });
+
+  test("when consumer provides locale 'fr', it loads fr messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="fr"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_FR['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
+  });
+
+  test("when consumer provides locale 'fr-FR', it loads fr messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="fr-FR"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_FR['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
+  });
+
+  test("when consumer provides locale 'fr-BE', it loads fr messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="fr-BE"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_FR['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
+  });
+
+  test("when consumer provides locale 'pt', it loads pt messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="pt"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_PT['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_PT['controls.platform']);
+  });
+
+  test("when consumer provides locale 'pt-PT', it loads pt messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="pt-PT"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_PT['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_PT['controls.platform']);
+  });
+
+  test('when custom translations are provided, it uses them as expected', async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        translations={{ 'controls.platform': 'Custom' }}
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId('toggle-group-Custom');
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent('Custom');
   });
 });
