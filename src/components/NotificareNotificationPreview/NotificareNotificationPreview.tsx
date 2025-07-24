@@ -25,7 +25,7 @@ import '~/preset.css';
  * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
  * @param {string} [serviceKey] - A service key provided by a Notificare admin.
  * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
- * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-GB' by default.
+ * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
  * @param {string} [translations] - A set of custom translations to override the default ones (optional).
  */
 export function NotificareNotificationPreview({
@@ -35,7 +35,7 @@ export function NotificareNotificationPreview({
   variant = 'android-lockscreen',
   serviceKey,
   googleMapsAPIKey,
-  locale = 'en-GB',
+  locale = 'en-US',
   translations,
 }: NotificareNotificationPreviewProps) {
   const localization = useLocalizationLoader({ locale, translations, type: 'push' });
@@ -49,7 +49,7 @@ export function NotificareNotificationPreview({
       {localization.status === 'success' && (
         <IntlProvider
           locale={localization.data.locale}
-          defaultLocale="en-GB"
+          defaultLocale="en-US"
           messages={localization.data.translations}
         >
           <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
@@ -68,7 +68,7 @@ export function NotificareNotificationPreview({
       )}
 
       {localization.status === 'error' && (
-        <IntlProvider locale="en-GB" messages={PUSH_TRANSLATIONS}>
+        <IntlProvider locale="en-US" messages={PUSH_TRANSLATIONS}>
           <UnavailablePreview message={localization.error.message} />
         </IntlProvider>
       )}
