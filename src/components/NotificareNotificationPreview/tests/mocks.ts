@@ -2,28 +2,28 @@ import { NotificareNotification } from '~/models';
 
 /* Notifications */
 
-export const invalidNotificationMock: NotificareNotification = {
-  type: 'invalid-type', // has an invalid type
+export const INVALID_NOTIFICATION_MOCK: NotificareNotification = {
+  type: 'invalid-type',
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message',
 };
 
-export const alertNotificationMock: NotificareNotification = {
+export const ALERT_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Alert',
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message',
 };
 
-export const rateNotificationMock: NotificareNotification = {
+export const RATE_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Rate',
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message example',
 };
 
-export const webViewNotificationMock: NotificareNotification = {
+export const WEB_VIEW_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.WebView',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -36,7 +36,7 @@ export const webViewNotificationMock: NotificareNotification = {
   ],
 };
 
-export const html5VideoNotificationMock: NotificareNotification = {
+export const HTML_5_VIDEO_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -49,7 +49,7 @@ export const html5VideoNotificationMock: NotificareNotification = {
   ],
 };
 
-export const vimeoVideoNotificationMock: NotificareNotification = {
+export const VIMEO_VIDEO_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -62,7 +62,7 @@ export const vimeoVideoNotificationMock: NotificareNotification = {
   ],
 };
 
-export const youtubeVideoNotificationMock: NotificareNotification = {
+export const YOUTUBE_VIDEO_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -75,7 +75,7 @@ export const youtubeVideoNotificationMock: NotificareNotification = {
   ],
 };
 
-export const imageNotificationMock: NotificareNotification = {
+export const IMAGE_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Image',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -92,7 +92,7 @@ export const imageNotificationMock: NotificareNotification = {
   ],
 };
 
-export const inAppBrowserNotificationMock: NotificareNotification = {
+export const IN_APP_BROWSER_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.InAppBrowser',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -105,7 +105,7 @@ export const inAppBrowserNotificationMock: NotificareNotification = {
   ],
 };
 
-export const webPageNotificationMock: NotificareNotification = {
+export const WEB_PAGE_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.URL',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -118,7 +118,7 @@ export const webPageNotificationMock: NotificareNotification = {
   ],
 };
 
-export const mapNotificationMock: NotificareNotification = {
+export const MAP_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Map',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -145,7 +145,7 @@ export const mapNotificationMock: NotificareNotification = {
   ],
 };
 
-export const passbookNotificationMock: NotificareNotification = {
+export const PASSBOOK_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Passbook',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -158,7 +158,7 @@ export const passbookNotificationMock: NotificareNotification = {
   ],
 };
 
-export const appRecommendationNotificationMock: NotificareNotification = {
+export const APP_RECOMMENDATION_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Store',
   title: 'Title',
   subtitle: 'Subtitle',

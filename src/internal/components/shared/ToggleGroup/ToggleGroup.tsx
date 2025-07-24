@@ -10,7 +10,9 @@ export function ToggleGroup<T extends Key>({
 }: ToggleGroupProps<T>) {
   return (
     <div className="notificare__toggle-group__wrapper">
-      <p className="notificare__toggle-group__label">{label}</p>
+      <p className="notificare__toggle-group__label" data-testid={`toggle-group-${label}`}>
+        {label}
+      </p>
       <div className="notificare__toggle-group__options">
         {options.map((option, index) => (
           <Fragment key={option.value}>
