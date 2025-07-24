@@ -9,24 +9,19 @@ import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { PUSH_TRANSLATIONS_FR } from '~/locales/push/fr';
 import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
 
-const SUPPORTED_LOCALES = ['en-GB', 'pt-PT', 'fr-FR'] as const;
-type SupportedLocales = (typeof SUPPORTED_LOCALES)[number];
-
 export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>({
   locale,
   translations,
   type,
 }: LocalizationLoaderParams<T>) {
-  const [state, setState] = useState<LocalisationLoaderState>({ status: 'idle' });
+  const [state, setState] = useState<LocalizationLoaderState>({ status: 'idle' });
 
-  const localeMessages = useMemo(() => {
-    const safeLocale = SUPPORTED_LOCALES.find((supportedLocale) => supportedLocale === locale);
+  const languageMessages = useMemo(() => {
+    if (!isValidLocale(locale)) return null;
 
-    if (!safeLocale) {
-      return null;
-    }
+    const language = new Intl.Locale(locale).language;
 
-    return getMessagesForLocale(safeLocale, type);
+    return getMessagesForLanguage(language, type);
   }, [locale, type]);
 
   useEffect(() => {
@@ -42,10 +37,10 @@ export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>
       status: 'success',
       data: {
         locale: locale,
-        translations: { ...localeMessages, ...translations },
+        translations: { ...languageMessages, ...translations },
       },
     });
-  }, [locale, translations, localeMessages]);
+  }, [locale, translations, languageMessages]);
 
   return state;
 }
@@ -63,23 +58,26 @@ export type LocalizationLoaderParams<T extends LocalizedFeatureTranslationKeys> 
   translations?: Partial<Record<LocalizedFeatureTranslations[T], string>>;
 };
 
-export type LocalisationLoaderState = Exclude<
+export type LocalizationLoaderState = Exclude<
   RequestState<{ locale: string; translations: Record<string, string> }>,
   { status: 'loading' }
 >;
 
-function getMessagesForLocale<T extends LocalizedFeatureTranslationKeys>(
-  locale: SupportedLocales,
+function getMessagesForLanguage<T extends LocalizedFeatureTranslationKeys>(
+  language: string,
   type: T,
 ) {
-  switch (locale) {
-    case 'en-GB':
+  switch (language) {
+    case 'en':
       return type === 'push' ? PUSH_TRANSLATIONS : IN_APP_MESSAGING_TRANSLATIONS;
 
-    case 'pt-PT':
+    case 'pt':
       return type === 'push' ? PUSH_TRANSLATIONS_PT : IN_APP_MESSAGING_TRANSLATIONS_PT;
 
-    case 'fr-FR':
+    case 'fr':
       return type === 'push' ? PUSH_TRANSLATIONS_FR : IN_APP_MESSAGING_TRANSLATIONS_FR;
+
+    default:
+      return null;
   }
 }

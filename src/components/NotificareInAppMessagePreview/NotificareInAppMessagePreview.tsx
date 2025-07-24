@@ -15,12 +15,12 @@ import '~/preset.css';
  * Component that displays an in-app message preview.
  *
  * @param {NotificareInAppMessage} inAppMessage - The in-app message to be displayed in the preview.
- * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-GB' by default.
+ * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
  * @param {string} [translations] - A set of custom translations to override the default ones (optional).
  */
 export function NotificareInAppMessagePreview({
   inAppMessage,
-  locale = 'en-GB',
+  locale = 'en-US',
   translations,
 }: NotificareInAppMessagePreviewProps) {
   const localization = useLocalizationLoader({ locale, translations, type: 'in-app' });
@@ -35,7 +35,7 @@ export function NotificareInAppMessagePreview({
       {localization.status === 'success' && (
         <IntlProvider
           locale={localization.data.locale}
-          defaultLocale="en-GB"
+          defaultLocale="en-US"
           messages={localization.data.translations}
         >
           {inAppMessageResult.success ? (
@@ -47,7 +47,7 @@ export function NotificareInAppMessagePreview({
       )}
 
       {localization.status === 'error' && (
-        <IntlProvider locale="en-GB" messages={IN_APP_MESSAGING_TRANSLATIONS}>
+        <IntlProvider locale="en-US" messages={IN_APP_MESSAGING_TRANSLATIONS}>
           <UnavailablePreview message={localization.error.message} />
         </IntlProvider>
       )}
