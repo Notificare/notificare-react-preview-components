@@ -37,7 +37,7 @@ Check the table below for details on the properties supported by this component.
 
 ### `NotificareInAppMessageAction`
 
-| Property      | Type     | Required | Description                                                                                                                                                                                                |
-|---------------|----------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `label`       | `string` | ❌        | Text shown on the action button (e.g., "Open"). It's only available for in-app messages of type **Card**.                                                                                                  |
-| `destructive` | `string` | ❌        | Whether the action performs an irreversible operation. It's only available for in-app messages of type **Card**, and makes the action button use built-in styles depending on whether it is true or false. |
+| Property      | Type      | Required | Description                                                                                                                                                                                                |
+|---------------|-----------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `label`       | `string`  | ❌        | Text shown on the action button (e.g., "Open"). It's only available for in-app messages of type **Card**.                                                                                                  |
+| `destructive` | `boolean` | ❌        | Whether the action performs an irreversible operation. It's only available for in-app messages of type **Card**, and makes the action button use built-in styles depending on whether it is true or false. |
