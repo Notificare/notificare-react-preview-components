@@ -13,6 +13,7 @@ The **Notificare React Preview Components** consists of a collection of React co
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Theming](#theming)
+- [Localisation](#localisation)
 
 ## Features
 
