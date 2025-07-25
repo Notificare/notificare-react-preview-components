@@ -229,7 +229,10 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
             onMouseEnter={() => setMouseOverButtonIndex(notification.actions?.length || -1)}
             onMouseLeave={() => setMouseOverButtonIndex(-1)}
           >
-            Settings
+            <FormattedMessage
+              id="preview.web.desktop.macos.lockScreen.settings"
+              defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']}
+            />
           </button>
         </div>
       )}
