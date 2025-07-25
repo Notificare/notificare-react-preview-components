@@ -95,4 +95,4 @@ For example, to adjust the size of the loading animation, you can simply add the
 
 ## Localisation
 
-Regardless of the preview component you're using, you can select which language will be used in the UI controls and in the preview itself. Components will be automatically translated based on the chosen language, if default translations are available. Furthermore, you can also provide fully customizable translations, allowing you to personalize components to your liking. Check each component's documentation for more details on how to implement this.
+Regardless of the preview component you're using, you can select which language will be used in the UI controls and in the preview itself. Components will be automatically translated based on the chosen language, if default translations are available. Furthermore, you can also provide fully customizable translations, allowing you to personalize components to your liking.<br><br>Check each component's documentation for more details on how to implement this.
