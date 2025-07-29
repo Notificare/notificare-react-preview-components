@@ -8,7 +8,7 @@ export function OptionsProvider({ children, ...props }: PropsWithChildren<Option
 
 export interface OptionsProviderProps {
   serviceKey: string;
-  googleMapsAPIKey?: string;
+  googleMapsApiKey?: string;
 }
 
 export function useOptions() {

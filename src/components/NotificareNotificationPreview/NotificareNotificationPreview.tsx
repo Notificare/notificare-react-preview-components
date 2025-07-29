@@ -24,7 +24,7 @@ import '~/preset.css';
  * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's true by default.
  * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
  * @param {string} [serviceKey] - A service key provided by a Notificare admin.
- * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
+ * @param {string} [googleMapsApiKey] - A Google Maps API key (optional).
  * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
  * @param {string} [translations] - A set of custom translations to override the default ones (optional).
  */
@@ -34,7 +34,7 @@ export function NotificareNotificationPreview({
   showControls = true,
   variant = 'android-lockscreen',
   serviceKey,
-  googleMapsAPIKey,
+  googleMapsApiKey,
   locale = 'en-US',
   translations,
 }: NotificareNotificationPreviewProps) {
@@ -52,7 +52,7 @@ export function NotificareNotificationPreview({
           defaultLocale="en-US"
           messages={localization.data.translations}
         >
-          <OptionsProvider serviceKey={serviceKey} googleMapsAPIKey={googleMapsAPIKey}>
+          <OptionsProvider serviceKey={serviceKey} googleMapsApiKey={googleMapsApiKey}>
             {notificationResult.success ? (
               <NotificationPreviewWrapper
                 notification={notificationResult.data}
@@ -82,7 +82,7 @@ export interface NotificareNotificationPreviewProps {
   showControls?: boolean;
   variant?: NotificareNotificationPreviewVariant;
   serviceKey: string;
-  googleMapsAPIKey?: string;
+  googleMapsApiKey?: string;
   locale?: NotificareNotificationPreviewLocale;
   translations?: Partial<Record<NotificarePushTranslationKey, string>>;
 }

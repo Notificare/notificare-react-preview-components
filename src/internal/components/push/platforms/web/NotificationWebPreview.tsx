@@ -19,7 +19,7 @@ export function NotificationWebPreview({
   notification,
   previewState,
 }: NotificationWebPreviewProps) {
-  const { googleMapsAPIKey } = useOptions();
+  const { googleMapsApiKey } = useOptions();
   const intl = useIntl();
 
   switch (previewState.formFactor) {
@@ -60,7 +60,7 @@ export function NotificationWebPreview({
             );
           }
 
-          if (notification.type === 're.notifica.notification.Map' && !googleMapsAPIKey) {
+          if (notification.type === 're.notifica.notification.Map' && !googleMapsApiKey) {
             return (
               <UnavailablePreview
                 message={intl.formatMessage({

@@ -321,7 +321,7 @@ describe('NotificareNotificationPreview', () => {
         notification={MAP_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
-        googleMapsAPIKey="123"
+        googleMapsApiKey="123"
       />,
     );
 
@@ -535,7 +535,7 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...MAP_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
-        googleMapsAPIKey="123"
+        googleMapsApiKey="123"
       />,
     );
 
@@ -953,7 +953,7 @@ describe('NotificareNotificationPreview', () => {
         notification={MAP_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
-        googleMapsAPIKey="123"
+        googleMapsApiKey="123"
       />,
     );
 
@@ -1188,7 +1188,7 @@ describe('NotificareNotificationPreview', () => {
         notification={{ ...MAP_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
-        googleMapsAPIKey="123"
+        googleMapsApiKey="123"
       />,
     );
 
@@ -1581,7 +1581,7 @@ describe('NotificareNotificationPreview', () => {
         notification={MAP_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
-        googleMapsAPIKey="123"
+        googleMapsApiKey="123"
       />,
     );
 
@@ -1792,7 +1792,7 @@ describe('NotificareNotificationPreview', () => {
         notification={MAP_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
-        googleMapsAPIKey="123"
+        googleMapsApiKey="123"
       />,
     );
 

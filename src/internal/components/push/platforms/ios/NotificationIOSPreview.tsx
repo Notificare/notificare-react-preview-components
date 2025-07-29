@@ -26,13 +26,13 @@ export function NotificationIOSPreview({
   notification,
   previewState,
 }: NotificationIOSPreviewProps) {
-  const { googleMapsAPIKey } = useOptions();
+  const { googleMapsApiKey } = useOptions();
   const intl = useIntl();
 
   if (
     notification.type === 're.notifica.notification.Map' &&
     previewState.displayMode === 'app-ui' &&
-    !googleMapsAPIKey
+    !googleMapsApiKey
   ) {
     return (
       <UnavailablePreview

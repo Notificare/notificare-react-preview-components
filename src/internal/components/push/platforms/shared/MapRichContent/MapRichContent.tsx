@@ -17,7 +17,7 @@ import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import './MapRichContent.css';
 
 export function MapRichContent({ notification, width, height }: MapRichContentProps) {
-  const { googleMapsAPIKey } = useOptions();
+  const { googleMapsApiKey } = useOptions();
   const [isClient, setIsClient] = useState(false);
 
   const markers = useMemo(() => {
@@ -46,7 +46,7 @@ export function MapRichContent({ notification, width, height }: MapRichContentPr
 
   return (
     <div data-testid="map-notification">
-      <APIProvider apiKey={googleMapsAPIKey || ''}>
+      <APIProvider apiKey={googleMapsApiKey || ''}>
         <MapWithStatus markers={markers} center={center} width={width} height={height} />
       </APIProvider>
     </div>
