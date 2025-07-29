@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const passbook: Partial<NotificareNotificationPreviewProps> = {
+export const PASSBOOK: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Passbook',
     title: 'Title',

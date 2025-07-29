@@ -3,10 +3,10 @@ import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
 import { useOptions } from '~/internal/context/options';
 import { fetchWebsiteMarkup } from '~/internal/network/requests/website-markup';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import {
   hasActions,
-  markupContainsNotificareOpenActionQueryParameter
+  markupContainsNotificareOpenActionQueryParameter,
 } from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
 
@@ -36,7 +36,8 @@ export function URLNotification({ notification }: URLNotificationProps) {
       <TitleBar
         title={notification.title || application.name}
         showOptions={
-          hasActions(notification) && !markupContainsNotificareOpenActionQueryParameter(websiteMarkup)
+          hasActions(notification) &&
+          !markupContainsNotificareOpenActionQueryParameter(websiteMarkup)
         }
       />
       <Webshot url={url} platform="iOS" width={338} height={566} />
@@ -45,5 +46,5 @@ export function URLNotification({ notification }: URLNotificationProps) {
 }
 
 export interface URLNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.URL' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.URL' }>;
 }

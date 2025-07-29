@@ -1,6 +1,6 @@
 import { VideoRichContent } from '~/internal/components/push/platforms/shared/VideoRichContent/VideoRichContent';
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
 
@@ -22,5 +22,5 @@ export function VideoNotification({ notification }: VideoNotificationProps) {
 }
 
 export interface VideoNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Video' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Video' }>;
 }

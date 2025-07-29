@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const imageSingle: Partial<NotificareNotificationPreviewProps> = {
+export const IMAGE_SINGLE: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Image',
     title: 'Title',
@@ -16,7 +16,7 @@ export const imageSingle: Partial<NotificareNotificationPreviewProps> = {
   variant: 'android-app-ui',
 };
 
-export const imageMultiple: Partial<NotificareNotificationPreviewProps> = {
+export const IMAGE_MULTIPLE: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Image',
     title: 'Title',

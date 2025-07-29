@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
 import GoogleChromeIcon from '~/assets/google-chrome.svg';
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { ExpandButton } from './ExpandButton/ExpandButton';
@@ -242,7 +242,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
 
 export interface WebPushProps {
   key?: Key; // why do we receive a key?
-  notification: NotificareNotificationSchema;
+  notification: VerifiedNotification;
 }
 
 function extractDomain(url: string): string {

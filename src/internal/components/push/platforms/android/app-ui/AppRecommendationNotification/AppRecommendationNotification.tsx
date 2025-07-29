@@ -2,7 +2,7 @@ import { useIntl } from 'react-intl';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
@@ -34,14 +34,11 @@ export function AppRecommendationNotification({
 }
 
 export interface AppRecommendationNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Store' }>;
 }
 
 function getUrlByContentType(
-  contentList: Extract<
-    NotificareNotificationSchema,
-    { type: 're.notifica.notification.Store' }
-  >['content'],
+  contentList: Extract<VerifiedNotification, { type: 're.notifica.notification.Store' }>['content'],
 ) {
   const base = 'https://play.google.com';
 

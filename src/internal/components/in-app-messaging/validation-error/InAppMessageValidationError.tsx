@@ -8,9 +8,12 @@ import { IN_APP_MESSAGING_TRANSLATIONS } from '~/locales/in-app-messaging/en';
 export function InAppMessageValidationError({ errors }: InAppMessageValidationErrorProps) {
   const intl = useIntl();
 
-  useEffect(() => {
-    showInAppMessageErrors(errors);
-  }, [errors]);
+  useEffect(
+    function handleValidationErrors() {
+      logErrors(errors);
+    },
+    [errors],
+  );
 
   return (
     <UnavailablePreview
@@ -27,7 +30,7 @@ export interface InAppMessageValidationErrorProps {
   errors: ZodIssue[];
 }
 
-function showInAppMessageErrors(errors: ZodIssue[]) {
+function logErrors(errors: ZodIssue[]) {
   // Errors related to in-app message types are handled manually here
   // discriminatedUnion() from Zod do not support custom messages when a discriminator doesn't correspond
 

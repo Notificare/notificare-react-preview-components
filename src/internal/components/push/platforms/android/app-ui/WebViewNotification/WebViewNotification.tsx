@@ -1,8 +1,8 @@
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import {
   hasActions,
-  markupContainsNotificareOpenActionQueryParameter
+  markupContainsNotificareOpenActionQueryParameter,
 } from '~/internal/utils/push-previews/notification';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
@@ -16,7 +16,9 @@ export function WebViewNotification({ notification }: WebViewNotificationProps) 
     <div data-testid="android-app-ui-web-view-notification">
       <NavigationBar
         title={notification.title || application.name}
-        showOptions={hasActions(notification) && !markupContainsNotificareOpenActionQueryParameter(html)}
+        showOptions={
+          hasActions(notification) && !markupContainsNotificareOpenActionQueryParameter(html)
+        }
       />
 
       <iframe
@@ -29,5 +31,5 @@ export function WebViewNotification({ notification }: WebViewNotificationProps) 
 }
 
 export interface WebViewNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.WebView' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.WebView' }>;
 }

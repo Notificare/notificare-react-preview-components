@@ -1,7 +1,7 @@
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
 import { getPushAPIHost } from '~/internal/network/api';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
@@ -28,8 +28,5 @@ export function DigitalCardNotification({ notification }: DigitalCardNotificatio
 }
 
 export interface DigitalCardNotificationProps {
-  notification: Extract<
-    NotificareNotificationSchema,
-    { type: 're.notifica.notification.Passbook' }
-  >;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Passbook' }>;
 }

@@ -12,18 +12,17 @@ import { WebViewSchema } from './variants/web-view';
 
 export const NotificationSchema = z.discriminatedUnion('type', [
   AlertSchema,
-  WebViewSchema,
-  UrlSchema,
-  InAppBrowserSchema,
   ImageSchema,
+  InAppBrowserSchema,
   MapSchema,
-  RateSchema,
   PassbookSchema,
-  VideoSchema,
+  RateSchema,
   StoreSchema,
+  UrlSchema,
+  VideoSchema,
+  WebViewSchema,
 ]);
 
-// TODO: This isn't the actual notification schema. This is more of a "verified notification".
-export type NotificareNotificationSchema = z.infer<typeof NotificationSchema>;
+export type VerifiedNotification = z.infer<typeof NotificationSchema>;
 
-export type NotificareNotificationType = NotificareNotificationSchema['type'];
+export type NotificationType = VerifiedNotification['type'];

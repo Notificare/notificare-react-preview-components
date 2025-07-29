@@ -1,8 +1,8 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const invalid: Partial<NotificareNotificationPreviewProps> = {
+export const INVALID: Partial<NotificareNotificationPreviewProps> = {
   notification: {
-    type: 'invalid-type', // has an invalid type
+    type: 'invalid-type',
     title: 'Title',
     subtitle: 'Subtitle',
     message: 'Message',

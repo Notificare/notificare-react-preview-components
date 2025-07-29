@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const url: Partial<NotificareNotificationPreviewProps> = {
+export const URL: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -16,7 +16,7 @@ export const url: Partial<NotificareNotificationPreviewProps> = {
   variant: 'android-app-ui',
 };
 
-export const urlWithAction: Partial<NotificareNotificationPreviewProps> = {
+export const URL_WITH_ACTION: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',
@@ -41,7 +41,7 @@ export const urlWithAction: Partial<NotificareNotificationPreviewProps> = {
   variant: 'android-app-ui',
 };
 
-export const urlWithActionsAndActionableMarkup: Partial<NotificareNotificationPreviewProps> = {
+export const URL_WITH_ACTION_AND_ACTIONABLE_MARKUP: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.URL',
     title: 'Title',

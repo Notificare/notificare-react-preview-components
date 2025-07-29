@@ -1,4 +1,4 @@
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 
 import './VideoRichContent.css';
 
@@ -50,7 +50,7 @@ export function VideoRichContent({ videoData, width, height }: VideoRichContentP
 
 export interface VideoRichContentProps {
   videoData: Extract<
-    NotificareNotificationSchema,
+    VerifiedNotification,
     { type: 're.notifica.notification.Video' }
   >['content'][number];
   width: string;

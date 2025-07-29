@@ -16,18 +16,6 @@ import {
 
 import '~/preset.css';
 
-/**
- * Component that displays a notification preview for different platforms.
- *
- * @param {NotificareNotification} notification - The notification to be displayed in the preview.
- * @param {string} applicationId - The unique identifier of a Notificare application (optional).
- * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's true by default.
- * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
- * @param {string} [serviceKey] - A service key provided by a Notificare admin.
- * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
- * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
- * @param {string} [translations] - A set of custom translations to override the default ones (optional).
- */
 export function NotificareNotificationPreview({
   notification,
   applicationId,
@@ -38,7 +26,11 @@ export function NotificareNotificationPreview({
   locale = 'en-US',
   translations,
 }: NotificareNotificationPreviewProps) {
-  const localization = useLocalizationLoader({ locale, translations, type: 'push' });
+  const localization = useLocalizationLoader({
+    locale,
+    customTranslations: translations,
+    type: 'push',
+  });
 
   const notificationResult = useMemo(() => {
     return NotificationSchema.safeParse(notification);
@@ -76,6 +68,18 @@ export function NotificareNotificationPreview({
   );
 }
 
+/**
+ * Component that displays a notification preview for different platforms.
+ *
+ * @param {NotificareNotification} notification - The notification to be displayed in the preview.
+ * @param {string} applicationId - The unique identifier of a Notificare application (optional).
+ * @param {boolean} [showControls] - Whether the controls should be shown (optional). It's true by default.
+ * @param {NotificareNotificationPreviewVariant} variant - The variant of the notification preview (optional). It's 'android-lockscreen' by default.
+ * @param {string} [serviceKey] - A service key provided by a Notificare admin.
+ * @param {string} [googleMapsAPIKey] - A Google Maps API key (optional).
+ * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
+ * @param {string} [translations] - A set of custom translations to override the default ones (optional).
+ */
 export interface NotificareNotificationPreviewProps {
   notification: NotificareNotification;
   applicationId?: string;

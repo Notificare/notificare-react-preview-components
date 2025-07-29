@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const googlePlaySearchStore: Partial<NotificareNotificationPreviewProps> = {
+export const GOOGLE_PLAY_SEARCH_STORE: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',
@@ -16,7 +16,7 @@ export const googlePlaySearchStore: Partial<NotificareNotificationPreviewProps> 
   variant: 'android-app-ui',
 };
 
-export const appStore: Partial<NotificareNotificationPreviewProps> = {
+export const APP_STORE: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',
@@ -37,7 +37,7 @@ export const appStore: Partial<NotificareNotificationPreviewProps> = {
   variant: 'ios-app-ui',
 };
 
-export const multipleStore: Partial<NotificareNotificationPreviewProps> = {
+export const MULTIPLE_STORE: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Store',
     title: 'Title',

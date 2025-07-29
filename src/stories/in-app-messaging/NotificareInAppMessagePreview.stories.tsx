@@ -3,7 +3,7 @@ import { NotificareInAppMessagePreview } from '~/components';
 import { BANNER, CARD, FULLSCREEN, INVALID } from './variants';
 
 const meta = {
-  title: 'Public Components/In-app/NotificareInAppMessagePreview',
+  title: 'Public Components/In-app messaging/NotificareInAppMessagePreview',
   component: NotificareInAppMessagePreview,
 } satisfies Meta<typeof NotificareInAppMessagePreview>;
 export default meta;

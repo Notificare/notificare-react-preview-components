@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const videoHTML5: Partial<NotificareNotificationPreviewProps> = {
+export const VIDEO_HTML5: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -18,7 +18,7 @@ export const videoHTML5: Partial<NotificareNotificationPreviewProps> = {
 
 /* Vimeo Video */
 
-export const videoVimeo: Partial<NotificareNotificationPreviewProps> = {
+export const VIDEO_VIMEO: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',
@@ -36,7 +36,7 @@ export const videoVimeo: Partial<NotificareNotificationPreviewProps> = {
 
 /* YouTube Video */
 
-export const videoYouTube: Partial<NotificareNotificationPreviewProps> = {
+export const VIDEO_YOUTUBE: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Video',
     title: 'Title',

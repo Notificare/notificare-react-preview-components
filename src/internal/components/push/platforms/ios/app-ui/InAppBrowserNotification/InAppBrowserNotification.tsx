@@ -1,5 +1,5 @@
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { InAppBrowserBar } from './InAppBrowserBar/InAppBrowserBar';
 
 import './InAppBrowserNotification.css';
@@ -16,8 +16,5 @@ export function InAppBrowserNotification({ notification }: URLNotificationProps)
 }
 
 export interface URLNotificationProps {
-  notification: Extract<
-    NotificareNotificationSchema,
-    { type: 're.notifica.notification.InAppBrowser' }
-  >;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.InAppBrowser' }>;
 }

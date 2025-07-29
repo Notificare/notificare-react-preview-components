@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 import DefaultAppIcon from '~/assets/default-app-icon.svg';
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
@@ -79,6 +79,6 @@ export function LockScreenNotification({ notification, expanded }: IOSLockScreen
 }
 
 export interface IOSLockScreenPushProps {
-  notification: NotificareNotificationSchema;
+  notification: VerifiedNotification;
   expanded: boolean;
 }
