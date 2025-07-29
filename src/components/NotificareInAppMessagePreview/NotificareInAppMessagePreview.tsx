@@ -11,6 +11,14 @@ import { NotificareInAppMessage } from '~/models';
 
 import '~/preset.css';
 
+/**
+ * Component that displays an in-app message preview.
+ *
+ * @param {NotificareInAppMessage} inAppMessage - The in-app message to be displayed in the preview.
+ * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
+ * @param {string} [translations] - A set of custom translations to override the default ones (optional).
+ */
+
 export function NotificareInAppMessagePreview({
   inAppMessage,
   locale = 'en-US',
@@ -52,13 +60,6 @@ export function NotificareInAppMessagePreview({
   );
 }
 
-/**
- * Component that displays an in-app message preview.
- *
- * @param {NotificareInAppMessage} inAppMessage - The in-app message to be displayed in the preview.
- * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
- * @param {string} [translations] - A set of custom translations to override the default ones (optional).
- */
 export interface NotificareInAppMessagePreviewProps {
   inAppMessage: NotificareInAppMessage;
   locale?: string;
