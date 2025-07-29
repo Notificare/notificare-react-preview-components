@@ -29,16 +29,16 @@ export function MapNotification({ notification, onError }: MapNotificationProps)
     [googleMapsAPIKey],
   );
 
-  if (googleMapsAPIKey) {
-    return (
-      <div data-testid="android-app-ui-map-notification">
-        <NavigationBar title={application.name} showOptions={hasActions(notification)} />
-        <MapRichContent notification={notification} width="100%" height="570px" />
-      </div>
-    );
+  if (!googleMapsAPIKey) {
+    return <> </>;
   }
 
-  return <> </>;
+  return (
+    <div data-testid="android-app-ui-map-notification">
+      <NavigationBar title={application.name} showOptions={hasActions(notification)} />
+      <MapRichContent notification={notification} width="100%" height="570px" />
+    </div>
+  );
 }
 
 export interface MapNotificationProps {

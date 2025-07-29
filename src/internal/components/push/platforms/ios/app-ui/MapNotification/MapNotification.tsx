@@ -29,19 +29,19 @@ export function MapNotification({ notification, onError }: MapNotificationProps)
     [googleMapsAPIKey],
   );
 
-  if (googleMapsAPIKey) {
-    return (
-      <div data-testid="ios-app-ui-map-notification">
-        <TitleBar
-          title={notification.title || application.name}
-          showOptions={hasActions(notification)}
-        />
-        <MapRichContent notification={notification} width="100%" height="566px" />
-      </div>
-    );
+  if (!googleMapsAPIKey) {
+    return <> </>;
   }
 
-  return <></>;
+  return (
+    <div data-testid="ios-app-ui-map-notification">
+      <TitleBar
+        title={notification.title || application.name}
+        showOptions={hasActions(notification)}
+      />
+      <MapRichContent notification={notification} width="100%" height="566px" />
+    </div>
+  );
 }
 
 export interface MapNotificationProps {

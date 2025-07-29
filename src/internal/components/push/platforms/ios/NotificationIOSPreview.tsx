@@ -46,61 +46,61 @@ export function NotificationIOSPreview({
     [previewState, notification.type],
   );
 
-  if (isValidPreviewType(notification.type, previewState.displayMode)) {
-    return (
-      <IOSPhoneBackground theme={getTheme(notification.type, previewState.displayMode)}>
-        <div className="notificare__push__ios__preview">
-          {(() => {
-            switch (previewState.displayMode) {
-              case 'lockscreen':
-              case 'lockscreen-expanded':
-                return (
-                  <LockScreenNotification
-                    notification={notification}
-                    expanded={previewState.displayMode === 'lockscreen-expanded'}
-                  />
-                );
-
-              case 'app-ui':
-                switch (notification.type) {
-                  case 're.notifica.notification.Alert':
-                    return <TextAlertNotification notification={notification} />;
-
-                  case 're.notifica.notification.WebView':
-                    return <WebViewNotification notification={notification} />;
-
-                  case 're.notifica.notification.URL':
-                    return <URLNotification notification={notification} />;
-
-                  case 're.notifica.notification.InAppBrowser':
-                    return <InAppBrowserNotification notification={notification} />;
-
-                  case 're.notifica.notification.Image':
-                    return <ImagesNotification notification={notification} />;
-
-                  case 're.notifica.notification.Map':
-                    return <MapNotification notification={notification} onError={onError} />;
-
-                  case 're.notifica.notification.Rate':
-                    return <RateNotification title={notification.title} />;
-
-                  case 're.notifica.notification.Passbook':
-                    return <DigitalCardNotification notification={notification} />;
-
-                  case 're.notifica.notification.Video':
-                    return <VideoNotification notification={notification} />;
-
-                  case 're.notifica.notification.Store':
-                    return <AppRecommendationNotification notification={notification} />;
-                }
-            }
-          })()}
-        </div>
-      </IOSPhoneBackground>
-    );
+  if (!isValidPreviewType(notification.type, previewState.displayMode)) {
+    return <> </>;
   }
 
-  return <> </>;
+  return (
+    <IOSPhoneBackground theme={getTheme(notification.type, previewState.displayMode)}>
+      <div className="notificare__push__ios__preview">
+        {(() => {
+          switch (previewState.displayMode) {
+            case 'lockscreen':
+            case 'lockscreen-expanded':
+              return (
+                <LockScreenNotification
+                  notification={notification}
+                  expanded={previewState.displayMode === 'lockscreen-expanded'}
+                />
+              );
+
+            case 'app-ui':
+              switch (notification.type) {
+                case 're.notifica.notification.Alert':
+                  return <TextAlertNotification notification={notification} />;
+
+                case 're.notifica.notification.WebView':
+                  return <WebViewNotification notification={notification} />;
+
+                case 're.notifica.notification.URL':
+                  return <URLNotification notification={notification} />;
+
+                case 're.notifica.notification.InAppBrowser':
+                  return <InAppBrowserNotification notification={notification} />;
+
+                case 're.notifica.notification.Image':
+                  return <ImagesNotification notification={notification} />;
+
+                case 're.notifica.notification.Map':
+                  return <MapNotification notification={notification} onError={onError} />;
+
+                case 're.notifica.notification.Rate':
+                  return <RateNotification title={notification.title} />;
+
+                case 're.notifica.notification.Passbook':
+                  return <DigitalCardNotification notification={notification} />;
+
+                case 're.notifica.notification.Video':
+                  return <VideoNotification notification={notification} />;
+
+                case 're.notifica.notification.Store':
+                  return <AppRecommendationNotification notification={notification} />;
+              }
+          }
+        })()}
+      </div>
+    </IOSPhoneBackground>
+  );
 }
 
 export interface NotificationIOSPreviewProps {
