@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { NotificareNotificationPreview } from '~/components';
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 import { NONE } from '~/stories/push/variants/None';
+import { URL_SCHEME } from '~/stories/push/variants/UrlScheme';
 import {
   ALERT_WITH_ATTACHMENT,
   ALERT,
@@ -130,6 +131,12 @@ export const UrlWithAction: Story = {
 export const UrlWithActionAndActionableMarkup: Story = {
   name: 'URL - with single action and Actionable Markup',
   args: URL_WITH_ACTION_AND_ACTIONABLE_MARKUP,
+};
+
+/* URL SCHEME */
+export const UrlScheme: Story = {
+  name: 'URL Scheme',
+  args: URL_SCHEME,
 };
 
 /* VIDEO */
