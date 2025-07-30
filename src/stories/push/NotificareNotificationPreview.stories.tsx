@@ -2,6 +2,11 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { NotificareNotificationPreview } from '~/components';
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 import { NONE } from '~/stories/push/variants/None';
+import {
+  URL_RESOLVER_WITH_URL_SCHEME,
+  URL_RESOLVER_WITH_HTTP_URL,
+  URL_RESOLVER_WITH_HTTP_URL_AND_WEB_VIEW_QUERY_PARAMETER,
+} from '~/stories/push/variants/UrlResolver';
 import { URL_SCHEME } from '~/stories/push/variants/UrlScheme';
 import {
   ALERT_WITH_ATTACHMENT,
@@ -131,6 +136,22 @@ export const UrlWithAction: Story = {
 export const UrlWithActionAndActionableMarkup: Story = {
   name: 'URL - with single action and Actionable Markup',
   args: URL_WITH_ACTION_AND_ACTIONABLE_MARKUP,
+};
+
+/* URL RESOLVER */
+export const UrlResolverWithUrlScheme: Story = {
+  name: 'URL Resolver - with custom URL Scheme',
+  args: URL_RESOLVER_WITH_URL_SCHEME,
+};
+
+export const UrlResolverWithHttpUrl: Story = {
+  name: 'URL Resolver - with HTTP URL',
+  args: URL_RESOLVER_WITH_HTTP_URL,
+};
+
+export const UrlResolverWithHttpUrlAndWebViewQueryParameter: Story = {
+  name: 'URL Resolver - with HTTP URL and notificareWebView query parameter',
+  args: URL_RESOLVER_WITH_HTTP_URL_AND_WEB_VIEW_QUERY_PARAMETER,
 };
 
 /* URL SCHEME */
