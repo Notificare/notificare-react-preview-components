@@ -21,6 +21,11 @@ export const PUSH_TRANSLATIONS_FR: Record<NotificarePushTranslationKey, string> 
     'La capture Web a échoué. Consultez la console pour plus de détails.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
     "→ L’aperçu des notifications de type ''{notificationType}'' n’est pas possible dans cette variante",
+  'preview.error.notSupportedUrlResolverWithUrlSchemePreview':
+    "→ L’aperçu des notifications de type 're.notifica.notification.URLResolver' avec un schéma d’URL personnalisé (URL Scheme) n’est pas possible dans cette variante",
+  'preview.error.urlResolverInvalidUrl': '→ L’URL fournie est invalide',
+  'preview.error.urlResolverNoNotificareWebViewQueryParameter':
+    "→ L’aperçu des notifications de type 're.notifica.notification.URLResolver' avec une URL HTTP sans le paramètre de requête 'notificareWebView' n’est pas possible dans cette variante",
   'preview.error.googleMapsAuthFailure':
     'Échec de l’authentification. Votre clé API Google Maps pourrait être invalide. Consultez la console pour plus d’informations.',
   'preview.error.googleMapsLoadFailure':

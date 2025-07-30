@@ -31,5 +31,8 @@ export function InAppBrowserNotification({ notification }: InAppBrowserNotificat
 }
 
 export interface InAppBrowserNotificationProps {
-  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.InAppBrowser' }>;
+  notification: Extract<
+    VerifiedNotification,
+    { type: 're.notifica.notification.InAppBrowser' | 're.notifica.notification.URLResolver' }
+  >;
 }
