@@ -6,6 +6,7 @@ import {
   URL_RESOLVER_WITH_URL_SCHEME,
   URL_RESOLVER_WITH_HTTP_URL,
   URL_RESOLVER_WITH_HTTP_URL_AND_WEB_VIEW_QUERY_PARAMETER,
+  URL_RESOLVER_WITH_DYNAMIC_LINK,
 } from '~/stories/push/variants/UrlResolver';
 import { URL_SCHEME } from '~/stories/push/variants/UrlScheme';
 import {
@@ -152,6 +153,11 @@ export const UrlResolverWithHttpUrl: Story = {
 export const UrlResolverWithHttpUrlAndWebViewQueryParameter: Story = {
   name: 'URL Resolver - with HTTP URL and notificareWebView query parameter',
   args: URL_RESOLVER_WITH_HTTP_URL_AND_WEB_VIEW_QUERY_PARAMETER,
+};
+
+export const UrlResolverWithDynamicLink: Story = {
+  name: 'URL Resolver - with Dynamic Link',
+  args: URL_RESOLVER_WITH_DYNAMIC_LINK,
 };
 
 /* URL SCHEME */
