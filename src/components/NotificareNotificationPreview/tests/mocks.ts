@@ -177,3 +177,16 @@ export const NONE_NOTIFICATION_MOCK: NotificareNotification = {
   subtitle: 'Subtitle',
   message: 'Message example',
 };
+
+export const URL_SCHEME_NOTIFICATION_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLScheme',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'com.domain://domain.com',
+    },
+  ],
+};
