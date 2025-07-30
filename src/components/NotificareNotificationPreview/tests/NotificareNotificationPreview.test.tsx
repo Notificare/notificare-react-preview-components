@@ -113,6 +113,24 @@ describe('NotificareNotificationPreview', () => {
     expect(attachment).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'android-lockscreen' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    // ASSERT
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* Android Lock Screen Expanded */
 
   test("when the preview variant is 'android-lockscreen-expanded', it renders the respective preview", () => {
@@ -159,6 +177,24 @@ describe('NotificareNotificationPreview', () => {
 
     // ASSERT
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    // ASSERT
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
   });
 
   /* Android App UI */
@@ -1505,6 +1541,22 @@ describe('NotificareNotificationPreview', () => {
     // ASSERT
     expect(action1).toHaveTextContent('Go to Notificare website');
     expect(action2).toHaveTextContent('Make a call');
+  });
+
+  test("when the preview variant is 'web-desktop-macos' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-desktop-macos"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
+
+    // ASSERT
+    expect(notificationPreview).toBeInTheDocument();
   });
 
   /* Web Android App UI */
