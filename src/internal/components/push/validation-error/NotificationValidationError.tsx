@@ -11,9 +11,12 @@ import './NotificationValidationError.css';
 export function NotificationValidationError({ errors }: NotificationValidationErrorProps) {
   const intl = useIntl();
 
-  useEffect(() => {
-    showNotificationErrors(errors);
-  }, [errors]);
+  useEffect(
+    function handleValidationErrors() {
+      logErrors(errors);
+    },
+    [errors],
+  );
 
   return (
     <UnavailablePreview
@@ -30,7 +33,7 @@ export interface NotificationValidationErrorProps {
   errors: ZodIssue[];
 }
 
-function showNotificationErrors(errors: ZodIssue[]) {
+function logErrors(errors: ZodIssue[]) {
   // Errors related to notification types and content types are handled manually here
   // discriminatedUnion() from Zod do not support custom messages when a discriminator doesn't correspond
 

@@ -1,5 +1,5 @@
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
 import { TitleBar } from '../TitleBar/TitleBar';
 
@@ -31,5 +31,5 @@ export function ImagesNotification({ notification }: ImagesNotificationProps) {
 }
 
 export interface ImagesNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Image' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Image' }>;
 }

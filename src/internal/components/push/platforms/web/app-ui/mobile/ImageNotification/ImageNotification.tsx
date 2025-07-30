@@ -1,4 +1,4 @@
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 
 import './ImageNotification.css';
 
@@ -21,5 +21,5 @@ export function ImageNotification({ notification }: ImageNotificationProps) {
 }
 
 export interface ImageNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Image' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Image' }>;
 }

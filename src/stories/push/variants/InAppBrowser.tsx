@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const inAppBrowser: Partial<NotificareNotificationPreviewProps> = {
+export const IN_APP_BROWSER: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.InAppBrowser',
     title: 'Title',

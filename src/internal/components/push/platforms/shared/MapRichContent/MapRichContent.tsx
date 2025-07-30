@@ -10,7 +10,7 @@ import { useIntl } from 'react-intl';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
 import { useOptions } from '~/internal/context/options';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { getMarkersFromNotification } from '~/internal/utils/push-previews/notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
@@ -119,7 +119,7 @@ function MapWithStatus({
 }
 
 export interface MapRichContentProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Map' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Map' }>;
   width: string;
   height: string;
 }

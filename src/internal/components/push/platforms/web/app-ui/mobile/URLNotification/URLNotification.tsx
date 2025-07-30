@@ -1,5 +1,5 @@
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 
 export function URLNotification({ notification }: URLNotificationProps) {
   return (
@@ -10,5 +10,5 @@ export function URLNotification({ notification }: URLNotificationProps) {
 }
 
 export interface URLNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.URL' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.URL' }>;
 }

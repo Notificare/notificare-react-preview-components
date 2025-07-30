@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const webView: Partial<NotificareNotificationPreviewProps> = {
+export const WEB_VIEW: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.WebView',
     title: 'Title',
@@ -16,7 +16,7 @@ export const webView: Partial<NotificareNotificationPreviewProps> = {
   variant: 'android-app-ui',
 };
 
-export const webViewWithMultipleActions: Partial<NotificareNotificationPreviewProps> = {
+export const WEB_VIEW_WITH_MULTIPLE_ACTIONS: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.WebView',
     title: 'Title',
@@ -46,7 +46,7 @@ export const webViewWithMultipleActions: Partial<NotificareNotificationPreviewPr
   variant: 'android-app-ui',
 };
 
-export const webViewWithMultipleActionsAndActionableMarkup: Partial<NotificareNotificationPreviewProps> =
+export const WEB_VIEW_WITH_MULTIPLE_ACTIONS_AND_ACTIONABLE_MARKUP: Partial<NotificareNotificationPreviewProps> =
   {
     notification: {
       type: 're.notifica.notification.WebView',

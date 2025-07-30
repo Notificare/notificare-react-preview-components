@@ -1,6 +1,6 @@
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 
-export const mapWithSingleMarker: Partial<NotificareNotificationPreviewProps> = {
+export const MAP_WITH_SINGLE_MARKER: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Map',
     title: 'Title',
@@ -21,7 +21,7 @@ export const mapWithSingleMarker: Partial<NotificareNotificationPreviewProps> = 
   variant: 'android-app-ui',
 };
 
-export const mapWithTwoMarkers: Partial<NotificareNotificationPreviewProps> = {
+export const MAP_WITH_TWO_MARKERS: Partial<NotificareNotificationPreviewProps> = {
   notification: {
     type: 're.notifica.notification.Map',
     title: 'Title',

@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 import DefaultAppIcon from '~/assets/default-app-icon.svg';
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasActions } from '~/internal/utils/push-previews/notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
@@ -62,5 +62,5 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
 }
 
 export interface TextAlertNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Alert' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Alert' }>;
 }

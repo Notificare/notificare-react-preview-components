@@ -6,7 +6,7 @@ import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { ApplicationProvider } from '~/internal/context/application';
 import { useOptions } from '~/internal/context/options';
 import { useApplicationLoader } from '~/internal/hooks';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { NotificareNotificationPreviewVariant } from '~/models';
 
 import '~/preset.css';
@@ -99,7 +99,7 @@ export function NotificationPreviewWrapper({
 }
 
 export interface NotificareNotificationPreviewContentProps {
-  notification: NotificareNotificationSchema;
+  notification: VerifiedNotification;
   applicationId?: string;
   showControls?: boolean;
   variant?: NotificareNotificationPreviewVariant;

@@ -1,6 +1,6 @@
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { NavigationBar } from '../NavigationBar/NavigationBar';
 
 import './RateNotification.css';
@@ -20,5 +20,5 @@ export function RateNotification({ notification }: RateNotificationProps) {
 }
 
 export interface RateNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Rate' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Rate' }>;
 }

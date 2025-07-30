@@ -1,23 +1,23 @@
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 
-export function hasActions(notification: NotificareNotificationSchema) {
+export function hasActions(notification: VerifiedNotification) {
   return !!(notification.actions && notification.actions.length > 0);
 }
 
-export function hasSingleAction(notification: NotificareNotificationSchema) {
+export function hasSingleAction(notification: VerifiedNotification) {
   return !!(notification.actions && notification.actions.length === 1);
 }
 
-export function hasMultipleActions(notification: NotificareNotificationSchema) {
+export function hasMultipleActions(notification: VerifiedNotification) {
   return !!(notification.actions && notification.actions.length > 1);
 }
 
-export function hasFirstAttachment(notification: NotificareNotificationSchema) {
+export function hasFirstAttachment(notification: VerifiedNotification) {
   return !!notification.attachments?.[0];
 }
 
 export function getMarkersFromNotification(
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Map' }>,
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Map' }>,
 ) {
   const markers: {
     title: string;

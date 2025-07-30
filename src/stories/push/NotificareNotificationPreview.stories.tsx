@@ -2,24 +2,24 @@ import { Meta, StoryObj } from '@storybook/react-vite';
 import { NotificareNotificationPreview } from '~/components';
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
 import {
-  alertWithAttachment,
-  alertWithoutAttachment,
-  alertWithMultipleActions,
-  alertWithSingleAction,
+  ALERT_WITH_ATTACHMENT,
+  ALERT,
+  ALERT_WITH_MULTIPLE_ACTIONS,
+  ALERT_WITH_SINGLE_ACTION,
 } from './variants/Alert';
-import { imageMultiple, imageSingle } from './variants/Image';
-import { inAppBrowser } from './variants/InAppBrowser';
-import { invalid } from './variants/Invalid';
-import { mapWithSingleMarker, mapWithTwoMarkers } from './variants/Map';
-import { passbook } from './variants/Passbook';
-import { rate } from './variants/Rate';
-import { appStore, googlePlaySearchStore, multipleStore } from './variants/Store';
-import { url, urlWithAction, urlWithActionsAndActionableMarkup } from './variants/Url';
-import { videoHTML5, videoVimeo, videoYouTube } from './variants/Video';
+import { IMAGE_MULTIPLE, IMAGE_SINGLE } from './variants/Image';
+import { IN_APP_BROWSER } from './variants/InAppBrowser';
+import { INVALID } from './variants/Invalid';
+import { MAP_WITH_SINGLE_MARKER, MAP_WITH_TWO_MARKERS } from './variants/Map';
+import { PASSBOOK } from './variants/Passbook';
+import { RATE } from './variants/Rate';
+import { APP_STORE, GOOGLE_PLAY_SEARCH_STORE, MULTIPLE_STORE } from './variants/Store';
+import { URL, URL_WITH_ACTION, URL_WITH_ACTION_AND_ACTIONABLE_MARKUP } from './variants/Url';
+import { VIDEO_HTML5, VIDEO_VIMEO, VIDEO_YOUTUBE } from './variants/Video';
 import {
-  webView,
-  webViewWithMultipleActions,
-  webViewWithMultipleActionsAndActionableMarkup,
+  WEB_VIEW,
+  WEB_VIEW_WITH_MULTIPLE_ACTIONS,
+  WEB_VIEW_WITH_MULTIPLE_ACTIONS_AND_ACTIONABLE_MARKUP,
 } from './variants/WebView';
 
 const defaultArgs: Partial<NotificareNotificationPreviewProps> = {
@@ -41,123 +41,122 @@ type Story = StoryObj<typeof meta>;
 /* STORIES */
 
 /* ALERT */
-export const AlertWithAttachment: Story = {
-  name: 'Alert - with attachment',
-  args: alertWithAttachment,
+export const Alert: Story = {
+  args: ALERT,
 };
 
-export const AlertWithoutAttachment: Story = {
-  name: 'Alert - without attachment',
-  args: alertWithoutAttachment,
+export const AlertWithAttachment: Story = {
+  name: 'Alert - with attachment',
+  args: ALERT_WITH_ATTACHMENT,
 };
 
 export const AlertWithSingleAction: Story = {
   name: 'Alert - with single action',
-  args: alertWithSingleAction,
+  args: ALERT_WITH_SINGLE_ACTION,
 };
 
 export const AlertWithMultipleActions: Story = {
   name: 'Alert - with multiple actions',
-  args: alertWithMultipleActions,
+  args: ALERT_WITH_MULTIPLE_ACTIONS,
 };
 
 /* IMAGE */
 export const ImageSingle: Story = {
   name: 'Image - with single image',
-  args: imageSingle,
+  args: IMAGE_SINGLE,
 };
 
 export const ImageMultiple: Story = {
   name: 'Image - with two images',
-  args: imageMultiple,
+  args: IMAGE_MULTIPLE,
 };
 
 /* IN-APP BROWSER */
 export const InAppBrowser: Story = {
   name: 'InAppBrowser',
-  args: inAppBrowser,
+  args: IN_APP_BROWSER,
 };
 
 /* MAP */
 export const MapWithSingleMarker: Story = {
   name: 'Map - with single marker',
-  args: mapWithSingleMarker,
+  args: MAP_WITH_SINGLE_MARKER,
 };
 
 export const MapWithTwoMarkers: Story = {
   name: 'Map - with two markers',
-  args: mapWithTwoMarkers,
+  args: MAP_WITH_TWO_MARKERS,
 };
 
 /* PASSBOOK */
-export const Passbook: Story = { args: passbook };
+export const Passbook: Story = { args: PASSBOOK };
 
 /* RATE */
-export const Rate: Story = { args: rate };
+export const Rate: Story = { args: RATE };
 
 /* STORE */
 export const GooglePlaySearchStore: Story = {
   name: 'Store - Google Play Search',
-  args: googlePlaySearchStore,
+  args: GOOGLE_PLAY_SEARCH_STORE,
 };
 
 export const AppStore: Story = {
   name: 'Store - App Store',
-  args: appStore,
+  args: APP_STORE,
 };
 
 export const MultipleStore: Story = {
   name: 'Store - Multiple Stores (App Store/Google Play)',
-  args: multipleStore,
+  args: MULTIPLE_STORE,
 };
 
 /* URL */
 export const Url: Story = {
   name: 'URL',
-  args: url,
+  args: URL,
 };
 
 export const UrlWithAction: Story = {
   name: 'URL - with single action',
-  args: urlWithAction,
+  args: URL_WITH_ACTION,
 };
 
-export const UrlWithActionsAndActionableMarkup: Story = {
+export const UrlWithActionAndActionableMarkup: Story = {
   name: 'URL - with single action and Actionable Markup',
-  args: urlWithActionsAndActionableMarkup,
+  args: URL_WITH_ACTION_AND_ACTIONABLE_MARKUP,
 };
 
 /* VIDEO */
 export const VideoHtml5: Story = {
   name: 'Video - HTML5',
-  args: videoHTML5,
+  args: VIDEO_HTML5,
 };
 
 export const VideoVimeo: Story = {
   name: 'Video - Vimeo',
-  args: videoVimeo,
+  args: VIDEO_VIMEO,
 };
 
 export const VideoYoutube: Story = {
   name: 'Video - YouTube',
-  args: videoYouTube,
+  args: VIDEO_YOUTUBE,
 };
 
 /* WEB VIEW */
 export const WebView: Story = {
   name: 'WebView',
-  args: webView,
+  args: WEB_VIEW,
 };
 
 export const WebViewWithMultipleActions: Story = {
   name: 'WebView - with multiple actions',
-  args: webViewWithMultipleActions,
+  args: WEB_VIEW_WITH_MULTIPLE_ACTIONS,
 };
 
 export const WebViewWithMultipleActionsAndActionableMarkup: Story = {
   name: 'WebView -  with multiple actions and Actionable Markup',
-  args: webViewWithMultipleActionsAndActionableMarkup,
+  args: WEB_VIEW_WITH_MULTIPLE_ACTIONS_AND_ACTIONABLE_MARKUP,
 };
 
 /* INVALID */
-export const Invalid: Story = { args: invalid };
+export const Invalid: Story = { args: INVALID };

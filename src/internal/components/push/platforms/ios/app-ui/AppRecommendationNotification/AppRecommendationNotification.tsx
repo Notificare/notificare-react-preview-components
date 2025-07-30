@@ -4,7 +4,7 @@ import UserIcon from '~/assets/user.svg';
 import { useStoreRequest } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/hooks';
 import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { PreviewError } from '~/internal/components/shared/PreviewError/PreviewError';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { timeAgo } from '~/internal/utils/time-ago';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { StarRating } from './StarRating/StarRating';
@@ -171,5 +171,5 @@ export function AppRecommendationNotification({
 }
 
 export interface AppRecommendationNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Store' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Store' }>;
 }

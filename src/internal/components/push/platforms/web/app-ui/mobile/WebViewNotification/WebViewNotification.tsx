@@ -1,4 +1,4 @@
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 
 import './WebViewNotification.css';
 
@@ -14,5 +14,5 @@ export function WebViewNotification({ notification }: WebViewNotificationProps) 
 }
 
 export interface WebViewNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.WebView' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.WebView' }>;
 }

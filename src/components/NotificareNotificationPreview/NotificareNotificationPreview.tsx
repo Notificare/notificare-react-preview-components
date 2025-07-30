@@ -38,7 +38,11 @@ export function NotificareNotificationPreview({
   locale = 'en-US',
   translations,
 }: NotificareNotificationPreviewProps) {
-  const localization = useLocalizationLoader({ locale, translations, type: 'push' });
+  const localization = useLocalizationLoader({
+    locale,
+    customTranslations: translations,
+    type: 'push',
+  });
 
   const notificationResult = useMemo(() => {
     return NotificationSchema.safeParse(notification);

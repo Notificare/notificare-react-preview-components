@@ -1,4 +1,4 @@
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
 
 import './AlertNotification.css';
@@ -24,5 +24,5 @@ export function AlertNotification({ notification }: AlertNotificationProps) {
 }
 
 export interface AlertNotificationProps {
-  notification: Extract<NotificareNotificationSchema, { type: 're.notifica.notification.Alert' }>;
+  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.Alert' }>;
 }

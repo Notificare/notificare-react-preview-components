@@ -4,7 +4,7 @@ import { fetchIosStoreApp } from '~/internal/components/push/platforms/ios/app-u
 import { IosStoreAppData } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-app';
 import { useDebounce } from '~/internal/hooks';
 import { RequestState } from '~/internal/network/state';
-import { NotificareNotificationSchema } from '~/internal/schemas/notificare-notification';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 export function useStoreRequest(props: UseStoreRequestProps): StoreState {
@@ -72,19 +72,13 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
 }
 
 export type UseStoreRequestProps = {
-  contentList: Extract<
-    NotificareNotificationSchema,
-    { type: 're.notifica.notification.Store' }
-  >['content'];
+  contentList: Extract<VerifiedNotification, { type: 're.notifica.notification.Store' }>['content'];
 };
 
 export type StoreState = RequestState<IosStoreAppData>;
 
 function getAppId(
-  contentList: Extract<
-    NotificareNotificationSchema,
-    { type: 're.notifica.notification.Store' }
-  >['content'],
+  contentList: Extract<VerifiedNotification, { type: 're.notifica.notification.Store' }>['content'],
 ) {
   for (const content of contentList) {
     if (content.type === 're.notifica.content.AppStore') {
