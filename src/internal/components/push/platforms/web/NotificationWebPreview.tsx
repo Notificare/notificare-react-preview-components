@@ -40,6 +40,7 @@ export function NotificationWebPreview({
                 case 're.notifica.notification.Store':
                 case 're.notifica.notification.Passbook':
                 case 're.notifica.notification.None':
+                case 're.notifica.notification.URLScheme':
                   onError(
                     intl.formatMessage(
                       {

@@ -8,6 +8,7 @@ import { PassbookSchema } from './variants/passbook';
 import { RateSchema } from './variants/rate';
 import { StoreSchema } from './variants/store';
 import { UrlSchema } from './variants/url';
+import { UrlSchemeSchema } from './variants/url-scheme';
 import { VideoSchema } from './variants/video';
 import { WebViewSchema } from './variants/web-view';
 
@@ -21,6 +22,7 @@ export const NotificationSchema = z.discriminatedUnion('type', [
   RateSchema,
   StoreSchema,
   UrlSchema,
+  UrlSchemeSchema,
   VideoSchema,
   WebViewSchema,
 ]);
