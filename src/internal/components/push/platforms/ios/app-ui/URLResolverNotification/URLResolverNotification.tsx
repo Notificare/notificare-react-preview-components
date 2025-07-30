@@ -34,6 +34,15 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
             }),
           );
           return;
+
+        case 'dynamic-link':
+          onError(
+            intl.formatMessage({
+              id: 'preview.error.notSupportedUrlResolverWithDynamicLink',
+              defaultMessage:
+                PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithDynamicLink'],
+            }),
+          );
       }
     },
     [url],
@@ -42,6 +51,7 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
   switch (urlResolverResult) {
     case 'invalid-url':
     case 'url-scheme':
+    case 'dynamic-link':
       return undefined;
 
     case 'web-view':

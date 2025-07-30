@@ -26,6 +26,8 @@ export const PUSH_TRANSLATIONS_PT: Record<NotificarePushTranslationKey, string> 
   'preview.error.urlResolverInvalidUrl': '→ O URL fornecido é inválido',
   'preview.error.urlResolverNoNotificareWebViewQueryParameter':
     "→ A pré-visualização de notificações do tipo 're.notifica.notification.URLResolver' com um URL HTTP sem o parâmetro de query 'notificareWebView' não é possível nesta variante",
+  'preview.error.notSupportedUrlResolverWithDynamicLink':
+    "→ A pré-visualização de notificações do tipo 're.notifica.notification.URLResolver' com um link dinâmico não é possível nesta variante",
   'preview.error.googleMapsAuthFailure':
     'Falha de autenticação. A chave da API do Google Maps poderá ser inválida. Consulte a consola para mais informações.',
   'preview.error.googleMapsLoadFailure':

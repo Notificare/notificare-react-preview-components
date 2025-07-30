@@ -23,6 +23,8 @@ export const PUSH_TRANSLATIONS = {
   'preview.error.urlResolverInvalidUrl': '→ The provided URL is invalid',
   'preview.error.urlResolverNoNotificareWebViewQueryParameter':
     "→ Previewing notifications of type 're.notifica.notification.URLResolver' with an HTTP URL without 'notificareWebView' query parameter is not possible in this variant",
+  'preview.error.notSupportedUrlResolverWithDynamicLink':
+    "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible in this variant",
   'preview.error.googleMapsAuthFailure':
     'Authentication failure. Your Google Maps API key might be invalid. Check console for more information.',
   'preview.error.googleMapsLoadFailure':
