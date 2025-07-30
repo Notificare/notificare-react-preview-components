@@ -133,7 +133,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-lockscreen' and it's a URL Scheme notification, it renders the respective preview", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -145,7 +144,6 @@ describe('NotificareNotificationPreview', () => {
     const phoneBackground = screen.queryByTestId('android-phone-background');
     const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
 
-    // ASSERT
     expect(phoneBackground).toBeInTheDocument();
     expect(notificationPreview).toBeInTheDocument();
   });
@@ -217,7 +215,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Scheme notification, it renders the respective preview", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -229,7 +226,6 @@ describe('NotificareNotificationPreview', () => {
     const phoneBackground = screen.queryByTestId('android-phone-background');
     const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
 
-    // ASSERT
     expect(phoneBackground).toBeInTheDocument();
     expect(notificationPreview).toBeInTheDocument();
   });
@@ -798,7 +794,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -809,7 +804,6 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
 
-    // ASSERT
     expect(errorMessage).toHaveTextContent(
       "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
     );
@@ -1487,7 +1481,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'ios-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -1498,7 +1491,6 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
 
-    // ASSERT
     expect(errorMessage).toHaveTextContent(
       "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
     );
@@ -1633,7 +1625,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-desktop-macos' and it's a URL Scheme notification, it renders the respective preview", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -1644,7 +1635,6 @@ describe('NotificareNotificationPreview', () => {
 
     const notificationPreview = screen.queryByTestId('web-desktop-notification');
 
-    // ASSERT
     expect(notificationPreview).toBeInTheDocument();
   });
 
@@ -1878,7 +1868,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -1889,7 +1878,6 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
 
-    // ASSERT
     expect(errorMessage).toHaveTextContent(
       "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
     );
@@ -2125,7 +2113,6 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-iphone-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
-    // ACT
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -2136,7 +2123,6 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
 
-    // ASSERT
     expect(errorMessage).toHaveTextContent(
       "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
     );
