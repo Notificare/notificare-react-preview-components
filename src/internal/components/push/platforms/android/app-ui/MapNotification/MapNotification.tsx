@@ -30,7 +30,7 @@ export function MapNotification({ notification, onError }: MapNotificationProps)
   );
 
   if (!googleMapsAPIKey) {
-    return <> </>;
+    return undefined;
   }
 
   return (

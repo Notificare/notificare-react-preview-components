@@ -47,7 +47,7 @@ export function NotificationAndroidPreview({
   );
 
   if (!isValidPreviewType(notification.type, previewState.displayMode)) {
-    return <> </>;
+    return undefined;
   }
 
   return (

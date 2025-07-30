@@ -47,7 +47,7 @@ export function NotificationIOSPreview({
   );
 
   if (!isValidPreviewType(notification.type, previewState.displayMode)) {
-    return <> </>;
+    return undefined;
   }
 
   return (
