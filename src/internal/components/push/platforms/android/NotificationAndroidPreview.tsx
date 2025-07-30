@@ -129,9 +129,6 @@ function isValidPreviewType(
   notificationType: NotificationType,
   displayMode: NotificationPreviewDisplayMode,
 ) {
-  if (displayMode !== 'app-ui') {
-    return 'light';
-  }
   switch (displayMode) {
     case 'app-ui':
       switch (notificationType) {

@@ -13,6 +13,7 @@ import {
   IN_APP_BROWSER_NOTIFICATION_MOCK,
   INVALID_NOTIFICATION_MOCK,
   MAP_NOTIFICATION_MOCK,
+  NONE_NOTIFICATION_MOCK,
   PASSBOOK_NOTIFICATION_MOCK,
   RATE_NOTIFICATION_MOCK,
   WEB_PAGE_NOTIFICATION_MOCK,
@@ -112,6 +113,24 @@ describe('NotificareNotificationPreview', () => {
     expect(attachment).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'android-lockscreen' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    // ASSERT
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* Android Lock Screen Expanded */
 
   test("when the preview variant is 'android-lockscreen-expanded', it renders the respective preview", () => {
@@ -158,6 +177,24 @@ describe('NotificareNotificationPreview', () => {
 
     // ASSERT
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    // ASSERT
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
   });
 
   /* Android App UI */
@@ -703,6 +740,24 @@ describe('NotificareNotificationPreview', () => {
 
     // ASSERT
     expect(optionsButton).not.toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
   });
 
   /* iOS Lock Screen */
@@ -1358,6 +1413,24 @@ describe('NotificareNotificationPreview', () => {
     expect(optionsButton).not.toBeInTheDocument();
   });
 
+  test("when the preview variant is 'ios-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
+  });
+
   /* Web Desktop macOS */
 
   test("when the preview variant is 'web-desktop-macos', it renders the respective preview", () => {
@@ -1468,6 +1541,22 @@ describe('NotificareNotificationPreview', () => {
     // ASSERT
     expect(action1).toHaveTextContent('Go to Notificare website');
     expect(action2).toHaveTextContent('Make a call');
+  });
+
+  test("when the preview variant is 'web-desktop-macos' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-desktop-macos"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
+
+    // ASSERT
+    expect(notificationPreview).toBeInTheDocument();
   });
 
   /* Web Android App UI */
@@ -1681,6 +1770,24 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
+  test("when the preview variant is 'web-android-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
+  });
+
   /* Web Iphone App UI */
 
   test("when the preview variant is 'web-iphone-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -1890,6 +1997,24 @@ describe('NotificareNotificationPreview', () => {
     // ASSERT
     expect(action1).toHaveTextContent('Go to Notificare website');
     expect(action2).toHaveTextContent('Make a call');
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
   });
 
   /* Invalid Notification */

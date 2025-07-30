@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { NoneSchema } from '~/internal/schemas/notificare-notification/variants/none';
 import { AlertSchema } from './variants/alert';
 import { ImageSchema } from './variants/image';
 import { InAppBrowserSchema } from './variants/in-app-browser';
@@ -15,6 +16,7 @@ export const NotificationSchema = z.discriminatedUnion('type', [
   ImageSchema,
   InAppBrowserSchema,
   MapSchema,
+  NoneSchema,
   PassbookSchema,
   RateSchema,
   StoreSchema,
