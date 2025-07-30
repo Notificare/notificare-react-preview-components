@@ -170,3 +170,10 @@ export const APP_RECOMMENDATION_NOTIFICATION_MOCK: NotificareNotification = {
     },
   ],
 };
+
+export const NONE_NOTIFICATION_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.None',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+};

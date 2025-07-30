@@ -39,6 +39,7 @@ export function NotificationWebPreview({
                 case 're.notifica.notification.Rate':
                 case 're.notifica.notification.Store':
                 case 're.notifica.notification.Passbook':
+                case 're.notifica.notification.None':
                   onError(
                     intl.formatMessage(
                       {

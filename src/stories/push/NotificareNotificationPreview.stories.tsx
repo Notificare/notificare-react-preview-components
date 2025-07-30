@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { NotificareNotificationPreview } from '~/components';
 import { NotificareNotificationPreviewProps } from '~/components/NotificareNotificationPreview/NotificareNotificationPreview';
+import { NONE } from '~/stories/push/variants/None';
 import {
   ALERT_WITH_ATTACHMENT,
   ALERT,
@@ -86,6 +87,11 @@ export const MapWithSingleMarker: Story = {
 export const MapWithTwoMarkers: Story = {
   name: 'Map - with two markers',
   args: MAP_WITH_TWO_MARKERS,
+};
+
+/* NONE */
+export const None: Story = {
+  args: NONE,
 };
 
 /* PASSBOOK */
