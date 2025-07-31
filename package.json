@@ -7,7 +7,7 @@
   "homepage": "https://notificare.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/notificare/notificare-react-preview-components.git"
+    "url": "git+https://github.com/notificare/notificare-react-preview-components.git"
   },
   "keywords": [
     "notificare",
