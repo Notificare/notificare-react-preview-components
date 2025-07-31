@@ -4,6 +4,7 @@ import {
   NotificationPreviewDisplayMode,
   NotificationPreviewStateMobile,
 } from '~/internal/components/push/notification-preview-state';
+import { URLResolverNotification } from '~/internal/components/push/platforms/ios/app-ui/URLResolverNotification/URLResolverNotification';
 import { IOSPhoneBackground } from '~/internal/components/shared/IOSPhoneBackground/IOSPhoneBackground';
 import { VerifiedNotification, NotificationType } from '~/internal/schemas/notificare-notification';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
@@ -95,6 +96,11 @@ export function NotificationIOSPreview({
 
                 case 're.notifica.notification.Store':
                   return <AppRecommendationNotification notification={notification} />;
+
+                case 're.notifica.notification.URLResolver':
+                  return (
+                    <URLResolverNotification notification={notification} onError={onError} />
+                  );
               }
           }
         })()}
@@ -123,6 +129,7 @@ function getTheme(notificationType: NotificationType, displayMode: NotificationP
         case 're.notifica.notification.Video':
         case 're.notifica.notification.Store':
         case 're.notifica.notification.Map':
+        case 're.notifica.notification.URLResolver':
           return 'dark';
 
         default:
@@ -151,6 +158,7 @@ function isValidPreviewType(
         case 're.notifica.notification.Passbook':
         case 're.notifica.notification.Video':
         case 're.notifica.notification.Store':
+        case 're.notifica.notification.URLResolver':
           return true;
         default:
           return false;

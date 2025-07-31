@@ -21,6 +21,15 @@ export const PUSH_TRANSLATIONS_PT: Record<NotificarePushTranslationKey, string> 
     'Não foi possível efetuar a captura da página web. Consulte a consola para mais informações.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
     "→ A pré-visualização de notificações do tipo ''{notificationType}'' não é possível nesta variante",
+  'preview.error.notSupportedUrlResolverWithUrlSchemePreview':
+    "→ A pré-visualização de notificações do tipo 're.notifica.notification.URLResolver' com um esquema de URL personalizado (URL Scheme) não é possível",
+  'preview.error.urlResolverInvalidUrl': '→ O URL fornecido é inválido',
+  'preview.error.urlResolverNoNotificareWebViewQueryParameter':
+    "→ A pré-visualização de notificações do tipo 're.notifica.notification.URLResolver' com um URL HTTP sem o parâmetro de query 'notificareWebView' não é possível nesta variante",
+  'preview.error.notSupportedUrlResolverWithDynamicLink':
+    "→ A pré-visualização de notificações do tipo 're.notifica.notification.URLResolver' com um link dinâmico não é possível",
+  'preview.error.notSupportedUrlResolverWithRelativeUrl':
+    "→ A pré-visualização de notificações do tipo 're.notifica.notification.URLResolver' com um URL relativo (que começa por '/') não é possível",
   'preview.error.googleMapsAuthFailure':
     'Falha de autenticação. A chave da API do Google Maps poderá ser inválida. Consulte a consola para mais informações.',
   'preview.error.googleMapsLoadFailure':

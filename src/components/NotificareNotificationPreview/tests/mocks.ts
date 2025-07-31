@@ -190,3 +190,69 @@ export const URL_SCHEME_NOTIFICATION_MOCK: NotificareNotification = {
     },
   ],
 };
+
+export const URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'https://notificare.com/',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK: NotificareNotification =
+  {
+    type: 're.notifica.notification.URLResolver',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.URL',
+        data: 'https://notificare.com?notificareWebView=1',
+      },
+    ],
+  };
+
+export const URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'https://ntc.re',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'com.domain://domain.com',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: '/my-page',
+    },
+  ],
+};

@@ -18,6 +18,15 @@ export const PUSH_TRANSLATIONS = {
   'preview.error.webshotFail': 'Webshot failed to be loaded. Check console for more details.',
   'preview.error.notSupportedNotificationTypePreviewVariant':
     "→ Previewing notifications of type ''{notificationType}'' is not possible in this variant",
+  'preview.error.notSupportedUrlResolverWithUrlSchemePreview':
+    "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+  'preview.error.urlResolverInvalidUrl': '→ The provided URL is invalid',
+  'preview.error.urlResolverNoNotificareWebViewQueryParameter':
+    "→ Previewing notifications of type 're.notifica.notification.URLResolver' with an HTTP URL without 'notificareWebView' query parameter is not possible in this variant",
+  'preview.error.notSupportedUrlResolverWithDynamicLink':
+    "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+  'preview.error.notSupportedUrlResolverWithRelativeUrl':
+    "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
   'preview.error.googleMapsAuthFailure':
     'Authentication failure. Your Google Maps API key might be invalid. Check console for more information.',
   'preview.error.googleMapsLoadFailure':

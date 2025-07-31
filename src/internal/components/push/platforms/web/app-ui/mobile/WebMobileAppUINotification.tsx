@@ -4,6 +4,7 @@ import DefaultAppIcon from '~/assets/default-app-icon.svg';
 import ThinXMarkIcon from '~/assets/thin-x-mark.svg';
 import { MapRichContent } from '~/internal/components/push/platforms/shared/MapRichContent/MapRichContent';
 import { VideoRichContent } from '~/internal/components/push/platforms/shared/VideoRichContent/VideoRichContent';
+import { URLResolverNotification } from '~/internal/components/push/platforms/web/app-ui/mobile/URLResolverNotification/URLResolverNotification';
 import { Webshot } from '~/internal/components/shared/Webshot/Webshot';
 import { useApplication } from '~/internal/context/application';
 import { useOptions } from '~/internal/context/options';
@@ -92,6 +93,9 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
                   />
                 </div>
               );
+
+            case 're.notifica.notification.URLResolver':
+              return <URLResolverNotification notification={notification} onError={onError} />;
           }
         })()}
 

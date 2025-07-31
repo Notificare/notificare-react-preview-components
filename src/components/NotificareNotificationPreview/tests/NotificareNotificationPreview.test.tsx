@@ -16,6 +16,11 @@ import {
   NONE_NOTIFICATION_MOCK,
   PASSBOOK_NOTIFICATION_MOCK,
   RATE_NOTIFICATION_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK,
   URL_SCHEME_NOTIFICATION_MOCK,
   WEB_PAGE_NOTIFICATION_MOCK,
   WEB_VIEW_NOTIFICATION_MOCK,
@@ -148,6 +153,22 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'android-lockscreen' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* Android Lock Screen Expanded */
 
   test("when the preview variant is 'android-lockscreen-expanded', it renders the respective preview", () => {
@@ -226,6 +247,21 @@ describe('NotificareNotificationPreview', () => {
     const phoneBackground = screen.queryByTestId('android-phone-background');
     const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
 
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
     expect(phoneBackground).toBeInTheDocument();
     expect(notificationPreview).toBeInTheDocument();
   });
@@ -809,6 +845,87 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('android-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('android-app-ui-in-app-browser-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* iOS Lock Screen */
 
   test("when the preview variant is 'ios-lockscreen', it renders the respective preview", () => {
@@ -852,6 +969,21 @@ describe('NotificareNotificationPreview', () => {
 
     // ASSERT
     expect(attachment).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'ios-lockscreen' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="ios-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('ios-phone-background');
+    const notificationPreview = screen.queryByTestId('ios-lock-screen-notification');
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
   });
 
   /* iOS Lock Screen Expanded */
@@ -900,6 +1032,21 @@ describe('NotificareNotificationPreview', () => {
 
     // ASSERT
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'ios-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="ios-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('ios-phone-background');
+    const notificationPreview = screen.queryByTestId('ios-lock-screen-notification');
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
   });
 
   /* iOS App UI */
@@ -1496,6 +1643,87 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('ios-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('ios-app-ui-in-app-browser-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Web Desktop macOS */
 
   test("when the preview variant is 'web-desktop-macos', it renders the respective preview", () => {
@@ -1635,6 +1863,19 @@ describe('NotificareNotificationPreview', () => {
 
     const notificationPreview = screen.queryByTestId('web-desktop-notification');
 
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-desktop-macos' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="web-desktop-macos"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
     expect(notificationPreview).toBeInTheDocument();
   });
 
@@ -1883,6 +2124,84 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with an HTTP URL without 'notificareWebView' query parameter is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Web Iphone App UI */
 
   test("when the preview variant is 'web-iphone-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -2124,7 +2443,85 @@ describe('NotificareNotificationPreview', () => {
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
 
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with an HTTP URL without 'notificareWebView' query parameter is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
     );
   });
 

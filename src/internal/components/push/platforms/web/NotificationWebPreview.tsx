@@ -72,6 +72,7 @@ export function NotificationWebPreview({
             case 're.notifica.notification.Image':
             case 're.notifica.notification.Map':
             case 're.notifica.notification.Video':
+            case 're.notifica.notification.URLResolver':
               switch (previewState.os) {
                 case 'android':
                   return (
@@ -113,6 +114,7 @@ function getTheme(notificationType: NotificationType) {
     case 're.notifica.notification.URL':
     case 're.notifica.notification.Video':
     case 're.notifica.notification.Image':
+    case 're.notifica.notification.URLResolver':
       return 'dark';
 
     default:

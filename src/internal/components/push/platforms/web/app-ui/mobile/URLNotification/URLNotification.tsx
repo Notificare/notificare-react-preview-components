@@ -10,5 +10,8 @@ export function URLNotification({ notification }: URLNotificationProps) {
 }
 
 export interface URLNotificationProps {
-  notification: Extract<VerifiedNotification, { type: 're.notifica.notification.URL' }>;
+  notification: Extract<
+    VerifiedNotification,
+    { type: 're.notifica.notification.URL' | 're.notifica.notification.URLResolver' }
+  >;
 }
