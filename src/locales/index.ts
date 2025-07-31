@@ -1,0 +1,2 @@
+export type { NotificarePushTranslationKey } from './push/en';
+export type { NotificareInAppMessagingTranslationKey } from './in-app-messaging/en';

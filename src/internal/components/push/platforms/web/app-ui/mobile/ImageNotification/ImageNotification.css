@@ -1,0 +1,29 @@
+.notificare .notificare__web__phone__image__app-ui__image-slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    scroll-behavior: smooth;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #bbb transparent; /* Firefox */
+}
+
+.notificare .notificare__web__phone__image__app-ui__image-slider-item {
+    display: flex;
+    min-width: 100%;
+    scroll-snap-align: start;
+}
+
+/* For Chrome, Edge and Safari */
+.notificare .notificare__web__phone__image__app-ui__image-slider::-webkit-scrollbar {
+    height: 4px;
+}
+
+.notificare .notificare__web__phone__image__app-ui__image-slider-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+
+.notificare .notificare__web__phone__image__app-ui__image-slider-webkit-scrollbar-track {
+    background: transparent;
+}

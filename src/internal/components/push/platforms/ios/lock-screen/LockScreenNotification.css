@@ -1,0 +1,130 @@
+.notificare .notificare__push__ios__lock-screen {
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
+    background-color: #f2f4f6;
+    width: 315px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.notificare .notificare__push__ios__lock-screen__main-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 11px;
+    padding: 10px;
+}
+
+/* App Icon */
+
+.notificare .notificare__push__ios__lock-screen__app-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.notificare .notificare__push__ios__lock-screen__app-icon-image {
+    width: 100%;
+}
+
+.notificare .notificare__push__ios__lock-screen__default-app-icon {
+    height: 100%;
+    width: 100%;
+}
+
+/*  Text Content */
+
+.notificare .notificare__push__ios__lock-screen__text-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    width: 249px;
+}
+
+.notificare .notificare__push__ios__lock-screen__title-and-time {
+    display: flex;
+    column-gap: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.notificare .notificare__push__ios__lock-screen__text {
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notificare .notificare__push__ios__lock-screen__text--title-or-subtitle {
+    font-weight: 700;
+    width: 210px;
+}
+
+.notificare .notificare__push__ios__lock-screen__text--expanded-title-or-subtitle {
+    font-weight: 700;
+    width: 210px;
+    white-space: wrap;
+    word-break: break-word;
+}
+
+.notificare .notificare__push__ios__lock-screen__text--time {
+    color: #64706e;
+    font-size: 12px;
+    text-align: right;
+    flex-shrink: 0;
+    max-width: 130px;
+}
+
+.notificare .notificare__push__ios__lock-screen__text--message-without-media {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    white-space: wrap;
+    -webkit-line-clamp: 4;
+    width: 242px;
+}
+
+.notificare .notificare__push__ios__lock-screen__text--message-with-media {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    white-space: wrap;
+    -webkit-line-clamp: 4;
+    width: 210px;
+}
+
+/* Media */
+
+.notificare .notificare__push__ios__lock-screen__message-and-media {
+    display: flex;
+    column-gap: 7px;
+}
+
+.notificare .notificare__push__ios__lock-screen__media-image {
+    border-radius: 5px;
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    align-self: flex-start;
+    justify-self: flex-end;
+}
+
+.notificare .notificare__push__ios__lock-screen__expanded-media {
+    object-fit: cover;
+    width: 100%;
+    max-height: 275px;
+    overflow: hidden;
+    display: block;
+}

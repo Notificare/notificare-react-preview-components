@@ -1,35 +1,29 @@
-import { NotificareNotification } from '../models/notificare-notification';
+import { NotificareNotification } from '~/models';
 
 /* Notifications */
 
-export const invalidNotificationMock: NotificareNotification = {
-  type: 'invalid-type', // has an invalid type
+export const INVALID_NOTIFICATION_MOCK: NotificareNotification = {
+  type: 'invalid-type',
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message',
-  attachments: [
-    {
-      uri: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea',
-      mimeType: 'image/jpeg',
-    },
-  ],
 };
 
-export const alertNotificationMock: NotificareNotification = {
+export const ALERT_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Alert',
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message',
 };
 
-export const rateNotificationMock: NotificareNotification = {
+export const RATE_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Rate',
   title: 'Title',
   subtitle: 'Subtitle',
   message: 'Message example',
 };
 
-export const webViewNotificationMock: NotificareNotification = {
+export const WEB_VIEW_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.WebView',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -42,7 +36,7 @@ export const webViewNotificationMock: NotificareNotification = {
   ],
 };
 
-export const html5VideoNotificationMock: NotificareNotification = {
+export const HTML_5_VIDEO_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -50,12 +44,12 @@ export const html5VideoNotificationMock: NotificareNotification = {
   content: [
     {
       type: 're.notifica.content.HTML5Video',
-      data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/151f8ffa26356ffb3b2a5971d9cdc85b06706387c151cac40e092a67023599e8',
+      data: 'https://push-test.notifica.re/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/75fa502cbaeb5293b7c8f30e8080f11ca98cc54ab627a6a3dff2b715a683a52e',
     },
   ],
 };
 
-export const vimeoVideoNotificationMock: NotificareNotification = {
+export const VIMEO_VIDEO_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -68,7 +62,7 @@ export const vimeoVideoNotificationMock: NotificareNotification = {
   ],
 };
 
-export const youtubeVideoNotificationMock: NotificareNotification = {
+export const YOUTUBE_VIDEO_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Video',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -81,7 +75,7 @@ export const youtubeVideoNotificationMock: NotificareNotification = {
   ],
 };
 
-export const imageNotificationMock: NotificareNotification = {
+export const IMAGE_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Image',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -89,16 +83,16 @@ export const imageNotificationMock: NotificareNotification = {
   content: [
     {
       type: 're.notifica.content.PNG',
-      data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+      data: `https://push-test.notifica.re/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/415863c38a028df745ec58a3c305394d0a8722ccf771b3855abd39b557b67da0`,
     },
     {
       type: 're.notifica.content.PNG',
-      data: 'https://push.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/74595903e5fda1b2ac75fbd3396fb9fd11952a7f43f3f35334ed3b5b199d71f1',
+      data: `https://push-test.notifica.re/upload/notification/73ba03436697e0b2b31d946dc4c7bb9f88c6cfb555b4b715a6706af2e7ca9748/c60831b542d92ec19842750038e160cef3563caa20d7e4b2702d7f4451364f25`,
     },
   ],
 };
 
-export const inAppBrowserNotificationMock: NotificareNotification = {
+export const IN_APP_BROWSER_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.InAppBrowser',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -111,7 +105,7 @@ export const inAppBrowserNotificationMock: NotificareNotification = {
   ],
 };
 
-export const webPageNotificationMock: NotificareNotification = {
+export const WEB_PAGE_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.URL',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -124,7 +118,7 @@ export const webPageNotificationMock: NotificareNotification = {
   ],
 };
 
-export const mapNotificationMock: NotificareNotification = {
+export const MAP_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Map',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -151,7 +145,7 @@ export const mapNotificationMock: NotificareNotification = {
   ],
 };
 
-export const passbookNotificationMock: NotificareNotification = {
+export const PASSBOOK_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Passbook',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -159,12 +153,12 @@ export const passbookNotificationMock: NotificareNotification = {
   content: [
     {
       type: 're.notifica.content.PKPass',
-      data: 'https://push.notifica.re/pass/pkpass/6de00e24-9c49-4cd8-bb9b-ef8f7d77ec2c',
+      data: `https://push-test.notifica.re/pass/pkpass/79af019c-b575-478c-bb35-14b32e5bfcf1`,
     },
   ],
 };
 
-export const appRecommendationNotificationMock: NotificareNotification = {
+export const APP_RECOMMENDATION_NOTIFICATION_MOCK: NotificareNotification = {
   type: 're.notifica.notification.Store',
   title: 'Title',
   subtitle: 'Subtitle',
@@ -173,6 +167,92 @@ export const appRecommendationNotificationMock: NotificareNotification = {
     {
       type: 're.notifica.content.GooglePlaySearch',
       data: 'Subway Surfers',
+    },
+  ],
+};
+
+export const NONE_NOTIFICATION_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.None',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+};
+
+export const URL_SCHEME_NOTIFICATION_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLScheme',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'com.domain://domain.com',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'https://notificare.com/',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK: NotificareNotification =
+  {
+    type: 're.notifica.notification.URLResolver',
+    title: 'Title',
+    subtitle: 'Subtitle',
+    message: 'Message example',
+    content: [
+      {
+        type: 're.notifica.content.URL',
+        data: 'https://notificare.com?notificareWebView=1',
+      },
+    ],
+  };
+
+export const URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'https://ntc.re',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: 'com.domain://domain.com',
+    },
+  ],
+};
+
+export const URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: '/my-page',
     },
   ],
 };

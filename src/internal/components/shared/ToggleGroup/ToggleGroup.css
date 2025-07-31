@@ -1,0 +1,55 @@
+.notificare .notificare__toggle-group__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+}
+
+.notificare .notificare__toggle-group__label {
+    font-size: 14px;
+    color: #6e6e6e;
+}
+
+.notificare .notificare__toggle-group__options {
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid #DADADA;
+    width: max-content;
+    overflow: hidden;
+    background-color: #F6F6F6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notificare .notificare__toggle-group__option-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s;
+    background: #f6f6f6;
+    color: #374151;
+    border: 0;
+    cursor: pointer;
+}
+
+.notificare .notificare__toggle-group__option-button--selected {
+    background: #5E5E5E;
+    color: #ffffff;
+}
+
+.notificare .notificare__toggle-group__option-button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: #C0C0C0;
+}
+
+.notificare .notificare__toggle-group__option-button-icon--selected {
+    fill: #FFF
+}
+
+.notificare .notificare__toggle-group__border {
+    width: 1px;
+    height: 40px;
+    background: #DADADA;
+}

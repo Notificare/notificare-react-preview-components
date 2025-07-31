@@ -1,27 +1,36 @@
 import { act } from 'react';
-import { waitFor } from '@storybook/test';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { getPushAPIHost, setPushAPIHost } from '../../../config/api';
-import { TEST_PUSH_API_HOST } from '../../../constants/constants';
-import NotificareNotificationPreview from '../NotificareNotificationPreview';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { NotificareNotificationPreview } from '~/components';
+import { PUSH_API_TEST_HOST, setPushAPIHost } from '~/internal/network/api';
+import { PUSH_TRANSLATIONS } from '~/locales/push/en';
+import { PUSH_TRANSLATIONS_FR } from '~/locales/push/fr';
+import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
 import {
-  alertNotificationMock,
-  appRecommendationNotificationMock,
-  html5VideoNotificationMock,
-  imageNotificationMock,
-  inAppBrowserNotificationMock,
-  invalidNotificationMock,
-  mapNotificationMock,
-  passbookNotificationMock,
-  rateNotificationMock,
-  webPageNotificationMock,
-  webViewNotificationMock,
+  ALERT_NOTIFICATION_MOCK,
+  APP_RECOMMENDATION_NOTIFICATION_MOCK,
+  HTML_5_VIDEO_NOTIFICATION_MOCK,
+  IMAGE_NOTIFICATION_MOCK,
+  IN_APP_BROWSER_NOTIFICATION_MOCK,
+  INVALID_NOTIFICATION_MOCK,
+  MAP_NOTIFICATION_MOCK,
+  NONE_NOTIFICATION_MOCK,
+  PASSBOOK_NOTIFICATION_MOCK,
+  RATE_NOTIFICATION_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK,
+  URL_SCHEME_NOTIFICATION_MOCK,
+  WEB_PAGE_NOTIFICATION_MOCK,
+  WEB_VIEW_NOTIFICATION_MOCK,
 } from './mocks';
+
 import '@testing-library/jest-dom';
 
 describe('NotificareNotificationPreview', () => {
   beforeAll(() => {
-    setPushAPIHost(TEST_PUSH_API_HOST);
+    setPushAPIHost(PUSH_API_TEST_HOST);
   });
 
   afterEach(() => {
@@ -35,7 +44,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={true}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -52,7 +61,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -71,7 +80,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -89,7 +98,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `https://push-test.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -98,7 +107,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'android-lockscreen'}
         serviceKey="123"
       />,
@@ -110,6 +119,56 @@ describe('NotificareNotificationPreview', () => {
     expect(attachment).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'android-lockscreen' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    // ASSERT
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen' and it's a URL Scheme notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* Android Lock Screen Expanded */
 
   test("when the preview variant is 'android-lockscreen-expanded', it renders the respective preview", () => {
@@ -117,7 +176,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -135,7 +194,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `https://push-test.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -144,7 +203,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'android-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -158,6 +217,55 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    // ASSERT
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Scheme notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="android-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('android-phone-background');
+    const notificationPreview = screen.queryByTestId('android-lock-screen-notification');
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* Android App UI */
 
   test("when the preview variant is 'android-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -165,7 +273,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -180,11 +288,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a Rate notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -203,7 +317,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -222,7 +336,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -241,7 +355,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -266,7 +380,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -291,7 +405,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -310,7 +424,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -326,11 +440,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a Passbook notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={passbookNotificationMock}
+        notification={PASSBOOK_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -345,11 +465,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'android-app-ui' and it's a App Recommendation notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -388,7 +514,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -404,6 +530,12 @@ describe('NotificareNotificationPreview', () => {
 
   test("when the preview variant is 'android-app-ui', it's a Passbook notification and it has actions, it shows the options button as expected", () => {
     // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    // ARRANGE
     const actions = [
       {
         _id: '1',
@@ -419,7 +551,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...passbookNotificationMock, actions }}
+        notification={{ ...PASSBOOK_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -448,7 +580,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -477,7 +609,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -506,7 +638,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...mapNotificationMock, actions }}
+        notification={{ ...MAP_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -522,7 +654,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website hasn't any actionable markup, it shows the options button as expected", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -548,7 +683,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -563,7 +698,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -589,7 +727,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -625,7 +763,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -661,7 +799,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -673,6 +811,121 @@ describe('NotificareNotificationPreview', () => {
     expect(optionsButton).not.toBeInTheDocument();
   });
 
+  test("when the preview variant is 'android-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('android-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('android-app-ui-in-app-browser-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* iOS Lock Screen */
 
   test("when the preview variant is 'ios-lockscreen', it renders the respective preview", () => {
@@ -680,7 +933,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'ios-lockscreen'}
         serviceKey="123"
       />,
@@ -697,7 +950,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `https://push-test.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -706,7 +959,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'ios-lockscreen'}
         serviceKey="123"
       />,
@@ -718,6 +971,21 @@ describe('NotificareNotificationPreview', () => {
     expect(attachment).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'ios-lockscreen' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="ios-lockscreen"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('ios-phone-background');
+    const notificationPreview = screen.queryByTestId('ios-lock-screen-notification');
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* iOS Lock Screen Expanded */
 
   test("when the preview variant is 'ios-lockscreen-expanded', it renders the respective preview", () => {
@@ -725,7 +993,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'ios-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -743,7 +1011,7 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     const attachments = [
       {
-        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `https://push-test.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ];
@@ -752,7 +1020,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, attachments }}
         variant={'ios-lockscreen-expanded'}
         serviceKey="123"
       />,
@@ -766,6 +1034,21 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
   });
 
+  test("when the preview variant is 'ios-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="ios-lockscreen-expanded"
+      />,
+    );
+
+    const phoneBackground = screen.queryByTestId('ios-phone-background');
+    const notificationPreview = screen.queryByTestId('ios-lock-screen-notification');
+    expect(phoneBackground).toBeInTheDocument();
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* iOS App UI */
 
   test("when the preview variant is 'ios-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -773,7 +1056,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -792,7 +1075,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -811,7 +1094,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -830,7 +1113,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -849,7 +1132,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -874,7 +1157,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -899,7 +1182,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -918,7 +1201,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -934,11 +1217,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'ios-app-ui' and it's a Passbook notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={passbookNotificationMock}
+        notification={PASSBOOK_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -957,7 +1246,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -994,7 +1283,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1025,7 +1314,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1039,6 +1328,12 @@ describe('NotificareNotificationPreview', () => {
 
   test("when the preview variant is 'ios-app-ui', it's a Passbook notification and it has actions, it shows the options button as expected", () => {
     // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    // ARRANGE
     const actions = [
       {
         _id: '1',
@@ -1054,7 +1349,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...passbookNotificationMock, actions }}
+        notification={{ ...PASSBOOK_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1083,7 +1378,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1112,7 +1407,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...imageNotificationMock, actions }}
+        notification={{ ...IMAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1141,7 +1436,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...mapNotificationMock, actions }}
+        notification={{ ...MAP_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -1157,7 +1452,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website hasn't any actionable markup, it shows the options button as expected", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1183,7 +1481,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1198,7 +1496,10 @@ describe('NotificareNotificationPreview', () => {
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
-      if (url === `${getPushAPIHost()}/proxy/?url=${url}`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1224,7 +1525,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions }}
+        notification={{ ...WEB_PAGE_NOTIFICATION_MOCK, actions }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1260,7 +1561,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1296,7 +1597,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webPageNotificationMock, actions, content }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions, content }}
         variant={'ios-app-ui'}
         serviceKey="123"
       />,
@@ -1308,6 +1609,121 @@ describe('NotificareNotificationPreview', () => {
     expect(optionsButton).not.toBeInTheDocument();
   });
 
+  test("when the preview variant is 'ios-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'ios-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('ios-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('ios-app-ui-in-app-browser-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Web Desktop macOS */
 
   test("when the preview variant is 'web-desktop-macos', it renders the respective preview", () => {
@@ -1315,7 +1731,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'web-desktop-macos'}
         serviceKey="123"
       />,
@@ -1350,7 +1766,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions }}
         variant={'web-desktop-macos'}
         serviceKey="123"
       />,
@@ -1391,7 +1807,7 @@ describe('NotificareNotificationPreview', () => {
 
     const attachments = [
       {
-        uri: `${getPushAPIHost()}/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
+        uri: `https://push-test.notifica.re/upload/notification/ba85caa4d851e6b2412338ec41a57e7b991b9c01d55baf2e8c6b33804afb5662/784d409a74b20ee3b889c074eb3b72349b57049a399fc8d0869d657551dbbcea`,
         mimeType: 'image/jpeg',
       },
     ]; // add attachments so the notification becomes expandable
@@ -1400,7 +1816,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...alertNotificationMock, actions, attachments }}
+        notification={{ ...ALERT_NOTIFICATION_MOCK, actions, attachments }}
         variant={'web-desktop-macos'}
         serviceKey="123"
       />,
@@ -1420,6 +1836,49 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
+  test("when the preview variant is 'web-desktop-macos' and it's a None notification, it renders the respective preview", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-desktop-macos"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
+
+    // ASSERT
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-desktop-macos' and it's a URL Scheme notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-desktop-macos"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
+
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-desktop-macos' and it's a URL Resolver notification, it renders the respective preview", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="web-desktop-macos"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-desktop-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
   /* Web Android App UI */
 
   test("when the preview variant is 'web-android-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -1427,7 +1886,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1446,7 +1905,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1465,7 +1924,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1484,7 +1943,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1499,11 +1958,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-android-app-ui' and it's a Web Page notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1522,7 +1987,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -1542,13 +2007,13 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1559,13 +2024,13 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1576,13 +2041,13 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1611,7 +2076,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions }}
         variant={'web-android-app-ui'}
         serviceKey="123"
       />,
@@ -1625,6 +2090,118 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
+  test("when the preview variant is 'web-android-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with an HTTP URL without 'notificareWebView' query parameter is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Web Iphone App UI */
 
   test("when the preview variant is 'web-iphone-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -1632,7 +2209,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={alertNotificationMock}
+        notification={ALERT_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1651,7 +2228,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webViewNotificationMock}
+        notification={WEB_VIEW_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1670,7 +2247,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={html5VideoNotificationMock}
+        notification={HTML_5_VIDEO_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1689,7 +2266,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={imageNotificationMock}
+        notification={IMAGE_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1704,11 +2281,17 @@ describe('NotificareNotificationPreview', () => {
   });
 
   test("when the preview variant is 'web-iphone-app-ui' and it's a Web Page notification, it renders the respective preview", () => {
+    // ARRANGE
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock}
+        notification={WEB_PAGE_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1727,7 +2310,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={mapNotificationMock}
+        notification={MAP_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
         googleMapsAPIKey="123"
@@ -1747,13 +2330,13 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={inAppBrowserNotificationMock}
+        notification={IN_APP_BROWSER_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1764,13 +2347,13 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={rateNotificationMock}
+        notification={RATE_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1781,13 +2364,13 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={appRecommendationNotificationMock}
+        notification={APP_RECOMMENDATION_NOTIFICATION_MOCK}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const unavailablePreview = screen.queryByTestId('notificare-push-unavailable-preview');
+    const unavailablePreview = screen.queryByTestId('unavailable-preview');
 
     // ASSERT
     expect(unavailablePreview).toBeInTheDocument();
@@ -1816,7 +2399,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={{ ...webViewNotificationMock, actions }}
+        notification={{ ...WEB_VIEW_NOTIFICATION_MOCK, actions }}
         variant={'web-iphone-app-ui'}
         serviceKey="123"
       />,
@@ -1830,6 +2413,118 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
+  test("when the preview variant is 'web-iphone-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        notification={NONE_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.None' is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_SCHEME_NOTIFICATION_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+    // Don't resolve any fetch
+    global.fetch = jest.fn(
+      () => new Promise(() => {}), // fetch pending
+    );
+
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const notificationPreview = screen.queryByTestId('web-mobile-app-ui-url-notification');
+    expect(notificationPreview).toBeInTheDocument();
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with an HTTP URL without 'notificareWebView' query parameter is not possible in this variant",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Invalid Notification */
 
   test('when the notification is invalid, it shows an error message as expected', () => {
@@ -1837,16 +2532,14 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={invalidNotificationMock} // has invalid type
+        notification={INVALID_NOTIFICATION_MOCK} // has invalid type
         variant={'android-app-ui'}
         serviceKey="123"
       />,
     );
 
-    const previewError = screen.queryByTestId('notificare-push-unavailable-preview');
-    const previewErrorMessage = screen.queryByTestId(
-      'notificare-push-unavailable-preview-reason-text',
-    );
+    const previewError = screen.queryByTestId('unavailable-preview');
+    const previewErrorMessage = screen.queryByTestId('unavailable-preview-reason-text');
 
     // ASSERT
     expect(previewError).toBeInTheDocument();
@@ -1868,7 +2561,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
+        notification={WEB_PAGE_NOTIFICATION_MOCK} // needs to fetch a webshot from the given URL
         serviceKey="123"
         variant={'android-app-ui'}
       />,
@@ -1876,7 +2569,7 @@ describe('NotificareNotificationPreview', () => {
 
     await act(async () => jest.runAllTimers()); // skip timers;
 
-    const loadingIcon = screen.getByTestId('loading-icon');
+    const loadingIcon = screen.getByTestId('loading');
 
     // ASSERT
     expect(loadingIcon).toBeInTheDocument();
@@ -1895,7 +2588,7 @@ describe('NotificareNotificationPreview', () => {
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
+        notification={WEB_PAGE_NOTIFICATION_MOCK} // needs to fetch a webshot from the given URL
         serviceKey="123"
         variant={'android-app-ui'}
       />,
@@ -1916,7 +2609,10 @@ describe('NotificareNotificationPreview', () => {
 
     global.fetch = jest.fn((url) => {
       // Fetch website mock
-      if (url === `${getPushAPIHost()}/proxy/?url=https://notificare.com/`) {
+      if (
+        url.toString() ===
+        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+      ) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1925,7 +2621,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Request webshot mock
-      if (url === `${getPushAPIHost()}/webshot?apiKey=123`) {
+      if (url.toString() === `https://push-test.notifica.re/webshot?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1934,7 +2630,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Check webshot request status mock
-      if (url === `${getPushAPIHost()}/webshot/1?apiKey=123`) {
+      if (url.toString() === `https://push-test.notifica.re/webshot/1?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1947,7 +2643,7 @@ describe('NotificareNotificationPreview', () => {
       }
 
       // Get webshot mock
-      if (url === `${getPushAPIHost()}/webshot/1/result?apiKey=123`) {
+      if (url.toString() === `https://push-test.notifica.re/webshot/1/result?apiKey=123`) {
         return Promise.resolve({
           ok: true,
           status: 200,
@@ -1955,14 +2651,14 @@ describe('NotificareNotificationPreview', () => {
         } as Response);
       }
 
-      return new Promise(() => {}); // fetch pending
+      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
     });
 
     // ACT
     render(
       <NotificareNotificationPreview
         showControls={false}
-        notification={webPageNotificationMock} // needs to fetch a webshot from the given URL
+        notification={WEB_PAGE_NOTIFICATION_MOCK} // needs to fetch a webshot from the given URL
         variant={'android-app-ui'}
         serviceKey="123"
       />,
@@ -1982,5 +2678,204 @@ describe('NotificareNotificationPreview', () => {
     await waitFor(() => {
       expect(screen.getByTestId('webshot')).toBeInTheDocument();
     });
+  });
+
+  /* Localization */
+
+  test('when consumer provides an invalid locale, it renders an error message as expected', async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="invalid-locale"
+      />,
+    );
+
+    // get the error message
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+
+    // ASSERT
+    expect(errorMessage).toHaveTextContent(
+      '→ The locale you chose is invalid. Choose a different one and try again',
+    );
+  });
+
+  test("when consumer doesn't provide any locale, it loads default messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
+  });
+
+  test("when consumer provides locale 'en', it loads en messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="en"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
+  });
+
+  test("when consumer provides locale 'en-GB', it loads en messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="en-GB"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
+  });
+
+  test("when consumer provides locale 'fr', it loads fr messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="fr"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_FR['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
+  });
+
+  test("when consumer provides locale 'fr-FR', it loads fr messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="fr-FR"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_FR['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
+  });
+
+  test("when consumer provides locale 'fr-BE', it loads fr messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="fr-BE"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_FR['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
+  });
+
+  test("when consumer provides locale 'pt', it loads pt messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="pt"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_PT['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_PT['controls.platform']);
+  });
+
+  test("when consumer provides locale 'pt-PT', it loads pt messages", async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        locale="pt-PT"
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId(
+      `toggle-group-${PUSH_TRANSLATIONS_PT['controls.platform']}`,
+    );
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_PT['controls.platform']);
+  });
+
+  test('when custom translations are provided, it uses them as expected', async () => {
+    // ACT
+    render(
+      <NotificareNotificationPreview
+        showControls={true}
+        notification={ALERT_NOTIFICATION_MOCK}
+        serviceKey="123"
+        translations={{ 'controls.platform': 'Custom' }}
+      />,
+    );
+
+    // try to get the UI controls platform toggle group label
+    const platformLabel = screen.getByTestId('toggle-group-Custom');
+
+    // ASSERT
+    expect(platformLabel).toHaveTextContent('Custom');
   });
 });

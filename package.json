@@ -1,13 +1,13 @@
 {
   "name": "notificare-react-preview-components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A set of React components for your admin applications that lets you preview how Notificare notifications, in-app messages, and wallet passes will appear on a user’s device.",
   "author": "Notificare <info@notificare.com> (https://notificare.com)",
   "license": "MIT",
   "homepage": "https://notificare.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/notificare/notificare-react-preview-components.git"
+    "url": "git+https://github.com/notificare/notificare-react-preview-components.git"
   },
   "keywords": [
     "notificare",
@@ -29,14 +29,16 @@
     "lint": "eslint .",
     "prepack": "npm run build",
     "storybook": "storybook dev -p 6006",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
     "@vis.gl/react-google-maps": "^1.5.2",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "react-intl": "^7.1.11"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -47,20 +49,14 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.0",
-    "@chromatic-com/storybook": "^3.2.3",
     "@eslint/js": "^9.18.0",
+    "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.3",
-    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/addon-onboarding": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/react-vite": "^8.6.12",
-    "@storybook/test": "^8.6.12",
+    "@storybook/react-vite": "^9.0.4",
+    "@svgr/rollup": "^8.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^29.5.14",
@@ -72,7 +68,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-storybook": "^9.0.4",
     "globals": "^16.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
@@ -80,16 +76,23 @@
     "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-intl": "^7.1.11",
     "rollup": "^4.37.0",
     "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-visualizer": "^5.14.0",
-    "storybook": "^8.6.12",
+    "storybook": "^9.0.4",
     "style-loader": "^4.0.0",
+    "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0"
+    "typescript-eslint": "^8.20.0",
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "overrides": {
+    "storybook": "$storybook"
   }
 }

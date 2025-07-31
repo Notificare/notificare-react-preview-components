@@ -1,0 +1,21 @@
+.notificare .notificare__loading__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.notificare .notificare__loading__icon {
+    width: 60px;
+    height: 60px;
+    animation: notificare-loading-icon-spin 2s linear infinite;
+}
+
+@keyframes notificare-loading-icon-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
