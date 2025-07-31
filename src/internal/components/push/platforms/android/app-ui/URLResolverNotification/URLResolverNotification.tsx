@@ -23,7 +23,7 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
               defaultMessage: PUSH_TRANSLATIONS['preview.error.urlResolverInvalidUrl'],
             }),
           );
-          return;
+          break;
 
         case 'url-scheme':
           onError(
@@ -33,7 +33,7 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
                 PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithUrlSchemePreview'],
             }),
           );
-          return;
+          break;
 
         case 'dynamic-link':
           onError(
@@ -43,6 +43,17 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
                 PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithDynamicLink'],
             }),
           );
+          break;
+
+        case 'relative-url':
+          onError(
+            intl.formatMessage({
+              id: 'preview.error.notSupportedUrlResolverWithRelativeUrl',
+              defaultMessage:
+                PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithRelativeUrl'],
+            }),
+          );
+          break;
       }
     },
     [url],
@@ -52,6 +63,7 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
     case 'invalid-url':
     case 'url-scheme':
     case 'dynamic-link':
+    case 'relative-url':
       return undefined;
 
     case 'web-view':

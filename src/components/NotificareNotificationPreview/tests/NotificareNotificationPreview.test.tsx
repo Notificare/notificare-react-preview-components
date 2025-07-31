@@ -891,7 +891,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
     );
   });
 
@@ -906,7 +906,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
     );
   });
 
@@ -1674,7 +1674,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
     );
   });
 
@@ -1689,7 +1689,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
     );
   });
 
@@ -2137,7 +2137,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
     );
   });
 
@@ -2152,7 +2152,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
     );
   });
 
@@ -2397,7 +2397,7 @@ describe('NotificareNotificationPreview', () => {
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
 
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLScheme' is not possible",
     );
   });
 
@@ -2445,7 +2445,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a custom URL Scheme is not possible",
     );
   });
 
@@ -2460,7 +2460,7 @@ describe('NotificareNotificationPreview', () => {
 
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
-      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible in this variant",
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
     );
   });
 
