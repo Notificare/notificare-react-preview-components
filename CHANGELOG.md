@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.1.0
+
+- Add in-app messaging previews
+- Add support for None, URL Resolver and URL Scheme notifications
+- Add support for localization
+- Use 'NL' country for fetching App Store information
+- Fix Store previews to allow multiple content objects
+- Fix the application icon used in non-web previews
+- Provide a sensible default for allowed domains
+
 ## 1.0.0
 
 - Initial release of the React preview components library.
