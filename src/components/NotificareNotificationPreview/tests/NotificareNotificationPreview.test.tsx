@@ -2485,7 +2485,7 @@ describe('NotificareNotificationPreview', () => {
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
         serviceKey="123"
-        variant="web-android-app-ui"
+        variant="web-iphone-app-ui"
       />,
     );
 
