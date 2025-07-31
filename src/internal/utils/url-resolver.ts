@@ -1,7 +1,7 @@
 export function getUrlResolverPreviewTypeByUrl(urlStr: string) {
   urlStr = urlStr.trim();
 
-  if (!urlStr || !urlStr.trim()) return UrlResolverPreviewTypeResult.INVALID_URL;
+  if (!urlStr) return UrlResolverPreviewTypeResult.INVALID_URL;
 
   if (urlStr.startsWith('/')) {
     return UrlResolverPreviewTypeResult.RELATIVE_URL;
