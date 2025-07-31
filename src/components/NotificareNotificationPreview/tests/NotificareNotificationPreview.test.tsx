@@ -19,6 +19,7 @@ import {
   URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK,
   URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_AND_WEB_VIEW_QUERY_PARAMETER_MOCK,
   URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK,
+  URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK,
   URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK,
   URL_SCHEME_NOTIFICATION_MOCK,
   WEB_PAGE_NOTIFICATION_MOCK,
@@ -910,6 +911,21 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* iOS Lock Screen */
 
   test("when the preview variant is 'ios-lockscreen', it renders the respective preview", () => {
@@ -1693,6 +1709,21 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="ios-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Web Desktop macOS */
 
   test("when the preview variant is 'web-desktop-macos', it renders the respective preview", () => {
@@ -2156,6 +2187,21 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="web-android-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
+    );
+  });
+
   /* Web Iphone App UI */
 
   test("when the preview variant is 'web-iphone-app-ui' and it's an Alert notification, it renders the respective preview", () => {
@@ -2461,6 +2507,21 @@ describe('NotificareNotificationPreview', () => {
     const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
     expect(errorMessage).toHaveTextContent(
       "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a dynamic link is not possible",
+    );
+  });
+
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+    render(
+      <NotificareNotificationPreview
+        notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
+        serviceKey="123"
+        variant="web-iphone-app-ui"
+      />,
+    );
+
+    const errorMessage = screen.getByTestId('unavailable-preview-reason-text');
+    expect(errorMessage).toHaveTextContent(
+      "→ Previewing notifications of type 're.notifica.notification.URLResolver' with a relative URL (starts with '/') is not possible",
     );
   });
 

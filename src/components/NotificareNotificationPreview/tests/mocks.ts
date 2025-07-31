@@ -243,3 +243,16 @@ export const URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK: NotificareNotificat
     },
   ],
 };
+
+export const URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK: NotificareNotification = {
+  type: 're.notifica.notification.URLResolver',
+  title: 'Title',
+  subtitle: 'Subtitle',
+  message: 'Message example',
+  content: [
+    {
+      type: 're.notifica.content.URL',
+      data: '/my-page',
+    },
+  ],
+};
