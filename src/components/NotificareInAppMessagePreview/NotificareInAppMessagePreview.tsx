@@ -18,7 +18,6 @@ import '~/preset.css';
  * @param {string} [locale] - The language/region code for the UI (optional). It's 'en-US' by default.
  * @param {string} [translations] - A set of custom translations to override the default ones (optional).
  */
-
 export function NotificareInAppMessagePreview({
   inAppMessage,
   locale = 'en-US',
