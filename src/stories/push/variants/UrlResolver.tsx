@@ -64,3 +64,19 @@ export const URL_RESOLVER_WITH_DYNAMIC_LINK: Partial<NotificareNotificationPrevi
     ],
   },
 };
+
+export const URL_RESOLVER_WITH_RELATIVE_URL: Partial<NotificareNotificationPreviewProps> = {
+  notification: {
+    type: 're.notifica.notification.URLResolver',
+    title: '30% off on selected products',
+    subtitle: 'From shirts, shoes, and much more!',
+    message:
+      "Visit our website now and find out more about the new discounts on our products. Don't miss out!",
+    content: [
+      {
+        type: 're.notifica.content.URL',
+        data: '/my-page',
+      },
+    ],
+  },
+};
