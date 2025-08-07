@@ -7,7 +7,9 @@ const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
+    options: {
+      strictMode: true,
+    },
   },
   viteFinal: async (config) => {
     return mergeConfig(config, {
