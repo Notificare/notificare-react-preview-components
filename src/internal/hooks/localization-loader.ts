@@ -50,16 +50,16 @@ export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>
   return state;
 }
 
-export type LocalizationLoaderParams<T extends LocalizedFeatureTranslationKeys> = {
+export interface LocalizationLoaderParams<T extends LocalizedFeatureTranslationKeys> {
   locale: string;
   type: T;
   customTranslations?: Partial<Record<LocalizedFeatureTranslations[T], string>>;
-};
+}
 
-type LocalizedFeatureTranslations = {
+interface LocalizedFeatureTranslations {
   push: NotificarePushTranslationKey;
   'in-app': NotificareInAppMessagingTranslationKey;
-};
+}
 
 export type LocalizedFeatureTranslationKeys = keyof LocalizedFeatureTranslations;
 
@@ -68,10 +68,7 @@ export type LocalizationLoaderState = Exclude<
   { status: 'loading' }
 >;
 
-function getDefaultTranslations<T extends LocalizedFeatureTranslationKeys>(
-  language: string,
-  type: T,
-) {
+function getDefaultTranslations(language: string, type: LocalizedFeatureTranslationKeys) {
   switch (language) {
     case 'en':
       return type === 'push' ? PUSH_TRANSLATIONS : IN_APP_MESSAGING_TRANSLATIONS;

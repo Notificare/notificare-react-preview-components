@@ -2,6 +2,7 @@ import { act } from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { NotificareNotificationPreview } from '~/components';
 import { PUSH_API_TEST_HOST, setPushAPIHost } from '~/internal/network/api';
+import { stringifyUrl } from '~/internal/utils/url';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { PUSH_TRANSLATIONS_FR } from '~/locales/push/fr';
 import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
@@ -34,6 +35,7 @@ describe('NotificareNotificationPreview', () => {
   });
 
   afterEach(() => {
+    jest.useRealTimers();
     jest.resetAllMocks();
   });
 
@@ -119,7 +121,7 @@ describe('NotificareNotificationPreview', () => {
     expect(attachment).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-lockscreen' and it's a None notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'android-lockscreen' and it's a None notification, it renders the respective preview", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -137,7 +139,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-lockscreen' and it's a URL Scheme notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'android-lockscreen' and it's a URL Scheme notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -153,7 +155,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-lockscreen' and it's a URL Resolver notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'android-lockscreen' and it's a URL Resolver notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -217,7 +219,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-lockscreen-expanded' and it's a None notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a None notification, it renders the respective preview", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -235,7 +237,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Scheme notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Scheme notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -251,7 +253,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'android-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -291,7 +293,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -373,7 +378,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -398,7 +406,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -443,7 +454,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -468,7 +482,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -532,7 +549,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ARRANGE
@@ -655,17 +675,19 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
       if (
-        url.toString() ===
+        stringifyUrl(url) ===
         `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
       ) {
         return Promise.resolve({
           ok: true,
           status: 200,
-          text: async () => '<p> html example </p>',
+          text: () => Promise.resolve('<p> html example </p>'),
         } as Response);
       } // mock website fetch so it returns a simple paragraph (<p>), without any actionable markup
 
-      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
+      return new Promise(() => {
+        /* not resolved promise for every other fetch (ignore) */
+      });
     });
 
     const actions = [
@@ -692,24 +714,28 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('android-app-ui-navigation-bar-options-button');
 
     // ASSERT
-    await waitFor(() => expect(optionsButton).toBeInTheDocument());
+    await waitFor(() => {
+      expect(optionsButton).toBeInTheDocument();
+    });
   });
 
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
       if (
-        url.toString() ===
+        stringifyUrl(url) ===
         `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
       ) {
         return Promise.resolve({
           ok: true,
           status: 200,
-          text: async () => '<a href="/?notificareOpenAction=Go"> Link </a>',
+          text: () => Promise.resolve('<a href="/?notificareOpenAction=Go"> Link </a>'),
         } as Response);
       } // mock website fetch so it returns a link with the query parameter 'notificareOpenAction'
 
-      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
+      return new Promise(() => {
+        /* not resolved promise for every other fetch (ignore) */
+      });
     });
 
     const actions = [
@@ -736,7 +762,9 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('android-app-ui-navigation-bar-options-button');
 
     // ASSERT
-    await waitFor(() => expect(optionsButton).toBeInTheDocument());
+    await waitFor(() => {
+      expect(optionsButton).toBeInTheDocument();
+    });
   });
 
   test("when the preview variant is 'android-app-ui', it's a Web View notification, it has actions and the HTML hasn't any actionable markup, it shows the options button as expected", () => {
@@ -811,7 +839,7 @@ describe('NotificareNotificationPreview', () => {
     expect(optionsButton).not.toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'android-app-ui' and it's a None notification, it shows an error message as expected", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -829,7 +857,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -845,10 +873,13 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", () => {
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     render(
@@ -863,10 +894,13 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", async () => {
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", () => {
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     render(
@@ -881,7 +915,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -896,7 +930,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
@@ -911,7 +945,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+  test("when the preview variant is 'android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
@@ -971,7 +1005,7 @@ describe('NotificareNotificationPreview', () => {
     expect(attachment).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'ios-lockscreen' and it's a URL Resolver notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'ios-lockscreen' and it's a URL Resolver notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -1034,7 +1068,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreviewExpandedMedia).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'ios-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'ios-lockscreen-expanded' and it's a URL Resolver notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -1150,7 +1184,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -1175,7 +1212,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -1220,7 +1260,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -1330,7 +1373,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ARRANGE
@@ -1453,17 +1499,19 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
       if (
-        url.toString() ===
+        stringifyUrl(url) ===
         `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
       ) {
         return Promise.resolve({
           ok: true,
           status: 200,
-          text: async () => '<p> html example </p>',
+          text: () => Promise.resolve('<p> html example </p>'),
         } as Response);
       } // mock website fetch so it returns a simple paragraph (<p>), without any actionable markup
 
-      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
+      return new Promise(() => {
+        /* not resolved promise for every other fetch (ignore) */
+      });
     });
 
     const actions = [
@@ -1490,24 +1538,28 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('ios-app-ui-title-bar-options-button');
 
     // ASSERT
-    await waitFor(() => expect(optionsButton).toBeInTheDocument());
+    await waitFor(() => {
+      expect(optionsButton).toBeInTheDocument();
+    });
   });
 
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
     // ARRANGE
     global.fetch = jest.fn((url) => {
       if (
-        url.toString() ===
+        stringifyUrl(url) ===
         `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
       ) {
         return Promise.resolve({
           ok: true,
           status: 200,
-          text: async () => '<a href="/?notificareOpenAction=Go"> Link </a>',
+          text: () => Promise.resolve('<a href="/?notificareOpenAction=Go"> Link </a>'),
         } as Response);
       } // mock website fetch so it returns a link with the query parameter 'notificareOpenAction'
 
-      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
+      return new Promise(() => {
+        /* not resolved promise for every other fetch (ignore) */
+      });
     });
 
     const actions = [
@@ -1534,7 +1586,9 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('ios-app-ui-title-bar-options-button');
 
     // ASSERT
-    await waitFor(() => expect(optionsButton).toBeInTheDocument());
+    await waitFor(() => {
+      expect(optionsButton).toBeInTheDocument();
+    });
   });
 
   test("when the preview variant is 'ios-app-ui', it's a Web View notification, it has actions and the HTML hasn't any actionable markup, it shows the options button as expected", () => {
@@ -1609,7 +1663,7 @@ describe('NotificareNotificationPreview', () => {
     expect(optionsButton).not.toBeInTheDocument();
   });
 
-  test("when the preview variant is 'ios-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'ios-app-ui' and it's a None notification, it shows an error message as expected", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -1627,7 +1681,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'ios-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'ios-app-ui' and it's a URL Scheme notification, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -1643,10 +1697,13 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", () => {
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     render(
@@ -1661,10 +1718,13 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", async () => {
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it renders an in-app browser with the respective page", () => {
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     render(
@@ -1679,7 +1739,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -1694,7 +1754,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
@@ -1709,7 +1769,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+  test("when the preview variant is 'ios-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
@@ -1836,7 +1896,7 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
-  test("when the preview variant is 'web-desktop-macos' and it's a None notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'web-desktop-macos' and it's a None notification, it renders the respective preview", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -1852,7 +1912,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'web-desktop-macos' and it's a URL Scheme notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'web-desktop-macos' and it's a URL Scheme notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -1866,7 +1926,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'web-desktop-macos' and it's a URL Resolver notification, it renders the respective preview", async () => {
+  test("when the preview variant is 'web-desktop-macos' and it's a URL Resolver notification, it renders the respective preview", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -1961,7 +2021,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -2090,7 +2153,7 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
-  test("when the preview variant is 'web-android-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-android-app-ui' and it's a None notification, it shows an error message as expected", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2108,7 +2171,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-android-app-ui' and it's a URL Scheme notification, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -2124,10 +2187,13 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", () => {
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     render(
@@ -2142,7 +2208,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
@@ -2157,7 +2223,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -2172,7 +2238,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
@@ -2187,7 +2253,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-android-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
@@ -2284,7 +2350,10 @@ describe('NotificareNotificationPreview', () => {
     // ARRANGE
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -2413,7 +2482,7 @@ describe('NotificareNotificationPreview', () => {
     expect(action2).toHaveTextContent('Make a call');
   });
 
-  test("when the preview variant is 'web-iphone-app-ui' and it's a None notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-iphone-app-ui' and it's a None notification, it shows an error message as expected", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2431,7 +2500,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-iphone-app-ui' and it's a URL Scheme notification, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-iphone-app-ui' and it's a URL Scheme notification, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_SCHEME_NOTIFICATION_MOCK}
@@ -2447,10 +2516,13 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", async () => {
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL with notificareWebView=1 query parameter, it renders the respective web page", () => {
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     render(
@@ -2465,7 +2537,7 @@ describe('NotificareNotificationPreview', () => {
     expect(notificationPreview).toBeInTheDocument();
   });
 
-  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL without notificareWebView query parameter, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
@@ -2480,7 +2552,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a custom URL Scheme, it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
@@ -2495,7 +2567,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains an HTTPS URL whose host ends with 'ntc.re' (dynamic link), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
@@ -2510,7 +2582,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", async () => {
+  test("when the preview variant is 'web-iphone-app-ui', it's a URL Resolver notification and it contains a relative URL (starts with '/'), it shows an error message as expected", () => {
     render(
       <NotificareNotificationPreview
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
@@ -2548,13 +2620,16 @@ describe('NotificareNotificationPreview', () => {
 
   /* Webshot */
 
-  test('when a webshot is loading, it renders a spinning loading icon', async () => {
+  test('when a webshot is loading, it renders a spinning loading icon', () => {
     // ARRANGE
     jest.useFakeTimers();
 
     // Don't resolve any fetch
     global.fetch = jest.fn(
-      () => new Promise(() => {}), // fetch pending
+      () =>
+        new Promise(() => {
+          /* fetch pending */
+        }),
     );
 
     // ACT
@@ -2567,7 +2642,9 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    await act(async () => jest.runAllTimers()); // skip timers;
+    act(() => {
+      jest.runAllTimers();
+    }); // skip timers;
 
     const loadingIcon = screen.getByTestId('loading');
 
@@ -2594,64 +2671,73 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    await act(async () => jest.runAllTimers()); // skip timers;
-
-    const previewError = screen.getByTestId('preview-error');
+    act(() => {
+      jest.runAllTimers();
+    }); // skip timers;
 
     // ASSERT
-    await waitFor(() => expect(previewError).toBeInTheDocument());
+    await waitFor(() => {
+      const previewError = screen.getByTestId('preview-error');
+      expect(previewError).toBeInTheDocument();
+    });
   });
 
   test('when a webshot is made successfully, it renders it as expected', async () => {
     // ARRANGE
     jest.useFakeTimers();
+
     global.URL.createObjectURL = jest.fn(() => 'blob:http://localhost/fake-object-url');
 
     global.fetch = jest.fn((url) => {
+      const urlStr = stringifyUrl(url);
+
       // Fetch website mock
       if (
-        url.toString() ===
-        `https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F`
+        urlStr ===
+        'https://push-test.notifica.re/proxy?apiKey=123&url=https%3A%2F%2Fnotificare.com%2F'
       ) {
         return Promise.resolve({
           ok: true,
           status: 200,
-          text: async () => '<p> html example </p>',
+          text: () => Promise.resolve('<p> html example </p>'),
         } as Response);
       }
 
       // Request webshot mock
-      if (url.toString() === `https://push-test.notifica.re/webshot?apiKey=123`) {
+      if (urlStr === 'https://push-test.notifica.re/webshot?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
-          json: async () => ({ webshot: { id: '1' } }),
+          json: () => Promise.resolve({ webshot: { id: '1' } }),
         } as Response);
       }
 
       // Check webshot request status mock
-      if (url.toString() === `https://push-test.notifica.re/webshot/1?apiKey=123`) {
+      if (urlStr === 'https://push-test.notifica.re/webshot/1?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
-          json: async () => ({
-            webshot: {
-              status: 'finished',
-            },
-          }),
+          json: () =>
+            Promise.resolve({
+              webshot: {
+                status: 'finished',
+              },
+            }),
         } as Response);
       }
 
       // Get webshot mock
-      if (url.toString() === `https://push-test.notifica.re/webshot/1/result?apiKey=123`) {
+      if (urlStr === 'https://push-test.notifica.re/webshot/1/result?apiKey=123') {
         return Promise.resolve({
           ok: true,
           status: 200,
-          blob: async () => new Blob(['fake-image-data'], { type: 'image/png' }),
+          blob: () => Promise.resolve(new Blob(['fake-image-data'], { type: 'image/png' })),
         } as Response);
       }
 
-      return new Promise(() => {}); // not resolved promise for every other fetch (ignore)
+      return new Promise(() => {
+        /* not resolved promise for every other fetch (ignore) */
+      });
     });
 
     // ACT
@@ -2675,14 +2761,13 @@ describe('NotificareNotificationPreview', () => {
     });
 
     // ASSERT
-    await waitFor(() => {
-      expect(screen.getByTestId('webshot')).toBeInTheDocument();
-    });
+    const webshot = await screen.findByTestId('webshot');
+    expect(webshot).toBeInTheDocument();
   });
 
   /* Localization */
 
-  test('when consumer provides an invalid locale, it renders an error message as expected', async () => {
+  test('when consumer provides an invalid locale, it renders an error message as expected', () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2702,7 +2787,7 @@ describe('NotificareNotificationPreview', () => {
     );
   });
 
-  test("when consumer doesn't provide any locale, it loads default messages", async () => {
+  test("when consumer doesn't provide any locale, it loads default messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2721,7 +2806,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
   });
 
-  test("when consumer provides locale 'en', it loads en messages", async () => {
+  test("when consumer provides locale 'en', it loads en messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2741,7 +2826,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
   });
 
-  test("when consumer provides locale 'en-GB', it loads en messages", async () => {
+  test("when consumer provides locale 'en-GB', it loads en messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2761,7 +2846,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS['controls.platform']);
   });
 
-  test("when consumer provides locale 'fr', it loads fr messages", async () => {
+  test("when consumer provides locale 'fr', it loads fr messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2781,7 +2866,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
   });
 
-  test("when consumer provides locale 'fr-FR', it loads fr messages", async () => {
+  test("when consumer provides locale 'fr-FR', it loads fr messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2801,7 +2886,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
   });
 
-  test("when consumer provides locale 'fr-BE', it loads fr messages", async () => {
+  test("when consumer provides locale 'fr-BE', it loads fr messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2821,7 +2906,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_FR['controls.platform']);
   });
 
-  test("when consumer provides locale 'pt', it loads pt messages", async () => {
+  test("when consumer provides locale 'pt', it loads pt messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2841,7 +2926,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_PT['controls.platform']);
   });
 
-  test("when consumer provides locale 'pt-PT', it loads pt messages", async () => {
+  test("when consumer provides locale 'pt-PT', it loads pt messages", () => {
     // ACT
     render(
       <NotificareNotificationPreview
@@ -2861,7 +2946,7 @@ describe('NotificareNotificationPreview', () => {
     expect(platformLabel).toHaveTextContent(PUSH_TRANSLATIONS_PT['controls.platform']);
   });
 
-  test('when custom translations are provided, it uses them as expected', async () => {
+  test('when custom translations are provided, it uses them as expected', () => {
     // ACT
     render(
       <NotificareNotificationPreview

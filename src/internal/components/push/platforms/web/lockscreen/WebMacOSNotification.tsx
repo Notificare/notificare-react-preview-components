@@ -34,7 +34,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
       setExpandable(fullTextHeight > maxMessageLines * messageLineHeight);
 
       // set the scroll height of the preview as the REAL height of the preview and keep it in a state. It's necessary for expand/collapse animations to work properly
-      const previewHeight = `${previewRef.current.scrollHeight}px`;
+      const previewHeight = `${previewRef.current.scrollHeight.toString()}px`;
       previewRef.current.style.height = previewHeight;
       setInitialPreviewHeight(previewHeight);
     }
@@ -50,8 +50,12 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
     <div
       ref={previewRef}
       className="notificare__push__web__desktop__lock-screen"
-      onMouseEnter={() => setMouseOverNotification(() => true)}
-      onMouseLeave={() => setMouseOverNotification(() => openOptions)}
+      onMouseEnter={() => {
+        setMouseOverNotification(() => true);
+      }}
+      onMouseLeave={() => {
+        setMouseOverNotification(() => openOptions);
+      }}
       data-testid="web-desktop-notification"
     >
       {((expandable && mouseOverNotification) || expanded || isClosing) && (
@@ -80,7 +84,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
                   setExpanded(true);
                   setTimeout(() => {
                     // update the preview element REAL height with the current scroll height to start the animation
-                    previewElement.style.height = `${previewElement.scrollHeight}px`;
+                    previewElement.style.height = `${previewElement.scrollHeight.toString()}px`;
                   }, 10);
                   setTimeout(() => {
                     setIsExpanding(false);
@@ -146,7 +150,9 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
               <>
                 <button
                   className="notificare__push__web__desktop__lock-screen__settings-button"
-                  onClick={() => setOpenOptions((prevState) => !prevState)}
+                  onClick={() => {
+                    setOpenOptions((prevState) => !prevState);
+                  }}
                   data-testid="web-desktop-settings-button"
                 >
                   <FormattedMessage
@@ -164,7 +170,7 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
                       <button
                         key={index}
                         className="notificare__push__web__desktop__lock-screen__settings-selector-option"
-                        data-testid={`web-desktop-options-action-${index}`}
+                        data-testid={`web-desktop-options-action-${index.toString()}`}
                       >
                         {option.label}
                       </button>
@@ -211,23 +217,31 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
             <div key={index} className="notificare__push__web__desktop__lock-screen__action">
               <button
                 className="notificare__push__web__desktop__lock-screen__expanded-button"
-                onMouseEnter={() => setMouseOverButtonIndex(index)}
-                onMouseLeave={() => setMouseOverButtonIndex(-1)}
-                data-testid={`web-desktop-expanded-action-${index}`}
+                onMouseEnter={() => {
+                  setMouseOverButtonIndex(index);
+                }}
+                onMouseLeave={() => {
+                  setMouseOverButtonIndex(-1);
+                }}
+                data-testid={`web-desktop-expanded-action-${index.toString()}`}
               >
                 {action.label}
               </button>
 
               <hr
-                className={`notificare__push__web__desktop__lock-screen__expanded-buttons-divisor ${(mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index) && 'notificare__push__web__desktop__lock-screen__expanded-buttons-divisor--transparent'}`}
+                className={`notificare__push__web__desktop__lock-screen__expanded-buttons-divisor ${mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index ? 'notificare__push__web__desktop__lock-screen__expanded-buttons-divisor--transparent' : ''}`}
               />
             </div>
           ))}
 
           <button
             className={'notificare__push__web__desktop__lock-screen__expanded-button'}
-            onMouseEnter={() => setMouseOverButtonIndex(notification.actions?.length || -1)}
-            onMouseLeave={() => setMouseOverButtonIndex(-1)}
+            onMouseEnter={() => {
+              setMouseOverButtonIndex(notification.actions?.length ?? -1);
+            }}
+            onMouseLeave={() => {
+              setMouseOverButtonIndex(-1);
+            }}
           >
             <FormattedMessage
               id="preview.web.desktop.macos.lockScreen.settings"

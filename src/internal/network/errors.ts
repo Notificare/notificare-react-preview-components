@@ -1,6 +1,6 @@
 export class NetworkRequestError extends Error {
   constructor(public readonly response: Response) {
-    super(`Failed to fetch a resource with response code '${response.status}'.`);
+    super(`Failed to fetch a resource with response code '${response.status.toString()}'.`);
     this.name = 'NetworkRequestError';
 
     if (Error.captureStackTrace) {

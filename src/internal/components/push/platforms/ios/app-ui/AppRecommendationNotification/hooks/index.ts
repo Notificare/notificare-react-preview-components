@@ -5,6 +5,7 @@ import { IosStoreAppData } from '~/internal/components/push/platforms/ios/app-ui
 import { useDebounce } from '~/internal/hooks';
 import { RequestState } from '~/internal/network/state';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
+import { logError } from '~/internal/utils/error';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 export function useStoreRequest(props: UseStoreRequestProps): StoreState {
@@ -15,55 +16,53 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
 
   useEffect(
     function loadAppData() {
-      (async () => {
-        const appId = getAppId(contentList);
+      const appId = getAppId(contentList);
 
-        if (!appId) {
-          setState({
-            status: 'error',
-            error: new Error(
-              intl.formatMessage({
-                id: 'preview.error.noValidContentObject',
-                defaultMessage: PUSH_TRANSLATIONS['preview.error.noValidContentObject'],
-              }),
-            ),
-          });
-          return;
-        }
+      if (!appId) {
+        setState({
+          status: 'error',
+          error: new Error(
+            intl.formatMessage({
+              id: 'preview.error.noValidContentObject',
+              defaultMessage: PUSH_TRANSLATIONS['preview.error.noValidContentObject'],
+            }),
+          ),
+        });
+        return;
+      }
 
-        setState({ status: 'loading' });
+      setState({ status: 'loading' });
 
-        fetchIosStoreApp(appId)
-          .then((app) => {
-            if (app.resultCount === 0) {
-              setState({
-                status: 'error',
-                error: new Error(
-                  intl.formatMessage({
-                    id: 'preview.error.iosStoreAppNotFound',
-                    defaultMessage: PUSH_TRANSLATIONS['preview.error.iosStoreAppNotFound'],
-                  }),
-                ),
-              });
-              return;
-            }
-
-            setState({ status: 'success', data: app.results[0] });
-          })
-          .catch((error) => {
-            console.error('Error getting App Store app:\n\n' + error);
-
+      fetchIosStoreApp(appId)
+        .then((app) => {
+          if (app.resultCount === 0) {
             setState({
               status: 'error',
               error: new Error(
                 intl.formatMessage({
-                  id: 'preview.error.iosStoreAppLoadFailure',
-                  defaultMessage: PUSH_TRANSLATIONS['preview.error.iosStoreAppLoadFailure'],
+                  id: 'preview.error.iosStoreAppNotFound',
+                  defaultMessage: PUSH_TRANSLATIONS['preview.error.iosStoreAppNotFound'],
                 }),
               ),
             });
+            return;
+          }
+
+          setState({ status: 'success', data: app.results[0] });
+        })
+        .catch((error: unknown) => {
+          logError(error, 'Error fetching App Store app info:');
+
+          setState({
+            status: 'error',
+            error: new Error(
+              intl.formatMessage({
+                id: 'preview.error.iosStoreAppLoadFailure',
+                defaultMessage: PUSH_TRANSLATIONS['preview.error.iosStoreAppLoadFailure'],
+              }),
+            ),
           });
-      })();
+        });
     },
     [contentList],
   );
@@ -71,9 +70,9 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
   return state;
 }
 
-export type UseStoreRequestProps = {
+export interface UseStoreRequestProps {
   contentList: Extract<VerifiedNotification, { type: 're.notifica.notification.Store' }>['content'];
-};
+}
 
 export type StoreState = RequestState<IosStoreAppData>;
 

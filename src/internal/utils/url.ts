@@ -30,3 +30,10 @@ export function getTopLevelDomain(url: string) {
     return '';
   }
 }
+
+export function stringifyUrl(url: string | URL | Request): string {
+  if (typeof url === 'string') return url;
+  if (url instanceof URL) return url.toString();
+  if (url instanceof Request) return url.url;
+  return '';
+}

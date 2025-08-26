@@ -11,7 +11,7 @@ const config: StorybookConfig = {
       strictMode: true,
     },
   },
-  viteFinal: async (config) => {
+  viteFinal: (config) => {
     return mergeConfig(config, {
       plugins: [
         tsconfigPaths(),

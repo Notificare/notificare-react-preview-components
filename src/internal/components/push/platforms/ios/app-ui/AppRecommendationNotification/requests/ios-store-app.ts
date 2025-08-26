@@ -1,7 +1,7 @@
-import { IosStoreApp } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-app';
-import { NetworkRequestError } from '~/internal/network/errors';
+import { IosStoreAppData } from '~/internal/components/push/platforms/ios/app-ui/AppRecommendationNotification/types/ios-store-app';
+import { fetchJson } from '~/internal/network/fetch';
 
-export async function fetchIosStoreApp(appId: string): Promise<IosStoreApp> {
+export async function fetchIosStoreApp(appId: string): Promise<IosStoreAppResponse> {
   const url = new URL('/lookup', 'https://itunes.apple.com');
   url.searchParams.set('country', 'NL');
   url.searchParams.set('id', appId);
@@ -9,11 +9,10 @@ export async function fetchIosStoreApp(appId: string): Promise<IosStoreApp> {
   const timestamp = (Date.now() / 1000).toString();
   url.searchParams.set('x', timestamp);
 
-  const response = await fetch(url);
+  return await fetchJson<IosStoreAppResponse>(url);
+}
 
-  if (!response.ok) {
-    throw new NetworkRequestError(response);
-  }
-
-  return await response.json();
+interface IosStoreAppResponse {
+  resultCount: number;
+  results: IosStoreAppData[];
 }
