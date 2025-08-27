@@ -40,7 +40,7 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
       <div className="notificare__web__phone__app-ui__background">
         <div className="notificare__web__phone__app-ui__header">
           <div className="notificare__web__phone__app-ui__app-icon">
-            {application.websitePushConfig.icon ? (
+            {application.websitePushConfig?.icon ? (
               <img
                 className="notificare__web__phone__app-ui__app-icon-image"
                 src={application.websitePushConfig.icon}
