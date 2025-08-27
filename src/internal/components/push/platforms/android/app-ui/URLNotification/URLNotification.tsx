@@ -20,16 +20,19 @@ export function URLNotification({ notification }: URLNotificationProps) {
 
   const { serviceKey } = useOptions();
 
-  useEffect(function loadWebsiteMarkup() {
-    (async () => {
-      try {
-        const response = await fetchWebsiteMarkup(serviceKey, url);
-        setWebsiteMarkup(response);
-      } catch (error) {
-        console.error('Error fetching website markup:\n\n', error);
-      }
-    })();
-  }, []);
+  useEffect(
+    function loadWebsiteMarkup() {
+      (async () => {
+        try {
+          const response = await fetchWebsiteMarkup(serviceKey, url);
+          setWebsiteMarkup(response);
+        } catch (error) {
+          console.error('Error fetching website markup:\n\n', error);
+        }
+      })();
+    },
+    [url, serviceKey],
+  );
 
   return (
     <div data-testid="android-app-ui-url-notification">
