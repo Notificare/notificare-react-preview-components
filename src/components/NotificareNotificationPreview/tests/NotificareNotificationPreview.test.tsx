@@ -714,9 +714,7 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('android-app-ui-navigation-bar-options-button');
 
     // ASSERT
-    await waitFor(() => {
-      expect(optionsButton).toBeInTheDocument();
-    });
+    await waitFor(() => expect(optionsButton).toBeInTheDocument());
   });
 
   test("when the preview variant is 'android-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
@@ -762,9 +760,7 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('android-app-ui-navigation-bar-options-button');
 
     // ASSERT
-    await waitFor(() => {
-      expect(optionsButton).toBeInTheDocument();
-    });
+    await waitFor(() => expect(optionsButton).toBeInTheDocument());
   });
 
   test("when the preview variant is 'android-app-ui', it's a Web View notification, it has actions and the HTML hasn't any actionable markup, it shows the options button as expected", () => {
@@ -1538,9 +1534,7 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('ios-app-ui-title-bar-options-button');
 
     // ASSERT
-    await waitFor(() => {
-      expect(optionsButton).toBeInTheDocument();
-    });
+    await waitFor(() => expect(optionsButton).toBeInTheDocument());
   });
 
   test("when the preview variant is 'ios-app-ui', it's a Web Page notification, it has actions and the website has actionable markup, it doesn't show the options button", async () => {
@@ -1586,9 +1580,7 @@ describe('NotificareNotificationPreview', () => {
     const optionsButton = screen.queryByTestId('ios-app-ui-title-bar-options-button');
 
     // ASSERT
-    await waitFor(() => {
-      expect(optionsButton).toBeInTheDocument();
-    });
+    await waitFor(() => expect(optionsButton).toBeInTheDocument());
   });
 
   test("when the preview variant is 'ios-app-ui', it's a Web View notification, it has actions and the HTML hasn't any actionable markup, it shows the options button as expected", () => {
@@ -2642,9 +2634,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    }); // skip timers;
+    act(() => jest.runAllTimers()); // skip timers;
 
     const loadingIcon = screen.getByTestId('loading');
 
@@ -2671,9 +2661,7 @@ describe('NotificareNotificationPreview', () => {
       />,
     );
 
-    act(() => {
-      jest.runAllTimers();
-    }); // skip timers;
+    act(() => jest.runAllTimers()); // skip timers;
 
     // ASSERT
     await waitFor(() => {

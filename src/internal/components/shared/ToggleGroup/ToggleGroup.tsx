@@ -18,9 +18,7 @@ export function ToggleGroup<T extends Key>({
           <Fragment key={option.value}>
             <button
               className={`notificare__toggle-group__option-button ${value === option.value ? 'notificare__toggle-group__option-button--selected' : ''}`}
-              onClick={() => {
-                onValueChanged(option.value);
-              }}
+              onClick={() => onValueChanged(option.value)}
               aria-label={`Button with option '${option.value.toString()}'`}
               data-testid={`toggle-group-option-${option.value.toString()}`}
             >

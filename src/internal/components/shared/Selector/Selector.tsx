@@ -42,9 +42,7 @@ export function Selector<T extends Key>({
 
       <button
         className="notificare__selector__button"
-        onClick={() => {
-          setExpanded(!expanded);
-        }}
+        onClick={() => setExpanded(!expanded)}
         disabled={disabled}
         ref={selectorButtonRef}
       >
