@@ -26,7 +26,7 @@ export function NotificationAndroidPreview({
 }: NotificationAndroidPreviewProps) {
   const intl = useIntl();
 
-  const previewData: PreviewData = (() => {
+  const previewData: PreviewData | undefined = (() => {
     switch (previewState.displayMode) {
       case 'lockscreen':
       case 'lockscreen-expanded':
@@ -150,9 +150,7 @@ export interface NotificationAndroidPreviewProps {
   onError: (message: string) => void;
 }
 
-type PreviewData =
-  | {
-      preview: ReactElement;
-      theme: 'light' | 'dark';
-    }
-  | undefined;
+interface PreviewData {
+  preview: ReactElement;
+  theme: 'light' | 'dark';
+}
