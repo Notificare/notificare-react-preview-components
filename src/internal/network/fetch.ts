@@ -1,6 +1,6 @@
 import { NetworkRequestError } from './errors';
 
-export async function fetchJson<T>(url: URL, init?: RequestInit) {
+export async function fetchJson<T>(url: URL, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init);
 
   if (!response.ok) {
@@ -10,7 +10,7 @@ export async function fetchJson<T>(url: URL, init?: RequestInit) {
   return (await response.json()) as T;
 }
 
-export async function fetchBlob(url: URL, init?: RequestInit) {
+export async function fetchBlob(url: URL, init?: RequestInit): Promise<Blob> {
   const response = await fetch(url, init);
 
   if (!response.ok) {
@@ -20,7 +20,7 @@ export async function fetchBlob(url: URL, init?: RequestInit) {
   return await response.blob();
 }
 
-export async function fetchText(url: URL, init?: RequestInit) {
+export async function fetchText(url: URL, init?: RequestInit): Promise<string> {
   const response = await fetch(url, init);
 
   if (!response.ok) {
