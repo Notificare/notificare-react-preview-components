@@ -12,7 +12,7 @@ export async function fetchApplication(id: string, serviceKey: string): Promise<
     name: application.name,
     icon: application.icon,
     androidPackageName: application.androidPackageName,
-    websitePushConfig: {
+    websitePushConfig: application.websitePushConfig && {
       icon: application.websitePushConfig.icon
         ? calculateCompleteIconUrl(application.websitePushConfig.icon)
         : undefined,
