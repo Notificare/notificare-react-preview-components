@@ -1,18 +1,13 @@
 import { getPushAPIHost } from '~/internal/network/api';
-import { NetworkRequestError } from '~/internal/network/errors';
+import { fetchJson } from '~/internal/network/fetch';
 import { ApplicationInfo } from '~/internal/types/application-info';
 
 export async function fetchApplication(id: string, serviceKey: string): Promise<ApplicationInfo> {
   const url = new URL(`/application/${encodeURIComponent(id)}/info`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
-  const response = await fetch(url);
+  const { application } = await fetchJson<ApplicationResponse>(url);
 
-  if (!response.ok) {
-    throw new NetworkRequestError(response);
-  }
-
-  const { application } = await response.json();
   return {
     name: application.name,
     icon: application.icon,
@@ -32,4 +27,8 @@ function calculateCompleteIconUrl(url: string) {
   } else {
     return url;
   }
+}
+
+interface ApplicationResponse {
+  application: ApplicationInfo;
 }

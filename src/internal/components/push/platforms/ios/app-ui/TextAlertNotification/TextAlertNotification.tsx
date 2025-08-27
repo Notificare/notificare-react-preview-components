@@ -43,7 +43,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
                 <div
                   key={index}
                   className="notificare__push__ios__alert__app-ui__action notificare__push__ios__alert__app-ui__action--multiple"
-                  data-testid={`ios-app-ui-text-alert-notification-action-${index}`}
+                  data-testid={`ios-app-ui-text-alert-notification-action-${index.toString()}`}
                 >
                   {action.label}
                 </div>

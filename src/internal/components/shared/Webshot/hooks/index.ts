@@ -8,6 +8,7 @@ import {
   fetchWebshotResult,
 } from '~/internal/network/requests/webshot';
 import { RequestState } from '~/internal/network/state';
+import { logError } from '~/internal/utils/error';
 import { isValidUrl } from '~/internal/utils/url';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
@@ -39,8 +40,8 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
       createWebshotRequest(url, width, height, platform, serviceKey)
         .then(setWebshotId)
-        .catch((error) => {
-          console.error('Webshot error:\n\n' + error);
+        .catch((error: unknown) => {
+          logError(error, 'An error has occurred while trying to create the webshot request:');
 
           setState({
             status: 'error',
@@ -68,12 +69,15 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
           const statusResponse = await fetchWebshotRequestStatus(webshotId, serviceKey);
 
           if (statusResponse.status === 'finished') {
+            clearInterval(handler);
             const webshot = await fetchWebshotResult(webshotId, serviceKey);
             setState({ status: 'success', data: webshot });
-
-            clearInterval(handler);
           } else if (statusResponse.status === 'error') {
-            console.error('Webshot error:\n\n' + statusResponse.result);
+            clearInterval(handler);
+            logError(
+              statusResponse.result,
+              'An error has occurred while trying to get the webshot request status:',
+            );
 
             setState({
               status: 'error',
@@ -84,11 +88,10 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
                 }),
               ),
             });
-
-            clearInterval(handler);
           }
         } catch (error) {
-          console.error('Webshot error:\n\n' + error);
+          clearInterval(handler);
+          logError(error, 'Webshot error:');
 
           setState({
             status: 'error',
@@ -99,13 +102,15 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
               }),
             ),
           });
-
-          clearInterval(handler);
         }
       };
 
-      handler = setInterval(checkStatus, 3000);
-      return () => clearInterval(handler);
+      handler = setInterval(() => {
+        void checkStatus();
+      }, 3000);
+      return () => {
+        clearInterval(handler);
+      };
     },
     [webshotId, serviceKey],
   );
@@ -113,11 +118,11 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   return state;
 }
 
-export type UseWebshotRequestProps = {
+export interface UseWebshotRequestProps {
   url: string;
   platform: 'Android' | 'iOS' | 'Web';
   width: number;
   height: number;
-};
+}
 
 export type WebshotState = RequestState<string>;

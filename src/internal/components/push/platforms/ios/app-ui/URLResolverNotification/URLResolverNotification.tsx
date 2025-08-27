@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { InAppBrowserNotification } from '~/internal/components/push/platforms/ios/app-ui/InAppBrowserNotification/InAppBrowserNotification';
 import { URLNotification } from '~/internal/components/push/platforms/ios/app-ui/URLNotification/URLNotification';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
-import { getUrlResolverPreviewTypeByUrl } from '~/internal/utils/url-resolver';
-import { PUSH_TRANSLATIONS } from '~/locales/push/en';
+import {
+  getUrlResolverPreviewTypeByUrl,
+  UrlResolverPreviewTypeResult,
+} from '~/internal/utils/url-resolver';
+import { NotificarePushTranslationKey, PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 export function URLResolverNotification({ notification, onError }: URLNotificationProps) {
   const intl = useIntl();
@@ -13,64 +16,63 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
 
   const urlResolverResult = getUrlResolverPreviewTypeByUrl(url);
 
+  const previewData: PreviewData = (() => {
+    switch (urlResolverResult) {
+      case UrlResolverPreviewTypeResult.INVALID_URL:
+        return { status: 'error', errorCode: 'preview.error.urlResolverInvalidUrl' };
+
+      case UrlResolverPreviewTypeResult.URL_SCHEME:
+        return {
+          status: 'error',
+          errorCode: 'preview.error.notSupportedUrlResolverWithUrlSchemePreview',
+        };
+
+      case UrlResolverPreviewTypeResult.DYNAMIC_LINK:
+        return {
+          status: 'error',
+          errorCode: 'preview.error.notSupportedUrlResolverWithDynamicLink',
+        };
+
+      case UrlResolverPreviewTypeResult.RELATIVE_URL:
+        return {
+          status: 'error',
+          errorCode: 'preview.error.notSupportedUrlResolverWithRelativeUrl',
+        };
+
+      case UrlResolverPreviewTypeResult.WEB_VIEW:
+        return { status: 'success', preview: <URLNotification notification={notification} /> };
+
+      case UrlResolverPreviewTypeResult.IN_APP_BROWSER:
+        return {
+          status: 'success',
+          preview: <InAppBrowserNotification notification={notification} />,
+        };
+    }
+  })();
+
   useEffect(
-    function handleUrlResolverError() {
-      switch (urlResolverResult) {
-        case 'invalid-url':
-          onError(
-            intl.formatMessage({
-              id: 'preview.error.urlResolverInvalidUrl',
-              defaultMessage: PUSH_TRANSLATIONS['preview.error.urlResolverInvalidUrl'],
-            }),
-          );
-          break;
-
-        case 'url-scheme':
-          onError(
-            intl.formatMessage({
-              id: 'preview.error.notSupportedUrlResolverWithUrlSchemePreview',
-              defaultMessage:
-                PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithUrlSchemePreview'],
-            }),
-          );
-          break;
-
-        case 'dynamic-link':
-          onError(
-            intl.formatMessage({
-              id: 'preview.error.notSupportedUrlResolverWithDynamicLink',
-              defaultMessage:
-                PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithDynamicLink'],
-            }),
-          );
-          break;
-
-        case 'relative-url':
-          onError(
-            intl.formatMessage({
-              id: 'preview.error.notSupportedUrlResolverWithRelativeUrl',
-              defaultMessage:
-                PUSH_TRANSLATIONS['preview.error.notSupportedUrlResolverWithRelativeUrl'],
-            }),
-          );
-          break;
+    function handleInvalidPreview() {
+      if (previewData.status === 'error') {
+        onError(
+          intl.formatMessage(
+            {
+              id: previewData.errorCode,
+              defaultMessage: PUSH_TRANSLATIONS[previewData.errorCode],
+            },
+            { notificationType: notification.type },
+          ),
+        );
       }
     },
-    [url],
+    [previewData],
   );
 
-  switch (urlResolverResult) {
-    case 'invalid-url':
-    case 'url-scheme':
-    case 'dynamic-link':
-    case 'relative-url':
+  switch (previewData.status) {
+    case 'error':
       return undefined;
 
-    case 'web-view':
-      return <URLNotification notification={notification} />;
-
-    case 'in-app-browser':
-      return <InAppBrowserNotification notification={notification} />;
+    case 'success':
+      return previewData.preview;
   }
 }
 
@@ -78,3 +80,7 @@ export interface URLNotificationProps {
   notification: Extract<VerifiedNotification, { type: 're.notifica.notification.URLResolver' }>;
   onError: (message: string) => void;
 }
+
+type PreviewData =
+  | { status: 'success'; preview: ReactElement }
+  | { status: 'error'; errorCode: NotificarePushTranslationKey };

@@ -72,6 +72,11 @@ function getUrlByContentType(
 
         return url.toString();
       }
+
+      case 're.notifica.content.AppStore':
+      case 're.notifica.content.AppGalleryDetails':
+      case 're.notifica.content.AppGallerySearch':
+        break;
     }
   }
 

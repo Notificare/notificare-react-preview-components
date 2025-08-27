@@ -5,6 +5,7 @@ import LockerIcon from '~/assets/locker.svg';
 import XMarkIcon from '~/assets/x-mark.svg';
 import { useOptions } from '~/internal/context/options';
 import { getPushAPIHost } from '~/internal/network/api';
+import { logError } from '~/internal/utils/error';
 import { getTopLevelDomain, isSecureUrl } from '~/internal/utils/url';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
@@ -19,18 +20,16 @@ export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowser
 
   useEffect(
     function loadPageTitle() {
-      (async () => {
-        updateComponentStatus(true, setStatus, onLoadingChanged);
+      updateComponentStatus(true, setStatus, onLoadingChanged);
 
-        try {
-          const pageTitle = await fetchPageTitle(serviceKey, url);
-          setPageTitle(pageTitle);
-        } catch (error) {
-          console.error('Error while getting page title:\n\n', error);
-        }
-
-        updateComponentStatus(false, setStatus, onLoadingChanged);
-      })();
+      fetchPageTitle(serviceKey, url)
+        .then(setPageTitle)
+        .catch((error: unknown) => {
+          logError(error, 'Error while getting page title:');
+        })
+        .finally(() => {
+          updateComponentStatus(false, setStatus, onLoadingChanged);
+        });
     },
     [url],
   );
@@ -69,9 +68,9 @@ export interface InAppBrowserBarProps {
   canShow: boolean;
 }
 
-type StatusState = {
+interface StatusState {
   isLoading: boolean;
-};
+}
 
 async function fetchPageTitle(serviceKey: string, websiteUrl: string) {
   const url = new URL('/proxy', getPushAPIHost());
