@@ -53,6 +53,7 @@ export default tseslint.config([
     rules: {
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
       'import/prefer-default-export': 'off', // prefer named to default exports
+      '@typescript-eslint/no-confusing-void-expression': 'off',
       'import/order': [
         'error',
         {
