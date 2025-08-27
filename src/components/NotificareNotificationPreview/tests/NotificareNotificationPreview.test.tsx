@@ -2739,14 +2739,7 @@ describe('NotificareNotificationPreview', () => {
     );
 
     // Advance setTimeout (debounce)
-    await act(async () => {
-      jest.advanceTimersByTime(3000);
-    });
-
-    // Advance setInterval
-    await act(async () => {
-      jest.advanceTimersByTime(3000);
-    });
+    act(() => jest.advanceTimersByTime(500));
 
     // ASSERT
     const webshot = await screen.findByTestId('webshot');

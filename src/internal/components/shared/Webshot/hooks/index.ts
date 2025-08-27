@@ -22,6 +22,8 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
 
   useEffect(
     function createRequest() {
+      let isCurrentEffect = true;
+
       if (!isValidUrl(url)) {
         setState({
           status: 'error',
@@ -39,10 +41,15 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
       setWebshotId(undefined);
 
       createWebshotRequest(url, width, height, platform, serviceKey)
-        .then(setWebshotId)
-        .catch((error: unknown) => {
-          logError(error, 'An error has occurred while trying to create the webshot request:');
+        .then((id) => {
+          if (!isCurrentEffect) return;
 
+          setWebshotId(id);
+        })
+        .catch((error: unknown) => {
+          if (!isCurrentEffect) return;
+
+          logError(error, 'An error has occurred while trying to create the webshot request:');
           setState({
             status: 'error',
             error: new Error(
@@ -53,6 +60,10 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
             ),
           });
         });
+
+      return () => {
+        isCurrentEffect = false;
+      };
     },
     [url, width, height, platform, serviceKey],
   );
@@ -60,39 +71,58 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   useEffect(
     function loadWebshotResult() {
       if (!webshotId) return;
-
       // eslint-disable-next-line prefer-const
       let handler: NodeJS.Timeout;
+      let isCheckingStatus = false;
+      let isCurrentEffect = true;
 
-      const checkStatus = async () => {
+      const checkStatusAndSetResult = async () => {
+        if (isCheckingStatus) return;
+
+        isCheckingStatus = true;
+
         try {
-          const statusResponse = await fetchWebshotRequestStatus(webshotId, serviceKey);
+          const webshotRequestStatus = await fetchWebshotRequestStatus(webshotId, serviceKey);
 
-          if (statusResponse.status === 'finished') {
-            clearInterval(handler);
-            const webshot = await fetchWebshotResult(webshotId, serviceKey);
-            setState({ status: 'success', data: webshot });
-          } else if (statusResponse.status === 'error') {
-            clearInterval(handler);
-            logError(
-              statusResponse.result,
-              'An error has occurred while trying to get the webshot request status:',
-            );
+          if (!isCurrentEffect) return;
 
-            setState({
-              status: 'error',
-              error: new Error(
-                intl.formatMessage({
-                  id: 'preview.error.webshotFail',
-                  defaultMessage: PUSH_TRANSLATIONS['preview.error.webshotFail'],
-                }),
-              ),
-            });
+          switch (webshotRequestStatus.status) {
+            case 'finished': {
+              clearInterval(handler);
+              const webshot = await fetchWebshotResult(webshotId, serviceKey);
+
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+              if (!isCurrentEffect) return;
+
+              setState({ status: 'success', data: webshot });
+              break;
+            }
+
+            case 'error':
+              clearInterval(handler);
+              logError(
+                webshotRequestStatus.result,
+                'An error has occurred while trying to get the webshot request status:',
+              );
+              setState({
+                status: 'error',
+                error: new Error(
+                  intl.formatMessage({
+                    id: 'preview.error.webshotFail',
+                    defaultMessage: PUSH_TRANSLATIONS['preview.error.webshotFail'],
+                  }),
+                ),
+              });
+              break;
+
+            case 'queued':
+              break;
           }
         } catch (error) {
+          if (!isCurrentEffect) return;
+
           clearInterval(handler);
           logError(error, 'Webshot error:');
-
           setState({
             status: 'error',
             error: new Error(
@@ -103,16 +133,22 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
             ),
           });
         }
+
+        isCheckingStatus = false;
       };
 
+      void checkStatusAndSetResult();
+
       handler = setInterval(() => {
-        void checkStatus();
+        void checkStatusAndSetResult();
       }, 3000);
+
       return () => {
         clearInterval(handler);
+        isCurrentEffect = false;
       };
     },
-    [webshotId, serviceKey],
+    [webshotId],
   );
 
   return state;
