@@ -1,5 +1,5 @@
+import { fetchJson, fetchBlob } from '~/internal/network/fetch';
 import { getPushAPIHost } from '../api';
-import { NetworkRequestError } from '../errors';
 
 export async function createWebshotRequest(
   url: string,
@@ -11,7 +11,7 @@ export async function createWebshotRequest(
   const webshotUrl = new URL('/webshot', getPushAPIHost());
   webshotUrl.searchParams.set('apiKey', serviceKey);
 
-  const response = await fetch(webshotUrl, {
+  const { webshot } = await fetchJson<CreateWebshotRequestResponse>(webshotUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,45 +28,41 @@ export async function createWebshotRequest(
     }),
   });
 
-  if (!response.ok) {
-    throw new NetworkRequestError(response);
-  }
+  return webshot.id;
+}
 
-  const data = await response.json();
-  return data.webshot.id;
+interface CreateWebshotRequestResponse {
+  webshot: {
+    id: string;
+  };
 }
 
 export async function fetchWebshotRequestStatus(
   id: string,
   serviceKey: string,
-): Promise<WebshotRequestStatusResponse> {
+): Promise<WebshotRequestState> {
   const url = new URL(`/webshot/${encodeURIComponent(id)}`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
-  const response = await fetch(url);
+  const { webshot } = await fetchJson<WebshotRequestStateResponse>(url);
 
-  if (!response.ok) {
-    throw new NetworkRequestError(response);
-  }
-
-  const data = await response.json();
-  return data.webshot;
+  return webshot;
 }
 
-export type WebshotRequestStatusResponse =
+export type WebshotRequestState =
   | { status: 'finished' }
-  | { status: 'error'; result: string };
+  | { status: 'error'; result: string }
+  | { status: 'queued' };
+
+interface WebshotRequestStateResponse {
+  webshot: WebshotRequestState;
+}
 
 export async function fetchWebshotResult(id: string, serviceKey: string): Promise<string> {
   const url = new URL(`/webshot/${encodeURIComponent(id)}/result`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
-  const response = await fetch(url);
+  const blob = await fetchBlob(url);
 
-  if (!response.ok) {
-    throw new NetworkRequestError(response);
-  }
-
-  const blob = await response.blob();
   return URL.createObjectURL(blob);
 }

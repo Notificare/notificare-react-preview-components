@@ -4,6 +4,7 @@ import { useApplication } from '~/internal/context/application';
 import { useOptions } from '~/internal/context/options';
 import { fetchWebsiteMarkup } from '~/internal/network/requests/website-markup';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
+import { logError } from '~/internal/utils/error';
 import {
   hasActions,
   markupContainsNotificareOpenActionQueryParameter,
@@ -22,14 +23,11 @@ export function URLNotification({ notification }: URLNotificationProps) {
 
   useEffect(
     function loadWebsiteMarkup() {
-      (async () => {
-        try {
-          const response = await fetchWebsiteMarkup(serviceKey, url);
-          setWebsiteMarkup(response);
-        } catch (error) {
-          console.error('Error fetching website markup:\n\n', error);
-        }
-      })();
+      fetchWebsiteMarkup(serviceKey, url)
+        .then(setWebsiteMarkup)
+        .catch((error: unknown) => {
+          logError(error, 'Error fetching website markup:');
+        });
     },
     [url, serviceKey],
   );

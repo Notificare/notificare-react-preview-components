@@ -27,6 +27,6 @@ export function StarRating(props: StarRatingProps) {
   return <div className="notificare__push__ios__store__app-ui__star-rating">{stars}</div>;
 }
 
-export type StarRatingProps = {
+export interface StarRatingProps {
   rating: number;
-};
+}

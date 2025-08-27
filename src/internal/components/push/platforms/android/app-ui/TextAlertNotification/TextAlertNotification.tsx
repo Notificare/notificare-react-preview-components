@@ -40,7 +40,7 @@ export function TextAlertNotification({ notification }: TextAlertNotificationPro
               <p
                 key={index}
                 className="notificare__push__android__alert__app-ui__action-label"
-                data-testid={`android-app-ui-text-alert-notification-action-${index}`}
+                data-testid={`android-app-ui-text-alert-notification-action-${index.toString()}`}
               >
                 {action.label}
               </p>

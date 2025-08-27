@@ -40,7 +40,7 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
       <div className="notificare__web__phone__app-ui__background">
         <div className="notificare__web__phone__app-ui__header">
           <div className="notificare__web__phone__app-ui__app-icon">
-            {application.websitePushConfig.icon ? (
+            {application.websitePushConfig?.icon ? (
               <img
                 className="notificare__web__phone__app-ui__app-icon-image"
                 src={application.websitePushConfig.icon}
@@ -101,13 +101,17 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
 
         {notification.actions && (
           <div
-            className={`${notification.actions.length >= 3 ? 'notificare__web__phone__app-ui__actions-column' : 'notificare__web__phone__app-ui__actions-row'}`}
+            className={
+              notification.actions.length >= 3
+                ? 'notificare__web__phone__app-ui__actions-column'
+                : 'notificare__web__phone__app-ui__actions-row'
+            }
           >
             {notification.actions.map((action, index) => (
               <button
                 key={index}
                 className={`notificare__web__phone__app-ui__action ${index === 0 ? 'notificare__web__phone__app-ui__action--primary' : 'notificare__web__phone__app-ui__action--secondary'}`}
-                data-testid={`web-mobile-app-ui-action-${index}`}
+                data-testid={`web-mobile-app-ui-action-${index.toString()}`}
               >
                 {action.label}
               </button>
@@ -120,6 +124,17 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
 }
 
 export interface WebMobileAppUIProps {
-  notification: VerifiedNotification;
+  notification: Exclude<
+    VerifiedNotification,
+    {
+      type:
+        | 're.notifica.notification.InAppBrowser'
+        | 're.notifica.notification.None'
+        | 're.notifica.notification.Passbook'
+        | 're.notifica.notification.Rate'
+        | 're.notifica.notification.Store'
+        | 're.notifica.notification.URLScheme';
+    }
+  >;
   onError: (message: string) => void;
 }

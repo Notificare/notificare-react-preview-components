@@ -1,9 +1,9 @@
-export type ApplicationInfo = {
+export interface ApplicationInfo {
   name: string;
   icon?: string;
   androidPackageName?: string;
-  websitePushConfig: ApplicationInfoWebsitePushConfig;
-};
+  websitePushConfig?: ApplicationInfoWebsitePushConfig;
+}
 
 export interface ApplicationInfoWebsitePushConfig {
   icon?: string;

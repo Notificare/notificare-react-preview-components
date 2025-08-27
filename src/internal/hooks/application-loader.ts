@@ -26,7 +26,7 @@ export function useApplicationLoader({ id, serviceKey }: ApplicationLoaderParams
       .then((application) => {
         setState({ status: 'success', data: application });
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
         console.error('Error fetching the application: ', error);
         setState({ status: 'success', data: DEFAULT_APPLICATION });
       });
@@ -35,9 +35,9 @@ export function useApplicationLoader({ id, serviceKey }: ApplicationLoaderParams
   return state;
 }
 
-export type ApplicationLoaderParams = {
+export interface ApplicationLoaderParams {
   id: string | undefined;
   serviceKey: string;
-};
+}
 
 export type ApplicationLoaderState = Exclude<RequestState<ApplicationInfo>, { status: 'error' }>;

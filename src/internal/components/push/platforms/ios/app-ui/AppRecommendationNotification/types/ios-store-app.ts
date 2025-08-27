@@ -1,9 +1,4 @@
-export type IosStoreApp = {
-  resultCount: number;
-  results: IosStoreAppData[];
-};
-
-export type IosStoreAppData = {
+export interface IosStoreAppData {
   artworkUrl512: string;
   screenshotUrls: string[];
   averageUserRating: number;
@@ -15,4 +10,4 @@ export type IosStoreAppData = {
   version: string;
   trackContentRating: string;
   userRatingCount: number;
-};
+}
