@@ -40,22 +40,22 @@ interface CreateWebshotRequestResponse {
 export async function fetchWebshotRequestStatus(
   id: string,
   serviceKey: string,
-): Promise<WebshotRequestStatus> {
+): Promise<WebshotRequestState> {
   const url = new URL(`/webshot/${encodeURIComponent(id)}`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
-  const { webshot } = await fetchJson<WebshotRequestStatusResponse>(url);
+  const { webshot } = await fetchJson<WebshotRequestStateResponse>(url);
 
   return webshot;
 }
 
-export type WebshotRequestStatus =
+export type WebshotRequestState =
   | { status: 'finished' }
   | { status: 'error'; result: string }
   | { status: 'queued' };
 
-interface WebshotRequestStatusResponse {
-  webshot: WebshotRequestStatus;
+interface WebshotRequestStateResponse {
+  webshot: WebshotRequestState;
 }
 
 export async function fetchWebshotResult(id: string, serviceKey: string): Promise<string> {
