@@ -13,9 +13,11 @@ import { isValidUrl } from '~/internal/utils/url';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
-  const { serviceKey } = useOptions();
   const intl = useIntl();
-  const { url, platform, width, height } = useDebounce(props, 500);
+  const { url, platform, width, height, serviceKey } = useDebounce(
+    { ...props, serviceKey: useOptions().serviceKey },
+    500,
+  );
 
   const [state, setState] = useState<WebshotState>({ status: 'idle' });
   const [webshotId, setWebshotId] = useState<string>();
