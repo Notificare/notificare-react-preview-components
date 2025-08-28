@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import eslintImport from 'eslint-plugin-import';
 import eslintPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintReact from 'eslint-plugin-react';
+import eslintReactHooks from 'eslint-plugin-react-hooks';
 import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
@@ -32,6 +33,9 @@ export default tseslint.config([
 
   {
     files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'react-hooks': eslintReactHooks,
+    },
     extends: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintImport.flatConfigs.recommended,
@@ -52,8 +56,10 @@ export default tseslint.config([
     },
     rules: {
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
-      'import/prefer-default-export': 'off', // prefer named to default exports
       '@typescript-eslint/no-confusing-void-expression': 'off',
+      'import/prefer-default-export': 'off', // prefer named to default exports
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
       'import/order': [
         'error',
         {
