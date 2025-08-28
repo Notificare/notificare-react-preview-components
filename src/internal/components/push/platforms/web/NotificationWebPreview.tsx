@@ -87,7 +87,7 @@ export function NotificationWebPreview({
         );
       }
     },
-    [previewData],
+    [previewData, notification.type, onError, intl],
   );
 
   switch (previewData.status) {

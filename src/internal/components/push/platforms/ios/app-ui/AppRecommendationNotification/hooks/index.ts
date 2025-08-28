@@ -64,7 +64,7 @@ export function useStoreRequest(props: UseStoreRequestProps): StoreState {
           });
         });
     },
-    [contentList],
+    [contentList, intl],
   );
 
   return state;

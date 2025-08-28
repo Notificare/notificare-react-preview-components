@@ -63,7 +63,7 @@ export function URLResolverNotification({ notification, onError }: URLNotificati
         );
       }
     },
-    [previewData],
+    [previewData, notification.type, onError, intl],
   );
 
   switch (previewData.status) {
