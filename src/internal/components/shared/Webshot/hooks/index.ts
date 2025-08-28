@@ -69,7 +69,7 @@ export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
         controller.abort();
       };
     },
-    [url, width, height, platform, serviceKey],
+    [url, width, height, platform, serviceKey, intl],
   );
 
   useEffect(
