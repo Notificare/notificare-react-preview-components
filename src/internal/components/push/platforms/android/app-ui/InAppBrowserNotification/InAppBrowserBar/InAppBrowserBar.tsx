@@ -31,7 +31,7 @@ export function InAppBrowserBar({ url, onLoadingChanged, canShow }: InAppBrowser
           updateComponentStatus(false, setStatus, onLoadingChanged);
         });
     },
-    [url],
+    [url, serviceKey, onLoadingChanged],
   );
 
   return (
