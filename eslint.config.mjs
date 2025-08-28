@@ -33,9 +33,6 @@ export default tseslint.config([
 
   {
     files: ['**/*.{ts,tsx}'],
-    plugins: {
-      'react-hooks': eslintReactHooks,
-    },
     extends: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       eslintImport.flatConfigs.recommended,
@@ -43,6 +40,7 @@ export default tseslint.config([
       eslintImport.flatConfigs.typescript,
       eslintReact.configs.flat.recommended,
       eslintReact.configs.flat['jsx-runtime'],
+      eslintReactHooks.configs['recommended-latest'],
     ],
     settings: {
       react: {
@@ -58,8 +56,6 @@ export default tseslint.config([
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
       '@typescript-eslint/no-confusing-void-expression': 'off',
       'import/prefer-default-export': 'off', // prefer named to default exports
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
       'import/order': [
         'error',
         {
