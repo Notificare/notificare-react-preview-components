@@ -7,6 +7,7 @@ export async function createWebshotRequest(
   height: number,
   platform: 'Android' | 'iOS' | 'Web',
   serviceKey: string,
+  signal?: AbortSignal,
 ): Promise<string> {
   const webshotUrl = new URL('/webshot', getPushAPIHost());
   webshotUrl.searchParams.set('apiKey', serviceKey);
@@ -26,6 +27,7 @@ export async function createWebshotRequest(
         height: height,
       },
     }),
+    signal: signal,
   });
 
   return webshot.id;
@@ -40,11 +42,12 @@ interface CreateWebshotRequestResponse {
 export async function fetchWebshotRequestStatus(
   id: string,
   serviceKey: string,
+  signal?: AbortSignal,
 ): Promise<WebshotRequestState> {
   const url = new URL(`/webshot/${encodeURIComponent(id)}`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
-  const { webshot } = await fetchJson<WebshotRequestStateResponse>(url);
+  const { webshot } = await fetchJson<WebshotRequestStateResponse>(url, { signal });
 
   return webshot;
 }
@@ -58,11 +61,15 @@ interface WebshotRequestStateResponse {
   webshot: WebshotRequestState;
 }
 
-export async function fetchWebshotResult(id: string, serviceKey: string): Promise<string> {
+export async function fetchWebshotResult(
+  id: string,
+  serviceKey: string,
+  signal?: AbortSignal,
+): Promise<string> {
   const url = new URL(`/webshot/${encodeURIComponent(id)}/result`, getPushAPIHost());
   url.searchParams.set('apiKey', serviceKey);
 
-  const blob = await fetchBlob(url);
+  const blob = await fetchBlob(url, { signal });
 
   return URL.createObjectURL(blob);
 }
