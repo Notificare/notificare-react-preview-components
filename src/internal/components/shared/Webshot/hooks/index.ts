@@ -14,8 +14,9 @@ import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 
 export function useWebshotRequest(props: UseWebshotRequestProps): WebshotState {
   const intl = useIntl();
+  const options = useOptions();
   const { url, platform, width, height, serviceKey } = useDebounce(
-    { ...props, serviceKey: useOptions().serviceKey },
+    { ...props, serviceKey: options.serviceKey },
     500,
   );
 
