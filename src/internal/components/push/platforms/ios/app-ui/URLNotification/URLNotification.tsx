@@ -21,13 +21,16 @@ export function URLNotification({ notification }: URLNotificationProps) {
 
   const { serviceKey } = useOptions();
 
-  useEffect(function loadWebsiteMarkup() {
-    fetchWebsiteMarkup(serviceKey, url)
-      .then(setWebsiteMarkup)
-      .catch((error: unknown) => {
-        logError(error, 'Error fetching website markup:');
-      });
-  }, []);
+  useEffect(
+    function loadWebsiteMarkup() {
+      fetchWebsiteMarkup(serviceKey, url)
+        .then(setWebsiteMarkup)
+        .catch((error: unknown) => {
+          logError(error, 'Error fetching website markup:');
+        });
+    },
+    [url, serviceKey],
+  );
 
   return (
     <div data-testid="ios-app-ui-url-notification">

@@ -28,7 +28,7 @@ export function Webshot({
           break;
       }
     },
-    [state],
+    [state, onLoadingChanged],
   );
 
   return (

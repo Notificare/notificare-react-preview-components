@@ -130,7 +130,7 @@ export function NotificationAndroidPreview({
         );
       }
     },
-    [previewData, notification.type, onError, intl],
+    [previewData, notification, onError, intl],
   );
 
   if (!previewData) {
