@@ -26,7 +26,7 @@ export function MapNotification({ notification, onError }: MapNotificationProps)
         );
       }
     },
-    [googleMapsAPIKey],
+    [googleMapsAPIKey, onError, intl],
   );
 
   if (!googleMapsAPIKey) {

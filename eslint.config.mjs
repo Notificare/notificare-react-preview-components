@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import eslintImport from 'eslint-plugin-import';
 import eslintPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintReact from 'eslint-plugin-react';
+import eslintReactHooks from 'eslint-plugin-react-hooks';
 import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
@@ -39,6 +40,7 @@ export default tseslint.config([
       eslintImport.flatConfigs.typescript,
       eslintReact.configs.flat.recommended,
       eslintReact.configs.flat['jsx-runtime'],
+      eslintReactHooks.configs['recommended-latest'],
     ],
     settings: {
       react: {
@@ -52,8 +54,8 @@ export default tseslint.config([
     },
     rules: {
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
-      'import/prefer-default-export': 'off', // prefer named to default exports
       '@typescript-eslint/no-confusing-void-expression': 'off',
+      'import/prefer-default-export': 'off', // prefer named to default exports
       'import/order': [
         'error',
         {

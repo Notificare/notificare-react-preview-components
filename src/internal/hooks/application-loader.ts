@@ -30,7 +30,7 @@ export function useApplicationLoader({ id, serviceKey }: ApplicationLoaderParams
         console.error('Error fetching the application: ', error);
         setState({ status: 'success', data: DEFAULT_APPLICATION });
       });
-  }, [id]);
+  }, [id, serviceKey]);
 
   return state;
 }
