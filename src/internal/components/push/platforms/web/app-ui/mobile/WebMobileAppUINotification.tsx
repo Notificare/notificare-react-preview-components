@@ -32,7 +32,7 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
         );
       }
     },
-    [notification.type, googleMapsAPIKey, intl, onError],
+    [notification, googleMapsAPIKey, intl, onError],
   );
 
   return (

@@ -130,7 +130,7 @@ export function NotificationIOSPreview({
         );
       }
     },
-    [previewData, notification.type, onError, intl],
+    [previewData, notification, onError, intl],
   );
 
   if (!previewData) {
