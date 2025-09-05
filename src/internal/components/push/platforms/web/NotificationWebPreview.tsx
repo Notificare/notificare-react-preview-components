@@ -4,12 +4,12 @@ import {
   NotificationPreviewStateWebDesktop,
   NotificationPreviewStateWebMobile,
 } from '~/internal/components/push/notification-preview-state';
+import { WebMacOSNotification } from '~/internal/components/push/platforms/web/lockscreen/WebMacOSNotification';
 import { AndroidPhoneBackground } from '~/internal/components/shared/AndroidPhoneBackground/AndroidPhoneBackground';
 import { IOSPhoneBackground } from '~/internal/components/shared/IOSPhoneBackground/IOSPhoneBackground';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { NotificarePushTranslationKey, PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { WebMobileAppUINotification } from './app-ui/mobile/WebMobileAppUINotification';
-import { WebMacOSNotification } from './lockscreen/WebMacOSNotification';
 
 export function NotificationWebPreview({
   notification,
@@ -23,7 +23,7 @@ export function NotificationWebPreview({
       case 'desktop':
         return {
           status: 'success',
-          preview: <WebMacOSNotification key={notification.message} notification={notification} />,
+          preview: <WebMacOSNotification notification={notification} />,
         };
 
       case 'phone':
