@@ -15,6 +15,7 @@ import {
   ALERT,
   ALERT_WITH_MULTIPLE_ACTIONS,
   ALERT_WITH_SINGLE_ACTION,
+  ALERT_WITH_ATTACHMENT_AND_MULTIPLE_ACTIONS,
 } from './variants/Alert';
 import { IMAGE_MULTIPLE, IMAGE_SINGLE } from './variants/Image';
 import { IN_APP_BROWSER } from './variants/InAppBrowser';
@@ -67,6 +68,11 @@ export const AlertWithSingleAction: Story = {
 export const AlertWithMultipleActions: Story = {
   name: 'Alert - with multiple actions',
   args: ALERT_WITH_MULTIPLE_ACTIONS,
+};
+
+export const AlertWithAttachmentAndMultipleActions: Story = {
+  name: 'Alert - with attachment and multiple actions',
+  args: ALERT_WITH_ATTACHMENT_AND_MULTIPLE_ACTIONS,
 };
 
 /* IMAGE */
