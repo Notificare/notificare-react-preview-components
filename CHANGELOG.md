@@ -2,7 +2,8 @@
 
 ## Upcoming Release
 
-- Fixed in-app messaging card preview variant without an image or with a long title
+- Fix in-app messaging card preview variant without an image
+- Adjustments to in-app messaging preview styles
 
 ## 1.1.0
 
