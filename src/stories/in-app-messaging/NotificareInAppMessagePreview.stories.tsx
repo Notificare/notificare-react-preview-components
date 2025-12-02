@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { NotificareInAppMessagePreview } from '~/components';
-import { BANNER, CARD, FULLSCREEN, INVALID } from './variants';
+import { BANNER, CARD, CARD_WITH_IMAGE, FULLSCREEN, INVALID } from './variants';
 
 const meta = {
   title: 'Public Components/In-app messaging/NotificareInAppMessagePreview',
@@ -20,6 +20,11 @@ export const Banner: Story = {
 /* CARD */
 export const Card: Story = {
   args: CARD,
+};
+
+export const CardWithImage: Story = {
+  name: 'Card - with image',
+  args: CARD_WITH_IMAGE,
 };
 
 /* FULLSCREEN */
