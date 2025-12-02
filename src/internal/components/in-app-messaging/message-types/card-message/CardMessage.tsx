@@ -14,12 +14,13 @@ export function CardMessage({ inAppMessage }: CardMessageProps) {
           <button className="notificare__in-app-messaging__card__close-button">
             <ThinXMark className="notificare__in-app-messaging__card__close-button-icon" />
           </button>
-          <img
-            alt="App icon"
-            className="notificare__in-app-messaging__card__image"
-            src={inAppMessage.image}
-            data-testid="in-app-messaging-card-preview-image"
-          />
+          {inAppMessage.image && (
+            <img
+              className="notificare__in-app-messaging__card__image"
+              src={inAppMessage.image}
+              data-testid="in-app-messaging-card-preview-image"
+            />
+          )}
         </div>
         <div className="notificare__in-app-messaging__card__text-content">
           <p

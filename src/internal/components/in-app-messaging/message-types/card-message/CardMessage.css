@@ -11,7 +11,7 @@
     width: 320px;
     background-color: white;
     border-radius: 5px;
-    padding: 16px;
+    padding: 15px;
     overflow: hidden;
     row-gap: 16px;
     display: flex;
@@ -36,6 +36,7 @@
     justify-content: center;
     border-radius: 16px;
     padding: 0;
+    background-color: #fff;
 }
 
 .notificare .notificare__in-app-messaging__card__close-button-icon {
@@ -44,19 +45,16 @@
     width: 22px;
 }
 
-
-
 .notificare .notificare__in-app-messaging__card__image {
     aspect-ratio: 2 / 1;
     width: 100%;
     object-fit: cover;
 }
 
-
 .notificare .notificare__in-app-messaging__card__title {
     font-weight: 600;
     font-size: 15px;
-    width: 100%;
+    max-width: 260px;
     margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
