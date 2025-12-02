@@ -11,7 +11,9 @@ export function CardMessage({ inAppMessage }: CardMessageProps) {
     >
       <div className="notificare__in-app-messaging__card__window">
         <div className="notificare__in-app-messaging__card__header">
-          <button className="notificare__in-app-messaging__card__close-button">
+          <button
+            className={`notificare__in-app-messaging__card__close-button ${inAppMessage.image ? 'notificare__in-app-messaging__card__close-button--with-image' : ''}`}
+          >
             <ThinXMark className="notificare__in-app-messaging__card__close-button-icon" />
           </button>
           {inAppMessage.image && (
