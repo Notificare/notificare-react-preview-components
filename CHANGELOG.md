@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Upcoming Release
+
+- Fix in-app messaging card preview variant without an image
+- Adjustments to in-app messaging preview styles
+
 ## 1.1.0
 
 - Add in-app messaging previews

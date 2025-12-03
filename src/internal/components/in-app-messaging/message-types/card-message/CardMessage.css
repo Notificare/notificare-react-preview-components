@@ -31,11 +31,16 @@
     cursor: pointer;
     display: flex;
     flex-shrink: 0;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     justify-content: center;
-    border-radius: 16px;
     padding: 0;
+    background-color: transparent;
+}
+
+.notificare .notificare__in-app-messaging__card__close-button--with-image {
+    border-radius: 16px;
+    background-color: #f4f5f9;
 }
 
 .notificare .notificare__in-app-messaging__card__close-button-icon {
@@ -44,31 +49,26 @@
     width: 22px;
 }
 
-
-
 .notificare .notificare__in-app-messaging__card__image {
     aspect-ratio: 2 / 1;
     width: 100%;
     object-fit: cover;
 }
 
-
 .notificare .notificare__in-app-messaging__card__title {
     font-weight: 600;
-    font-size: 15px;
-    width: 100%;
+    font-size: 16px;
     margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 18px;
+    line-height: 20px;
 }
 
 .notificare .notificare__in-app-messaging__card__message {
-    font-size: 13px;
+    font-size: 14px;
     width: 100%;
-    word-break: break-word;
-    line-height: 18px;
+    line-height: 20px;
 }
 
 .notificare .notificare__in-app-messaging__card__actions {
@@ -80,13 +80,13 @@
 .notificare .notificare__in-app-messaging__card__action-button {
     padding: 8px 16px;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    line-height: 18px;
+    line-height: 20px;
 }
 
 .notificare .notificare__in-app-messaging__card__action-button--primary {
