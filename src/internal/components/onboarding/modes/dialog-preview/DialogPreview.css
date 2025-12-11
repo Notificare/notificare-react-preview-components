@@ -94,6 +94,8 @@
     overflow: hidden;
     line-height: 20px;
     background-color: transparent;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 
 .notificare .notificare__onboarding__dialog__action-button--accept {
@@ -101,6 +103,14 @@
     color: rgba(255, 255, 255, 0.87);
 }
 
+.notificare .notificare__onboarding__dialog__action-button--accept:hover {
+    background-color: #071cc3;
+}
+
 .notificare .notificare__onboarding__dialog__action-button--cancel {
-    color: #e54142;
+    color: #ba1a1a;
+}
+
+.notificare .notificare__onboarding__dialog__action-button--cancel:hover {
+    background-color: #ffdad699;
 }
