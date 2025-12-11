@@ -4,6 +4,8 @@
 
 - Fix in-app messaging card preview variant without an image
 - Adjustments to in-app messaging preview styles
+- Adjustments to error messages
+- Add onboarding previews
 
 ## 1.1.0
 
