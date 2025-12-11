@@ -63,6 +63,6 @@ function logErrors(errors: ZodIssue[]) {
       }
       return e.message;
     });
-    console.error('Notification errors:\n\n' + messages.join('\n'));
+    console.error(`Notification errors:\n\n${messages.join('\n')}`);
   }
 }
