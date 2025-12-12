@@ -21,7 +21,7 @@ The **Notificare React Preview Components** consists of a collection of React co
 
 **In-app messages**: See how a Notificare in-app message will appear on a mobile device — whether it’s a card, banner, or full-screen view.
 
-**Onboarding**: Visualize what is displayed when a user opens a web application on a mobile device - a dialog box to allow or deny remote notifications, or a floating button displaying the current notification permission status and allowing the user to turn the notifications on.
+**Push onboarding**: Visualize how the Push Onboarding UI will appear when your application uses a managed push onboarding flow.
 
 
 ## Installation
@@ -80,23 +80,23 @@ export default function InAppMessageComposer() {
 
 Check the component [documentation](docs/in-app-messaging.md) for more information.
 
-### Onboarding
+### Push Onboarding
 
-An onboarding preview can be generated through the `NotificareOnboardingPreview` component.
+A push onboarding preview can be generated through the `NotificarePushOnboardingPreview` component.
 
 ```tsx
-import { NotificareOnboardingPreview } from 'notificare-react-preview-components';
+import { NotificarePushOnboardingPreview } from 'notificare-react-preview-components';
 
-export default function OnboardingComposer() {
+export default function PushOnboardingComposer() {
   return (
-    <NotificareOnboardingPreview
+    <NotificarePushOnboardingPreview
       applicationInfo={...}
     />
   )
 }
 ```
 
-Check the component [documentation](docs/onboarding.md) for more information.
+Check the component [documentation](docs/push-onboarding.md) for more information.
 
 ## Theming
 
