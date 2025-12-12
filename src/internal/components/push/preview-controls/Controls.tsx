@@ -202,7 +202,7 @@ const PLATFORM_OPTIONS = [
       />
     ),
   },
-] satisfies Array<{ value: NotificationPreviewPlatform; icon: ReactNode }>;
+] satisfies { value: NotificationPreviewPlatform; icon: ReactNode }[];
 
 const FORM_FACTOR_OPTIONS = [
   {
@@ -223,7 +223,7 @@ const FORM_FACTOR_OPTIONS = [
       />
     ),
   },
-] satisfies Array<{ value: NotificationPreviewFormFactor; icon: ReactNode }>;
+] satisfies { value: NotificationPreviewFormFactor; icon: ReactNode }[];
 
 const MOBILE_OPERATING_SYSTEM_OPTIONS = [
   {
@@ -241,7 +241,7 @@ const MOBILE_OPERATING_SYSTEM_OPTIONS = [
       <IOSIcon key="device-iphone-icon" className="notificare__push__preview-controls-ios-icon" />
     ),
   },
-] satisfies Array<{ value: NotificationPreviewMobileOperatingSystem; icon: ReactNode }>;
+] satisfies { value: NotificationPreviewMobileOperatingSystem; icon: ReactNode }[];
 
 const DESKTOP_OPERATING_SYSTEM_OPTIONS = [
   {
@@ -249,11 +249,11 @@ const DESKTOP_OPERATING_SYSTEM_OPTIONS = [
     labelId: 'controls.operatingSystem.macos',
     defaultLabel: PUSH_TRANSLATIONS['controls.operatingSystem.macos'],
   },
-] satisfies Array<{
+] satisfies {
   value: NotificationPreviewDesktopOperatingSystem;
   labelId: string;
   defaultLabel: string;
-}>;
+}[];
 
 const DISPLAY_MODE_OPTIONS = [
   {
@@ -271,8 +271,8 @@ const DISPLAY_MODE_OPTIONS = [
     labelId: 'controls.displayMode.appUi',
     defaultLabel: PUSH_TRANSLATIONS['controls.displayMode.appUi'],
   },
-] satisfies Array<{
+] satisfies {
   value: NotificationPreviewDisplayMode;
   labelId: string;
   defaultLabel: string;
-}>;
+}[];

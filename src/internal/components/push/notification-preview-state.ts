@@ -9,21 +9,21 @@ export type NotificationPreviewState =
   | NotificationPreviewStateWebDesktop
   | NotificationPreviewStateWebMobile;
 
-export type NotificationPreviewStateMobile = {
+export interface NotificationPreviewStateMobile {
   platform: Extract<NotificationPreviewPlatform, 'android' | 'ios'>;
   displayMode: NotificationPreviewDisplayMode;
-};
+}
 
-export type NotificationPreviewStateWebDesktop = {
+export interface NotificationPreviewStateWebDesktop {
   platform: Extract<NotificationPreviewPlatform, 'web'>;
   displayMode: NotificationPreviewDisplayMode;
   formFactor: Extract<NotificationPreviewFormFactor, 'desktop'>;
   os: NotificationPreviewDesktopOperatingSystem;
-};
+}
 
-export type NotificationPreviewStateWebMobile = {
+export interface NotificationPreviewStateWebMobile {
   platform: Extract<NotificationPreviewPlatform, 'web'>;
   displayMode: NotificationPreviewDisplayMode;
   formFactor: Extract<NotificationPreviewFormFactor, 'phone'>;
   os: NotificationPreviewMobileOperatingSystem;
-};
+}

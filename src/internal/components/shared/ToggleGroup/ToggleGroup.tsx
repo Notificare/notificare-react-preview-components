@@ -19,8 +19,8 @@ export function ToggleGroup<T extends Key>({
             <button
               className={`notificare__toggle-group__option-button ${value === option.value ? 'notificare__toggle-group__option-button--selected' : ''}`}
               onClick={() => onValueChanged(option.value)}
-              aria-label={`Button with option '${option.value}'`}
-              data-testid={`toggle-group-option-${option.value}`}
+              aria-label={`Button with option '${option.value.toString()}'`}
+              data-testid={`toggle-group-option-${option.value.toString()}`}
             >
               <div
                 className={`notificare__toggle-group__option-button-icon ${value === option.value ? 'notificare__toggle-group__option-button-icon--selected' : ''}`}

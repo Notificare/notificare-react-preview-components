@@ -1,110 +1,84 @@
-import { Key, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
 import GoogleChromeIcon from '~/assets/google-chrome.svg';
+import { ExpandButton } from '~/internal/components/push/platforms/web/lockscreen/ExpandButton/ExpandButton';
 import { useApplication } from '~/internal/context/application';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
-import { hasFirstAttachment } from '~/internal/utils/push-previews/notification';
+import { hasActions, hasFirstAttachment } from '~/internal/utils/push-previews/notification';
+import { getTopLevelDomain } from '~/internal/utils/url';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
-import { ExpandButton } from './ExpandButton/ExpandButton';
 
 import './WebMacOSNotification.css';
 
-const maxMessageLines = 3;
-const messageLineHeight = 16.7;
+export function WebMacOSNotification({ notification }: WebMacOSNotificationProps) {
+  const [previewState, setPreviewState] = useState<PreviewState>('collapsed');
+  const [openOptions, setOpenOptions] = useState(false);
+  const [mouseOverActionIndex, setMouseOverActionIndex] = useState<number>(-1);
+  const [isExpandable, setIsExpandable] = useState(false);
+  const collapsingTimeoutRef = useRef<NodeJS.Timeout>(null);
 
-export function WebMacOSNotification({ notification }: WebPushProps) {
-  const [expanded, setExpanded] = useState<boolean>(false);
-  const [mouseOverNotification, setMouseOverNotification] = useState<boolean>(false);
-  const [mouseOverButtonIndex, setMouseOverButtonIndex] = useState<number>(-1);
-  const [expandable, setExpandable] = useState<boolean>(false);
-  const [openOptions, setOpenOptions] = useState<boolean>(false);
-  const [isClosing, setIsClosing] = useState<boolean>(false);
-  const [isExpanding, setIsExpanding] = useState<boolean>(false);
-  const [initialPreviewHeight, setInitialPreviewHeight] = useState<string>('');
-  const previewRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
 
   const application = useApplication();
 
-  useEffect(function enableExpandableOnMessageHeightAndSetInitialPreviewHeight() {
-    if (previewRef.current && messageRef.current) {
-      // calculate the message height
-      const fullTextHeight = messageRef.current.scrollHeight;
-      setExpandable(fullTextHeight > maxMessageLines * messageLineHeight);
+  useEffect(
+    function checkIfNotificationIsExpandable() {
+      if (hasFirstAttachment(notification) || hasActions(notification)) {
+        setIsExpandable(true);
+        return;
+      }
 
-      // set the scroll height of the preview as the REAL height of the preview and keep it in a state. It's necessary for expand/collapse animations to work properly
-      const previewHeight = `${previewRef.current.scrollHeight}px`;
-      previewRef.current.style.height = previewHeight;
-      setInitialPreviewHeight(previewHeight);
-    }
+      if (messageRef.current) {
+        const maxLines = 3;
+
+        const style = window.getComputedStyle(messageRef.current);
+        const lineHeight = parseFloat(style.lineHeight);
+
+        const realMessageHeight = messageRef.current.scrollHeight;
+        const maxMessageHeight = lineHeight * maxLines;
+
+        setIsExpandable(realMessageHeight > maxMessageHeight);
+        return;
+      }
+    },
+    [notification],
+  );
+
+  useEffect(function clearTimeoutOnRemount() {
+    return () => {
+      clearCollapsingTimeout();
+    };
   }, []);
 
-  useEffect(function enableExpandableOnAttachment() {
-    if (hasFirstAttachment(notification)) {
-      setExpandable(true);
+  function expandOrCollapsePreview() {
+    clearCollapsingTimeout();
+
+    if (previewState !== 'expanded') {
+      setOpenOptions(false);
+      setPreviewState('expanded');
+      return;
     }
-  }, []);
+
+    setPreviewState('collapsing');
+    collapsingTimeoutRef.current = setTimeout(() => {
+      setPreviewState('collapsed');
+    }, 400);
+  }
+
+  function clearCollapsingTimeout() {
+    if (collapsingTimeoutRef.current) {
+      clearTimeout(collapsingTimeoutRef.current);
+    }
+
+    return;
+  }
 
   return (
     <div
-      ref={previewRef}
-      className="notificare__push__web__desktop__lock-screen"
-      onMouseEnter={() => setMouseOverNotification(() => true)}
-      onMouseLeave={() => setMouseOverNotification(() => openOptions)}
+      className={`notificare__push__web__desktop__lock-screen ${previewState === 'expanded' ? 'notificare__push__web__desktop__lock-screen--expanded' : 'notificare__push__web__desktop__lock-screen--collapsed'}`}
       data-testid="web-desktop-notification"
     >
-      {((expandable && mouseOverNotification) || expanded || isClosing) && (
-        <div className="notificare__push__web__desktop__lock-screen__expand-button-container">
-          <ExpandButton
-            open={expanded}
-            disabled={isClosing || isExpanding}
-            onToggle={function animatePreview() {
-              const previewElement = previewRef.current;
-              const messageElement = messageRef.current;
-
-              if (previewElement && messageElement) {
-                if (expanded) {
-                  previewElement.style.backgroundColor = '#f4f4f4';
-                  previewElement.style.height = initialPreviewHeight; // reset the preview height to the initial height so the animation starts
-                  setIsClosing(true);
-                  setExpanded(false);
-                  setTimeout(() => {
-                    setIsClosing(false);
-                    previewElement.style.overflow = ''; // unset overflow property (if it's 'hidden', it hides the expanded options)
-                  }, 300);
-                } else {
-                  previewElement.style.backgroundColor = '#fff';
-                  previewElement.style.overflow = 'hidden'; // set preview overflow property to 'hidden' so the expanded content is not shown immediately (but progressively with the animation)
-                  setIsExpanding(true);
-                  setExpanded(true);
-                  setTimeout(() => {
-                    // update the preview element REAL height with the current scroll height to start the animation
-                    previewElement.style.height = `${previewElement.scrollHeight}px`;
-                  }, 10);
-                  setTimeout(() => {
-                    setIsExpanding(false);
-                  }, 300);
-                }
-
-                setOpenOptions(false);
-              }
-            }}
-          />
-        </div>
-      )}
-
-      {!mouseOverNotification && !expanded && !isClosing && (
-        <div className="notificare__push__web__desktop__lock-screen__time-container">
-          <p className="notificare__push__web__desktop__lock-screen__time">
-            <FormattedMessage
-              id="preview.web.desktop.macos.lockScreen.time"
-              defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.time']}
-            />
-          </p>
-        </div>
-      )}
-
       <div className="notificare__push__web__desktop__lock-screen__main-content">
         <div className="notificare__push__web__desktop__lock-screen__browser-icon">
           <div className="notificare__push__web__desktop__lock-screen__browser-icon-background">
@@ -116,140 +90,160 @@ export function WebMacOSNotification({ notification }: WebPushProps) {
         </div>
 
         <div className="notificare__push__web__desktop__lock-screen__text-content">
-          <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--title">
-            {notification.title || application.name}
-          </p>
-          <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--domain">
-            {application.websitePushConfig.allowedDomains.length > 0
-              ? extractDomain(application.websitePushConfig.allowedDomains[0])
-              : 'example.com'}
-          </p>
-          <p
-            ref={messageRef}
-            className={`notificare__push__web__desktop__lock-screen__text ${expanded || isClosing ? 'notificare__push__web__desktop__lock-screen__text--expandable-message' : 'notificare__push__web__desktop__lock-screen__text--message'}`}
-          >
-            {notification.message}
-          </p>
-        </div>
+          <div className="notificare__push__web__desktop__lock-screen__time-and-title-wrapper">
+            <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--title">
+              {notification.title || application.name}
+            </p>
+            {!openOptions && (
+              <div
+                className={`notificare__push__web__desktop__lock-screen__time-container ${previewState !== 'collapsed' ? 'notificare__push__web__desktop__lock-screen__time-container--hidden' : ''}`}
+              >
+                <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--time">
+                  <FormattedMessage
+                    id="preview.web.desktop.macos.lockScreen.time"
+                    defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.time']}
+                  />
+                </p>
+              </div>
+            )}
+          </div>
 
-        {hasFirstAttachment(notification) && !expanded && !isClosing && !mouseOverNotification && (
+          <div className="notificare__push__web__desktop__lock-screen__domain-and-message-and-media-wrapper">
+            <div>
+              <p className="notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--domain">
+                {application.websitePushConfig &&
+                application.websitePushConfig.allowedDomains.length > 0
+                  ? getTopLevelDomain(application.websitePushConfig.allowedDomains[0])
+                  : 'example.com'}
+              </p>
+              <p
+                ref={messageRef}
+                className={`notificare__push__web__desktop__lock-screen__text notificare__push__web__desktop__lock-screen__text--message ${previewState === 'expanded' ? 'notificare__push__web__desktop__lock-screen__text--expandable-message' : 'notificare__push__web__desktop__lock-screen__text--collapsed-message'} ${previewState !== 'expanded' && hasFirstAttachment(notification) ? 'notificare__push__web__desktop__lock_screen__text--message-with-attachment' : ''}`}
+              >
+                {notification.message}
+              </p>
+            </div>
+
+            {!openOptions && hasFirstAttachment(notification) && (
+              <img
+                className={`notificare__push__web__desktop__lock-screen__small-media ${previewState !== 'collapsed' ? 'notificare__push__web__desktop__lock-screen__small-media--hidden' : ''}`}
+                src={notification.attachments?.[0].uri}
+                alt="Small media icon"
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`notificare__push__web__desktop__lock-screen__expanded-content ${previewState === 'expanded' ? 'notificare__push__web__desktop__lock-screen__expanded-content--visible' : ''}`}
+      >
+        {hasFirstAttachment(notification) && (
           <img
-            className="notificare__push__web__desktop__lock-screen__small-media"
+            className="notificare__push__web__desktop__lock-screen__expanded-media"
             src={notification.attachments?.[0].uri}
-            alt="Small media icon"
+            alt="Expanded media"
           />
         )}
 
-        {mouseOverNotification && !expanded && !isClosing && (
-          <div className="notificare__push__web__desktop__lock-screen__settings-button-container">
-            {notification.actions && notification.actions.length > 0 ? (
-              <>
-                <button
-                  className="notificare__push__web__desktop__lock-screen__settings-button"
-                  onClick={() => setOpenOptions((prevState) => !prevState)}
-                  data-testid="web-desktop-settings-button"
-                >
-                  <FormattedMessage
-                    id="preview.web.desktop.macos.lockScreen.options"
-                    defaultMessage={
-                      PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.options']
-                    }
-                  />
-                  <ExpandIcon className="notificare__push__web__desktop__lock-screen__settings-button-expand-icon" />
-                </button>
+        <hr className="notificare__push__web__desktop__lock-screen__expanded-divisor" />
 
-                {openOptions && (
-                  <div className="notificare__push__web__desktop__lock-screen__settings-selector">
-                    {notification.actions.map((option, index) => (
-                      <button
-                        key={index}
-                        className="notificare__push__web__desktop__lock-screen__settings-selector-option"
-                        data-testid={`web-desktop-options-action-${index}`}
-                      >
-                        {option.label}
-                      </button>
-                    ))}
+        {notification.actions?.map((action, index) => (
+          <div key={index} className="notificare__push__web__desktop__lock-screen__action">
+            <button
+              className="notificare__push__web__desktop__lock-screen__expanded-button"
+              onMouseEnter={() => setMouseOverActionIndex(index)}
+              onMouseLeave={() => setMouseOverActionIndex(-1)}
+              data-testid={`web-desktop-expanded-action-${index.toString()}`}
+            >
+              {action.label}
+            </button>
 
-                    <button className="notificare__push__web__desktop__lock-screen__settings-selector-option">
-                      <FormattedMessage
-                        id="preview.web.desktop.macos.lockScreen.settings"
-                        defaultMessage={
-                          PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']
-                        }
-                      />
-                    </button>
-                  </div>
-                )}
-              </>
-            ) : (
-              <button className="notificare__push__web__desktop__lock-screen__settings-button">
-                <FormattedMessage
-                  id="preview.web.desktop.macos.lockScreen.settings"
-                  defaultMessage={
-                    PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']
-                  }
-                />
-              </button>
-            )}
+            <hr
+              className={`notificare__push__web__desktop__lock-screen__expanded-buttons-divisor ${mouseOverActionIndex === index || mouseOverActionIndex - 1 === index ? 'notificare__push__web__desktop__lock-screen__expanded-buttons-divisor--transparent' : ''}`}
+            />
           </div>
-        )}
+        ))}
+
+        <button
+          className={'notificare__push__web__desktop__lock-screen__expanded-button'}
+          onMouseEnter={() => setMouseOverActionIndex(notification.actions?.length ?? -1)}
+          onMouseLeave={() => setMouseOverActionIndex(-1)}
+        >
+          <FormattedMessage
+            id="preview.web.desktop.macos.lockScreen.settings"
+            defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']}
+          />
+        </button>
       </div>
 
-      {(expanded || isClosing) && (
-        <div className="notificare__push__web__desktop__lock-screen__expanded-content">
-          {hasFirstAttachment(notification) && (
-            <img
-              className="notificare__push__web__desktop__lock-screen__expanded-media"
-              src={notification.attachments?.[0].uri}
-              alt="Expanded media"
-            />
-          )}
+      {isExpandable && (
+        <div
+          className={`notificare__push__web__desktop__lock-screen__expand-button-container ${openOptions || previewState !== 'collapsed' ? 'notificare__push__web__desktop__lock-screen__expand-button-container--visible' : ''}`}
+        >
+          <ExpandButton
+            open={previewState === 'expanded'}
+            disabled={false}
+            onToggle={expandOrCollapsePreview}
+          />
+        </div>
+      )}
 
-          <hr className="notificare__push__web__desktop__lock-screen__expanded-divisor" />
-
-          {notification.actions?.map((action, index) => (
-            <div key={index} className="notificare__push__web__desktop__lock-screen__action">
-              <button
-                className="notificare__push__web__desktop__lock-screen__expanded-button"
-                onMouseEnter={() => setMouseOverButtonIndex(index)}
-                onMouseLeave={() => setMouseOverButtonIndex(-1)}
-                data-testid={`web-desktop-expanded-action-${index}`}
-              >
-                {action.label}
-              </button>
-
-              <hr
-                className={`notificare__push__web__desktop__lock-screen__expanded-buttons-divisor ${(mouseOverButtonIndex === index || mouseOverButtonIndex - 1 === index) && 'notificare__push__web__desktop__lock-screen__expanded-buttons-divisor--transparent'}`}
+      <div
+        className={`notificare__push__web__desktop__lock-screen__settings-button-container ${openOptions ? 'notificare__push__web__desktop__lock-screen__settings-button-container--visible' : ''} ${previewState !== 'collapsed' ? 'notificare__push__web__desktop__lock-screen__settings-button-container--hidden' : ''}`}
+      >
+        {notification.actions && notification.actions.length > 0 ? (
+          <>
+            <button
+              className="notificare__push__web__desktop__lock-screen__settings-button"
+              onClick={() => setOpenOptions(!openOptions)}
+              data-testid="web-desktop-settings-button"
+            >
+              <FormattedMessage
+                id="preview.web.desktop.macos.lockScreen.options"
+                defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.options']}
               />
-            </div>
-          ))}
+              <ExpandIcon className="notificare__push__web__desktop__lock-screen__settings-button-expand-icon" />
+            </button>
 
-          <button
-            className={'notificare__push__web__desktop__lock-screen__expanded-button'}
-            onMouseEnter={() => setMouseOverButtonIndex(notification.actions?.length || -1)}
-            onMouseLeave={() => setMouseOverButtonIndex(-1)}
-          >
+            {openOptions && (
+              <div className="notificare__push__web__desktop__lock-screen__settings-selector">
+                {notification.actions.map((option, index) => (
+                  <button
+                    key={index}
+                    className="notificare__push__web__desktop__lock-screen__settings-selector-option"
+                    data-testid={`web-desktop-options-action-${index.toString()}`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+
+                <button className="notificare__push__web__desktop__lock-screen__settings-selector-option">
+                  <FormattedMessage
+                    id="preview.web.desktop.macos.lockScreen.settings"
+                    defaultMessage={
+                      PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']
+                    }
+                  />
+                </button>
+              </div>
+            )}
+          </>
+        ) : (
+          <button className="notificare__push__web__desktop__lock-screen__settings-button">
             <FormattedMessage
               id="preview.web.desktop.macos.lockScreen.settings"
               defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']}
             />
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
 
-export interface WebPushProps {
-  key?: Key; // why do we receive a key?
+export interface WebMacOSNotificationProps {
   notification: VerifiedNotification;
 }
 
-function extractDomain(url: string): string {
-  try {
-    const parsedUrl = new URL(url);
-    return parsedUrl.hostname;
-  } catch {
-    return '';
-  }
-}
+type PreviewState = 'collapsed' | 'expanded' | 'collapsing';

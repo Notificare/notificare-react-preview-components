@@ -4,7 +4,7 @@ export function useOutsideClick({ refs, onClickOutside }: OutsideClickParams) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       const isOutside = refs.every((ref) => {
-        return !ref.current || !ref.current.contains(event.target as Node);
+        return !ref.current?.contains(event.target as Node);
       });
 
       if (isOutside) {
@@ -20,7 +20,7 @@ export function useOutsideClick({ refs, onClickOutside }: OutsideClickParams) {
   }, [refs]);
 }
 
-export type OutsideClickParams = {
+export interface OutsideClickParams {
   refs: RefObject<HTMLElement | null>[];
   onClickOutside: () => void;
-};
+}

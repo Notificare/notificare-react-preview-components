@@ -31,7 +31,9 @@ export function Selector<T extends Key>({
 
   useOutsideClick({
     refs: [optionsRef, selectorButtonRef],
-    onClickOutside: () => setExpanded(false),
+    onClickOutside: () => {
+      setExpanded(false);
+    },
   });
 
   return (
@@ -61,7 +63,7 @@ export function Selector<T extends Key>({
                   intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel }),
                 );
               }}
-              data-testid={`selector-option-${option.value}`}
+              data-testid={`selector-option-${option.value.toString()}`}
             >
               {intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel })}
             </button>

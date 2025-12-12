@@ -155,7 +155,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer doesn't provide any locale, it loads default messages", async () => {
+  test("when consumer doesn't provide any locale, it loads default messages", () => {
     // ACT
     render(<NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} />); // has invalid type
 
@@ -168,7 +168,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'en', it loads en messages", async () => {
+  test("when consumer provides locale 'en', it loads en messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="en" />,
@@ -183,7 +183,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'en-GB', it loads en messages", async () => {
+  test("when consumer provides locale 'en-GB', it loads en messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="en-GB" />,
@@ -198,7 +198,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'fr', it loads fr messages", async () => {
+  test("when consumer provides locale 'fr', it loads fr messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="fr" />,
@@ -213,7 +213,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'fr-FR', it loads fr messages", async () => {
+  test("when consumer provides locale 'fr-FR', it loads fr messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="fr-FR" />,
@@ -228,7 +228,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'fr-BE', it loads fr messages", async () => {
+  test("when consumer provides locale 'fr-BE', it loads fr messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="fr-BE" />,
@@ -243,7 +243,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'pt', it loads pt messages", async () => {
+  test("when consumer provides locale 'pt', it loads pt messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="pt" />,
@@ -258,7 +258,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test("when consumer provides locale 'pt-PT', it loads pt messages", async () => {
+  test("when consumer provides locale 'pt-PT', it loads pt messages", () => {
     // ACT
     render(
       <NotificareInAppMessagePreview inAppMessage={INVALID_IN_APP_MESSAGE_MOCK} locale="pt-PT" />,
@@ -273,7 +273,7 @@ describe('NotificareInAppMessagePreview', () => {
     );
   });
 
-  test('when custom translations are provided, it uses them as expected', async () => {
+  test('when custom translations are provided, it uses them as expected', () => {
     // ACT
     render(
       <NotificareInAppMessagePreview

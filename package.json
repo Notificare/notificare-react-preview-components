@@ -1,6 +1,6 @@
 {
   "name": "notificare-react-preview-components",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A set of React components for your admin applications that lets you preview how Notificare notifications, in-app messages, and wallet passes will appear on a user’s device.",
   "author": "Notificare <info@notificare.com> (https://notificare.com)",
   "license": "MIT",
@@ -37,8 +37,8 @@
   ],
   "dependencies": {
     "@vis.gl/react-google-maps": "^1.5.2",
-    "zod": "^3.24.1",
-    "react-intl": "^7.1.11"
+    "react-intl": "^7.1.11",
+    "zod": "^3.24.1"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -66,8 +66,11 @@
     "dotenv": "^16.5.0",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-storybook": "^9.0.4",
     "globals": "^16.0.0",
     "identity-obj-proxy": "^3.0.0",

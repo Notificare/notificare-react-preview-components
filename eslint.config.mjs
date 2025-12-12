@@ -1,34 +1,61 @@
-import pluginJs from '@eslint/js';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
-import pluginReact from 'eslint-plugin-react';
+import eslint from '@eslint/js';
+import eslintImport from 'eslint-plugin-import';
+import eslintPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import eslintReact from 'eslint-plugin-react';
+import eslintReactHooks from 'eslint-plugin-react-hooks';
 import storybook from 'eslint-plugin-storybook';
-import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import { globalIgnores } from 'eslint/config';
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
-  // Import configurations from plugins
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  eslintConfigPrettier,
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
-  ...storybook.configs['flat/recommended'],
+export default tseslint.config([
+  eslint.configs.recommended,
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylisticTypeChecked,
+  eslintPrettierRecommended,
 
-  { ignores: ['dist/', 'build/', 'storybook-static/'] },
   {
-    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
-      globals: globals.browser,
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: [
+            'rollup.config.mjs',
+            'jest.config.mjs',
+            'babel.config.mjs',
+            'eslint.config.mjs',
+            'mocks/*',
+            '.storybook/*',
+          ],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
+  },
+
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      eslintImport.flatConfigs.recommended,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      eslintImport.flatConfigs.typescript,
+      eslintReact.configs.flat.recommended,
+      eslintReact.configs.flat['jsx-runtime'],
+      eslintReactHooks.configs['recommended-latest'],
+    ],
     settings: {
       react: {
         version: 'detect',
       },
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
     },
     rules: {
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
+      'import/prefer-default-export': 'off', // prefer named to default exports
       'import/order': [
         'error',
         {
@@ -51,10 +78,14 @@ export default [
           pathGroupsExcludedImportTypes: ['react'],
         },
       ],
-      'import/no-unresolved': 'off', // solves typescript-eslint import error bug
-      // solves 'React must be in scope when using JSX'
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-uses-react': 'off',
     },
   },
-];
+
+  // Storybook
+  {
+    files: ['**/*.stories.@(ts|tsx)'],
+    extends: [storybook.configs['flat/recommended']],
+  },
+
+  globalIgnores(['**/dist/', '**/storybook-static/']),
+]);
