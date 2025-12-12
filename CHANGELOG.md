@@ -1,12 +1,12 @@
 # CHANGELOG
 
-## Upcoming Release
+## 1.2.0
 
+- Add push onboarding previews
+- Add hover effects
 - Fix in-app messaging card preview variant without an image
 - Adjustments to in-app messaging preview styles
 - Adjustments to error messages
-- Add push onboarding previews
-- Add hover effects
 
 ## 1.1.0
 
