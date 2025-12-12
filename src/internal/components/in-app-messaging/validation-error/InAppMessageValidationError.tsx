@@ -49,6 +49,6 @@ function logErrors(errors: ZodIssue[]) {
   } else {
     const messages = errors.map(({ message }) => message);
 
-    console.error(`In-app message errors:\n\n' + ${messages.join('\n')}`);
+    console.error(`In-app message errors:\n\n${messages.join('\n')}`);
   }
 }

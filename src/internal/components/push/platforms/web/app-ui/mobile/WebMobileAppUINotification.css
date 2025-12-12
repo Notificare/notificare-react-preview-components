@@ -116,7 +116,7 @@
 
 .notificare .notificare__web__phone__app-ui__action--primary {
     background-color: #2b42f7;
-    color: #ffffffde;
+    color: rgba(255, 255, 255, 0.87);
 }
 
 .notificare .notificare__web__phone__app-ui__action--primary:hover {

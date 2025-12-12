@@ -1,13 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
 import { RequestState } from '~/internal/network/state';
 import { isValidLocale } from '~/internal/utils/locale';
-import { NotificarePushTranslationKey, NotificareInAppMessagingTranslationKey } from '~/locales';
+import {
+  NotificarePushTranslationKey,
+  NotificareInAppMessagingTranslationKey,
+  NotificarePushOnboardingTranslationKey,
+} from '~/locales';
 import { IN_APP_MESSAGING_TRANSLATIONS } from '~/locales/in-app-messaging/en';
 import { IN_APP_MESSAGING_TRANSLATIONS_FR } from '~/locales/in-app-messaging/fr';
 import { IN_APP_MESSAGING_TRANSLATIONS_PT } from '~/locales/in-app-messaging/pt';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import { PUSH_TRANSLATIONS_FR } from '~/locales/push/fr';
 import { PUSH_TRANSLATIONS_PT } from '~/locales/push/pt';
+import { PUSH_ONBOARDING_TRANSLATIONS } from '~/locales/push-onboarding/en';
+import { PUSH_ONBOARDING_TRANSLATIONS_FR } from '~/locales/push-onboarding/fr';
+import { PUSH_ONBOARDING_TRANSLATIONS_PT } from '~/locales/push-onboarding/pt';
 
 export function useLocalizationLoader<T extends LocalizedFeatureTranslationKeys>({
   locale,
@@ -59,6 +66,7 @@ export interface LocalizationLoaderParams<T extends LocalizedFeatureTranslationK
 interface LocalizedFeatureTranslations {
   push: NotificarePushTranslationKey;
   'in-app': NotificareInAppMessagingTranslationKey;
+  onboarding: NotificarePushOnboardingTranslationKey;
 }
 
 export type LocalizedFeatureTranslationKeys = keyof LocalizedFeatureTranslations;
@@ -71,13 +79,37 @@ export type LocalizationLoaderState = Exclude<
 function getDefaultTranslations(language: string, type: LocalizedFeatureTranslationKeys) {
   switch (language) {
     case 'en':
-      return type === 'push' ? PUSH_TRANSLATIONS : IN_APP_MESSAGING_TRANSLATIONS;
+      switch (type) {
+        case 'push':
+          return PUSH_TRANSLATIONS;
+        case 'in-app':
+          return IN_APP_MESSAGING_TRANSLATIONS;
+        case 'onboarding':
+          return PUSH_ONBOARDING_TRANSLATIONS;
+      }
+      break;
 
     case 'pt':
-      return type === 'push' ? PUSH_TRANSLATIONS_PT : IN_APP_MESSAGING_TRANSLATIONS_PT;
+      switch (type) {
+        case 'push':
+          return PUSH_TRANSLATIONS_PT;
+        case 'in-app':
+          return IN_APP_MESSAGING_TRANSLATIONS_PT;
+        case 'onboarding':
+          return PUSH_ONBOARDING_TRANSLATIONS_PT;
+      }
+      break;
 
     case 'fr':
-      return type === 'push' ? PUSH_TRANSLATIONS_FR : IN_APP_MESSAGING_TRANSLATIONS_FR;
+      switch (type) {
+        case 'push':
+          return PUSH_TRANSLATIONS_FR;
+        case 'in-app':
+          return IN_APP_MESSAGING_TRANSLATIONS_FR;
+        case 'onboarding':
+          return PUSH_ONBOARDING_TRANSLATIONS_FR;
+      }
+      break;
 
     default:
       return null;
