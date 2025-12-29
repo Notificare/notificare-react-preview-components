@@ -45,6 +45,7 @@ export function Selector<T extends Key>({
         onClick={() => setExpanded(!expanded)}
         disabled={disabled}
         ref={selectorButtonRef}
+        type="button"
       >
         {currentOptionLabel}
         <ExpandIcon className="notificare__selector__button-expand-icon" />
@@ -63,6 +64,7 @@ export function Selector<T extends Key>({
                   intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel }),
                 );
               }}
+              type="button"
               data-testid={`selector-option-${option.value.toString()}`}
             >
               {intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel })}

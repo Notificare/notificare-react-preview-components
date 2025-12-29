@@ -68,12 +68,14 @@ export function DialogPreview({ applicationId, applicationInfo, serviceKey }: Di
                 <div className="notificare__push-onboarding__dialog__actions">
                   <button
                     className="notificare__push-onboarding__dialog__action-button notificare__push-onboarding__dialog__action-button--cancel"
+                    type="button"
                     data-testid="push-onboarding-dialog-cancel-button"
                   >
                     {autoOnboardingOptions?.cancelButton}
                   </button>
                   <button
                     className="notificare__push-onboarding__dialog__action-button notificare__push-onboarding__dialog__action-button--accept"
+                    type="button"
                     data-testid="push-onboarding-dialog-accept-button"
                   >
                     {autoOnboardingOptions?.acceptButton}

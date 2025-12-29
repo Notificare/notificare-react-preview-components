@@ -52,7 +52,7 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
           </div>
 
           <p className="notificare__web__phone__app-ui__app-name">{application.name}</p>
-          <button className="notificare__web__phone__app-ui__close-button">
+          <button className="notificare__web__phone__app-ui__close-button" type="button">
             <ThinXMarkIcon className="notificare__web__phone__app-ui__close-button-icon" />
           </button>
         </div>
@@ -111,6 +111,7 @@ export function WebMobileAppUINotification({ notification, onError }: WebMobileA
               <button
                 key={index}
                 className={`notificare__web__phone__app-ui__action ${index === 0 ? 'notificare__web__phone__app-ui__action--primary' : 'notificare__web__phone__app-ui__action--secondary'}`}
+                type="button"
                 data-testid={`web-mobile-app-ui-action-${index.toString()}`}
               >
                 {action.label}

@@ -13,6 +13,7 @@ export function CardMessage({ inAppMessage }: CardMessageProps) {
         <div className="notificare__in-app-messaging__card__header">
           <button
             className={`notificare__in-app-messaging__card__close-button ${inAppMessage.image ? 'notificare__in-app-messaging__card__close-button--with-image' : ''}`}
+            type="button"
           >
             <ThinXMark className="notificare__in-app-messaging__card__close-button-icon" />
           </button>
@@ -42,6 +43,7 @@ export function CardMessage({ inAppMessage }: CardMessageProps) {
         <div className="notificare__in-app-messaging__card__actions">
           <button
             className={`notificare__in-app-messaging__card__action-button notificare__in-app-messaging__card__action-button--primary ${inAppMessage.primaryAction.destructive ? 'notificare__in-app-messaging__card__action-button--destructive' : ''}`}
+            type="button"
             data-testid="in-app-messaging-card-preview-primary-action-label"
           >
             {inAppMessage.primaryAction.label}
@@ -50,6 +52,7 @@ export function CardMessage({ inAppMessage }: CardMessageProps) {
           {inAppMessage.secondaryAction && (
             <button
               className={`notificare__in-app-messaging__card__action-button notificare__in-app-messaging__card__action-button--secondary ${inAppMessage.secondaryAction.destructive ? 'notificare__in-app-messaging__card__action-button--destructive' : ''}`}
+              type="button"
               data-testid="in-app-messaging-card-preview-secondary-action-label"
             >
               {inAppMessage.secondaryAction.label}

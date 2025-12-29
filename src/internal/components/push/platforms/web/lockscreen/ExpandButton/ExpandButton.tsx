@@ -10,6 +10,7 @@ export function ExpandButton(props: ExpandButtonProps) {
       disabled={disabled}
       className={`notificare__push__web__desktop__lock-screen__expand-button ${open ? 'notificare__push__web__desktop__lock-screen__expand-button--rotated' : ''}`}
       onClick={onToggle}
+      type="button"
       data-testid="web-desktop-expand-button"
     >
       <ExpandButtonIcon className="notificare__push__web__desktop__lock-screen__expand-button-svg" />
