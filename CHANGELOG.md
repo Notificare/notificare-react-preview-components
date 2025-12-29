@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Upcoming Release
+
+- Add type="button" to all preview buttons to avoid problems with forms
+
 ## 1.2.0
 
 - Add push onboarding previews
