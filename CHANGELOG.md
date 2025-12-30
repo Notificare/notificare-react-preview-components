@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.2.1
+
+- Add type="button" to all preview buttons to avoid submissions in forms
+
 ## 1.2.0
 
 - Add push onboarding previews

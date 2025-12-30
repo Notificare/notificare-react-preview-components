@@ -154,6 +154,7 @@ export function WebMacOSNotification({ notification }: WebMacOSNotificationProps
               className="notificare__push__web__desktop__lock-screen__expanded-button"
               onMouseEnter={() => setMouseOverActionIndex(index)}
               onMouseLeave={() => setMouseOverActionIndex(-1)}
+              type="button"
               data-testid={`web-desktop-expanded-action-${index.toString()}`}
             >
               {action.label}
@@ -169,6 +170,7 @@ export function WebMacOSNotification({ notification }: WebMacOSNotificationProps
           className={'notificare__push__web__desktop__lock-screen__expanded-button'}
           onMouseEnter={() => setMouseOverActionIndex(notification.actions?.length ?? -1)}
           onMouseLeave={() => setMouseOverActionIndex(-1)}
+          type="button"
         >
           <FormattedMessage
             id="preview.web.desktop.macos.lockScreen.settings"
@@ -197,6 +199,7 @@ export function WebMacOSNotification({ notification }: WebMacOSNotificationProps
             <button
               className="notificare__push__web__desktop__lock-screen__settings-button"
               onClick={() => setOpenOptions(!openOptions)}
+              type="button"
               data-testid="web-desktop-settings-button"
             >
               <FormattedMessage
@@ -212,13 +215,17 @@ export function WebMacOSNotification({ notification }: WebMacOSNotificationProps
                   <button
                     key={index}
                     className="notificare__push__web__desktop__lock-screen__settings-selector-option"
+                    type="button"
                     data-testid={`web-desktop-options-action-${index.toString()}`}
                   >
                     {option.label}
                   </button>
                 ))}
 
-                <button className="notificare__push__web__desktop__lock-screen__settings-selector-option">
+                <button
+                  className="notificare__push__web__desktop__lock-screen__settings-selector-option"
+                  type="button"
+                >
                   <FormattedMessage
                     id="preview.web.desktop.macos.lockScreen.settings"
                     defaultMessage={
@@ -230,7 +237,10 @@ export function WebMacOSNotification({ notification }: WebMacOSNotificationProps
             )}
           </>
         ) : (
-          <button className="notificare__push__web__desktop__lock-screen__settings-button">
+          <button
+            className="notificare__push__web__desktop__lock-screen__settings-button"
+            type="button"
+          >
             <FormattedMessage
               id="preview.web.desktop.macos.lockScreen.settings"
               defaultMessage={PUSH_TRANSLATIONS['preview.web.desktop.macos.lockScreen.settings']}

@@ -16,7 +16,7 @@ export function FullscreenMessage({ inAppMessage }: FullscreenMessageProps) {
           src={inAppMessage.image}
           data-testid="in-app-messaging-fullscreen-preview-image"
         />
-        <button className="notificare__in-app-messaging__fullscreen__close-button">
+        <button className="notificare__in-app-messaging__fullscreen__close-button" type="button">
           <ThinXMark className="notificare__in-app-messaging__fullscreen__close-button-icon" />
         </button>
         <div className="notificare__in-app-messaging__fullscreen__text-content">
