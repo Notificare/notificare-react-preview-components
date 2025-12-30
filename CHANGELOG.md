@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## Upcoming Release
+## 1.2.1
 
-- Add type="button" to all preview buttons to avoid problems with forms
+- Add type="button" to all preview buttons to avoid submissions in forms
 
 ## 1.2.0
 
