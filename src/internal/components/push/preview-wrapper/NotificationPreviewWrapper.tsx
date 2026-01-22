@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NotificationPreviewState } from '~/internal/components/push/notification-preview-state';
 import { NotificationPreview } from '~/internal/components/push/NotificationPreview';
 import { Controls } from '~/internal/components/push/preview-controls/Controls';
@@ -6,6 +6,7 @@ import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { ApplicationProvider } from '~/internal/context/application';
 import { useOptions } from '~/internal/context/options';
 import { useApplicationLoader } from '~/internal/hooks';
+import { useIsFirstRender } from '~/internal/hooks/is-first-render';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { NotificareNotificationPreviewVariant } from '~/models';
 
@@ -68,16 +69,30 @@ export function NotificationPreviewWrapper({
   );
 
   const { serviceKey } = useOptions();
+  const isFirstRender = useIsFirstRender();
 
   const applicationState = useApplicationLoader({
     id: applicationId,
     serviceKey,
   });
 
+  useEffect(
+    function updatePreviewStateWhenVariantChanges() {
+      if (!isFirstRender) {
+        setPreviewState(DEFAULT_STATES[variant]);
+      }
+    },
+    [variant],
+  );
+
   return (
     <div className="notificare__push__preview-wrapper">
       {showControls && (
-        <Controls previewState={previewState} onPreviewStateChanged={setPreviewState} />
+        <Controls
+          previewState={previewState}
+          onPreviewStateChanged={setPreviewState}
+          notification={notification}
+        />
       )}
       {(() => {
         switch (applicationState.status) {

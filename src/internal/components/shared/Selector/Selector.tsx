@@ -1,4 +1,4 @@
-import { Key, useRef, useState } from 'react';
+import { Key, useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import ExpandIcon from '~/assets/expand.svg';
 import { useOutsideClick } from '~/internal/hooks';
@@ -15,19 +15,9 @@ export function Selector<T extends Key>({
   const intl = useIntl();
 
   const [expanded, setExpanded] = useState(false);
-  const [currentOptionLabel, setCurrentOptionLabel] = useState<string>(loadDefaultOptionLabel);
+  const [currentOptionLabel, setCurrentOptionLabel] = useState<string>();
   const optionsRef = useRef<HTMLDivElement>(null);
   const selectorButtonRef = useRef<HTMLButtonElement>(null);
-
-  function loadDefaultOptionLabel() {
-    const option = options.find((option) => option.value === value);
-
-    if (!option) {
-      throw new Error(`Value "${String(value)}" not found in the Selector options.`);
-    }
-
-    return intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel });
-  }
 
   useOutsideClick({
     refs: [optionsRef, selectorButtonRef],
@@ -35,6 +25,21 @@ export function Selector<T extends Key>({
       setExpanded(false);
     },
   });
+
+  useEffect(
+    function loadDefaultOptionLabel() {
+      const option = options.find((option) => option.value === value);
+
+      if (!option) {
+        throw new Error(`Value "${String(value)}" not found in the Selector options.`);
+      }
+
+      setCurrentOptionLabel(
+        intl.formatMessage({ id: option.labelId, defaultMessage: option.defaultLabel }),
+      );
+    },
+    [intl, options, value],
+  );
 
   return (
     <div className="notificare__selector__wrapper">
