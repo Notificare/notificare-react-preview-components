@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Upcoming Release
+
+- Hide unavailable controls options for a given notification
+- Allow to switch between previews by updating "variant" property in real time
+
 ## 1.2.1
 
 - Add type="button" to all preview buttons to avoid submissions in forms
