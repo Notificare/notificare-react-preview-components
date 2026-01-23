@@ -6,7 +6,6 @@ import { Loading } from '~/internal/components/shared/Loading/Loading';
 import { ApplicationProvider } from '~/internal/context/application';
 import { useOptions } from '~/internal/context/options';
 import { useApplicationLoader } from '~/internal/hooks';
-import { useIsFirstRender } from '~/internal/hooks/is-first-render';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import { NotificareNotificationPreviewVariant } from '~/models';
 
@@ -69,7 +68,6 @@ export function NotificationPreviewWrapper({
   );
 
   const { serviceKey } = useOptions();
-  const isFirstRender = useIsFirstRender();
 
   const applicationState = useApplicationLoader({
     id: applicationId,
@@ -78,9 +76,7 @@ export function NotificationPreviewWrapper({
 
   useEffect(
     function updatePreviewStateWhenVariantChanges() {
-      if (!isFirstRender) {
-        setPreviewState(DEFAULT_STATES[variant]);
-      }
+      setPreviewState(DEFAULT_STATES[variant]);
     },
     [variant],
   );

@@ -7,7 +7,6 @@ import IOSIcon from '~/assets/ios.svg';
 import PhoneIcon from '~/assets/phone.svg';
 import { Selector } from '~/internal/components/shared/Selector/Selector';
 import { ToggleGroup } from '~/internal/components/shared/ToggleGroup/ToggleGroup';
-import { useIsFirstRender } from '~/internal/hooks/is-first-render';
 import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
 import {
   getUrlResolverPreviewTypeByUrl,
@@ -27,7 +26,6 @@ import './Controls.css';
 
 export function Controls({ previewState, onPreviewStateChanged, notification }: ControlsProps) {
   const intl = useIntl();
-  const isFirstRender = useIsFirstRender();
   const [options, setOptions] = useState(getOptionsByNotificationType);
 
   function handlePlatformChanged(platform: NotificationPreviewPlatform) {
@@ -199,9 +197,7 @@ export function Controls({ previewState, onPreviewStateChanged, notification }: 
 
   useEffect(
     function updateOptions() {
-      if (!isFirstRender) {
-        setOptions(getOptionsByNotificationType);
-      }
+      setOptions(getOptionsByNotificationType);
     },
     [notification],
   );
