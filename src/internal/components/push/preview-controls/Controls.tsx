@@ -26,7 +26,7 @@ import './Controls.css';
 
 export function Controls({ previewState, onPreviewStateChanged, notification }: ControlsProps) {
   const intl = useIntl();
-  const [options, setOptions] = useState(getOptionsByNotificationType);
+  const [options, setOptions] = useState(getOptionsForNotification);
 
   function handlePlatformChanged(platform: NotificationPreviewPlatform) {
     if (previewState.platform === platform) return;
@@ -126,7 +126,7 @@ export function Controls({ previewState, onPreviewStateChanged, notification }: 
     return true;
   }
 
-  function getOptionsByNotificationType() {
+  function getOptionsForNotification() {
     const options = {
       platformOptions: PLATFORM_OPTIONS,
       formFactorOptions: FORM_FACTOR_OPTIONS,
@@ -196,8 +196,8 @@ export function Controls({ previewState, onPreviewStateChanged, notification }: 
   }
 
   useEffect(
-    function updateOptions() {
-      setOptions(getOptionsByNotificationType);
+    function updateOptionsWhenNotificationChanges() {
+      setOptions(getOptionsForNotification);
     },
     [notification],
   );
