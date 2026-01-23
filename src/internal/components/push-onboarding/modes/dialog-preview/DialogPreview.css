@@ -55,8 +55,10 @@
 
 .notificare .notificare__push-onboarding__dialog__title {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 32px;
     font-weight: 400;
+    border: none;
+    color: rgba(0, 0, 0, 0.87);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -66,7 +68,12 @@
     font-size: 14px;
     line-height: 20px;
     border: none;
-    color: rgba(0, 0, 0, 0.86);
+    color: rgba(0, 0, 0, 0.87);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
 }
 
 .notificare .notificare__push-onboarding__dialog__footer {
@@ -82,6 +89,7 @@
     flex-grow: 1;
     justify-content: flex-end;
     column-gap: 8px;
+    overflow: hidden;
 }
 
 .notificare .notificare__push-onboarding__dialog__action-button {
