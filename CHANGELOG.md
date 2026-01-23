@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Upcoming Release
+
+- Update push onboarding and in-app messaging previews to match the SDK
+
 ## 1.2.1
 
 - Add type="button" to all preview buttons to avoid submissions in forms
