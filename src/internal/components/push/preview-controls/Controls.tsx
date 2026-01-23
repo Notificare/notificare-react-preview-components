@@ -129,6 +129,14 @@ export function Controls({ previewState, onPreviewStateChanged, notification }: 
   }
 
   function getOptionsByNotificationType() {
+    const options = {
+      platformOptions: PLATFORM_OPTIONS,
+      formFactorOptions: FORM_FACTOR_OPTIONS,
+      mobileOperatingSystemOptions: MOBILE_OPERATING_SYSTEM_OPTIONS,
+      desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
+      displayModeOptions: DISPLAY_MODE_OPTIONS,
+    };
+
     switch (notification.type) {
       case 're.notifica.notification.Alert':
       case 're.notifica.notification.Image':
@@ -136,33 +144,24 @@ export function Controls({ previewState, onPreviewStateChanged, notification }: 
       case 're.notifica.notification.URL':
       case 're.notifica.notification.Video':
       case 're.notifica.notification.WebView':
-        return {
-          platformOptions: PLATFORM_OPTIONS,
-          formFactorOptions: FORM_FACTOR_OPTIONS,
-          mobileOperatingSystemOptions: MOBILE_OPERATING_SYSTEM_OPTIONS,
-          desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
-          displayModeOptions: DISPLAY_MODE_OPTIONS,
-        };
+        return options;
 
       case 're.notifica.notification.InAppBrowser':
       case 're.notifica.notification.Passbook':
       case 're.notifica.notification.Rate':
       case 're.notifica.notification.Store':
         return {
-          platformOptions: PLATFORM_OPTIONS,
+          ...options,
           formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
           mobileOperatingSystemOptions: null,
-          desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
-          displayModeOptions: DISPLAY_MODE_OPTIONS,
         };
 
       case 're.notifica.notification.None':
       case 're.notifica.notification.URLScheme':
         return {
-          platformOptions: PLATFORM_OPTIONS,
+          ...options,
           formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
           mobileOperatingSystemOptions: null,
-          desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
           displayModeOptions: DISPLAY_MODE_OPTIONS.filter((option) => option.value !== 'app-ui'),
         };
 
@@ -176,30 +175,23 @@ export function Controls({ previewState, onPreviewStateChanged, notification }: 
           case UrlResolverPreviewTypeResult.URL_SCHEME:
           case UrlResolverPreviewTypeResult.RELATIVE_URL:
             return {
-              platformOptions: PLATFORM_OPTIONS,
+              ...options,
               formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
               mobileOperatingSystemOptions: null,
-              desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
               displayModeOptions: DISPLAY_MODE_OPTIONS.filter(
                 (option) => option.value !== 'app-ui',
               ),
             };
-          case UrlResolverPreviewTypeResult.WEB_VIEW:
-            return {
-              platformOptions: PLATFORM_OPTIONS,
-              formFactorOptions: FORM_FACTOR_OPTIONS,
-              mobileOperatingSystemOptions: MOBILE_OPERATING_SYSTEM_OPTIONS,
-              desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
-              displayModeOptions: DISPLAY_MODE_OPTIONS,
-            };
+
           case UrlResolverPreviewTypeResult.IN_APP_BROWSER:
             return {
-              platformOptions: PLATFORM_OPTIONS,
+              ...options,
               formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
               mobileOperatingSystemOptions: null,
-              desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
-              displayModeOptions: DISPLAY_MODE_OPTIONS,
             };
+
+          case UrlResolverPreviewTypeResult.WEB_VIEW:
+            return options;
         }
       }
     }
