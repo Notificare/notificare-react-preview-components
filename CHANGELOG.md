@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.2
+
+- Hide unavailable controls options for a given notification
+- Allow to switch between previews by updating "variant" property in real time
+- Update push onboarding and in-app messaging previews to match the SDK
+
 ## 1.2.1
 
 - Add type="button" to all preview buttons to avoid submissions in forms

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NotificationPreviewState } from '~/internal/components/push/notification-preview-state';
 import { NotificationPreview } from '~/internal/components/push/NotificationPreview';
 import { Controls } from '~/internal/components/push/preview-controls/Controls';
@@ -74,10 +74,21 @@ export function NotificationPreviewWrapper({
     serviceKey,
   });
 
+  useEffect(
+    function updatePreviewStateWhenVariantChanges() {
+      setPreviewState(DEFAULT_STATES[variant]);
+    },
+    [variant],
+  );
+
   return (
     <div className="notificare__push__preview-wrapper">
       {showControls && (
-        <Controls previewState={previewState} onPreviewStateChanged={setPreviewState} />
+        <Controls
+          previewState={previewState}
+          onPreviewStateChanged={setPreviewState}
+          notification={notification}
+        />
       )}
       {(() => {
         switch (applicationState.status) {

@@ -62,14 +62,21 @@
 .notificare .notificare__in-app-messaging__fullscreen__title {
     font-weight: 600;
     font-size: 16px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 4px;
     line-height: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .notificare .notificare__in-app-messaging__fullscreen__message {
     font-size: 14px;
     line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }

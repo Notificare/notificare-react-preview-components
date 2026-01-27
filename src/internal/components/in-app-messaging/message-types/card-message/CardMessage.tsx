@@ -10,21 +10,27 @@ export function CardMessage({ inAppMessage }: CardMessageProps) {
       data-testid="in-app-messaging-card-preview-wrapper"
     >
       <div className="notificare__in-app-messaging__card__window">
-        <div className="notificare__in-app-messaging__card__header">
-          <button
-            className={`notificare__in-app-messaging__card__close-button ${inAppMessage.image ? 'notificare__in-app-messaging__card__close-button--with-image' : ''}`}
-            type="button"
-          >
+        {!inAppMessage.image && (
+          <button className="notificare__in-app-messaging__card__close-button" type="button">
             <ThinXMark className="notificare__in-app-messaging__card__close-button-icon" />
           </button>
-          {inAppMessage.image && (
+        )}
+
+        {inAppMessage.image && (
+          <div className="notificare__in-app-messaging__card__header">
             <img
               className="notificare__in-app-messaging__card__image"
               src={inAppMessage.image}
               data-testid="in-app-messaging-card-preview-image"
             />
-          )}
-        </div>
+            <button
+              className="notificare__in-app-messaging__card__close-button notificare__in-app-messaging__card__close-button--with-image"
+              type="button"
+            >
+              <ThinXMark className="notificare__in-app-messaging__card__close-button-icon" />
+            </button>
+          </div>
+        )}
         <div className="notificare__in-app-messaging__card__text-content">
           <p
             className="notificare__in-app-messaging__card__title"
