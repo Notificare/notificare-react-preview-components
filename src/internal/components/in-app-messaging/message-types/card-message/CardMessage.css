@@ -69,16 +69,26 @@
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 4px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     line-height: 20px;
+}
+
+.notificare .notificare__in-app-messaging__card__window:not(:has(> .notificare__in-app-messaging__card__header)) .notificare__in-app-messaging__card__title {
+    margin-right: 32px;
 }
 
 .notificare .notificare__in-app-messaging__card__message {
     font-size: 14px;
-    width: 100%;
     line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 
 .notificare .notificare__in-app-messaging__card__actions {
