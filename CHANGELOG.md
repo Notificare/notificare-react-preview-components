@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Upcoming Release
+## 1.2.2
 
 - Hide unavailable controls options for a given notification
 - Allow to switch between previews by updating "variant" property in real time
