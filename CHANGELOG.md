@@ -2,6 +2,8 @@
 
 ## Upcoming Release
 
+- Hide unavailable controls options for a given notification
+- Allow to switch between previews by updating "variant" property in real time
 - Update push onboarding and in-app messaging previews to match the SDK
 
 ## 1.2.1

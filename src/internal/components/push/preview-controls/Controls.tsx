@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import AndroidIcon from '~/assets/android.svg';
 import DesktopIcon from '~/assets/desktop.svg';
@@ -7,6 +7,11 @@ import IOSIcon from '~/assets/ios.svg';
 import PhoneIcon from '~/assets/phone.svg';
 import { Selector } from '~/internal/components/shared/Selector/Selector';
 import { ToggleGroup } from '~/internal/components/shared/ToggleGroup/ToggleGroup';
+import { VerifiedNotification } from '~/internal/schemas/notificare-notification';
+import {
+  getUrlResolverPreviewTypeByUrl,
+  UrlResolverPreviewTypeResult,
+} from '~/internal/utils/url-resolver';
 import { PUSH_TRANSLATIONS } from '~/locales/push/en';
 import {
   NotificationPreviewDesktopOperatingSystem,
@@ -19,8 +24,9 @@ import {
 
 import './Controls.css';
 
-export function Controls({ previewState, onPreviewStateChanged }: ControlsProps) {
+export function Controls({ previewState, onPreviewStateChanged, notification }: ControlsProps) {
   const intl = useIntl();
+  const [options, setOptions] = useState(getOptionsForNotification);
 
   function handlePlatformChanged(platform: NotificationPreviewPlatform) {
     if (previewState.platform === platform) return;
@@ -95,6 +101,118 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
     });
   }
 
+  function isPreviewStateValid() {
+    if (!options.platformOptions.some((option) => option.value === previewState.platform))
+      return false;
+
+    if (!options.displayModeOptions.some((option) => option.value === previewState.displayMode))
+      return false;
+
+    if (previewState.platform === 'web') {
+      if (!options.formFactorOptions.some((option) => option.value === previewState.formFactor))
+        return false;
+
+      if (
+        !(
+          options.desktopOperatingSystemOptions.some(
+            (option) => option.value === previewState.os,
+          ) ||
+          options.mobileOperatingSystemOptions?.some((option) => option.value === previewState.os)
+        )
+      )
+        return false;
+    }
+
+    return true;
+  }
+
+  function getOptionsForNotification() {
+    const options = {
+      platformOptions: PLATFORM_OPTIONS,
+      formFactorOptions: FORM_FACTOR_OPTIONS,
+      mobileOperatingSystemOptions: MOBILE_OPERATING_SYSTEM_OPTIONS,
+      desktopOperatingSystemOptions: DESKTOP_OPERATING_SYSTEM_OPTIONS,
+      displayModeOptions: DISPLAY_MODE_OPTIONS,
+    };
+
+    switch (notification.type) {
+      case 're.notifica.notification.Alert':
+      case 're.notifica.notification.Image':
+      case 're.notifica.notification.Map':
+      case 're.notifica.notification.URL':
+      case 're.notifica.notification.Video':
+      case 're.notifica.notification.WebView':
+        return options;
+
+      case 're.notifica.notification.InAppBrowser':
+      case 're.notifica.notification.Passbook':
+      case 're.notifica.notification.Rate':
+      case 're.notifica.notification.Store':
+        return {
+          ...options,
+          formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
+          mobileOperatingSystemOptions: null,
+        };
+
+      case 're.notifica.notification.None':
+      case 're.notifica.notification.URLScheme':
+        return {
+          ...options,
+          formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
+          mobileOperatingSystemOptions: null,
+          displayModeOptions: DISPLAY_MODE_OPTIONS.filter((option) => option.value !== 'app-ui'),
+        };
+
+      case 're.notifica.notification.URLResolver': {
+        const url = notification.content[0].data;
+        const urlResolverResult = getUrlResolverPreviewTypeByUrl(url);
+
+        switch (urlResolverResult) {
+          case UrlResolverPreviewTypeResult.INVALID_URL:
+          case UrlResolverPreviewTypeResult.DYNAMIC_LINK:
+          case UrlResolverPreviewTypeResult.URL_SCHEME:
+          case UrlResolverPreviewTypeResult.RELATIVE_URL:
+            return {
+              ...options,
+              formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
+              mobileOperatingSystemOptions: null,
+              displayModeOptions: DISPLAY_MODE_OPTIONS.filter(
+                (option) => option.value !== 'app-ui',
+              ),
+            };
+
+          case UrlResolverPreviewTypeResult.IN_APP_BROWSER:
+            return {
+              ...options,
+              formFactorOptions: FORM_FACTOR_OPTIONS.filter((option) => option.value !== 'phone'),
+              mobileOperatingSystemOptions: null,
+            };
+
+          case UrlResolverPreviewTypeResult.WEB_VIEW:
+            return options;
+        }
+      }
+    }
+  }
+
+  useEffect(
+    function updateOptionsWhenNotificationChanges() {
+      setOptions(getOptionsForNotification);
+    },
+    [notification],
+  );
+
+  useEffect(
+    function setDefaultPreviewStateIfInvalid() {
+      if (!isPreviewStateValid()) {
+        onPreviewStateChanged(DEFAULT_PREVIEW_STATE);
+      }
+    },
+    [options, previewState],
+  );
+
+  if (!isPreviewStateValid()) return;
+
   return (
     <div className="notificare__push__preview-controls" data-testid="controls">
       <div className="notificare__push__preview-controls-toggle-groups">
@@ -103,7 +221,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
             id: 'controls.platform',
             defaultMessage: PUSH_TRANSLATIONS['controls.platform'],
           })}
-          options={PLATFORM_OPTIONS}
+          options={options.platformOptions}
           value={previewState.platform}
           onValueChanged={handlePlatformChanged}
         />
@@ -114,23 +232,25 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
               id: 'controls.formFactor',
               defaultMessage: PUSH_TRANSLATIONS['controls.formFactor'],
             })}
-            options={FORM_FACTOR_OPTIONS}
+            options={options.formFactorOptions}
             value={previewState.formFactor}
             onValueChanged={handleFormFactorChanged}
           />
         )}
 
-        {previewState.platform === 'web' && previewState.formFactor === 'phone' && (
-          <ToggleGroup
-            label={intl.formatMessage({
-              id: 'controls.operatingSystem',
-              defaultMessage: PUSH_TRANSLATIONS['controls.operatingSystem'],
-            })}
-            options={MOBILE_OPERATING_SYSTEM_OPTIONS}
-            value={previewState.os}
-            onValueChanged={handleOperatingSystemChanged}
-          />
-        )}
+        {previewState.platform === 'web' &&
+          previewState.formFactor === 'phone' &&
+          options.mobileOperatingSystemOptions && (
+            <ToggleGroup
+              label={intl.formatMessage({
+                id: 'controls.operatingSystem',
+                defaultMessage: PUSH_TRANSLATIONS['controls.operatingSystem'],
+              })}
+              options={options.mobileOperatingSystemOptions}
+              value={previewState.os}
+              onValueChanged={handleOperatingSystemChanged}
+            />
+          )}
       </div>
 
       {(previewState.platform === 'android' || previewState.platform === 'ios') && (
@@ -139,7 +259,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
             id: 'controls.variant',
             defaultMessage: PUSH_TRANSLATIONS['controls.variant'],
           })}
-          options={DISPLAY_MODE_OPTIONS}
+          options={options.displayModeOptions}
           value={previewState.displayMode}
           onValueChanged={handleDisplayModeChanged}
         />
@@ -151,7 +271,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
             id: 'controls.operatingSystem',
             defaultMessage: PUSH_TRANSLATIONS['controls.operatingSystem'],
           })}
-          options={DESKTOP_OPERATING_SYSTEM_OPTIONS}
+          options={options.desktopOperatingSystemOptions}
           value={previewState.os}
           disabled
         />
@@ -163,7 +283,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
             id: 'controls.variant',
             defaultMessage: PUSH_TRANSLATIONS['controls.variant'],
           })}
-          options={DISPLAY_MODE_OPTIONS}
+          options={options.displayModeOptions}
           value="app-ui"
           disabled
         />
@@ -175,6 +295,7 @@ export function Controls({ previewState, onPreviewStateChanged }: ControlsProps)
 export interface ControlsProps {
   previewState: NotificationPreviewState;
   onPreviewStateChanged: (state: NotificationPreviewState) => void;
+  notification: VerifiedNotification;
 }
 
 const PLATFORM_OPTIONS = [
@@ -276,3 +397,8 @@ const DISPLAY_MODE_OPTIONS = [
   labelId: string;
   defaultLabel: string;
 }[];
+
+const DEFAULT_PREVIEW_STATE: NotificationPreviewState = {
+  platform: 'android',
+  displayMode: 'lockscreen',
+};

@@ -842,6 +842,7 @@ describe('NotificareNotificationPreview', () => {
         notification={NONE_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -859,6 +860,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_SCHEME_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -917,6 +919,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
         serviceKey="123"
         variant="android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -932,6 +935,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
         serviceKey="123"
         variant="android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -947,6 +951,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
         serviceKey="123"
         variant="android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -1662,6 +1667,7 @@ describe('NotificareNotificationPreview', () => {
         notification={NONE_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="ios-app-ui"
+        showControls={false}
       />,
     );
 
@@ -1679,6 +1685,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_SCHEME_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="ios-app-ui"
+        showControls={false}
       />,
     );
 
@@ -1737,6 +1744,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
         serviceKey="123"
         variant="ios-app-ui"
+        showControls={false}
       />,
     );
 
@@ -1752,6 +1760,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
         serviceKey="123"
         variant="ios-app-ui"
+        showControls={false}
       />,
     );
 
@@ -1767,6 +1776,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
         serviceKey="123"
         variant="ios-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2152,6 +2162,7 @@ describe('NotificareNotificationPreview', () => {
         notification={NONE_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="web-android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2169,6 +2180,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_SCHEME_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="web-android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2206,6 +2218,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
         serviceKey="123"
         variant="web-android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2221,6 +2234,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
         serviceKey="123"
         variant="web-android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2236,6 +2250,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
         serviceKey="123"
         variant="web-android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2251,6 +2266,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
         serviceKey="123"
         variant="web-android-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2481,6 +2497,7 @@ describe('NotificareNotificationPreview', () => {
         notification={NONE_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="web-iphone-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2498,6 +2515,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_SCHEME_NOTIFICATION_MOCK}
         serviceKey="123"
         variant="web-iphone-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2535,6 +2553,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_HTTPS_URL_MOCK}
         serviceKey="123"
         variant="web-iphone-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2550,6 +2569,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_URL_SCHEME_MOCK}
         serviceKey="123"
         variant="web-iphone-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2565,6 +2585,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_DYNAMIC_LINK_MOCK}
         serviceKey="123"
         variant="web-iphone-app-ui"
+        showControls={false}
       />,
     );
 
@@ -2580,6 +2601,7 @@ describe('NotificareNotificationPreview', () => {
         notification={URL_RESOLVER_NOTIFICATION_WITH_RELATIVE_URL_MOCK}
         serviceKey="123"
         variant="web-iphone-app-ui"
+        showControls={false}
       />,
     );
 
