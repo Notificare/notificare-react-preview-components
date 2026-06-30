@@ -6,16 +6,23 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.notificare .notificare__pass__google__logo-wrapper {
-    height: 32px;
-    margin-right: 16px;
-}
-
 .notificare .notificare__pass__google__logo {
     background: #fff;
     border-radius: 50%;
     height: 32px;
     width: 32px;
+    margin-right: 16px;
+}
+
+.notificare .notificare__pass__google__logo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #ededed;
+    color: #616161;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 .notificare .notificare__pass__google__wide-logo {
