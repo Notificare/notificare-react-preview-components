@@ -46,6 +46,8 @@ export function GooglePassPreview({ passTemplate, pass }: GooglePassPreviewProps
         </div>
 
         {passTemplate.type === 'loyalty' && <GoogleLoyaltyCardFront {...frontProps} />}
+
+        {passTemplate.type === 'offer' && <GoogleOfferFront {...frontProps} />}
       </>
     );
   }
@@ -62,6 +64,8 @@ export function GooglePassPreview({ passTemplate, pass }: GooglePassPreviewProps
       </div>
 
       {passTemplate.type === 'loyalty' && <GoogleLoyaltyCardBack {...backProps} />}
+
+      {passTemplate.type === 'offer' && <GoogleOfferBack {...backProps} />}
     </>
   );
 }
