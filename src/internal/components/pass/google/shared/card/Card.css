@@ -1,0 +1,8 @@
+.notificare .notificare__pass__google__card-preview {
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    overflow: hidden;
+}
+

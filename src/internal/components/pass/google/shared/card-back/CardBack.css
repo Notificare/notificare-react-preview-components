@@ -1,0 +1,137 @@
+.notificare .notificare__pass__google__back {
+    width: 330px;
+}
+
+.notificare .notificare__pass__google__back svg {
+    box-sizing: content-box;
+    height: 1.40em;
+    width: 1.75em;
+    display: inline-block;
+    vertical-align: -0.125em;
+    overflow: visible;
+}
+
+.notificare .notificare__pass__google__back-details {
+    padding: 0 10px;
+}
+
+.notificare .notificare__pass__google__back-header {
+    margin-bottom: 25px;
+}
+
+.notificare .notificare__pass__google__back-header-image {
+    width: 40px;
+    border-radius: 100%;
+}
+
+.notificare .notificare__pass__google__back-header-title {
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+}
+
+.notificare .notificare__pass__google__back-text-field {
+    margin-top: 15px;
+}
+
+.notificare .notificare__pass__google__back-text-field-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 3px;
+}
+
+.notificare .notificare__pass__google__back-text-field-value {
+    font-size: 14px;
+    color: #000;
+}
+
+.notificare .notificare__pass__google__back-image-field {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+}
+
+.notificare .notificare__pass__google__back-section {
+    position: relative;
+    margin-top: 10px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.notificare .notificare__pass__google__back-section-button-action {
+    background: #f5f6f6;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.notificare .notificare__pass__google__back-section-action-icon--button-action {
+    margin-right: 14px;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: row;
+    background: #f5f6f6;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 2px;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action--share {
+    align-items: center;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action-text-area {
+    width: 80%;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action-title {
+    margin-bottom: 2px;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action-description {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action-switch-area {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action-switch {
+    width: 45px;
+    height: 26px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%234c4c4c'/%3e%3c/svg%3e");
+    background-position: left 2px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    pointer-events: none;
+    filter: none;
+    opacity: .5;
+    border-radius: 2em;
+    background-color: #c8c8c8;
+    border: 2px solid #4c4c4c;
+    margin-top: 0.25em;
+    appearance: none;
+}
+
+.notificare .notificare__pass__google__back-section-custom-action-icon-area {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+

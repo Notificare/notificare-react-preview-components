@@ -1,0 +1,82 @@
+.notificare .notificare__pass__google__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 16px;
+}
+
+.notificare .notificare__pass__google__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.notificare .notificare__pass__google__field {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 85px;
+    overflow: hidden;
+}
+
+.notificare .notificare__pass__google__field--single {
+    flex: auto;
+}
+
+.notificare .notificare__pass__google__field--double {
+    flex: 1 1 auto;
+}
+
+.notificare .notificare__pass__google__field--triple {
+    flex: 1 1 100%;
+}
+
+.notificare .notificare__pass_google__field--start {
+    align-items: flex-start;
+}
+
+.notificare__pass__google__field--start .notificare__pass__google__field-label,
+.notificare__pass__google__field--start .notificare__pass__google__field-value {
+    text-align: left;
+}
+
+.notificare .notificare__pass_google__field--center {
+    align-items: center;
+}
+
+.notificare__pass__google__field--center .notificare__pass__google__field-label,
+.notificare__pass__google__field--center .notificare__pass__google__field-value {
+    text-align: center;
+}
+
+.notificare .notificare__pass_google__field--end {
+    align-items: flex-end;
+}
+
+.notificare__pass__google__field--end .notificare__pass__google__field-label,
+.notificare__pass__google__field--end .notificare__pass__google__field-value {
+    text-align: right;
+}
+
+.notificare .notificare__pass__google__field-label {
+    font-family: Google Sans Text,Roboto,Arial,sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.25rem;
+    font-variation-settings: "CRSV" 0,"FILL" 0,"GRAD" 0,"HEXP" 0,"opsz" 14,"ROND" 0,"slnt" 0,"wdth" 100,"wght" 400;
+    width: 100%;
+    word-break: break-word;
+}
+
+.notificare .notificare__pass__google__field-value {
+    font-family: Google Sans Text,Google Sans,Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5rem;
+    font-variation-settings: "CRSV" 0,"FILL" 0,"GRAD" 0,"HEXP" 0,"opsz" 16,"ROND" 0,"slnt" 0,"wdth" 100,"wght" 500;
+    width: 100%;
+    word-break: break-word;
+}

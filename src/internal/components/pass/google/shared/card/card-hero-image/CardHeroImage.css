@@ -1,0 +1,10 @@
+.notificare .notificare__pass__google__hero-image-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 85px;
+    overflow: hidden;
+}
+
+.notificare .notificare__pass__google__hero-image {
+    max-width: 100%;
+}

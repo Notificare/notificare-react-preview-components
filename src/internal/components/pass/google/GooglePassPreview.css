@@ -1,0 +1,38 @@
+.notificare .notificare__pass__google__toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    width: 330px;
+    padding: 0 0 10px 0;
+    position: relative;
+}
+
+.notificare .notificare__pass__google__toolbar--back {
+    margin-bottom: 14px;
+}
+
+.notificare .notificare__pass__google__toolbar-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: #000;
+}
+
+.notificare .notificare__pass__google__toolbar-button--favorite {
+    margin-right: 12px;
+}
+
+.notificare .notificare__pass__google__toolbar-button--show-back-front {
+    cursor: pointer;
+}
+
+.notificare .notificare__pass__google__toolbar-button-icon {
+    box-sizing: content-box;
+    display: inline-block;
+    height: 1.20em;
+    vertical-align: -0.125em;
+    width: 1.25em;
+}
