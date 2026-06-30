@@ -1,6 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { NotificarePassPreview } from '~/components/NotificarePassPreview/NotificarePassPreview';
-import { LOYALTY, LOYALTY_WITH_WIDE_PROGRAM_LOGO } from './variants';
+import {
+  LOYALTY,
+  LOYALTY_WITH_WIDE_PROGRAM_LOGO,
+  OFFER,
+  OFFER_WITH_WIDE_TITLE_IMAGE,
+} from './variants';
 
 const meta = {
   title: 'Public Components/Wallet/NotificarePassPreview',
@@ -19,4 +24,13 @@ export const Loyalty: Story = {
 
 export const LoyaltyWithWideProgramLogo: Story = {
   args: LOYALTY_WITH_WIDE_PROGRAM_LOGO,
+};
+
+/* OFFER */
+export const Offer: Story = {
+  args: OFFER,
+};
+
+export const OfferWithWideTitleImage: Story = {
+  args: OFFER_WITH_WIDE_TITLE_IMAGE,
 };
