@@ -12,8 +12,8 @@ export function CardBack({ icon, title, fields, urlActions, customActions }: Car
       <div className="notificare__pass__google__back-toolbar" />
       <div className="notificare__pass__google__back-details">
         <div className="notificare__pass__google__back-header">
-          <img className="notificare__pass__google__back-header-image" src={icon} />
-          <div className="notificare__pass__google__back-header-title"> {title} </div>
+          {icon && <img className="notificare__pass__google__back-header-image" src={icon} />}
+          {title && <div className="notificare__pass__google__back-header-title"> {title} </div>}
         </div>
         {fields.map((field, index) => (
           <>
