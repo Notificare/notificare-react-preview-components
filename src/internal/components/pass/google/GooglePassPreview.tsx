@@ -22,7 +22,12 @@ export function GooglePassPreview({ passTemplate, pass }: GooglePassPreviewProps
     passData: pass?.data.fields,
   };
 
-  const frontProps = { ...commonProps, barcodeDesign: passTemplate.barcodeDesign };
+  const frontProps = {
+    ...commonProps,
+    barcodeDesign: passTemplate.barcodeDesign,
+    barcode: pass?.barcode ?? 'ABC1234567890',
+  };
+
   const backProps = commonProps;
 
   if (!showBack) {

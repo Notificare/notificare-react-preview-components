@@ -2,13 +2,15 @@ import './Card.css';
 import { ReactNode } from 'react';
 import { getTextColorByBackgroundLuminance } from '~/internal/utils/pass/text-color';
 
-export function Card({ hexBackgroundColor = '#ffffff', children }: CardProps) {
+export function Card({ hexBackgroundColor, children }: CardProps) {
+  const textColor = getTextColorByBackgroundLuminance(hexBackgroundColor);
+
   return (
     <div
       className="notificare__pass__google__card-preview"
       style={{
         backgroundColor: hexBackgroundColor,
-        color: getTextColorByBackgroundLuminance(hexBackgroundColor),
+        color: textColor,
       }}
     >
       {children}
@@ -17,6 +19,6 @@ export function Card({ hexBackgroundColor = '#ffffff', children }: CardProps) {
 }
 
 interface CardProps {
-  hexBackgroundColor?: string;
+  hexBackgroundColor: string;
   children: ReactNode;
 }

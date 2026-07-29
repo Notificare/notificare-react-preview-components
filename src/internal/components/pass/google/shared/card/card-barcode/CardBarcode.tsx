@@ -1,11 +1,6 @@
 import './CardBarcode.css';
 
-export default function CardBarcode({
-  format,
-  showBarcodeValue,
-  barcode = 'ABC1234567890',
-  alternateText,
-}: BarcodeProps) {
+export default function CardBarcode({ format, barcode, text, alternateText }: BarcodeProps) {
   if (format === 'none' && !alternateText) return;
 
   return (
@@ -18,13 +13,11 @@ export default function CardBarcode({
               className={`notificare__pass__google__barcode notificare__pass__google__barcode--${format}`}
             />
           </div>
-          <div className="notificare__pass__google__barcode-text">
-            {showBarcodeValue ? barcode : (alternateText ?? barcode)}
-          </div>
+          {text && <div className="notificare__pass__google__barcode-text">{text}</div>}
         </>
       ) : (
         <div className="notificare__pass__google__alternate-text-wrapper">
-          <div className="notificare__pass__google__barcode-text"> {alternateText} </div>
+          <div className="notificare__pass__google__alternate-text"> {alternateText} </div>
         </div>
       )}
     </div>
@@ -33,7 +26,7 @@ export default function CardBarcode({
 
 interface BarcodeProps {
   format: string;
-  showBarcodeValue: boolean;
-  barcode?: string;
+  barcode: string;
+  text?: string;
   alternateText?: string;
 }
