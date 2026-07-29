@@ -100,7 +100,7 @@ export function GoogleLoyaltyCardFront({
         format={barcodeDesign.format}
         barcode={barcode}
         text={barcodeDesign.showAltText ? barcode : passDataValues.accountId || barcode}
-        alternateText={passDataValues.accountId || barcode}
+        alternateText={passDataValues.accountId}
       />
       <CardHeroImage heroImage={passDataValues.heroImage} />
     </Card>
