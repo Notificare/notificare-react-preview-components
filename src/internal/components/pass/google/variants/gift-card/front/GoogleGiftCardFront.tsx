@@ -69,8 +69,13 @@ export function GoogleGiftCardFront({
       <CardBarcode
         format={barcodeDesign.format === 'none' ? 'code128' : barcodeDesign.format}
         barcode={barcode}
-        text={barcodeDesign.showAltText ? barcode : passDataValues.cardNumber}
-        alternateText={passDataValues.cardNumber}
+        text={
+          barcodeDesign.format === 'none'
+            ? barcode
+            : barcodeDesign.showAltText
+              ? barcode
+              : passDataValues.cardNumber
+        }
       />
       <CardHeroImage heroImage={passDataValues.heroImage} />
     </Card>
