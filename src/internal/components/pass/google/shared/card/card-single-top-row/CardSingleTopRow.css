@@ -2,6 +2,17 @@
     margin: 8px 16px 0;
 }
 
+.notificare .notificare__pass__google__single-top-row-header {
+    font-family: Google Sans Text,Google Sans,Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5rem;
+    font-variation-settings: "CRSV" 0,"FILL" 0,"GRAD" 0,"HEXP" 0,"opsz" 16,"ROND" 0,"slnt" 0,"wdth" 100,"wght" 500;
+    word-break: break-word;
+    margin-bottom: 8px;
+}
+
 .notificare .notificare__pass__google__single-top-row-title {
     font-family: Google Sans,Google Sans,Roboto,Arial,sans-serif;
     font-size: 2rem;

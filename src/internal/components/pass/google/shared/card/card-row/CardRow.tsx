@@ -1,14 +1,14 @@
 import './CardRow.css';
 
 export function CardRow({ fields }: CardRowProps) {
-  const safeFields = filterInvalidFields(fields.slice(0, 3));
+  const resolvedFields = resolveFields(fields.slice(0, 3));
 
   return (
     <div className="notificare__pass__google__row">
-      {safeFields.map((field, index) => (
+      {resolvedFields.map((field, index) => (
         <div
           key={index}
-          className={`notificare__pass__google__field ${getFieldClasses(index, safeFields.length)}`}
+          className={`notificare__pass__google__field ${getFieldClasses(index, resolvedFields.length)}`}
         >
           <div className="notificare__pass__google__field-label">{field.header}</div>
 
@@ -24,8 +24,10 @@ interface CardRowProps {
 }
 
 interface CardRowField {
-  header?: string;
-  body?: string;
+  header: string;
+  body: string;
+  secondaryHeader?: string;
+  secondaryBody?: string;
 }
 
 function getFieldClasses(index: number, total: number): string {
@@ -51,6 +53,27 @@ function getFieldClasses(index: number, total: number): string {
   return `${mainClass}${distributionClass} ${mainClass}${positionClass}`;
 }
 
-function filterInvalidFields(fields: CardRowField[]) {
-  return fields.filter((field) => field.header && field.body);
+function resolveFields(fields: CardRowField[]) {
+  return fields
+    .filter(
+      ({ header, body, secondaryHeader, secondaryBody }) =>
+        (header && body) || (secondaryHeader && secondaryBody),
+    )
+    .map(({ header, body, secondaryHeader, secondaryBody }) => {
+      if (header && body && secondaryHeader && secondaryBody) {
+        return {
+          header: `${header} / ${secondaryHeader}`,
+          body: `${body} / ${secondaryBody}`,
+        };
+      }
+
+      if (header && body) {
+        return { header, body };
+      }
+
+      return {
+        header: secondaryHeader,
+        body: secondaryBody,
+      };
+    });
 }

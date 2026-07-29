@@ -27,6 +27,7 @@ export function GoogleLoyaltyCardFront({
   passTemplatePassData,
   barcodeDesign,
   passData,
+  barcode,
 }: GoogleLoyaltyCardFrontProps) {
   const passTemplateDataValues = useMemo(() => {
     return computePassTemplateDataValues(
@@ -97,8 +98,9 @@ export function GoogleLoyaltyCardFront({
       <CardSpacer />
       <CardBarcode
         format={barcodeDesign.format}
-        showBarcodeValue={barcodeDesign.showAltText}
-        alternateText={passDataValues.accountId}
+        barcode={barcode}
+        text={barcodeDesign.showAltText ? barcode : passDataValues.accountId || barcode}
+        alternateText={passDataValues.accountId || barcode}
       />
       <CardHeroImage heroImage={passDataValues.heroImage} />
     </Card>
@@ -112,4 +114,5 @@ interface GoogleLoyaltyCardFrontProps {
   passTemplatePassData: NotificarePassTemplatePassDataField[];
   barcodeDesign: NotificarePassTemplateBarcodeDesign;
   passData?: NotificarePassDataFields;
+  barcode: string;
 }

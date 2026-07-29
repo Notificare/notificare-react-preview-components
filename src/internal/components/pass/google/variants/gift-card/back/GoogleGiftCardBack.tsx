@@ -6,8 +6,8 @@ import {
 } from '~/internal/components/pass/google/shared/card-back/CardBack';
 import {
   computePassTemplateDataValues,
-  computePassDataValues,
   computeModulesData,
+  computePassDataValues,
 } from '~/internal/utils/pass/compute-data-values';
 import { NotificarePassDataFields } from '~/models/pass/notificare-pass';
 import {
@@ -17,27 +17,19 @@ import {
   NotificarePassTemplatePassDataField,
 } from '~/models/pass/notificare-pass-template';
 
-export function GoogleLoyaltyCardBack({
+export function GoogleGiftCardBack({
   walletClass,
   passTemplateData,
   walletObject,
   passTemplatePassData,
   passData,
-}: GoogleLoyaltyCardBackProps) {
+}: GoogleGiftCardBackProps) {
   const passTemplateDataValues = useMemo(() => {
     return computePassTemplateDataValues(
       {
-        programName: { value: walletClass.programName },
-        accountNameLabel: { value: walletClass.accountNameLabel, fallback: 'Member Name' },
-        accountIdLabel: { value: walletClass.accountIdLabel, fallback: 'Member ID' },
-        rewardsTierLabel: { value: walletClass.rewardsTierLabel, fallback: 'Rewards Tier' },
-        rewardsTier: { value: walletClass.rewardsTier },
-        secondaryRewardsTierLabel: {
-          value: walletClass.secondaryRewardsTierLabel,
-          fallback: 'Secondary Rewards Tier',
-        },
-        secondaryRewardsTier: { value: walletClass.secondaryRewardsTier },
         programLogo: { value: walletClass.programLogo },
+        pinLabel: { value: walletClass.pinLabel, fallback: 'PIN' },
+        eventNumberLabel: { value: walletClass.eventNumberLabel, fallback: 'Event Number' },
       },
       passTemplateData,
     );
@@ -46,9 +38,10 @@ export function GoogleLoyaltyCardBack({
   const passDataValues = useMemo(() => {
     return computePassDataValues(
       {
-        accountName: { value: walletObject.accountName },
-        accountId: { value: walletObject.accountId },
-        mainImage: { value: walletObject.imageModulesData[0]?.mainImage },
+        balance: { value: walletObject.balance },
+        balanceUpdateTime: { value: walletObject.balanceUpdateTime },
+        pin: { value: walletObject.pin },
+        eventNumber: { value: walletObject.eventNumber },
       },
       passTemplatePassData,
       passData,
@@ -62,28 +55,20 @@ export function GoogleLoyaltyCardBack({
   return (
     <CardBack
       icon={passTemplateDataValues.programLogo}
-      title={passTemplateDataValues.programName}
+      title={`Gift Card: ${passDataValues.balance}`}
       fields={[
         ...createTextFields([
           {
-            header: passTemplateDataValues.accountNameLabel,
-            body: passDataValues.accountName,
+            header: 'Updated',
+            body: passDataValues.balanceUpdateTime,
           },
           {
-            header: passTemplateDataValues.accountIdLabel,
-            body: passDataValues.accountId,
+            header: passTemplateDataValues.pinLabel,
+            body: passDataValues.pin,
           },
           {
-            header: passTemplateDataValues.rewardsTierLabel,
-            body: passTemplateDataValues.rewardsTier,
-          },
-          {
-            header: passTemplateDataValues.secondaryRewardsTierLabel,
-            body: passTemplateDataValues.secondaryRewardsTier,
-          },
-          {
-            header: passTemplateDataValues.accountNameLabel,
-            body: passDataValues.accountName,
+            header: passTemplateDataValues.eventNumberLabel,
+            body: passDataValues.eventNumber,
           },
         ]),
         ...createImageFields([
@@ -96,9 +81,8 @@ export function GoogleLoyaltyCardBack({
       urlActions={[...modulesData.linksModuleDataURIS]}
       customActions={[
         {
-          header: 'Use loyalty card across Google',
-          description:
-            'See your point balance and loyalty benefits in places like Maps, Shopping, and more',
+          header: 'Use gift card across Google',
+          description: 'See your gift card balance in places like Maps, Shopping, and more',
           type: 'switch',
         },
         {
@@ -116,7 +100,7 @@ export function GoogleLoyaltyCardBack({
   );
 }
 
-interface GoogleLoyaltyCardBackProps {
+interface GoogleGiftCardBackProps {
   walletClass: NotificarePassTemplateDesignGooglePayWalletClass;
   passTemplateData: NotificarePassTemplateDataField[];
   walletObject: NotificarePassTemplateDesignGooglePayWalletObject;

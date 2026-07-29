@@ -4,10 +4,16 @@ import LeftArrowIcon from '~/assets/left-arrow.svg';
 import OptionsIcon from '~/assets/options.svg';
 import ShareNodesIcon from '~/assets/share-nodes.svg';
 import StarIcon from '~/assets/star.svg';
+import { GoogleEventTicketBack } from '~/internal/components/pass/google/variants/event-ticket/back/GoogleEventTicketBack';
+import { GoogleEventTicketFront } from '~/internal/components/pass/google/variants/event-ticket/front/GoogleEventTicketFront';
+import { GoogleGiftCardBack } from '~/internal/components/pass/google/variants/gift-card/back/GoogleGiftCardBack';
+import { GoogleGiftCardFront } from '~/internal/components/pass/google/variants/gift-card/front/GoogleGiftCardFront';
 import { GoogleLoyaltyCardBack } from '~/internal/components/pass/google/variants/loyalty-card/back/GoogleLoyaltyCardBack';
 import { GoogleLoyaltyCardFront } from '~/internal/components/pass/google/variants/loyalty-card/front/GoogleLoyaltyCardFront';
 import { GoogleOfferBack } from '~/internal/components/pass/google/variants/offer/back/GoogleOfferBack';
 import { GoogleOfferFront } from '~/internal/components/pass/google/variants/offer/front/GoogleOfferFront';
+import { GoogleTransitPassBack } from '~/internal/components/pass/google/variants/transit-pass/back/GoogleTransitPassBack';
+import { GoogleTransitPassFront } from '~/internal/components/pass/google/variants/transit-pass/front/GoogleTransitPassFront';
 import { NotificarePass } from '~/models/pass/notificare-pass';
 import { NotificarePassTemplate } from '~/models/pass/notificare-pass-template';
 
@@ -53,6 +59,12 @@ export function GooglePassPreview({ passTemplate, pass }: GooglePassPreviewProps
         {passTemplate.type === 'loyalty' && <GoogleLoyaltyCardFront {...frontProps} />}
 
         {passTemplate.type === 'offer' && <GoogleOfferFront {...frontProps} />}
+
+        {passTemplate.type === 'giftCard' && <GoogleGiftCardFront {...frontProps} />}
+
+        {passTemplate.type === 'eventTicket' && <GoogleEventTicketFront {...frontProps} />}
+
+        {passTemplate.type === 'transit' && <GoogleTransitPassFront {...frontProps} />}
       </>
     );
   }
@@ -71,6 +83,12 @@ export function GooglePassPreview({ passTemplate, pass }: GooglePassPreviewProps
       {passTemplate.type === 'loyalty' && <GoogleLoyaltyCardBack {...backProps} />}
 
       {passTemplate.type === 'offer' && <GoogleOfferBack {...backProps} />}
+
+      {passTemplate.type === 'giftCard' && <GoogleGiftCardBack {...backProps} />}
+
+      {passTemplate.type === 'eventTicket' && <GoogleEventTicketBack {...backProps} />}
+
+      {passTemplate.type === 'transit' && <GoogleTransitPassBack {...backProps} />}
     </>
   );
 }

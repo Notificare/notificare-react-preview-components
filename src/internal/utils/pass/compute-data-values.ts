@@ -2,12 +2,15 @@ import { NotificarePassDataFields } from '~/models/pass/notificare-pass';
 import {
   NotificarePassTemplateBalanceData,
   NotificarePassTemplateDataField,
+  NotificarePassTemplateDateData,
   NotificarePassTemplateDesignGooglePayLinksModuleDataURI,
   NotificarePassTemplateDesignGooglePayMessage,
   NotificarePassTemplateDesignGooglePayTextModuleData,
   NotificarePassTemplateDesignGooglePayWalletObject,
   NotificarePassTemplateImageData,
+  NotificarePassTemplateMoneyData,
   NotificarePassTemplatePassDataField,
+  NotificarePassTemplateTranslatedData,
 } from '~/models/pass/notificare-pass-template';
 
 const MAX_MESSAGES = 20;
@@ -124,24 +127,50 @@ function computeValues<T extends string>(
   const result = {} as Record<T, string>;
 
   for (const key in fieldsMap) {
-    const { value, fallback = '' } = fieldsMap[key];
+    const { value, fallback = '', format, replace } = fieldsMap[key];
 
     if (!value) {
       result[key] = fallback;
       continue;
     }
 
+    let resolvedValue;
+
     if (isBalanceData(value)) {
-      result[key] = computeBalanceValue(value, lookup) ?? fallback;
-      continue;
+      resolvedValue = computeBalanceValue(value, lookup);
+    }
+
+    if (isMoneyData(value)) {
+      resolvedValue = computeMoneyValue(value, lookup);
     }
 
     if (isImageData(value)) {
-      result[key] = computeImageValue(value, lookup) ?? fallback;
-      continue;
+      resolvedValue = computeImageValue(value, lookup);
     }
 
-    result[key] = lookup(value) ?? fallback;
+    if (isDateData(value)) {
+      resolvedValue = computeDateValue(value, lookup);
+    }
+
+    if (isTranslatedData(value)) {
+      resolvedValue = computeTranslatedValue(value, lookup);
+    }
+
+    if (typeof value === 'string') {
+      resolvedValue = lookup(value);
+
+      if (resolvedValue) {
+        if (replace) {
+          resolvedValue = replace[resolvedValue];
+        }
+
+        if (format === 'date' || format === 'time' || format === 'date-time') {
+          resolvedValue = formatDate(resolvedValue, format);
+        }
+      }
+    }
+
+    result[key] = resolvedValue ?? fallback;
   }
 
   return result;
@@ -169,6 +198,22 @@ function computeBalanceValue(
   return lookup(primitiveValue);
 }
 
+function computeMoneyValue(
+  value: NotificarePassTemplateMoneyData,
+  lookup: (value: string) => string | undefined,
+) {
+  const { micros, currencyCode } = value;
+
+  if (!micros || !currencyCode) return;
+
+  const resolvedMicros = lookup(micros);
+  const resolvedCurrencyCode = lookup(currencyCode);
+
+  if (!resolvedMicros || !resolvedCurrencyCode) return;
+
+  return formatCurrency(resolvedMicros, resolvedCurrencyCode);
+}
+
 function computeImageValue(
   value: NotificarePassTemplateImageData,
   lookup: (value: string) => string | undefined,
@@ -178,6 +223,32 @@ function computeImageValue(
   if (!uri) return;
 
   return lookup(uri);
+}
+
+function computeDateValue(
+  value: NotificarePassTemplateDateData,
+  lookup: (value: string) => string | undefined,
+) {
+  const { date } = value;
+
+  if (!date) return;
+
+  const resolvedDate = lookup(date);
+
+  if (!resolvedDate) return;
+
+  return formatDate(resolvedDate);
+}
+
+function computeTranslatedValue(
+  value: NotificarePassTemplateTranslatedData,
+  lookup: (value: string) => string | undefined,
+) {
+  const { defaultValue } = value;
+
+  if (!defaultValue.value) return;
+
+  return lookup(defaultValue.value);
 }
 
 function lookup(lookup: (value: string) => string | undefined) {
@@ -222,11 +293,38 @@ function formatCurrency(value: string, currency = 'USD', locale = 'en-US') {
 
     return new Intl.NumberFormat(locale, {
       style: 'currency',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
       currency,
     }).format(numberValue);
   } catch (error) {
     console.error('It was not possible to format the money value: ', error);
     return value;
+  }
+}
+
+type FormatType = 'date' | 'time' | 'date-time';
+
+function formatDate(value: string, format: FormatType = 'date-time', locale = 'en-US') {
+  try {
+    const date = new Date(value);
+
+    const options: Intl.DateTimeFormatOptions = {};
+
+    if (format === 'date' || format === 'date-time') {
+      options.month = 'short';
+      options.day = 'numeric';
+      options.year = 'numeric';
+    }
+
+    if (format === 'time' || format === 'date-time') {
+      options.hour = 'numeric';
+      options.minute = '2-digit';
+    }
+
+    return new Intl.DateTimeFormat(locale, options).format(date);
+  } catch (error) {
+    console.error('It was not possible to format the date value:', error);
   }
 }
 
@@ -249,18 +347,39 @@ function isBalanceData(value: DataFieldValue): value is NotificarePassTemplateBa
   );
 }
 
+function isMoneyData(value: DataFieldValue): value is NotificarePassTemplateMoneyData {
+  return (
+    typeof value === 'object' && value !== null && 'micros' in value && 'currencyCode' in value
+  );
+}
+
 function isImageData(value: DataFieldValue): value is NotificarePassTemplateImageData {
   return typeof value === 'object' && value !== null && 'sourceUri' in value;
+}
+
+function isDateData(value: DataFieldValue): value is NotificarePassTemplateDateData {
+  return typeof value === 'object' && value !== null && 'date' in value;
+}
+
+function isTranslatedData(value: DataFieldValue): value is NotificarePassTemplateTranslatedData {
+  return typeof value === 'object' && value !== null && 'defaultValue' in value;
 }
 
 interface DataField {
   value: DataFieldValue;
   fallback?: string;
+  format?: DataFieldFormat;
+  replace?: Record<string, string>;
 }
+
+type DataFieldFormat = 'date' | 'time' | 'date-time';
 
 type DataFieldValue =
   | string
   | NotificarePassTemplateBalanceData
+  | NotificarePassTemplateMoneyData
   | NotificarePassTemplateImageData
+  | NotificarePassTemplateDateData
+  | NotificarePassTemplateTranslatedData
   | null
   | undefined;

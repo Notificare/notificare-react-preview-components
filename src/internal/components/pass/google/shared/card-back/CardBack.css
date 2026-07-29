@@ -25,7 +25,7 @@
 }
 
 .notificare .notificare__pass__google__back-header-title {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 22px;
     font-weight: 700;
     color: #000;
@@ -45,6 +45,7 @@
 .notificare .notificare__pass__google__back-text-field-value {
     font-size: 14px;
     color: #000;
+    line-height: 1.30em;
 }
 
 .notificare .notificare__pass__google__back-image-field {
@@ -88,7 +89,7 @@
     margin-bottom: 2px;
 }
 
-.notificare .notificare__pass__google__back-section-custom-action--share {
+.notificare .notificare__pass__google__back-section-custom-action--align-items-center {
     align-items: center;
 }
 
@@ -98,11 +99,13 @@
 
 .notificare .notificare__pass__google__back-section-custom-action-title {
     margin-bottom: 2px;
+    line-height: 1.30em;
 }
 
 .notificare .notificare__pass__google__back-section-custom-action-description {
     font-size: 14px;
     font-weight: 400;
+    line-height: 1.30em;
 }
 
 .notificare .notificare__pass__google__back-section-custom-action-switch-area {
@@ -132,6 +135,165 @@
     width: 20%;
     display: flex;
     justify-content: flex-end;
+}
+
+.notificare .notificare__pass__google__back-trip-field {
+    display: flex;
+    flex-direction: row;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transit-type-area {
+    display: flex;
+    flex-direction: column;
+    margin-right: 28px;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transit-type-top {
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12),0 1px 3px 0 rgba(0,0,0,.2);
+    height: 20px;
+    margin-bottom: -10px;
+    margin-left: 2px;
+    text-align: center;
+    width: 20px;
+    z-index: 2;
+    color: rgba(32,33,36,1);
+}
+
+.notificare .notificare__pass__google__back-trip-field-transit-type-top svg {
+    padding-top: 2px;
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transit-type-center {
+    border-radius: 0 0 16px 16px;
+    height: 100%;
+    margin-bottom: -12px;
+    margin-left: 5px;
+    width: 14px;
+    z-index: 1;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transit-type-bottom {
+    background-color: #fff;
+    border-radius: 100%;
+    height: 10px;
+    margin-left: 7px;
+    width: 10px;
+    z-index: 3;
+}
+
+.notificare .notificare__pass__google__back-trip-field-info-area {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 60px);
+    height: 100%;
+    justify-content: space-between;
+}
+
+.notificare .notificare__pass__google__back-trip-field-row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    min-height: 16px;
+    width: 100%;
+}
+
+.notificare .notificare__pass__google__back-trip-field-text {
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: Roboto,Arial,sans-serif;
+    height: 100%;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.notificare .notificare__pass__google__back-trip-field-text--end {
+    font-family: Google Sans,Roboto,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0;
+    overflow-wrap: break-word;
+    text-align: right;
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+.notificare .notificare__pass__google__back-trip-field-secondary-text {
+    color: #616161;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: Roboto,Arial,sans-serif;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.notificare .notificare__pass__google__back-trip-field-secondary-text--end {
+    text-align: right;
+}
+
+.notificare .notificare__pass__google__back-trip-field-spacer {
+    height: 20px;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transfer-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transfer-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 28px 8px 2px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12),0 1px 3px 0 rgba(0,0,0,.2);
+    height: 20px;
+    text-align: center;
+    width: 20px;
+    z-index: 2;
+    color: rgba(32,33,36,1);
+    justify-content: center;
+    align-items: center;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transfer-icon-wrapper svg {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transfer-text-area {
+    display: flex;
+    width: calc(100% - 60px);
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.notificare .notificare__pass__google__back-trip-field-transfer-text-area-border {
+    margin: 12px 12px 12px 0;
+    border-top: 1px solid var(#e1e3e1);
+}
+
+.notificare .notificare__pass__google__back-trip-field-transfer-text {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 16px;
+    width: 100%;
+    color: rgba(95,99,104,1);
+    font-size: 14px;
 }
 
 

@@ -51,14 +51,57 @@ export interface NotificarePassTemplateDesignGooglePayWalletClass {
   title?: string;
   provider?: string | null;
   details?: string | null;
-  finePrint?: string | null;
-  programLogo?: NotificarePassTemplateImageData;
+  finePrint?: string | null | NotificarePassTemplateTranslatedData;
+  merchantName?: string | null;
+  eventName?: NotificarePassTemplateTranslatedData;
   accountNameLabel?: string | null;
   accountIdLabel?: string | null;
   rewardsTierLabel?: string | null;
   rewardsTier?: string | null;
   secondaryRewardsTierLabel?: string | null;
   secondaryRewardsTier?: string | null;
+  pinLabel?: string | null;
+  eventNumberLabel?: string | null;
+  gateLabel?: string | null;
+  sectionLabel?: string | null;
+  confirmationCodeLabel?: string | null;
+  customGateLabel?: NotificarePassTemplateTranslatedData;
+  customSectionLabel?: NotificarePassTemplateTranslatedData;
+  customConfirmationCodeLabel?: NotificarePassTemplateTranslatedData;
+  customRowLabel?: NotificarePassTemplateTranslatedData;
+  customSeatLabel?: NotificarePassTemplateTranslatedData;
+  customCarriageLabel?: NotificarePassTemplateTranslatedData;
+  customCoachLabel?: NotificarePassTemplateTranslatedData;
+  customTicketNumberLabel?: NotificarePassTemplateTranslatedData;
+  customConcessionCategoryLabel?: NotificarePassTemplateTranslatedData;
+  customFareNameLabel?: NotificarePassTemplateTranslatedData;
+  customPlatformLabel?: NotificarePassTemplateTranslatedData;
+  customZoneLabel?: NotificarePassTemplateTranslatedData;
+  customFareClassLabel?: NotificarePassTemplateTranslatedData;
+  customRouteRestrictionsLabel?: NotificarePassTemplateTranslatedData;
+  customRouteRestrictionsDetailsLabel?: NotificarePassTemplateTranslatedData;
+  customTimeRestrictionsLabel?: NotificarePassTemplateTranslatedData;
+  customOtherRestrictionsLabel?: NotificarePassTemplateTranslatedData;
+  customPurchaseReceiptNumberLabel?: NotificarePassTemplateTranslatedData;
+  customPurchaseFaceValueLabel?: NotificarePassTemplateTranslatedData;
+  customPurchasePriceLabel?: NotificarePassTemplateTranslatedData;
+  customDiscountMessageLabel?: NotificarePassTemplateTranslatedData;
+  venue?: {
+    name: NotificarePassTemplateTranslatedData;
+    address: NotificarePassTemplateTranslatedData;
+  };
+  dateTime?: {
+    doorsOpen: string | null;
+    start: string | null;
+    end: string | null;
+    doorsOpenLabel: string | null;
+    customDoorsOpenLabel: NotificarePassTemplateTranslatedData;
+  };
+  enableSingleLegItinerary?: boolean | null;
+  transitType?: string | null;
+  logo?: NotificarePassTemplateImageData;
+  wideLogo?: NotificarePassTemplateImageData;
+  programLogo?: NotificarePassTemplateImageData;
   wideProgramLogo?: NotificarePassTemplateImageData;
   heroImage?: NotificarePassTemplateImageData;
   titleImage?: NotificarePassTemplateImageData;
@@ -68,10 +111,55 @@ export interface NotificarePassTemplateDesignGooglePayWalletClass {
 }
 
 export interface NotificarePassTemplateDesignGooglePayWalletObject {
+  hexBackgroundColor?: string | null;
   accountId?: string;
   accountName?: string | null;
   loyaltyPoints?: NotificarePassTemplatePointsData;
   secondaryLoyaltyPoints?: NotificarePassTemplatePointsData;
+  balance?: NotificarePassTemplateMoneyData;
+  cardNumber?: string | null;
+  eventNumber?: string | null;
+  pin?: string | null;
+  balanceUpdateTime?: NotificarePassTemplateDateData;
+  seatInfo?: {
+    seat: NotificarePassTemplateTranslatedData;
+    row: NotificarePassTemplateTranslatedData;
+    section: NotificarePassTemplateTranslatedData;
+    gate: NotificarePassTemplateTranslatedData;
+  };
+  ticketHolderName?: string | null;
+  ticketType?: NotificarePassTemplateTranslatedData;
+  ticketNumber?: string | null;
+  reservationInfo?: {
+    confirmationCode: string | null;
+  };
+  faceValue?: NotificarePassTemplateMoneyData;
+  ticketLeg?: NotificarePassTemplateDesignGooglePayTransitTicketLeg | null;
+  ticketLegs?: NotificarePassTemplateDesignGooglePayTransitTicketLeg[] | null;
+  ticketRestrictions?: {
+    routeRestrictions: NotificarePassTemplateTranslatedData;
+    routeRestrictionsDetails: NotificarePassTemplateTranslatedData;
+    timeRestrictions: NotificarePassTemplateTranslatedData;
+    otherRestrictions: NotificarePassTemplateTranslatedData;
+  };
+  purchaseDetails?: {
+    purchaseReceiptNumber: string | null;
+    purchaseDateTime: string | null;
+    accountId: string | null;
+    confirmationCode: string | null;
+    ticketCost: {
+      faceValue: NotificarePassTemplateMoneyData;
+      purchasePrice: NotificarePassTemplateMoneyData;
+      discountMessage: NotificarePassTemplateTranslatedData;
+    };
+  };
+  tripType?: string | null;
+  passengerNames?: string | null;
+  passengerType?: string | null;
+  ticketStatus?: string | null;
+  concessionCategory?: string | null;
+  customTicketStatus?: NotificarePassTemplateTranslatedData;
+  customConcessionCategory?: NotificarePassTemplateTranslatedData;
   heroImage?: NotificarePassTemplateImageData;
   imageModulesData: NotificarePassTemplateDesignGooglePayImageModuleData[];
   messages: NotificarePassTemplateDesignGooglePayMessage[];
@@ -104,6 +192,16 @@ export interface NotificarePassTemplateBalanceData {
   money: NotificarePassTemplateMoneyData;
 }
 
+export interface NotificarePassTemplateDateData {
+  date: string | null;
+}
+
+export interface NotificarePassTemplateTranslatedData {
+  defaultValue: {
+    value?: string | null;
+  };
+}
+
 export interface NotificarePassTemplateDesignGooglePayImageModuleData {
   mainImage: NotificarePassTemplateImageData;
 }
@@ -125,4 +223,25 @@ export interface NotificarePassTemplateDesignGooglePayLinksModuleData {
 export interface NotificarePassTemplateDesignGooglePayLinksModuleDataURI {
   uri: string;
   description: string;
+}
+
+export interface NotificarePassTemplateDesignGooglePayTransitTicketLeg {
+  originName: NotificarePassTemplateTranslatedData;
+  destinationName: NotificarePassTemplateTranslatedData;
+  originStationCode: string | null;
+  destinationStationCode: string | null;
+  departureDateTime: string | null;
+  arrivalDateTime: string | null;
+  carriage: string | null;
+  fareName: NotificarePassTemplateTranslatedData;
+  platform: string | null;
+  zone: string | null;
+  transitOperatorName: NotificarePassTemplateTranslatedData;
+  ticketSeats: {
+    coach: string | null;
+    seat: string | null;
+    seatAssignment: NotificarePassTemplateTranslatedData;
+    fareClass: string | null;
+    customFareClass?: NotificarePassTemplateTranslatedData;
+  }[];
 }

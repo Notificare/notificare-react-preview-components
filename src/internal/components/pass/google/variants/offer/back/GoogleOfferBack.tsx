@@ -1,5 +1,9 @@
 import { useMemo } from 'react';
-import { CardBack } from '~/internal/components/pass/google/shared/card-back/CardBack';
+import {
+  CardBack,
+  createImageFields,
+  createTextFields,
+} from '~/internal/components/pass/google/shared/card-back/CardBack';
 import {
   computePassTemplateDataValues,
   computeModulesData,
@@ -41,23 +45,29 @@ export function GoogleOfferBack({
       icon={passTemplateDataValues.titleImage}
       title={passTemplateDataValues.title}
       fields={[
-        {
-          header: 'From',
-          body: passTemplateDataValues.provider,
-        },
-        {
-          image: modulesData.imageModulesDataMainImage,
-        },
-        {
-          header: 'Details',
-          body: passTemplateDataValues.details,
-        },
-        {
-          header: 'Disclaimer',
-          body: passTemplateDataValues.finePrint,
-        },
-        ...modulesData.messages,
-        ...modulesData.textModulesData,
+        ...createTextFields([
+          {
+            header: 'From',
+            body: passTemplateDataValues.provider,
+          },
+        ]),
+        ...createImageFields([
+          {
+            image: modulesData.imageModulesDataMainImage,
+          },
+        ]),
+        ...createTextFields([
+          {
+            header: 'Details',
+            body: passTemplateDataValues.details,
+          },
+          {
+            header: 'Disclaimer',
+            body: passTemplateDataValues.finePrint,
+          },
+          ...modulesData.messages,
+          ...modulesData.textModulesData,
+        ]),
       ]}
       urlActions={[...modulesData.linksModuleDataURIS]}
       customActions={[

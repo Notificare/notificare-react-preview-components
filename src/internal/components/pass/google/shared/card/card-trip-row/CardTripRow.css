@@ -1,0 +1,45 @@
+.notificare .notificare__pass__google__trip-row-area {
+    margin: 8px 16px 0;
+}
+
+.notificare .notificare__pass__google__origin-destination-names {
+    font-family: Google Sans,Google Sans,Roboto,Arial,sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 2.5rem;
+    font-variation-settings: "CRSV" 0,"FILL" 0,"GRAD" 0,"HEXP" 0,"opsz" 32,"ROND" 0,"slnt" 0,"wdth" 100,"wght" 400;
+    margin: 0;
+    word-break: break-word;
+}
+
+.notificare .notificare__pass__google__origin-destination-names-above-codes {
+    font-family: Google Sans Text,Google Sans,Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5rem;
+    font-variation-settings: "CRSV" 0,"FILL" 0,"GRAD" 0,"HEXP" 0,"opsz" 16,"ROND" 0,"slnt" 0,"wdth" 100,"wght" 500;
+    word-break: break-word;
+    margin-bottom: 8px;
+}
+
+.notificare .notificare__pass__google__origin-destination-codes {
+    font-family: Google Sans,Google Sans,Roboto,Arial,sans-serif;
+    font-size: 2.8125rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 3.25rem;
+    font-variation-settings: "CRSV" 0,"FILL" 0,"GRAD" 0,"HEXP" 0,"opsz" 45,"ROND" 0,"slnt" 0,"wdth" 100,"wght" 400;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    word-break: break-word;
+}
+
+.notificare .notificare__pass__google__origin-destination-codes svg {
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    margin: 0 10px;
+}

@@ -19,7 +19,7 @@ import {
   NotificarePassTemplatePassDataField,
 } from '~/models/pass/notificare-pass-template';
 
-export function GoogleOfferFront({
+export function GoogleGiftCardFront({
   walletClass,
   passTemplateData,
   walletObject,
@@ -27,15 +27,15 @@ export function GoogleOfferFront({
   barcodeDesign,
   passData,
   barcode,
-}: GoogleOfferFrontProps) {
+}: GoogleGiftCardFrontProps) {
   const passTemplateDataValues = useMemo(() => {
     return computePassTemplateDataValues(
       {
         hexBackgroundColor: { value: walletClass.hexBackgroundColor },
+        programLogo: { value: walletClass.programLogo },
+        wideProgramLogo: { value: walletClass.wideProgramLogo },
+        merchantName: { value: walletClass.merchantName },
         issuerName: { value: walletClass.issuerName },
-        title: { value: walletClass.title },
-        titleImage: { value: walletClass.titleImage?.sourceUri?.uri },
-        wideTitleImage: { value: walletClass.wideTitleImage?.sourceUri?.uri },
       },
       passTemplateData,
     );
@@ -44,6 +44,8 @@ export function GoogleOfferFront({
   const passDataValues = useMemo(() => {
     return computePassDataValues(
       {
+        balance: { value: walletObject.balance },
+        cardNumber: { value: walletObject.cardNumber },
         heroImage: {
           value: walletObject.heroImage?.sourceUri?.uri,
         },
@@ -57,24 +59,25 @@ export function GoogleOfferFront({
     <Card hexBackgroundColor={passTemplateDataValues.hexBackgroundColor}>
       <CardTitle>
         <CardHeader
-          logo={passTemplateDataValues.titleImage}
+          logo={passTemplateDataValues.programLogo}
           title={passTemplateDataValues.issuerName}
-          wideLogo={passTemplateDataValues.wideTitleImage}
+          wideLogo={passTemplateDataValues.wideProgramLogo}
         />
-        <CardSingleTopRow title={passTemplateDataValues.title} />
+        <CardSingleTopRow title={`Gift Card: ${passDataValues.balance}`} />
       </CardTitle>
       <CardSpacer />
       <CardBarcode
-        format={barcodeDesign.format}
+        format={barcodeDesign.format === 'none' ? 'code128' : barcodeDesign.format}
         barcode={barcode}
-        text={barcodeDesign.showAltText ? barcode : undefined}
+        text={barcodeDesign.showAltText ? barcode : passDataValues.cardNumber}
+        alternateText={passDataValues.cardNumber}
       />
       <CardHeroImage heroImage={passDataValues.heroImage} />
     </Card>
   );
 }
 
-interface GoogleOfferFrontProps {
+interface GoogleGiftCardFrontProps {
   walletClass: NotificarePassTemplateDesignGooglePayWalletClass;
   passTemplateData: NotificarePassTemplateDataField[];
   walletObject: NotificarePassTemplateDesignGooglePayWalletObject;
