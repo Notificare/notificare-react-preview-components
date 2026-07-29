@@ -64,11 +64,7 @@ export function GoogleOfferFront({
         <CardSingleTopRow title={passTemplateDataValues.title} />
       </CardTitle>
       <CardSpacer />
-      <CardBarcode
-        format={barcodeDesign.format}
-        barcode={barcode}
-        text={barcodeDesign.showAltText ? barcode : undefined}
-      />
+      <CardBarcode format={barcodeDesign.format} barcode={barcode} text={barcode} />
       <CardHeroImage heroImage={passDataValues.heroImage} />
     </Card>
   );
