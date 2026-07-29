@@ -1,2 +1,8 @@
 export { LOYALTY, LOYALTY_WITH_WIDE_PROGRAM_LOGO } from './Loyalty';
 export { OFFER, OFFER_WITH_WIDE_TITLE_IMAGE } from './Offer';
+export { GIFT_CARD, GIFT_CARD_WITH_WIDE_PROGRAM_LOGO } from './GiftCard';
+export { EVENT_TICKET, EVENT_TICKET_WITH_WIDE_LOGO } from './EventTicket';
+export {
+  TRANSIT_PASS_WITH_SINGLE_LEG_ITINERARY,
+  TRANSIT_PASS_WITH_MULTIPLE_LEG_ITINERARY,
+} from './TransitPass';
